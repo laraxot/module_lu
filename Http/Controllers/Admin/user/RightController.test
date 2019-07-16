@@ -1,0 +1,15 @@
+<?php
+
+
+
+namespace Modules\LU\Http\Controllers\Admin\user;
+
+use App\Http\Controllers\Controller;
+use Modules\Extend\Traits\CrudSimpleTrait as CrudTrait;
+
+//------models------
+
+class RightController extends Controller
+{
+    use CrudTrait;
+}

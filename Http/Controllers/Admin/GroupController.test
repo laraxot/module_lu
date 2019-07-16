@@ -1,0 +1,28 @@
+<?php
+
+
+
+namespace Modules\LU\Http\Controllers\Admin;
+
+use App\Http\Controllers\Controller;
+//use Modules\Extend\Traits\CrudSimpleTrait as CrudTrait;
+use Modules\Extend\Traits\CrudContainerItemNoPostTrait as CrudTrait;
+//------models------
+use Modules\LU\Models\Group;
+
+class GroupController extends Controller
+{
+    use CrudTrait;
+    //-------------------------
+    /*
+    public function getModel()
+    {
+        return new Group;
+    }//end getModel
+
+    public function getPrimaryKey()
+    {
+        return 'id_group';
+    }//end getPrimaryKey
+    */
+}//end class
