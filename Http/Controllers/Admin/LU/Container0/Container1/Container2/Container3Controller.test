@@ -1,0 +1,11 @@
+<?php
+namespace Modules\LU\Http\Controllers\Admin\LU\Container0\Container1\Container2;
+
+use App\Http\Controllers\Controller;
+//--- traits ---
+use Modules\Blog\Traits\ContainerTrait;
+
+class Container3Controller extends Controller
+{
+    use ContainerTrait;
+}

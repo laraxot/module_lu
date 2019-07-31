@@ -1,0 +1,34 @@
+const mix = require('laravel-mix');
+require('laravel-mix-merge-manifest');
+
+mix.autoload({
+    jquery: ['$', 'window.jQuery', 'jQuery'],
+    //tether: ['window.Tether', 'Tether'],
+    //'tether-shepherd': ['Shepherd'],
+    //'popper.js/dist/popper.js': ['Popper'],
+    //moment: 'moment' // only one
+});
+
+//mix.setPublicPath('../../public').mergeManifest();
+var app_css= __dirname + '/Resources/views/dist/css/lu.css';
+var app_js = __dirname + '/Resources/views/dist/js/lu.js';
+
+mix.js(__dirname + '/Resources/assets/js/app.js', app_js)
+	/*
+	.scripts([
+		app_js,
+		'Resources/views/js/lighbox.js'
+		],app_js)
+	*/
+    .sass( __dirname + '/Resources/assets/sass/app.scss', app_css)
+    /*
+    .styles([
+    	app_css,
+    	'Resources/views/css/lighbox.css'
+    	],app_css)
+    */
+    ;
+
+if (mix.inProduction()) {
+    mix.version();
+}
