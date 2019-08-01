@@ -5,9 +5,12 @@ use Illuminate\Auth\Access\HandlesAuthorization;
 use Modules\LU\Models\Area as Post;
 use Modules\LU\Models\User;
 
+use Modules\Xot\Traits\XotBasePolicyTrait;
+
 class AreaPolicy
 {
-    use HandlesAuthorization;
+    //use HandlesAuthorization;
+    use XotBasePolicyTrait;
 
     public function before($user, $ability)
     {

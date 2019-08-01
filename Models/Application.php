@@ -10,6 +10,8 @@ use Modules\Extend\Traits\Updater;
 
 class Application extends Model
 {
+    protected $fillable=['application_id','application_define_name'];
+
     use Updater;
     use Searchable;
 

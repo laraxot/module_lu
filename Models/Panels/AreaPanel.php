@@ -33,6 +33,10 @@ class AreaPanel extends XotBasePanel{
      */
     public static $search = [] ;
 
+    public function search(){
+        return [];//['area_id','area_define_name'];
+    }
+
     public function optionId($row){
         return $row->area_id;
     }
@@ -120,6 +124,7 @@ class AreaPanel extends XotBasePanel{
         return [];
     }
 
+    /*
     public static function elaborateRequest(Request $request,$query){
         if(($request->ajax() && $request->has('query')) || $request->has('debug')) {
             $lang=\App::getLocale();
@@ -129,15 +134,15 @@ class AreaPanel extends XotBasePanel{
                     ->limit(10)
                         ->get()
                         ->toJson();
-            /*
-            $rows=Post::select('post_id as id','title as label')
-                        ->where('title','like','%'.$q.'%')
-                        ->where('post_type','cuisine_cat')
-                        ->where('lang',$lang)
-                        ->limit(10)
-                        ->get()
-                        ->toJson();
-            */
+            //
+            //$rows=Post::select('post_id as id','title as label')
+            //            ->where('title','like','%'.$q.'%')
+            //            ->where('post_type','cuisine_cat')
+            //            ->where('lang',$lang)
+            //            ->limit(10)
+            //            ->get()
+            //            ->toJson();
+            //
             
             die($rows);
         }
@@ -147,5 +152,6 @@ class AreaPanel extends XotBasePanel{
         self::elaborateRequest($request,$query);
         return $query;
     }
+    */
 
 }

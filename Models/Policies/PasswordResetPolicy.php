@@ -6,9 +6,12 @@ use Illuminate\Auth\Access\HandlesAuthorization;
 use Modules\LU\Models\User as User;
 use Modules\LU\Models\PasswordReset as Post; 
 
+use Modules\Xot\Traits\XotBasePolicyTrait;
+
 class PasswordResetPolicy
 {
-    use HandlesAuthorization;
+    //use HandlesAuthorization;
+    use XotBasePolicyTrait;
     
     public function before($user, $ability)
     {
