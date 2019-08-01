@@ -97,8 +97,7 @@ class AreaPanel extends XotBasePanel{
      * @param  \Illuminate\Http\Request  $request
      * @return array
      */
-    public function filters(Request $request=null)
-    {
+    public function filters(Request $request=null){
         return [];
     }
 
@@ -108,8 +107,7 @@ class AreaPanel extends XotBasePanel{
      * @param  \Illuminate\Http\Request  $request
      * @return array
      */
-    public function lenses(Request $request)
-    {
+    public function lenses(Request $request){
         return [];
     }
 
@@ -119,8 +117,7 @@ class AreaPanel extends XotBasePanel{
      * @param  \Illuminate\Http\Request  $request
      * @return array
      */
-    public function actions()
-    {
+    public function actions(){
         return [];
     }
 

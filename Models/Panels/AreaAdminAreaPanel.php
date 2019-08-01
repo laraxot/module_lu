@@ -32,8 +32,7 @@ class AreaAdminAreaPanel extends XotBasePanel {
 	 *
 	 * @var array
 	 */
-	public static $search = array (
-) ;
+	public static $search = [];
 
 	/**
 	* The relationships that should be eager loaded on index queries.
@@ -120,7 +119,7 @@ class AreaAdminAreaPanel extends XotBasePanel {
 		    // 'type' => 'Integer',
 		  		'type' => 'SelectTypeahead',
 		     	'name' => 'area_id',
-		     	'attributes'=>['data-url' => url('/admin/lu/it/area?query=%QUERY%')],
+		     	'attributes'=>['data-url' => url('/admin/lu/it/area?q=%QUERY%&format=typeahead')],
 		  	),
 		  	(object) array(
 		     'type' => 'Integer',

@@ -10,6 +10,8 @@ use Modules\Extend\Traits\Updater;
 
 class UserRight extends Model
 {
+    protected $fillable=['perm_user_id','right_id','right_level'];
+
     use Updater;
     use Searchable;
 

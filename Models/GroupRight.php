@@ -10,6 +10,8 @@ use Modules\Extend\Traits\Updater;
 
 class GroupRight extends Model
 {
+    protected $fillable=['group_id','right_id','right_level'];
+
     use Searchable;
     use Updater;
 

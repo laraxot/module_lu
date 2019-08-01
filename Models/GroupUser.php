@@ -8,6 +8,8 @@ use Modules\Extend\Traits\Updater;
 
 class GroupUser extends Pivot
 {
+    protected $fillable=['perm_user_id','group_id'];
+
     use Searchable;
     use Updater;
     protected $connection = 'liveuser_general'; // this will use the specified database conneciton

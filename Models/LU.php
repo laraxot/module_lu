@@ -5,6 +5,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class LU extends Model
 {
+    protected $fillable=['auth_user_id','handle','passwd','last_login_at','last_login_ip','owner_user_id','owner_group_id','is_active','email','group_id','banned_id','country_id','question_id','nome','cognome','ente','matr','stabi','repar','password','hash','activation_code','forgotten_password_code','birthday','last_birthday','dem_birthday','sesso','giubbotto','provincia','conosciuto','news','citta','segno','hmail','bounce','dataIscrizione','dataCancellazione','created_at','updated_at','remember_token','updated_by','created_by','email_verified_at','deleted_by','firstname','surname','token_check','is_verified'];
+
     protected $connection = 'liveuser_general'; // this will use the specified database conneciton
     protected $table = 'liveuser_users';
     protected $primaryKey = 'auth_user_id';
