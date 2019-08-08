@@ -164,8 +164,7 @@ class User extends Authenticatable implements MustVerifyEmail
 
     ///----------------------------------------------------------------------
 
-    public function groups_opts()
-    {
+    public function groups_opts(){
         $groups = $this->groups()->get()->toArray();
         $collection = collect($groups);
         $plucked = $collection->pluck('group_define_name', 'group_id');
@@ -173,6 +172,15 @@ class User extends Authenticatable implements MustVerifyEmail
 
         return $plucked->all();
     }
+
+    public function getHandleAttribute($value){
+        if($value!='') return $value;
+        $value='Guest'.$this->attributes['auth_user_id'];
+        //$this->attributes['handle']=$value;
+        //$this->save();
+        return $value;
+    }
+
 
     public function getLangAttribute($value){
         $lang=\App::getLocale();
