@@ -28,6 +28,9 @@ class LUServiceProvider extends XotBaseServiceProvider{
         	ddd(\Auth::user());
     	}
     	*/
+        $this->commands([
+            \Modules\LU\Console\CreateUserCommand::class,
+        ]);
     }
 }
 

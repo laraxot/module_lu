@@ -11,8 +11,7 @@ use Modules\Extend\Services\RouteService;
 use Modules\Xot\Models\Panels\XotBasePanel;
 
 
-class UserPanel extends XotBasePanel
-{
+class UserPanel extends XotBasePanel{
 	/**
 	 * The model the resource corresponds to.
 	 *
@@ -64,18 +63,22 @@ class UserPanel extends XotBasePanel
 		  (object) array(
 			 'type' => 'Password',
 			 'name' => 'passwd',
+			 'col_bs_size'=>6,
 		  ),
 		  (object) array(
 			 'type' => 'String',
 			 'name' => 'email',
+			 'col_bs_size'=>6,
 		  ),
 		  (object) array(
 			 'type' => 'String',
 			 'name' => 'surname',
+			 'col_bs_size'=>6,
 		  ),
 		  (object) array(
 			 'type' => 'String',
 			 'name' => 'firstname',
+			 'col_bs_size'=>6,
 		  ),
 		  /*
 		  (object) array(
@@ -90,10 +93,12 @@ class UserPanel extends XotBasePanel
 		  (object) array(
 			 'type' => 'DateTime',
 			 'name' => 'last_login_at',
+			 'col_bs_size'=>6,
 		  ),
 		  (object) array(
 			 'type' => 'String',
 			 'name' => 'last_login_ip',
+			 'col_bs_size'=>6,
 		  ),
 		);
 	}
