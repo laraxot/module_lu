@@ -97,6 +97,14 @@ class User extends Authenticatable implements MustVerifyEmail
         return false; 
     }
 
+    public function isMine($post){
+        if ($post->created_by == $this->handle || $post->updated_by == $this->handle) {
+            return true;
+        }
+
+        return false;
+    }
+
     public function sendEmailVerificationNotification()
     {
         $this->notify(new VerifyEmailNotification());
