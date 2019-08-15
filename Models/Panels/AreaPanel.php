@@ -158,7 +158,11 @@ class AreaPanel extends XotBasePanel{
         extract($params);
         //$route_params = \Route::current()->parameters();
         //list($containers,$items)=params2ContainerItem($route_params);
-        return $_layout->view_extend.'.body.multi_select';
+        if($_layout->act=='index_edit'){
+            return $_layout->view_extend.'.body.multi_select';
+        }else{
+            return $_layout->view_extend.'.body_content'; //.'.index';
+        }
         //return $_layout->view_extend.'.body.rating';
     }
 

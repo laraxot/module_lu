@@ -24,8 +24,8 @@ class SyncAreas extends XotBasePanelAction{
  	*
  	* @var bool
  	*/
-	public $onlyOnIndex = true; //onlyContainer
-
+	//public $onlyOnIndex = true; //onlyContainer
+ 	public $onContainer = true; //onlyContainer
 	/**
  	* Indicates if this action is only available on the resource detail view.
  	*
