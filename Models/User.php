@@ -20,26 +20,9 @@ use Modules\LU\Notifications\VerifyEmail   as VerifyEmailNotification;
 
 //--------models -------
 use Modules\Blog\Models\Post;  
-use Modules\Blog\Models\Profile;  
+//use Modules\Blog\Models\Profile;  
 
-
-//class User extends Model
-/*
-class User extends \Eloquent implements
-                            AuthenticatableContract
-                            ,AuthorizableContract
-                            ,CanResetPasswordContract
-                            //,MustVerifyEmail
-                            {
-
-    use Authenticatable, CanResetPassword;
-    use Authorizable;
-    use Notifiable;
-    use Searchable;
-    use Updater;
-*/
-class User extends Authenticatable implements MustVerifyEmail
-{
+class User extends Authenticatable implements MustVerifyEmail {
     use Notifiable;
     use Updater;
     use Searchable;
@@ -125,19 +108,16 @@ class User extends Authenticatable implements MustVerifyEmail
      *
      * @return mixed
      */
-    public function getAuthIdentifier()
-    {
+    public function getAuthIdentifier(){
         return $this->getKey();
     }
 
-    public function getAuthIdentifierName()
-    {
+    public function getAuthIdentifierName(){
         return 'auth_user_id';
     }
 
     //-----------------------------------------------------------
-    public function socialProviders()
-    {
+    public function socialProviders(){
         return $this->hasMany(SocialProvider::class, 'user_id', 'auth_user_id');
     }
 
@@ -145,8 +125,7 @@ class User extends Authenticatable implements MustVerifyEmail
         return $this->hasOne(PermUser::class, 'auth_user_id', 'auth_user_id');   
     }
 
-    public function perm()
-    {
+    public function perm(){
         return $this->hasOne(PermUser::class, 'auth_user_id', 'auth_user_id');
     }
 
@@ -155,7 +134,13 @@ class User extends Authenticatable implements MustVerifyEmail
     }
 
     public function profile(){
-        return $this->hasOne(Profile::class,'post_id','auth_user_id');
+
+        $profile_class=config('xra.model.profile');
+        if($profile_class==""){
+            ddd('modifica config xra.php  aggiungi in model il profile');
+        }
+        //ddd($profile_class);
+        return $this->hasOne(''.$profile_class,'auth_user_id','auth_user_id');
     }
 
     /*-- usiamo solo perm 
@@ -166,8 +151,7 @@ class User extends Authenticatable implements MustVerifyEmail
         return $row;
     }
     */
-    public function perm_user_id()
-    { //shortcut
+    public function perm_user_id(){ //shortcut
         $permUser = $this->perm;
         if (null == $permUser) {
             $permUser = PermUser::firstOrCreate(['auth_user_id' => $this->auth_user_id]);
@@ -214,8 +198,7 @@ class User extends Authenticatable implements MustVerifyEmail
     }
 
     //-----------------------------------------------------------
-    public function areaAdminAreas()
-    {
+    public function areaAdminAreas(){
         $modules=\Module::getOrdered();
         $modules=array_keys($modules);
 
@@ -235,8 +218,7 @@ class User extends Authenticatable implements MustVerifyEmail
         return $rows;
     }
 
-    public function areas()
-    {
+    public function areas(){
         if (null == $this->perm) {
             $this->perm = PermUser::firstOrCreate(['auth_user_id' => $this->auth_user_id]);
         }
@@ -244,18 +226,15 @@ class User extends Authenticatable implements MustVerifyEmail
         return $this->perm->areas();
     }
 
-    public function groups()
-    {
+    public function groups(){
         return $this->perm->groups();
     }
 
-    public function rights()
-    {
+    public function rights(){
         return $this->perm->rights();
     }
 
-    public function allRights()
-    {
+    public function allRights(){
         return Right::all();
     }
 
@@ -264,14 +243,12 @@ class User extends Authenticatable implements MustVerifyEmail
      *
      * @return string
      */
-    public function getAuthPassword()
-    {
+    public function getAuthPassword(){
         //your password field name
         return $this->passwd;
     }
 
-    public function metadata()
-    {
+    public function metadata(){
         return $this->hasOne(Metadata::class);
     }
 
@@ -280,8 +257,7 @@ class User extends Authenticatable implements MustVerifyEmail
      *
      * @return string
      */
-    public function getReminderEmail()
-    {
+    public function getReminderEmail(){
         return $this->email;
     }
 
@@ -290,8 +266,7 @@ class User extends Authenticatable implements MustVerifyEmail
      *
      * @return string
      */
-    public function getRememberToken()
-    {
+    public function getRememberToken(){
         return $this->remember_token;
     }
 
@@ -300,8 +275,7 @@ class User extends Authenticatable implements MustVerifyEmail
      *
      * @param string $value
      */
-    public function setRememberToken($value)
-    {
+    public function setRememberToken($value){
         $this->remember_token = $value;
     }
 
@@ -310,8 +284,7 @@ class User extends Authenticatable implements MustVerifyEmail
      *
      * @return string
      */
-    public function getRememberTokenName()
-    {
+    public function getRememberTokenName(){
         return 'remember_token';
     }
 
@@ -336,18 +309,15 @@ class User extends Authenticatable implements MustVerifyEmail
      *
      * @param string $token
      */
-    public function sendPasswordResetNotification($token)
-    {
+    public function sendPasswordResetNotification($token){
         $this->notify(new ResetPasswordNotification($token));
     }
 
-    public function password()
-    {
+    public function password(){
         return 'passwd';
     }
 
-    public function username()
-    {
+    public function username(){
         return 'handle';
     }
 
@@ -359,8 +329,32 @@ class User extends Authenticatable implements MustVerifyEmail
         $this->attributes['password'] = bcrypt($value);
     }
     */
-    public function getUrlAttribute($value)
-    {   
+    public function getUrlAttribute($value){   
+        $profile=$this->profile;
+
+        if(!is_object($profile)) {
+            $profile=$this->profile()->create();
+        }
+        $post=$profile->post;
+        if(!is_object($post)){
+            $post=$profile->post()->create();
+            $res=$post->update([
+                'post_type'=>'profile',
+                'title'=>$this->handle,
+                'guid'=>$this->handle,
+                'lang'=>\App::getLocale(),
+            ]);
+            //ddd($post);
+        }
+        $parz=[
+            //'lang'=>\App::getLocale(),
+            'container0'=>'profile',
+            'item0'=>$post,
+        ];
+        //ddd($profile->post);
+        return route('container0.show',$parz);
+        //ddd($post->show_url);
+        //ddd($profile->post()->exists());
         /*
         $guid = str_slug($this->handle);
         $row = \Modules\Blog\Models\Post::firstOrCreate(
@@ -370,7 +364,7 @@ class User extends Authenticatable implements MustVerifyEmail
 
         return asset(\App::getLocale().'/profile/'.$guid);
         //*/
-        return '#';
+        //return '#';
     }
 
     public function getFirstNameAttribute($value)
