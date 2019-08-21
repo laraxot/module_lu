@@ -8,7 +8,7 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ $title }}</title>
+    <title>{{ $title ?? '' }}</title>
 
     <!-- Styles --> 
     {{--
@@ -44,7 +44,7 @@
                     <!-- Branding Image -->
                     <a class="navbar-brand" href="{{ url('/') }}">
                         {{-- config('app.name', 'Laravel') --}}
-                        {{ $title }}
+                        {{ $title ?? ''}}
                     </a>
                 </div>
 
