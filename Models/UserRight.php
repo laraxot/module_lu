@@ -1,16 +1,4 @@
 <?php
-<<<<<<< HEAD
-
-
-
-namespace Modules\LU\Models;
-
-use Illuminate\Database\Eloquent\Model;
-use Laravel\Scout\Searchable;
-use Modules\Extend\Traits\Updater;
-
-class UserRight extends Model
-=======
 namespace Modules\LU\Models;
 
 use Illuminate\Database\Eloquent\Model;
@@ -19,7 +7,6 @@ use Laravel\Scout\Searchable;
 use Modules\Extend\Traits\Updater;
 
 class UserRight extends Pivot
->>>>>>> 8fdd9670f335166dfacb15a63a0c2c0250b7b156
 {
     protected $fillable=['perm_user_id','right_id','right_level'];
 
