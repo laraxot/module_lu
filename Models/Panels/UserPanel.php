@@ -67,17 +67,17 @@ class UserPanel extends XotBasePanel{
 		  ),
 		  (object) array(
 			 'type' => 'String',
+			 'name' => 'last_name',
+			 'col_bs_size'=>6,
+		  ),
+		  (object) array(
+			 'type' => 'String',
+			 'name' => 'first_name',
+			 'col_bs_size'=>6,
+		  ),
+		  (object) array(
+			 'type' => 'String',
 			 'name' => 'email',
-			 'col_bs_size'=>6,
-		  ),
-		  (object) array(
-			 'type' => 'String',
-			 'name' => 'surname',
-			 'col_bs_size'=>6,
-		  ),
-		  (object) array(
-			 'type' => 'String',
-			 'name' => 'firstname',
 			 'col_bs_size'=>6,
 		  ),
 		  /*

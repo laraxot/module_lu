@@ -32,9 +32,8 @@ class User extends Authenticatable implements MustVerifyEmail {
     protected $primaryKey = 'auth_user_id';
     protected $fillable = [
         'ente', 'matr', 'handle', 'passwd', 'email',
-        'surname', 'firstname',
-        'cognome', 'nome', //da internazionalizzare percio' cancellare..
-        'last_login_at', 'last_login_ip', //http://laraveldaily.com/save-users-last-login-time-ip-address/
+        'last_name', 'first_name',
+        //'last_login_at', 'last_login_ip', //http://laraveldaily.com/save-users-last-login-time-ip-address/
     ];
     protected $dates = [
         'last_login_at',
@@ -174,6 +173,9 @@ class User extends Authenticatable implements MustVerifyEmail {
 
     public function getHandleAttribute($value){
         if($value!='') return $value;
+        if(!isset($this->attributes['auth_user_id'])){
+           return 'Guest_'.rand(1,10000);
+        }
         $value='Guest'.$this->attributes['auth_user_id'];
         //$this->attributes['handle']=$value;
         //$this->save();
@@ -366,7 +368,7 @@ class User extends Authenticatable implements MustVerifyEmail {
         //*/
         //return '#';
     }
-
+    /*
     public function getFirstNameAttribute($value)
     {
         return $this->nome;
@@ -381,9 +383,8 @@ class User extends Authenticatable implements MustVerifyEmail {
     {
         return $this->nome;
     }
-
-    public function getGravatarAttribute($value)
-    {
+    */
+    public function getGravatarAttribute($value){
         $publicBaseUrl = 'https://www.gravatar.com/avatar/';
         $secureBaseUrl = 'https://secure.gravatar.com/avatar/';
         $default = 'https://www.somewhere.com/homestar.jpg';
@@ -392,8 +393,7 @@ class User extends Authenticatable implements MustVerifyEmail {
         return $secureBaseUrl.\md5(\mb_strtolower(\trim($this->email))).'&s='.$size;
     }
 
-    public function getPermTypeAttribute($value)
-    {
+    public function getPermTypeAttribute($value){
         $perm = $this->perm;
         if (\is_object($perm)) {
             return $perm->perm_type;
@@ -404,27 +404,23 @@ class User extends Authenticatable implements MustVerifyEmail {
     }
 
     //--------------------
-    public function setPasswdAttribute($value)
-    {
+    public function setPasswdAttribute($value){
         if (\mb_strlen($value) < 30) {
             $this->attributes['passwd'] = \md5($value);
         }
     }
 
-    public function setUsernameAttribute($value)
-    {
+    public function setUsernameAttribute($value){
         $this->attributes['username'] = \mb_strtolower($value);
     }
 
     //-------------------------------
-    public function name()
-    {
+    public function name(){
         return $this->handle;
     }
 
     //---------------------------------------------------------------------------
-    public static function filter($params)
-    {
+    public static function filter($params){
         $rows = new self();
         \extract($params);
         //echo '<pre>';print_r($params);echo '</pre>';
@@ -477,8 +473,7 @@ class User extends Authenticatable implements MustVerifyEmail {
     /**
      * Returns true if the user is a super administrator.
      */
-    public function superAdmin()
-    {
+    public function superAdmin(){
         if (!\is_array(config('xra.superadmins'))) {
             return false;
         }
