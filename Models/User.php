@@ -20,6 +20,7 @@ use Modules\LU\Notifications\VerifyEmail   as VerifyEmailNotification;
 
 //--------models -------
 use Modules\Blog\Models\Post;  
+<<<<<<< HEAD
 use Modules\Blog\Models\Profile;  
 
 
@@ -40,6 +41,11 @@ class User extends \Eloquent implements
 */
 class User extends Authenticatable implements MustVerifyEmail
 {
+=======
+//use Modules\Blog\Models\Profile;  
+
+class User extends Authenticatable implements MustVerifyEmail {
+>>>>>>> 8fdd9670f335166dfacb15a63a0c2c0250b7b156
     use Notifiable;
     use Updater;
     use Searchable;
@@ -54,6 +60,10 @@ class User extends Authenticatable implements MustVerifyEmail
         'last_login_at', 'last_login_ip', //http://laraveldaily.com/save-users-last-login-time-ip-address/
     ];
     protected $dates = [
+<<<<<<< HEAD
+=======
+        'last_login_at',
+>>>>>>> 8fdd9670f335166dfacb15a63a0c2c0250b7b156
         'created_at',
         'updated_at',
         'deleted_at',
@@ -89,6 +99,24 @@ class User extends Authenticatable implements MustVerifyEmail
     }
     */
 
+<<<<<<< HEAD
+=======
+    public function isSuperAdmin(){
+        if (is_object($this->perm) && $this->perm->perm_type >= 5) {  //superadmin
+            return true;
+        }
+        return false; 
+    }
+
+    public function isMine($post){
+        if ($post->created_by == $this->handle || $post->updated_by == $this->handle) {
+            return true;
+        }
+
+        return false;
+    }
+
+>>>>>>> 8fdd9670f335166dfacb15a63a0c2c0250b7b156
     public function sendEmailVerificationNotification()
     {
         $this->notify(new VerifyEmailNotification());
@@ -109,6 +137,7 @@ class User extends Authenticatable implements MustVerifyEmail
      *
      * @return mixed
      */
+<<<<<<< HEAD
     public function getAuthIdentifier()
     {
         return $this->getKey();
@@ -116,12 +145,23 @@ class User extends Authenticatable implements MustVerifyEmail
 
     public function getAuthIdentifierName()
     {
+=======
+    public function getAuthIdentifier(){
+        return $this->getKey();
+    }
+
+    public function getAuthIdentifierName(){
+>>>>>>> 8fdd9670f335166dfacb15a63a0c2c0250b7b156
         return 'auth_user_id';
     }
 
     //-----------------------------------------------------------
+<<<<<<< HEAD
     public function socialProviders()
     {
+=======
+    public function socialProviders(){
+>>>>>>> 8fdd9670f335166dfacb15a63a0c2c0250b7b156
         return $this->hasMany(SocialProvider::class, 'user_id', 'auth_user_id');
     }
 
@@ -129,8 +169,12 @@ class User extends Authenticatable implements MustVerifyEmail
         return $this->hasOne(PermUser::class, 'auth_user_id', 'auth_user_id');   
     }
 
+<<<<<<< HEAD
     public function perm()
     {
+=======
+    public function perm(){
+>>>>>>> 8fdd9670f335166dfacb15a63a0c2c0250b7b156
         return $this->hasOne(PermUser::class, 'auth_user_id', 'auth_user_id');
     }
 
@@ -139,7 +183,17 @@ class User extends Authenticatable implements MustVerifyEmail
     }
 
     public function profile(){
+<<<<<<< HEAD
         return $this->hasOne(Profile::class,'post_id','auth_user_id');
+=======
+
+        $profile_class=config('xra.model.profile');
+        if($profile_class==""){
+            ddd('modifica config xra.php  aggiungi in model il profile');
+        }
+        //ddd($profile_class);
+        return $this->hasOne(''.$profile_class,'auth_user_id','auth_user_id');
+>>>>>>> 8fdd9670f335166dfacb15a63a0c2c0250b7b156
     }
 
     /*-- usiamo solo perm 
@@ -150,8 +204,12 @@ class User extends Authenticatable implements MustVerifyEmail
         return $row;
     }
     */
+<<<<<<< HEAD
     public function perm_user_id()
     { //shortcut
+=======
+    public function perm_user_id(){ //shortcut
+>>>>>>> 8fdd9670f335166dfacb15a63a0c2c0250b7b156
         $permUser = $this->perm;
         if (null == $permUser) {
             $permUser = PermUser::firstOrCreate(['auth_user_id' => $this->auth_user_id]);
@@ -163,8 +221,12 @@ class User extends Authenticatable implements MustVerifyEmail
 
     ///----------------------------------------------------------------------
 
+<<<<<<< HEAD
     public function groups_opts()
     {
+=======
+    public function groups_opts(){
+>>>>>>> 8fdd9670f335166dfacb15a63a0c2c0250b7b156
         $groups = $this->groups()->get()->toArray();
         $collection = collect($groups);
         $plucked = $collection->pluck('group_define_name', 'group_id');
@@ -173,6 +235,18 @@ class User extends Authenticatable implements MustVerifyEmail
         return $plucked->all();
     }
 
+<<<<<<< HEAD
+=======
+    public function getHandleAttribute($value){
+        if($value!='') return $value;
+        $value='Guest'.$this->attributes['auth_user_id'];
+        //$this->attributes['handle']=$value;
+        //$this->save();
+        return $value;
+    }
+
+
+>>>>>>> 8fdd9670f335166dfacb15a63a0c2c0250b7b156
     public function getLangAttribute($value){
         $lang=\App::getLocale();
         return $lang;
@@ -190,8 +264,12 @@ class User extends Authenticatable implements MustVerifyEmail
     }
 
     //-----------------------------------------------------------
+<<<<<<< HEAD
     public function areaAdminAreas()
     {
+=======
+    public function areaAdminAreas(){
+>>>>>>> 8fdd9670f335166dfacb15a63a0c2c0250b7b156
         $modules=\Module::getOrdered();
         $modules=array_keys($modules);
 
@@ -211,8 +289,12 @@ class User extends Authenticatable implements MustVerifyEmail
         return $rows;
     }
 
+<<<<<<< HEAD
     public function areas()
     {
+=======
+    public function areas(){
+>>>>>>> 8fdd9670f335166dfacb15a63a0c2c0250b7b156
         if (null == $this->perm) {
             $this->perm = PermUser::firstOrCreate(['auth_user_id' => $this->auth_user_id]);
         }
@@ -220,6 +302,7 @@ class User extends Authenticatable implements MustVerifyEmail
         return $this->perm->areas();
     }
 
+<<<<<<< HEAD
     public function groups()
     {
         return $this->perm->groups();
@@ -232,6 +315,17 @@ class User extends Authenticatable implements MustVerifyEmail
 
     public function allRights()
     {
+=======
+    public function groups(){
+        return $this->perm->groups();
+    }
+
+    public function rights(){
+        return $this->perm->rights();
+    }
+
+    public function allRights(){
+>>>>>>> 8fdd9670f335166dfacb15a63a0c2c0250b7b156
         return Right::all();
     }
 
@@ -240,14 +334,22 @@ class User extends Authenticatable implements MustVerifyEmail
      *
      * @return string
      */
+<<<<<<< HEAD
     public function getAuthPassword()
     {
+=======
+    public function getAuthPassword(){
+>>>>>>> 8fdd9670f335166dfacb15a63a0c2c0250b7b156
         //your password field name
         return $this->passwd;
     }
 
+<<<<<<< HEAD
     public function metadata()
     {
+=======
+    public function metadata(){
+>>>>>>> 8fdd9670f335166dfacb15a63a0c2c0250b7b156
         return $this->hasOne(Metadata::class);
     }
 
@@ -256,8 +358,12 @@ class User extends Authenticatable implements MustVerifyEmail
      *
      * @return string
      */
+<<<<<<< HEAD
     public function getReminderEmail()
     {
+=======
+    public function getReminderEmail(){
+>>>>>>> 8fdd9670f335166dfacb15a63a0c2c0250b7b156
         return $this->email;
     }
 
@@ -266,8 +372,12 @@ class User extends Authenticatable implements MustVerifyEmail
      *
      * @return string
      */
+<<<<<<< HEAD
     public function getRememberToken()
     {
+=======
+    public function getRememberToken(){
+>>>>>>> 8fdd9670f335166dfacb15a63a0c2c0250b7b156
         return $this->remember_token;
     }
 
@@ -276,8 +386,12 @@ class User extends Authenticatable implements MustVerifyEmail
      *
      * @param string $value
      */
+<<<<<<< HEAD
     public function setRememberToken($value)
     {
+=======
+    public function setRememberToken($value){
+>>>>>>> 8fdd9670f335166dfacb15a63a0c2c0250b7b156
         $this->remember_token = $value;
     }
 
@@ -286,8 +400,12 @@ class User extends Authenticatable implements MustVerifyEmail
      *
      * @return string
      */
+<<<<<<< HEAD
     public function getRememberTokenName()
     {
+=======
+    public function getRememberTokenName(){
+>>>>>>> 8fdd9670f335166dfacb15a63a0c2c0250b7b156
         return 'remember_token';
     }
 
@@ -312,6 +430,7 @@ class User extends Authenticatable implements MustVerifyEmail
      *
      * @param string $token
      */
+<<<<<<< HEAD
     public function sendPasswordResetNotification($token)
     {
         $this->notify(new ResetPasswordNotification($token));
@@ -324,6 +443,17 @@ class User extends Authenticatable implements MustVerifyEmail
 
     public function username()
     {
+=======
+    public function sendPasswordResetNotification($token){
+        $this->notify(new ResetPasswordNotification($token));
+    }
+
+    public function password(){
+        return 'passwd';
+    }
+
+    public function username(){
+>>>>>>> 8fdd9670f335166dfacb15a63a0c2c0250b7b156
         return 'handle';
     }
 
@@ -335,8 +465,37 @@ class User extends Authenticatable implements MustVerifyEmail
         $this->attributes['password'] = bcrypt($value);
     }
     */
+<<<<<<< HEAD
     public function getUrlAttribute($value)
     {   
+=======
+    public function getUrlAttribute($value){   
+        $profile=$this->profile;
+
+        if(!is_object($profile)) {
+            $profile=$this->profile()->create();
+        }
+        $post=$profile->post;
+        if(!is_object($post)){
+            $post=$profile->post()->create();
+            $res=$post->update([
+                'post_type'=>'profile',
+                'title'=>$this->handle,
+                'guid'=>$this->handle,
+                'lang'=>\App::getLocale(),
+            ]);
+            //ddd($post);
+        }
+        $parz=[
+            //'lang'=>\App::getLocale(),
+            'container0'=>'profile',
+            'item0'=>$post,
+        ];
+        //ddd($profile->post);
+        return route('container0.show',$parz);
+        //ddd($post->show_url);
+        //ddd($profile->post()->exists());
+>>>>>>> 8fdd9670f335166dfacb15a63a0c2c0250b7b156
         /*
         $guid = str_slug($this->handle);
         $row = \Modules\Blog\Models\Post::firstOrCreate(
@@ -346,7 +505,11 @@ class User extends Authenticatable implements MustVerifyEmail
 
         return asset(\App::getLocale().'/profile/'.$guid);
         //*/
+<<<<<<< HEAD
         return '#';
+=======
+        //return '#';
+>>>>>>> 8fdd9670f335166dfacb15a63a0c2c0250b7b156
     }
 
     public function getFirstNameAttribute($value)

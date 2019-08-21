@@ -118,7 +118,13 @@ class AreaPanel extends XotBasePanel{
      * @return array
      */
     public function actions(){
+<<<<<<< HEAD
         return [];
+=======
+        return [ 
+            new Actions\SyncAreas(),
+        ];
+>>>>>>> 8fdd9670f335166dfacb15a63a0c2c0250b7b156
     }
 
     /*
@@ -151,4 +157,20 @@ class AreaPanel extends XotBasePanel{
     }
     */
 
+<<<<<<< HEAD
+=======
+    public function bodyContentView($params=[]){
+        //ddd($params);
+        extract($params);
+        //$route_params = \Route::current()->parameters();
+        //list($containers,$items)=params2ContainerItem($route_params);
+        if($_layout->act=='index_edit'){
+            return $_layout->view_extend.'.body.multi_select';
+        }else{
+            return $_layout->view_extend.'.body_content'; //.'.index';
+        }
+        //return $_layout->view_extend.'.body.rating';
+    }
+
+>>>>>>> 8fdd9670f335166dfacb15a63a0c2c0250b7b156
 }

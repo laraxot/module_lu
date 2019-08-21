@@ -11,8 +11,12 @@ use Modules\Extend\Services\RouteService;
 use Modules\Xot\Models\Panels\XotBasePanel;
 
 
+<<<<<<< HEAD
 class UserPanel extends XotBasePanel
 {
+=======
+class UserPanel extends XotBasePanel{
+>>>>>>> 8fdd9670f335166dfacb15a63a0c2c0250b7b156
 	/**
 	 * The model the resource corresponds to.
 	 *
@@ -64,18 +68,34 @@ class UserPanel extends XotBasePanel
 		  (object) array(
 			 'type' => 'Password',
 			 'name' => 'passwd',
+<<<<<<< HEAD
+=======
+			 'col_bs_size'=>6,
+>>>>>>> 8fdd9670f335166dfacb15a63a0c2c0250b7b156
 		  ),
 		  (object) array(
 			 'type' => 'String',
 			 'name' => 'email',
+<<<<<<< HEAD
+=======
+			 'col_bs_size'=>6,
+>>>>>>> 8fdd9670f335166dfacb15a63a0c2c0250b7b156
 		  ),
 		  (object) array(
 			 'type' => 'String',
 			 'name' => 'surname',
+<<<<<<< HEAD
+=======
+			 'col_bs_size'=>6,
+>>>>>>> 8fdd9670f335166dfacb15a63a0c2c0250b7b156
 		  ),
 		  (object) array(
 			 'type' => 'String',
 			 'name' => 'firstname',
+<<<<<<< HEAD
+=======
+			 'col_bs_size'=>6,
+>>>>>>> 8fdd9670f335166dfacb15a63a0c2c0250b7b156
 		  ),
 		  /*
 		  (object) array(
@@ -90,10 +110,18 @@ class UserPanel extends XotBasePanel
 		  (object) array(
 			 'type' => 'DateTime',
 			 'name' => 'last_login_at',
+<<<<<<< HEAD
+=======
+			 'col_bs_size'=>6,
+>>>>>>> 8fdd9670f335166dfacb15a63a0c2c0250b7b156
 		  ),
 		  (object) array(
 			 'type' => 'String',
 			 'name' => 'last_login_ip',
+<<<<<<< HEAD
+=======
+			 'col_bs_size'=>6,
+>>>>>>> 8fdd9670f335166dfacb15a63a0c2c0250b7b156
 		  ),
 		);
 	}

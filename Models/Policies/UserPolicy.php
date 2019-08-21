@@ -7,11 +7,21 @@ use Modules\LU\Models\User;
 
 use Modules\Xot\Traits\XotBasePolicyTrait;
 
+<<<<<<< HEAD
 class UserPolicy
 {
     //use HandlesAuthorization;
     use XotBasePolicyTrait;
 
+=======
+use Modules\Xot\Models\Policies\XotBasePolicy;
+
+class UserPolicy extends XotBasePolicy{
+    //use HandlesAuthorization;
+    //use XotBasePolicyTrait;
+
+    /*
+>>>>>>> 8fdd9670f335166dfacb15a63a0c2c0250b7b156
     public function before($user, $ability)
     {
         if (isset($user->perm) && $user->perm->perm_type >= 5) {  //superadmin
@@ -19,12 +29,18 @@ class UserPolicy
         }
     }
 
+<<<<<<< HEAD
     /*
+=======
+>>>>>>> 8fdd9670f335166dfacb15a63a0c2c0250b7b156
     public function update(User $user, Post $post)
     {
         return $user->id === $post->user_id;
     }
+<<<<<<< HEAD
     */
+=======
+>>>>>>> 8fdd9670f335166dfacb15a63a0c2c0250b7b156
 
     public function create(User $user)
     {
@@ -65,4 +81,8 @@ class UserPolicy
     public function indexEdit(User $user, Post $post){
         return true;
     }
+<<<<<<< HEAD
+=======
+    */
+>>>>>>> 8fdd9670f335166dfacb15a63a0c2c0250b7b156
 }
