@@ -73,7 +73,7 @@ class User extends Authenticatable implements MustVerifyEmail {
     */
 
     public function isSuperAdmin(){
-        if (is_object($this->perm) && $this->perm->perm_type >= 5) {  //superadmin
+        if (is_object($this->perm) && $this->perm->perm_type >= 4) {  //superadmin
             return true;
         }
         return false; 
