@@ -1,7 +1,4 @@
 <?php
-
-
-
 namespace Modules\LU\Repositories;
 
 use Modules\LU\Models\Role;
