@@ -32,16 +32,14 @@ class PermUserPanel extends XotBasePanel {
 	 *
 	 * @var array
 	 */
-	public static $search = array (
-) ;
+	public static $search = [];
 
 	/**
 	* The relationships that should be eager loaded on index queries.
 	*
 	* @var array
 	*/
-	public static function with()
-	{
+	public static function with(){
 	  return [];
 	}
 
@@ -116,20 +114,18 @@ class PermUserPanel extends XotBasePanel {
 	public static function fields()
 	{
 		return array (
-  0 => 
-  (object)(array(
-     'type' => 'Integer',
-     'name' => 'auth_user_id',
-     'rules' => 'required',
-     'comment' => NULL,
-  )),
-  1 => 
-  (object)(array(
-     'type' => 'Integer',
-     'name' => 'perm_type',
-     'comment' => NULL,
-  )),
-);
+			(object)[
+				'type' => 'Integer',
+				'name' => 'auth_user_id',
+				//'rules' => 'required',
+				'comment' => NULL,
+			],
+			(object)[
+				'type' => 'Integer',
+				'name' => 'perm_type',
+				'comment' => NULL,
+			],
+		);
 	}
 	 
 	/**
