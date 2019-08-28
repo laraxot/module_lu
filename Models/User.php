@@ -20,7 +20,6 @@ use Modules\LU\Notifications\VerifyEmail   as VerifyEmailNotification;
 
 //--------models -------
 use Modules\Blog\Models\Post;  
-//use Modules\Blog\Models\Profile;  
 
 class User extends Authenticatable implements MustVerifyEmail {
     use Notifiable;
@@ -33,17 +32,10 @@ class User extends Authenticatable implements MustVerifyEmail {
     protected $fillable = [
         'ente', 'matr', 'handle', 'passwd', 'email',
         'last_name', 'first_name',
-        //'last_login_at', 'last_login_ip', //http://laraveldaily.com/save-users-last-login-time-ip-address/
+        'last_login_at', 'last_login_ip', //http://laraveldaily.com/save-users-last-login-time-ip-address/
     ];
-    protected $dates = [
-        'last_login_at',
-        'created_at',
-        'updated_at',
-        'deleted_at',
-        ];
+    protected $dates = [ 'last_login_at', 'created_at', 'updated_at', 'deleted_at', ];
 
-    //protected $validator;
-    //public static $rules = array();
     public $rules = [
         'email' => 'required|unique:liveuser_general.liveuser_users|max:255',
     ];
@@ -54,23 +46,10 @@ class User extends Authenticatable implements MustVerifyEmail {
         'name.min' => 'The field has to be :min chars long',
     ];
 
-    protected $hidden = [
-        'passwd',
-        'remember_token',
-    ];
+    protected $hidden = [ 'passwd', 'remember_token', ];
 
-    protected $append = [
-            'url',
-    ];
+    protected $append = [ 'url', ];
     public $timestamps = true;
-
-    /*
-    public function __construct(array $attributes = []){
-        $resolver = app('Illuminate\Database\ConnectionResolverInterface');
-        $this->setConnectionResolver($resolver);
-        parent::__construct($attributes);
-    }
-    */
 
     public function isSuperAdmin(){
         if (is_object($this->perm) && $this->perm->perm_type >= 4) {  //superadmin
@@ -92,21 +71,10 @@ class User extends Authenticatable implements MustVerifyEmail {
         $this->notify(new VerifyEmailNotification());
     }
 
-    public function routeNotificationForSlack()
-    {
-        return env('LOG_SLACK_WEBHOOK_URL','https://hooks.slack.com/services/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');
-        //return 'https://hooks.slack.com/services/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';
-        //return 'https://hooks.slack.com/services/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';
-        //return 'https://hooks.slack.com/services/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';
-        //return 'https://hooks.slack.com/services/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';
-        //return 'https://hooks.slack.com/services/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';
+    public function routeNotificationForSlack(){
+            return env('LOG_SLACK_WEBHOOK_URL','https://hooks.slack.com/services/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');
     }
 
-    /**
-     * Get the unique identifier for the user.
-     *
-     * @return mixed
-     */
     public function getAuthIdentifier(){
         return $this->getKey();
     }
@@ -177,8 +145,6 @@ class User extends Authenticatable implements MustVerifyEmail {
            return 'Guest_'.rand(1,10000);
         }
         $value='Guest'.$this->attributes['auth_user_id'];
-        //$this->attributes['handle']=$value;
-        //$this->save();
         return $value;
     }
 
@@ -240,11 +206,7 @@ class User extends Authenticatable implements MustVerifyEmail {
         return Right::all();
     }
 
-    /**
-     * Get the password for the user.
-     *
-     * @return string
-     */
+    
     public function getAuthPassword(){
         //your password field name
         return $this->passwd;
@@ -254,63 +216,23 @@ class User extends Authenticatable implements MustVerifyEmail {
         return $this->hasOne(Metadata::class);
     }
 
-    /**
-     * Get the e-mail address where password reminders are sent.
-     *
-     * @return string
-     */
+    
     public function getReminderEmail(){
         return $this->email;
     }
 
-    /**
-     * Get the token value for the "remember me" session.
-     *
-     * @return string
-     */
     public function getRememberToken(){
         return $this->remember_token;
     }
-
-    /**
-     * Set the token value for the "remember me" session.
-     *
-     * @param string $value
-     */
+    
     public function setRememberToken($value){
         $this->remember_token = $value;
     }
 
-    /**
-     * Get the column name for the "remember me" token.
-     *
-     * @return string
-     */
     public function getRememberTokenName(){
         return 'remember_token';
     }
 
-    /* e' in logincontroller
-    protected function authenticated($request, $user){
-        $user->update([
-            'last_login_at' => Carbon::now()->toDateTimeString(),
-            'last_login_ip' => $request->getClientIp()
-        ]);
-
-        die('['.__LINE__.']['.__FILE__.']');
-        if ($user->role === 'admin') {
-            return redirect()->intended('/admin_path_here');
-        }
-
-        return redirect()->intended('/path_for_normal_user');
-    }
-    */
-
-    /**
-     * Send the password reset notification.
-     *
-     * @param string $token
-     */
     public function sendPasswordResetNotification($token){
         $this->notify(new ResetPasswordNotification($token));
     }
@@ -323,14 +245,6 @@ class User extends Authenticatable implements MustVerifyEmail {
         return 'handle';
     }
 
-    //--------------------
-    //--------------------
-    /* questa funzione commentata mi serve per vedere la funzione standard
-    public function setPasswordAttribute($value) {
-        //die('['.__LINE__.']['.__FILE__.']');
-        $this->attributes['password'] = bcrypt($value);
-    }
-    */
     public function getUrlAttribute($value){   
         $profile=$this->profile;
 
@@ -346,44 +260,14 @@ class User extends Authenticatable implements MustVerifyEmail {
                 'guid'=>$this->handle,
                 'lang'=>\App::getLocale(),
             ]);
-            //ddd($post);
         }
         $parz=[
-            //'lang'=>\App::getLocale(),
             'container0'=>'profile',
             'item0'=>$post,
         ];
-        //ddd($profile->post);
         return route('container0.show',$parz);
-        //ddd($post->show_url);
-        //ddd($profile->post()->exists());
-        /*
-        $guid = str_slug($this->handle);
-        $row = \Modules\Blog\Models\Post::firstOrCreate(
-                ['type' => 'profile', 'lang' => \App::getLocale(), 'guid' => $guid],
-                ['title' => 'profilo']
-        );
-
-        return asset(\App::getLocale().'/profile/'.$guid);
-        //*/
-        //return '#';
-    }
-    /*
-    public function getFirstNameAttribute($value)
-    {
-        return $this->nome;
     }
 
-    public function getLastNameAttribute($value)
-    {
-        return $this->cognome;
-    }
-
-    public function getNameAttribute($value)
-    {
-        return $this->nome;
-    }
-    */
     public function getGravatarAttribute($value){
         $publicBaseUrl = 'https://www.gravatar.com/avatar/';
         $secureBaseUrl = 'https://secure.gravatar.com/avatar/';
@@ -418,61 +302,7 @@ class User extends Authenticatable implements MustVerifyEmail {
     public function name(){
         return $this->handle;
     }
-
     //---------------------------------------------------------------------------
-    public static function filter($params){
-        $rows = new self();
-        \extract($params);
-        //echo '<pre>';print_r($params);echo '</pre>';
-        /*
-  if(!isset($tipo)){ // e' il tipo che dice se e' admin o meno.. utente normale solo "competenza"
-        $ente=\Auth::user()->ente;
-        $matr=\Auth::user()->matr;
-  }
-        */
-
-        if (isset($ente)) {
-            $rows = $rows->where('ente', '=', $ente);
-            //echo '<pre>';print_r($params);echo '</pre>';
-        }
-        if (isset($matr)) {
-            $rows = $rows->where('matr', '=', $matr);
-        }
-        $datefield = 'data_start';
-        if (isset($tipo)) {
-            switch ($tipo) {
-            case 1: $datefield = 'data_start'; break;
-            case 2: $datefield = 'datemod'; break;
-        }
-        }
-
-        if (isset($mese)) {
-            $rows = $rows->whereMonth($datefield, $mese);
-        }
-        if (isset($anno)) {
-            //$rows=$rows->whereYear($datefield,$anno);
-            $rows = $rows->where('anno', $anno);
-        }
-        if (isset($stabi)) {
-            $rows = $rows->where('stabi', $stabi);
-        }
-        if (isset($repar)) {
-            $rows = $rows->where('repar', $repar);
-        }
-
-        if (isset($stati)) {
-            $rows = $rows->whereRaw('find_in_set(last_stato,"'.$stati.'")');
-        }
-        //$rows=$rows->orderBy('data_start', 'desc');
-        return $rows;
-    }
-
-    //end search
-    //-----------------------------------------------------------------------------------
-
-    /**
-     * Returns true if the user is a super administrator.
-     */
     public function superAdmin(){
         if (!\is_array(config('xra.superadmins'))) {
             return false;
@@ -481,42 +311,17 @@ class User extends Authenticatable implements MustVerifyEmail {
         return \in_array($this->email, config('xra.superadmins'), true);
     }
 
-    /**
-     * Returns the user avatar.
-     */
-    public function avatar($size = 100)
-    {
-        /*
-        if(File::exists(public_path('/avatars'.'/'.md5($this->email)))){
-            return asset('/avatars'.'/'.md5($this->email));
-        }
-        return "https://tracker.moodle.org/secure/attachment/30912/f3.png";
-        */
-        // Get gavatar avatar
+    public function avatar($size = 100){
         $email = \md5(\mb_strtolower(\trim($this->email)));
         $default = \urlencode('https://tracker.moodle.org/secure/attachment/30912/f3.png');
-
         return "https://www.gravatar.com/avatar/$email?d=$default&s=$size";
     }
 
-    /**
-     * Returns the a boolean for know if user has avatar.
-     */
-    public function hasAvatar()
-    {
-        /*
-        if (File::exists(public_path('/avatars/'.md5($this->email)))){
-            return true;
-        }
-        return false;
-        */
-
-        // There's always a gavatar
+    public function hasAvatar(){
         return true;
     }
 
-    public function addArea($area)
-    {
+    public function addArea($area){
         
         $areas = $this->perm->areas->where('area_id', $area->area_id);
         if (0 == $areas->count()) { //lo aggiunge solo se non c'e'
@@ -525,70 +330,10 @@ class User extends Authenticatable implements MustVerifyEmail {
     }
 
     //---------------------------------------------------
-    public function urlLang($lang)
-    {
+    public function urlLang($lang){
         return '#';
     }
 
 
-    /**
-     * Get the fields displayed by the resource.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return array
-     */
-    public function fields(){
-        /*
-        $row=$this;
-        $fields=[];
-        $fillables=['auth_user_id','handle','firstname','surname','last_login_at'];
-        foreach($fillables as $input_name){
-            $input_type=$row->getConnection()->getDoctrineColumn($row->getTable(),$input_name)->getType();//->getName();
-            $tmp=new \stdClass();
-            $tmp->type=(string)$input_type;
-            $tmp->name=$input_name;
-            $fields[]=$tmp;
-
-        }
-        //*/
-        $fields=[
-            0 => (object) [
-                "type" => "Integer",
-                "name" => "auth_user_id",
-            ],
-
-            1 => (object) [
-                "type" => "String",
-                "name" => "handle",
-            ],
-
-            2 => (object) [
-                    "type" => "String",
-                    "name" => "firstname",
-            ],
-
-            3 => (object) [
-                    "type" => "String",
-                    "name" => "surname",
-            ],
-
-            4 => (object) [
-                    "type" => "DateTime",
-                    "name" => "last_login_at",
-            ],
-        ];
-
-        return $fields;
-    }
-
-    public function getTabsAttribute($value){
-        return ['area','group','right','perm'];
-    }
-
-    //------------- SCOPE OF --------------------------------
-    public function scopeOfItem($query, $item){
-        // $rows = $query->whereHas('linked', function ($q) use ($k,$v) {
-        return $query;
-    }
 
 }//end class
