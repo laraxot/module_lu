@@ -10,7 +10,7 @@ use Modules\LU\Models\PermUser;
 
 
 //-------- services --------
-use Modules\Extend\Services\ArrayService;
+use Modules\Xot\Services\ArrayService;
 //-------- bases -----------
 use Modules\Xot\Models\Panels\Actions\XotBasePanelAction;
 

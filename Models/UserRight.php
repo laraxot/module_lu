@@ -4,7 +4,7 @@ namespace Modules\LU\Models;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\Pivot;
 use Laravel\Scout\Searchable;
-use Modules\Extend\Traits\Updater;
+use Modules\Xot\Traits\Updater;
 
 class UserRight extends Pivot
 {

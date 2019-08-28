@@ -13,7 +13,7 @@ use Illuminate\Foundation\Auth\Access\Authorizable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Scout\Searchable;
-use Modules\Extend\Traits\Updater;
+use Modules\Xot\Traits\Updater;
 use Modules\LU\Notifications\ResetPassword as ResetPasswordNotification;
 use Modules\LU\Notifications\VerifyEmail   as VerifyEmailNotification;
 

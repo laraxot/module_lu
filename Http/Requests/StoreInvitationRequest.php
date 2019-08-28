@@ -6,7 +6,7 @@ namespace Modules\LU\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Http\Request;
-use Modules\Extend\Traits\FormRequestTrait;
+use Modules\Xot\Traits\FormRequestTrait;
 
 class StoreInvitationRequest extends FormRequest
 {

@@ -2,7 +2,7 @@
 namespace Modules\LU\Http\Requests\Admin;
 
 use Illuminate\Foundation\Http\FormRequest;
-use Modules\Extend\Traits\FormRequestTrait;
+use Modules\Xot\Traits\FormRequestTrait;
 
 class UpdateUser extends FormRequest
 {

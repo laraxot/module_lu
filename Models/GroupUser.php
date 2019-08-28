@@ -4,7 +4,7 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\Pivot;
 
 use Laravel\Scout\Searchable;
-use Modules\Extend\Traits\Updater;
+use Modules\Xot\Traits\Updater;
 
 class GroupUser extends Pivot
 {

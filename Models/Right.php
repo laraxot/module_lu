@@ -9,7 +9,7 @@ use Modules\Xot\Models\XotBaseModel;
 /*
 use Illuminate\Database\Eloquent\Model;
 use Laravel\Scout\Searchable;
-use Modules\Extend\Traits\Updater;
+use Modules\Xot\Traits\Updater;
 */
 class Right extends XotBaseModel
 {

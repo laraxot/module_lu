@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Relations\Pivot;
 
 use Laravel\Scout\Searchable;
 use Modules\Theme\Services\ThemeService;
-use Modules\Extend\Traits\Updater;
+use Modules\Xot\Traits\Updater;
 
 class AreaAdminArea extends Pivot{
     use Searchable;
