@@ -106,18 +106,10 @@ class User extends Authenticatable implements MustVerifyEmail {
         if($profile_class==""){
             ddd('modifica config xra.php  aggiungi in model il profile');
         }
-        //ddd($profile_class);
         return $this->hasOne(''.$profile_class,'auth_user_id','auth_user_id');
     }
 
-    /*-- usiamo solo perm 
-    public function permUser()
-    {
-        $row = $this->hasOne(PermUser::class, 'auth_user_id', 'auth_user_id');
-
-        return $row;
-    }
-    */
+    
     public function perm_user_id(){ //shortcut
         $permUser = $this->perm;
         if (null == $permUser) {
