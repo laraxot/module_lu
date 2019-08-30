@@ -255,7 +255,7 @@ class User extends Authenticatable implements MustVerifyEmail {
         }
         $parz=[
             'container0'=>'profile',
-            'item0'=>$post,
+            'item0'=>$profile, 
         ];
         return route('container0.show',$parz);
     }
