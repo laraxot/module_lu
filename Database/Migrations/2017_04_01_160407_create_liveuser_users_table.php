@@ -48,6 +48,12 @@ class CreateLiveuserUsersTable extends Migration
                 $table->boolean('bounce')->nullable()->default(0);
                 $table->timestamp('dataIscrizione')->nullable()->default(DB::raw('CURRENT_TIMESTAMP'));
                 $table->integer('dataCancellazione')->nullable()->default(0);
+                $table->datetime('last_login_at')->nullable();
+                $table->string('last_login_ip')->nullable();
+                $table->string('firstname')->nullable();
+                $table->string('surname')->nullable();
+                $table->string('token_check')->nullable();
+                $table->boolean('is_verified')->nullable();
                 //$table->string('remember_token', 100)->nullable()->default('0'); //riga sotto dovrebbe fare la stessa cosa
                 $table->rememberToken();
                 //$table->dateTime('updated_at')->nullable(); //riga sotto dovrebbe fare la stessa cosa
