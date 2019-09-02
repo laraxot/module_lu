@@ -1,6 +1,7 @@
 <?php
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
 
 //--- models --
 use Modules\LU\Models\AreaAdminArea as MyModel;
@@ -20,13 +21,16 @@ class CreateLiveuserAreaAdminAreasTable extends Migration{
     /**
      * Run the migrations.
      */
-    public function up()
-    {
+    public function up(){
         if (!$this->getConn()->hasTable($this->getTable())) {
             $this->getConn()->create($this->getTable(), function (Blueprint $table) {
                 $table->increments('id');
                 $table->integer('area_id')->unsigned()->default(0)->nullable();
                 $table->integer('perm_user_id')->unsigned()->default(0)->nullable();
+
+                $table->timestamps();
+                $table->string('created_by')->nullable();
+                $table->string('updated_by')->nullable();
             });
         }
         $this->getConn()->table($this->getTable(), function (Blueprint $table) {
@@ -42,8 +46,7 @@ class CreateLiveuserAreaAdminAreasTable extends Migration{
     /**
      * Reverse the migrations.
      */
-    public function down()
-    {
-        $this->getConn()->drop($this->getTable());
+    public function down(){
+        $this->getConn()->dropIfExists($this->getTable());
     }
 }

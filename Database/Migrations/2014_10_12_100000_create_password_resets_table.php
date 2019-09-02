@@ -3,18 +3,23 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreatePasswordResetsTable extends Migration
-{
-    protected $table = 'password_resets';
+//---- models ---
+use Modules\LU\Models\PasswordReset as MyModel;
+
+class CreatePasswordResetsTable extends Migration{
+    //protected $table = 'password_resets';
     protected $connection = 'liveuser_general'; 
+
+    public function getTable(){
+        return with(new MyModel())->getTable();
+    }
 
     /**
      * Run the migrations.
      */
-    public function up()
-    {
-        if (!Schema::connection('liveuser_general')->hasTable($this->table)) {
-            Schema::connection('liveuser_general')->create($this->table, function (Blueprint $table) {
+    public function up(){
+        if (!Schema::connection('liveuser_general')->hasTable($this->getTable())) {
+            Schema::connection('liveuser_general')->create($this->getTable(), function (Blueprint $table) {
                 //$table->increments('id');
                 //with index  SQLSTATE[42000]: Syntax error or access violation: 1071 Specified key was too long; max key length is 767 bytes
                 //=> so i add ID increments, remember to test it
@@ -22,9 +27,10 @@ class CreatePasswordResetsTable extends Migration
                 //$table->string('email')->index();
                 $table->string('email', 191)->index();
                 $table->string('token');
-                $table->timestamp('created_at')->nullable();
                 //$table->rememberToken();
-            //$table->timestamps();
+                $table->timestamps();
+                $table->string('created_by')->nullable();
+                $table->string('updated_by')->nullable();
             });
         }
     }
@@ -32,8 +38,7 @@ class CreatePasswordResetsTable extends Migration
     /**
      * Reverse the migrations.
      */
-    public function down()
-    {
-        Schema::connection('liveuser_general')->dropIfExists($this->table);
+    public function down(){
+        Schema::connection('liveuser_general')->dropIfExists($this->getTable());
     }
 }

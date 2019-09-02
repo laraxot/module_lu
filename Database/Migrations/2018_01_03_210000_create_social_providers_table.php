@@ -8,6 +8,8 @@ use Modules\LU\Models\SocialProvider as MyModel;
 
 class CreateSocialProvidersTable extends Migration{
     
+     protected $connection = 'liveuser_general'; 
+
     public function getTable(){
         return with(new MyModel())->getTable();
     }
@@ -15,8 +17,7 @@ class CreateSocialProvidersTable extends Migration{
     /**
      * Run the migrations.
      */
-    public function up()
-    {
+    public function up(){
         if (!Schema::connection('liveuser_general')->hasTable($this->getTable())) {
             Schema::connection('liveuser_general')->create($this->getTable(), function (Blueprint $table) {
                 $table->increments('id');
@@ -24,7 +25,10 @@ class CreateSocialProvidersTable extends Migration{
                 $table->string('provider_id');
                 $table->string('provider');
                 $table->string('token');
+                
                 $table->timestamps();
+                $table->string('created_by')->nullable();
+                $table->string('updated_by')->nullable();
             });
         }
         Schema::connection('liveuser_general')->table($this->getTable(), function (Blueprint $table) {
@@ -37,8 +41,7 @@ class CreateSocialProvidersTable extends Migration{
     /**
      * Reverse the migrations.
      */
-    public function down()
-    {
-        Schema::dropIfExists($this->getTable());
+    public function down(){
+        Schema::connection('liveuser_general')->dropIfExists($this->getTable());
     }
 }

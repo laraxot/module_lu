@@ -1,12 +1,15 @@
 <?php
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
 
 //--- models --
 use Modules\LU\Models\Group as MyModel;
 
-class CreateLiveuserGroupsTable extends Migration
-{
+class CreateLiveuserGroupsTable extends Migration{ 
+    //protected $table = '';
+    protected $connection = 'liveuser_general'; 
+
     public function getTable(){
         return with(new MyModel())->getTable();
     }
@@ -23,6 +26,10 @@ class CreateLiveuserGroupsTable extends Migration
                 $table->integer('owner_user_id')->unsigned()->nullable();
                 $table->integer('owner_group_id')->unsigned()->nullable();
                 $table->char('is_active', 1)->default('N');
+
+                $table->timestamps();
+                $table->string('created_by')->nullable();
+                $table->string('updated_by')->nullable();
             });
         } 
         //------ ADD
@@ -45,6 +52,6 @@ class CreateLiveuserGroupsTable extends Migration
      */
     public function down()
     {
-        Schema::connection('liveuser_general')->drop($this->getTable());
+        Schema::connection('liveuser_general')->dropIfExists($this->getTable());
     }
 }
