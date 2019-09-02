@@ -14,36 +14,19 @@ class RegisterTest extends TestCase
 {
     use RefreshDatabase;
 
-    protected function successfulRegistrationRoute()
-    {
-        return route('home');
-    }
+    protected function successfulRegistrationRoute()    {   return route('home');           }
+    protected function registerGetRoute()               {   return route('register');       }
+    protected function registerPostRoute()              {   return route('register');       }
+    protected function guestMiddlewareRoute()           {   return route('home');           }
 
-    protected function registerGetRoute()
-    {
-        return route('register');
-    }
-
-    protected function registerPostRoute()
-    {
-        return route('register');
-    }
-
-    protected function guestMiddlewareRoute()
-    {
-        return route('home');
-    }
-
-    public function testUserCanViewARegistrationForm()
-    {
+    public function testUserCanViewARegistrationForm(){
         $response = $this->get($this->registerGetRoute());
 
         $response->assertSuccessful();
         $response->assertViewIs('auth.register');
     }
 
-    public function testUserCannotViewARegistrationFormWhenAuthenticated()
-    {
+    public function testUserCannotViewARegistrationFormWhenAuthenticated(){
         $user = factory(User::class)->make();
 
         $response = $this->actingAs($user)->get($this->registerGetRoute());
@@ -51,8 +34,7 @@ class RegisterTest extends TestCase
         $response->assertRedirect($this->guestMiddlewareRoute());
     }
 
-    public function testUserCanRegister()
-    {
+    public function testUserCanRegister(){
         Event::fake();
 
         $response = $this->post($this->registerPostRoute(), [

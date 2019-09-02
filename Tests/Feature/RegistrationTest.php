@@ -17,8 +17,8 @@ class RegistrationTest extends TestCase{
     use DatabaseMigrations;
     /** @test */
     public function it_visit_page_of_register(){
-        $this->get('/it/register')
-            ->assertSee('Register');
+        $this->get('/it/profile/create')
+            ->assertSee('Create');
     }
     /** @test */
     public function cannot_view_registration_form_when_authenticated(){
@@ -29,23 +29,17 @@ class RegistrationTest extends TestCase{
     }
     /** @test */
     public function user_can_registered_in_the_site_web(){
-        $response = $this->post('/register', [
+        $credentials=[
             'first_name'             => 'Jonathan',
             'last_name'              => 'zarate hernandez',
             'email'                  => 'zaratedev@gmail.com',
             'password'               => '123456',
             'password_confirmation'  => '123456',
             'job'                    => 'developer',
-        ]);
+        ];
+        $response = $this->post('/register', $credentials);
         $response->assertRedirect('/home');
-        $this->assertCredentials([
-            'first_name'             => 'Jonathan',
-            'last_name'              => 'zarate hernandez',
-            'email'                  => 'zaratedev@gmail.com',
-            'password'               => '123456',
-            'password_confirmation'  => '123456',
-            'job'                    => 'developer',
-        ]);
+        $this->assertCredentials($credentials);
     }
     /** @test */
     public function the_name_is_required(){
