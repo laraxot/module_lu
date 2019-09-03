@@ -6,6 +6,8 @@ use Laravel\Scout\Searchable;
 use Modules\Theme\Services\ThemeService;
 use Modules\Xot\Traits\Updater;
 
+use Illuminate\Support\Str;
+
 class Area extends Model {
     use Searchable;
     use Updater;
@@ -28,10 +30,14 @@ class Area extends Model {
     }
 
     public function getGuidAttribute($value){   
-        return str_slug($this->area_define_name);
+        return Str::slug($this->area_define_name);
     }
-    
 
+    public function getIconSrcAttribute($value){
+        $src = \mb_strtolower($this->area_define_name.'::img/icon.png');
+        $src = ThemeService::asset($src);
+        return $src;
+    }
     //---------------------------------------------------------------------------
 
     
