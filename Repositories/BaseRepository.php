@@ -1,11 +1,8 @@
 <?php
 
-
-
 namespace Modules\LU\Repositories;
 
-abstract class BaseRepository
-{
+abstract class BaseRepository {
     /**
      * The Model instance.
      *
@@ -18,8 +15,7 @@ abstract class BaseRepository
      *
      * @return array
      */
-    public function getNumber()
-    {
+    public function getNumber() {
         $total = $this->model->count();
         $new = $this->model->whereSeen(0)->count();
 
@@ -31,8 +27,7 @@ abstract class BaseRepository
      *
      * @param int $id
      */
-    public function destroy($id)
-    {
+    public function destroy($id) {
         $this->getById($id)->delete();
     }
 
@@ -43,8 +38,7 @@ abstract class BaseRepository
      *
      * @return App\Models\Model
      */
-    public function getById($id)
-    {
+    public function getById($id) {
         return $this->model->findOrFail($id);
     }
 }

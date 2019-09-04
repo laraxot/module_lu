@@ -1,4 +1,5 @@
 <?php
+
 namespace Modules\LU\Models;
 
 use Modules\Xot\Models\XotBaseModel;

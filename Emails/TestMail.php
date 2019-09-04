@@ -1,7 +1,5 @@
 <?php
 
-
-
 namespace Modules\LU\Mail;
 
 //use App\Order;
@@ -9,9 +7,9 @@ use Illuminate\Bus\Queueable;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
 
-class TestMail extends Mailable
-{
-    use Queueable, SerializesModels;
+class TestMail extends Mailable {
+    use Queueable;
+    use SerializesModels;
 
     /**
      * The order instance.
@@ -35,8 +33,7 @@ class TestMail extends Mailable
      *
      * @return $this
      */
-    public function build()
-    {
+    public function build() {
         return $this->view('lu::admin.mail.emails.test');
         /*
          return $this->view('emails.orders.shipped')

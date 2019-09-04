@@ -1,13 +1,14 @@
 <?php
+
 use Modules\Xot\Services\RouteService;
 
-$namespace = '\Modules\Xot';//$this->getNamespace();
+$namespace = '\Modules\Xot'; //$this->getNamespace();
 $pack = class_basename($namespace);
 
 $namespace .= '\Http\Controllers\Admin';
 $middleware = ['web', 'auth'];
 
-$item2=include(__DIR__.'/common.php');
+$item2 = include __DIR__.'/common.php';
 /*
 $areas_prgs = [
     $item2,
@@ -17,7 +18,7 @@ $areas_prgs = [
     //$item1,
     [
         'name' => '{module}',
-        'as'=>'admin.',
+        'as' => 'admin.',
         'param_name' => '',
         'only' => ['index'],
         'subs' => [

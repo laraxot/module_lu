@@ -1,9 +1,10 @@
 <?php
+
 namespace Modules\LU\Events;
+
 use Illuminate\Queue\SerializesModels;
 
-class TestEvent
-{
+class TestEvent {
     use SerializesModels;
 
     public $msg;
@@ -13,8 +14,7 @@ class TestEvent
      *
      * @param \App\User $user
      */
-    public function __construct($msg)
-    {
+    public function __construct($msg) {
         $this->msg = $msg;
     }
 }

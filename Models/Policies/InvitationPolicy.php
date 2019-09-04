@@ -1,11 +1,8 @@
 <?php
-namespace Modules\LU\Models\Policies;
 
-use Illuminate\Auth\Access\HandlesAuthorization;
-use Modules\LU\Models\User as User;
-use Modules\LU\Models\Invitation as Post; 
+namespace Modules\LU\Models\Policies;
 
 use Modules\Xot\Models\Policies\XotBasePolicy;
 
-class InvitationPolicy extends XotBasePolicy{
+class InvitationPolicy extends XotBasePolicy {
 }

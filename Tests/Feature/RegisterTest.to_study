@@ -1,32 +1,42 @@
 <?php
 
 namespace Modules\LU\Tests\Feature;
-//-----  MODELS  -----
-use Modules\LU\Models\User;
 
-use Tests\TestCase;
-use Illuminate\Support\Facades\Hash;
-use Illuminate\Support\Facades\Event;
+//-----  MODELS  -----
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Illuminate\Support\Facades\Event;
+use Illuminate\Support\Facades\Hash;
+use Modules\LU\Models\User;
+use Tests\TestCase;
 
-class RegisterTest extends TestCase
-{
+class RegisterTest extends TestCase {
     use RefreshDatabase;
 
-    protected function successfulRegistrationRoute()    {   return route('home');           }
-    protected function registerGetRoute()               {   return route('register');       }
-    protected function registerPostRoute()              {   return route('register');       }
-    protected function guestMiddlewareRoute()           {   return route('home');           }
+    protected function successfulRegistrationRoute() {
+        return route('home');
+    }
 
-    public function testUserCanViewARegistrationForm(){
+    protected function registerGetRoute() {
+        return route('register');
+    }
+
+    protected function registerPostRoute() {
+        return route('register');
+    }
+
+    protected function guestMiddlewareRoute() {
+        return route('home');
+    }
+
+    public function testUserCanViewARegistrationForm() {
         $response = $this->get($this->registerGetRoute());
 
         $response->assertSuccessful();
         $response->assertViewIs('auth.register');
     }
 
-    public function testUserCannotViewARegistrationFormWhenAuthenticated(){
+    public function testUserCannotViewARegistrationFormWhenAuthenticated() {
         $user = factory(User::class)->make();
 
         $response = $this->actingAs($user)->get($this->registerGetRoute());
@@ -34,7 +44,7 @@ class RegisterTest extends TestCase
         $response->assertRedirect($this->guestMiddlewareRoute());
     }
 
-    public function testUserCanRegister(){
+    public function testUserCanRegister() {
         Event::fake();
 
         $response = $this->post($this->registerPostRoute(), [
@@ -55,8 +65,7 @@ class RegisterTest extends TestCase
         });
     }
 
-    public function testUserCannotRegisterWithoutName()
-    {
+    public function testUserCannotRegisterWithoutName() {
         $response = $this->from($this->registerGetRoute())->post($this->registerPostRoute(), [
             'name' => '',
             'email' => 'john@example.com',
@@ -74,8 +83,7 @@ class RegisterTest extends TestCase
         $this->assertGuest();
     }
 
-    public function testUserCannotRegisterWithoutEmail()
-    {
+    public function testUserCannotRegisterWithoutEmail() {
         $response = $this->from($this->registerGetRoute())->post($this->registerPostRoute(), [
             'name' => 'John Doe',
             'email' => '',
@@ -93,8 +101,7 @@ class RegisterTest extends TestCase
         $this->assertGuest();
     }
 
-    public function testUserCannotRegisterWithInvalidEmail()
-    {
+    public function testUserCannotRegisterWithInvalidEmail() {
         $response = $this->from($this->registerGetRoute())->post($this->registerPostRoute(), [
             'name' => 'John Doe',
             'email' => 'invalid-email',
@@ -113,8 +120,7 @@ class RegisterTest extends TestCase
         $this->assertGuest();
     }
 
-    public function testUserCannotRegisterWithoutPassword()
-    {
+    public function testUserCannotRegisterWithoutPassword() {
         $response = $this->from($this->registerGetRoute())->post($this->registerPostRoute(), [
             'name' => 'John Doe',
             'email' => 'john@example.com',
@@ -133,8 +139,7 @@ class RegisterTest extends TestCase
         $this->assertGuest();
     }
 
-    public function testUserCannotRegisterWithoutPasswordConfirmation()
-    {
+    public function testUserCannotRegisterWithoutPasswordConfirmation() {
         $response = $this->from($this->registerGetRoute())->post($this->registerPostRoute(), [
             'name' => 'John Doe',
             'email' => 'john@example.com',
@@ -153,8 +158,7 @@ class RegisterTest extends TestCase
         $this->assertGuest();
     }
 
-    public function testUserCannotRegisterWithPasswordsNotMatching()
-    {
+    public function testUserCannotRegisterWithPasswordsNotMatching() {
         $response = $this->from($this->registerGetRoute())->post($this->registerPostRoute(), [
             'name' => 'John Doe',
             'email' => 'john@example.com',

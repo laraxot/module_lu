@@ -1,18 +1,13 @@
 <?php
+
 namespace Modules\LU\Models\Panels;
 
-use Illuminate\Support\Str;
 use Illuminate\Http\Request;
-
 //--- Services --
-use Modules\Xot\Services\StubService;
+use Modules\Xot\Models\Panels\XotBasePanel;
 use Modules\Xot\Services\RouteService;
 
-use Modules\Xot\Models\Panels\XotBasePanel;
-
-
-class GroupPanel extends XotBasePanel
-{
+class GroupPanel extends XotBasePanel {
     /**
      * The model the resource corresponds to.
      *
@@ -25,124 +20,119 @@ class GroupPanel extends XotBasePanel
      *
      * @var string
      */
-    public static $title = "title"; 
+    public static $title = 'title';
 
     /**
      * The columns that should be searched.
      *
      * @var array
      */
-    public static $search = array (
-) ;
+    public static $search = [
+];
 
-    public function optionId($row){
+    public function optionId($row) {
         return $row->group_id;
     }
 
-    public function optionLabel($row){
+    public function optionLabel($row) {
         return  $this->group_id.'] '.$this->group_define_name;
     }
-    public function with(){
+
+    public function with() {
         return [];
-    } 
-    
+    }
+
     /**
      * Get the fields displayed by the resource.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param \Illuminate\Http\Request $request
+     *
      * @return array
      */
-    public static function fields()
-    {
-        return array (
-  0 => 
-  (object) array(
+    public static function fields() {
+        return [
+  0 => (object) [
      'type' => 'Integer',
      'name' => 'group_id',
-  ),
-  1 => 
-  (object) array(
+  ],
+  1 => (object) [
      'type' => 'Integer',
      'name' => 'group_type',
-  ),
-  2 => 
-  (object) array(
+  ],
+  2 => (object) [
      'type' => 'String',
      'name' => 'group_define_name',
-  ),
-  3 => 
-  (object) array(
+  ],
+  3 => (object) [
      'type' => 'Integer',
      'name' => 'owner_user_id',
-  ),
-  4 => 
-  (object) array(
+  ],
+  4 => (object) [
      'type' => 'Integer',
      'name' => 'owner_group_id',
-  ),
-  5 => 
-  (object) array(
+  ],
+  5 => (object) [
      'type' => 'String',
      'name' => 'is_active',
-  ),
-);
+  ],
+];
     }
-     
+
     /**
-     * Get the tabs available 
+     * Get the tabs available.
      *
-     * @return array  
+     * @return array
      */
-    public function tabs(){
+    public function tabs() {
         $tabs_name = [];
+
         return RouteService::tabs([
-            'tabs_name'=>$tabs_name,
-            'model'=>self::$model
+            'tabs_name' => $tabs_name,
+            'model' => self::$model,
         ]);
-        
     }
+
     /**
      * Get the cards available for the request.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param \Illuminate\Http\Request $request
+     *
      * @return array
      */
-    public function cards(Request $request)
-    {
+    public function cards(Request $request) {
         return [];
     }
 
     /**
      * Get the filters available for the resource.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param \Illuminate\Http\Request $request
+     *
      * @return array
      */
-    public function filters(Request $request=null)
-    {
+    public function filters(Request $request = null) {
         return [];
     }
 
     /**
      * Get the lenses available for the resource.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param \Illuminate\Http\Request $request
+     *
      * @return array
      */
-    public function lenses(Request $request)
-    {
+    public function lenses(Request $request) {
         return [];
     }
 
     /**
      * Get the actions available for the resource.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param \Illuminate\Http\Request $request
+     *
      * @return array
      */
-    public function actions()
-    {
+    public function actions() {
         return [];
     }
-
 }

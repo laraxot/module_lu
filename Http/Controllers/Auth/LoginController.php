@@ -1,4 +1,5 @@
 <?php
+
 namespace Modules\LU\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
@@ -6,14 +7,13 @@ use Auth;
 use Carbon\Carbon;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Http\Request;
-use Socialite;
-//use App\Http\Requests;
 use Modules\LU\Models\Area;
+//use App\Http\Requests;
 use Modules\LU\Models\SocialProvider;
 use Modules\LU\Models\User;
+use Socialite;
 
-class LoginController extends Controller
-{
+class LoginController extends Controller {
     /*
     |--------------------------------------------------------------------------
     | Login Controller
@@ -35,10 +35,10 @@ class LoginController extends Controller
     protected $redirectTo = '/'; // /home
     /* --- da implementare ..
     public function redirectTo(){
-        
+
         // User role
-        $role = Auth::user()->role->name; 
-        
+        $role = Auth::user()->role->name;
+
         // Check user role
         switch ($role) {
             case 'Manager':
@@ -46,9 +46,9 @@ class LoginController extends Controller
                 break;
             case 'Employee':
                     return '/projects';
-                break; 
+                break;
             default:
-                    return '/login'; 
+                    return '/login';
                 break;
         }
     }
@@ -57,24 +57,20 @@ class LoginController extends Controller
     /**
      * Create a new controller instance.
      */
-    public function __construct()
-    {
+    public function __construct() {
         $this->middleware('guest', ['except' => 'logout']);
     }
 
-    public function username()
-    {
+    public function username() {
         return 'handle';
     }
 
     //--------------------
-    public function password()
-    {
+    public function password() {
         return 'passwd';
     }
 
-    public function showLoginForm(Request $request)
-    {
+    public function showLoginForm(Request $request) {
         /* --- il segnmento 1
         $locale = \Request::segment(1);
         if (in_array($locale, ['it','en','de','fr'])) {
@@ -112,9 +108,10 @@ class LoginController extends Controller
         foreach ($locz as $loc) {
             $view = $loc.'::'.$tpl;
             if (\View::exists($view)) {
-                \View::composer('*', function($view1) use($view){
+                \View::composer('*', function ($view1) use ($view) {
                     \View::share('view', $view);
                 });
+
                 return view($view, ['action' => 'login'])
                             ->with('params', $params)
                             ->with('lang', \App::getLocale())
@@ -128,8 +125,7 @@ class LoginController extends Controller
         return '<h3>Non esiste la view ['.$view.']</h3>['.__LINE__.']['.__FILE__.']';
     }
 
-    public function login(Request $request)
-    {
+    public function login(Request $request) {
         if ($this->hasTooManyLoginAttempts($request)) {
             $this->fireLockoutEvent($request);
 
@@ -207,8 +203,7 @@ class LoginController extends Controller
         }
     }
 
-    protected function authenticated($request, $user)
-    {
+    protected function authenticated($request, $user) {
         $user->update([
             'last_login_at' => Carbon::now()->toDateTimeString(),
             'last_login_ip' => $request->getClientIp(),
@@ -229,8 +224,7 @@ class LoginController extends Controller
         alla richiesta ajax di login, perchè di default laravel non
         ritorna dati alle chiamate ajax
     */
-    protected function sendFailedLoginResponse(Request $request)
-    {
+    protected function sendFailedLoginResponse(Request $request) {
         if ($request->ajax()) {
             return response()->json([
                 'error' => 'auth.failed',
@@ -251,8 +245,7 @@ class LoginController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function redirectToProvider($provider){
-
+    public function redirectToProvider($provider) {
         if ('facebook' != $provider) {
             return Socialite::driver($provider)->redirect();
         } else {
@@ -274,8 +267,7 @@ class LoginController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function handleProviderCallback($provider)
-    {
+    public function handleProviderCallback($provider) {
         try {
             $socialUser = Socialite::driver($provider)->user();
         } catch (\Exception $e) {
@@ -284,7 +276,7 @@ class LoginController extends Controller
         //dd($socialUser);
         //getAvatar
         $socialProvider = SocialProvider::where('provider_id', $socialUser->getId())->where('provider', $provider)->first();
-        if (!$socialProvider) {
+        if (! $socialProvider) {
             $user = User::firstOrCreate(['email' => $socialUser->getEmail()], ['nome' => $socialUser->getName(), 'handle' => $socialUser->getNickname()]);
             $user->socialProviders()->create(['provider_id' => $socialUser->getId(), 'provider' => $provider, 'token' => $socialUser->token]);
         } else {
@@ -301,8 +293,7 @@ class LoginController extends Controller
         // $user->token;
     }
 
-    public function authorization(Request $request)
-    {
+    public function authorization(Request $request) {
         $domain_url = (isset($_SERVER['HTTPS']) ? 'https' : 'http')."://$_SERVER[HTTP_HOST]";
         \header('Content-type: application/json');
         \header('Access-Control-Allow-Credentials: true');

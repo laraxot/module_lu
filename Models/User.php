@@ -1,25 +1,17 @@
 <?php
+
 namespace Modules\LU\Models;
 
-use Carbon\Carbon;
-use Illuminate\Auth\Passwords\CanResetPassword;
-use Illuminate\Contracts\Auth\Access\Authorizable as AuthorizableContract;
 //use Illuminate\Auth\Authenticatable;
-use Illuminate\Contracts\Auth\Authenticatable as AuthenticatableContract;
-use Illuminate\Contracts\Auth\CanResetPassword as CanResetPasswordContract;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
-use Illuminate\Database\Eloquent\Model;
-use Illuminate\Foundation\Auth\Access\Authorizable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Scout\Searchable;
-use Modules\Xot\Traits\Updater;
+use Modules\Blog\Models\Post;
 use Modules\LU\Notifications\ResetPassword as ResetPasswordNotification;
 use Modules\LU\Notifications\VerifyEmail   as VerifyEmailNotification;
-
-
 //--------models -------
-use Modules\Blog\Models\Post;  
+use Modules\Xot\Traits\Updater;
 
 class User extends Authenticatable implements MustVerifyEmail {
     use Notifiable;
@@ -34,7 +26,7 @@ class User extends Authenticatable implements MustVerifyEmail {
         'last_name', 'first_name',
         'last_login_at', 'last_login_ip', //http://laraveldaily.com/save-users-last-login-time-ip-address/
     ];
-    protected $dates = [ 'last_login_at', 'created_at', 'updated_at', 'deleted_at', ];
+    protected $dates = ['last_login_at', 'created_at', 'updated_at', 'deleted_at'];
 
     public $rules = [
         'email' => 'required|unique:liveuser_general.liveuser_users|max:255',
@@ -46,19 +38,20 @@ class User extends Authenticatable implements MustVerifyEmail {
         'name.min' => 'The field has to be :min chars long',
     ];
 
-    protected $hidden = [ 'passwd', 'remember_token', ];
+    protected $hidden = ['passwd', 'remember_token'];
 
-    protected $append = [ 'url', ];
+    protected $append = ['url'];
     public $timestamps = true;
 
-    public function isSuperAdmin(){
+    public function isSuperAdmin() {
         if (is_object($this->perm) && $this->perm->perm_type >= 4) {  //superadmin
             return true;
         }
-        return false; 
+
+        return false;
     }
 
-    public function isMine($post){
+    public function isMine($post) {
         if ($post->created_by == $this->handle || $post->updated_by == $this->handle) {
             return true;
         }
@@ -66,51 +59,49 @@ class User extends Authenticatable implements MustVerifyEmail {
         return false;
     }
 
-    public function sendEmailVerificationNotification()
-    {
+    public function sendEmailVerificationNotification() {
         $this->notify(new VerifyEmailNotification());
     }
 
-    public function routeNotificationForSlack(){
-            return env('LOG_SLACK_WEBHOOK_URL','https://hooks.slack.com/services/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');
+    public function routeNotificationForSlack() {
+        return env('LOG_SLACK_WEBHOOK_URL', 'https://hooks.slack.com/services/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');
     }
 
-    public function getAuthIdentifier(){
+    public function getAuthIdentifier() {
         return $this->getKey();
     }
 
-    public function getAuthIdentifierName(){
+    public function getAuthIdentifierName() {
         return 'auth_user_id';
     }
 
     //-----------------------------------------------------------
-    public function socialProviders(){
+    public function socialProviders() {
         return $this->hasMany(SocialProvider::class, 'user_id', 'auth_user_id');
     }
 
-    public function permUsers(){
-        return $this->hasOne(PermUser::class, 'auth_user_id', 'auth_user_id');   
-    }
-
-    public function perm(){
+    public function permUsers() {
         return $this->hasOne(PermUser::class, 'auth_user_id', 'auth_user_id');
     }
 
-    public function post(){
-        return $this->morphOne(Post::class,'post',null,'post_id')->where('lang',$this->lang);
+    public function perm() {
+        return $this->hasOne(PermUser::class, 'auth_user_id', 'auth_user_id');
     }
 
-    public function profile(){
+    public function post() {
+        return $this->morphOne(Post::class, 'post', null, 'post_id')->where('lang', $this->lang);
+    }
 
-        $profile_class=config('xra.model.profile');
-        if($profile_class==""){
+    public function profile() {
+        $profile_class = config('xra.model.profile');
+        if ('' == $profile_class) {
             ddd('modifica config xra.php  aggiungi in model il profile');
         }
-        return $this->hasOne(''.$profile_class,'auth_user_id','auth_user_id');
+
+        return $this->hasOne(''.$profile_class, 'auth_user_id', 'auth_user_id');
     }
 
-    
-    public function perm_user_id(){ //shortcut
+    public function perm_user_id() { //shortcut
         $permUser = $this->perm;
         if (null == $permUser) {
             $permUser = PermUser::firstOrCreate(['auth_user_id' => $this->auth_user_id]);
@@ -122,7 +113,7 @@ class User extends Authenticatable implements MustVerifyEmail {
 
     ///----------------------------------------------------------------------
 
-    public function groups_opts(){
+    public function groups_opts() {
         $groups = $this->groups()->get()->toArray();
         $collection = collect($groups);
         $plucked = $collection->pluck('group_define_name', 'group_id');
@@ -131,36 +122,40 @@ class User extends Authenticatable implements MustVerifyEmail {
         return $plucked->all();
     }
 
-    public function getHandleAttribute($value){
-        if($value!='') return $value;
-        if(!isset($this->attributes['auth_user_id'])){
-           return 'Guest_'.rand(1,10000);
+    public function getHandleAttribute($value) {
+        if ('' != $value) {
+            return $value;
         }
-        $value='Guest'.$this->attributes['auth_user_id'];
+        if (! isset($this->attributes['auth_user_id'])) {
+            return 'Guest_'.rand(1, 10000);
+        }
+        $value = 'Guest'.$this->attributes['auth_user_id'];
+
         return $value;
     }
 
+    public function getLangAttribute($value) {
+        $lang = \App::getLocale();
 
-    public function getLangAttribute($value){
-        $lang=\App::getLocale();
         return $lang;
     }
-    public function getAllAreasAttribute($value){
+
+    public function getAllAreasAttribute($value) {
         return Area::all();
     }
 
-    public function getAllGroupsAttribute($value){
+    public function getAllGroupsAttribute($value) {
         return Group::all();
     }
 
-    public function getAllRightsAttribute($value){
+    public function getAllRightsAttribute($value) {
         return Right::all();
     }
 
     //-----------------------------------------------------------
-    public function areaAdminAreas(){
-        $modules=\Module::getOrdered();
-        $modules=array_keys($modules);
+    public function areaAdminAreas() {
+        $modules = \Module::getOrdered();
+        $modules = array_keys($modules);
 
         $rows = $this->hasManyThrough(
             AreaAdminArea::class,
@@ -169,8 +164,8 @@ class User extends Authenticatable implements MustVerifyEmail {
             'perm_user_id',
             'auth_user_id',
             'perm_user_id'
-        )->whereHas('area',function ($q) use ($modules){
-                $q->whereIn('area_define_name',$modules);
+        )->whereHas('area', function ($q) use ($modules) {
+            $q->whereIn('area_define_name', $modules);
         })
         ->with('area')
         ;
@@ -178,7 +173,7 @@ class User extends Authenticatable implements MustVerifyEmail {
         return $rows;
     }
 
-    public function areas(){
+    public function areas() {
         if (null == $this->perm) {
             $this->perm = PermUser::firstOrCreate(['auth_user_id' => $this->auth_user_id]);
         }
@@ -186,81 +181,80 @@ class User extends Authenticatable implements MustVerifyEmail {
         return $this->perm->areas();
     }
 
-    public function groups(){
+    public function groups() {
         return $this->perm->groups();
     }
 
-    public function rights(){
+    public function rights() {
         return $this->perm->rights();
     }
 
-    public function allRights(){
+    public function allRights() {
         return Right::all();
     }
 
-    
-    public function getAuthPassword(){
+    public function getAuthPassword() {
         //your password field name
         return $this->passwd;
     }
 
-    public function metadata(){
+    public function metadata() {
         return $this->hasOne(Metadata::class);
     }
 
-    
-    public function getReminderEmail(){
+    public function getReminderEmail() {
         return $this->email;
     }
 
-    public function getRememberToken(){
+    public function getRememberToken() {
         return $this->remember_token;
     }
-    
-    public function setRememberToken($value){
+
+    public function setRememberToken($value) {
         $this->remember_token = $value;
     }
 
-    public function getRememberTokenName(){
+    public function getRememberTokenName() {
         return 'remember_token';
     }
 
-    public function sendPasswordResetNotification($token){
+    public function sendPasswordResetNotification($token) {
         $this->notify(new ResetPasswordNotification($token));
     }
 
-    public function password(){
+    public function password() {
         return 'passwd';
     }
 
-    public function username(){
+    public function username() {
         return 'handle';
     }
 
-    public function getUrlAttribute($value){   
-        $profile=$this->profile;
+    public function getUrlAttribute($value) {
+        $profile = $this->profile;
 
-        if(!is_object($profile)) {
-            $profile=$this->profile()->create();
+        if (! is_object($profile)) {
+            $profile = $this->profile()->create();
         }
-        $post=$profile->post;
-        if(!is_object($post)){
-            $post=$profile->post()->create();
-            $res=$post->update([
-                'post_type'=>'profile',
-                'title'=>$this->handle,
-                'guid'=>$this->handle,
-                'lang'=>\App::getLocale(),
+        $post = $profile->post;
+        if (! is_object($post)) {
+            $post = $profile->post()->create();
+            $res = $post->update([
+                'post_type' => 'profile',
+                'title' => $this->handle,
+                'guid' => $this->handle,
+                'lang' => \App::getLocale(),
             ]);
         }
-        $parz=[
-            'container0'=>'profile',
-            'item0'=>$profile, 
+        $parz = [
+            'container0' => 'profile',
+            'item0' => $profile,
         ];
-        return route('container0.show',$parz);
+
+        return route('container0.show', $parz);
     }
 
-    public function getGravatarAttribute($value){
+    public function getGravatarAttribute($value) {
         $publicBaseUrl = 'https://www.gravatar.com/avatar/';
         $secureBaseUrl = 'https://secure.gravatar.com/avatar/';
         $default = 'https://www.somewhere.com/homestar.jpg';
@@ -269,7 +263,7 @@ class User extends Authenticatable implements MustVerifyEmail {
         return $secureBaseUrl.\md5(\mb_strtolower(\trim($this->email))).'&s='.$size;
     }
 
-    public function getPermTypeAttribute($value){
+    public function getPermTypeAttribute($value) {
         $perm = $this->perm;
         if (\is_object($perm)) {
             return $perm->perm_type;
@@ -280,41 +274,42 @@ class User extends Authenticatable implements MustVerifyEmail {
     }
 
     //--------------------
-    public function setPasswdAttribute($value){
+    public function setPasswdAttribute($value) {
         if (\mb_strlen($value) < 30) {
             $this->attributes['passwd'] = \md5($value);
         }
     }
 
-    public function setUsernameAttribute($value){
+    public function setUsernameAttribute($value) {
         $this->attributes['username'] = \mb_strtolower($value);
     }
 
     //-------------------------------
-    public function name(){
+    public function name() {
         return $this->handle;
     }
+
     //---------------------------------------------------------------------------
-    public function superAdmin(){
-        if (!\is_array(config('xra.superadmins'))) {
+    public function superAdmin() {
+        if (! \is_array(config('xra.superadmins'))) {
             return false;
         }
 
         return \in_array($this->email, config('xra.superadmins'), true);
     }
 
-    public function avatar($size = 100){
+    public function avatar($size = 100) {
         $email = \md5(\mb_strtolower(\trim($this->email)));
         $default = \urlencode('https://tracker.moodle.org/secure/attachment/30912/f3.png');
+
         return "https://www.gravatar.com/avatar/$email?d=$default&s=$size";
     }
 
-    public function hasAvatar(){
+    public function hasAvatar() {
         return true;
     }
 
-    public function addArea($area){
-        
+    public function addArea($area) {
         $areas = $this->perm->areas->where('area_id', $area->area_id);
         if (0 == $areas->count()) { //lo aggiunge solo se non c'e'
             $this->perm->areas()->attach($area->area_id);
@@ -322,10 +317,7 @@ class User extends Authenticatable implements MustVerifyEmail {
     }
 
     //---------------------------------------------------
-    public function urlLang($lang){
+    public function urlLang($lang) {
         return '#';
     }
-
-
-
 }//end class

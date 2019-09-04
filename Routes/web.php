@@ -1,7 +1,6 @@
 <?php
 
-
-$namespace = '\Modules\LU';//$this->getNamespace();
+$namespace = '\Modules\LU'; //$this->getNamespace();
 //$prefix=null;
 $prefix = App::getLocale();
 //$prefix='{lang}';
@@ -28,7 +27,7 @@ Route::group(
     ],
     function () {
         //--------- SOCIALITE ----------------
-        Route::get('login/{provider}',          ['as' => 'login.provider',          'uses' => 'LoginController@redirectToProvider']);
+        Route::get('login/{provider}', ['as' => 'login.provider',          'uses' => 'LoginController@redirectToProvider']);
         Route::get('login/{provider}/callback', ['as' => 'login.provider.callback', 'uses' => 'LoginController@handleProviderCallback']);
     }
 );
@@ -67,9 +66,8 @@ Route::get('/slack', function () {
 });
 */
 
-
 //$this->routes();
 
-if(\Request::segment(1)=='admin'  && \Request::segment(2)=='lu'){
+if ('admin' == \Request::segment(1) && 'lu' == \Request::segment(2)) {
     //require_once(__DIR__.'/web_admin_lu.php');  //uso quelle generiche
 }

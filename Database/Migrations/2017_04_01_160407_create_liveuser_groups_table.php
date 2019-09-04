@@ -1,24 +1,24 @@
 <?php
+
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
-
 //--- models --
 use Modules\LU\Models\Group as MyModel;
 
-class CreateLiveuserGroupsTable extends Migration{ 
+class CreateLiveuserGroupsTable extends Migration {
     //protected $table = '';
-    protected $connection = 'liveuser_general'; 
+    protected $connection = 'liveuser_general';
 
-    public function getTable(){
+    public function getTable() {
         return with(new MyModel())->getTable();
     }
+
     /**
      * Run the migrations.
      */
-    public function up()
-    {
-        if (!Schema::connection('liveuser_general')->hasTable($this->getTable())) {
+    public function up() {
+        if (! Schema::connection('liveuser_general')->hasTable($this->getTable())) {
             Schema::connection('liveuser_general')->create($this->getTable(), function (Blueprint $table) {
                 $table->increments('group_id');
                 $table->integer('group_type')->unsigned()->nullable()->default(1);
@@ -31,17 +31,17 @@ class CreateLiveuserGroupsTable extends Migration{
                 $table->string('created_by')->nullable();
                 $table->string('updated_by')->nullable();
             });
-        } 
+        }
         //------ ADD
         Schema::connection('liveuser_general')->table($this->getTable(), function (Blueprint $table) {
-            if (!Schema::connection('liveuser_general')->hasColumn($this->getTable(), 'created_by')) {
+            if (! Schema::connection('liveuser_general')->hasColumn($this->getTable(), 'created_by')) {
                 $table->string('created_by')->nullable();
             }
-            if (!Schema::connection('liveuser_general')->hasColumn($this->getTable(), 'updated_by')) {
+            if (! Schema::connection('liveuser_general')->hasColumn($this->getTable(), 'updated_by')) {
                 $table->string('updated_by')->nullable();
             }
-            if (!Schema::connection('liveuser_general')->hasColumn($this->getTable(), 'updated_at') 
-                && !Schema::connection('liveuser_general')->hasColumn($this->getTable(), 'created_at')) {
+            if (! Schema::connection('liveuser_general')->hasColumn($this->getTable(), 'updated_at')
+                && ! Schema::connection('liveuser_general')->hasColumn($this->getTable(), 'created_at')) {
                 $table->timestamps();
             }
         });
@@ -50,8 +50,7 @@ class CreateLiveuserGroupsTable extends Migration{
     /**
      * Reverse the migrations.
      */
-    public function down()
-    {
+    public function down() {
         Schema::connection('liveuser_general')->dropIfExists($this->getTable());
     }
 }

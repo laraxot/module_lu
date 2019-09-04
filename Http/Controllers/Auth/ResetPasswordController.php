@@ -1,6 +1,5 @@
 <?php
 
-
 namespace Modules\LU\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
@@ -10,8 +9,7 @@ use Illuminate\Support\Str;
 //--------- Models ------------
 use Modules\LU\Models\User;
 
-class ResetPasswordController extends Controller
-{
+class ResetPasswordController extends Controller {
     /*
     |--------------------------------------------------------------------------
     | Password Reset Controller
@@ -35,8 +33,7 @@ class ResetPasswordController extends Controller
     /**
      * Create a new controller instance.
      */
-    public function __construct()
-    {
+    public function __construct() {
         $this->middleware('guest');
     }
 
@@ -44,10 +41,9 @@ class ResetPasswordController extends Controller
      * Reset the given user's password.
      *
      * @param \Illuminate\Contracts\Auth\CanResetPassword $user
-     * @param string $password
+     * @param string                                      $password
      */
-    protected function resetPassword($user, $password)
-    {
+    protected function resetPassword($user, $password) {
         $user->forceFill([
             'passwd' => $password,
             'remember_token' => Str::random(60),
@@ -62,12 +58,11 @@ class ResetPasswordController extends Controller
      * If no token is present, display the link request form.
      *
      * @param \Illuminate\Http\Request $request
-     * @param string|null $token
+     * @param string|null              $token
      *
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
-    public function showResetForm(Request $request, $token = null)
-    {
+    public function showResetForm(Request $request, $token = null) {
         //qui da fare controllo se esiste pub_theme::auth.passwords.reset mostra quello
         //se no se esiste adm_theme::auth.passwords.reset mostra quello
         //altrimenti mostra 'lu::auth.passwords.reset' che esiste per forza
@@ -78,7 +73,7 @@ class ResetPasswordController extends Controller
         }
 
         foreach ($locz as $loc) {
-            $view = $loc . '::' . $tpl;
+            $view = $loc.'::'.$tpl;
             if (\View::exists($view)) {
                 return view($view)->with(
                     ['token' => $token, 'email' => $request->email]
@@ -86,7 +81,7 @@ class ResetPasswordController extends Controller
             }
         }
 
-        return '<h3>Non esiste la view [' . $view . ']</h3>['.__LINE__.']['.__FILE__.']';
+        return '<h3>Non esiste la view ['.$view.']</h3>['.__LINE__.']['.__FILE__.']';
         /*
         return view('lu::auth.passwords.reset')->with(
             ['token' => $token, 'email' => $request->email]

@@ -1,12 +1,13 @@
 <?php
+
 namespace Modules\LU\Repositories;
 
 //---base
 use Modules\Xot\Repositories\XotBaseRepository;
 
-class RightRepository extends XotBaseRepository{
+class RightRepository extends XotBaseRepository {
     /**
-     * Specify Model class name
+     * Specify Model class name.
      *
      * @return string
      */

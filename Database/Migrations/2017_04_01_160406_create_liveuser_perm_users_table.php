@@ -1,23 +1,24 @@
 <?php
+
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
-
 //---- models ---
 use Modules\LU\Models\PermUser as MyModel;
 
-class CreateLiveuserPermUsersTable extends Migration{
+class CreateLiveuserPermUsersTable extends Migration {
     //protected $table = 'liveuser_perm_users';
-    protected $connection = 'liveuser_general'; 
+    protected $connection = 'liveuser_general';
 
-    public function getTable(){
+    public function getTable() {
         return with(new MyModel())->getTable();
     }
+
     /**
      * Run the migrations.
      */
-    public function up(){
-        if (!Schema::connection('liveuser_general')->hasTable($this->getTable())) {
+    public function up() {
+        if (! Schema::connection('liveuser_general')->hasTable($this->getTable())) {
             Schema::connection('liveuser_general')->create($this->getTable(), function (Blueprint $table) {
                 $table->increments('perm_user_id');
                 $table->integer('auth_user_id')->default(0);
@@ -34,7 +35,7 @@ class CreateLiveuserPermUsersTable extends Migration{
     /**
      * Reverse the migrations.
      */
-    public function down(){
+    public function down() {
         Schema::connection('liveuser_general')->drop($this->getTable());
     }
 }

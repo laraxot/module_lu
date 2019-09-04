@@ -1,4 +1,5 @@
 <?php
+
 namespace Modules\LU\Notifications;
 
 use Illuminate\Bus\Queueable;
@@ -8,8 +9,7 @@ use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Lang;
 use Illuminate\Support\Facades\URL;
 
-class VerifyEmail extends Notification
-{
+class VerifyEmail extends Notification {
     use Queueable;
     /**
      * The callback that should be used to build the mail message.
@@ -35,8 +35,7 @@ class VerifyEmail extends Notification
      *
      * @return array
      */
-    public function via($notifiable)
-    {
+    public function via($notifiable) {
         return ['mail'];
     }
 
@@ -55,8 +54,7 @@ class VerifyEmail extends Notification
      *
      * @return \Illuminate\Notifications\Messages\MailMessage
      */
-    public function toMail($notifiable)
-    {
+    public function toMail($notifiable) {
         if (static::$toMailCallback) {
             return \call_user_func(static::$toMailCallback, $notifiable);
         }
@@ -79,8 +77,7 @@ class VerifyEmail extends Notification
      *
      * @return string
      */
-    protected function verificationUrl($notifiable)
-    {
+    protected function verificationUrl($notifiable) {
         return URL::temporarySignedRoute(
             'verification.verify',
             Carbon::now()->addMinutes(60),
@@ -93,8 +90,7 @@ class VerifyEmail extends Notification
      *
      * @param \Closure $callback
      */
-    public static function toMailUsing($callback)
-    {
+    public static function toMailUsing($callback) {
         static::$toMailCallback = $callback;
     }
 
@@ -105,8 +101,7 @@ class VerifyEmail extends Notification
      *
      * @return array
      */
-    public function toArray($notifiable)
-    {
+    public function toArray($notifiable) {
         return [
         ];
     }

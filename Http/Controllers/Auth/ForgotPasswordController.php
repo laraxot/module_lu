@@ -1,4 +1,5 @@
 <?php
+
 namespace Modules\LU\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
@@ -7,8 +8,7 @@ use Illuminate\Http\Request;
 
 //use Modules\Theme\Services\ThemeService; //mi serviva per debug
 
-class ForgotPasswordController extends Controller
-{
+class ForgotPasswordController extends Controller {
     /*
     |--------------------------------------------------------------------------
     | Password Reset Controller
@@ -25,8 +25,7 @@ class ForgotPasswordController extends Controller
     /**
      * Create a new controller instance.
      */
-    public function __construct()
-    {
+    public function __construct() {
         $this->middleware('guest');
     }
 
@@ -35,11 +34,10 @@ class ForgotPasswordController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function showLinkRequestForm(Request $request)
-    {
+    public function showLinkRequestForm(Request $request) {
         //return ThemeService::getView(); //lu::auth.forgot_password.show_link_request_form
         //return view('lu::auth.passwords.email');
-        $lang=\App::getLocale();
+        $lang = \App::getLocale();
         $locz = ['pub_theme', 'adm_theme', 'lu'];
         $tpl = 'auth.passwords.email';
         if ($request->ajax()) {
@@ -49,7 +47,7 @@ class ForgotPasswordController extends Controller
         foreach ($locz as $loc) {
             $view = $loc.'::'.$tpl;
             if (\View::exists($view)) {
-                return view($view)->with('lang',$lang)->with('title','Reset Password');
+                return view($view)->with('lang', $lang)->with('title', 'Reset Password');
             }
         }
 

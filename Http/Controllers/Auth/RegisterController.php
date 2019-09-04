@@ -1,6 +1,5 @@
 <?php
 
-
 namespace Modules\LU\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
@@ -11,8 +10,7 @@ use Illuminate\Support\Facades\Validator;
 //--------- Models ------------
 use Modules\LU\Models\User;
 
-class RegisterController extends Controller
-{
+class RegisterController extends Controller {
     /*
     |--------------------------------------------------------------------------
     | Register Controller
@@ -36,8 +34,7 @@ class RegisterController extends Controller
     /**
      * Create a new controller instance.
      */
-    public function __construct()
-    {
+    public function __construct() {
         $this->middleware('guest');
     }
 
@@ -48,8 +45,7 @@ class RegisterController extends Controller
      *
      * @return \Illuminate\Contracts\Validation\Validator
      */
-    protected function validator(array $data)
-    {
+    protected function validator(array $data) {
         return Validator::make($data, [
             //'name' => 'required|max:255',
             'handle' => 'required|max:255',
@@ -65,9 +61,8 @@ class RegisterController extends Controller
      *
      * @return User
      */
-    protected function create(array $data)
-    {
-        if (!isset($data['handle'])) {
+    protected function create(array $data) {
+        if (! isset($data['handle'])) {
             $data['handle'] = $data['username']; //molti template precotti hanno username.. se non hanno neppure questo meglio avere errore
         }
         $user = User::create([
@@ -97,8 +92,7 @@ class RegisterController extends Controller
     }
 
     //---------------------------------------------------------------------------------------
-    public function showRegistrationForm(Request $request)
-    {
+    public function showRegistrationForm(Request $request) {
         $params = \Route::current()->parameters();
         $row = new User();
         $locz = ['pub_theme', 'adm_theme', 'lu'];
@@ -108,7 +102,7 @@ class RegisterController extends Controller
         }
 
         foreach ($locz as $loc) {
-            $view = $loc . '::' . $tpl;
+            $view = $loc.'::'.$tpl;
 
             if (\View::exists($view)) {
                 return view($view, ['action' => 'register'])
@@ -119,7 +113,7 @@ class RegisterController extends Controller
             }
         }
 
-        return '<h3>Non esiste la view [' . $view . ']</h3>['.__LINE__.']['.__FILE__.']';
+        return '<h3>Non esiste la view ['.$view.']</h3>['.__LINE__.']['.__FILE__.']';
     }
 
     //--------------------------------------------------------------------------------
@@ -131,8 +125,7 @@ class RegisterController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function register(Request $request)
-    {
+    public function register(Request $request) {
         /*
         $this->validator($request->all())->validate();
 
@@ -157,7 +150,7 @@ class RegisterController extends Controller
         $errors = $validator->errors();
         $msg = '';
         foreach ($errors->all() as $message) {
-            $msg .= '<br/>' . $message;
+            $msg .= '<br/>'.$message;
         }
         if ($validator->fails()) {
             if ($request->ajax()) {

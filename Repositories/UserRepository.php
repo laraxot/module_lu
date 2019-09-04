@@ -1,4 +1,5 @@
 <?php
+
 namespace Modules\LU\Repositories;
 
 use Modules\LU\Models\Role;
@@ -6,8 +7,7 @@ use Modules\LU\Models\User;
 
 //https://github.com/bestmomo/laravel5-example
 
-class UserRepository extends BaseRepository
-{
+class UserRepository extends BaseRepository {
     /**
      * The Role instance.
      *
@@ -21,8 +21,7 @@ class UserRepository extends BaseRepository
      * @param App\Models\User $user
      * @param App\Models\Role $role
      */
-    public function __construct(User $user, Role $role)
-    {
+    public function __construct(User $user, Role $role) {
         $this->model = $user;
         $this->role = $role;
     }
@@ -33,8 +32,7 @@ class UserRepository extends BaseRepository
      * @param App\Models\User $user
      * @param array           $inputs
      */
-    private function save($user, $inputs)
-    {
+    private function save($user, $inputs) {
         if (isset($inputs['seen'])) {
             $user->seen = 'true' == $inputs['seen'];
         } else {
@@ -58,8 +56,7 @@ class UserRepository extends BaseRepository
      *
      * @return Illuminate\Support\Collection
      */
-    public function index($n, $role)
-    {
+    public function index($n, $role) {
         if ('total' != $role) {
             return $this->model
             ->with('role')
@@ -85,8 +82,7 @@ class UserRepository extends BaseRepository
      *
      * @return int
      */
-    public function count($role = null)
-    {
+    public function count($role = null) {
         if ($role) {
             return $this->model
             ->whereHas('role', function ($q) use ($role) {
@@ -104,8 +100,7 @@ class UserRepository extends BaseRepository
      *
      * @return int
      */
-    public function counts()
-    {
+    public function counts() {
         $counts = [
             'admin' => $this->count('admin'),
             'redac' => $this->count('redac'),
@@ -124,8 +119,7 @@ class UserRepository extends BaseRepository
      *
      * @return App\Models\User
      */
-    public function store($inputs, $confirmation_code = null)
-    {
+    public function store($inputs, $confirmation_code = null) {
         $user = new $this->model();
         $user->password = bcrypt($inputs['password']);
         if ($confirmation_code) {
@@ -144,8 +138,7 @@ class UserRepository extends BaseRepository
      * @param array           $inputs
      * @param App\Models\User $user
      */
-    public function update($inputs, $user)
-    {
+    public function update($inputs, $user) {
         $user->confirmed = isset($inputs['confirmed']);
         $this->save($user, $inputs);
     }
@@ -155,8 +148,7 @@ class UserRepository extends BaseRepository
      *
      * @return string
      */
-    public function getStatut()
-    {
+    public function getStatut() {
         return session('statut');
     }
 
@@ -166,8 +158,7 @@ class UserRepository extends BaseRepository
      * @param bool $valid
      * @param int  $id
      */
-    public function valid($valid, $id)
-    {
+    public function valid($valid, $id) {
         $user = $this->getById($id);
         $user->valid = 'true' == $valid;
         $user->save();
@@ -178,8 +169,7 @@ class UserRepository extends BaseRepository
      *
      * @param App\Models\User $user
      */
-    public function destroyUser(User $user)
-    {
+    public function destroyUser(User $user) {
         $user->comments()->delete();
         $posts = $user->posts()->get();
         foreach ($posts as $post) {
@@ -197,8 +187,7 @@ class UserRepository extends BaseRepository
      *
      * @return App\Models\User
      */
-    public function confirm($confirmation_code)
-    {
+    public function confirm($confirmation_code) {
         $user = $this->model->whereConfirmationCode($confirmation_code)->firstOrFail();
         $user->confirmed = true;
         $user->confirmation_code = null;

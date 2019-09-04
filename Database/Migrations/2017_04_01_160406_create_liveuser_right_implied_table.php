@@ -1,25 +1,25 @@
 <?php
+
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
-
 //---- models ---
 use Modules\LU\Models\RightImplied as MyModel;
 
-class CreateLiveuserRightImpliedTable extends Migration{
+class CreateLiveuserRightImpliedTable extends Migration {
     //protected $table = 'liveuser_right_implied';
     protected $connection = 'liveuser_general';
 
-    public function getTable(){
+    public function getTable() {
         return with(new MyModel())->getTable();
     }
 
     /**
      * Run the migrations.
      */
-    public function up(){
+    public function up() {
         $schema = Schema::connection($this->connection);
-        if (!$schema->hasTable($this->getTable())) {
+        if (! $schema->hasTable($this->getTable())) {
             try {
                 $schema->create($this->getTable(), function (Blueprint $table) {
                     $table->increments('id');
@@ -39,7 +39,7 @@ class CreateLiveuserRightImpliedTable extends Migration{
     /**
      * Reverse the migrations.
      */
-    public function down(){
+    public function down() {
         Schema::connection('liveuser_general')->dropIfExists($this->getTable());
     }
 }

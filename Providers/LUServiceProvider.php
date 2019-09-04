@@ -2,25 +2,19 @@
 
 namespace Modules\LU\Providers;
 
-use Illuminate\Support\ServiceProvider;
-use Illuminate\Database\Eloquent\Factory;
-
-use Illuminate\Support\Str;
-use Illuminate\Support\Collection;
-
-use Illuminate\Database\Eloquent\Relations\Relation; // per dizionario morph 
+// per dizionario morph
 
 //---- bases ----
 use Modules\Xot\Providers\XotBaseServiceProvider;
 
-class LUServiceProvider extends XotBaseServiceProvider{
-    protected $module_dir= __DIR__;
-    protected $module_ns=__NAMESPACE__;
-    public $module_name='lu';
+class LUServiceProvider extends XotBaseServiceProvider {
+    protected $module_dir = __DIR__;
+    protected $module_ns = __NAMESPACE__;
+    public $module_name = 'lu';
 
-    public function bootCallback(){
-    	//ddd('preso');
-    	/*
+    public function bootCallback() {
+        //ddd('preso');
+        /*
     	if(!\Auth::check()) {
         	//$userClass = config('auth.providers.users.model');
         	$userClass= \Modules\LU\Models\User::class;
@@ -35,10 +29,10 @@ class LUServiceProvider extends XotBaseServiceProvider{
     }
 }
 
-/**
+/*
 * https://github.com/Idavoll/User/tree/2.0
 * https://laravel-news.com/laravel-model-events-getting-started
 * fireModelEvent
 * https://www.marknotes.fr/docs/Development/Web/Laravel/Slides/Event_Driven/index.html
-* https://blog.pusher.com/event-driven-laravel-applications/ 
+* https://blog.pusher.com/event-driven-laravel-applications/
 */

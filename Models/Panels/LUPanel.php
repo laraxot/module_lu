@@ -1,468 +1,407 @@
 <?php
+
 namespace Modules\LU\Models\Panels;
 
-use Illuminate\Support\Str;
 use Illuminate\Http\Request;
-use Illuminate\Database\Eloquent\Builder;
-
 //--- Services --
-use Modules\Xot\Services\StubService;
+use Modules\Xot\Models\Panels\XotBasePanel;
 use Modules\Xot\Services\RouteService;
 
-
-use Modules\Xot\Models\Panels\XotBasePanel;
-
 class LUPanel extends XotBasePanel {
-	/**
-	 * The model the resource corresponds to.
-	 *
-	 * @var string
-	 */
-	public static $model = 'Modules\LU\Models\LU';
+    /**
+     * The model the resource corresponds to.
+     *
+     * @var string
+     */
+    public static $model = 'Modules\LU\Models\LU';
 
-	/**
-	 * The single value that should be used to represent the resource when being displayed.
-	 *
-	 * @var string
-	 */
-	public static $title = "title"; 
+    /**
+     * The single value that should be used to represent the resource when being displayed.
+     *
+     * @var string
+     */
+    public static $title = 'title';
 
-	/**
-	 * The columns that should be searched.
-	 *
-	 * @var array
-	 */
-	public static $search = array (
-) ;
+    /**
+     * The columns that should be searched.
+     *
+     * @var array
+     */
+    public static $search = [
+];
 
-	/**
-	* The relationships that should be eager loaded on index queries.
-	*
-	* @var array
-	*/
-	public static function with()
-	{
-	  return [];
-	}
+    /**
+     * The relationships that should be eager loaded on index queries.
+     *
+     * @var array
+     */
+    public static function with() {
+        return [];
+    }
 
-	public function search(){
-		return [];
-	}
+    public function search() {
+        return [];
+    }
 
-	/**
-	 * on select the option id
-	 *
-	 */
+    /**
+     * on select the option id.
+     */
+    public function optionId($row) {
+        return $row->area_id;
+    }
 
-	public function optionId($row){
-		return $row->area_id;
-	}
+    /**
+     * on select the option label.
+     */
+    public function optionLabel($row) {
+        return $row->area_define_name;
+    }
 
-	/**
-	 * on select the option label 
-	 *
-	 */
+    /**
+     * Get the fields displayed by the resource.
+     *
+     * @param \Illuminate\Http\Request $request
+     *
+     * @return array
+        'col_bs_size' => 6,
+        'sortable' => 1,
+        'rules' => 'required',
+        'rules_messages' => ['it'=>['required'=>'Nome Obbligatorio']],
+        'value'=>'..',
+     */
+    public function indexNav() {
+        return null;
+    }
 
-	public function optionLabel($row){
-		return $row->area_define_name;
-	}
+    /**
+     * Build an "index" query for the given resource.
+     *
+     * @param Request                               $request
+     * @param \Illuminate\Database\Eloquent\Builder $query
+     *
+     * @return \Illuminate\Database\Eloquent\Builder
+     */
+    public static function indexQuery(Request $request, $query) {
+        //return $query->where('auth_user_id', $request->user()->auth_user_id);
+        return $query;
+    }
 
-	/**
-	 * Get the fields displayed by the resource.
-	 *
-	 * @param  \Illuminate\Http\Request  $request
-	 * @return array
+    /**
+     * Build a "relatable" query for the given resource.
+     *
+     * This query determines which instances of the model may be attached to other resources.
+     *
+     * @param Request                               $request
+     * @param \Illuminate\Database\Eloquent\Builder $query
+     *
+     * @return \Illuminate\Database\Eloquent\Builder
+     */
+    public static function relatableQuery(Request $request, $query) {
+        //return $query->where('auth_user_id', $request->user()->auth_user_id);
+         //return $query->where('user_id', $request->user()->id);
+    }
 
-		'col_bs_size' => 6,
-		'sortable' => 1,
-		'rules' => 'required',
-		'rules_messages' => ['it'=>['required'=>'Nome Obbligatorio']],
-		'value'=>'..',
-
-	 */
-	public function indexNav(){
-		return null;
-	}
-
-	/**
-	 * Build an "index" query for the given resource.
-	 *
-	 * @param  Request  $request
-	 * @param  \Illuminate\Database\Eloquent\Builder  $query
-	 * @return \Illuminate\Database\Eloquent\Builder
-	 */
-
-	public static function indexQuery(Request $request, $query){
-		//return $query->where('auth_user_id', $request->user()->auth_user_id);
-		return $query; 
-	}
-
-	/**
-	 * Build a "relatable" query for the given resource.
-	 *
-	 * This query determines which instances of the model may be attached to other resources.
-	 *
-	 * @param  Request  $request
-	 * @param  \Illuminate\Database\Eloquent\Builder  $query
-	 * @return \Illuminate\Database\Eloquent\Builder
-	 */
-	public static function relatableQuery(Request $request, $query){
-		//return $query->where('auth_user_id', $request->user()->auth_user_id);
-		 //return $query->where('user_id', $request->user()->id);
-	}
-
-
-
-	public static function fields()
-	{
-		return array (
-  0 => 
-  (object)(array(
+    public static function fields() {
+        return [
+  0 => (object) ([
      'type' => 'Id',
      'name' => 'auth_user_id',
      'rules' => 'required',
-     'comment' => NULL,
-  )),
-  1 => 
-  (object)(array(
+     'comment' => null,
+  ]),
+  1 => (object) ([
      'type' => 'String',
      'name' => 'handle',
-     'comment' => NULL,
-  )),
-  2 => 
-  (object)(array(
+     'comment' => null,
+  ]),
+  2 => (object) ([
      'type' => 'String',
      'name' => 'passwd',
-     'comment' => NULL,
-  )),
-  3 => 
-  (object)(array(
+     'comment' => null,
+  ]),
+  3 => (object) ([
      'type' => 'DateTime',
      'name' => 'last_login_at',
-     'comment' => NULL,
-  )),
-  4 => 
-  (object)(array(
+     'comment' => null,
+  ]),
+  4 => (object) ([
      'type' => 'String',
      'name' => 'last_login_ip',
-     'comment' => NULL,
-  )),
-  5 => 
-  (object)(array(
+     'comment' => null,
+  ]),
+  5 => (object) ([
      'type' => 'Integer',
      'name' => 'owner_user_id',
-     'comment' => NULL,
-  )),
-  6 => 
-  (object)(array(
+     'comment' => null,
+  ]),
+  6 => (object) ([
      'type' => 'Integer',
      'name' => 'owner_group_id',
-     'comment' => NULL,
-  )),
-  7 => 
-  (object)(array(
+     'comment' => null,
+  ]),
+  7 => (object) ([
      'type' => 'String',
      'name' => 'is_active',
-     'comment' => NULL,
-  )),
-  8 => 
-  (object)(array(
+     'comment' => null,
+  ]),
+  8 => (object) ([
      'type' => 'String',
      'name' => 'email',
-     'comment' => NULL,
-  )),
-  9 => 
-  (object)(array(
+     'comment' => null,
+  ]),
+  9 => (object) ([
      'type' => 'Boolean',
      'name' => 'group_id',
-     'comment' => NULL,
-  )),
-  10 => 
-  (object)(array(
+     'comment' => null,
+  ]),
+  10 => (object) ([
      'type' => 'Boolean',
      'name' => 'banned_id',
-     'comment' => NULL,
-  )),
-  11 => 
-  (object)(array(
+     'comment' => null,
+  ]),
+  11 => (object) ([
      'type' => 'Boolean',
      'name' => 'country_id',
-     'comment' => NULL,
-  )),
-  12 => 
-  (object)(array(
+     'comment' => null,
+  ]),
+  12 => (object) ([
      'type' => 'Integer',
      'name' => 'question_id',
-     'comment' => NULL,
-  )),
-  13 => 
-  (object)(array(
+     'comment' => null,
+  ]),
+  13 => (object) ([
      'type' => 'String',
      'name' => 'nome',
-     'comment' => NULL,
-  )),
-  14 => 
-  (object)(array(
+     'comment' => null,
+  ]),
+  14 => (object) ([
      'type' => 'String',
      'name' => 'cognome',
-     'comment' => NULL,
-  )),
-  15 => 
-  (object)(array(
+     'comment' => null,
+  ]),
+  15 => (object) ([
      'type' => 'Integer',
      'name' => 'ente',
-     'comment' => NULL,
-  )),
-  16 => 
-  (object)(array(
+     'comment' => null,
+  ]),
+  16 => (object) ([
      'type' => 'Integer',
      'name' => 'matr',
-     'comment' => NULL,
-  )),
-  17 => 
-  (object)(array(
+     'comment' => null,
+  ]),
+  17 => (object) ([
      'type' => 'Integer',
      'name' => 'stabi',
-     'comment' => NULL,
-  )),
-  18 => 
-  (object)(array(
+     'comment' => null,
+  ]),
+  18 => (object) ([
      'type' => 'Integer',
      'name' => 'repar',
-     'comment' => NULL,
-  )),
-  19 => 
-  (object)(array(
+     'comment' => null,
+  ]),
+  19 => (object) ([
      'type' => 'String',
      'name' => 'password',
-     'comment' => NULL,
-  )),
-  20 => 
-  (object)(array(
+     'comment' => null,
+  ]),
+  20 => (object) ([
      'type' => 'String',
      'name' => 'hash',
-     'comment' => NULL,
-  )),
-  21 => 
-  (object)(array(
+     'comment' => null,
+  ]),
+  21 => (object) ([
      'type' => 'String',
      'name' => 'activation_code',
-     'comment' => NULL,
-  )),
-  22 => 
-  (object)(array(
+     'comment' => null,
+  ]),
+  22 => (object) ([
      'type' => 'String',
      'name' => 'forgotten_password_code',
-     'comment' => NULL,
-  )),
-  23 => 
-  (object)(array(
+     'comment' => null,
+  ]),
+  23 => (object) ([
      'type' => 'Date',
      'name' => 'birthday',
-     'comment' => NULL,
-  )),
-  24 => 
-  (object)(array(
+     'comment' => null,
+  ]),
+  24 => (object) ([
      'type' => 'Integer',
      'name' => 'last_birthday',
-     'comment' => NULL,
-  )),
-  25 => 
-  (object)(array(
+     'comment' => null,
+  ]),
+  25 => (object) ([
      'type' => 'Integer',
      'name' => 'dem_birthday',
-     'comment' => NULL,
-  )),
-  26 => 
-  (object)(array(
+     'comment' => null,
+  ]),
+  26 => (object) ([
      'type' => 'String',
      'name' => 'sesso',
-     'comment' => NULL,
-  )),
-  27 => 
-  (object)(array(
+     'comment' => null,
+  ]),
+  27 => (object) ([
      'type' => 'Boolean',
      'name' => 'giubbotto',
-     'comment' => NULL,
-  )),
-  28 => 
-  (object)(array(
+     'comment' => null,
+  ]),
+  28 => (object) ([
      'type' => 'String',
      'name' => 'provincia',
-     'comment' => NULL,
-  )),
-  29 => 
-  (object)(array(
+     'comment' => null,
+  ]),
+  29 => (object) ([
      'type' => 'String',
      'name' => 'conosciuto',
-     'comment' => NULL,
-  )),
-  30 => 
-  (object)(array(
+     'comment' => null,
+  ]),
+  30 => (object) ([
      'type' => 'String',
      'name' => 'news',
-     'comment' => NULL,
-  )),
-  31 => 
-  (object)(array(
+     'comment' => null,
+  ]),
+  31 => (object) ([
      'type' => 'String',
      'name' => 'citta',
-     'comment' => NULL,
-  )),
-  32 => 
-  (object)(array(
+     'comment' => null,
+  ]),
+  32 => (object) ([
      'type' => 'Boolean',
      'name' => 'segno',
-     'comment' => NULL,
-  )),
-  33 => 
-  (object)(array(
+     'comment' => null,
+  ]),
+  33 => (object) ([
      'type' => 'Boolean',
      'name' => 'hmail',
-     'comment' => NULL,
-  )),
-  34 => 
-  (object)(array(
+     'comment' => null,
+  ]),
+  34 => (object) ([
      'type' => 'Boolean',
      'name' => 'bounce',
-     'comment' => NULL,
-  )),
-  35 => 
-  (object)(array(
+     'comment' => null,
+  ]),
+  35 => (object) ([
      'type' => 'DateTime',
      'name' => 'dataIscrizione',
-     'comment' => NULL,
-  )),
-  36 => 
-  (object)(array(
+     'comment' => null,
+  ]),
+  36 => (object) ([
      'type' => 'Integer',
      'name' => 'dataCancellazione',
-     'comment' => NULL,
-  )),
-  37 => 
-  (object)(array(
+     'comment' => null,
+  ]),
+  37 => (object) ([
      'type' => 'DateTime',
      'name' => 'created_at',
-     'comment' => NULL,
-  )),
-  38 => 
-  (object)(array(
+     'comment' => null,
+  ]),
+  38 => (object) ([
      'type' => 'DateTime',
      'name' => 'updated_at',
-     'comment' => NULL,
-  )),
-  39 => 
-  (object)(array(
+     'comment' => null,
+  ]),
+  39 => (object) ([
      'type' => 'String',
      'name' => 'remember_token',
-     'comment' => NULL,
-  )),
-  40 => 
-  (object)(array(
+     'comment' => null,
+  ]),
+  40 => (object) ([
      'type' => 'String',
      'name' => 'updated_by',
-     'comment' => NULL,
-  )),
-  41 => 
-  (object)(array(
+     'comment' => null,
+  ]),
+  41 => (object) ([
      'type' => 'String',
      'name' => 'created_by',
-     'comment' => NULL,
-  )),
-  42 => 
-  (object)(array(
+     'comment' => null,
+  ]),
+  42 => (object) ([
      'type' => 'DateTime',
      'name' => 'email_verified_at',
-     'comment' => NULL,
-  )),
-  43 => 
-  (object)(array(
+     'comment' => null,
+  ]),
+  43 => (object) ([
      'type' => 'String',
      'name' => 'deleted_by',
-     'comment' => NULL,
-  )),
-  44 => 
-  (object)(array(
+     'comment' => null,
+  ]),
+  44 => (object) ([
      'type' => 'String',
      'name' => 'firstname',
-     'comment' => NULL,
-  )),
-  45 => 
-  (object)(array(
+     'comment' => null,
+  ]),
+  45 => (object) ([
      'type' => 'String',
      'name' => 'surname',
-     'comment' => NULL,
-  )),
-  46 => 
-  (object)(array(
+     'comment' => null,
+  ]),
+  46 => (object) ([
      'type' => 'String',
      'name' => 'token_check',
-     'comment' => NULL,
-  )),
-  47 => 
-  (object)(array(
+     'comment' => null,
+  ]),
+  47 => (object) ([
      'type' => 'Boolean',
      'name' => 'is_verified',
-     'comment' => NULL,
-  )),
-);
-	}
-	 
-	/**
-	 * Get the tabs available 
-	 *
-	 * @return array  
-	 */
-	public function tabs(){
-		$tabs_name = [];
-		return RouteService::tabs([
-			'tabs_name'=>$tabs_name,
-			'model'=>self::$model
-		]);
-		
-	}
-	/**
-	 * Get the cards available for the request.
-	 *
-	 * @param  \Illuminate\Http\Request  $request
-	 * @return array
-	 */
-	public function cards(Request $request)
-	{
-		return [];
-	}
+     'comment' => null,
+  ]),
+];
+    }
 
-	/**
-	 * Get the filters available for the resource.
-	 *
-	 * @param  \Illuminate\Http\Request  $request
-	 * @return array
-	 */
-	public function filters(Request $request=null)
-	{
-		return [];
-	}
+    /**
+     * Get the tabs available.
+     *
+     * @return array
+     */
+    public function tabs() {
+        $tabs_name = [];
 
-	/**
-	 * Get the lenses available for the resource.
-	 *
-	 * @param  \Illuminate\Http\Request  $request
-	 * @return array
-	 */
-	public function lenses(Request $request)
-	{
-		return [];
-	}
+        return RouteService::tabs([
+            'tabs_name' => $tabs_name,
+            'model' => self::$model,
+        ]);
+    }
 
-	/**
-	 * Get the actions available for the resource.
-	 *
-	 * @param  \Illuminate\Http\Request  $request
-	 * @return array
-	 */
-	public function actions(Request $request=null)
-	{
-		return [];
-	}
+    /**
+     * Get the cards available for the request.
+     *
+     * @param \Illuminate\Http\Request $request
+     *
+     * @return array
+     */
+    public function cards(Request $request) {
+        return [];
+    }
 
+    /**
+     * Get the filters available for the resource.
+     *
+     * @param \Illuminate\Http\Request $request
+     *
+     * @return array
+     */
+    public function filters(Request $request = null) {
+        return [];
+    }
+
+    /**
+     * Get the lenses available for the resource.
+     *
+     * @param \Illuminate\Http\Request $request
+     *
+     * @return array
+     */
+    public function lenses(Request $request) {
+        return [];
+    }
+
+    /**
+     * Get the actions available for the resource.
+     *
+     * @param \Illuminate\Http\Request $request
+     *
+     * @return array
+     */
+    public function actions(Request $request = null) {
+        return [];
+    }
 }

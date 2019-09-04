@@ -1,25 +1,24 @@
 <?php
+
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
-
 //---- models ---
 use Modules\LU\Models\User as MyModel;
 
-
-
 class CreateLiveuserUsersTable extends Migration {
     //protected $table = 'liveuser_users';
-    protected $connection = 'liveuser_general'; 
+    protected $connection = 'liveuser_general';
 
-    public function getTable(){
+    public function getTable() {
         return with(new MyModel())->getTable();
     }
+
     /**
      * Run the migrations.
      */
     public function up() {
-        if (!Schema::connection('liveuser_general')->hasTable($this->getTable())) {
+        if (! Schema::connection('liveuser_general')->hasTable($this->getTable())) {
             Schema::connection('liveuser_general')->create($this->getTable(), function (Blueprint $table) {
                 $table->increments('auth_user_id');
                 $table->string('handle', 32)->nullable()->default('')->index('handle');
@@ -44,25 +43,26 @@ class CreateLiveuserUsersTable extends Migration {
                 $table->boolean('is_verified')->nullable();
                 $table->rememberToken();
                 $table->timestamp('email_verified_at')->nullable();
-                
+
                 $table->timestamps();
                 $table->string('created_by')->nullable();
                 $table->string('updated_by')->nullable();
-
             });
         }
         Schema::connection('liveuser_general')->table($this->getTable(), function (Blueprint $table) {
-            if (!Schema::connection('liveuser_general')->hasColumn($this->getTable(), 'email_verified_at')) {
-                /*
-                */
+            if (! Schema::connection('liveuser_general')->hasColumn($this->getTable(), 'email_verified_at')) {
             }
         });
-    }//end up
+    }
+
+    //end up
 
     /**
      * Reverse the migrations.
      */
-    public function down(){
+    public function down() {
         Schema::connection('liveuser_general')->drop($this->getTable());
-    }//end down
+    }
+
+    //end down
 }

@@ -1,11 +1,12 @@
 <?php
+
 namespace Modules\LU\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Laravel\Scout\Searchable;
 use Modules\Xot\Traits\Updater;
 
-class PermUser extends Model{
+class PermUser extends Model {
     use Searchable;
     use Updater;
 
@@ -15,19 +16,19 @@ class PermUser extends Model{
     protected $fillable = ['auth_user_id', 'perm_type'];
 
     //------------ relationship ----------
-    public function User(){
+    public function User() {
         return $this->hasOne('User', 'auth_user_id', 'auth_user_id');
     }
 
-    public function areaAdminAreas(){
+    public function areaAdminAreas() {
         return $this->hasMany('AreaAdminArea', 'perm_user_id', 'perm_user_id');
     }
 
-    public function groupUsers(){
+    public function groupUsers() {
         return $this->hasMany('GroupUser', 'perm_user_id', 'perm_user_id');
     }
 
-    public function areas(){
+    public function areas() {
         $pivot = new AreaAdminArea();
         $rows = $this->belongsToMany(
             Area::class,
@@ -37,10 +38,11 @@ class PermUser extends Model{
         )
         ->using($pivot)
         ;
+
         return $rows;
     }
 
-    public function groups(){
+    public function groups() {
         $pivot = new GroupUser();
         $rows = $this->belongsToMany(
             Group::class,
@@ -54,7 +56,7 @@ class PermUser extends Model{
         return $rows;
     }
 
-    public function rights(){
+    public function rights() {
         $pivot = new UserRight();
         $rows = $this->belongsToMany(
             Right::class,

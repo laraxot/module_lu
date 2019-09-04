@@ -1,11 +1,11 @@
 <?php
+
 namespace Modules\LU\Models;
 
 use Illuminate\Database\Eloquent\Model;
-use Laravel\Scout\Searchable;
 use Modules\Xot\Traits\Updater;
 
-class GroupSubgroup extends Model{
+class GroupSubgroup extends Model {
     use Updater;
 
     protected $connection = 'liveuser_general';
@@ -13,7 +13,7 @@ class GroupSubgroup extends Model{
     protected $primaryKey = 'id';
     protected $fillable = ['group_id', 'subgroup_id'];
 
-    public function GroupUser(){
+    public function GroupUser() {
         return $this->hasMany(GroupUser::class, 'group_id', 'group_id');
     }
 

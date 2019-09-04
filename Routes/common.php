@@ -7,19 +7,18 @@ $acts = [
     //['name' => 'moveDown', 'method' => ['PUT', 'GET']],
 ]; //end acts
 
-$cont_acts=[
+$cont_acts = [
                 [
-                    'name'=>'Edit',
-                    'act'=>'indexEdit',
-                ],//end act_n
+                    'name' => 'Edit',
+                    'act' => 'indexEdit',
+                ], //end act_n
                 [
-                    'name'=>'Order',
-                    'act'=>'indexOrder',
-                ],//end act_n
-
+                    'name' => 'Order',
+                    'act' => 'indexOrder',
+                ], //end act_n
             ];
 
-$item2=[     //questo per avere /it/restaurant/ristotest/photo/edit
+$item2 = [     //questo per avere /it/restaurant/ristotest/photo/edit
     'name' => '{container0}',
     'param_name' => 'item0',
     //'only'=>[],
@@ -27,9 +26,9 @@ $item2=[     //questo per avere /it/restaurant/ristotest/photo/edit
         [
             'name' => '{container1}',
             'param_name' => '',
-            'as'=>'container1.index_', 
-            'acts'=>$cont_acts,//end acts
-            'only'=>[],
+            'as' => 'container1.index_',
+            'acts' => $cont_acts, //end acts
+            'only' => [],
         ], //end sub_n
         [
             'name' => '{container1}',
@@ -40,9 +39,9 @@ $item2=[     //questo per avere /it/restaurant/ristotest/photo/edit
                 [
                     'name' => '{container2}',
                     'param_name' => '',
-                    'as'=>'container2.index_', 
+                    'as' => 'container2.index_',
                     'acts' => $cont_acts,
-                    'only'=>[],
+                    'only' => [],
                 ], //end sub_n
                 [
                     'name' => '{container2}',
@@ -53,9 +52,9 @@ $item2=[     //questo per avere /it/restaurant/ristotest/photo/edit
                         [
                             'name' => '{container3}',
                             'param_name' => '',
-                            'as'=>'container3.index_', 
+                            'as' => 'container3.index_',
                             'acts' => $cont_acts,
-                            'only'=>[],
+                            'only' => [],
                         ], //end sub_n
                         [
                             'name' => '{container3}',
@@ -66,7 +65,7 @@ $item2=[     //questo per avere /it/restaurant/ristotest/photo/edit
                 ], //end sub_n
             ], //end subs
         ],
-    ],//end subs
-];//end item2
+    ], //end subs
+]; //end item2
 
 return $item2;

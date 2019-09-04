@@ -1,17 +1,13 @@
 <?php
+
 namespace Modules\LU\Models\Panels;
 
-use Illuminate\Support\Str;
 use Illuminate\Http\Request;
-
 //--- Services --
-use Modules\Xot\Services\StubService;
+use Modules\Xot\Models\Panels\XotBasePanel;
 use Modules\Xot\Services\RouteService;
 
-use Modules\Xot\Models\Panels\XotBasePanel;
-
-
-class AreaPanel extends XotBasePanel{
+class AreaPanel extends XotBasePanel {
     /**
      * The model the resource corresponds to.
      *
@@ -24,37 +20,39 @@ class AreaPanel extends XotBasePanel{
      *
      * @var string
      */
-    public static $title = "title"; 
+    public static $title = 'title';
 
     /**
      * The columns that should be searched.
      *
      * @var array
      */
-    public static $search = [] ;
+    public static $search = [];
 
-    public function search(){
-        return [];//['area_id','area_define_name'];
+    public function search() {
+        return []; //['area_id','area_define_name'];
     }
 
-    public function optionId($row){
+    public function optionId($row) {
         return $row->area_id;
     }
 
-    public function optionLabel($row){
+    public function optionLabel($row) {
         return $row->area_define_name;
     }
-    public function with(){
+
+    public function with() {
         return [];
-    } 
+    }
 
     /**
      * Get the fields displayed by the resource.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param \Illuminate\Http\Request $request
+     *
      * @return array
      */
-    public static function fields(){
+    public static function fields() {
         return [
             (object) [
                 'type' => 'Id',
@@ -63,62 +61,66 @@ class AreaPanel extends XotBasePanel{
             (object) [
                 'type' => 'String',
                 'name' => 'area_define_name',
-            ]
+            ],
         ];
     }
-     
+
     /**
-     * Get the tabs available 
+     * Get the tabs available.
      *
-     * @return array  
+     * @return array
      */
-    public function tabs(){
+    public function tabs() {
         $tabs_name = [];
+
         return RouteService::tabs([
-            'tabs_name'=>$tabs_name,
-            'model'=>self::$model
+            'tabs_name' => $tabs_name,
+            'model' => self::$model,
         ]);
-        
     }
+
     /**
      * Get the cards available for the request.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param \Illuminate\Http\Request $request
+     *
      * @return array
      */
-    public function cards(Request $request)
-    {
+    public function cards(Request $request) {
         return [];
     }
 
     /**
      * Get the filters available for the resource.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param \Illuminate\Http\Request $request
+     *
      * @return array
      */
-    public function filters(Request $request=null){
+    public function filters(Request $request = null) {
         return [];
     }
 
     /**
      * Get the lenses available for the resource.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param \Illuminate\Http\Request $request
+     *
      * @return array
      */
-    public function lenses(Request $request){
+    public function lenses(Request $request) {
         return [];
     }
 
     /**
      * Get the actions available for the resource.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param \Illuminate\Http\Request $request
+     *
      * @return array
      */
-    public function actions(){
-        return [ 
+    public function actions() {
+        return [
             new Actions\SyncAreas(),
         ];
     }
@@ -142,7 +144,7 @@ class AreaPanel extends XotBasePanel{
             //            ->get()
             //            ->toJson();
             //
-            
+
             die($rows);
         }
     }
@@ -153,17 +155,16 @@ class AreaPanel extends XotBasePanel{
     }
     */
 
-    public function bodyContentView($params=[]){
+    public function bodyContentView($params = []) {
         //ddd($params);
         extract($params);
         //$route_params = \Route::current()->parameters();
         //list($containers,$items)=params2ContainerItem($route_params);
-        if($_layout->act=='index_edit'){
+        if ('index_edit' == $_layout->act) {
             return $_layout->view_extend.'.body.multi_select';
-        }else{
+        } else {
             return $_layout->view_extend.'.body_content'; //.'.index';
         }
         //return $_layout->view_extend.'.body.rating';
     }
-
 }

@@ -4,16 +4,15 @@ namespace Modules\LU\Listeners;
 
 use Modules\LU\Events\TestEvent;
 
-class TestListener
-{
+class TestListener {
     /**
      * Handle the event.
      *
-     * @param  \App\Events\UserSavingEvent $event
+     * @param \App\Events\UserSavingEvent $event
+     *
      * @return mixed
      */
-    public function handle(TestEvent $event)
-    {
+    public function handle(TestEvent $event) {
         echo 'echo?';
         app('log')->info($event->msg);
     }

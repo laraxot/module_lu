@@ -2,23 +2,22 @@
 
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
-
 //---- models ---
 use Modules\LU\Models\Application as MyModel;
 
-class CreateLiveuserApplicationsTable extends Migration{
+class CreateLiveuserApplicationsTable extends Migration {
     //protected $table = 'liveuser_applications';
-    protected $connection = 'liveuser_general'; 
+    protected $connection = 'liveuser_general';
 
-    public function getTable(){
+    public function getTable() {
         return with(new MyModel())->getTable();
     }
 
     /**
      * Run the migrations.
      */
-    public function up(){
-        if (!Schema::connection('liveuser_general')->hasTable($this->getTable())) {
+    public function up() {
+        if (! Schema::connection('liveuser_general')->hasTable($this->getTable())) {
             Schema::connection('liveuser_general')->create($this->getTable(), function (Blueprint $table) {
                 $table->increments('application_id');
                 $table->string('application_define_name', 32)->default('')->unique('application_define_name');
@@ -33,7 +32,7 @@ class CreateLiveuserApplicationsTable extends Migration{
     /**
      * Reverse the migrations.
      */
-    public function down(){
+    public function down() {
         Schema::connection('liveuser_general')->dropIfExists($this->getTable());
     }
 }
