@@ -2,8 +2,8 @@
 @section('page_heading','lista diritti')
 
 @section('content')
-    @include('backend::includes.flash')
-    @include('backend::includes.components')
+    @include('formx::includes.flash')
+    
 
 {!! Form::bsOpen($row, 'store') !!}
 

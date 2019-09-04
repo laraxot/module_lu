@@ -2,8 +2,8 @@
 @section('page_heading','lista aree')
 
 @section('content')
-@include('backend::includes.flash')
-@include('backend::includes.components')
+@include('formx::includes.flash')
+
 
 <div style="text-align:center"><a href="{{route('lu.area.index',array_merge($params,['refresh'=>'1'])) }}" class="btn btn-small btn-info"  data-toggle="tooltip" title="Sincronizza Aree con Packages" >
 <i class="fa fa-refresh fa-fw" aria-hidden="true"></i>&nbsp;</a></div>

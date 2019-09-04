@@ -1,8 +1,8 @@
 @extends('adm_theme::layouts.app')
 @section('page_heading','cerca')
 @section('content')
-@include('backend::includes.flash')
-@include('backend::includes.components')
+@include('formx::includes.flash')
+
 
 <table class="table table-striped table-bordered">
 @foreach($rows as $row)

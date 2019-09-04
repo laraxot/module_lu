@@ -2,8 +2,8 @@
 @section('page_heading','Modifica Diritti Utente')
 
 @section('content')
-@include('backend::includes.flash')
-@include('backend::includes.components')
+@include('formx::includes.flash')
+
 
 @include('lu::admin.user.edit.nav')
 

@@ -1,8 +1,8 @@
 @extends('adm_theme::layouts.app')
 @section('page_heading','lista utenti')
 @section('content')
-@include('backend::includes.flash')
-@include('backend::includes.components')
+@include('formx::includes.flash')
+
 {!! Form::bsBtnCreate() !!}
 {!! Form::bsFormSearch() !!}
 <h3>N Records: {{ $rows->total() }}</h3>

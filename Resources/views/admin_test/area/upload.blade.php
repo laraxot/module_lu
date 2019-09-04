@@ -2,8 +2,8 @@
 @section('page_heading','Carica un nuovo modulo')
 
 @section('content')
-    @include('backend::includes.flash')
-    @include('backend::includes.components')
+    @include('formx::includes.flash')
+    
 
     @if (count($errors) > 0)
         <div class="alert alert-danger">

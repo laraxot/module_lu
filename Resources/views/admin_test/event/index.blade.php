@@ -2,8 +2,8 @@
 @section('page_heading','events list')
 
 @section('content')
-@include('backend::includes.flash')
-@include('backend::includes.components')
+@include('formx::includes.flash')
+
 
 <table class="table">
 	<thead>

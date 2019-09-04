@@ -2,8 +2,8 @@
 @section('page_heading','Crea Utente')
 
 @section('content')
-@include('backend::includes.flash')
-@include('backend::includes.components')
+@include('formx::includes.flash')
+
 
 {{--  
 <a href="{{route('lu.user.area.index',$params)}}" class="btn btn-small btn-info"  data-toggle="tooltip" title="Aree Utente" >

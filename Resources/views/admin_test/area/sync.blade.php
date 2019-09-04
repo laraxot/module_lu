@@ -2,8 +2,8 @@
 @section('page_heading','Sincronizza Aree/Packages')
 
 @section('content')
-@include('backend::includes.flash')
-@include('backend::includes.components')
+@include('formx::includes.flash')
+
 {{-- per update ci vuole id_area .. --}}
 
 {!! Form::bsOpen($row,'sync','store') !!}
