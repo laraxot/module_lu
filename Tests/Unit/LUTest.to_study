@@ -1,6 +1,6 @@
 <?php
 
-namespace Modules\LU\Tests\Feature;
+namespace Modules\LU\Tests\Unit;
 
 //-----  MODELS  -----
 use Modules\LU\Models\User;

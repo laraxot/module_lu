@@ -2,6 +2,11 @@
 
 namespace Modules\LU\Models;
 
+/*
+* http://laraveldaily.com/save-users-last-login-time-ip-address/
+*
+**/
+
 //use Illuminate\Auth\Authenticatable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -20,11 +25,12 @@ class User extends Authenticatable implements MustVerifyEmail {
 
     protected $connection = 'liveuser_general'; // this will use the specified database conneciton
     protected $table = 'liveuser_users';
+
     protected $primaryKey = 'auth_user_id';
     protected $fillable = [
         'ente', 'matr', 'handle', 'passwd', 'email',
         'last_name', 'first_name',
-        'last_login_at', 'last_login_ip', //http://laraveldaily.com/save-users-last-login-time-ip-address/
+        'last_login_at', 'last_login_ip',
     ];
     protected $dates = ['last_login_at', 'created_at', 'updated_at', 'deleted_at'];
 
@@ -232,26 +238,32 @@ class User extends Authenticatable implements MustVerifyEmail {
 
     public function getUrlAttribute($value) {
         $profile = $this->profile;
-
         if (! is_object($profile)) {
             $profile = $this->profile()->create();
         }
-        $post = $profile->post;
-        if (! is_object($post)) {
-            $post = $profile->post()->create();
-            $res = $post->update([
-                'post_type' => 'profile',
-                'title' => $this->handle,
-                'guid' => $this->handle,
-                'lang' => \App::getLocale(),
-            ]);
-        }
-        $parz = [
-            'container0' => 'profile',
-            'item0' => $profile,
-        ];
+        if ($panel = 1) {
+            $url = \Modules\Xot\Services\PanelService::get($profile)->url();
 
-        return route('container0.show', $parz);
+            return $url;
+        } else {
+            $post = $profile->post;
+            if (! is_object($post)) {
+                $post = $profile->post()->create();
+                $res = $post->update([
+                    'post_type' => 'profile',
+                    'title' => $this->handle,
+                    'guid' => $this->handle,
+                    'lang' => \App::getLocale(),
+                ]);
+            }
+            $parz = [
+                'container0' => 'profile',
+                'item0' => $profile,
+                'lang' => \App::getLocale(),
+            ];
+
+            return route('container0.show', $parz);
+        }
     }
 
     public function getGravatarAttribute($value) {
