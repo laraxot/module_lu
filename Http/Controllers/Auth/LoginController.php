@@ -79,13 +79,6 @@ class LoginController extends Controller {
         */
 
         $params = \Route::current()->parameters();
-        if (0 == User::count()) {//creazione 1' utente.. forse mettere dati in xra,o fare un form.
-            $firstUser = new User();
-            $firstUser->email = 'marco.sottana@gmail.com';
-            $firstUser->handle = 'xot';
-            $firstUser->passwd = 'prova123';
-            $firstUser->save();
-        }
         $locz = ['pub_theme', 'adm_theme', 'lu'];
         $tpl = 'auth.login';
         if ($request->ajax()) {
@@ -198,6 +191,7 @@ class LoginController extends Controller {
                 ->withError('Qualcosa di errato !')
                 ->withInput($request->all())
                 ->withErrors([
+                    'email' => 'user o password sbagliati',
                     'password' => 'user o password sbagliati',
                 ]);
         }
