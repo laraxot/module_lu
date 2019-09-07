@@ -2,14 +2,13 @@
 
 namespace Modules\LU\Tests\Feature;
 
-
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Support\Facades\Event;
 use Illuminate\Support\Facades\Hash;
-use Tests\TestCase;
-//-----  MODELS  -----
 use Modules\LU\Models\User;
+//-----  MODELS  -----
+use Tests\TestCase;
 
 class RegisterTest extends TestCase {
     use RefreshDatabase;
@@ -52,13 +51,13 @@ class RegisterTest extends TestCase {
 
         $response = $this->post($this->registerPostRoute(), [
             'first_name' => 'John',
-            'last_name'  => 'Doe',
+            'last_name' => 'Doe',
             'email' => 'john@example.com',
             'password' => 'i-love-laravel',
             'password_confirmation' => 'i-love-laravel',
         ]);
-        $url=$this->successfulRegistrationRoute();
-        if($home_route=0){
+        $url = $this->successfulRegistrationRoute();
+        if ($home_route = 0) {
             $response->assertRedirect($url);
         }
         $users = User::all();
@@ -83,8 +82,8 @@ class RegisterTest extends TestCase {
             'password' => 'i-love-laravel',
             'password_confirmation' => 'i-love-laravel',
         ]);
-        $url=$this->registerGetRoute();
-        if($home_route=0){
+        $url = $this->registerGetRoute();
+        if ($home_route = 0) {
             $response->assertRedirect($url);
         }
         /*
@@ -165,7 +164,6 @@ class RegisterTest extends TestCase {
     }
 
     public function testUserCannotRegisterWithPasswordsNotMatching() {
-        
         $response = $this->from($this->registerGetRoute())->post($this->registerPostRoute(), [
             'name' => 'John Doe',
             'email' => 'john@example.com',
@@ -173,7 +171,6 @@ class RegisterTest extends TestCase {
             'password_confirmation' => 'i-love-symfony',
         ]);
 
-        
         $response->assertRedirect($this->registerGetRoute());
         /*
         $response->assertSessionHasErrors('password');
@@ -182,7 +179,5 @@ class RegisterTest extends TestCase {
         $this->assertFalse(session()->hasOldInput('password'));
         */
         $this->assertGuest();
-        
-        
     }
 }

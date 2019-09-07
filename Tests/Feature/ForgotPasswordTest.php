@@ -7,10 +7,10 @@ use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Notification;
-use Tests\TestCase;
+use Modules\LU\Models\PasswordReset;
 //-----  MODELS  -----
 use Modules\LU\Models\User;
-use Modules\LU\Models\PasswordReset;
+use Tests\TestCase;
 
 class ForgotPasswordTest extends TestCase {
     use RefreshDatabase;
@@ -57,9 +57,9 @@ class ForgotPasswordTest extends TestCase {
             'email' => 'john@example.com',
         ]);
         //$first=DB::table('password_resets')->first();
-        $first=PasswordReset::first();
+        $first = PasswordReset::first();
         $this->assertNotNull($token = $first);
-        if($notify_fix=0){
+        if ($notify_fix = 0) {
             Notification::assertSentTo($user, ResetPassword::class, function ($notification, $channels) use ($token) {
                 return true === Hash::check($notification->token, $token->token);
             });

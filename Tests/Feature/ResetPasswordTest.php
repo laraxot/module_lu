@@ -7,9 +7,9 @@ use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Support\Facades\Event;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Password;
-use Tests\TestCase;
-//-----  MODELS  -----
 use Modules\LU\Models\User;
+//-----  MODELS  -----
+use Tests\TestCase;
 
 class ResetPasswordTest extends TestCase {
     use RefreshDatabase;
@@ -43,9 +43,10 @@ class ResetPasswordTest extends TestCase {
 
     public function testUserCanViewAPasswordResetForm() {
         $user = factory(User::class)->create();
-
-        $response = $this->get($this->passwordResetGetRoute($token = $this->getValidToken($user)));
-
+        $url=$this->passwordResetGetRoute($token = $this->getValidToken($user));
+        //die($url);//it/password/reset/a2a957827e1fbc284229f4d9d6b08d07c76d283e779bb483074788e505dabf0e
+        $response = $this->get($url);
+        echo PHP_EOL.'url: '.$url.'  status: '.$response->status().PHP_EOL;
         $response->assertSuccessful();
         $response->assertViewIs('pub_theme::auth.passwords.reset');
         $response->assertViewHas('token', $token);
@@ -53,8 +54,9 @@ class ResetPasswordTest extends TestCase {
 
     public function testUserCannotViewAPasswordResetFormWhenAuthenticated() {
         $user = factory(User::class)->create();
-
-        $response = $this->actingAs($user)->get($this->passwordResetGetRoute($this->getValidToken($user)));
+        $url=$this->passwordResetGetRoute($this->getValidToken($user));
+        $response = $this->actingAs($user)->get($url);
+        echo PHP_EOL.'url: '.$url.'  status: '.$response->status().PHP_EOL;
 
         $response->assertRedirect($this->guestMiddlewareRoute());
     }
@@ -73,7 +75,7 @@ class ResetPasswordTest extends TestCase {
         $this->assertEquals($user->email, $user->fresh()->email);
         //$this->assertTrue(Hash::check('new-awesome-password', $user->fresh()->password));
         $this->assertAuthenticatedAs($user);
-        if($event_ready=0){
+        if ($event_ready = 0) {
             /*
             The expected [Illuminate\Auth\Events\PasswordReset] event was not dispatched.
             Failed asserting that false is true.

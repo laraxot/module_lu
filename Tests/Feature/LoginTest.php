@@ -12,9 +12,9 @@ namespace Modules\LU\Tests\Feature;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
-use Tests\TestCase;
-//-----  MODELS  -----
 use Modules\LU\Models\User;
+//-----  MODELS  -----
+use Tests\TestCase;
 
 class LoginTest extends TestCase {
     use RefreshDatabase;

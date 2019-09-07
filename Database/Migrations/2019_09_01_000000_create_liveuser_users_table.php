@@ -14,12 +14,16 @@ class CreateLiveuserUsersTable extends Migration {
         return with(new MyModel())->getTable();
     }
 
+    public function getConn() {
+        return Schema::connection('liveuser_general');
+    }
+
     /**
      * Run the migrations.
      */
     public function up() {
-        if (! Schema::connection('liveuser_general')->hasTable($this->getTable())) {
-            Schema::connection('liveuser_general')->create($this->getTable(), function (Blueprint $table) {
+        if (! $this->getConn()->hasTable($this->getTable())) {
+            $this->getConn()->create($this->getTable(), function (Blueprint $table) {
                 $table->increments('auth_user_id');
                 $table->string('handle', 32)->nullable()->default('')->index('handle');
                 $table->string('passwd', 32)->nullable()->default('');
@@ -49,8 +53,12 @@ class CreateLiveuserUsersTable extends Migration {
                 $table->string('updated_by')->nullable();
             });
         }
-        Schema::connection('liveuser_general')->table($this->getTable(), function (Blueprint $table) {
-            if (! Schema::connection('liveuser_general')->hasColumn($this->getTable(), 'email_verified_at')) {
+        $this->getConn()->table($this->getTable(), function (Blueprint $table) {
+            if (! $this->getConn()->hasColumn($this->getTable(), 'first_name')) {
+                $table->string('first_name')->nullable();
+            }
+            if (! $this->getConn()->hasColumn($this->getTable(), 'last_name')) {
+                $table->string('last_name')->nullable();
             }
         });
     }
@@ -61,7 +69,7 @@ class CreateLiveuserUsersTable extends Migration {
      * Reverse the migrations.
      */
     public function down() {
-        Schema::connection('liveuser_general')->drop($this->getTable());
+        $this->getConn()->drop($this->getTable());
     }
 
     //end down
