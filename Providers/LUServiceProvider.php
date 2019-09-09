@@ -25,6 +25,7 @@ class LUServiceProvider extends XotBaseServiceProvider {
         $this->commands([
             \Modules\LU\Console\CreateUserCommand::class,
             \Modules\LU\Console\CreateAreasCommand::class,
+            \Modules\LU\Console\CreateProfileCommand::class,
         ]);
     }
 }
