@@ -13,7 +13,7 @@ use Modules\LU\Models\User;
 use Tests\TestCase;
 
 class ForgotPasswordTest extends TestCase {
-    use RefreshDatabase;
+    //use RefreshDatabase;
 
     protected function passwordRequestRoute() {
         return route('password.request');

@@ -1,26 +1,19 @@
-<?php namespace Modules\LU\Bus;
+<?php
 
-use App\Bus\Bus;
-use App\Bus\IHandler;
+namespace Modules\LU\Bus;
+
 use App\Bus\ICommand;
-
-use Modules\LU\Bus\RegisterUser;
+use App\Bus\IHandler;
 use Modules\LU\Repositories\UserRepository;
 
 class RegisterUserHandler implements IHandler {
-
     private $users = null;
 
-    function __construct(UserRepository $users) {
+    public function __construct(UserRepository $users) {
         $this->users = $users;
     }
 
     public function handle(ICommand $command) {
         dd(command);
-
-
-
-
     }
 }
-

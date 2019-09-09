@@ -11,7 +11,7 @@ use Modules\LU\Models\User;
 use Tests\TestCase;
 
 class RegisterTest extends TestCase {
-    use RefreshDatabase;
+    //use RefreshDatabase;
 
     protected function successfulRegistrationRoute() {
         //return route('home');

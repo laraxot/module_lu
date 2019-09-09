@@ -2,7 +2,6 @@
 
 $namespace = '\Modules\LU'; //$this->getNamespace();
 $prefix = App::getLocale();
-//
 
 Route::group(
     [

@@ -12,7 +12,7 @@ use Modules\LU\Models\User;
 use Tests\TestCase;
 
 class ResetPasswordTest extends TestCase {
-    use RefreshDatabase;
+    //use RefreshDatabase;
 
     protected function getValidToken($user) {
         return Password::broker()->createToken($user);
@@ -43,7 +43,7 @@ class ResetPasswordTest extends TestCase {
 
     public function testUserCanViewAPasswordResetForm() {
         $user = factory(User::class)->create();
-        $url=$this->passwordResetGetRoute($token = $this->getValidToken($user));
+        $url = $this->passwordResetGetRoute($token = $this->getValidToken($user));
         //die($url);//it/password/reset/a2a957827e1fbc284229f4d9d6b08d07c76d283e779bb483074788e505dabf0e
         $response = $this->get($url);
         echo PHP_EOL.'url: '.$url.'  status: '.$response->status().PHP_EOL;
@@ -54,7 +54,7 @@ class ResetPasswordTest extends TestCase {
 
     public function testUserCannotViewAPasswordResetFormWhenAuthenticated() {
         $user = factory(User::class)->create();
-        $url=$this->passwordResetGetRoute($this->getValidToken($user));
+        $url = $this->passwordResetGetRoute($this->getValidToken($user));
         $response = $this->actingAs($user)->get($url);
         echo PHP_EOL.'url: '.$url.'  status: '.$response->status().PHP_EOL;
 

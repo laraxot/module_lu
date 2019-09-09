@@ -17,7 +17,7 @@ use Modules\LU\Models\User;
 use Tests\TestCase;
 
 class LoginTest extends TestCase {
-    use RefreshDatabase;
+    //use RefreshDatabase;
 
     protected function successfulLoginRoute() {
         //return route('home');

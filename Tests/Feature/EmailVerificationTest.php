@@ -16,7 +16,7 @@ use Modules\LU\Models\User;
 use Tests\TestCase;
 
 class EmailVerificationTest extends TestCase {
-    use RefreshDatabase;
+    //use RefreshDatabase;
 
     protected $verificationVerifyRouteName = 'verification.verify';
 
@@ -100,7 +100,7 @@ class EmailVerificationTest extends TestCase {
         $pk_val = $user->$pk + 1;
         $user2 = factory(User::class)->create([$pk => $pk_val, 'email_verified_at' => null]);
 
-        $url=$this->validVerificationVerifyRoute($pk_val);
+        $url = $this->validVerificationVerifyRoute($pk_val);
         /*
         $response = $this->actingAs($user)->get();
 
@@ -182,7 +182,7 @@ class EmailVerificationTest extends TestCase {
         if ($notify_fix = 0) {
             Notification::assertSentTo($user, VerifyEmail::class);
         }
-        $url=$this->verificationNoticeRoute();
+        $url = $this->verificationNoticeRoute();
         /*
         $response->assertRedirect($url);
         */
