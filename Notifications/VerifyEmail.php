@@ -16,7 +16,7 @@ class VerifyEmail extends Notification {
      *
      * @var \Closure|null
      */
-    public static $toMailCallback;
+    protected static $toMailCallback;
 
     /**
      * Create a new notification instance.

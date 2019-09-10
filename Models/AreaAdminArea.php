@@ -52,11 +52,6 @@ class AreaAdminArea extends Pivot {
         return $area->icon_src;
     }
 
-    /**
-     * da spostare in panel ?
-     *
-     **/
-    //-----------------------------------------------------------------------------------
     public function dashboard_widget() {
         $view = \mb_strtolower($this->area_define_name).'::admin.dashboard_widget';
         if (\View::exists($view)) {

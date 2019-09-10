@@ -13,21 +13,21 @@ class ApplicationPanel extends XotBasePanel {
      *
      * @var string
      */
-    public static $model = 'Modules\LU\Models\Application';
+    protected static $model = 'Modules\LU\Models\Application';
 
     /**
      * The single value that should be used to represent the resource when being displayed.
      *
      * @var string
      */
-    public static $title = 'title';
+    protected static $title = 'title';
 
     /**
      * The columns that should be searched.
      *
      * @var array
      */
-    public static $search = [
+    protected static $search = [
 ];
 
     /**

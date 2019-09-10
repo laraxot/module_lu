@@ -241,9 +241,11 @@ class User extends Authenticatable implements MustVerifyEmail {
         if (! is_object($profile)) {
             $profile = $this->profile()->create();
         }
+
+
+
         if ($panel = 1) {
             $url = \Modules\Xot\Services\PanelService::get($profile)->url();
-
             return $url;
         } else {
             $post = $profile->post;

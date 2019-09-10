@@ -13,21 +13,21 @@ class UserPanel extends XotBasePanel {
      *
      * @var string
      */
-    public static $model = 'Modules\LU\Models\User';
+    protected static $model = 'Modules\LU\Models\User';
 
     /**
      * The single value that should be used to represent the resource when being displayed.
      *
      * @var string
      */
-    public static $title = 'title';
+    protected static $title = 'title';
 
     /**
      * The columns that should be searched.
      *
      * @var array
      */
-    public static $search = [];
+    protected static $search = [];
 
     /**
      * Get the fields displayed by the resource.
