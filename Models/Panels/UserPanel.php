@@ -59,7 +59,8 @@ class UserPanel extends XotBasePanel {
           (object) [
              'type' => 'Password',
              'name' => 'passwd',
-             'col_bs_size' => 6,
+             'col_bs_size' => 12,
+             'except'=>['edit'],
           ],
           (object) [
              'type' => 'String',
@@ -76,25 +77,17 @@ class UserPanel extends XotBasePanel {
              'name' => 'email',
              'col_bs_size' => 6,
           ],
-          /*
-          (object) array(
-             'type' => 'String',
-             'name' => 'cognome',
-          ),
-          (object) array(
-             'type' => 'String',
-             'name' => 'nome',
-          ),
-          */
           (object) [
              'type' => 'DateTime',
              'name' => 'last_login_at',
              'col_bs_size' => 6,
+             'except'=>['edit','create'],
           ],
           (object) [
              'type' => 'String',
              'name' => 'last_login_ip',
              'col_bs_size' => 6,
+             'except'=>['edit','create'],
           ],
         ];
     }
@@ -110,11 +103,13 @@ class UserPanel extends XotBasePanel {
      */
     public function tabs() {
         $tabs_name = ['area', 'group', 'perm_user', 'right'];
-
+        return $tabs_name;
+        /*
         return RouteService::tabs([
             'tabs_name' => $tabs_name,
             'model' => self::$model,
         ]);
+        */
     }
 
     /**
