@@ -78,7 +78,7 @@ class CreateProfileCommand extends Command {
         $model = config("auth.providers.{$provider}.model");
         //$this->info($model);//Modules/LU/Models/User
         //return 1;
-        $data=[];
+        $data = [];
         /*
         $data['language'] = $this->choice('Which language do you program in?', [
             'PHP',
@@ -99,8 +99,8 @@ class CreateProfileCommand extends Command {
         $command->secret('Password'),
         */
 
-        $data['title']=$data['handle'].' profile ';
-        $data['lang']=\App::getLocale();
+        $data['title'] = $data['handle'].' profile ';
+        $data['lang'] = \App::getLocale();
 
         $validator = Validator::make($data, [
             'handle' => ['required'],
@@ -112,13 +112,14 @@ class CreateProfileCommand extends Command {
             foreach ($validator->errors()->all() as $error) {
                 $this->error($error);
             }
+
             return 1;
         }
 
         $user = with(new $model())->create($data);
         $perm = $user->perm()->create($data);
-        $profile=$user->profile()->create($data);
-        $post=$profile->post()->create($data);
+        $profile = $user->profile()->create($data);
+        $post = $profile->post()->create($data);
 
         $this->info('Success ! User Profile Created !');
     }
