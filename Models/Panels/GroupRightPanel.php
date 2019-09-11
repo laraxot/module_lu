@@ -131,10 +131,7 @@ class GroupRightPanel extends XotBasePanel {
     public function tabs() {
         $tabs_name = [];
 
-        return RouteService::tabs([
-            'tabs_name' => $tabs_name,
-            'model' => self::$model,
-        ]);
+        return [];
     }
 
     /**
