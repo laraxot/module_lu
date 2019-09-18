@@ -241,31 +241,9 @@ class User extends Authenticatable implements MustVerifyEmail {
         if (! is_object($profile)) {
             $profile = $this->profile()->create();
         }
-
-
-
-        if ($panel = 1) {
-            $url = \Modules\Xot\Services\PanelService::get($profile)->url();
-            return $url;
-        } else {
-            $post = $profile->post;
-            if (! is_object($post)) {
-                $post = $profile->post()->create();
-                $res = $post->update([
-                    'post_type' => 'profile',
-                    'title' => $this->handle,
-                    'guid' => $this->handle,
-                    'lang' => \App::getLocale(),
-                ]);
-            }
-            $parz = [
-                'container0' => 'profile',
-                'item0' => $profile,
-                'lang' => \App::getLocale(),
-            ];
-
-            return route('container0.show', $parz);
-        }
+        $url = \Modules\Xot\Services\PanelService::get($profile)->showUrl();
+        return $url;
+        
     }
 
     public function getGravatarAttribute($value) {
