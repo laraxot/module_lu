@@ -16,7 +16,7 @@
 --}}
 {{ Form::bsMultiCheckbox('rights') }}
 
-{{Form::bs3Submit('Salva ed esci')}}
+{{Form::bsSubmit('Salva ed esci')}}
 
 {!! Form::close() !!}
 
