@@ -149,4 +149,29 @@ class UserPanel extends XotBasePanel {
     public function actions() {
         return [];
     }
+
+    public function areas(){
+        $areas=$this->row->areaAdminAreas;
+        return $areas;
+    }
+
+    public function isSuperAdmin(){
+        $user=$this->row;
+        if (is_object($user->perm) && $user->perm->perm_type >= 4) {  //superadmin
+            return true;
+        }
+        return false;
+    }
+
+    public function name(){
+        return $this->row->handle;
+    }
+
+    public function avatar($size = 100) {
+        $email = \md5(\mb_strtolower(\trim($this->row->email)));
+        $default = \urlencode('https://tracker.moodle.org/secure/attachment/30912/f3.png');
+
+        return "https://www.gravatar.com/avatar/$email?d=$default&s=$size";
+    }
+
 }
