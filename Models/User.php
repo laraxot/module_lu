@@ -18,7 +18,10 @@ use Modules\LU\Notifications\VerifyEmail   as VerifyEmailNotification;
 //--------models -------
 use Modules\Xot\Traits\Updater;
 
-class User extends Authenticatable implements MustVerifyEmail {
+//---- contracts ---
+use Modules\Xot\Contracts\UserContract;
+
+class User extends Authenticatable implements MustVerifyEmail,UserContract {
     use Notifiable;
     use Updater;
     use Searchable;
