@@ -27,15 +27,14 @@ class GroupPanel extends XotBasePanel {
      *
      * @var array
      */
-    protected static $search = [
-];
+    protected static $search = [];
 
     public function optionId($row) {
         return $row->group_id;
     }
 
     public function optionLabel($row) {
-        return  $this->group_id.'] '.$this->group_define_name;
+        return  $row->group_id.'] '.$row->group_define_name;
     }
 
     public function with() {
@@ -131,5 +130,18 @@ class GroupPanel extends XotBasePanel {
      */
     public function actions() {
         return [];
+    }
+
+    public function bodyContentView($params = []) {
+        //ddd($params);
+        extract($params);
+        //$route_params = \Route::current()->parameters();
+        //list($containers,$items)=params2ContainerItem($route_params);
+        if ('index_edit' == $_layout->act) {
+            return $_layout->view_extend.'.body.multi_select';
+        } else {
+            return $_layout->view_extend.'.body_content'; //.'.index';
+        }
+        //return $_layout->view_extend.'.body.rating';
     }
 }
