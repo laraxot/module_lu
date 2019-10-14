@@ -76,7 +76,7 @@ class AreaAdminAreaPanel extends XotBasePanel {
      *
      * @return \Illuminate\Database\Eloquent\Builder
      */
-    public static function indexQuery(Request $request, $query) {
+    public static function indexQuery($data, $query) {
         //return $query->where('auth_user_id', $request->user()->auth_user_id);
         return $query;
     }
