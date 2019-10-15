@@ -122,36 +122,6 @@ class AreaPanel extends XotBasePanel {
         ];
     }
 
-    /*
-    public static function elaborateRequest(Request $request,$query){
-        if(($request->ajax() && $request->has('query')) || $request->has('debug')) {
-            $lang=\App::getLocale();
-            $q=$request->input('query');
-            $rows=$query->select('area_id as id','area_define_name as label')
-                    ->where('area_define_name','like','%'.$q.'%')
-                    ->limit(10)
-                        ->get()
-                        ->toJson();
-            //
-            //$rows=Post::select('post_id as id','title as label')
-            //            ->where('title','like','%'.$q.'%')
-            //            ->where('post_type','cuisine_cat')
-            //            ->where('lang',$lang)
-            //            ->limit(10)
-            //            ->get()
-            //            ->toJson();
-            //
-
-            die($rows);
-        }
-    }
-
-    public static function indexQuery(Request $request,$query){
-        self::elaborateRequest($request,$query);
-        return $query;
-    }
-    */
-
     public function bodyContentView($params = []) {
         //ddd($params);
         extract($params);
