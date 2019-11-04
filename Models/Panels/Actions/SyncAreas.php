@@ -38,7 +38,7 @@ class SyncAreas extends XotBasePanelAction {
         $this->rows = $rows;
     }
 
-    public function btn() {
+    public function btn($params=[]) {
         //*
         $request = \Request::capture();
         $url = $request->fullUrlWithQuery(['_act' => $this->name]);
