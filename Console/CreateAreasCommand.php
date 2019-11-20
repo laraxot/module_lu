@@ -59,7 +59,7 @@ class CreateAreasCommand extends Command {
         $modules = \Module::all();
         $superUsers = PermUser::where('perm_type', 5)->get();
         foreach ($modules as $k => $v) {
-            $area = Area::firstOrCreate(['area_define_name' => $v->name]);
+            $area = Area::firstOrCreate(['area_define_name' => $v->getName()]);
             foreach ($superUsers as $u) {
                 $u->areas()->syncWithoutDetaching($area->area_id);
             }
