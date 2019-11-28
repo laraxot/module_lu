@@ -14,10 +14,13 @@
     {{--
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     --}}
-    @php    
+    @php
+    Theme::add('lu::dist/css/app.css');
+    /*    
     Theme::add('/theme/bc/bootstrap/dist/css/bootstrap.min.css');
     Theme::add('/theme/bc/font-awesome/css/font-awesome.min.css');
     Theme::add('/theme/bc/bootstrap-social/bootstrap-social.css');
+    */
     //Theme::add('/theme/pub/css/animsition.min.css');
     //Theme::add('/theme/bc/animsition/dist/css/animsition.min.css');
     
@@ -90,6 +93,12 @@
     </div>
 
     <!-- Scripts -->
+    {{--  
     <script src="{{ asset('js/app.js') }}"></script>
+    --}}
+    @php
+    Theme::add('lu::dist/js/app.js');
+    @endphp
+    {!! Theme::showScripts(false) !!}
 </body>
 </html>
