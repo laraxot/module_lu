@@ -16,12 +16,11 @@ use Modules\Blog\Models\Post;
 use Modules\LU\Notifications\ResetPassword as ResetPasswordNotification;
 use Modules\LU\Notifications\VerifyEmail   as VerifyEmailNotification;
 //--------models -------
+use Modules\Xot\Contracts\UserContract;
+//---- contracts ---
 use Modules\Xot\Traits\Updater;
 
-//---- contracts ---
-use Modules\Xot\Contracts\UserContract;
-
-class User extends Authenticatable implements MustVerifyEmail,UserContract {
+class User extends Authenticatable implements MustVerifyEmail, UserContract {
     use Notifiable;
     use Updater;
     use Searchable;
@@ -245,8 +244,8 @@ class User extends Authenticatable implements MustVerifyEmail,UserContract {
             $profile = $this->profile()->create();
         }
         $url = \Modules\Xot\Services\PanelService::get($profile)->showUrl();
+
         return $url;
-        
     }
 
     public function getGravatarAttribute($value) {

@@ -5,7 +5,6 @@ namespace Modules\LU\Models\Panels;
 use Illuminate\Http\Request;
 //--- Services --
 use Modules\Xot\Models\Panels\XotBasePanel;
-use Modules\Xot\Services\RouteService;
 
 class UserPanel extends XotBasePanel {
     /**
@@ -60,7 +59,7 @@ class UserPanel extends XotBasePanel {
              'type' => 'Password',
              'name' => 'passwd',
              'col_bs_size' => 12,
-             'except'=>['edit'],
+             'except' => ['edit'],
           ],
           (object) [
              'type' => 'String',
@@ -81,13 +80,13 @@ class UserPanel extends XotBasePanel {
              'type' => 'DateTime',
              'name' => 'last_login_at',
              'col_bs_size' => 6,
-             'except'=>['edit','create'],
+             'except' => ['edit', 'create'],
           ],
           (object) [
              'type' => 'String',
              'name' => 'last_login_ip',
              'col_bs_size' => 6,
-             'except'=>['edit','create'],
+             'except' => ['edit', 'create'],
           ],
         ];
     }
@@ -103,6 +102,7 @@ class UserPanel extends XotBasePanel {
      */
     public function tabs() {
         $tabs_name = ['area', 'group', 'perm_user', 'right'];
+
         return $tabs_name;
     }
 
@@ -150,20 +150,22 @@ class UserPanel extends XotBasePanel {
         return [];
     }
 
-    public function areas(){
-        $areas=$this->row->areaAdminAreas;
+    public function areas() {
+        $areas = $this->row->areaAdminAreas;
+
         return $areas;
     }
 
-    public function isSuperAdmin(){
-        $user=$this->row;
+    public function isSuperAdmin() {
+        $user = $this->row;
         if (is_object($user->perm) && $user->perm->perm_type >= 4) {  //superadmin
             return true;
         }
+
         return false;
     }
 
-    public function name(){
+    public function name() {
         return $this->row->handle;
     }
 
@@ -173,5 +175,4 @@ class UserPanel extends XotBasePanel {
 
         return "https://www.gravatar.com/avatar/$email?d=$default&s=$size";
     }
-
 }

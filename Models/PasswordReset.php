@@ -1,4 +1,5 @@
 <?php
+
 namespace Modules\LU\Models;
 
 use Illuminate\Database\Eloquent\Model;

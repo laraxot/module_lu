@@ -24,10 +24,10 @@ Route::group(
     ],
     function () {
         //--------- SOCIALITE ----------------
-        Route::get('login/{provider}',          ['as' => 'login.provider',          'uses' => 'LoginController@redirectToProvider']);
+        Route::get('login/{provider}', ['as' => 'login.provider',          'uses' => 'LoginController@redirectToProvider']);
         Route::get('login/{provider}/callback', ['as' => 'login.provider.callback', 'uses' => 'LoginController@handleProviderCallback']);
         //--------- per continuare o fai login o registrati ----------
-        Route::get('login-notice',              ['as' => 'login.notice',            'uses' => 'NoticeController']);
+        Route::get('login-notice', ['as' => 'login.notice',            'uses' => 'NoticeController']);
     }
 );
 
