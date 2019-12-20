@@ -32,19 +32,22 @@ class LoginController extends Controller {
      *
      * @var string
      */
-    protected $redirectTo = '/'; // /home
+    protected $redirectTo = '/';
+
+    // /home
     //*
-    public function redirectTo(){
-        if(\Request::has('referer')){
+    public function redirectTo() {
+        if (\Request::has('referer')) {
             return Request::input('referer');
         }
-        if(url()->previous() != url()->current()){
+        if (url()->previous() != url()->current()) {
             return url()->previous();
         }
+
         return '/';
     }
-    //*/
 
+    //*/
 
     /**
      * Create a new controller instance.
