@@ -105,8 +105,13 @@ class User extends Authenticatable implements MustVerifyEmail, UserContract {
         if ('' == $profile_class) {
             ddd('modifica config xra.php  aggiungi in model il profile');
         }
+        $res = $this->hasOne(''.$profile_class, 'auth_user_id', 'auth_user_id');
+        if ($res->exists()) {
+            return $res;
+        }
+        $res = $profile_class::firstOrCreate(['auth_user_id' => $this->auth_user_id]);
 
-        return $this->hasOne(''.$profile_class, 'auth_user_id', 'auth_user_id');
+        return $this->profile();
     }
 
     public function perm_user_id() { //shortcut
