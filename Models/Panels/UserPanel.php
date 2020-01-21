@@ -6,7 +6,8 @@ use Illuminate\Http\Request;
 //--- Services --
 use Modules\Xot\Models\Panels\XotBasePanel;
 
-class UserPanel extends XotBasePanel {
+class UserPanel extends XotBasePanel
+{
     /**
      * The model the resource corresponds to.
      *
@@ -35,26 +36,18 @@ class UserPanel extends XotBasePanel {
      *
      * @return array
      */
-    public static function fields() {
+    public static function fields()
+    {
         return [
         (object) [
              'type' => 'Id',
              'name' => 'auth_user_id',
           ],
-           /*
-          (object) array(
-             'type' => 'Integer',
-             'name' => 'ente',
-          ),
-          (object) array(
-             'type' => 'Integer',
-             'name' => 'matr',
-          ),
-          */
           (object) [
              'type' => 'String',
              'name' => 'handle',
           ],
+          //*
           (object) [
              'type' => 'Password',
              'name' => 'passwd',
@@ -88,10 +81,12 @@ class UserPanel extends XotBasePanel {
              'col_bs_size' => 6,
              'except' => ['edit', 'create'],
           ],
+          //*/
         ];
     }
 
-    public function with() {
+    public function with()
+    {
         return [];
     }
 
@@ -100,7 +95,8 @@ class UserPanel extends XotBasePanel {
      *
      * @return array
      */
-    public function tabs() {
+    public function tabs()
+    {
         $tabs_name = ['area', 'group', 'perm_user', 'right'];
 
         return $tabs_name;
@@ -113,7 +109,8 @@ class UserPanel extends XotBasePanel {
      *
      * @return array
      */
-    public function cards(Request $request) {
+    public function cards(Request $request)
+    {
         return [];
     }
 
@@ -124,7 +121,8 @@ class UserPanel extends XotBasePanel {
      *
      * @return array
      */
-    public function filters(Request $request = null) {
+    public function filters(Request $request = null)
+    {
         return [];
     }
 
@@ -135,7 +133,8 @@ class UserPanel extends XotBasePanel {
      *
      * @return array
      */
-    public function lenses(Request $request) {
+    public function lenses(Request $request)
+    {
         return [];
     }
 
@@ -146,17 +145,20 @@ class UserPanel extends XotBasePanel {
      *
      * @return array
      */
-    public function actions() {
+    public function actions()
+    {
         return [];
     }
 
-    public function areas() {
+    public function areas()
+    {
         $areas = $this->row->areaAdminAreas;
 
         return $areas;
     }
 
-    public function isSuperAdmin() {
+    public function isSuperAdmin()
+    {
         $user = $this->row;
         if (is_object($user->perm) && $user->perm->perm_type >= 4) {  //superadmin
             return true;
@@ -165,11 +167,13 @@ class UserPanel extends XotBasePanel {
         return false;
     }
 
-    public function name() {
+    public function name()
+    {
         return $this->row->handle;
     }
 
-    public function avatar($size = 100) {
+    public function avatar($size = 100)
+    {
         $email = \md5(\mb_strtolower(\trim($this->row->email)));
         $default = \urlencode('https://tracker.moodle.org/secure/attachment/30912/f3.png');
 
