@@ -4,10 +4,11 @@ namespace Modules\LU\Models;
 
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Illuminate\Support\Str;
 
 //--- Notifications --
 use Modules\LU\Notifications\ResetPassword as ResetPasswordNotification;
-use Modules\LU\Notifications\VerifyEmail   as VerifyEmailNotification;
+use Modules\LU\Notifications\VerifyEmail as VerifyEmailNotification;
 
 //--- contracts ----
 use Modules\Xot\Contracts\UserContract;
@@ -19,19 +20,19 @@ class User extends Authenticatable implements UserContract
 {
     use Notifiable;
     use Updater;
-    
+
     protected $connection = 'liveuser_general'; // this will use the specified database conneciton
-    protected $table = 'liveuser_users';
+    protected $table      = 'liveuser_users';
     protected $primaryKey = 'auth_user_id';
-    protected $fillable = [
-        'auth_user_id','ente', 'matr', 'handle', 'passwd', 'email',
+    protected $fillable   = [
+        'auth_user_id', 'ente', 'matr', 'handle', 'passwd', 'email',
         'last_name', 'first_name',
         'last_login_at', 'last_login_ip',
     ];
-    protected $hidden = ['password', 'remember_token',];
-    protected $dates = ['last_login_at', 'created_at', 'updated_at', 'deleted_at',];
+    protected $hidden = ['password', 'remember_token'];
+    protected $dates  = ['last_login_at', 'created_at', 'updated_at', 'deleted_at'];
 
-    protected $casts = ['email_verified_at' => 'datetime',];
+    protected $casts   = ['email_verified_at' => 'datetime'];
     public $timestamps = true;
 
     //----------- relationships ---------------
@@ -51,11 +52,19 @@ class User extends Authenticatable implements UserContract
         if ('' == $profile_class) {
             ddd('modifica config xra.php  aggiungi in model il profile');
         }
-        $res = $this->hasOne(''.$profile_class, 'auth_user_id', 'auth_user_id');
+        $res = $this->hasOne('' . $profile_class, 'auth_user_id', 'auth_user_id');
         if ($res->exists()) {
             return $res;
         }
         $res = $profile_class::firstOrCreate(['auth_user_id' => $this->auth_user_id]);
+        $res->post()->create(
+            [
+                'auth_user_id' => $this->auth_user_id,
+                'title'        => $this->guid,
+                'guid'         => $this->guid,
+                'lang'         => \App::getLocale(),
+            ]
+        );
 
         return $this->profile();
     }
@@ -75,7 +84,7 @@ class User extends Authenticatable implements UserContract
         )->whereHas('area', function ($q) use ($modules) {
             $q->whereIn('area_define_name', $modules);
         })
-        ->with('area')
+            ->with('area')
         ;
 
         return $rows;
@@ -106,6 +115,11 @@ class User extends Authenticatable implements UserContract
         if (\mb_strlen($value) < 30) {
             $this->attributes['passwd'] = \md5($value);
         }
+    }
+
+    public function getGuidAttribute($value)
+    {
+        return Str::slug($this->handle);
     }
 
     //------------- notification ------------------
