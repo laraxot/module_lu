@@ -8,15 +8,15 @@ $acts = [
 ]; //end acts
 
 $cont_acts = [
-                [
-                    'name' => 'Edit',
-                    'act' => 'indexEdit',
-                ], //end act_n
-                [
-                    'name' => 'Order',
-                    'act' => 'indexOrder',
-                ], //end act_n
-            ];
+    [
+        'name' => 'Edit',
+        'act' => 'indexEdit',
+    ], //end act_n
+    [
+        'name' => 'Order',
+        'act' => 'indexOrder',
+    ], //end act_n
+];
 
 $item2 = [     //questo per avere /it/restaurant/ristotest/photo/edit
     'name' => '{container0}',

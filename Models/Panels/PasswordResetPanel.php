@@ -27,7 +27,7 @@ class PasswordResetPanel extends XotBasePanel {
      * @var array
      */
     protected static $search = [
-];
+    ];
 
     /**
      * Get the fields displayed by the resource.
@@ -58,8 +58,6 @@ class PasswordResetPanel extends XotBasePanel {
     /**
      * Get the cards available for the request.
      *
-     * @param \Illuminate\Http\Request $request
-     *
      * @return array
      */
     public function cards(Request $request) {
@@ -79,8 +77,6 @@ class PasswordResetPanel extends XotBasePanel {
 
     /**
      * Get the lenses available for the resource.
-     *
-     * @param \Illuminate\Http\Request $request
      *
      * @return array
      */

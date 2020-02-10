@@ -27,7 +27,7 @@ class RightPanel extends XotBasePanel {
      * @var array
      */
     protected static $search = [
-];
+    ];
 
     /**
      * The relationships that should be eager loaded on index queries.
@@ -90,7 +90,6 @@ class RightPanel extends XotBasePanel {
      *
      * This query determines which instances of the model may be attached to other resources.
      *
-     * @param Request                               $request
      * @param \Illuminate\Database\Eloquent\Builder $query
      *
      * @return \Illuminate\Database\Eloquent\Builder
@@ -102,37 +101,37 @@ class RightPanel extends XotBasePanel {
 
     public function fields() {
         return [
-  0 => (object) ([
-     'type' => 'Integer',
-     'name' => 'right_id',
-     'rules' => 'required',
-     'comment' => null,
-  ]),
-  1 => (object) ([
-     'type' => 'Integer',
-     'name' => 'area_id',
-     'rules' => 'required',
-     'comment' => null,
-  ]),
-  2 => (object) ([
-     'type' => 'String',
-     'name' => 'right_define_name',
-     'rules' => 'required',
-     'comment' => null,
-  ]),
-  3 => (object) ([
-     'type' => 'String',
-     'name' => 'has_implied',
-     'rules' => 'required',
-     'comment' => null,
-  ]),
-  4 => (object) ([
-     'type' => 'String',
-     'name' => 'has_level',
-     'rules' => 'required',
-     'comment' => null,
-  ]),
-];
+            0 => (object) ([
+                'type' => 'Integer',
+                'name' => 'right_id',
+                'rules' => 'required',
+                'comment' => null,
+            ]),
+            1 => (object) ([
+                'type' => 'Integer',
+                'name' => 'area_id',
+                'rules' => 'required',
+                'comment' => null,
+            ]),
+            2 => (object) ([
+                'type' => 'String',
+                'name' => 'right_define_name',
+                'rules' => 'required',
+                'comment' => null,
+            ]),
+            3 => (object) ([
+                'type' => 'String',
+                'name' => 'has_implied',
+                'rules' => 'required',
+                'comment' => null,
+            ]),
+            4 => (object) ([
+                'type' => 'String',
+                'name' => 'has_level',
+                'rules' => 'required',
+                'comment' => null,
+            ]),
+        ];
     }
 
     /**
@@ -148,8 +147,6 @@ class RightPanel extends XotBasePanel {
 
     /**
      * Get the cards available for the request.
-     *
-     * @param \Illuminate\Http\Request $request
      *
      * @return array
      */
@@ -170,8 +167,6 @@ class RightPanel extends XotBasePanel {
 
     /**
      * Get the lenses available for the resource.
-     *
-     * @param \Illuminate\Http\Request $request
      *
      * @return array
      */

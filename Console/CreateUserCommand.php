@@ -109,9 +109,9 @@ class CreateUserCommand extends Command {
 
         $user = with(new $model())->create(
             [
-            'handle' => $handle,
-            'email' => $email,
-            'passwd' => $password, //lo facciamo con il setattribute
+                'handle' => $handle,
+                'email' => $email,
+                'passwd' => $password, //lo facciamo con il setattribute
             ]
         );
         $perm = $user->perm()->create(['perm_type' => $level]);
@@ -126,8 +126,8 @@ class CreateUserCommand extends Command {
      */
     protected function getArguments() {
         return [
-          //  ['name', InputArgument::REQUIRED, 'nickname of user'],
-          //  ['level', InputArgument::REQUIRED, 'level of user'],
+            //  ['name', InputArgument::REQUIRED, 'nickname of user'],
+            //  ['level', InputArgument::REQUIRED, 'level of user'],
         ];
     }
 

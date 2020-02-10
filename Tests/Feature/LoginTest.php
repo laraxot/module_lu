@@ -82,24 +82,24 @@ class LoginTest extends TestCase {
         if ($remember_me = 0) {
             $pk = \App::make(User::class)->getKeyName();
             $user = factory(User::class)->create([
-            $pk => random_int(1, 100),
-            'password' => Hash::make($password = 'i-love-laravel'),
-        ]);
+                $pk => random_int(1, 100),
+                'password' => Hash::make($password = 'i-love-laravel'),
+            ]);
 
             $response = $this->post($this->loginPostRoute(), [
-            'email' => $user->email,
-            'password' => $password,
-            'remember' => 'on',
-        ]);
+                'email' => $user->email,
+                'password' => $password,
+                'remember' => 'on',
+            ]);
 
             $user = $user->fresh();
 
             $response->assertRedirect($this->successfulLoginRoute());
             $response->assertCookie(Auth::guard()->getRecallerName(), vsprintf('%s|%s|%s', [
-            $user->id,
-            $user->getRememberToken(),
-            $user->password,
-        ]));
+                $user->id,
+                $user->getRememberToken(),
+                $user->password,
+            ]));
             $this->assertAuthenticatedAs($user);
         }
         $this->assertTrue(true);

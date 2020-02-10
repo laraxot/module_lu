@@ -6,8 +6,7 @@ use Illuminate\Http\Request;
 //--- Services --
 use Modules\Xot\Models\Panels\XotBasePanel;
 
-class UserPanel extends XotBasePanel
-{
+class UserPanel extends XotBasePanel {
     /**
      * The model the resource corresponds to.
      *
@@ -36,57 +35,74 @@ class UserPanel extends XotBasePanel
      *
      * @return array
      */
-    public function fields()
-    {
+    public function fields() {
         return [
-        (object) [
-             'type' => 'Id',
-             'name' => 'auth_user_id',
-          ],
-          (object) [
-             'type' => 'String',
-             'name' => 'handle',
-          ],
-          //*
-          (object) [
-             'type' => 'Password',
-             'name' => 'passwd',
-             'col_bs_size' => 12,
-             'except' => ['edit'],
-          ],
-          (object) [
-             'type' => 'String',
-             'name' => 'last_name',
-             'col_bs_size' => 6,
-          ],
-          (object) [
-             'type' => 'String',
-             'name' => 'first_name',
-             'col_bs_size' => 6,
-          ],
-          (object) [
-             'type' => 'String',
-             'name' => 'email',
-             'col_bs_size' => 6,
-          ],
-          (object) [
-             'type' => 'DateTime',
-             'name' => 'last_login_at',
-             'col_bs_size' => 6,
-             'except' => ['edit', 'create'],
-          ],
-          (object) [
-             'type' => 'String',
-             'name' => 'last_login_ip',
-             'col_bs_size' => 6,
-             'except' => ['edit', 'create'],
-          ],
-          //*/
+            (object) [
+                'type' => 'Id',
+                'name' => 'auth_user_id',
+            ],
+            (object) [
+                'type' => 'String',
+                'name' => 'handle',
+            ],
+            //*
+            (object) [
+                'type' => 'Password',
+                'name' => 'passwd',
+                'col_bs_size' => 12,
+                'except' => ['edit'],
+            ],
+            (object) [
+                'type' => 'String',
+                'name' => 'last_name',
+                'col_bs_size' => 6,
+            ],
+            (object) [
+                'type' => 'String',
+                'name' => 'first_name',
+                'col_bs_size' => 6,
+            ],
+            (object) [
+                'type' => 'String',
+                'name' => 'email',
+                'col_bs_size' => 12,
+            ],
+            (object) [
+                'type' => 'DateTime',
+                'name' => 'last_login_at',
+                'col_bs_size' => 6,
+                'except' => ['edit', 'create'],
+            ],
+            (object) [
+                'type' => 'String',
+                'name' => 'last_login_ip',
+                'col_bs_size' => 6,
+                'except' => ['edit', 'create'],
+            ],
+            (object) [
+                'type' => 'MultiCheckbox',
+                'name' => 'areas',
+                'col_bs_size' =>6,
+
+            ],
+            (object) [
+                'type' => 'MultiCheckbox',
+                'name' => 'groups',
+                'col_bs_size' => 6,
+            ],
+            (object) [
+                'type' => 'MultiCheckbox',
+                'name' => 'rights',
+                'col_bs_size' => 6,
+            ],
+
+
+
+            //*/
         ];
     }
 
-    public function with()
-    {
+    public function with() {
         return [];
     }
 
@@ -95,9 +111,8 @@ class UserPanel extends XotBasePanel
      *
      * @return array
      */
-    public function tabs()
-    {
-        $tabs_name = ['area', 'group', 'perm_user', 'right'];
+    public function tabs() {
+        $tabs_name = ['area', 'group', 'perm', 'right'];
 
         return $tabs_name;
     }
@@ -105,12 +120,9 @@ class UserPanel extends XotBasePanel
     /**
      * Get the cards available for the request.
      *
-     * @param \Illuminate\Http\Request $request
-     *
      * @return array
      */
-    public function cards(Request $request)
-    {
+    public function cards(Request $request) {
         return [];
     }
 
@@ -121,20 +133,16 @@ class UserPanel extends XotBasePanel
      *
      * @return array
      */
-    public function filters(Request $request = null)
-    {
+    public function filters(Request $request = null) {
         return [];
     }
 
     /**
      * Get the lenses available for the resource.
      *
-     * @param \Illuminate\Http\Request $request
-     *
      * @return array
      */
-    public function lenses(Request $request)
-    {
+    public function lenses(Request $request) {
         return [];
     }
 
@@ -145,20 +153,17 @@ class UserPanel extends XotBasePanel
      *
      * @return array
      */
-    public function actions()
-    {
+    public function actions() {
         return [];
     }
 
-    public function areas()
-    {
+    public function areas() {
         $areas = $this->row->areaAdminAreas;
 
         return $areas;
     }
 
-    public function isSuperAdmin()
-    {
+    public function isSuperAdmin() {
         $user = $this->row;
         if (is_object($user->perm) && $user->perm->perm_type >= 4) {  //superadmin
             return true;
@@ -167,13 +172,11 @@ class UserPanel extends XotBasePanel
         return false;
     }
 
-    public function name()
-    {
+    public function name() {
         return $this->row->handle;
     }
 
-    public function avatar($size = 100)
-    {
+    public function avatar($size = 100) {
         $email = \md5(\mb_strtolower(\trim($this->row->email)));
         $default = \urlencode('https://tracker.moodle.org/secure/attachment/30912/f3.png');
 

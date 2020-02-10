@@ -12,8 +12,7 @@ use Modules\LU\Models\SocialProvider;
 use Modules\LU\Models\User;
 use Socialite;
 
-class LoginController extends Controller
-{
+class LoginController extends Controller {
     /*
     |--------------------------------------------------------------------------
     | Login Controller
@@ -36,8 +35,7 @@ class LoginController extends Controller
 
     // /home
     //*
-    public function redirectTo()
-    {
+    public function redirectTo() {
         if (\Request::has('referer')) {
             return Request::input('referer');
         }
@@ -53,24 +51,20 @@ class LoginController extends Controller
     /**
      * Create a new controller instance.
      */
-    public function __construct()
-    {
+    public function __construct() {
         $this->middleware('guest', ['except' => 'logout']);
     }
 
-    public function username()
-    {
+    public function username() {
         return 'handle';
     }
 
     //--------------------
-    public function password()
-    {
+    public function password() {
         return 'passwd';
     }
 
-    public function showLoginForm(Request $request)
-    {
+    public function showLoginForm(Request $request) {
         /* --- il segnmento 1
         $locale = \Request::segment(1);
         if (in_array($locale, ['it','en','de','fr'])) {
@@ -79,8 +73,8 @@ class LoginController extends Controller
          */
 
         $params = \Route::current()->parameters();
-        $locz   = ['pub_theme', 'adm_theme', 'lu'];
-        $tpl    = 'auth.login';
+        $locz = ['pub_theme', 'adm_theme', 'lu'];
+        $tpl = 'auth.login';
         if ($request->ajax()) {
             $tpl = 'auth.ajax_login';
         } /*
@@ -99,7 +93,7 @@ class LoginController extends Controller
         }
          */
         foreach ($locz as $loc) {
-            $view = $loc . '::' . $tpl;
+            $view = $loc.'::'.$tpl;
             if (\View::exists($view)) {
                 \View::composer('*', function ($view1) use ($view) {
                     \View::share('view', $view);
@@ -115,21 +109,20 @@ class LoginController extends Controller
             }
         }
 
-        return '<h3>Non esiste la view [' . $view . ']</h3>[' . __LINE__ . '][' . __FILE__ . ']';
+        return '<h3>Non esiste la view ['.$view.']</h3>['.__LINE__.']['.__FILE__.']';
     }
 
-    public function login(Request $request)
-    {
+    public function login(Request $request) {
         if ($this->hasTooManyLoginAttempts($request)) {
             $this->fireLockoutEvent($request);
 
             return $this->sendLockoutResponse($request);
         }
 
-        $data           = $request->all();
+        $data = $request->all();
         $username_field = $this->username();
         if (isset($data['ente']) && isset($data['matr'])) {
-            $data['username'] = $data['ente'] . '-' . $data['matr'];
+            $data['username'] = $data['ente'].'-'.$data['matr'];
         }
 
         if (isset($data['username'])) {
@@ -181,7 +174,7 @@ class LoginController extends Controller
             if ($request->ajax()) {
                 return response()->json(
                     [
-                        'error'  => 'user o pwd errati',
+                        'error' => 'user o pwd errati',
                         'errors' => ['password' => 'user o pwd errati'],
                     ],
                     500
@@ -192,14 +185,13 @@ class LoginController extends Controller
                 ->withError('Qualcosa di errato !')
                 ->withInput($request->all())
                 ->withErrors([
-                    'email'    => 'user o password sbagliati',
+                    'email' => 'user o password sbagliati',
                     'password' => 'user o password sbagliati',
                 ]);
         }
     }
 
-    protected function authenticated($request, $user)
-    {
+    protected function authenticated($request, $user) {
         $user->update([
             'last_login_at' => Carbon::now()->toDateTimeString(),
             'last_login_ip' => $request->getClientIp(),
@@ -220,8 +212,7 @@ class LoginController extends Controller
     alla richiesta ajax di login, perchè di default laravel non
     ritorna dati alle chiamate ajax
      */
-    protected function sendFailedLoginResponse(Request $request)
-    {
+    protected function sendFailedLoginResponse(Request $request) {
         if ($request->ajax()) {
             return response()->json([
                 'error' => 'auth.failed',
@@ -242,8 +233,7 @@ class LoginController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function redirectToProvider($provider)
-    {
+    public function redirectToProvider($provider) {
         if ('facebook' != $provider) {
             return Socialite::driver($provider)->redirect();
         } else {
@@ -265,8 +255,7 @@ class LoginController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function handleProviderCallback($provider)
-    {
+    public function handleProviderCallback($provider) {
         try {
             $socialUser = Socialite::driver($provider)->user();
         } catch (\Exception $e) {
@@ -275,11 +264,11 @@ class LoginController extends Controller
         //dd($socialUser);
         //getAvatar
         $socialProvider = SocialProvider::where('provider_id', $socialUser->getId())->where('provider', $provider)->first();
-        if (!$socialProvider) {
+        if (! $socialProvider) {
             $user = User::firstOrCreate(['email' => $socialUser->getEmail()], ['nome' => $socialUser->getName(), 'handle' => $socialUser->getNickname()]);
             $user->socialProviders()->create(['provider_id' => $socialUser->getId(), 'provider' => $provider, 'token' => $socialUser->token]);
         } else {
-            $user                  = $socialProvider->user;
+            $user = $socialProvider->user;
             $socialProvider->token = $socialUser->token;
             $socialProvider->save();
         }
@@ -292,14 +281,13 @@ class LoginController extends Controller
         // $user->token;
     }
 
-    public function authorization(Request $request)
-    {
-        $domain_url = (isset($_SERVER['HTTPS']) ? 'https' : 'http') . "://$_SERVER[HTTP_HOST]";
+    public function authorization(Request $request) {
+        $domain_url = (isset($_SERVER['HTTPS']) ? 'https' : 'http')."://$_SERVER[HTTP_HOST]";
         \header('Content-type: application/json');
         \header('Access-Control-Allow-Credentials: true');
-        \header('Access-Control-Allow-Origin: ' . \str_replace('.', '-', 'https://example.com') . '.cdn.ampproject.org');
+        \header('Access-Control-Allow-Origin: '.\str_replace('.', '-', 'https://example.com').'.cdn.ampproject.org');
 
-        \header('AMP-Access-Control-Allow-Source-Origin: ' . $domain_url);
+        \header('AMP-Access-Control-Allow-Source-Origin: '.$domain_url);
         \header('Access-Control-Expose-Headers: AMP-Access-Control-Allow-Source-Origin');
         //header("AMP-Redirect-To: https://example.com/thankyou.amp.html");
         \header('Access-Control-Expose-Headers: AMP-Redirect-To, AMP-Access-Control-Allow-Source-Origin');
@@ -325,18 +313,18 @@ class LoginController extends Controller
         return response()->json($ris);
         //https://searchwilderness.com/amp-forms/#gref
          */
-        $domain_url = (isset($_SERVER['HTTPS']) ? 'https' : 'http') . "://$_SERVER[HTTP_HOST]";
+        $domain_url = (isset($_SERVER['HTTPS']) ? 'https' : 'http')."://$_SERVER[HTTP_HOST]";
         \header('Content-type: application/json');
         \header('Access-Control-Allow-Credentials: true');
         \header('Access-Control-Allow-Headers:Content-Type, Content-Length, Accept-Encoding, X-CSRF-Token');
         //https://ampbyexample.com/playground/#url=https%3A%2F%2Fampbyexample.com%2Fcomponents%2Famp-form%2Fsource%2F
         //header("Access-Control-Allow-Origin: ". str_replace('.', '-','https://example.com') .".cdn.ampproject.org");
-        \header('Access-Control-Allow-Origin: ' . $_SERVER['HTTP_ORIGIN']);
-        \header('AMP-Access-Control-Allow-Source-Origin: ' . $domain_url);
+        \header('Access-Control-Allow-Origin: '.$_SERVER['HTTP_ORIGIN']);
+        \header('AMP-Access-Control-Allow-Source-Origin: '.$domain_url);
         \header('Access-Control-Expose-Headers: AMP-Access-Control-Allow-Source-Origin');
         \header('AMP-Redirect-To: https://example.com/thankyou.amp.html');
         \header('Access-Control-Expose-Headers: AMP-Redirect-To, AMP-Access-Control-Allow-Source-Origin');
-        $ris         = ['loggedIn' => true];
+        $ris = ['loggedIn' => true];
         $ris['user'] = 'Marco';
         echo \json_encode($ris);
         exit;

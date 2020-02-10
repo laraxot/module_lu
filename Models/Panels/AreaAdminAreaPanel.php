@@ -85,7 +85,6 @@ class AreaAdminAreaPanel extends XotBasePanel {
      *
      * This query determines which instances of the model may be attached to other resources.
      *
-     * @param Request                               $request
      * @param \Illuminate\Database\Eloquent\Builder $query
      *
      * @return \Illuminate\Database\Eloquent\Builder
@@ -98,18 +97,18 @@ class AreaAdminAreaPanel extends XotBasePanel {
     public function fields() {
         return [
             (object) [
-             'type' => 'Id',
-             'name' => 'id',
+                'type' => 'Id',
+                'name' => 'id',
             ],
             (object) [
-            // 'type' => 'Integer',
+                // 'type' => 'Integer',
                 'type' => 'SelectTypeahead',
-                 'name' => 'area_id',
-                 'attributes' => ['data-url' => url('/admin/lu/it/area?q=%QUERY%&format=typeahead')],
+                'name' => 'area_id',
+                'attributes' => ['data-url' => url('/admin/lu/it/area?q=%QUERY%&format=typeahead')],
             ],
             (object) [
-             'type' => 'Integer',
-             'name' => 'perm_user_id',
+                'type' => 'Integer',
+                'name' => 'perm_user_id',
             ],
         ];
     }
@@ -127,8 +126,6 @@ class AreaAdminAreaPanel extends XotBasePanel {
 
     /**
      * Get the cards available for the request.
-     *
-     * @param \Illuminate\Http\Request $request
      *
      * @return array
      */
@@ -149,8 +146,6 @@ class AreaAdminAreaPanel extends XotBasePanel {
 
     /**
      * Get the lenses available for the resource.
-     *
-     * @param \Illuminate\Http\Request $request
      *
      * @return array
      */

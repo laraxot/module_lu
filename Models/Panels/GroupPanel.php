@@ -49,31 +49,31 @@ class GroupPanel extends XotBasePanel {
      */
     public function fields() {
         return [
-  0 => (object) [
-     'type' => 'Integer',
-     'name' => 'group_id',
-  ],
-  1 => (object) [
-     'type' => 'Integer',
-     'name' => 'group_type',
-  ],
-  2 => (object) [
-     'type' => 'String',
-     'name' => 'group_define_name',
-  ],
-  3 => (object) [
-     'type' => 'Integer',
-     'name' => 'owner_user_id',
-  ],
-  4 => (object) [
-     'type' => 'Integer',
-     'name' => 'owner_group_id',
-  ],
-  5 => (object) [
-     'type' => 'String',
-     'name' => 'is_active',
-  ],
-];
+            0 => (object) [
+                'type' => 'Integer',
+                'name' => 'group_id',
+            ],
+            1 => (object) [
+                'type' => 'Integer',
+                'name' => 'group_type',
+            ],
+            2 => (object) [
+                'type' => 'String',
+                'name' => 'group_define_name',
+            ],
+            3 => (object) [
+                'type' => 'Integer',
+                'name' => 'owner_user_id',
+            ],
+            4 => (object) [
+                'type' => 'Integer',
+                'name' => 'owner_group_id',
+            ],
+            5 => (object) [
+                'type' => 'String',
+                'name' => 'is_active',
+            ],
+        ];
     }
 
     /**
@@ -89,8 +89,6 @@ class GroupPanel extends XotBasePanel {
 
     /**
      * Get the cards available for the request.
-     *
-     * @param \Illuminate\Http\Request $request
      *
      * @return array
      */
@@ -111,8 +109,6 @@ class GroupPanel extends XotBasePanel {
 
     /**
      * Get the lenses available for the resource.
-     *
-     * @param \Illuminate\Http\Request $request
      *
      * @return array
      */

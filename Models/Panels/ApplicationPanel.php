@@ -27,7 +27,7 @@ class ApplicationPanel extends XotBasePanel {
      * @var array
      */
     protected static $search = [
-];
+    ];
 
     /**
      * The relationships that should be eager loaded on index queries.
@@ -90,7 +90,6 @@ class ApplicationPanel extends XotBasePanel {
      *
      * This query determines which instances of the model may be attached to other resources.
      *
-     * @param Request                               $request
      * @param \Illuminate\Database\Eloquent\Builder $query
      *
      * @return \Illuminate\Database\Eloquent\Builder
@@ -102,19 +101,19 @@ class ApplicationPanel extends XotBasePanel {
 
     public function fields() {
         return [
-  0 => (object) ([
-     'type' => 'Integer',
-     'name' => 'application_id',
-     'rules' => 'required',
-     'comment' => null,
-  ]),
-  1 => (object) ([
-     'type' => 'String',
-     'name' => 'application_define_name',
-     'rules' => 'required',
-     'comment' => null,
-  ]),
-];
+            0 => (object) ([
+                'type' => 'Integer',
+                'name' => 'application_id',
+                'rules' => 'required',
+                'comment' => null,
+            ]),
+            1 => (object) ([
+                'type' => 'String',
+                'name' => 'application_define_name',
+                'rules' => 'required',
+                'comment' => null,
+            ]),
+        ];
     }
 
     /**
@@ -130,8 +129,6 @@ class ApplicationPanel extends XotBasePanel {
 
     /**
      * Get the cards available for the request.
-     *
-     * @param \Illuminate\Http\Request $request
      *
      * @return array
      */
@@ -152,8 +149,6 @@ class ApplicationPanel extends XotBasePanel {
 
     /**
      * Get the lenses available for the resource.
-     *
-     * @param \Illuminate\Http\Request $request
      *
      * @return array
      */
