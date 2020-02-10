@@ -36,7 +36,7 @@ class PasswordResetPanel extends XotBasePanel {
      *
      * @return array
      */
-    public static function fields() {
+    public function fields() {
         return [];
     }
 
