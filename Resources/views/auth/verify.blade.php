@@ -15,7 +15,8 @@
                     @endif
 
                     @lang($view.'.Before proceeding, please check your email for a verification link')
-                    @lang($view.'.If you did not receive the email'), <a href="{{ route('verification.resend') }}">@lang($view.'.click here to request another')</a>.
+                    @lang($view.'.If you did not receive the email'),
+                    <a href="{{ route('verification.resend') }}">@lang($view.'.click here to request another')</a>.
                 </div>
             </div>
         </div>
