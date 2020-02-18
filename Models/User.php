@@ -32,6 +32,10 @@ class User extends Authenticatable implements UserContract {
     public $timestamps = true;
 
     //----------- relationships ---------------
+    public function socialProviders() {
+        return $this->hasMany(SocialProvider::class, 'user_id', 'auth_user_id');
+    }
+
     public function perm() {
         return $this->hasOne(PermUser::class, 'auth_user_id', 'auth_user_id');
     }
