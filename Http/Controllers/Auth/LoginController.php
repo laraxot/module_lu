@@ -99,13 +99,22 @@ class LoginController extends Controller {
                     \View::share('view', $view);
                 });
 
-                return view($view, ['action' => 'login'])
+                $html= view($view, ['action' => 'login'])
                     ->with('params', $params)
                     ->with('lang', \App::getLocale())
                     ->with('view', $view)
                     //->with('tmp',$locale)
                     //->with('row',$row)
                 ;
+                if ($request->ajax()) {
+                    return response()->json(
+                        [
+                            'msg'=>'ok',
+                            'html'=>(string)$html,
+                        ]
+                    );
+                }
+                return $html;
             }
         }
 
