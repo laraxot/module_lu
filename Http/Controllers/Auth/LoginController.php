@@ -7,6 +7,8 @@ use Auth;
 use Carbon\Carbon;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Http\Request;
+use Illuminate\Support\Arr;
+use Illuminate\Support\Str;
 //use App\Http\Requests;
 use Modules\LU\Models\SocialProvider;
 use Modules\LU\Models\User;
@@ -270,12 +272,38 @@ class LoginController extends Controller {
         } catch (\Exception $e) {
             return redirect('/');
         }
-        //dd($socialUser);
+        //ddd($socialUser);
         //getAvatar
         $socialProvider = SocialProvider::where('provider_id', $socialUser->getId())->where('provider', $provider)->first();
         if (! $socialProvider) {
-            $user = User::firstOrCreate(['email' => $socialUser->getEmail()], ['nome' => $socialUser->getName(), 'handle' => $socialUser->getNickname()]);
-            $user->socialProviders()->create(['provider_id' => $socialUser->getId(), 'provider' => $provider, 'token' => $socialUser->token]);
+            $handle=$socialUser->getNickname();
+            if ($handle=='') {
+                $handle=Str::slug($socialUser->getName());
+            }
+            $user = User::firstOrCreate(
+                [
+                    'email' => $socialUser->getEmail()
+                ],
+                [
+                    'first_name' => $socialUser->getName(),
+                    'handle' => $handle,
+                    //'avatar_img' => $socialUser->getAvatar(),
+                    //'social_login' => true //tell the database they are logging in from oauth
+                ]
+            );
+            if ($user->handle=='' && $handle!='') {
+                $user->handle=$handle;
+                $user->save();
+            }
+
+
+            $user->socialProviders()->create(
+                [
+                    'provider_id' => $socialUser->getId(),
+                    'provider' => $provider,
+                    'token' => $socialUser->token
+                ]
+            );
         } else {
             $user = $socialProvider->user;
             $socialProvider->token = $socialUser->token;
