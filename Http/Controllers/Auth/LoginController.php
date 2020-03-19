@@ -78,7 +78,7 @@ class LoginController extends Controller {
         $locz = ['pub_theme', 'adm_theme', 'lu'];
         $tpl = 'auth.login';
         if ($request->ajax()) {
-            $tpl = 'auth.ajax_login';
+            $tpl .= '_ajax';
         } /*
         if ($request->ajax()) {
         foreach ($locz as $loc) {
