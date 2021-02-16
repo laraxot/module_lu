@@ -2,6 +2,7 @@
 /**
  * https://medium.com/@DCzajkowski/testing-laravel-authentication-flow-573ea0a96318.
   * https://laravel-news.com/test-views-with-laravel-mojito
+<<<<<<< HEAD
   * https://github.com/dczajkowski/auth-tests
  */
 
@@ -20,6 +21,27 @@ use Illuminate\Support\Facades\Hash;
 
 class LoginTest extends TestCase {
 
+=======
+  * https://github.com/dczajkowski/auth-tests.
+ */
+
+namespace Modules\LU\Tests\Feature;
+
+use Illuminate\Support\Facades\Auth;
+//URL::defaults(['locale' => $request->user()->locale]);
+//\URL::forceRootUrl('http://www.myapp.com/en');
+
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\URL;
+use Modules\LU\Models\User;
+use Tests\TestCase;
+
+class LoginTest extends TestCase {
+    public function setUp(): void {
+        parent::setUp();
+        URL::defaults(['lang' => 'it']);
+    }
+>>>>>>> ae14cf9 (first)
 
     /*
     public function setUp(): void{
@@ -27,6 +49,7 @@ class LoginTest extends TestCase {
         parent::setUp();
     }
     */
+<<<<<<< HEAD
     protected function successfulLoginRoute()   {
         return route('home');
     }
@@ -65,17 +88,52 @@ class LoginTest extends TestCase {
 
         URL::defaults(['lang' => 'it']);
 
+=======
+    protected function successfulLoginRoute() {
+        return route('home');
+    }
+
+    protected function loginGetRoute() {
+        return route('login');
+    }
+
+    protected function loginPostRoute() {
+        return route('login');
+    }
+
+    protected function logoutRoute() {
+        return route('logout');
+    }
+
+    protected function successfulLogoutRoute() {
+        return '/';
+    }
+
+    protected function guestMiddlewareRoute() {
+        return route('home');
+    }
+
+    protected function getTooManyLoginAttemptsMessage() {
+        return sprintf('/^%s$/', str_replace('\:seconds', '\d+', preg_quote(__('auth.throttle'), '/')));
+    }
+
+    public function testUserCanViewALoginForm() {
+>>>>>>> ae14cf9 (first)
         $response = $this->get($this->loginGetRoute());
 
         $response->assertSuccessful();
         $response->assertViewIs('pub_theme::auth.login');
     }
 
+<<<<<<< HEAD
     public function testUserCannotViewALoginFormWhenAuthenticated()
     {
 
         URL::defaults(['lang' => 'it' ]);
 
+=======
+    public function testUserCannotViewALoginFormWhenAuthenticated() {
+>>>>>>> ae14cf9 (first)
         //Error: Class 'Database\Factories\Modules\LU\Models\UserFactory' not found
         $user = User::factory()->make();
 
@@ -84,10 +142,14 @@ class LoginTest extends TestCase {
         $response->assertRedirect($this->guestMiddlewareRoute());
     }
 
+<<<<<<< HEAD
     public function testUserCanLoginWithCorrectCredentials()
     {
         URL::defaults(['lang' => 'it' ]);
 
+=======
+    public function testUserCanLoginWithCorrectCredentials() {
+>>>>>>> ae14cf9 (first)
         $password = 'i-love-laravel';
         $user = User::factory()->create([
             //'password' => Hash::make($password),
@@ -95,7 +157,10 @@ class LoginTest extends TestCase {
             'passwd' => $password,
         ]);
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> ae14cf9 (first)
         $response = $this->post($this->loginPostRoute(), [
             'email' => $user->email,
             'password' => $password,
@@ -105,10 +170,14 @@ class LoginTest extends TestCase {
         $this->assertAuthenticatedAs($user);
     }
 
+<<<<<<< HEAD
     public function testRememberMeFunctionality()
     {
 
         URL::defaults(['lang' => 'it' ]);
+=======
+    public function testRememberMeFunctionality() {
+>>>>>>> ae14cf9 (first)
         $password = 'i-love-laravel';
 
         $user = User::factory()->create([
@@ -134,9 +203,13 @@ class LoginTest extends TestCase {
         $this->assertAuthenticatedAs($user);
     }
 
+<<<<<<< HEAD
     public function testUserCannotLoginWithIncorrectPassword()
     {
         URL::defaults(['lang' => 'it' ]);
+=======
+    public function testUserCannotLoginWithIncorrectPassword() {
+>>>>>>> ae14cf9 (first)
         $password = 'i-love-laravel';
 
         $user = User::factory()->create([
@@ -156,10 +229,14 @@ class LoginTest extends TestCase {
         $this->assertGuest();
     }
 
+<<<<<<< HEAD
     public function testUserCannotLoginWithEmailThatDoesNotExist()
     {
         URL::defaults(['lang' => 'it' ]);
 
+=======
+    public function testUserCannotLoginWithEmailThatDoesNotExist() {
+>>>>>>> ae14cf9 (first)
         $response = $this->from($this->loginGetRoute())->post($this->loginPostRoute(), [
             'email' => 'nobody@example.com',
             'password' => 'invalid-password',
@@ -172,9 +249,13 @@ class LoginTest extends TestCase {
         $this->assertGuest();
     }
 
+<<<<<<< HEAD
     public function testUserCanLogout()
     {
         URL::defaults(['lang' => 'it' ]);
+=======
+    public function testUserCanLogout() {
+>>>>>>> ae14cf9 (first)
         $this->be(User::factory()->create());
 
         $response = $this->post($this->logoutRoute());
@@ -183,18 +264,26 @@ class LoginTest extends TestCase {
         $this->assertGuest();
     }
 
+<<<<<<< HEAD
     public function testUserCannotLogoutWhenNotAuthenticated()
     {
         URL::defaults(['lang' => 'it' ]);
+=======
+    public function testUserCannotLogoutWhenNotAuthenticated() {
+>>>>>>> ae14cf9 (first)
         $response = $this->post($this->logoutRoute());
 
         $response->assertRedirect($this->successfulLogoutRoute());
         $this->assertGuest();
     }
 
+<<<<<<< HEAD
     public function testUserCannotMakeMoreThanFiveAttemptsInOneMinute()
     {
         URL::defaults(['lang' => 'it' ]);
+=======
+    public function testUserCannotMakeMoreThanFiveAttemptsInOneMinute() {
+>>>>>>> ae14cf9 (first)
         $password = 'i-love-laravel';
 
         $user = User::factory()->create([
@@ -228,4 +317,8 @@ class LoginTest extends TestCase {
         $this->assertFalse(session()->hasOldInput('password'));
         $this->assertGuest();
     }
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> ae14cf9 (first)

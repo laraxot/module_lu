@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <?php
 
 namespace Modules\LU\Http\Livewire;
@@ -56,3 +57,63 @@ class HorMenu extends Component {
         //$this->emitTo('ew:ver_menu', '2', 'initTree', $name);
     }
 }
+=======
+<?php
+
+namespace Modules\LU\Http\Livewire;
+
+use Livewire\Component;
+
+/**
+ * Class HorMenu
+ * @package Modules\LU\Http\Livewire
+ */
+class HorMenu extends Component {
+    /**
+     * @var array
+     */
+    public array $items = [];
+    /**
+     * @var string
+     */
+    public string $guid = '';
+
+    public function mount() {
+        $this->items[] = [
+            'guid' => 'news',
+            'title' => 'News',
+        ];
+        $this->items[] = [
+            'guid' => 'area',
+            'title' => 'Area',
+        ];
+        $this->items[] = [
+            'guid' => 'test',
+            'title' => 'Test',
+        ];
+    }
+
+    /**
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
+     */
+    public function render() {
+        $view = 'lu::livewire.hor_menu';
+        $view_params = [
+            'view' => $view,
+            //'areas' => $areas,
+        ];
+
+        return view($view, $view_params);
+    }
+
+    /**
+     * @param $name
+     */
+    public function click($name) {
+        $this->guid = $name;
+        $this->emit('HorMenu::click', $name);
+
+        //$this->emitTo('ew:ver_menu', '2', 'initTree', $name);
+    }
+}
+>>>>>>> ae14cf9 (first)

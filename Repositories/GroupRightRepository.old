@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <?php
 
 namespace Modules\LU\Repositories;
@@ -13,3 +14,20 @@ class GroupRightRepository extends XotBaseRepository {
      */
     protected $model = 'Modules\LU\Models\GroupRight';
 }
+=======
+<?php
+
+namespace Modules\LU\Repositories;
+
+//---base
+use Modules\Xot\Repositories\XotBaseRepository;
+
+class GroupRightRepository extends XotBaseRepository {
+    /**
+     * Specify Model class name.
+     *
+     * @return string
+     */
+    protected $model = 'Modules\LU\Models\GroupRight';
+}
+>>>>>>> ae14cf9 (first)

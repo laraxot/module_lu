@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <?php
 
 namespace Modules\LU\Repositories;
@@ -13,3 +14,20 @@ class PermUserRepository extends XotBaseRepository {
      */
     protected $model = 'Modules\LU\Models\PermUser';
 }
+=======
+<?php
+
+namespace Modules\LU\Repositories;
+
+//---base
+use Modules\Xot\Repositories\XotBaseRepository;
+
+class PermUserRepository extends XotBaseRepository {
+    /**
+     * Specify Model class name.
+     *
+     * @return string
+     */
+    protected $model = 'Modules\LU\Models\PermUser';
+}
+>>>>>>> ae14cf9 (first)

@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 {
     "name": "LU",
     "alias": "lu",
@@ -12,3 +13,19 @@
     "files": [],
     "requires": []
 }
+=======
+{
+    "name": "LU",
+    "alias": "lu",
+    "description": "",
+    "keywords": [],
+    "active": 1,
+    "order": 1,
+    "providers": [
+        "Modules\\LU\\Providers\\LUServiceProvider"
+    ],
+    "aliases": {},
+    "files": [],
+    "requires": []
+}
+>>>>>>> ae14cf9 (first)

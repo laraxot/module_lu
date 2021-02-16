@@ -129,7 +129,11 @@ class Area extends BaseModel {
      * @param array $params
      * @return string
      */
+<<<<<<< HEAD
     public function imageHtml($params = []) {
+=======
+    public function imageHtml(array $params = []) {
+>>>>>>> ae14cf9 (first)
         //-- default vars
         $width = 200;
         $height = 200;
@@ -167,7 +171,11 @@ class Area extends BaseModel {
 
     /**
      * @param mixed $value
+<<<<<<< HEAD
      * @return false|mixed|string
+=======
+     * @return bool|mixed|string
+>>>>>>> ae14cf9 (first)
      */
     public function getIconSrcAttribute($value) {
         $src = \mb_strtolower($this->area_define_name.'::img/icon.png');

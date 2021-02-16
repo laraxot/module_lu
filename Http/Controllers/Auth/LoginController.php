@@ -3,12 +3,21 @@
 namespace Modules\LU\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+<<<<<<< HEAD
 use Auth;
 use Carbon\Carbon;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 //use App\Http\Requests;
+=======
+use Carbon\Carbon;
+use Illuminate\Foundation\Auth\AuthenticatesUsers;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+//use App\Http\Requests;
+use Illuminate\Support\Str;
+>>>>>>> ae14cf9 (first)
 use Modules\LU\Models\User;
 use Modules\Xot\Contracts\UserContract;
 

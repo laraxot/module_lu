@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <?php
 
 namespace Modules\LU\Models\Panels\Policies;
@@ -17,3 +18,24 @@ class GroupPanelPolicy extends XotBasePanelPolicy {
         return true;
     }
 }
+=======
+<?php
+
+namespace Modules\LU\Models\Panels\Policies;
+
+use Modules\Xot\Contracts\PanelContract;
+use Modules\Xot\Contracts\UserContract;
+use Modules\Xot\Models\Panels\Policies\XotBasePanelPolicy;
+
+/**
+ * Class GroupPanelPolicy.
+ */
+class GroupPanelPolicy extends XotBasePanelPolicy {
+    /**
+     * @return bool
+     */
+    public function attach(UserContract $user, PanelContract $panel): bool {
+        return true;
+    }
+}
+>>>>>>> ae14cf9 (first)

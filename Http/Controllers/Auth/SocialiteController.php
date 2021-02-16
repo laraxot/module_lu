@@ -38,7 +38,11 @@ class SocialiteController extends Controller {
      *
      * @return \Illuminate\Http\Response
      */
+<<<<<<< HEAD
     public function redirectToProvider($provider) {
+=======
+    public function redirectToProvider($lang, $provider) {
+>>>>>>> ae14cf9 (first)
         if ('facebook' != $provider) {
             return Socialite::driver($provider)->redirect();
         } else {
@@ -65,7 +69,11 @@ class SocialiteController extends Controller {
      *
      * @return mixed
      */
+<<<<<<< HEAD
     public function handleProviderCallback($provider) {
+=======
+    public function handleProviderCallback($lang, $provider) {
+>>>>>>> ae14cf9 (first)
         try {
             $socialUser = Socialite::driver($provider)->stateless()->user();
         } catch (\Exception $e) {

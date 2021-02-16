@@ -129,7 +129,11 @@ class AreaPanel extends XotBasePanel {
     }
 
     /* deprecated ??
+<<<<<<< HEAD
     public function bodyContentView($params = []) {
+=======
+    public function bodyContentView(array $params = []) {
+>>>>>>> ae14cf9 (first)
         //ddd($params);
         extract($params);
         //$route_params = \Route::current()->parameters();
