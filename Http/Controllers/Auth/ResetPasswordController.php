@@ -66,20 +66,12 @@ class ResetPasswordController extends Controller {
      *
      * @param string|null $token
      */
-<<<<<<< HEAD
-    public function showResetForm(Request $request, $token = null): ViewContract {
-        //qui da fare controllo se esiste pub_theme::auth.passwords.reset mostra quello
-        //se no se esiste adm_theme::auth.passwords.reset mostra quello
-        //altrimenti mostra 'lu::auth.passwords.reset' che esiste per forza
-        $lang = app()->getLocale();
-=======
     public function showResetForm(Request $request, $lang = null, $token = null): ViewContract {
         //qui da fare controllo se esiste pub_theme::auth.passwords.reset mostra quello
         //se no se esiste adm_theme::auth.passwords.reset mostra quello
         //altrimenti mostra 'lu::auth.passwords.reset' che esiste per forza
         //dddx($request->route()->parameters());
         //$lang = app()->getLocale();
->>>>>>> ae14cf9 (first)
         $locz = ['pub_theme', 'adm_theme', 'lu'];
         $tpl = 'auth.passwords.reset';
         if ($request->ajax()) {
@@ -89,32 +81,8 @@ class ResetPasswordController extends Controller {
         $views = collect($locz)->map(function ($item) use ($tpl) {
             return $item.'::'.$tpl;
         })->all();
-<<<<<<< HEAD
-
-        return view()->first($views, $view_params);
-        /*
-        foreach ($locz as $loc) {
-            $view = $loc.'::'.$tpl;
-            if (\View::exists($view)) {
-                return view($view)->with(
-                    ['token' => $token, 'email' => $request->email, 'lang' => $lang]
-                );
-            }
-        }
-
-        return '<h3>Non esiste la view ['.$view.']</h3>['.__LINE__.']['.__FILE__.']';
-        */
-        /*
-        return view('lu::auth.passwords.reset')->with(
-            ['token' => $token, 'email' => $request->email]
-        );
-        */
-    }
-}
-=======
         //dddx($view_params);
 
         return view()->first($views, $view_params);
     }
 }
->>>>>>> ae14cf9 (first)

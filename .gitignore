@@ -1,11 +1,6 @@
-<<<<<<< HEAD
-node_modules
-/package-lock.json
-=======
 *.lock
 *.phar
 *.log
 .git-rewrite
 node_modules
 package-lock.json
->>>>>>> ae14cf9 (first)

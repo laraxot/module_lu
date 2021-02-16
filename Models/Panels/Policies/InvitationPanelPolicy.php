@@ -1,27 +1,13 @@
-<<<<<<< HEAD
 <?php
+
+declare(strict_types=1);
 
 namespace Modules\LU\Models\Panels\Policies;
 
 use Modules\Xot\Models\Panels\Policies\XotBasePanelPolicy;
 
 /**
- * Class InvitationPanelPolicy
- * @package Modules\LU\Models\Panels\Policies
+ * Class InvitationPanelPolicy.
  */
 class InvitationPanelPolicy extends XotBasePanelPolicy {
 }
-=======
-<?php
-
-namespace Modules\LU\Models\Panels\Policies;
-
-use Modules\Xot\Models\Panels\Policies\XotBasePanelPolicy;
-
-/**
- * Class InvitationPanelPolicy
- * @package Modules\LU\Models\Panels\Policies
- */
-class InvitationPanelPolicy extends XotBasePanelPolicy {
-}
->>>>>>> ae14cf9 (first)

@@ -1,5 +1,6 @@
-<<<<<<< HEAD
 <?php
+
+declare(strict_types=1);
 
 namespace Modules\LU\Http\Requests\Admin;
 
@@ -7,8 +8,7 @@ use Illuminate\Foundation\Http\FormRequest;
 use Modules\Xot\Traits\FormRequestTrait;
 
 /**
- * Class UpdateUser
- * @package Modules\LU\Http\Requests\Admin
+ * Class UpdateUser.
  */
 class UpdateUser extends FormRequest {
     use FormRequestTrait;
@@ -32,38 +32,3 @@ class UpdateUser extends FormRequest {
         ];
     }
 }
-=======
-<?php
-
-namespace Modules\LU\Http\Requests\Admin;
-
-use Illuminate\Foundation\Http\FormRequest;
-use Modules\Xot\Traits\FormRequestTrait;
-
-/**
- * Class UpdateUser
- * @package Modules\LU\Http\Requests\Admin
- */
-class UpdateUser extends FormRequest {
-    use FormRequestTrait;
-
-    /**
-     * Determine if the user is authorized to make this request.
-     *
-     * @return bool
-     */
-    public function authorize() {
-        return true;
-    }
-
-    /**
-     * Get the validation rules that apply to the request.
-     *
-     * @return array
-     */
-    public function rules() {
-        return [
-        ];
-    }
-}
->>>>>>> ae14cf9 (first)

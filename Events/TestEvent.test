@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 <?php
 
 namespace Modules\LU\Events;
@@ -19,25 +18,3 @@ class TestEvent {
         $this->msg = $msg;
     }
 }
-=======
-<?php
-
-namespace Modules\LU\Events;
-
-use Illuminate\Queue\SerializesModels;
-
-class TestEvent {
-    use SerializesModels;
-
-    public $msg;
-
-    /**
-     * Create a new event instance.
-     *
-     * @param \App\User $user
-     */
-    public function __construct($msg) {
-        $this->msg = $msg;
-    }
-}
->>>>>>> ae14cf9 (first)

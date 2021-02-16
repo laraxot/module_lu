@@ -1,27 +1,13 @@
-<<<<<<< HEAD
 <?php
+
+declare(strict_types=1);
 
 namespace Modules\LU\Models\Panels\Policies;
 
 use Modules\Xot\Models\Panels\Policies\XotBasePanelPolicy;
 
 /**
- * Class LUPanelPolicy
- * @package Modules\LU\Models\Panels\Policies
+ * Class LUPanelPolicy.
  */
 class LUPanelPolicy extends XotBasePanelPolicy {
 }
-=======
-<?php
-
-namespace Modules\LU\Models\Panels\Policies;
-
-use Modules\Xot\Models\Panels\Policies\XotBasePanelPolicy;
-
-/**
- * Class LUPanelPolicy
- * @package Modules\LU\Models\Panels\Policies
- */
-class LUPanelPolicy extends XotBasePanelPolicy {
-}
->>>>>>> ae14cf9 (first)

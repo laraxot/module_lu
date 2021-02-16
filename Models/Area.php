@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Modules\LU\Models;
 
 //use Illuminate\Database\Eloquent\Model;
@@ -33,6 +35,7 @@ use Staudenmeir\EloquentHasManyDeep\HasRelationships;
  * @property mixed                                                                       $url
  * @property \Illuminate\Database\Eloquent\Collection|\Modules\LU\Models\PermUser[]      $perms
  * @property int|null                                                                    $perms_count
+ *
  * @method static \Illuminate\Database\Eloquent\Builder|Area newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|Area newQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|Area query()
@@ -49,12 +52,14 @@ use Staudenmeir\EloquentHasManyDeep\HasRelationships;
  * @method static \Illuminate\Database\Eloquent\Builder|Area whereUpdatedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Area whereUpdatedBy($value)
  * @mixin \Eloquent
+ *
  * @property string|null $icon_path
  * @property string|null $deleted_at
  * @property string|null $deleted_by
  * @property string|null $deleted_ip
  * @property string|null $created_ip
  * @property string|null $updated_ip
+ *
  * @method static \Illuminate\Database\Eloquent\Builder|Area whereCreatedIp($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Area whereDeletedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Area whereDeletedBy($value)
@@ -126,14 +131,9 @@ class Area extends BaseModel {
     }
 
     /**
-     * @param array $params
      * @return string
      */
-<<<<<<< HEAD
-    public function imageHtml($params = []) {
-=======
     public function imageHtml(array $params = []) {
->>>>>>> ae14cf9 (first)
         //-- default vars
         $width = 200;
         $height = 200;
@@ -144,6 +144,7 @@ class Area extends BaseModel {
 
     /**
      * @param mixed $value
+     *
      * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\Routing\UrlGenerator|string
      */
     public function getUrlAttribute($value) {
@@ -152,6 +153,7 @@ class Area extends BaseModel {
 
     /**
      * @param mixed $value
+     *
      * @return string|string[]
      */
     public function getTitleAttribute($value) {
@@ -163,6 +165,7 @@ class Area extends BaseModel {
 
     /**
      * @param mixed $value
+     *
      * @return string
      */
     public function getGuidAttribute($value) {
@@ -171,11 +174,8 @@ class Area extends BaseModel {
 
     /**
      * @param mixed $value
-<<<<<<< HEAD
-     * @return false|mixed|string
-=======
+     *
      * @return bool|mixed|string
->>>>>>> ae14cf9 (first)
      */
     public function getIconSrcAttribute($value) {
         $src = \mb_strtolower($this->area_define_name.'::img/icon.png');

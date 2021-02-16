@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 <?php
 
 namespace Modules\LU\Repositories;
@@ -14,20 +13,3 @@ class AreaAdminAreaRepository extends XotBaseRepository {
      */
     protected $model = 'Modules\LU\Models\AreaAdminArea';
 }
-=======
-<?php
-
-namespace Modules\LU\Repositories;
-
-//---base
-use Modules\Xot\Repositories\XotBaseRepository;
-
-class AreaAdminAreaRepository extends XotBaseRepository {
-    /**
-     * Specify Model class name.
-     *
-     * @return string
-     */
-    protected $model = 'Modules\LU\Models\AreaAdminArea';
-}
->>>>>>> ae14cf9 (first)

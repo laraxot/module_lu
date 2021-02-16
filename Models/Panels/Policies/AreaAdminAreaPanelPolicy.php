@@ -1,27 +1,13 @@
-<<<<<<< HEAD
 <?php
+
+declare(strict_types=1);
 
 namespace Modules\LU\Models\Panels\Policies;
 
 use Modules\Xot\Models\Panels\Policies\XotBasePanelPolicy;
 
 /**
- * Class AreaAdminAreaPanelPolicy
- * @package Modules\LU\Models\Panels\Policies
+ * Class AreaAdminAreaPanelPolicy.
  */
 class AreaAdminAreaPanelPolicy extends XotBasePanelPolicy {
 }
-=======
-<?php
-
-namespace Modules\LU\Models\Panels\Policies;
-
-use Modules\Xot\Models\Panels\Policies\XotBasePanelPolicy;
-
-/**
- * Class AreaAdminAreaPanelPolicy
- * @package Modules\LU\Models\Panels\Policies
- */
-class AreaAdminAreaPanelPolicy extends XotBasePanelPolicy {
-}
->>>>>>> ae14cf9 (first)

@@ -1,27 +1,13 @@
-<<<<<<< HEAD
 <?php
+
+declare(strict_types=1);
 
 namespace Modules\LU\Models\Policies;
 
 use Modules\Xot\Models\Policies\XotBasePolicy;
 
 /**
- * Class UserRightPolicy
- * @package Modules\LU\Models\Policies
+ * Class UserRightPolicy.
  */
 class UserRightPolicy extends XotBasePolicy {
 }
-=======
-<?php
-
-namespace Modules\LU\Models\Policies;
-
-use Modules\Xot\Models\Policies\XotBasePolicy;
-
-/**
- * Class UserRightPolicy
- * @package Modules\LU\Models\Policies
- */
-class UserRightPolicy extends XotBasePolicy {
-}
->>>>>>> ae14cf9 (first)

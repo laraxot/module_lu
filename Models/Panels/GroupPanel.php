@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Modules\LU\Models\Panels;
 
 use Illuminate\Http\Request;
@@ -7,44 +9,32 @@ use Illuminate\Http\Request;
 use Modules\Xot\Models\Panels\XotBasePanel;
 
 /**
- * Class GroupPanel
- * @package Modules\LU\Models\Panels
+ * Class GroupPanel.
  */
 class GroupPanel extends XotBasePanel {
     /**
      * The model the resource corresponds to.
-     *
-     * @var string
      */
     protected static string $model = 'Modules\LU\Models\Group';
 
     /**
      * The single value that should be used to represent the resource when being displayed.
-     *
-     * @var string
      */
     protected static string $title = 'title';
 
     /**
      * The columns that should be searched.
-     *
-     * @var array
      */
     protected static array $search = [];
 
     /**
-     * @param object $row
      * @return mixed
      */
     public function optionId(object $row) {
         return $row->group_id;
     }
 
-    /**
-     * @param object $row
-     * @return string
-     */
-    public function optionLabel(object $row):string {
+    public function optionLabel(object $row): string {
         return  $row->group_id.'] '.$row->group_define_name;
     }
 
@@ -54,8 +44,6 @@ class GroupPanel extends XotBasePanel {
 
     /**
      * Get the fields displayed by the resource.
-     *
-     * @return array
      */
     public function fields(): array {
         return [
@@ -100,7 +88,6 @@ class GroupPanel extends XotBasePanel {
     /**
      * Get the cards available for the request.
      *
-     * @param Request $request
      * @return array
      */
     public function cards(Request $request) {
@@ -109,8 +96,6 @@ class GroupPanel extends XotBasePanel {
 
     /**
      * Get the filters available for the resource.
-     *
-     * @param Request|null $request
      *
      * @return array
      */
@@ -121,7 +106,6 @@ class GroupPanel extends XotBasePanel {
     /**
      * Get the lenses available for the resource.
      *
-     * @param Request $request
      * @return array
      */
     public function lenses(Request $request) {
@@ -138,11 +122,7 @@ class GroupPanel extends XotBasePanel {
     }
 
     /* deprecated
-<<<<<<< HEAD
-    public function bodyContentView($params = []) {
-=======
     public function bodyContentView(array $params = []) {
->>>>>>> ae14cf9 (first)
         //ddd($params);
         extract($params);
         //$route_params = \Route::current()->parameters();
