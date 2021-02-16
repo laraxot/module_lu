@@ -36,5 +36,5 @@ abstract class BaseModel extends Model {
     /**
      * @var bool
      */
-    public $incrementing = true;
+    public $incrementing = true; //meglio sempre avere un increment
 }
