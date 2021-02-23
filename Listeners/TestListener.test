@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 <?php
 
 namespace Modules\LU\Listeners;
@@ -28,34 +27,3 @@ public function handle(Created $event)
 
 
 */
-=======
-<?php
-
-namespace Modules\LU\Listeners;
-
-use Modules\LU\Events\TestEvent;
-
-class TestListener {
-    /**
-     * Handle the event.
-     *
-     * @param \App\Events\UserSavingEvent $event
-     *
-     * @return mixed
-     */
-    public function handle(TestEvent $event) {
-        echo 'echo?';
-        app('log')->info($event->msg);
-    }
-}
-
-//https://pineco.de/keep-the-code-clean-with-laravel-events/
-/*
-public function handle(Created $event)
-    {
-         Mail::to($event->user)->send(new WelcomeEmail($event->user));
-    }
-
-
-*/
->>>>>>> 3c191b8b6e72c4241b48547e7460883dfd14b26c

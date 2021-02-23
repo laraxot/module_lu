@@ -1,10 +1,7 @@
 <?php
 
-<<<<<<< HEAD
-=======
 declare(strict_types=1);
 
->>>>>>> 3c191b8b6e72c4241b48547e7460883dfd14b26c
 namespace Modules\LU\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;

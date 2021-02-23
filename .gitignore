@@ -1,15 +1,6 @@
-<<<<<<< HEAD
 *.lock
 *.phar
 *.log
 .git-rewrite
 node_modules
 package-lock.json
-=======
-*.lock
-*.phar
-*.log
-.git-rewrite
-node_modules
-package-lock.json
->>>>>>> 3c191b8b6e72c4241b48547e7460883dfd14b26c

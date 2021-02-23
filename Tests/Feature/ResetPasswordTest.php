@@ -156,8 +156,4 @@ class ResetPasswordTest extends TestCase {
         //$this->assertTrue(Hash::check('old-password', $user->fresh()->password));
         $this->assertGuest();
     }
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> 3c191b8b6e72c4241b48547e7460883dfd14b26c

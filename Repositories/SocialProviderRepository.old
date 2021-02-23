@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 <?php
 
 namespace Modules\LU\Repositories;
@@ -14,20 +13,3 @@ class SocialProviderRepository extends XotBaseRepository {
      */
     protected $model = 'Modules\LU\Models\SocialProvider';
 }
-=======
-<?php
-
-namespace Modules\LU\Repositories;
-
-//---base
-use Modules\Xot\Repositories\XotBaseRepository;
-
-class SocialProviderRepository extends XotBaseRepository {
-    /**
-     * Specify Model class name.
-     *
-     * @return string
-     */
-    protected $model = 'Modules\LU\Models\SocialProvider';
-}
->>>>>>> 3c191b8b6e72c4241b48547e7460883dfd14b26c

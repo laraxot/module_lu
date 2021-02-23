@@ -1,10 +1,7 @@
 <?php
 
-<<<<<<< HEAD
-=======
 declare(strict_types=1);
 
->>>>>>> 3c191b8b6e72c4241b48547e7460883dfd14b26c
 namespace Modules\LU\Models\Panels;
 
 use Illuminate\Http\Request;
@@ -121,10 +118,6 @@ class UserPanel extends XotBasePanel {
                 'type' => 'Cell',
                 'name' => 'last_login',
                 'fields' => $this->lastLoginFields(),
-<<<<<<< HEAD
-                'except' => ['edit', 'create'],
-=======
->>>>>>> 3c191b8b6e72c4241b48547e7460883dfd14b26c
             ],
             /*
             (object) [
