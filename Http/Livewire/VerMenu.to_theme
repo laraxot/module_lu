@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <?php
 
 namespace Modules\LU\Http\Livewire;
@@ -39,3 +40,46 @@ class VerMenu extends Component {
         return view($view, $view_params);
     }
 }
+=======
+<?php
+
+namespace Modules\LU\Http\Livewire;
+
+use Livewire\Component;
+
+/**
+ * Class VerMenu
+ * @package Modules\LU\Http\Livewire
+ */
+class VerMenu extends Component {
+    /**
+     * @var string
+     */
+    public string $guid = '---';
+
+    /**
+     * @var string[]
+     */
+    protected $listeners = ['HorMenu::click' => 'horMenuClick'];
+
+    /**
+     * @param string $guid
+     */
+    public function horMenuClick($guid) {
+        $this->guid = $guid;
+    }
+
+    /**
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
+     */
+    public function render() {
+        $view = 'lu::livewire.ver_menu';
+        $view_params = [
+            'view' => $view,
+            //'areas' => $areas,
+        ];
+
+        return view($view, $view_params);
+    }
+}
+>>>>>>> 3c191b8b6e72c4241b48547e7460883dfd14b26c

@@ -1,5 +1,10 @@
 <?php
 
+<<<<<<< HEAD
+=======
+declare(strict_types=1);
+
+>>>>>>> 3c191b8b6e72c4241b48547e7460883dfd14b26c
 namespace Modules\LU\Models;
 
 //use Illuminate\Database\Eloquent\Model;
@@ -33,6 +38,10 @@ use Staudenmeir\EloquentHasManyDeep\HasRelationships;
  * @property mixed                                                                       $url
  * @property \Illuminate\Database\Eloquent\Collection|\Modules\LU\Models\PermUser[]      $perms
  * @property int|null                                                                    $perms_count
+<<<<<<< HEAD
+=======
+ *
+>>>>>>> 3c191b8b6e72c4241b48547e7460883dfd14b26c
  * @method static \Illuminate\Database\Eloquent\Builder|Area newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|Area newQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|Area query()
@@ -49,12 +58,20 @@ use Staudenmeir\EloquentHasManyDeep\HasRelationships;
  * @method static \Illuminate\Database\Eloquent\Builder|Area whereUpdatedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Area whereUpdatedBy($value)
  * @mixin \Eloquent
+<<<<<<< HEAD
+=======
+ *
+>>>>>>> 3c191b8b6e72c4241b48547e7460883dfd14b26c
  * @property string|null $icon_path
  * @property string|null $deleted_at
  * @property string|null $deleted_by
  * @property string|null $deleted_ip
  * @property string|null $created_ip
  * @property string|null $updated_ip
+<<<<<<< HEAD
+=======
+ *
+>>>>>>> 3c191b8b6e72c4241b48547e7460883dfd14b26c
  * @method static \Illuminate\Database\Eloquent\Builder|Area whereCreatedIp($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Area whereDeletedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Area whereDeletedBy($value)
@@ -126,7 +143,10 @@ class Area extends BaseModel {
     }
 
     /**
+<<<<<<< HEAD
      * @param array $params
+=======
+>>>>>>> 3c191b8b6e72c4241b48547e7460883dfd14b26c
      * @return string
      */
     public function imageHtml(array $params = []) {
@@ -140,6 +160,10 @@ class Area extends BaseModel {
 
     /**
      * @param mixed $value
+<<<<<<< HEAD
+=======
+     *
+>>>>>>> 3c191b8b6e72c4241b48547e7460883dfd14b26c
      * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\Routing\UrlGenerator|string
      */
     public function getUrlAttribute($value) {
@@ -148,6 +172,10 @@ class Area extends BaseModel {
 
     /**
      * @param mixed $value
+<<<<<<< HEAD
+=======
+     *
+>>>>>>> 3c191b8b6e72c4241b48547e7460883dfd14b26c
      * @return string|string[]
      */
     public function getTitleAttribute($value) {
@@ -159,6 +187,10 @@ class Area extends BaseModel {
 
     /**
      * @param mixed $value
+<<<<<<< HEAD
+=======
+     *
+>>>>>>> 3c191b8b6e72c4241b48547e7460883dfd14b26c
      * @return string
      */
     public function getGuidAttribute($value) {
@@ -167,6 +199,10 @@ class Area extends BaseModel {
 
     /**
      * @param mixed $value
+<<<<<<< HEAD
+=======
+     *
+>>>>>>> 3c191b8b6e72c4241b48547e7460883dfd14b26c
      * @return bool|mixed|string
      */
     public function getIconSrcAttribute($value) {
@@ -179,4 +215,8 @@ class Area extends BaseModel {
     //---------------------------------------------------------------------------
 
     //----
+<<<<<<< HEAD
 }//---------end class Areas
+=======
+}//---------end class Areas
+>>>>>>> 3c191b8b6e72c4241b48547e7460883dfd14b26c

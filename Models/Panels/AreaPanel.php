@@ -1,5 +1,10 @@
 <?php
 
+<<<<<<< HEAD
+=======
+declare(strict_types=1);
+
+>>>>>>> 3c191b8b6e72c4241b48547e7460883dfd14b26c
 namespace Modules\LU\Models\Panels;
 
 use Illuminate\Http\Request;
@@ -7,28 +12,41 @@ use Illuminate\Http\Request;
 use Modules\Xot\Models\Panels\XotBasePanel;
 
 /**
+<<<<<<< HEAD
  * Class AreaPanel
  * @package Modules\LU\Models\Panels
+=======
+ * Class AreaPanel.
+>>>>>>> 3c191b8b6e72c4241b48547e7460883dfd14b26c
  */
 class AreaPanel extends XotBasePanel {
     /**
      * The model the resource corresponds to.
+<<<<<<< HEAD
      *
      * @var string
+=======
+>>>>>>> 3c191b8b6e72c4241b48547e7460883dfd14b26c
      */
     protected static string $model = 'Modules\LU\Models\Area';
 
     /**
      * The single value that should be used to represent the resource when being displayed.
+<<<<<<< HEAD
      *
      * @var string
+=======
+>>>>>>> 3c191b8b6e72c4241b48547e7460883dfd14b26c
      */
     protected static string $title = 'title';
 
     /**
      * The columns that should be searched.
+<<<<<<< HEAD
      *
      * @var array
+=======
+>>>>>>> 3c191b8b6e72c4241b48547e7460883dfd14b26c
      */
     protected static array $search = [];
 
@@ -37,18 +55,25 @@ class AreaPanel extends XotBasePanel {
     }
 
     /**
+<<<<<<< HEAD
      * @param object $row
+=======
+>>>>>>> 3c191b8b6e72c4241b48547e7460883dfd14b26c
      * @return mixed
      */
     public function optionId(object $row) {
         return $row->area_id;
     }
 
+<<<<<<< HEAD
     /**
      * @param object $row
      * @return string
      */
     public function optionLabel(object $row):string {
+=======
+    public function optionLabel(object $row): string {
+>>>>>>> 3c191b8b6e72c4241b48547e7460883dfd14b26c
         return $row->area_define_name;
     }
 
@@ -58,8 +83,11 @@ class AreaPanel extends XotBasePanel {
 
     /**
      * Get the fields displayed by the resource.
+<<<<<<< HEAD
      *
      * @return array
+=======
+>>>>>>> 3c191b8b6e72c4241b48547e7460883dfd14b26c
      */
     public function fields(): array {
         return [
@@ -88,7 +116,10 @@ class AreaPanel extends XotBasePanel {
     /**
      * Get the cards available for the request.
      *
+<<<<<<< HEAD
      * @param Request $request
+=======
+>>>>>>> 3c191b8b6e72c4241b48547e7460883dfd14b26c
      * @return array
      */
     public function cards(Request $request) {
@@ -98,8 +129,11 @@ class AreaPanel extends XotBasePanel {
     /**
      * Get the filters available for the resource.
      *
+<<<<<<< HEAD
      * @param Request|null $request
      *
+=======
+>>>>>>> 3c191b8b6e72c4241b48547e7460883dfd14b26c
      * @return array
      */
     public function filters(Request $request = null) {
@@ -109,7 +143,10 @@ class AreaPanel extends XotBasePanel {
     /**
      * Get the lenses available for the resource.
      *
+<<<<<<< HEAD
      * @param Request $request
+=======
+>>>>>>> 3c191b8b6e72c4241b48547e7460883dfd14b26c
      * @return array
      */
     public function lenses(Request $request) {
@@ -142,4 +179,8 @@ class AreaPanel extends XotBasePanel {
         //return $_layout->view_extend.'.body.rating';
     }
     */
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> 3c191b8b6e72c4241b48547e7460883dfd14b26c
