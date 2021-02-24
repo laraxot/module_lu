@@ -14,6 +14,7 @@ namespace Modules\LU\Tests\Feature;
 //-----  MODELS  -----
 
 use Illuminate\Foundation\Testing\DatabaseMigrations;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\URL;
 use Modules\Blog\Models\Profile;
 use Modules\LU\Models\User;
@@ -49,11 +50,20 @@ class ProfileTest extends TestCase {
         $user2 = User::inRandomOrder()->first();
 
         $profile_panel = ProfileService::get($user)->getPanel();
-        $url = $profile_panel->url(['act' => 'edit']);
-        $response = $this->actingAs($user)->get($url);
+        $url = $profile_panel->url(['act' => 'edit']); // noi non utilizziamo questa url edit
+        // ma utilizziamo l'action 'personal_info', che facciamo? lasciamo così oppure vogliamo utilizzare l'url edit?
+        $url2 = $profile_panel->itemAction('personal_info')->url();
+
+        $response = $this->actingAs($user)->get($url2);
+
+        //dddx([Auth::check($user), Auth::check($user2), $user->handle, $user2->handle, $url, $url2]);
+
         $response->assertStatus(200);
-        $response = $this->actingAs($user2)->get($url);
-        $response->assertStatus(403);
+
+        $response = $this->actingAs($user)->get($url2);
+
+        $response->assertForbidden(); //non riesco a capire come asserire lo status 403
+        //$response->assertStatus(403);
     }
 
     /* @test */
