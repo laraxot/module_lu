@@ -14,7 +14,6 @@ namespace Modules\LU\Tests\Feature;
 //-----  MODELS  -----
 
 use Illuminate\Foundation\Testing\DatabaseMigrations;
-use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\URL;
 use Modules\Blog\Models\Profile;
 use Modules\LU\Models\User;
@@ -56,14 +55,11 @@ class ProfileTest extends TestCase {
 
         $response = $this->actingAs($user)->get($url2);
 
-        //dddx([Auth::check($user), Auth::check($user2), $user->handle, $user2->handle, $url, $url2]);
-
         $response->assertStatus(200);
 
-        $response = $this->actingAs($user)->get($url2);
+        $response = $this->actingAs($user2)->get($url2);
 
-        $response->assertForbidden(); //non riesco a capire come asserire lo status 403
-        //$response->assertStatus(403);
+        $response->assertStatus(403);
     }
 
     /* @test */
