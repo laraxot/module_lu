@@ -71,19 +71,41 @@ class ProfileTest extends TestCase {
         $url_update = $profile_panel->url(['act' => 'update']);
         $url_show = $profile_panel->url(['act' => 'show']);
 
+        $url_update2 = $profile_panel->itemAction('personal_info')->url();
+        /*
         $data = [
             //'_token' => csrf_token(),
             'user' => [
+                'handle' => 'Jona hern',
                 'first_name' => 'Jonathan',
                 'last_name' => 'zarate hernandez',
+                'email' => 'jona@mail.com',
+                'phone' => '123456789',
+                'bio' => 'causal text',
             ],
             //'password' => '',
             //'password_confirmation' => '',
             //'job' => 'developer',
         ];
+         */
 
+        //inserisco gli stessi dati che ci sono nella blade
+        $data = [
+            'handle' => 'Jona hern',
+            'firstname' => 'Jonathan',
+            'surname' => 'zarate hernandez',
+            'email' => 'jona@mail.com',
+            'phone' => '123456789',
+            'bio' => 'causal text',
+        ];
+
+        /*
         $response = $this->actingAs($user)
             ->put($url_update, $data);
+         */
+
+        $response = $this->actingAs($user)
+            ->put($url_update2, $data);
 
         $response->assertStatus(200);
 
