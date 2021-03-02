@@ -57,5 +57,5 @@
                 </div>
             </form>
         </div>
-    </x-theme::authentication-card>
+    </x-theme::authentication.card>
 </x-theme::layouts.guest>
