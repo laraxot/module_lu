@@ -10,11 +10,7 @@ use Modules\Xot\Models\Panels\Policies\XotBasePanelPolicy;
  * Class HomePanelPolicy.
  */
 class HomePanelPolicy extends XotBasePanelPolicy {
-    public function fullcalendar(UserContract $user, PanelContract $panel): bool {
-        return true;
-    }
-
-    public function test(UserContract $user, PanelContract $panel): bool {
+       public function test(UserContract $user, PanelContract $panel): bool {
         return true;
     }
 
