@@ -1,69 +1,61 @@
-@extends('lu::layouts.app', ['title' => 'Login'])
+<x-theme::layouts.guest>
+    <x-theme::authentication.card>
+        <x-slot name="logo">
+            <x-theme::authentication.card-logo />
+        </x-slot>
 
-@section('content')  
-<div class="container">
-	<div class="row">
-		<div class="col-md-6  col-md-offset-2 ">
-			<div class="panel panel-default">
-				<div class="panel-heading">Login</div>
-				<div class="panel-body">
-					 @include($view.'.social')
-					<form class="form-horizontal" role="form" method="POST" action="{{ route('login',['lang'=>$lang]) }}">
-						{{ csrf_field() }}
-						<div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
-							<label for="email" class="col-md-4 control-label">E-Mail Address</label>
+        <div class="card-body">
 
-							<div class="col-md-6">
-								<input id="email" type="email" class="form-control" name="email" value="{{ old('email') }}" required autofocus>
+            <x-theme::validation.errors class="mb-3 rounded-0" />
 
-								@if ($errors->has('email'))
-									<span class="help-block">
-										<strong>{{ $errors->first('email') }}</strong>
-									</span>
-								@endif
-							</div>
-						</div>
+            @if (session('status'))
+                <div class="alert alert-success mb-3 rounded-0" role="alert">
+                    {{ session('status') }}
+                </div>
+            @endif
 
-						<div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
-							<label for="password" class="col-md-4 control-label">Password</label>
+            <form method="POST" action="{{ route('login') }}">
+                @csrf
+                <div class="form-group">
+                    <x-theme::label value="{{ __('Email') }}" />
 
-							<div class="col-md-6">
-								<input id="password" type="password" class="form-control" name="password" required>
+                    <x-theme::input class="{{ $errors->has('email') ? 'is-invalid' : '' }}" type="email"
+                                 name="email" :value="old('email')" required />
+                    <x-theme::input.error for="email"></x-theme::input.error>
+                </div>
 
-								@if ($errors->has('password'))
-									<span class="help-block">
-										<strong>{{ $errors->first('password') }}</strong>
-									</span>
-								@endif
-							</div>
-						</div>
+                <div class="form-group">
+                    <x-theme::label value="{{ __('Password') }}" />
 
-						<div class="form-group">
-							<div class="col-md-6 col-md-offset-4">
-								<div class="checkbox">
-									<label>
-										<input type="checkbox" name="remember" {{ old('remember') ? 'checked' : '' }}> Remember Me
-									</label>
-								</div>
-							</div>
-						</div>
+                    <x-theme::input class="form-control{{ $errors->has('password') ? ' is-invalid' : '' }}" type="password"
+                                 name="password" required autocomplete="current-password" />
+                    <x-theme::input.error for="password"></x-theme::input.error>
+                </div>
 
-						<div class="form-group">
-							<div class="col-md-8 col-md-offset-4">
-								<button type="submit" class="btn btn-primary">
-									Login
-								</button>
+                <div class="form-group">
+                    <div class="form-check">
+                        <x-theme::checkbox id="remember_me" name="remember" />
 
-								<a class="btn btn-link" href="{{ route('password.request',['lang'=>$lang]) }}">
-									Forgot Your Password?
-								</a>
-							</div>
-						</div>
-					</form>
-				</div>
-			</div>
-		</div>
-		
-	</div>
-</div>
-@endsection
+                        <label class="form-check-label" for="remember">
+                            {{ __('Remember Me') }}
+                        </label>
+                    </div>
+                </div>
+
+                <div class="mb-0">
+                    <div class="d-flex justify-content-end align-items-baseline">
+                        @if (Route::has('password.request'))
+                            <a class="text-muted mr-3" href="{{ route('password.request') }}">
+                                {{ __('Forgot your password?') }}
+                            </a>
+                        @endif
+
+                        <x-theme::button>
+                            {{ __('Login') }}
+                        </x-theme::button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </x-theme::authentication.card>
+</x-theme::layouts.guest>
