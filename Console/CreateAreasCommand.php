@@ -67,6 +67,7 @@ class CreateAreasCommand extends Command {
             $area = Area::query()->firstOrCreate(['area_define_name' => $v->getName()]);
             foreach ($superUsers as $u) {
                 $u->areas()->syncWithoutDetaching($area->area_id);
+                $this->info($u->user->handle.' '.$area->area_define_name);
             }
             //echo $v->name;
         }
