@@ -30,12 +30,14 @@ class GroupPanel extends XotBasePanel {
     /**
      * @return mixed
      */
+    /*
     public function optionId(object $row) {
         return $row->group_id;
     }
+    */
 
     public function optionLabel(object $row): string {
-        return  $row->group_id.'] '.$row->group_define_name;
+        return $row->group_id.'] '.$row->group_define_name;
     }
 
     public function with(): array {
@@ -51,13 +53,14 @@ class GroupPanel extends XotBasePanel {
                 'type' => 'Integer',
                 'name' => 'group_id',
             ],
-            (object) [
-                'type' => 'Integer',
-                'name' => 'group_type',
-            ],
+
             (object) [
                 'type' => 'String',
                 'name' => 'group_define_name',
+            ],
+            (object) [
+                'type' => 'Integer',
+                'name' => 'group_type',
             ],
             (object) [
                 'type' => 'Integer',
