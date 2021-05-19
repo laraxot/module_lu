@@ -1,0 +1,20 @@
+<?php
+
+namespace Modules\LU\Models\Policies;
+
+use Modules\Xot\Contracts\PanelContract;
+use Modules\Xot\Contracts\UserContract;
+use Modules\Xot\Models\Panels\Policies\XotBasePanelPolicy;
+
+ /**
+  * Class HomePanelPolicy.
+  */
+ class HomePanelPolicy extends XotBasePanelPolicy {
+     public function test(UserContract $user, PanelContract $panel): bool {
+         return true;
+     }
+
+     public function artisan(UserContract $user, PanelContract $panel): bool {
+         return true;
+     }
+ }
