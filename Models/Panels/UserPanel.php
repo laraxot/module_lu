@@ -80,16 +80,18 @@ class UserPanel extends XotBasePanel {
             (object) [
                 'type' => 'Id',
                 'name' => 'auth_user_id',
+                'col_bs_size' => 2,
             ],
             (object) [
                 'type' => 'String',
                 'name' => 'handle',
+                'col_bs_size' => 5,
             ],
             //*
             (object) [
                 'type' => 'Password',
                 'name' => 'passwd',
-                'col_bs_size' => 12,
+                'col_bs_size' => 5,
                 'except' => ['index'],
             ],
             (object) [
