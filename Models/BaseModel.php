@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace Modules\LU\Models;
 
 use Illuminate\Database\Eloquent\Model;
-use Laravel\Scout\Searchable;
+//use Laravel\Scout\Searchable;
 //---------- traits
 use Modules\Xot\Traits\Updater;
 
@@ -14,7 +14,7 @@ use Modules\Xot\Traits\Updater;
  */
 abstract class BaseModel extends Model {
     use Updater;
-    use Searchable;
+    //use Searchable;
 
     /**
      * @var string

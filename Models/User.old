@@ -11,7 +11,7 @@ namespace Modules\LU\Models;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
-use Laravel\Scout\Searchable;
+//use Laravel\Scout\Searchable;
 use Modules\Blog\Models\Post;
 use Modules\LU\Notifications\ResetPassword as ResetPasswordNotification;
 use Modules\LU\Notifications\VerifyEmail   as VerifyEmailNotification;
@@ -23,7 +23,7 @@ use Modules\Xot\Traits\Updater;
 class User extends Authenticatable implements MustVerifyEmail, UserContract {
     use Notifiable;
     use Updater;
-    use Searchable;
+    //use Searchable;
 
     protected $connection = 'liveuser_general'; // this will use the specified database conneciton
     protected $table = 'liveuser_users';
