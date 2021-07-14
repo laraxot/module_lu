@@ -36,7 +36,6 @@ namespace Modules\LU\Models;
  * @property \Illuminate\Support\Carbon|null $updated_at
  * @property string|null                     $created_by
  * @property string|null                     $updated_by
- *
  * @method static \Illuminate\Database\Eloquent\Builder|LU newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|LU newQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|LU query()
@@ -68,7 +67,6 @@ namespace Modules\LU\Models;
  * @method static \Illuminate\Database\Eloquent\Builder|LU whereUpdatedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|LU whereUpdatedBy($value)
  * @mixin \Eloquent
- *
  * @property int|null    $group_id
  * @property int|null    $banned_id
  * @property int|null    $country_id
@@ -86,7 +84,6 @@ namespace Modules\LU\Models;
  * @property int|null    $bounce
  * @property string|null $dataIscrizione
  * @property int|null    $dataCancellazione
- *
  * @method static \Illuminate\Database\Eloquent\Builder|LU whereBannedId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|LU whereBounce($value)
  * @method static \Illuminate\Database\Eloquent\Builder|LU whereCitta($value)

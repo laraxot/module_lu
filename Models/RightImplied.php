@@ -16,7 +16,6 @@ namespace Modules\LU\Models;
  * @property \Illuminate\Support\Carbon|null $updated_at
  * @property string|null                     $created_by
  * @property string|null                     $updated_by
- *
  * @method static \Illuminate\Database\Eloquent\Builder|RightImplied newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|RightImplied newQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|RightImplied query()

@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Modules\LU\Models\Policies;
 
 use Modules\Xot\Contracts\PanelContract;
@@ -14,7 +16,7 @@ use Modules\Xot\Models\Panels\Policies\XotBasePanelPolicy;
          return true;
      }
 
-     public function artisan(UserContract $user, PanelContract $panel): bool {
+     public function artisan(?UserContract $user, PanelContract $panel): bool {
          return true;
      }
  }

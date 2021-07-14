@@ -28,7 +28,6 @@ use Modules\Theme\Services\ThemeService;
  * @property mixed                            $title
  * @property mixed                            $url
  * @property \Modules\LU\Models\PermUser|null $permUser
- *
  * @method static \Illuminate\Database\Eloquent\Builder|AreaAdminArea newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|AreaAdminArea newQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|AreaAdminArea query()
@@ -40,14 +39,12 @@ use Modules\Theme\Services\ThemeService;
  * @method static \Illuminate\Database\Eloquent\Builder|AreaAdminArea whereUpdatedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|AreaAdminArea whereUpdatedBy($value)
  * @mixin \Eloquent
- *
  * @property string|null $deleted_at
  * @property string|null $deleted_by
  * @property string|null $deleted_ip
  * @property string|null $created_ip
  * @property string|null $updated_ip
  * @property string|null $guid
- *
  * @method static \Illuminate\Database\Eloquent\Builder|AreaAdminArea whereCreatedIp($value)
  * @method static \Illuminate\Database\Eloquent\Builder|AreaAdminArea whereDeletedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|AreaAdminArea whereDeletedBy($value)

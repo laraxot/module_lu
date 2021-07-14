@@ -68,7 +68,6 @@ use Nwidart\Modules\Facades\Module;
  * @property int|null                                                                                                  $rights_count
  * @property \Illuminate\Database\Eloquent\Collection|\Modules\LU\Models\SocialProvider[]                              $socialProviders
  * @property int|null                                                                                                  $social_providers_count
- *
  * @method static \Illuminate\Database\Eloquent\Builder|User newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|User newQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|User query()
@@ -100,7 +99,6 @@ use Nwidart\Modules\Facades\Module;
  * @method static \Illuminate\Database\Eloquent\Builder|User whereUpdatedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|User whereUpdatedBy($value)
  * @mixin \Eloquent
- *
  * @property \Modules\Blog\Models\Profile|null $profile
  * @property int|null                          $group_id
  * @property int|null                          $banned_id
@@ -119,7 +117,6 @@ use Nwidart\Modules\Facades\Module;
  * @property int|null                          $bounce
  * @property string|null                       $dataIscrizione
  * @property int|null                          $dataCancellazione
- *
  * @method static \Illuminate\Database\Eloquent\Builder|User whereBannedId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|User whereBounce($value)
  * @method static \Illuminate\Database\Eloquent\Builder|User whereCitta($value)
@@ -137,6 +134,7 @@ use Nwidart\Modules\Facades\Module;
  * @method static \Illuminate\Database\Eloquent\Builder|User whereRepar($value)
  * @method static \Illuminate\Database\Eloquent\Builder|User whereSegno($value)
  * @method static \Illuminate\Database\Eloquent\Builder|User whereStabi($value)
+ * @method static \Modules\LU\Database\Factories\UserFactory factory(...$parameters)
  */
 class User extends Authenticatable implements UserContract {
     use Notifiable;

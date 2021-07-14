@@ -22,7 +22,6 @@ namespace Modules\LU\Models;
  * @property string|null                     $created_by
  * @property string|null                     $updated_by
  * @property \Modules\LU\Models\User         $user
- *
  * @method static \Illuminate\Database\Eloquent\Builder|SocialProvider newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|SocialProvider newQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|SocialProvider query()

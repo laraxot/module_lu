@@ -19,7 +19,6 @@ namespace Modules\LU\Models;
  * @property string|null                     $created_by
  * @property string|null                     $updated_by
  * @property \Modules\LU\Models\Group|null   $group
- *
  * @method static \Illuminate\Database\Eloquent\Builder|GroupUser newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|GroupUser newQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|GroupUser query()

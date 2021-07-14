@@ -25,7 +25,6 @@ namespace Modules\LU\Models;
  * @property int|null                                                            $groups_count
  * @property \Illuminate\Database\Eloquent\Collection|\Modules\LU\Models\Right[] $rights
  * @property int|null                                                            $rights_count
- *
  * @method static \Illuminate\Database\Eloquent\Builder|PermUser newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|PermUser newQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|PermUser query()
@@ -38,7 +37,6 @@ namespace Modules\LU\Models;
  * @method static \Illuminate\Database\Eloquent\Builder|PermUser whereUpdatedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|PermUser whereUpdatedBy($value)
  * @mixin \Eloquent
- *
  * @property \Modules\LU\Models\User|null                                                $User
  * @property \Illuminate\Database\Eloquent\Collection|\Modules\LU\Models\AreaAdminArea[] $areaAdminAreas
  * @property int|null                                                                    $area_admin_areas_count
@@ -50,7 +48,6 @@ namespace Modules\LU\Models;
  * @property string|null                                                                 $created_ip
  * @property string|null                                                                 $updated_ip
  * @property string|null                                                                 $guid
- *
  * @method static \Illuminate\Database\Eloquent\Builder|PermUser whereCreatedIp($value)
  * @method static \Illuminate\Database\Eloquent\Builder|PermUser whereDeletedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|PermUser whereDeletedBy($value)

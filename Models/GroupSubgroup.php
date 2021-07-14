@@ -19,7 +19,6 @@ namespace Modules\LU\Models;
  * @property string|null                                                             $updated_by
  * @property \Illuminate\Database\Eloquent\Collection|\Modules\LU\Models\GroupUser[] $GroupUser
  * @property int|null                                                                $group_user_count
- *
  * @method static \Illuminate\Database\Eloquent\Builder|GroupSubgroup newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|GroupSubgroup newQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|GroupSubgroup query()
