@@ -1,41 +1,23 @@
 <?php
-<<<<<<< HEAD
-
-=======
 /**
  * ---.A.
  * ---.B.
  */
->>>>>>> ce6a85fd01cfa7d011d4b6276e0c554559669f31
 declare(strict_types=1);
 
 namespace Modules\LU\Models;
 
-<<<<<<< HEAD
-//use Illuminate\Contracts\Auth\UserProvider as UserContract;
-
-use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Foundation\Auth\User as Authenticatable;
-//--- Notifications --
-//--- contracts ----
-//-- traits--
-=======
 // use Illuminate\Contracts\Auth\UserProvider as UserContract;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
->>>>>>> ce6a85fd01cfa7d011d4b6276e0c554559669f31
 use Illuminate\Notifications\Notifiable;
 use Laravel\Passport\HasApiTokens;
 use Modules\LU\Database\Factories\UserFactory;
 use Modules\Xot\Contracts\UserContract;
 use Modules\Xot\Traits\Updater;
-<<<<<<< HEAD
-use Staudenmeir\EloquentHasManyDeep\HasRelationships;  //add the namespace
-=======
 use Spatie\Tags\HasTags;  // Spatie Tags
 use Staudenmeir\EloquentHasManyDeep\HasRelationships;
->>>>>>> ce6a85fd01cfa7d011d4b6276e0c554559669f31
 
 /**
  * Modules\LU\Models\User.
@@ -85,10 +67,7 @@ use Staudenmeir\EloquentHasManyDeep\HasRelationships;
  * @property \Modules\Xot\Models\Profile|null                                                                          $profileOrCreate
  * @property \Illuminate\Database\Eloquent\Collection|\Modules\LU\Models\SocialProvider[]                              $socialProviders
  * @property int|null                                                                                                  $social_providers_count
-<<<<<<< HEAD
-=======
  *
->>>>>>> ce6a85fd01cfa7d011d4b6276e0c554559669f31
  * @method static \Modules\LU\Database\Factories\UserFactory factory(...$parameters)
  * @method static \Illuminate\Database\Eloquent\Builder|User newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|User newQuery()
@@ -123,10 +102,7 @@ use Staudenmeir\EloquentHasManyDeep\HasRelationships;
  * @method static \Illuminate\Database\Eloquent\Builder|User whereUpdatedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|User whereUpdatedBy($value)
  * @mixin \Eloquent
-<<<<<<< HEAD
-=======
  *
->>>>>>> ce6a85fd01cfa7d011d4b6276e0c554559669f31
  * @property \Illuminate\Database\Eloquent\Collection|\Modules\LU\Models\GroupPermUser[] $groupPermUsers
  * @property int|null                                                                    $group_perm_users_count
  * @property \Illuminate\Database\Eloquent\Collection|\Modules\LU\Models\GroupPermUser[] $groups
@@ -152,10 +128,7 @@ use Staudenmeir\EloquentHasManyDeep\HasRelationships;
  * @property int|null                                                                    $bounce
  * @property string|null                                                                 $dataIscrizione
  * @property int|null                                                                    $dataCancellazione
-<<<<<<< HEAD
-=======
  *
->>>>>>> ce6a85fd01cfa7d011d4b6276e0c554559669f31
  * @method static \Illuminate\Database\Eloquent\Builder|User whereBannedId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|User whereBounce($value)
  * @method static \Illuminate\Database\Eloquent\Builder|User whereCitta($value)
@@ -179,14 +152,9 @@ class User extends Authenticatable implements UserContract {
     use Notifiable;
     use Updater;
     use HasFactory;
-<<<<<<< HEAD
-    use HasApiTokens; //PASSPORT
-    use HasRelationships;
-=======
     use HasApiTokens; // PASSPORT
     use HasRelationships;
     use HasTags; // spatie tags
->>>>>>> ce6a85fd01cfa7d011d4b6276e0c554559669f31
     use Traits\Relationships\UserRelationship;
     use Traits\Mutators\UserMutator;
     use Traits\Extras\UserExtra;
