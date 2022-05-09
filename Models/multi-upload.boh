@@ -1,0 +1,836 @@
+<?php
+require_once 'lib/initialize.php';
+require_once 'lib/model/Auth.php';
+require_once 'lib/model/Post.php';
+require_once 'lib/model/Title.php';
+require_once 'lib/model/Db.php';
+require_once 'lib/model/Archive.php';
+require_once 'lib/model/ElasticSearch.php';
+
+Auth::verifyUser(); //se non loggato effettuo il redirect
+
+
+if ( intval($_SESSION['initialize']['queue_upload'])<1 ) {
+    header( 'Location: logout.php' );
+    die();
+}
+
+
+global $db;
+$stmt = $db->prepare('SELECT * FROM `conf` WHERE `id` = :id');
+$stmt->bindValue(':id', 0);
+$stmt->execute();
+$row = $stmt->fetch();
+//Precarico le opzioni preferite
+if(!isset($_SESSION['sttmodelId'])) $_SESSION['sttmodelId'] = intval($row["sttmodel_id"]);
+if(!isset($_SESSION['sorgentiaudioId'])) $_SESSION['sorgentiaudioId'] = intval($row["device_id"]);
+if(!isset($_SESSION['playtypeId'])) $_SESSION['playtypeId'] = intval($row["playtype_id"]);
+
+
+$status_multiupload = Post::doHttpPost( array( 'action' => 'queue-is-running' ) );
+
+
+
+//recupero lo stato del registratore
+$parameters = array( 'action' => 'status' );
+$Status = Post::doHttpPost( $parameters );
+
+
+
+
+
+if ( $Status != 'STATE_READY' && $Status != 'STATE_LOCKED' && $Status != 'STATE_INTERRUPTED' && $Status != 'STATE_LICENSE_EXPIRED' ) {
+    //se in registrazione effettuo il redirect
+    if(trim($status_multiupload)=="NO"){
+        $typepage = "play.php";
+        Title::getTitle();
+        header( 'Location: '.$typepage );
+        die();
+    }
+
+}
+
+if((isset($_REQUEST["action"]))&&(trim($_REQUEST["action"])=="deletequeue")){
+    if($status_multiupload=="NO"){
+        $num = Archive::deleteAllQueued();
+        unset($_SESSION["gruppo_queue"]);
+    }
+}
+
+if((isset($_REQUEST["action"]))&&(trim($_REQUEST["action"])=="stopqueue")){
+    if($status_multiupload=="YES") {
+        $parameters = array( 'action' => 'queue-stop' );
+        $result = Post::doHttpPost( $parameters );
+        if($result=="OK") $status_multiupload = "NO";
+    }
+}
+
+if((isset($_REQUEST["action"]))&&(trim($_REQUEST["action"])=="startqueue")){
+    if($status_multiupload=="NO") {
+        $parameters = array( 'action' => 'queue-start', 'realtime' => false );
+        $result = Post::doHttpPost( $parameters );
+        if($result=="OK") $status_multiupload = "YES";
+    }
+}
+
+Title::setTitle(); //in funzione dello stato di registrazione viene settato il titolo
+
+//recupero lo spazio disponibile su usb
+$parameters = array(
+    'action' => 'usb-spaceinfo'
+);
+$UsbSpaceInfo = Post::doHttpPost( $parameters );
+
+if ( $UsbSpaceInfo != 'ERROR' ) {
+    $UsbSpaceInfo = json_decode( $UsbSpaceInfo );
+}
+
+//verifico la licenza
+$parameters = array(
+    'action' => 'license-info'
+);
+$License = json_decode( Post::doHttpPost( $parameters ), true );
+
+
+//recupero i device
+$parameters = array(
+    'action' => 'audio-device-list'
+);
+$DeviceList = Post::doHttpPost( $parameters );
+
+$Devices = json_decode( $DeviceList, true );
+
+// recupero i modelli
+$stmt = $db->prepare( 'SELECT * FROM `sttmodel` ' );
+$stmt->execute();
+
+//setto il titolo
+$Title = isset($_SESSION['title']) ? $_SESSION['title'] : Title::getDefaultTitle();
+
+if(( !isset($_SESSION['categoryId'][0]) )||( !is_array($_SESSION['categoryId']) )||( count($_SESSION['categoryId'])<=0 )){
+    unset($_SESSION['categoryId']);
+    $_SESSION['categoryId'][0] = 0;
+}
+
+$main_categ_list = Archive::getCategoryList( $_SESSION['categoryId'][(count($_SESSION['categoryId'])-1)] );
+//print_r($main_categ_list);
+
+//realtime
+if ( $_SESSION['realtime'] == NULL ) {
+    $_SESSION['realtime'] = 1;
+}
+
+$_SESSION["gruppo_queue"] = sha1(date("y-m-d|H:i_s"));
+
+$arr_model = array();
+$queue_list = Archive::getQueueList(0);
+
+foreach($queue_list as $queue){
+    if(!file_exists($queue["filepath"])){
+        Archive::completeQueueItem(intval($queue["id"]));
+    }
+}
+
+$queue_list = Archive::getQueueList(0);
+
+
+
+$status_multiupload = Post::doHttpPost( array( 'action' => 'queue-is-running' ) );
+$parameters = array( 'action' => 'status' );
+$Status = Post::doHttpPost( $parameters );
+
+//echo "*********************".$status_multiupload."**".$Status."**".$_SESSION["RecorderStatus"];
+//print_r($Status);
+
+
+?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>
+        <?= InternationalizationBOSH::appName ?>
+    </title>
+    <? require_once 'utility/js_css_int.php'; ?>
+    <style>
+        .perc-box{
+            display:flex;
+            align-content: center;
+            align-items: center;
+            position: relative;
+        }
+        .perc-box small{
+            position:absolute;
+            top:0px;
+            left:0px;
+            width:100%;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            align-self: center;
+            font-size: 10px;
+        }
+    </style>
+    <!-- Upload -->
+    <link rel="stylesheet" href="dist/css/jquery.fileupload.css" />
+    <link rel="stylesheet" href="dist/css/bootstrap.min.css" />
+    <link href="dist/css/switch.css" rel="stylesheet" />
+    <script src="dist/js/jquery.iframe-transport.js"></script>
+    <script src="dist/js/jquery.fileupload.js"></script>
+    <!-- -->
+    <script type="text/javascript">
+        var typeOfActions = null;
+
+        $( document ).ready( function() {
+
+            var modal = $( "#dialog-form" ).dialog({
+                autoOpen: false,
+                width: 480,
+                modal: true,
+                buttons: []
+            });
+
+            $("#stop-single-queue").on("click", function(e){
+                e.preventDefault();
+                console.log("JSSSS");
+                //
+
+                //$("#dialog-form").attr("title", "<?= InternationalizationBOSH::confermaStopRegistrazione; ?>");
+                //$("#element-text").html("<?= InternationalizationBOSH::confermaStopRegistrazioneQueue; ?>");
+                $( "#dialog-form" ).dialog( "option", "buttons", [
+                    {
+                        text: "<?= InternationalizationBOSH::annullaButton; ?>",
+                        "class": 'modal-cancel-btn',
+                        click: function() {
+                            modal.dialog( "close" );
+                        }
+                    },
+                    {
+                        text: "<?= InternationalizationBOSH::sdlLicenseConfirm; ?>",
+                        "class": 'modal-save-btn',
+                        click: function() {
+                            location.href="multi-upload.php?action=stopqueue";
+                            return false;
+                        }
+                    }
+                ]);
+                modal.dialog( "open" );
+                return false;
+            });
+
+
+            function reloadPage() {
+                $.get( 'ajax/loading.php' , function( data ) {
+                    console.log( data );
+                    if((data=="STATE_LICENSE_EXPIRED")||(data=="STATE_LOCKED")||(data=="STATE_INTERRUPTED")||(data=="STATE_ERROR")){
+                        location.href="title.php";
+                        return;
+                    }else if(data.indexOf("WAITING")>=0){
+                        $("#loading-itm").show();
+                        $("#main-content").hide();
+                    }else{
+                        //console.log("hide");
+                        $("#loading-itm").hide();
+                        $("#main-content").show();
+                    }
+                }).always(function() {
+                    setTimeout( function(){
+                        reloadPage();
+                    }, 2000 );
+                });
+            }
+
+            reloadPage();
+
+            $( window ).keydown( function( e ){
+                if( e.keyCode == 13 ) {
+                    e.preventDefault();
+                }
+            } );
+
+
+
+
+
+            <? require_once 'js/nav.js'; ?>
+
+            $( '.gorestore .material-icons' ).click( function() {
+                $( '#restoreform' ).submit();
+            } );
+
+            $( '.go .material-icons' ).click( function() {
+                $( '#startrec' ).submit();
+            } );
+
+            function changeSttModel(){
+                $.post( 'ajax/modello.php' , { modello: $( "#modello" ).val() } );
+                $.post( 'ajax/playtype.php' , { playtype: $( "#playtype" ).val() } );
+                if ( typeOfActions == 'StartRec' && $( "#modello" ).val() != 0 && $( "#playtype" ).val() != 0 ) {
+                    $( '#sorgenteaudioId' ).show();
+                }else if ( typeOfActions == 'UploadNewFile' && $( "#modello" ).val() != 0 && $( "#playtype" ).val() != 0 ) {
+                    $( '#okUpload1' ).show();
+                    $( '#okUpload2' ).show();
+                    $( '#Realtime' ).show();
+                }else{
+                    $( '#sorgenteaudioId' ).hide();
+                    $( '#okStart' ).hide();
+                    $( '#okUpload1' ).hide();
+                    $( '#okUpload2' ).hide();
+                    $( '#Realtime' ).hide();
+                }
+            }
+
+            $( '#modello, #playtype' ).on( 'change', function () {
+                changeSttModel();
+            } );
+
+
+            function checkTableVisibility(){
+                var conto = $("#table-queue").children(".divTableRow").length;
+                if(conto<=1){
+                    $("#start-queue").remove();
+                    $("#table-queue").remove();
+                    $("#reset-queue").parent().remove();
+                }
+            }
+
+            $(".action-icon").on("click", function(e){
+                e.preventDefault();
+                var idtmp = $( this ).attr("data-id");
+                $.post( 'ajax/multi-upload.php' , { action : "delete", id: idtmp }).done( function( data ) {
+                    if(parseInt(idtmp)==parseInt(data)){
+                        $("#queue-"+parseInt(data)).remove();
+                    }
+                    checkTableVisibility();
+                });
+            });
+
+
+            $( '.UploadNewFile' ).css( { opacity: 1 } );
+            $( '#sttmodelId' ).show();
+            typeOfActions = 'UploadNewFile';
+            if ( $( '#modello' ).val() != 0 ) {
+                $( '#okUpload1' ).show();
+                $( '#okUpload2' ).show();
+            }
+
+            $.post( 'ajax/realtime.php', { value: 0 } );
+
+            $( '.login' ).show();
+
+
+            function setCategoryArray(idcat=0, remove=false){
+                //console.log("Cate: "+(remove ? "rimuovi fino a " : "imposta la ")+idcat);
+                $.ajax({
+                    method: "POST",
+                    url: "ajax/archive.php",
+                    data: { action: "set-category-array", idcateg: idcat, remove: (remove ? 1 : 0) },
+                    datatype: "json"
+                })
+                    .done(function( result ){
+                        //riporto un oggetto che è l'array della path
+                        $("#cate-list").html('<span><em style="color:#fff" class="fas fa-folder-open"></em> <?= InternationalizationBOSH::archiveTitle; ?></span> ');
+                        var itm = JSON.parse(result);
+                        for(var i=0; i<itm.tags.length; i++){
+                            $("#cate-list").append(' <em class="fas fa-angle-right"></em> <a href="" class="acategory" data-id="'+itm.tags[i].idcat+'"><i style="font-size:0.9em;" class="fas fa-folder-open" aria-hidden="true"></i> '+itm.tags[i].name+'</a>');
+                        }
+                        //va rigenerato il menu a tendina del
+                        if(itm.options.length>0){
+                            $("#category-select").show();
+                            $("#category").empty().append('<option value="0"></option>');
+                            for(var i=0; i<itm.options.length; i++){
+                                //console.log(itm.options[i]);
+                                $("#category").append('<option value="'+itm.options[i].idcat+'">'+itm.options[i].name+'</option>');
+                            }
+                        }else{
+                            //qui tolgo il menu a tendina...
+                            $("#category-select").hide();
+                        }
+                    })
+                    .fail(function( result ){
+                        location.reload();
+                    });
+            }
+
+            $(document).on("change", "#category", function(e){
+                var elemId = $(this).val();
+                setCategoryArray(elemId, false);
+            });
+
+            $(document).on("click", ".acategory", function(e){
+                e.preventDefault();
+                var elemId = $(this).attr("data-id");
+                setCategoryArray(elemId, true);
+                $(this).nextAll().remove();
+                if( $(this).prev().html()=="&gt;" ) $(this).prev().remove();
+                $(this).remove();
+            });
+
+            $(document).on("mouseenter", ".acategory", function(e) {
+                $(this).children("i").removeClass("fa-folder-open").addClass("fa-times-circle");
+            });
+            $(document).on("mouseleave", ".acategory", function(e) {
+                $(this).children("i").removeClass("fa-times-circle").addClass("fa-folder-open");
+            });
+            changeSttModel();
+
+
+
+            <?
+            if(count($queue_list)>0){
+            if($status_multiupload=="YES"){
+            ?>
+            //table-queue
+
+            var timecheckprocess;
+            var actualqueue = [];
+            <? foreach($queue_list as $queue){ ?>
+            actualqueue.push(<? echo $queue["id"] ?>);
+            <? } ?>
+
+            var lastperc = "0%";
+            function processQueue() {
+                $.ajax({
+                    type: "POST",
+                    url: "ajax/queue.php",
+                    data: {action: "process-queue-list"},
+                    dataType: "json",
+                    cache: false
+                }).done(function (data) {
+
+                    //console.log(data);
+                    var dacompletare = false;
+                    if (data.status == "ok") {
+                        if (data.list.length > 0) {
+                            for (x = 0; x < data.list.length; x++) {
+                                //console.log("cerco"+data.list[x].id);
+                                const index = actualqueue.indexOf( data.list[x].id );
+                                //console.log("indice"+index);
+                                if (index > -1) actualqueue.splice(index, 1);
+
+                                var icona = '<i class="fas fa-question-circle fa-2x"></i>';
+                                if(data.list[x].stato=="waiting") icona = '<i class="fas fa-hourglass-end fa-2x"></i>';
+                                if(data.list[x].stato=="running"){
+                                    icona = '<div class="perc-box">';
+                                    if(parseInt(lastperc)>0) icona += '<small id="perc">'+lastperc+'</small>';
+                                    icona += '<i class="fas fa-spinner fa-yellow fa-spin fa-2x"></i></div>';
+                                }
+                                if(data.list[x].stato=="wrong-format") icona = '<i style="color:red" class="fas fa-exclamation-triangle fa-2x"></i>';
+                                if(data.list[x].stato=="completed") icona = '<i class="fas fa-check fa-green fa-2x"></i>';
+
+                                if(data.list[x].stato!="completed") dacompletare=true;
+                                $("#icon-queue-"+data.list[x].id).html(icona);
+
+                            }
+                            for (y = 0; y < actualqueue.length; y++) {
+                                $("#queue-"+actualqueue[y]).slideUp();
+                            }
+
+                            if(!dacompletare){
+                                $("#stop-queue").hide();
+                            }
+                        } else {
+                            document.location.href = "multi-upload.php";
+                            return;
+                        }
+                    }
+
+                });
+
+
+                $.ajax({
+                    type: "POST",
+                    url: "ajax/multi-lenght.php",
+                    cache: false
+                }).done(function (data) {
+                    if(data!=""){
+                        lastperc = data;
+                        $("#perc").html( (parseInt(data)>0) ? data : "" );
+                    }
+                    //console.log(data);
+                });
+
+            }
+
+            timecheckprocess = setInterval(function () {
+                processQueue();
+            }, 2000);
+            processQueue();
+
+            <?
+            }
+            }
+            ?>
+
+
+
+
+            $("#loading-itm").hide();
+        } );
+    </script>
+</head>
+<body>
+<? require_once 'nav.inc.php'; ?>
+
+<div class="login row divTable" id="loading-itm">
+    <span class="divTableRow">
+        <span class="divTableCell" style="text-align: center; color:#fff"><i class="fa fa-spinner fa-spin fa-3x fa-fw"></i>
+        <span class="sr-only"><?= InternationalizationBOSH::statusLoading; ?>...</span></span>
+    </span>
+    <span class="divTableRow">
+        <span class="divTableCell" style="text-align: center; color:#fff">&nbsp;<br /><?= InternationalizationBOSH::statusLoading; ?>...</span>
+    </span>
+</div>
+
+
+<? if ( $License['expired'] == true ) { ?>
+    <div id="warning"> <i class="material-icons md-18">&#xE002;</i>
+        <?= InternationalizationBOSH::titleWarnLic ?>
+    </div>
+<? }else if ( $_GET['upload'] == 'error' ) { ?>
+    <div id="warning"> <i class="material-icons md-18">&#xE002;</i>
+        <?= InternationalizationBOSH::titleWarnFile ?>
+    </div>
+<? }else if ( $_GET['upload'] == 'title' ) { ?>
+    <div id="warning"> <i class="material-icons md-18">&#xE002;</i>
+        <?= InternationalizationBOSH::titleWarnTitle ?>
+    </div>
+<? } else {
+    /* added by Davide Cavallini to handle future errors */
+    ?>
+    <div id="warning" style="display:none;"> <i class="material-icons md-18">&#xE002;</i>
+    </div><?php } ?>
+<br />
+
+
+<div id="main-content">
+
+    <? // echo $_SESSION["gruppo_queue"]; ?>
+    <form role="form" method="post" id="startrec">
+        <div class="login row divTable">
+	<span class="divTableRow">
+		<span class="divTableCell"></span>
+		<span class="divTableCell formTitle"><?= InternationalizationBOSH::titleRegTitle ?></span>
+		<span class="divTableCell"></span>
+	</span>
+            <span class="divTableRow">
+		<span class="divTableCell"></span>
+		<span class="divTableCell">
+                <input name="play-type" type="hidden" class="play-type" value="<? echo isset($_SESSION['play-type']) ? trim($_SESSION['play-type']) : ""; ?>" />
+			<div>
+				<input placeholder="<?= InternationalizationBOSH::titleInput ?>" name="title" type="text" value="<?= $Title ?>" id="title" autofocus />
+			</div>
+
+		</span>
+		<span class="divTableCell"></span>
+	</span>
+
+            <span class="divTableRow">
+        <span class="divTableCell"></span>
+        <span class="divTableCell ">
+            <span class="categList" id="cate-list">
+                <span><em style="color:#fff" class="fas fa-folder-open"></em> <?= InternationalizationBOSH::archiveTitle; ?></span>
+                <?
+                if(count($_SESSION['categoryId'])>1){
+                    for($x=1; $x<count($_SESSION['categoryId']); $x++){
+                        $itm = Archive::getCategoryDetail(intval($_SESSION['categoryId'][$x]));
+                        ?> <em class="fas fa-angle-right"></em> <a href="" class="acategory" data-id="<? echo intval($_SESSION['categoryId'][$x]); ?>"><i style="font-size:0.9em" class="fas fa-folder-open" aria-hidden="true"></i> <? echo isset($itm->name) ? trim($itm->name) : intval($_SESSION['categoryId'][$x]); ?></a><?
+                    }
+                }
+                ?>
+            </span>
+            <span class="categSelect" id="category-select" <? if(count($main_categ_list)<=0) echo 'style="display:none"'?>>
+                <em class="fas fa-angle-right"></em>
+                <select name="category" id="category">
+                <option value="0"></option>
+                    <? foreach($main_categ_list as $cat) { ?>
+                        <option value="<?=$cat['id']?>"<? if ( $_SESSION['categorylId'] == $cat['id'] ) {?> selected<? } ?>><?=$cat['name']?></option>
+                    <? } ?>
+                </select>
+            </span>
+        </span>
+        <span class="divTableCell"></span>
+    </span>
+
+        </div>
+    </form>
+
+    <div id="sttmodelId" style="display:none;">
+        <div class="login row divTable">
+            <span class="divTableRow">
+                <span class="divTableCell"></span>
+                <span class="divTableCell formTitle"><?= InternationalizationBOSH::titleRegMod ?>
+                    <?
+                    if($stmt->rowCount()==1){
+                        $row = $stmt->fetch();
+                        $arr_model[$row['id']]= $row['name'];
+                        ?>
+                        <input type="hidden"  name="modello" id="modello" value="<? echo $row["id"]; ?>" />
+                        <small style="float:right; padding:0px; padding-top:8px; color:#999"><?= $row['name']?></small>
+                    <? }else{ ?>
+                        <select name="modello" id="modello">
+                            <option value="0"></option>
+                            <? while ( $row = $stmt->fetch() ) {
+                                $arr_model[$row['id']]= $row['name'];
+                                ?>
+                                <option value="<?=$row['id']?>"<? if ( $_SESSION['sttmodelId'] == $row['id'] ) {?> selected<? } ?>><?=$row['name']?></option>
+                            <? } ?>
+			            </select>
+                    <? } ?>
+                </span>
+                <span class="divTableCell"></span>
+            </span>
+        </div>
+    </div>
+
+    <div class="login row divTable">
+	<span class="divTableRow" id="sorgenteaudioId" style="display:none;">
+		<span class="divTableCell"></span>
+		<span class="divTableCell formTitle"><?= InternationalizationBOSH::titleRegSource ?>
+            <? if(count($Devices['devices'])==1){ ?>
+                <input type="hidden" name="device" id="device" value="<? echo $Devices['devices'][0]["id"]; ?>" />
+                <small style="float:right; padding:0px; padding-top:8px; color:#999"><?= $Devices['devices'][0]['name']?></small>
+            <? }else{ ?>
+                <select name="device" id="device">
+				<option value="0"></option>
+                    <? foreach ( $Devices['devices'] as $Device ) { ?>
+                        <option value="<?=$Device['id']?>"<? if ( $_SESSION['sorgentiaudioId'] == $Device['id'] ) {?> selected<? } ?>><?=$Device['name']?></option>
+                    <? } ?>
+			</select>
+            <? } ?>
+		</span>
+		<span class="divTableCell"></span>
+	</span>
+    </div>
+    <div class="login row divTable">
+
+	<span class="divTableRow" id="okUpload1" style="display:none;">
+		<span class="divTableCell"></span>
+		<span class="divTableCell formTitle"><?= InternationalizationBOSH::titleRegFileQueue ?></span>
+		<span class="divTableCell"></span>
+	</span>
+        <br />
+        <span class="divTableRow" id="okUpload2" style="display:none;">
+		<span class="divTableCell"></span>
+		<span class="divTableCell">
+			<span class="btn btn-success fileinput-button">
+				<span><?= InternationalizationBOSH::titleRegSel ?></span>
+				<input id="fileupload" type="file" name="files[]" multiple />
+			</span>
+			<br /><br />
+			<div id="progress" class="progress">
+				<div class="progress-bar progress-bar-success"></div>
+			</div>
+			<div id="files" class="files"></div>
+		</span>
+		<span class="divTableCell"></span>
+	</span>
+    </div>
+
+    <script>
+        /*jslint unparam: true */
+        /*global window, $ */
+        var finished = false;
+        $( function () {
+            'use strict';
+            var url = 'upload/';
+            $( '#fileupload' ).fileupload( {
+
+                autoUpload: false,
+                
+                /* event handles added by Davide Cavallini */
+                add: function(e, data) {
+                    var uploadErrors = [];
+                    var acceptFileTypes = /(\.|\/)(aac|ac3|aiff|alac|alaw|amr|asf|avi|caf|flac|flic|flv|g722|g723|g729|gsm|matroska|webm|mov|mp4|m4a|m4v|3gp|3g2|mp1|mp2|mp3|mpeg|mpegts|mulaw|ogg|opus|vorbis|wav|wmalossless|wmapro|wmav1|wmav2|wmavoice|xwma|wma|wmv|mpg)$/i;
+        
+                    if(data.originalFiles[0]['type'] && !acceptFileTypes.test(data.originalFiles[0]['type'])) {
+                        uploadErrors.push(' <i class="material-icons md-18">&#xE002;</i><?= InternationalizationBOSH::uploadFileTypeNotAccepted ?>');
+                    }
+        
+                    if(data.originalFiles[0]['size'] && data.originalFiles[0]['size'] > 2e+9) {
+                        uploadErrors.push(' <i class="material-icons md-18">&#xE002;</i><?= InternationalizationBOSH::uploadFileTooBig ?>');
+                    }
+        
+                    if(uploadErrors.length > 0) {
+                        $( '#warning' ).html(uploadErrors.join("\n"));
+                        $( '#warning' ).show();
+                        $( '#warning' ).delay( 8000 ).hide("blind", {"direction": "up"});
+                    } else {
+                        data.submit();
+                    }
+                },
+
+                maxChunkSize: 1000000, // 1 MB
+                url: url,
+                dataType: 'json',
+                done: function ( e, data ) {
+                    $.each( data.result.files, function ( index, file ) {
+                        //console.log(file);
+                        if ( file.error == undefined ) {
+                            $.post( 'ajax/multi-upload.php', { action: "multiupload", filename: file.name, titolo: $( '#title' ).val() } ).done( function( data ) {
+                                //$( window.location ).attr( 'href', 'multi-upload.php?action=list');
+                                //console.log("Notificato "+file.name);
+                                //console.log(data);
+                                if(parseInt(data)<=0) $( window.location ).attr( 'href', 'multi-upload.php?upload=error' );
+                            } );
+                        }else{
+                            $( window.location ).attr( 'href', 'multi-upload.php?upload=error' );
+                        }
+                    } );
+                    if(finished){
+                        //console.log("UPLOAD TOTALE TERMINATO");
+                        $( window.location ).attr( 'href', 'multi-upload.php');
+                    }
+                },
+                progressall: function ( e, data ) {
+                    var progress = parseInt( data.loaded / data.total * 100, 10 );
+                    $( '#progress .progress-bar' ).css(
+                        'width',
+                        progress + '%'
+                    );
+                    if(progress>=100) finished=true;
+                }
+            } ).prop( 'disabled', !$.support.fileInput )
+                .parent().addClass( $.support.fileInput ? undefined : 'disabled' );
+        } );
+    </script>
+
+
+
+
+
+
+    <?
+    $conto=0;
+    if(count($queue_list)>0){
+        ?>
+
+        <? if(trim($status_multiupload)!="YES"){ ?>
+            <div style="text-align: center" class="Todo" id="start-queue">
+                <div class="ButtonControl"><a href="multi-upload.php?action=startqueue" style="color:#fff"><?= InternationalizationBOSH::queueElaboraCoda; ?></a></div>
+            </div>
+        <? }else{ ?>
+            <div style="text-align: center" class="Todo" id="stop-queue">
+                <div class="ButtonControl" style="background-color:red"><a href="#" id="stop-single-queue" style="color:#fff"><?= InternationalizationBOSH::queueStopElaboraCoda; ?></a></div>
+            </div>
+        <? } ?>
+
+        <div class="odg row divTable" id="table-queue">
+            <div class="divTableRow" style="font-size:16px; font-weight:300;">
+                <div class="divTableCell"><?= InternationalizationBOSH::archiveName ?></div>
+                <div class="divTableCell"><?= strtoupper(InternationalizationBOSH::searchLanguage) ?></div>
+                <div class="divTableCell divTableCellDesktop" style="text-align:center"><?= InternationalizationBOSH::archiveDate ?></div>
+                <div class="divTableCell"></div>
+            </div>
+            <?
+            $categorie_list = Archive::getCategoryList();
+            $categorie = array( 0 => array( "id" => 0, "super_id" => 0,"name" => InternationalizationBOSH::archiveTitle));
+            foreach($categorie_list as $tmp){
+                $categorie[$tmp["id"]] = $tmp;
+            }
+
+            foreach($queue_list as $queue){
+
+                $posiz = array($categorie[$queue["categoria_id"]]["name"]);
+                $super = $categorie[$queue["categoria_id"]]["super_id"];
+                if(intval($queue["categoria_id"])>0){
+                    while ($super >= 0) {
+                        $posiz[] = $categorie[intval($super)]["name"];
+                        if ($super <= 0) break;
+                        $super = intval($categorie[intval($super)]["super_id"]);
+                    }
+                }
+                if(file_exists($queue["filepath"])){
+                    $conto++
+                    ?>
+                    <div class="divTableRow" id="queue-<? echo $queue["id"]; ?>">
+                        <div class="divTableCell">
+                            <span class="file-name"><? echo trim($queue["titolo"])!="" ? trim($queue["titolo"])." | " : ""; ?><? echo $queue["filename"]; ?></span><br>
+                            <span class="data"><? echo implode(" / ", array_reverse($posiz)); ?></span>
+                        </div>
+                        <div class="divTableCell">
+                            <span class="file-name"><small><? echo isset($arr_model[$queue["modello"]]) ? $arr_model[$queue["modello"]] : "N.d."; ?></small></span>
+                        </div>
+                        <div class="divTableCell divTableCellDesktop" style="text-align:center">
+                            <? if(file_exists($queue["filepath"])){ ?><? echo round( (filesize($queue["filepath"])/ 1048576 ), 2 ); ?>M<? }else{ ?>-<? } ?></div>
+                        <div class="divTableCell" style="vertical-align:top" id="icon-queue-<? echo $queue["id"]; ?>"><a href="#" class="action-icon" data-id="<? echo $queue["id"]; ?>" style="color:#272b36;"><i class="fas fa-trash-alt fa-2x"></i></a></div>
+                    </div>
+                    <?
+                }else{
+                    Archive::completeQueueItem(intval($queue["id"]));
+                }
+                ?>
+
+            <? } ?>
+
+        </div>
+        <br>
+        <? if(trim($status_multiupload)!="YES"){ ?>
+            <div style="text-align: center" class="Todo">
+                <div class="ButtonControl" style="background-color:red"><a href="multi-upload.php?action=deletequeue" id="reset-queue" style="color:#fff;"><i class="fas fa-trash-alt"></i> <?= InternationalizationBOSH::queueAnnullaCoda; ?></a></div>
+            </div>
+            <br>
+        <? } ?>&nbsp;
+        <br>&nbsp;<br>&nbsp;
+    <? }?>
+
+
+
+
+    <? if($conto<=0){ ?>
+        <div class=" row divTable">
+            <div class="divTableRow">
+                <div class="divTableCell" style="text-align:center; color:#fff">
+                    <?= InternationalizationBOSH::titleEmptyQueue; ?>
+                </div>
+            </div>
+            <?
+            $tmp = Archive::getLastProcessedQueue();
+            if($tmp){
+                ?>
+                <div class="divTableRow">
+                    <div class="divTableCell" style="text-align:center; color:#ccc">
+                        <br>
+                        <? printf(InternationalizationBOSH::titleLastQueue, trim($tmp->datafine." - ".$tmp->conto)) ?>
+                    </div>
+                </div>
+            <? } ?>
+        </div>
+    <? } ?>
+
+
+</div>
+
+
+
+
+<div id="dialog-form" title="<?= strip_tags(InternationalizationBOSH::confermaStopRegistrazione); ?>" style="display: none">
+    <form>
+        <div style="padding:0px; padding-top:10px;">
+            <label><em id="element-text"><?= InternationalizationBOSH::confermaStopRegistrazioneQueue; ?></em></label>
+        </div>
+        <input type="hidden" name="element-id" id="element-id" value="">
+        <input type="submit" tabindex="-1" style="position:absolute; top:-1000px">
+    </form>
+</div>
+
+
+
+
+
+<? if ( $UsbSpaceInfo != 'ERROR' ) { ?>
+    <div id="usb_space"><?= InternationalizationBOSH::titleSpaceInfo ?> <? if($_SESSION['initialize']['dongleusb']==1){ ?><?= InternationalizationBOSH::titleUsbSpaceInfo ?><? } ?> <span><?=intval( $UsbSpaceInfo->ratio )?>%</span></div>
+    <div id="total_msize">
+        <div id="mbytes" style="width:<?=( 100-intval( $UsbSpaceInfo->ratio ) )?>%"></div>
+    </div>
+<? }else{ ?>
+    <div id="warning"> <i class="material-icons md-18">&#xE002;</i>
+        <?= InternationalizationBOSH::erroreUsbSpaceInfo ?>
+    </div>
+<? } ?>
+<div id="licenzeTitle"><?= InternationalizationBOSH::titleRegUse ?> <span><?=sprintf( "%02d%s%02d%s%02d", floor( $License['partial-audio']/3600 ), ':', ( $License['partial-audio']/60 )%60, ':', $License['partial-audio']%60 )?></span><? if ( $License['total-audio'] > 0 ) { ?> <?= InternationalizationBOSH::titleRegUse2 ?> <span><?=sprintf( "%02d%s%02d%s%02d", floor( $License['total-audio']/3600 ), ':', ( $License['total-audio']/60 )%60, ':', $License['total-audio']%60 )?></span><? } ?></div>
+</body>
+</html>

@@ -1,0 +1,32 @@
+@extends('adm_theme::layouts.app')
+@section('title', 'Test Users with livewire')
+@section('content')
+<section>
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-8">
+                <div class="card">
+                    <div class="card-header">
+                        <h2>Users</h2>
+                    </div>
+                    <div class="card-body">
+                        @if (session()->has('message'))
+                            <div class="alert alert-success">
+                                {{ session('message') }}
+                            </div>
+                        @endif
+                        {{ dddx(get_defined_vars() ) }}
+                        @livewire('lu::users',[])
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    @livewireScripts
+    <script type="text/javascript">
+        window.livewire.on('userStore', () => {
+            $('#exampleModal').modal('hide');
+        });
+    </script>
+</section>
+@endsection
