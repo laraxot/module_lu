@@ -1,0 +1,4 @@
+Laravel Authentication: UI vs Jetstream vs Fortify vs Breeze
+https://dev.to/tarikmanoar/laravel-authentication-ui-vs-jetstream-vs-fortify-vs-breeze-1emn
+
+----------------------------------------------------------------------------------------

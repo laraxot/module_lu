@@ -1,0 +1,14 @@
+https://infylife.wordpress.com/2016/08/10/storing-logging-login-activity-in-laravel-application/
+https://www.sitepoint.com/easily-add-social-logins-to-your-app-with-socialite/
+
+https://designexcellent.com/ux-login-register-password/
+
+
+https://laraveldaily.com/save-users-last-login-time-ip-address/
+
+-----------------------------------------------------
+
+https://github.com/jeremykenedy/laravel-auth  25 maggio 2021 
+
+----------------------------------------------------
+
