@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 [
     {
         "class_name": "Users",
@@ -5,3 +6,6 @@
         "comp_ns": "Modules\\LU\\Http\\Livewire\\Users"
     }
 ]
+=======
+[{"class_name":"Users","comp_name":"lu::users","comp_ns":"Modules\\LU\\Http\\Livewire\\Users"}]
+>>>>>>> 15b68b0 (first)
