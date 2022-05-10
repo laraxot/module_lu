@@ -1,6 +1,7 @@
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 [
     {
         "class_name": "Users",
@@ -17,3 +18,15 @@
 =======
 [{"class_name":"Users","comp_name":"users","comp_ns":"Modules\\LU\\Http\\Livewire\\Users"}]
 >>>>>>> 789f39a (up)
+=======
+[{"class_name":"Users","comp_name":"users","comp_ns":"Modules\\LU\\Http\\Livewire\\Users"}]
+=======
+[
+    {
+        "class_name": "Users",
+        "comp_name": "users",
+        "comp_ns": "Modules\\LU\\Http\\Livewire\\Users"
+    }
+]
+>>>>>>> 26403e9 (up)
+>>>>>>> 7930595 (.)
