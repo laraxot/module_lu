@@ -9,6 +9,5 @@ use Modules\Xot\Models\Policies\XotBasePolicy;
 /**
  * Class RightPolicy.
  */
-class RightPolicy extends XotBasePolicy
-{
+class RightPolicy extends XotBasePolicy {
 }

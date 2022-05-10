@@ -16,5 +16,5 @@ class OauthAuthCode extends PassportAuthCode {
      * @var string
      */
     protected $connection = 'liveuser_general';
-    //protected $fillable = ['id', 'user_id', 'client_id', 'scopes', 'revoked', 'expires_at'];
+    // protected $fillable = ['id', 'user_id', 'client_id', 'scopes', 'revoked', 'expires_at'];
 }

@@ -11,11 +11,11 @@
 <div class="btn-group" style="padding:3px">
 	<a class='btn btn-primary disabled'><i class="fa fa-facebook" style="width:1em;"></i></a>
 	<a class='btn btn-primary ' href='/login/facebook' style="width:12em;" title="Sign in with Facebook"> Sign in with Facebook</a>
-</div>  
+</div>
 
 <div class="btn-group" style="padding:3px">
 	<a class='btn btn-info disabled'><i class="fa fa-twitter" style="width:1em;"></i></a>
 	<a class='btn btn-info ' href='/login/twitter' style="width:12em;" title="Sign in with Twitter"> Sign in with Twitter</a>
-</div> 
+</div>
 
-<br/><br/> 
+<br/><br/>

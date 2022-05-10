@@ -9,6 +9,5 @@ use Modules\Xot\Models\Policies\XotBasePolicy;
 /**
  * Class AreaPolicy.
  */
-class AreaPolicy extends XotBasePolicy
-{
+class AreaPolicy extends XotBasePolicy {
 }

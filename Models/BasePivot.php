@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace Modules\LU\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-////use Laravel\Scout\Searchable;
+// //use Laravel\Scout\Searchable;
 use Illuminate\Database\Eloquent\Relations\Pivot;
 use Modules\Xot\Services\FactoryService;
 use Modules\Xot\Traits\Updater;
@@ -13,11 +13,10 @@ use Modules\Xot\Traits\Updater;
 /**
  * Class BasePivot.
  */
-abstract class BasePivot extends Pivot
-{
-    //use Searchable;
-    use Updater;
+abstract class BasePivot extends Pivot {
+    // use Searchable;
     use HasFactory;
+    use Updater;
 
     /**
      * @var string
@@ -35,7 +34,7 @@ abstract class BasePivot extends Pivot
      * @var string[]
      */
     protected $dates = ['created_at', 'updated_at'];
-    //protected $primaryKey = 'id';
+    // protected $primaryKey = 'id';
     /**
      * @var bool
      */
@@ -46,8 +45,7 @@ abstract class BasePivot extends Pivot
      *
      * @return \Illuminate\Database\Eloquent\Factories\Factory
      */
-    protected static function newFactory()
-    {
-        return FactoryService::newFactory(get_called_class());
+    protected static function newFactory() {
+        return FactoryService::newFactory(static::class);
     }
 }

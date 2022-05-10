@@ -1,8 +1,10 @@
 <?php
 
+declare(strict_types=1);
+
 return [
     'unknownError' => '未知错误',
-    '0'            => '未知错误',
+    '0' => '未知错误',
 
     '100' => '继续',
     '101' => '切换协议',

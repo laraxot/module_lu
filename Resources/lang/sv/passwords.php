@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
 |--------------------------------------------------------------------------
 | Password Reset Language Lines
@@ -12,9 +14,9 @@
 */
 
 return [
-    'reset'     => 'Lösenordet har blivit återställt!',
-    'sent'      => 'Lösenordspåminnelse skickad!',
+    'reset' => 'Lösenordet har blivit återställt!',
+    'sent' => 'Lösenordspåminnelse skickad!',
     'throttled' => 'Vänligen vänta innan du försöker igen.',
-    'token'     => 'Koden för lösenordsåterställning är ogiltig.',
-    'user'      => 'Det finns ingen användare med den e-postadressen.',
+    'token' => 'Koden för lösenordsåterställning är ogiltig.',
+    'user' => 'Det finns ingen användare med den e-postadressen.',
 ];

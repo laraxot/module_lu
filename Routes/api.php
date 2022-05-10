@@ -7,7 +7,7 @@ use Modules\LU\Http\Controllers\Api\UserController;
 
 Route::prefix('/user')->group(
     function () {
-        //authenticate user
+        // authenticate user
 
         Route::post('/login', [UserController::class, 'login'])
             ->name('api.login');
@@ -18,7 +18,7 @@ Route::prefix('/user')->group(
         Route::get('/logout', [UserController::class, 'logout'])
             ->name('api.logout');
 
-        //get user credentials
+        // get user credentials
         Route::middleware('auth:api')
             ->get('/current', [UserController::class, 'getCurrentUser'])
             ->name('api.currentUser');

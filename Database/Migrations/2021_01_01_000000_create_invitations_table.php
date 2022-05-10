@@ -3,26 +3,24 @@
 declare(strict_types=1);
 
 use Illuminate\Database\Schema\Blueprint;
-//---- models ---
+// ---- models ---
 use Modules\Xot\Database\Migrations\XotBaseMigration;
 
 /**
  * Class CreateInvitationsTable.
  */
-class CreateInvitationsTable extends XotBaseMigration
-{
+class CreateInvitationsTable extends XotBaseMigration {
     /**
      * Run the migrations.
      *
      * @return void
      */
-    public function up()
-    {
-        //$old_table = 'groupusers';
-        //if ($this->getConn()->hasTable($old_table)) {
+    public function up() {
+        // $old_table = 'groupusers';
+        // if ($this->getConn()->hasTable($old_table)) {
         //    $this->getConn()->rename($old_table, $this->getTable());
-        //}
-        //-- CREATE --
+        // }
+        // -- CREATE --
         $this->tableCreate(
             function (Blueprint $table) {
                 $table->increments('id');
@@ -35,7 +33,7 @@ class CreateInvitationsTable extends XotBaseMigration
                 $table->string('updated_by')->nullable();
             }
         );
-        //-- UPDATE --
+        // -- UPDATE --
         $this->tableUpdate(
             function (Blueprint $table) {
                 if ($this->hasColumn('auth_user_id') && ! $this->hasColumn('user_id')) {

@@ -6,7 +6,7 @@ namespace Modules\LU\Models\Panels;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\Request;
-//--- Services --
+// --- Services --
 
 use Modules\Xot\Contracts\RowsContract;
 use Modules\Xot\Models\Panels\XotBasePanel;
@@ -41,18 +41,17 @@ class GroupPermUserPanel extends XotBasePanel {
         return [];
     }
 
-    /*
+    /**
      * on select the option id.
      *
      * quando aggiungi un campo select, è il numero della chiave
      * che viene messo come valore su value="id"
      *
      * @return int|string|null
-
     public function optionId(Model $row) {
         return $row->getKey();
     }
-    */
+     */
 
     /**
      * index navigation.
@@ -69,7 +68,7 @@ class GroupPermUserPanel extends XotBasePanel {
      * @return RowsContract
      */
     public static function indexQuery(array $data, $query) {
-        //return $query->where('user_id', $request->user()->id);
+        // return $query->where('user_id', $request->user()->id);
         return $query;
     }
 

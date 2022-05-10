@@ -12,7 +12,7 @@ class CreateOauthClientsTable extends XotBaseMigration {
      * @return void
      */
     public function up() {
-        //-- CREATE --
+        // -- CREATE --
         $this->tableCreate(
         function (Blueprint $table) {
             $table->bigIncrements('id');

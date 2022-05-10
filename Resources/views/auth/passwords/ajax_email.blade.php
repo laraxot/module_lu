@@ -17,6 +17,6 @@
         <li><a href="{{ asset('/register') }}" class="ajax-popup-link"  data-effect="mfp-zoom-out">Not member yet</a>
         </li>
     </ul>
-{{--    
+{{--
 </div>
 --}}

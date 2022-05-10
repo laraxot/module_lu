@@ -6,7 +6,7 @@ namespace Modules\LU\Models\Panels;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\Request;
-//--- Services --
+// --- Services --
 
 use Modules\LU\Models\AreaPermUser;
 use Modules\Xot\Contracts\RowsContract;
@@ -78,7 +78,7 @@ class AreaPermUserPanel extends XotBasePanel {
      * @return RowsContract
      */
     public static function indexQuery(array $data, $query) {
-        //return $query->where('user_id', $request->user()->id);
+        // return $query->where('user_id', $request->user()->id);
         return $query;
     }
 

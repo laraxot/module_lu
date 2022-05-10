@@ -9,6 +9,5 @@ use Modules\Xot\Models\Policies\XotBasePolicy;
 /**
  * Class GroupRightPolicy.
  */
-class GroupRightPolicy extends XotBasePolicy
-{
+class GroupRightPolicy extends XotBasePolicy {
 }

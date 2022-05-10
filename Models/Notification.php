@@ -20,6 +20,7 @@ use Illuminate\Notifications\DatabaseNotificationCollection;
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
  * @property Model|\Eloquent                 $notifiable
+ *
  * @method static DatabaseNotificationCollection|static[] all($columns = ['*'])
  * @method static \Modules\LU\Database\Factories\NotificationFactory factory(...$parameters)
  * @method static DatabaseNotificationCollection|static[] get($columns = ['*'])
@@ -95,7 +96,7 @@ class Notification extends BaseModel {
      * @return void
      */
     public function markAsRead() {
-        if (is_null($this->read_at)) {
+        if (null === $this->read_at) {
             $this->forceFill(['read_at' => $this->freshTimestamp()])->save();
         }
     }
@@ -106,7 +107,7 @@ class Notification extends BaseModel {
      * @return void
      */
     public function markAsUnread() {
-        if (! is_null($this->read_at)) {
+        if (null !== $this->read_at) {
             $this->forceFill(['read_at' => null])->save();
         }
     }

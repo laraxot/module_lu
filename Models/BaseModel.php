@@ -6,19 +6,18 @@ namespace Modules\LU\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-//use Laravel\Scout\Searchable;
-//---------- traits
+// use Laravel\Scout\Searchable;
+// ---------- traits
 use Modules\Xot\Services\FactoryService;
 use Modules\Xot\Traits\Updater;
 
 /**
  * Class BaseModel.
  */
-abstract class BaseModel extends Model
-{
-    //use Searchable;
-    use Updater;
+abstract class BaseModel extends Model {
+    // use Searchable;
     use HasFactory;
+    use Updater;
 
     /**
      * @var string
@@ -48,15 +47,14 @@ abstract class BaseModel extends Model
     /**
      * @var bool
      */
-    public $incrementing = true; //meglio sempre avere un increment
+    public $incrementing = true; // meglio sempre avere un increment
 
     /**
      * Create a new factory instance for the model.
      *
      * @return \Illuminate\Database\Eloquent\Factories\Factory
      */
-    protected static function newFactory()
-    {
-        return FactoryService::newFactory(get_called_class());
+    protected static function newFactory() {
+        return FactoryService::newFactory(static::class);
     }
 }

@@ -34,6 +34,8 @@ class VerifyEmail extends Notification {
 
     /**
      * Create a new notification instance.
+     *
+     * @param mixed $notifiable
      */
     /*
     public function __construct()
@@ -70,15 +72,15 @@ class VerifyEmail extends Notification {
      */
     public function toMail($notifiable) {
         if (static::$toMailCallback) {
-            return call_user_func(static::$toMailCallback, $notifiable);
+            return \call_user_func(static::$toMailCallback, $notifiable);
         }
 
         return (new MailMessage())
-            ->subject(strval(Lang::getFromJson('Verify Email Address')))
-            ->markdown('lu::notifications.email', ['subcopy' => 'subcopy']) //, ['user' => $this->user]
+            ->subject((string) (Lang::getFromJson('Verify Email Address')))
+            ->markdown('lu::notifications.email', ['subcopy' => 'subcopy']) // , ['user' => $this->user]
             ->line(Lang::getFromJson('Please click the button below to verify your email address.'))
             ->action(
-                strval(Lang::getFromJson('Verify Email Address')),
+                (string) (Lang::getFromJson('Verify Email Address')),
                 $this->verificationUrl($notifiable)
             )
             ->line(Lang::getFromJson('If you did not create an account, no further action is required.'));
@@ -93,7 +95,7 @@ class VerifyEmail extends Notification {
      */
     protected function verificationUrl($notifiable) {
         if (static::$createUrlCallback) {
-            return call_user_func(static::$createUrlCallback, $notifiable);
+            return \call_user_func(static::$createUrlCallback, $notifiable);
         }
         $minutes = Config::get('auth.verification.expire', 60);
         if (! is_numeric($minutes)) {

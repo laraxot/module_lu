@@ -8,7 +8,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\ResetsPasswords;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
-//--------- Models ------------
+// --------- Models ------------
 use Illuminate\View\View;
 use Modules\LU\Models\User;
 use Modules\Xot\Contracts\UserContract;
@@ -17,8 +17,7 @@ use Modules\Xot\Services\FileService;
 /**
  * Class ResetPasswordController.
  */
-class ResetPasswordController extends Controller
-{
+class ResetPasswordController extends Controller {
     /*
     |--------------------------------------------------------------------------
     | Password Reset Controller
@@ -40,8 +39,7 @@ class ResetPasswordController extends Controller
     /**
      * Create a new controller instance.
      */
-    public function __construct()
-    {
+    public function __construct() {
         $this->middleware('guest');
     }
 
@@ -52,12 +50,11 @@ class ResetPasswordController extends Controller
      *
      * @return void
      */
-    protected function resetPassword(/*UserContract */ $user, string $password)
-    {
+    protected function resetPassword(/* UserContract */ $user, string $password) {
         $user->forceFill(
             [
-            'passwd' => $password,
-            'remember_token' => Str::random(60),
+                'passwd' => $password,
+                'remember_token' => Str::random(60),
             ]
         )->save();
         // 55     Parameter #1 $user of method Illuminate\Contracts\Auth\StatefulGuard::login()
@@ -66,7 +63,7 @@ class ResetPasswordController extends Controller
         $this->guard()->login($user);
     }
 
-    //@return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+    /** @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View */
 
     /**
      * Display the password reset view for the given token.
@@ -78,13 +75,12 @@ class ResetPasswordController extends Controller
      *
      * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View|\Illuminate\Http\JsonResponse|string|\Illuminate\Http\Response
      */
-    public function showResetForm(Request $request, $lang = null, $token = null)
-    {
-        //qui da fare controllo se esiste pub_theme::auth.passwords.reset mostra quello
-        //se no se esiste adm_theme::auth.passwords.reset mostra quello
-        //altrimenti mostra 'lu::auth.passwords.reset' che esiste per forza
-        //dddx($request->route()->parameters());
-        //$lang = app()->getLocale();
+    public function showResetForm(Request $request, $lang = null, $token = null) {
+        // qui da fare controllo se esiste pub_theme::auth.passwords.reset mostra quello
+        // se no se esiste adm_theme::auth.passwords.reset mostra quello
+        // altrimenti mostra 'lu::auth.passwords.reset' che esiste per forza
+        // dddx($request->route()->parameters());
+        // $lang = app()->getLocale();
         /*
         $locz = ['pub_theme', 'adm_theme', 'lu'];
         $tpl = 'auth.passwords.reset';

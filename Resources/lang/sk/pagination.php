@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
 |--------------------------------------------------------------------------
 | Pagination Language Lines
@@ -12,6 +14,6 @@
 */
 
 return [
-    'next'     => 'Nasledujúca &raquo;',
+    'next' => 'Nasledujúca &raquo;',
     'previous' => '&laquo; Predchádzajúca',
 ];

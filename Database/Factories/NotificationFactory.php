@@ -9,8 +9,7 @@ use Illuminate\Database\Eloquent\Factories\Factory;
 /**
  * Undocumented class.
  */
-class NotificationFactory extends Factory
-{
+class NotificationFactory extends Factory {
     /**
      * The name of the factory's corresponding model.
      *
@@ -23,8 +22,7 @@ class NotificationFactory extends Factory
      *
      * @return array
      */
-    public function definition()
-    {
+    public function definition() {
         return [
             'id' => $this->faker->word,
             'type' => $this->faker->word,

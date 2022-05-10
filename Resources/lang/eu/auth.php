@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
 |--------------------------------------------------------------------------
 | Authentication Language Lines
@@ -12,7 +14,7 @@
 */
 
 return [
-    'failed'   => 'Kredentzial hauek ez datoz bat gure erregistroekin.',
+    'failed' => 'Kredentzial hauek ez datoz bat gure erregistroekin.',
     'password' => 'The provided password is incorrect.',
     'throttle' => 'Atzipen saialdi gehiegi. Mesedez berriro saiatu :seconds segundo barru.',
 ];

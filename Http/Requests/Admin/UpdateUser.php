@@ -10,8 +10,7 @@ use Modules\Xot\Traits\FormRequestTrait;
 /**
  * Class UpdateUser.
  */
-class UpdateUser extends FormRequest
-{
+class UpdateUser extends FormRequest {
     use FormRequestTrait;
 
     /**
@@ -19,8 +18,7 @@ class UpdateUser extends FormRequest
      *
      * @return bool
      */
-    public function authorize()
-    {
+    public function authorize() {
         return true;
     }
 
@@ -29,8 +27,7 @@ class UpdateUser extends FormRequest
      *
      * @return array
      */
-    public function rules()
-    {
+    public function rules() {
         return [
         ];
     }

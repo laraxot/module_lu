@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
 |--------------------------------------------------------------------------
 | Authentication Language Lines
@@ -12,7 +14,7 @@
 */
 
 return [
-    'failed'   => 'Identitas tersebut tidak cocok dengan data kami.',
+    'failed' => 'Identitas tersebut tidak cocok dengan data kami.',
     'password' => 'Kata sandi yang dimasukkan salah.',
     'throttle' => 'Terlalu banyak upaya masuk. Silahkan coba lagi dalam :seconds detik.',
 ];

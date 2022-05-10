@@ -5,13 +5,13 @@ declare(strict_types=1);
 namespace Modules\LU\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
-//use Illuminate\Foundation\Auth\SendsPasswordResetEmails;
+// use Illuminate\Foundation\Auth\SendsPasswordResetEmails;
 
-//--- requests
+// --- requests
 use Modules\LU\Http\Requests\StoreInvitationRequest;
-//--- models --
+// --- models --
 use Modules\LU\Models\Invitation;
-//--- services --
+// --- services --
 use Modules\Theme\Services\ThemeService;
 
 /**
@@ -22,7 +22,7 @@ class InvitationController extends Controller {
      * @return mixed
      */
     public function create() {
-        //return ThemeService::view()->with('title', 'invitation');
+        // return ThemeService::view()->with('title', 'invitation');
         $view = ThemeService::view()->render();
 
         $view_params = [
@@ -44,4 +44,4 @@ class InvitationController extends Controller {
         return redirect()->route('requestInvitation')
             ->with('success', 'Invitation to register successfully requested. Please wait for registration link.');
     }
-}//end class
+}// end class

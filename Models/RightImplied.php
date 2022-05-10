@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Modules\LU\Models;
 
-//use Modules\Xot\Models\XotBaseModel;
+// use Modules\Xot\Models\XotBaseModel;
 
 /**
  * Modules\LU\Models\RightImplied.
@@ -16,6 +16,7 @@ namespace Modules\LU\Models;
  * @property \Illuminate\Support\Carbon|null $updated_at
  * @property string|null                     $created_by
  * @property string|null                     $updated_by
+ *
  * @method static \Illuminate\Database\Eloquent\Builder|RightImplied newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|RightImplied newQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|RightImplied query()
@@ -27,15 +28,16 @@ namespace Modules\LU\Models;
  * @method static \Illuminate\Database\Eloquent\Builder|RightImplied whereUpdatedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|RightImplied whereUpdatedBy($value)
  * @mixin \Eloquent
+ *
  * @method static \Modules\LU\Database\Factories\RightImpliedFactory factory(...$parameters)
  * @mixin IdeHelperRightImplied
  */
 class RightImplied extends BaseModel {
-    //protected $connection = 'liveuser_general'; // this will use the specified database conneciton
+    // protected $connection = 'liveuser_general'; // this will use the specified database conneciton
     /**
      * @var string
      */
-    //protected $table = 'liveuser_right_implied';
+    // protected $table = 'liveuser_right_implied';
     /**
      * @var string
      */

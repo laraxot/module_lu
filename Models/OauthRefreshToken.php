@@ -16,5 +16,5 @@ class OauthRefreshToken extends PassportRefreshToken {
      * @var string
      */
     protected $connection = 'liveuser_general';
-    //protected $fillable = ['id', 'access_token_id', 'revoked', 'expires_at'];
+    // protected $fillable = ['id', 'access_token_id', 'revoked', 'expires_at'];
 }

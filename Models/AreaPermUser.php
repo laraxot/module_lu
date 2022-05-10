@@ -25,6 +25,7 @@ use Modules\Theme\Services\ThemeService;
  * @property string|null                      $title
  * @property string|null                      $url
  * @property \Modules\LU\Models\PermUser|null $permUser
+ *
  * @method static \Modules\LU\Database\Factories\AreaPermUserFactory factory(...$parameters)
  * @method static \Illuminate\Database\Eloquent\Builder|AreaPermUser newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|AreaPermUser newQuery()
@@ -37,7 +38,9 @@ use Modules\Theme\Services\ThemeService;
  * @method static \Illuminate\Database\Eloquent\Builder|AreaPermUser whereUpdatedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|AreaPermUser whereUpdatedBy($value)
  * @mixin \Eloquent
+ *
  * @property string|null $guid
+ *
  * @method static \Illuminate\Database\Eloquent\Builder|AreaPermUser whereGuid($value)
  * @mixin IdeHelperAreaPermUser
  */
@@ -59,11 +62,11 @@ class AreaPermUser extends BasePivot {
         return $this->belongsTo(PermUser::class);
     }
 
-    //------------MUTATORS -------------
+    // ------------MUTATORS -------------
 
     public function getAreaDefineNameAttribute(?string $value): ?string {
         $area = $this->area;
-        if (! is_object($area)) {
+        if (! \is_object($area)) {
             return $value;
         }
 
@@ -99,7 +102,7 @@ class AreaPermUser extends BasePivot {
 
     public function getIconSrcAttribute(?string $value): ?string {
         $area = $this->area;
-        if (! is_object($area)) {
+        if (! \is_object($area)) {
             return $value;
         }
 
@@ -113,13 +116,13 @@ class AreaPermUser extends BasePivot {
             $area_define_name_scope = $this->area_define_name;
         }
 
-        $view = \mb_strtolower($area_define_name_scope).'::admin.dashboard_widget';
+        $view = mb_strtolower($area_define_name_scope).'::admin.dashboard_widget';
         $view_params = ['row' => $this];
         if (view()->exists($view)) {
-            //return view($view)->with('row', $this);
+            // return view($view)->with('row', $this);
             return view()->make($view)->with('row', $this);
         } else {
-            //return view('lu::admin.dashboard_widget_default')->with('row', $this);
+            // return view('lu::admin.dashboard_widget_default')->with('row', $this);
             return view()->make('lu::admin.dashboard_widget_default', $view_params);
         }
     }
@@ -128,14 +131,14 @@ class AreaPermUser extends BasePivot {
      * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\Routing\UrlGenerator|string
      */
     public function a_href() {
-        return url('admin/'.\mb_strtolower($this->area_define_name));
+        return url('admin/'.mb_strtolower($this->area_define_name));
     }
 
-    //-----------------------------------------------------------------------------
+    // -----------------------------------------------------------------------------
 
     public function icon_src(): string {
-        $src = \mb_strtolower($this->area_define_name.'::img/icon.png');
+        $src = mb_strtolower($this->area_define_name.'::img/icon.png');
 
         return ThemeService::asset($src);
     }
-}//---end class
+}// ---end class

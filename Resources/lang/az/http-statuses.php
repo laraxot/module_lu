@@ -1,8 +1,10 @@
 <?php
 
+declare(strict_types=1);
+
 return [
     'unknownError' => 'Bilinməyən səhv',
-    '0'            => 'Bilinməyən səhv',
+    '0' => 'Bilinməyən səhv',
 
     '100' => 'Davam edin',
     '101' => 'Protokolları keçid',

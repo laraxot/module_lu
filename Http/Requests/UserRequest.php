@@ -11,15 +11,13 @@ use Modules\LU\Models\User;
 /**
  * Class UserRequest.
  */
-class UserRequest extends FormRequest
-{
+class UserRequest extends FormRequest {
     /**
      * Determine if the user is authorized to make this request.
      *
      * @return bool
      */
-    public function authorize()
-    {
+    public function authorize() {
         return auth()->check();
     }
 
@@ -28,8 +26,7 @@ class UserRequest extends FormRequest
      *
      * @return array
      */
-    public function rules()
-    {
+    public function rules() {
         return [
             'name' => [
                 'required', 'min:3',
@@ -38,8 +35,8 @@ class UserRequest extends FormRequest
                 'required', 'email', Rule::unique((new User())->getTable())->ignore($this->route()->user->id ?? null),
             ],
             'password' => [
-                //38     Cannot access property $user on mixed.
-                //$this->route()->user ? 'nullable' : 'required', 'confirmed', 'min:6',
+                // 38     Cannot access property $user on mixed.
+                // $this->route()->user ? 'nullable' : 'required', 'confirmed', 'min:6',
                 'required', 'confirmed', 'min:6',
             ],
         ];

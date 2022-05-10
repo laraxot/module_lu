@@ -15,6 +15,7 @@ namespace Modules\LU\Models;
  * @property \Illuminate\Support\Carbon|null $updated_at
  * @property string|null                     $created_by
  * @property string|null                     $updated_by
+ *
  * @method static \Modules\LU\Database\Factories\PermUserRightFactory factory(...$parameters)
  * @method static \Illuminate\Database\Eloquent\Builder|PermUserRight newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|PermUserRight newQuery()

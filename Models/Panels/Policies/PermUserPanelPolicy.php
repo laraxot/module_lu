@@ -9,6 +9,5 @@ use Modules\Xot\Models\Panels\Policies\XotBasePanelPolicy;
 /**
  * Class PermUserPanelPolicy.
  */
-class PermUserPanelPolicy extends XotBasePanelPolicy
-{
+class PermUserPanelPolicy extends XotBasePanelPolicy {
 }

@@ -2,7 +2,7 @@
 
 @section('content')
     @include('theme::includes.flash')
-    
+
 
 {!! Form::bsOpen($row, 'store') !!}
 

@@ -32,6 +32,7 @@ use Staudenmeir\EloquentHasManyDeep\HasRelationships;
  * @property int|null                                                                                       $perm_users_count
  * @property \Illuminate\Database\Eloquent\Collection|\Modules\LU\Models\PermUser[]                         $perms
  * @property int|null                                                                                       $perms_count
+ *
  * @method static \Modules\LU\Database\Factories\AreaFactory factory(...$parameters)
  * @method static \Illuminate\Database\Eloquent\Builder|Area newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|Area newQuery()
@@ -49,12 +50,14 @@ use Staudenmeir\EloquentHasManyDeep\HasRelationships;
  * @method static \Illuminate\Database\Eloquent\Builder|Area whereUpdatedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Area whereUpdatedBy($value)
  * @mixin \Eloquent
+ *
  * @property string|null $icon_path
  * @property string|null $deleted_at
  * @property string|null $deleted_by
  * @property string|null $deleted_ip
  * @property string|null $created_ip
  * @property string|null $updated_ip
+ *
  * @method static \Illuminate\Database\Eloquent\Builder|Area whereCreatedIp($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Area whereDeletedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Area whereDeletedBy($value)
@@ -83,20 +86,20 @@ class Area extends BaseModel {
         $pivot_class = AreaPermUser::class;
         $pivot = app($pivot_class);
         $pivot_table = $pivot->getTable();
-        //$foreignPivotKey = 'area_id';
-        //$relatedPivotKey = 'perm_user_id';
-        //$parentKey = null;
-        //$relatedKey = null;
-        //$relation = null;
+        // $foreignPivotKey = 'area_id';
+        // $relatedPivotKey = 'perm_user_id';
+        // $parentKey = null;
+        // $relatedKey = null;
+        // $relation = null;
 
         return $this->belongsToMany(
             PermUser::class
-            //, $pivot_table,
-            //$foreignPivotKey,
-            //$relatedPivotKey,
-            //$parentKey,
-            //$relatedKey,
-            //$relation
+            // , $pivot_table,
+            // $foreignPivotKey,
+            // $relatedPivotKey,
+            // $parentKey,
+            // $relatedKey,
+            // $relation
         )
             ->using($pivot_class);
     }
@@ -108,7 +111,7 @@ class Area extends BaseModel {
         $foreignKeys = ['area_id', 'perm_user_id', 'user_id'];
         $localKeys = ['area_id', 'perm_user_id', 'user_id'];
 
-        //return $this->hasManyDeep(User::class, [AreaPermUser::class, PermUser::class], $foreignKeys, $localKeys);
+        // return $this->hasManyDeep(User::class, [AreaPermUser::class, PermUser::class], $foreignKeys, $localKeys);
 
         /*
         Unknown column liveuser_perm_users.area_id
@@ -119,7 +122,7 @@ class Area extends BaseModel {
         on `liveuser_perm_users`.`id` = `liveuser_area_perm_user`.`perm_user_id`
         where `liveuser_perm_users`.`area_id` = 7
         */
-        //return $this->hasManyDeep(User::class, [PermUser::class, AreaPermUser::class]);
+        // return $this->hasManyDeep(User::class, [PermUser::class, AreaPermUser::class]);
 
         /*
         Unknown column liveuser_users.perm_user_id
@@ -136,11 +139,11 @@ class Area extends BaseModel {
 
         return $this->hasManyDeep(User::class, [AreaPermUser::class, PermUser::class], $foreignKeys, $localKeys);
 
-        //return $this->hasManyDeepFromRelations($this->permUsers(), (new PermUser())->user());
+        // return $this->hasManyDeepFromRelations($this->permUsers(), (new PermUser())->user());
 
-        //*/
+        // */
 
-        //dddx(\Auth::user()->perm->user);
+        // dddx(\Auth::user()->perm->user);
     }
 
     public function permUsers(): BelongsToMany {
@@ -148,10 +151,10 @@ class Area extends BaseModel {
     }
 
     public function imageHtml(array $params = []): string {
-        //-- default vars
+        // -- default vars
         $width = 200;
         $height = 200;
-        \extract($params);
+        extract($params);
 
         return '<img src="'.asset($this->icon_src).'" width="'.$width.'" height="'.$height.'" />';
     }
@@ -162,7 +165,7 @@ class Area extends BaseModel {
      * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\Routing\UrlGenerator|string
      */
     public function getUrlAttribute($value) {
-        return url('admin/'.\mb_strtolower($this->area_define_name));
+        return url('admin/'.mb_strtolower($this->area_define_name));
     }
 
     /**
@@ -192,17 +195,17 @@ class Area extends BaseModel {
      * @return bool|mixed|string
      */
     public function getIconSrcAttribute($value) {
-        $src = \mb_strtolower($this->area_define_name.'::img/icon.png');
+        $src = mb_strtolower($this->area_define_name.'::img/icon.png');
         $src = ThemeService::asset($src);
 
         return $src;
     }
 
-    //---------------------------------------------------------------------------
+    // ---------------------------------------------------------------------------
     /*
     public function area() {
         return $this->hasOne(self::class, 'id', 'id');
     }
     */
-    //----
-}//---------end class Areas
+    // ----
+}// ---------end class Areas

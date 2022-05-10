@@ -9,6 +9,5 @@ use Modules\Xot\Models\Policies\XotBasePolicy;
 /**
  * Class InvitationPolicy.
  */
-class InvitationPolicy extends XotBasePolicy
-{
+class InvitationPolicy extends XotBasePolicy {
 }

@@ -4,14 +4,13 @@ declare(strict_types=1);
 
 namespace Modules\LU\Models\Panels;
 
-//--- Services --
+// --- Services --
 use Modules\Xot\Models\Panels\XotBasePanel;
 
 /**
  * Class RightPanel.
  */
-class RightPanel extends XotBasePanel
-{
+class RightPanel extends XotBasePanel {
     /**
      * The model the resource corresponds to.
      */
@@ -25,8 +24,7 @@ class RightPanel extends XotBasePanel
     /**
      * @return object[]
      */
-    public function fields(): array
-    {
+    public function fields(): array {
         return [
             (object) ([
                 'type' => 'Id',

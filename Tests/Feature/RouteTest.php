@@ -13,15 +13,13 @@ use Tests\TestCase;
 /**
  * Undocumented class.
  */
-class RouteTest extends TestCase
-{
+class RouteTest extends TestCase {
     /**
      * A basic test example.
      *
      * @return void
      */
-    public function testRoutes()
-    {
+    public function testRoutes() {
         $appURL = env('APP_URL');
 
         $urls = [
@@ -35,10 +33,10 @@ class RouteTest extends TestCase
             $response = $this->get($url);
             if (200 !== (int) $response->status()) {
                 echo $appURL.$url.' (FAILED) did not return a 200.';
-                $this->assertTrue(false);
+                static::assertTrue(false);
             } else {
                 echo $appURL.$url.' (success ?)';
-                $this->assertTrue(true);
+                static::assertTrue(true);
             }
             echo PHP_EOL;
         }

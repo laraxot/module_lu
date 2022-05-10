@@ -9,6 +9,5 @@ use Modules\Xot\Models\Policies\XotBasePolicy;
 /**
  * Class PasswordResetPolicy.
  */
-class PasswordResetPolicy extends XotBasePolicy
-{
+class PasswordResetPolicy extends XotBasePolicy {
 }

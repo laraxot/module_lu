@@ -9,6 +9,5 @@ use Modules\Xot\Models\Panels\Policies\XotBasePanelPolicy;
 /**
  * Class SocialProviderPanelPolicy.
  */
-class SocialProviderPanelPolicy extends XotBasePanelPolicy
-{
+class SocialProviderPanelPolicy extends XotBasePanelPolicy {
 }

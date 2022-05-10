@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
 |--------------------------------------------------------------------------
 | Authentication Language Lines
@@ -12,7 +14,7 @@
 */
 
 return [
-    'failed'   => 'Prisijungimo duomenys neatitinka.',
+    'failed' => 'Prisijungimo duomenys neatitinka.',
     'password' => 'Pateiktas slaptažodis yra neteisingas.',
     'throttle' => 'Per daug bandymų prisijungti. Bandykite po :seconds sec.',
 ];

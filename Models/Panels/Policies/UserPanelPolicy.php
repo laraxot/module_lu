@@ -11,15 +11,12 @@ use Modules\Xot\Models\Panels\Policies\XotBasePanelPolicy;
 /**
  * Class UserPanelPolicy.
  */
-class UserPanelPolicy extends XotBasePanelPolicy
-{
-    public function testUsersWithLivewire(UserContract $user, PanelContract $panel): bool
-    {
+class UserPanelPolicy extends XotBasePanelPolicy {
+    public function testUsersWithLivewire(UserContract $user, PanelContract $panel): bool {
         return false;
     }
 
-    public function test(UserContract $user, PanelContract $panel): bool
-    {
+    public function test(UserContract $user, PanelContract $panel): bool {
         return true;
     }
 }

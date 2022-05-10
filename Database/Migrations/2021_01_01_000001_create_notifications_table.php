@@ -5,20 +5,18 @@ declare(strict_types=1);
 use Illuminate\Database\Schema\Blueprint;
 use Modules\Xot\Database\Migrations\XotBaseMigration;
 
-class CreateNotificationsTable extends XotBaseMigration
-{
+class CreateNotificationsTable extends XotBaseMigration {
     /**
      * Run the migrations.
      *
      * @return void
      */
-    public function up()
-    {
-        //$old_table = 'groupusers';
-        //if ($this->getConn()->hasTable($old_table)) {
+    public function up() {
+        // $old_table = 'groupusers';
+        // if ($this->getConn()->hasTable($old_table)) {
         //    $this->getConn()->rename($old_table, $this->getTable());
-        //}
-        //-- CREATE --
+        // }
+        // -- CREATE --
         $this->tableCreate(
             function (Blueprint $table) {
                 $table->uuid('id')->primary();
@@ -30,7 +28,7 @@ class CreateNotificationsTable extends XotBaseMigration
             }
         );
 
-        //-- UPDATE --
+        // -- UPDATE --
         $this->tableUpdate(
             function (Blueprint $table) {
                 if ($this->hasColumn('auth_user_id') && ! $this->hasColumn('user_id')) {

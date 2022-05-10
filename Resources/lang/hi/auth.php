@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
 |--------------------------------------------------------------------------
 | Authentication Language Lines
@@ -12,7 +14,7 @@
 */
 
 return [
-    'failed'   => 'ये साख हमारे रिकॉर्ड से मेल नहीं खा रहे हैं।',
+    'failed' => 'ये साख हमारे रिकॉर्ड से मेल नहीं खा रहे हैं।',
     'password' => 'The provided password is incorrect.',
     'throttle' => 'बहुत सारे लॉगिन प्रयास। :seconds सेकंड में फिर से कोशिश करें।',
 ];

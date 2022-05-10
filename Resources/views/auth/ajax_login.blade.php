@@ -32,7 +32,7 @@
         </li>
         <li><a href="{{ route('password.request',['lang'=>$lang]) }}{{-- asset('/password/reset') --}}" class="ajax-popup-link" data-effect="mfp-zoom-out">Forgot password</a>
         </li>
-       
+
     </ul>
 {{--
 </div>

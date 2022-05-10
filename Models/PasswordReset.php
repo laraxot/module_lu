@@ -13,6 +13,7 @@ namespace Modules\LU\Models;
  * @property \Illuminate\Support\Carbon|null $updated_at
  * @property string|null                     $created_by
  * @property string|null                     $updated_by
+ *
  * @method static \Modules\LU\Database\Factories\PasswordResetFactory factory(...$parameters)
  * @method static \Illuminate\Database\Eloquent\Builder|PasswordReset newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|PasswordReset newQuery()
@@ -33,4 +34,4 @@ class PasswordReset extends BaseModel {
      * @var string
      */
     protected $table = 'password_resets';
-}//end class PasswordReset
+}// end class PasswordReset

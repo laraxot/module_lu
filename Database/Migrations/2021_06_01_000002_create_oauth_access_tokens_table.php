@@ -12,7 +12,7 @@ class CreateOauthAccessTokensTable extends XotBaseMigration {
      * @return void
      */
     public function up() {
-        //-- CREATE --
+        // -- CREATE --
         $this->tableCreate(
             function (Blueprint $table) {
                 $table->string('id', 100)->primary();

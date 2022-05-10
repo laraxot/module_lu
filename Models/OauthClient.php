@@ -15,7 +15,7 @@ class OauthClient extends PassportClient {
      */
     protected $connection = 'liveuser_general';
 
-    //class OauthClient extends BaseModel {
+    // class OauthClient extends BaseModel {
     /*
      * ---.
      */

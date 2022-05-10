@@ -41,7 +41,7 @@ trait UserRelationship {
 
     public function profile(): HasOne {
         $profile = TenantService::model('profile');
-        $profile_class = get_class($profile);
+        $profile_class = \get_class($profile);
 
         return $this->hasOne($profile_class);
     }
@@ -51,11 +51,11 @@ trait UserRelationship {
      */
     public function profileOrCreate() {
         $profile = TenantService::model('profile');
-        $profile_class = get_class($profile);
+        $profile_class = \get_class($profile);
 
         $res = $this->hasOne($profile_class);
 
-        //select exists(select * from `profiles` where `profiles`.`user_id` = 9941 and `profiles`.`user_id` is not null) as `exists`
+        // select exists(select * from `profiles` where `profiles`.`user_id` = 9941 and `profiles`.`user_id` is not null) as `exists`
         if ($res->exists()) {
             return $res;
         }
@@ -86,7 +86,7 @@ trait UserRelationship {
             */
         }
 
-        //return $this->profile();
+        // return $this->profile();
         return $this->hasOne($profile_class);
     }
 
@@ -101,10 +101,10 @@ trait UserRelationship {
             AreaPermUser::class,
             PermUser::class,
         )
-        //->whereHas('area', function ($q) use ($modules): void {
+        // ->whereHas('area', function ($q) use ($modules): void {
         //    $q->whereIn('area_define_name', $modules);
-        //})
-        //->with('area')
+        // })
+        // ->with('area')
         ;
 
         return $rows;
@@ -121,10 +121,10 @@ trait UserRelationship {
             GroupPermUser::class,
             PermUser::class,
         )
-        //->whereHas('area', function ($q) use ($modules): void {
+        // ->whereHas('area', function ($q) use ($modules): void {
         //    $q->whereIn('area_define_name', $modules);
-        //})
-        //->with('area')
+        // })
+        // ->with('area')
         ;
 
         return $rows;
@@ -141,10 +141,10 @@ trait UserRelationship {
             PermUserRight::class,
             PermUser::class,
         )
-        //->whereHas('area', function ($q) use ($modules): void {
+        // ->whereHas('area', function ($q) use ($modules): void {
         //    $q->whereIn('area_define_name', $modules);
-        //})
-        //->with('area')
+        // })
+        // ->with('area')
         ;
 
         return $rows;
@@ -154,15 +154,15 @@ trait UserRelationship {
      * @return \Illuminate\Database\Eloquent\Builder|\Illuminate\Database\Eloquent\Relations\BelongsToMany|\Illuminate\Database\Eloquent\Relations\HasManyThrough
      */
     public function areas() {
-        //return $this->hasManyDeep(Area::class, [PermUser::class, AreaPermUser::class]);
-        //return $this->hasManyDeepFromRelations($this->permUsers(), (new PermUser())->areas());
-        //return $this->areaPermUsers();
+        // return $this->hasManyDeep(Area::class, [PermUser::class, AreaPermUser::class]);
+        // return $this->hasManyDeepFromRelations($this->permUsers(), (new PermUser())->areas());
+        // return $this->areaPermUsers();
 
-        if (null == $this->perm && null !== $this->getKey()) {
+        if (null === $this->perm && null !== $this->getKey()) {
             $this->perm = PermUser::query()->firstOrCreate(['user_id' => $this->getKey()]);
         }
 
-        if (null == $this->perm /*&& ! null !== ($this->getKey()) */) {
+        if (null === $this->perm /* && ! null !== ($this->getKey()) */) {
             return $this->areaPermUsers();
         }
         /*
@@ -171,14 +171,14 @@ trait UserRelationship {
         }
         */
 
-        //ci dovremmo mettere un controllo(?),
-        //se sono superAdmin vorrei vedere tutti i moduli (solo attivi?)
+        // ci dovremmo mettere un controllo(?),
+        // se sono superAdmin vorrei vedere tutti i moduli (solo attivi?)
 
         return $this->perm->areas();
 
-        //dddx($res->toSql());
+        // dddx($res->toSql());
 
-        //return $res;
+        // return $res;
     }
 
     public function areasUsed() {
@@ -190,7 +190,7 @@ trait UserRelationship {
      * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany|\Illuminate\Database\Eloquent\Relations\HasManyThrough
      */
     public function groups() {
-        //if (null == $this->perm && ! isset($this->user_id)) {
+        // if (null == $this->perm && ! isset($this->user_id)) {
         /*
         return $this->hasManyThrough(
             GroupPermUser::class,
@@ -201,15 +201,15 @@ trait UserRelationship {
             //'perm_user_id'
         );
         */
-        //}
-        //if (null == $this->perm) {
+        // }
+        // if (null == $this->perm) {
         //    throw new \Exception('perm is null');
-        //}
-        if (null == $this->perm && null !== $this->getKey()) {
+        // }
+        if (null === $this->perm && null !== $this->getKey()) {
             $this->perm = PermUser::query()->firstOrCreate(['user_id' => $this->getKey()]);
         }
 
-        if (null == $this->perm) {
+        if (null === $this->perm) {
             return $this->groupPermUsers();
         }
 
@@ -220,7 +220,7 @@ trait UserRelationship {
      * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany|\Illuminate\Database\Eloquent\Relations\HasManyThrough
      */
     public function rights() {
-        ///if (null == $this->perm && ! isset($this->user_id)) {
+        // /if (null == $this->perm && ! isset($this->user_id)) {
         /*
         return $this->hasManyThrough(
                 UserRight::class,
@@ -231,16 +231,16 @@ trait UserRelationship {
                 //'perm_user_id'
             );
         */
-        //}
-        //dddx($this->perm);
-        //if (null == $this->perm) {
+        // }
+        // dddx($this->perm);
+        // if (null == $this->perm) {
         //    throw new \Exception('perm is null');
-        //}
-        if (null == $this->perm && null !== $this->getKey()) {
+        // }
+        if (null === $this->perm && null !== $this->getKey()) {
             $this->perm = PermUser::query()->firstOrCreate(['user_id' => $this->getKey()]);
         }
 
-        if (null == $this->perm) {
+        if (null === $this->perm) {
             return $this->permUserRights();
         }
 

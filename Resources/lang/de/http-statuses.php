@@ -1,8 +1,10 @@
 <?php
 
+declare(strict_types=1);
+
 return [
     'unknownError' => 'Unbekannter Fehler',
-    '0'            => 'Unbekannter Fehler',
+    '0' => 'Unbekannter Fehler',
 
     '100' => 'Weiter',
     '101' => 'Switching Protocols',

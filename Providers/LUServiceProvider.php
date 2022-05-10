@@ -4,9 +4,9 @@ declare(strict_types=1);
 
 namespace Modules\LU\Providers;
 
-//---- bases ----
+// ---- bases ----
 use Illuminate\Foundation\AliasLoader;
-//use Modules\LU\Models\User;
+// use Modules\LU\Models\User;
 use Laravel\Passport\Passport;
 use Modules\LU\Models\OauthAccessToken;
 use Modules\LU\Models\OauthAuthCode;
@@ -33,7 +33,7 @@ class LUServiceProvider extends XotBaseServiceProvider {
             ]
         );
 
-        //$this->registerLivewireComponents();
+        // $this->registerLivewireComponents();
 
         $this->registerPassport();
     }

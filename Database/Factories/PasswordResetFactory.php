@@ -6,8 +6,7 @@ namespace Modules\LU\Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
 
-class PasswordResetFactory extends Factory
-{
+class PasswordResetFactory extends Factory {
     /**
      * The name of the factory's corresponding model.
      *
@@ -20,8 +19,7 @@ class PasswordResetFactory extends Factory
      *
      * @return array
      */
-    public function definition()
-    {
+    public function definition() {
         return [
             'email' => $this->faker->email,
             'token' => $this->faker->word,

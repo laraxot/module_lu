@@ -9,14 +9,13 @@ use Illuminate\Auth\Events\Registered;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
-//--------- Models ------------
+// --------- Models ------------
 use Modules\LU\Models\User;
 
 /**
  * Class RegisterController.
  */
-class RegisterController extends Controller
-{
+class RegisterController extends Controller {
     /*
     |--------------------------------------------------------------------------
     | Register Controller
@@ -38,8 +37,7 @@ class RegisterController extends Controller
     /**
      * Create a new controller instance.
      */
-    public function __construct()
-    {
+    public function __construct() {
         $this->middleware('guest');
     }
 
@@ -48,14 +46,13 @@ class RegisterController extends Controller
      *
      * @return \Illuminate\Contracts\Validation\Validator
      */
-    protected function validator(array $data)
-    {
+    protected function validator(array $data) {
         return Validator::make(
             $data, [
-            //'name' => 'required|max:255',
-            'handle' => 'required|max:255',
-            'email' => 'required|email|max:255', // |unique:users
-            'password' => 'required|min:6|confirmed',
+                // 'name' => 'required|max:255',
+                'handle' => 'required|max:255',
+                'email' => 'required|email|max:255', // |unique:users
+                'password' => 'required|min:6|confirmed',
             ]
         );
     }
@@ -65,23 +62,22 @@ class RegisterController extends Controller
      *
      * @return User
      */
-    protected function create(array $data)
-    {
+    protected function create(array $data) {
         if (! isset($data['handle'])) {
-            $data['handle'] = $data['username']; //molti template precotti hanno username.. se non hanno neppure questo meglio avere errore
+            $data['handle'] = $data['username']; // molti template precotti hanno username.. se non hanno neppure questo meglio avere errore
         }
         $user = User::query()->create(
             [
-            //'name' => $data['name'],
-            'handle' => $data['handle'],
-            'email' => $data['email'],
-            //'passwd' => md5($data['password']),
-            'passwd' => $data['password'], //lo facciamo con il setattribute
-            //'password' => bcrypt($data['password']),
+                // 'name' => $data['name'],
+                'handle' => $data['handle'],
+                'email' => $data['email'],
+                // 'passwd' => md5($data['password']),
+                'passwd' => $data['password'], // lo facciamo con il setattribute
+                // 'password' => bcrypt($data['password']),
             ]
         );
 
-        //http://stackoverflow.com/questions/33562285/how-can-i-use-md5-hashing-for-passwords-in-laravel
+        // http://stackoverflow.com/questions/33562285/how-can-i-use-md5-hashing-for-passwords-in-laravel
         // email the user
         /*
         Mail::send('emails.register', ['user' => $user], function($message) use ($user)
@@ -98,13 +94,12 @@ class RegisterController extends Controller
         return $user;
     }
 
-    //---------------------------------------------------------------------------------------
+    // ---------------------------------------------------------------------------------------
 
     /**
      * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View|\Illuminate\Http\JsonResponse|string
      */
-    public function showRegistrationForm(Request $request)
-    {
+    public function showRegistrationForm(Request $request) {
         $params = optional(\Route::current())->parameters();
         $row = new User();
         $locz = ['pub_theme', 'adm_theme', 'lu'];
@@ -149,15 +144,14 @@ class RegisterController extends Controller
         throw new \Exception('<h3>Non esiste la view ['.$view.']</h3>['.__LINE__.']['.__FILE__.']');
     }
 
-    //--------------------------------------------------------------------------------
+    // --------------------------------------------------------------------------------
 
     /**
      * Handle a registration request for the application.
      *
      * @return mixed
      */
-    public function register(Request $request)
-    {
+    public function register(Request $request) {
         /*
         $this->validator($request->all())->validate();
 
@@ -203,4 +197,4 @@ class RegisterController extends Controller
 
         return redirect($this->redirectPath());
     }
-}//end class
+}// end class

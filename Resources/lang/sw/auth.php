@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
 |--------------------------------------------------------------------------
 | Authentication Language Lines
@@ -12,7 +14,7 @@
 */
 
 return [
-    'failed'   => 'Hii hati tambulishi hailingani na rekodi zetu.',
+    'failed' => 'Hii hati tambulishi hailingani na rekodi zetu.',
     'password' => 'The provided password is incorrect.',
     'throttle' => 'Majaribio mengi sana ya kuingia. Tafadhali jaribu tena katika :sekunde sekunde.',
 ];

@@ -24,6 +24,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
  * @property string|null                     $provider_id
  * @property string|null                     $provider
  * @property \Modules\LU\Models\User|null    $user
+ *
  * @method static \Modules\LU\Database\Factories\SocialProviderFactory factory(...$parameters)
  * @method static \Illuminate\Database\Eloquent\Builder|SocialProvider newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|SocialProvider newQuery()
@@ -54,7 +55,7 @@ class SocialProvider extends BaseModel {
         'name', 'email', 'avatar',
     ];
 
-    //----------------RELATIONSHIP------------------------
+    // ----------------RELATIONSHIP------------------------
 
     public function user(): BelongsTo {
         return $this->belongsTo(User::class);

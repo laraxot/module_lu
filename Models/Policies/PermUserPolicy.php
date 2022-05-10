@@ -9,6 +9,5 @@ use Modules\Xot\Models\Policies\XotBasePolicy;
 /**
  * Class PermUserPolicy.
  */
-class PermUserPolicy extends XotBasePolicy
-{
+class PermUserPolicy extends XotBasePolicy {
 }

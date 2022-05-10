@@ -1,5 +1,5 @@
 @extends('layouts.app')
-{{--  
+{{--
 https://github.com/jasminetracey/lara8auth/tree/main/resources/views/auth
     --}}
 

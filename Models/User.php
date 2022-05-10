@@ -149,15 +149,15 @@ use Staudenmeir\EloquentHasManyDeep\HasRelationships;
  * @mixin IdeHelperUser
  */
 class User extends Authenticatable implements UserContract {
-    use Notifiable;
-    use Updater;
+    use HasApiTokens;
     use HasFactory;
-    use HasApiTokens; // PASSPORT
     use HasRelationships;
-    use HasTags; // spatie tags
-    use Traits\Relationships\UserRelationship;
+    use HasTags; // PASSPORT
+    use Notifiable;
+    use Traits\Extras\UserExtra; // spatie tags
     use Traits\Mutators\UserMutator;
-    use Traits\Extras\UserExtra;
+    use Traits\Relationships\UserRelationship;
+    use Updater;
 
     /**
      * @var string

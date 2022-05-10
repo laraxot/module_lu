@@ -6,7 +6,7 @@ namespace Modules\LU\Models\Panels;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\Request;
-//--- Services --
+// --- Services --
 use Modules\LU\Models\Group;
 use Modules\Xot\Models\Panels\XotBasePanel;
 
@@ -29,7 +29,7 @@ class GroupPanel extends XotBasePanel {
      */
     protected static array $search = [];
 
-    /*
+    /**
      * @return mixed
      */
     /*
@@ -39,7 +39,7 @@ class GroupPanel extends XotBasePanel {
     */
 
     public function optionLabel(Model $row): string {
-        //dddx($row instanceof Group);//true !!!
+        // dddx($row instanceof Group);//true !!!
 
         return $row->getKey().'] '.$row->getAttributeValue('group_define_name');
     }

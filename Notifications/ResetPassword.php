@@ -9,7 +9,7 @@ namespace Modules\LU\Notifications;
 
 use Illuminate\Notifications\Messages\MailMessage;
 use Illuminate\Notifications\Notification;
-//use Illuminate\Auth\Notifications\ResetPassword as ResetPasswordNotification;
+// use Illuminate\Auth\Notifications\ResetPassword as ResetPasswordNotification;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\Lang;
 use Illuminate\Support\Facades\URL;
@@ -17,8 +17,7 @@ use Illuminate\Support\Facades\URL;
 /**
  * Class ResetPassword.
  */
-class ResetPassword extends Notification
-{
+class ResetPassword extends Notification {
     /**
      * The password reset token.
      */
@@ -27,8 +26,7 @@ class ResetPassword extends Notification
     /**
      * Create a notification instance.
      */
-    public function __construct(string $token)
-    {
+    public function __construct(string $token) {
         $this->token = $token;
     }
 
@@ -39,8 +37,7 @@ class ResetPassword extends Notification
      *
      * @return array|string
      */
-    public function via($notifiable)
-    {
+    public function via($notifiable) {
         return ['mail'];
     }
 
@@ -51,13 +48,12 @@ class ResetPassword extends Notification
      *
      * @return \Illuminate\Notifications\Messages\MailMessage
      */
-    public function toMail($notifiable)
-    {
-        ///*
+    public function toMail($notifiable) {
+        // /*
 
         $views = [
             'pub_theme::notifications.email',
-            //'lu::notifications.email', //commento perche' mi accontento di quello standard
+            // 'lu::notifications.email', //commento perche' mi accontento di quello standard
         ];
 
         $markdown = Arr::first(
@@ -70,9 +66,9 @@ class ResetPassword extends Notification
         $url = url(route('password.reset', $this->token, false));
 
         $mail = (new MailMessage())
-            //->from('admin@app.com', 'AppName')
+            // ->from('admin@app.com', 'AppName')
             ->subject(trans('lu::notifications.reset_password.subject'));
-        if (null !== $markdown && is_string($markdown)) {
+        if (null !== $markdown && \is_string($markdown)) {
             $mail = $mail->markdown($markdown, ['subcopy' => 'subcopy']);
         }
         $mail = $mail->line(trans('lu::notifications.reset_password.line1'))
@@ -80,8 +76,8 @@ class ResetPassword extends Notification
             ->line(trans('lu::notifications.reset_password.line2'));
 
         return $mail;
-        //->greeting(trans('lu::notifications.reset_password.greeting', ['username' => $this->username]))
-            //->markdown($markdown, ['subcopy' => 'subcopy'])
+        // ->greeting(trans('lu::notifications.reset_password.greeting', ['username' => $this->username]))
+            // ->markdown($markdown, ['subcopy' => 'subcopy'])
 
         /*
         return (new MailMessage())
@@ -110,7 +106,7 @@ class ResetPassword extends Notification
              ->action('Reset Password', url(route('password.reset', $this->token, false)))
              ->line(Lang::getFromJson('If you did not request a password reset, no further action is required.'));*/
 
-        //*/
+        // */
             /*
         $reset_password_url=url(route('password.reset', $this->token, false));
         return (new MailMessage())

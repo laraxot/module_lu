@@ -4,14 +4,13 @@ declare(strict_types=1);
 
 namespace Modules\LU\Models\Panels;
 
-//--- Services --
+// --- Services --
 use Modules\Xot\Models\Panels\XotBasePanel;
 
 /**
  * Class GroupRightPanel.
  */
-class GroupRightPanel extends XotBasePanel
-{
+class GroupRightPanel extends XotBasePanel {
     /**
      * The model the resource corresponds to.
      */
@@ -25,8 +24,7 @@ class GroupRightPanel extends XotBasePanel
     /**
      * @return object[]
      */
-    public function fields(): array
-    {
+    public function fields(): array {
         return [
             (object) ([
                 'type' => 'Integer',

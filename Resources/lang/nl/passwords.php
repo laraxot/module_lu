@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
 |--------------------------------------------------------------------------
 | Password Reset Language Lines
@@ -12,9 +14,9 @@
 */
 
 return [
-    'reset'     => 'Het wachtwoord van uw account is gewijzigd.',
-    'sent'      => 'We hebben een e-mail verstuurd met instructies om een nieuw wachtwoord in te stellen.',
+    'reset' => 'Het wachtwoord van uw account is gewijzigd.',
+    'sent' => 'We hebben een e-mail verstuurd met instructies om een nieuw wachtwoord in te stellen.',
     'throttled' => 'Gelieve even te wachten voor u het opnieuw probeert.',
-    'token'     => 'Dit wachtwoordhersteltoken is niet geldig.',
-    'user'      => 'Geen gebruiker bekend met het e-mailadres.',
+    'token' => 'Dit wachtwoordhersteltoken is niet geldig.',
+    'user' => 'Geen gebruiker bekend met het e-mailadres.',
 ];

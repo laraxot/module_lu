@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
 |--------------------------------------------------------------------------
 | Password Reset Language Lines
@@ -12,9 +14,9 @@
 */
 
 return [
-    'reset'     => 'Nenosiri lako limefufuliwa upya!',
-    'sent'      => 'Tumekutumia barua pepe ya fungo la kufufua nenosiri!',
+    'reset' => 'Nenosiri lako limefufuliwa upya!',
+    'sent' => 'Tumekutumia barua pepe ya fungo la kufufua nenosiri!',
     'throttled' => 'Tafadhali kusubiri kabla inajaribu tena.',
-    'token'     => 'Huu ufufuzi wa nenosiri si halali.',
-    'user'      => 'Hatupati mtumiaji wa hiyo anuani ya barua pepe.',
+    'token' => 'Huu ufufuzi wa nenosiri si halali.',
+    'user' => 'Hatupati mtumiaji wa hiyo anuani ya barua pepe.',
 ];

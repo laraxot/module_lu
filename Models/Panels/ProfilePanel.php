@@ -6,10 +6,10 @@ namespace Modules\LU\Models\Panels;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\Request;
-//--- Services --
+// --- Services --
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
-//use Modules\Blog\Events\StoreProfileEvent;
+// use Modules\Blog\Events\StoreProfileEvent;
 use Illuminate\Support\Str;
 use Modules\LU\Models\Profile;
 use Modules\LU\Models\User;
@@ -51,7 +51,7 @@ class ProfilePanel extends XotBasePanel {
      * @param Profile $row
      */
     public function optionLabel($row): string {
-        //return $row->area_define_name;
+        // return $row->area_define_name;
         return $row->handle();
     }
 
@@ -63,27 +63,27 @@ class ProfilePanel extends XotBasePanel {
             (object) [
                 'type' => 'Id',
                 'name' => 'id',
-                //'rules' => 'required',
+                // 'rules' => 'required',
                 'comment' => null,
             ],
             (object) [
                 'type' => 'String',
                 'name' => 'user.first_name',
-                //'rules' => 'required',
+                // 'rules' => 'required',
                 'comment' => null,
                 'col_size' => 6,
             ],
             (object) [
                 'type' => 'String',
                 'name' => 'user.last_name',
-                //'rules' => 'required',
+                // 'rules' => 'required',
                 'comment' => null,
                 'col_size' => 6,
             ],
             (object) [
                 'type' => 'String',
                 'name' => 'user.handle',
-                //'rules' => 'required',
+                // 'rules' => 'required',
                 'comment' => null,
                 'col_size' => 6,
             ],
@@ -97,12 +97,12 @@ class ProfilePanel extends XotBasePanel {
             (object) [
                 'type' => 'AddressGoogle',
                 'name' => 'indirizzo',
-                //'rules' => 'required',
+                // 'rules' => 'required',
                 'comment' => null,
                 'col_size' => 12,
             ],
             (object) [
-                'type' => 'PivotFields', //-- da aggiornare
+                'type' => 'PivotFields', // -- da aggiornare
                 'name' => 'privacies',
                 'col_size' => 12,
                 'rules' => 'pivot_rules',
@@ -146,8 +146,8 @@ class ProfilePanel extends XotBasePanel {
      */
     public function actions(Request $request = null): array {
         return [
-            //new \Modules\Blog\Models\Panels\Actions\PersonalInfoAction(),
-            //new \Modules\Blog\Models\Panels\Actions\UserSecurityAction(),
+            // new \Modules\Blog\Models\Panels\Actions\PersonalInfoAction(),
+            // new \Modules\Blog\Models\Panels\Actions\UserSecurityAction(),
         ];
     }
 
@@ -157,24 +157,24 @@ class ProfilePanel extends XotBasePanel {
      * @param int $size
      */
     public function avatar($size = 100): ?string {
-        if (null == $this->row) {
+        if (null === $this->row) {
             throw new \Exception('row is null');
         }
         if (! property_exists($this->row, 'user')) {
-            throw new \Exception('in ['.get_class($this->row).'] property [user] not exists');
+            throw new \Exception('in ['.\get_class($this->row).'] property [user] not exists');
         }
         $user = $this->row->user;
 
-        if (! is_object($user) && is_object($this->row)) {
+        if (! \is_object($user) && \is_object($this->row)) {
             if (isset($this->row->user_id) && method_exists($this->row, 'user')) {
                 $this->row->user()->create();
             }
-            //dddx($this->row);
+            // dddx($this->row);
             return null;
         }
 
-        $email = \md5(\mb_strtolower(\trim((string) $user->email)));
-        $default = \urlencode('https://tracker.moodle.org/secure/attachment/30912/f3.png');
+        $email = md5(mb_strtolower(trim((string) $user->email)));
+        $default = urlencode('https://tracker.moodle.org/secure/attachment/30912/f3.png');
 
         return "https://www.gravatar.com/avatar/$email?d=$default&s=$size";
     }
@@ -199,16 +199,16 @@ class ProfilePanel extends XotBasePanel {
             'lang' => app()->getLocale(),
         ];
 
-        if (is_object($row->post) && method_exists($row->post, 'update')) {
+        if (\is_object($row->post) && method_exists($row->post, 'update')) {
             $row->post->update($post_data);
         } else {
             $row->post()->create($post_data);
         }
 
-        //$res = event(new StoreProfileEvent($user));
-        //$this->generateUUIDVerificationToken($user);
+        // $res = event(new StoreProfileEvent($user));
+        // $this->generateUUIDVerificationToken($user);
         Auth::guard()->login($user, true);
-        //$this->guard()->login($user); ???
+        // $this->guard()->login($user); ???
         Session::flash(
             'swal', [
                 'type' => 'success',
@@ -217,7 +217,7 @@ class ProfilePanel extends XotBasePanel {
                 'footer' => trans('food::profile.store_success.footer'),
             ]
         );
-        //dddx($user);dddx($row);
+        // dddx($user);dddx($row);
         return $row;
     }
 
@@ -242,15 +242,15 @@ class ProfilePanel extends XotBasePanel {
     */
 
     public function isSuperAdmin(): bool {
-        //232 Access to an undefined property Illuminate\Database\Eloquent\Model::$user.
-        //$user = $this->row->user;
-        //$user = $this->row->getRelationValue('user');
+        // 232 Access to an undefined property Illuminate\Database\Eloquent\Model::$user.
+        // $user = $this->row->user;
+        // $user = $this->row->getRelationValue('user');
         // 89     Access to an undefined property object::$perm_type
         $user_id = $this->row->getAttributeValue('user_id');
         $user = User::where('id', $user_id)->first();
 
         try {
-            if (is_object($user->perm) && $user->perm->perm_type >= 4) {  //superadmin
+            if (\is_object($user->perm) && $user->perm->perm_type >= 4) {  // superadmin
                 return true;
             }
         } catch (\Exception $e) {

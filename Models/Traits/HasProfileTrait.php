@@ -16,7 +16,7 @@ use Modules\Tenant\Services\TenantService;
  * Trait HasProfileTrait. DA RIPRENDERE.
  */
 trait HasProfileTrait {
-    //--- RELATIONS
+    // --- RELATIONS
     public function user(): BelongsTo {
         return $this->belongsTo(User::class);
     }
@@ -34,19 +34,19 @@ trait HasProfileTrait {
      */
     public function profile() {
         $user_id = $this->getAttributeValue('user_id');
-        if (null == $user_id) {
-            //throw new \Exception('$user_id is null');
-            //31     Cannot access property $user_id on mixed.
-            //$user_id = User::query()->first()->user_id;
-            //33     Cannot call method getAttributeValue() on mixed.
-            //$user_id = User::first()->getAttributeValue('user_id');
+        if (null === $user_id) {
+            // throw new \Exception('$user_id is null');
+            // 31     Cannot access property $user_id on mixed.
+            // $user_id = User::query()->first()->user_id;
+            // 33     Cannot call method getAttributeValue() on mixed.
+            // $user_id = User::first()->getAttributeValue('user_id');
             $user_id = 1; // lo associo all'admin
         }
         $profile_class = TenantService::model('profile');
-        if ('' == $profile_class) {
+        if ('' === $profile_class) {
             dddx('modifica config xra.php  aggiungi in model il profile');
         }
-        $res = $this->hasOne(get_class($profile_class), 'user_id', 'user_id');
+        $res = $this->hasOne(\get_class($profile_class), 'user_id', 'user_id');
         if ($res->exists()) {
             return $res;
         }
@@ -65,23 +65,23 @@ trait HasProfileTrait {
         return $this->profile();
     }
 
-    //uguale a quello di ProfilePanel, forse è meglio qui?
-    //ne sta un altro utilizzato in UserPanel
+    // uguale a quello di ProfilePanel, forse è meglio qui?
+    // ne sta un altro utilizzato in UserPanel
 
     public function avatar(?int $size = 100): ?string {
         $user = $this->user;
-        if (! is_object($user)) {
+        if (! \is_object($user)) {
             if (isset($this->user_id)) {
                 $this->user()->create();
             }
-            //dddx($this->row);
+            // dddx($this->row);
             return null;
         }
-        if (null == $user->email) {
+        if (null === $user->email) {
             return null;
         }
-        $email = \md5(\mb_strtolower(\trim($user->email)));
-        $default = \urlencode('https://tracker.moodle.org/secure/attachment/30912/f3.png');
+        $email = md5(mb_strtolower(trim($user->email)));
+        $default = urlencode('https://tracker.moodle.org/secure/attachment/30912/f3.png');
 
         return "https://www.gravatar.com/avatar/$email?d=$default&s=$size";
     }
@@ -92,7 +92,7 @@ trait HasProfileTrait {
         }
         $user = $this->user;
 
-        if (! is_object($user)) {
+        if (! \is_object($user)) {
             return $value;
         }
 
@@ -104,8 +104,8 @@ trait HasProfileTrait {
             ]
         );
 
-        //righe prese dal getFullNameAttribute che stava in profile.php
-        if (strlen($value) < 5) {
+        // righe prese dal getFullNameAttribute che stava in profile.php
+        if (\strlen($value) < 5) {
             $value .= ' '.$user->handle;
         }
         $value = trim($value);
@@ -120,7 +120,7 @@ trait HasProfileTrait {
 
         $user = $this->user;
 
-        if (! is_object($user)) {
+        if (! \is_object($user)) {
             return $value;
         }
 
@@ -140,7 +140,7 @@ trait HasProfileTrait {
         }
         $user = $this->user;
 
-        if (! is_object($user)) {
+        if (! \is_object($user)) {
             return $value;
         }
         $value = $user->first_name;
@@ -156,7 +156,7 @@ trait HasProfileTrait {
     }
 
     public function handle(): string {
-        if (null == $this->user) {
+        if (null === $this->user) {
             throw new Exception('['.__LINE__.']['.class_basename(__CLASS__).']');
         }
 

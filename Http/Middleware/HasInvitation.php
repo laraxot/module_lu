@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace Modules\LU\Http\Middleware;
 
-//https://laraveldaily.com/laravel-auth-make-registration-invitation-only/
-//https://github.com/LaravelDaily/Laravel-Auth-Invitations
+// https://laraveldaily.com/laravel-auth-make-registration-invitation-only/
+// https://github.com/LaravelDaily/Laravel-Auth-Invitations
 
 use Closure;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
@@ -14,15 +14,13 @@ use Modules\LU\Models\Invitation;
 /**
  * Class HasInvitation.
  */
-class HasInvitation
-{
+class HasInvitation {
     /**
      * @param \Illuminate\Http\Request $request
      *
      * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector|mixed
      */
-    public function handle($request, Closure $next)
-    {
+    public function handle($request, Closure $next) {
         /*
          * Only for GET requests. Otherwise, this middleware will block our registration.
          */
@@ -53,7 +51,7 @@ class HasInvitation
              * Let's check if users already registered.
              * If yes -> redirect to login with error.
              */
-            if (! is_null($invitation->registered_at)) {
+            if (null !== $invitation->registered_at) {
                 return redirect(route('login'))->with('error', 'The invitation link has already been used.');
             }
         }

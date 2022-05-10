@@ -7,6 +7,5 @@ namespace Modules\LU\Models\Traits\Scopes;
 /*
  * Undocumented trait.
  */
-trait ProfileScope
-{
+trait ProfileScope {
 }

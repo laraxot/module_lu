@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace Modules\LU\Models\Panels;
 
 use Illuminate\Http\Request;
-//--- Services --
+// --- Services --
 use Modules\LU\Models\Area;
 use Modules\LU\Models\Group;
 use Modules\LU\Models\PermUser;
@@ -96,7 +96,7 @@ class UserPanel extends XotBasePanel {
                 'col_size' => 5,
             ],
             */
-            //*
+            // *
             (object) [
                 'type' => 'Password',
                 'name' => 'passwd',
@@ -173,7 +173,7 @@ class UserPanel extends XotBasePanel {
                 'options' => $this->optionsModelClass(Right::class),
             ],
 
-            //*/
+            // */
         ];
     }
 
@@ -188,7 +188,6 @@ class UserPanel extends XotBasePanel {
         /* aggiunto profile come tab in edit. penso possa servire sempre a tutti
         a prescindere dal modulo in cui può essere profile */
         $tabs_name = ['areas', 'groups', 'perms', 'rights', 'profile'];
-
 
         return $tabs_name;
     }
@@ -238,15 +237,15 @@ class UserPanel extends XotBasePanel {
         $user = $this->row;
 
         if (! method_exists($user, 'perm')) {
-            throw new \Exception('in ['.get_class($user).'] method [perm] not exists');
+            throw new \Exception('in ['.\get_class($user).'] method [perm] not exists');
         }
 
-        //$perm = $user->perm;
+        // $perm = $user->perm;
         $perm = PermUser::where('user_id', $user->getKey())->first();
 
-        //260    Access to an undefined property object::$perm_type
+        // 260    Access to an undefined property object::$perm_type
 
-        if (is_object($perm) && $perm->perm_type >= 4) {  //superadmin
+        if (\is_object($perm) && $perm->perm_type >= 4) {  // superadmin
             return true;
         }
 
@@ -256,7 +255,7 @@ class UserPanel extends XotBasePanel {
     public function name(): string {
         $attr = $this->row->getAttributes();
 
-        if (! in_array('handle', array_keys($attr))) {
+        if (! \in_array('handle', array_keys($attr), true)) {
             throw new \Exception('property handle not exists');
         }
 
@@ -267,8 +266,8 @@ class UserPanel extends XotBasePanel {
         if (! isset($this->row->email)) {
             return '';
         }
-        $email = \md5(\mb_strtolower(\trim($this->row->email)));
-        $default = \urlencode('https://tracker.moodle.org/secure/attachment/30912/f3.png');
+        $email = md5(mb_strtolower(trim($this->row->email)));
+        $default = urlencode('https://tracker.moodle.org/secure/attachment/30912/f3.png');
 
         return "https://www.gravatar.com/avatar/$email?d=$default&s=$size";
     }

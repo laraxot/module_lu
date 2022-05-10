@@ -15,6 +15,7 @@ namespace Modules\LU\Models;
  * @property \Illuminate\Support\Carbon|null $updated_at
  * @property string|null                     $created_by
  * @property string|null                     $updated_by
+ *
  * @method static \Modules\LU\Database\Factories\InvitationFactory factory(...$parameters)
  * @method static \Illuminate\Database\Eloquent\Builder|Invitation newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|Invitation newQuery()
@@ -36,7 +37,7 @@ class Invitation extends BaseModel {
      */
     protected $fillable = ['email', 'invitation_token', 'registered_at'];
 
-    //------------- FUNZIONI PER FAR FUNZIONARE IL PACCHETTO ------------
+    // ------------- FUNZIONI PER FAR FUNZIONARE IL PACCHETTO ------------
     public function generateInvitationToken(): void {
         $this->invitation_token = substr(md5(rand(0, 9).$this->email.time()), 0, 32);
     }
@@ -44,4 +45,4 @@ class Invitation extends BaseModel {
     public function getLink(): string {
         return urldecode(route('register').'?invitation_token='.$this->invitation_token);
     }
-}//end class
+}// end class

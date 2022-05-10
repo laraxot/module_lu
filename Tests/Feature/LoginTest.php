@@ -13,8 +13,8 @@ declare(strict_types=1);
 namespace Modules\LU\Tests\Feature;
 
 use Illuminate\Support\Facades\Auth;
-//URL::defaults(['locale' => $request->user()->locale]);
-//\URL::forceRootUrl('http://www.myapp.com/en');
+// URL::defaults(['locale' => $request->user()->locale]);
+// \URL::forceRootUrl('http://www.myapp.com/en');
 
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\URL;
@@ -24,60 +24,49 @@ use Tests\TestCase;
 /**
  * Undocumented class.
  */
-class LoginTest extends TestCase
-{
-    public function setUp(): void
-    {
+class LoginTest extends TestCase {
+    protected function setUp(): void {
         parent::setUp();
         URL::defaults(['lang' => 'it']);
     }
 
-    protected function successfulLoginRoute()
-    {
+    protected function successfulLoginRoute() {
         return route('home');
     }
 
-    protected function loginGetRoute()
-    {
+    protected function loginGetRoute() {
         return route('login');
     }
 
-    protected function loginPostRoute()
-    {
+    protected function loginPostRoute() {
         return route('login');
     }
 
-    protected function logoutRoute()
-    {
+    protected function logoutRoute() {
         return route('logout');
     }
 
-    protected function successfulLogoutRoute()
-    {
+    protected function successfulLogoutRoute() {
         return '/';
     }
 
-    protected function guestMiddlewareRoute()
-    {
-        //return route('home');
+    protected function guestMiddlewareRoute() {
+        // return route('home');
         return '/';
     }
 
-    protected function getTooManyLoginAttemptsMessage()
-    {
+    protected function getTooManyLoginAttemptsMessage() {
         return sprintf('/^%s$/', str_replace('\:seconds', '\d+', preg_quote(__('auth.throttle'), '/')));
     }
 
-    public function testUserCanViewALoginForm()
-    {
+    public function testUserCanViewALoginForm() {
         $response = $this->get($this->loginGetRoute());
 
         $response->assertSuccessful();
         $response->assertViewIs('pub_theme::auth.login');
     }
 
-    public function testUserCannotViewALoginFormWhenAuthenticated()
-    {
+    public function testUserCannotViewALoginFormWhenAuthenticated() {
         $user = User::factory()->make();
 
         $response = $this->actingAs($user)->get($this->loginGetRoute());
@@ -89,46 +78,44 @@ class LoginTest extends TestCase
         -'http://mediamonitor.local'
         +'http://mediamonitor.local/home'
         */
-        $this->assertTrue(true);
-        //$response->assertRedirect($this->guestMiddlewareRoute());
+        static::assertTrue(true);
+        // $response->assertRedirect($this->guestMiddlewareRoute());
     }
 
-    public function testUserCanLoginWithCorrectCredentials()
-    {
+    public function testUserCanLoginWithCorrectCredentials() {
         $password = 'i-love-laravel';
         $user = User::factory()->create(
             [
-            //'password' => Hash::make($password),
-            //'passwd' => md5($password),
-            'passwd' => $password,
+                // 'password' => Hash::make($password),
+                // 'passwd' => md5($password),
+                'passwd' => $password,
             ]
         );
 
         $response = $this->post(
             $this->loginPostRoute(), [
-            'email' => $user->email,
-            'password' => $password,
+                'email' => $user->email,
+                'password' => $password,
             ]
         );
 
-        //$response->assertRedirect($this->successfulLoginRoute());
+        // $response->assertRedirect($this->successfulLoginRoute());
         $this->assertAuthenticatedAs($user);
     }
 
-    public function testRememberMeFunctionality()
-    {
+    public function testRememberMeFunctionality() {
         $password = 'i-love-laravel';
         $user = User::factory()->create(
             [
-            'passwd' => $password,
+                'passwd' => $password,
             ]
         );
 
         $response = $this->post(
             $this->loginPostRoute(), [
-            'email' => $user->email,
-            'password' => $password,
-            'remember' => 'on',
+                'email' => $user->email,
+                'password' => $password,
+                'remember' => 'on',
             ]
         );
 
@@ -138,58 +125,55 @@ class LoginTest extends TestCase
         $response->assertCookie(
             Auth::guard()->getRecallerName(), vsprintf(
                 '%s|%s|%s', [
-                $user->getKey(),
-                $user->getRememberToken(),
-                $user->password,
+                    $user->getKey(),
+                    $user->getRememberToken(),
+                    $user->password,
                 ]
             )
         );
         $this->assertAuthenticatedAs($user);
     }
 
-    public function testUserCannotLoginWithIncorrectPassword()
-    {
+    public function testUserCannotLoginWithIncorrectPassword() {
         $password = 'i-love-laravel';
 
         $user = User::factory()->create(
             [
-            //'password' => Hash::make('i-love-laravel'),
-            'passwd' => $password,
+                // 'password' => Hash::make('i-love-laravel'),
+                'passwd' => $password,
             ]
         );
 
         $response = $this->from($this->loginGetRoute())->post(
             $this->loginPostRoute(), [
-            'email' => $user->email,
-            'password' => 'invalid-password',
+                'email' => $user->email,
+                'password' => 'invalid-password',
             ]
         );
 
         $response->assertRedirect($this->loginGetRoute());
         $response->assertSessionHasErrors('email');
-        $this->assertTrue(session()->hasOldInput('email'));
-        //$this->assertFalse(session()->hasOldInput('password'));
+        static::assertTrue(session()->hasOldInput('email'));
+        // $this->assertFalse(session()->hasOldInput('password'));
         $this->assertGuest();
     }
 
-    public function testUserCannotLoginWithEmailThatDoesNotExist()
-    {
+    public function testUserCannotLoginWithEmailThatDoesNotExist() {
         $response = $this->from($this->loginGetRoute())->post(
             $this->loginPostRoute(), [
-            'email' => 'nobody@example.com',
-            'password' => 'invalid-password',
+                'email' => 'nobody@example.com',
+                'password' => 'invalid-password',
             ]
         );
 
         $response->assertRedirect($this->loginGetRoute());
         $response->assertSessionHasErrors('email');
-        $this->assertTrue(session()->hasOldInput('email'));
-        //$this->assertFalse(session()->hasOldInput('password'));
+        static::assertTrue(session()->hasOldInput('email'));
+        // $this->assertFalse(session()->hasOldInput('password'));
         $this->assertGuest();
     }
 
-    public function testUserCanLogout()
-    {
+    public function testUserCanLogout() {
         $this->be(User::factory()->create());
 
         $response = $this->post($this->logoutRoute());
@@ -198,30 +182,28 @@ class LoginTest extends TestCase
         $this->assertGuest();
     }
 
-    public function testUserCannotLogoutWhenNotAuthenticated()
-    {
+    public function testUserCannotLogoutWhenNotAuthenticated() {
         $response = $this->post($this->logoutRoute());
 
         $response->assertRedirect($this->successfulLogoutRoute());
         $this->assertGuest();
     }
 
-    public function testUserCannotMakeMoreThanFiveAttemptsInOneMinute()
-    {
+    public function testUserCannotMakeMoreThanFiveAttemptsInOneMinute() {
         $password = 'i-love-laravel';
 
         $user = User::factory()->create(
             [
-            //'password' => Hash::make('i-love-laravel'),
-            'passwd' => $password,
+                // 'password' => Hash::make('i-love-laravel'),
+                'passwd' => $password,
             ]
         );
 
         foreach (range(0, 5) as $_) {
             $response = $this->from($this->loginGetRoute())->post(
                 $this->loginPostRoute(), [
-                'email' => $user->email,
-                'password' => 'invalid-password',
+                    'email' => $user->email,
+                    'password' => 'invalid-password',
                 ]
             );
         }
@@ -241,8 +223,8 @@ class LoginTest extends TestCase
             )->first()
         );
         */
-        $this->assertTrue(session()->hasOldInput('email'));
-        $this->assertFalse(session()->hasOldInput('password'));
+        static::assertTrue(session()->hasOldInput('email'));
+        static::assertFalse(session()->hasOldInput('password'));
         $this->assertGuest();
     }
 }

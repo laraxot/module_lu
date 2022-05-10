@@ -16,5 +16,5 @@ class OauthPersonalAccessClient extends PassportPersonalAccessClient {
      * @var string
      */
     protected $connection = 'liveuser_general';
-    //protected $fillable = ['id', 'client_id'];
+    // protected $fillable = ['id', 'client_id'];
 }

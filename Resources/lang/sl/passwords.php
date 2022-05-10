@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
 |--------------------------------------------------------------------------
 | Password Reset Language Lines
@@ -12,9 +14,9 @@
 */
 
 return [
-    'reset'     => 'Geslo je bilo spremenjeno!',
-    'sent'      => 'Opomnik za geslo poslano!',
+    'reset' => 'Geslo je bilo spremenjeno!',
+    'sent' => 'Opomnik za geslo poslano!',
     'throttled' => 'Počakajte pred ponovnim poskusom.',
-    'token'     => 'Ponastavitveni žeton je neveljaven.',
-    'user'      => 'Ne moremo najti uporabnika s tem e-poštnim naslovom.',
+    'token' => 'Ponastavitveni žeton je neveljaven.',
+    'user' => 'Ne moremo najti uporabnika s tem e-poštnim naslovom.',
 ];

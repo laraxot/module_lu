@@ -30,6 +30,7 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
  * @property \Illuminate\Database\Eloquent\Collection|\Modules\LU\Models\Right[]         $rights
  * @property int|null                                                                    $rights_count
  * @property \Modules\LU\Models\User|null                                                $user
+ *
  * @method static \Modules\LU\Database\Factories\PermUserFactory factory(...$parameters)
  * @method static \Illuminate\Database\Eloquent\Builder|PermUser newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|PermUser newQuery()
@@ -43,12 +44,14 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
  * @method static \Illuminate\Database\Eloquent\Builder|PermUser whereUpdatedBy($value)
  * @method static \Illuminate\Database\Eloquent\Builder|PermUser whereUserId($value)
  * @mixin \Eloquent
+ *
  * @property string|null $deleted_at
  * @property string|null $deleted_by
  * @property string|null $deleted_ip
  * @property string|null $created_ip
  * @property string|null $updated_ip
  * @property string|null $guid
+ *
  * @method static \Illuminate\Database\Eloquent\Builder|PermUser whereCreatedIp($value)
  * @method static \Illuminate\Database\Eloquent\Builder|PermUser whereDeletedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|PermUser whereDeletedBy($value)
@@ -63,7 +66,7 @@ class PermUser extends BaseModel {
      */
     protected $fillable = ['id', 'user_id', 'perm_type'];
 
-    //------------ relationship ----------
+    // ------------ relationship ----------
 
     /**
      * Undocumented function.
@@ -81,29 +84,29 @@ class PermUser extends BaseModel {
     }
 
     public function areas(): BelongsToMany {
-        $pivot_class = AreaPermUser::class; //nome deciso da laravel !
+        $pivot_class = AreaPermUser::class; // nome deciso da laravel !
         $pivot = app($pivot_class);
         $rows = $this->belongsToMany(
             Area::class,
-            //$pivot->getTable(),
-            //'perm_user_id',
-            //'area_id'
+            // $pivot->getTable(),
+            // 'perm_user_id',
+            // 'area_id'
         )
             ->using($pivot_class);
-        //->withPivot('score')
-        //->withTimestamps();
+        // ->withPivot('score')
+        // ->withTimestamps();
 
         return $rows;
     }
 
     public function groups(): BelongsToMany {
-        $pivot_class = GroupPermUser::class; //nome deciso da laravel !
+        $pivot_class = GroupPermUser::class; // nome deciso da laravel !
         $pivot = app($pivot_class);
         $rows = $this->belongsToMany(
             Group::class,
-            //$pivot->getTable(),
-            //'perm_user_id',
-            //'group_id'
+            // $pivot->getTable(),
+            // 'perm_user_id',
+            // 'group_id'
         )
             ->using($pivot_class);
 
@@ -111,16 +114,16 @@ class PermUser extends BaseModel {
     }
 
     public function rights(): BelongsToMany {
-        $pivot_class = PermUserRight::class; //nome deciso da laravel !
+        $pivot_class = PermUserRight::class; // nome deciso da laravel !
         $pivot = app($pivot_class);
         $rows = $this->belongsToMany(
             Right::class,
-            //$pivot->getTable(),
-            //'perm_user_id',
-            //'right_id'
+            // $pivot->getTable(),
+            // 'perm_user_id',
+            // 'right_id'
         )
             ->using($pivot_class);
 
         return $rows;
     }
-}//end class PermUsers
+}// end class PermUsers

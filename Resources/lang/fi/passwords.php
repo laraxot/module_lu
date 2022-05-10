@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
 |--------------------------------------------------------------------------
 | Password Reset Language Lines
@@ -12,9 +14,9 @@
 */
 
 return [
-    'reset'     => 'Salasana on resetoitu!',
-    'sent'      => 'Resetointilinkki lähetetty sähköpostitse!',
+    'reset' => 'Salasana on resetoitu!',
+    'sent' => 'Resetointilinkki lähetetty sähköpostitse!',
     'throttled' => 'Odota, ennen kuin yrität uudelleen',
-    'token'     => 'Resetointitunniste on viallinen.',
-    'user'      => 'Sähköpostiosoitteella ei löydy käyttäjää.',
+    'token' => 'Resetointitunniste on viallinen.',
+    'user' => 'Sähköpostiosoitteella ei löydy käyttäjää.',
 ];

@@ -12,10 +12,9 @@ use Modules\Xot\Traits\Updater;
 /**
  * Class BaseMorphPivot.
  */
-abstract class BaseMorphPivot extends MorphPivot
-{
-    use Updater;
+abstract class BaseMorphPivot extends MorphPivot {
     use HasFactory;
+    use Updater;
 
     /**
      * @var string
@@ -42,7 +41,7 @@ abstract class BaseMorphPivot extends MorphPivot
      */
     public $timestamps = true;
 
-    //protected $attributes = ['related_type' => 'cuisine_cat'];
+    // protected $attributes = ['related_type' => 'cuisine_cat'];
 
     /**
      * @var string[]
@@ -70,8 +69,7 @@ abstract class BaseMorphPivot extends MorphPivot
      *
      * @return \Illuminate\Database\Eloquent\Factories\Factory
      */
-    protected static function newFactory()
-    {
-        return FactoryService::newFactory(get_called_class());
+    protected static function newFactory() {
+        return FactoryService::newFactory(static::class);
     }
 }

@@ -5,8 +5,8 @@ declare(strict_types=1);
 namespace Modules\LU\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-////use Laravel\Scout\Searchable;
-//---------- traits
+// //use Laravel\Scout\Searchable;
+// ---------- traits
 //
 use Illuminate\Database\Eloquent\Model;
 use Modules\Lang\Models\Traits\LinkedTrait;
@@ -16,12 +16,11 @@ use Modules\Xot\Traits\Updater;
 /**
  * Class BaseModelLang.
  */
-abstract class BaseModelLang extends Model
-{
-    use Updater;
-    //use Searchable;
-    use LinkedTrait;
+abstract class BaseModelLang extends Model {
     use HasFactory;
+    // use Searchable;
+    use LinkedTrait;
+    use Updater;
 
     /**
      * @var string
@@ -37,7 +36,7 @@ abstract class BaseModelLang extends Model
      * @var array
      */
     protected $casts = [
-        //'published_at' => 'datetime:Y-m-d', // da verificare
+        // 'published_at' => 'datetime:Y-m-d', // da verificare
     ];
 
     /**
@@ -59,7 +58,7 @@ abstract class BaseModelLang extends Model
      * @var array
      */
     protected $hidden = [
-        //'password'
+        // 'password'
     ];
 
     /**
@@ -67,7 +66,7 @@ abstract class BaseModelLang extends Model
      */
     public $timestamps = true;
 
-    //-----------
+    // -----------
     /*
     protected $id;
     protected $post;
@@ -79,8 +78,7 @@ abstract class BaseModelLang extends Model
      *
      * @return \Illuminate\Database\Eloquent\Factories\Factory
      */
-    protected static function newFactory()
-    {
-        return FactoryService::newFactory(get_called_class());
+    protected static function newFactory() {
+        return FactoryService::newFactory(static::class);
     }
 }

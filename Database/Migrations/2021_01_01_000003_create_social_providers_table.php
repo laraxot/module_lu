@@ -3,27 +3,25 @@
 declare(strict_types=1);
 
 use Illuminate\Database\Schema\Blueprint;
-//--- models --
+// --- models --
 use Modules\Xot\Database\Migrations\XotBaseMigration;
 
 /**
  * Class CreateSocialProvidersTable.
  */
-class CreateSocialProvidersTable extends XotBaseMigration
-{
+class CreateSocialProvidersTable extends XotBaseMigration {
     /**
      * Run the migrations.
      *
      * @return void
      */
-    public function up()
-    {
-        //-- CREATE --
+    public function up() {
+        // -- CREATE --
         $this->tableCreate(
             function (Blueprint $table) {
                 $table->increments('id');
                 $table->integer('user_id')->nullable();
-                //unsigned()->references('user_id')->on('liveuser_users');
+                // unsigned()->references('user_id')->on('liveuser_users');
                 $table->string('provider_id')->nullable();
                 $table->string('provider')->nullable();
                 $table->string('token')->nullable();
@@ -34,7 +32,7 @@ class CreateSocialProvidersTable extends XotBaseMigration
             }
         );
 
-        //-- UPDATE --
+        // -- UPDATE --
         $this->tableUpdate(
             function (Blueprint $table) {
                 if (! $this->hasColumn('token')) {

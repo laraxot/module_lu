@@ -1,8 +1,10 @@
 <?php
 
+declare(strict_types=1);
+
 return [
     'unknownError' => 'Lỗi Không Xác Định',
-    '0'            => 'Lỗi Không Xác Định',
+    '0' => 'Lỗi Không Xác Định',
 
     '100' => 'Tiếp Tục',
     '101' => 'Chuyển Đổi Giao Thức',

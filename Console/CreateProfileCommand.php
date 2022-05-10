@@ -7,7 +7,7 @@ namespace Modules\LU\Console;
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\Validator;
 use Symfony\Component\Console\Input\InputArgument;
-//----------------------------------------------------
+// ----------------------------------------------------
 use Symfony\Component\Console\Input\InputOption;
 
 /*
@@ -30,8 +30,7 @@ https://medium.com/@josepostiga/how-i-managed-to-control-chaos-with-laravel-d47b
 /**
  * Class CreateProfileCommand.
  */
-class CreateProfileCommand extends Command
-{
+class CreateProfileCommand extends Command {
     /**
      * The console command name.
      *
@@ -49,8 +48,7 @@ class CreateProfileCommand extends Command
     /**
      * Create a new command instance.
      */
-    public function __construct()
-    {
+    public function __construct() {
         parent::__construct();
     }
 
@@ -59,8 +57,7 @@ class CreateProfileCommand extends Command
      *
      * @return mixed
      */
-    public function handle()
-    {
+    public function handle() {
         /*
           $headers = ['Name', 'Email'];
 
@@ -76,16 +73,16 @@ class CreateProfileCommand extends Command
 
             dd($source);
             */
-        //$list=$this->option('list');
-        //dd($list);
+        // $list=$this->option('list');
+        // dd($list);
 
         $guard = config('auth.defaults.guard');
-        //$this->info($guard);//web
+        // $this->info($guard);//web
         $provider = config("auth.guards.{$guard}.provider");
-        //$this->info($provider);//users
+        // $this->info($provider);//users
         $model = config("auth.providers.{$provider}.model");
-        //$this->info($model);//Modules/LU/Models/User
-        //return 1;
+        // $this->info($model);//Modules/LU/Models/User
+        // return 1;
         $data = [];
         /*
         $data['language'] = $this->choice('Which language do you program in?', [
@@ -100,7 +97,7 @@ class CreateProfileCommand extends Command
         $data['email'] = $this->ask('Email Address');
         $data['password'] = $this->secret('What is the password?');
         $data['perm_type'] = $this->ask('User\'s level [1=>registered,2=>Editor,3=Moderator,4=Admin,5=SuperAdmin]');
-        //$name = $this->argument('name');
+        // $name = $this->argument('name');
         /*
         $command->ask('Name'),
         $command->ask('Email Address'),
@@ -112,9 +109,9 @@ class CreateProfileCommand extends Command
 
         $validator = Validator::make(
             $data, [
-            'handle' => ['required'],
-            'email' => ['required', 'email'/*, 'unique:staff,email'*/],
-            'password' => ['required', 'min:6'],
+                'handle' => ['required'],
+                'email' => ['required', 'email'/* , 'unique:staff,email' */],
+                'password' => ['required', 'min:6'],
             ]
         );
         if ($validator->fails()) {
@@ -139,8 +136,7 @@ class CreateProfileCommand extends Command
      *
      * @return array
      */
-    protected function getArguments()
-    {
+    protected function getArguments() {
         return [
             //  ['name', InputArgument::REQUIRED, 'nickname of user'],
             //  ['level', InputArgument::REQUIRED, 'level of user'],
@@ -152,8 +148,7 @@ class CreateProfileCommand extends Command
      *
      * @return array
      */
-    protected function getOptions()
-    {
+    protected function getOptions() {
         return [
             ['list', null, InputOption::VALUE_OPTIONAL, 'list all users.', null],
         ];

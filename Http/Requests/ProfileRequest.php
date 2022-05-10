@@ -11,15 +11,13 @@ use Modules\LU\Models\User;
 /**
  * Class ProfileRequest.
  */
-class ProfileRequest extends FormRequest
-{
+class ProfileRequest extends FormRequest {
     /**
      * Determine if the user is authorized to make this request.
      *
      * @return bool
      */
-    public function authorize()
-    {
+    public function authorize() {
         return auth()->check();
     }
 
@@ -28,8 +26,7 @@ class ProfileRequest extends FormRequest
      *
      * @return array
      */
-    public function rules()
-    {
+    public function rules() {
         return [
             'name' => ['required', 'min:3'],
             'email' => ['required', 'email', Rule::unique((new User())->getTable())->ignore(auth()->id())],

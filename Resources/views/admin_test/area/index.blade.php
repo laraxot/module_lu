@@ -15,8 +15,8 @@
 		<th>Application ID</th>
 		<th>Area Define Name</th>
 		<th></th>
-	</tr>	
-</thead>	
+	</tr>
+</thead>
 @foreach($rows as $row)
 <tr>
 	<td>{{ $row->area_id}}</td>

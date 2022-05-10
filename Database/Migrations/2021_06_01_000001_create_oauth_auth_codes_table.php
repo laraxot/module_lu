@@ -12,7 +12,7 @@ class CreateOauthAuthCodesTable extends XotBaseMigration {
      * @return void
      */
     public function up() {
-        //-- CREATE --
+        // -- CREATE --
         $this->tableCreate(
             function (Blueprint $table) {
                 $table->string('id', 100)->primary();
@@ -23,7 +23,7 @@ class CreateOauthAuthCodesTable extends XotBaseMigration {
                 $table->dateTime('expires_at')->nullable();
             }
         );
-        //-- UPDATE --
+        // -- UPDATE --
         $this->tableUpdate(
             function (Blueprint $table) {
                 //        if ($this->hasColumn('auth_user_id') && ! $this->hasColumn('user_id')) {

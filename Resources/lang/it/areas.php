@@ -8,8 +8,8 @@ return [
         'sync_areas' => 'Sincronizza Aree',
         'test_users_with_livewire' => 'test_users_with_livewire',
     ],
-    'tab'=>[
-        'index'=>'lista',
-        'create'=>'nuova area',
+    'tab' => [
+        'index' => 'lista',
+        'create' => 'nuova area',
     ],
 ];

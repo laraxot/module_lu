@@ -17,6 +17,7 @@ use Illuminate\Database\Eloquent\Relations\HasOne;
  * @property string|null                     $created_by
  * @property string|null                     $updated_by
  * @property \Modules\LU\Models\Group|null   $group
+ *
  * @method static \Modules\LU\Database\Factories\GroupPermUserFactory factory(...$parameters)
  * @method static \Illuminate\Database\Eloquent\Builder|GroupPermUser newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|GroupPermUser newQuery()
@@ -37,7 +38,7 @@ class GroupPermUser extends BasePivot {
      */
     protected $fillable = ['perm_user_id', 'group_id'];
 
-    //------------- RELATIONSHIP ------------------------
+    // ------------- RELATIONSHIP ------------------------
 
     /**
      * Undocumented function.
@@ -46,5 +47,5 @@ class GroupPermUser extends BasePivot {
         return $this->hasOne(Group::class);
     }
 
-    //----------------------------------------
-}//end class GroupPermUser
+    // ----------------------------------------
+}// end class GroupPermUser

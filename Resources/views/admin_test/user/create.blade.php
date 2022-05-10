@@ -5,7 +5,7 @@
 @include('theme::includes.flash')
 
 
-{{--  
+{{--
 <a href="{{route('lu.user.area.index',$params)}}" class="btn btn-small btn-info"  data-toggle="tooltip" title="Aree Utente" >
 <i class="fa fa-link fa-fw" aria-hidden="true"></i>&nbsp;</a>
 
