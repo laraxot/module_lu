@@ -202,8 +202,10 @@ class User extends Authenticatable implements UserContract {
     protected static function newFactory() {
         return UserFactory::new();
     }
-<<<<<<< HEAD
 }
+<<<<<<< HEAD
 =======
 }
 >>>>>>> 15b68b0 (first)
+=======
+>>>>>>> 789f39a (up)
