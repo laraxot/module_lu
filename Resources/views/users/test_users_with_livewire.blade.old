@@ -16,7 +16,7 @@
                             </div>
                         @endif
                         {{ dddx(get_defined_vars() ) }}
-                        @livewire('lu::users',[])
+                        @livewire('users',[])
                     </div>
                 </div>
             </div>

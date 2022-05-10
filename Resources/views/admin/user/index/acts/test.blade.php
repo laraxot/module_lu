@@ -2,6 +2,6 @@
 @section('title', 'Test Users with livewire')
 @section('content')
 
-@livewire('lu::test')
+@livewire('test')
 
 @endsection

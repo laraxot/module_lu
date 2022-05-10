@@ -1,3 +1,3 @@
 {{--
-@livewire('lu::hor_menu')
+@livewire('hor_menu')
 --}}
