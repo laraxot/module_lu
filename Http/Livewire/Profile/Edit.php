@@ -18,6 +18,7 @@ class Edit extends Component {
 
     public function mount(Model $profile): void{
         $this->form_data=$profile->toArray();
+        //dddx($this->form_data);
     }
 
     public function render(): Renderable {
