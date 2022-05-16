@@ -18,6 +18,8 @@ class UserField implements CastsAttributes {
      * @return \App\Models\Address
      */
     public function get($model, $key, $value, $attributes) {
+        // dddx(['model' => $model, 'key' => $key, 'value' => $value, 'attributes' => $attributes, 'data' => request()->all()]);
+
         return $model->user->{$key};
     }
 
@@ -33,5 +35,9 @@ class UserField implements CastsAttributes {
         $user = $model->user;
         $user->{$key} = $value;
         $res = tap($user)->save();
+        // parent::__construct([]);
+        // return [$key => encrypt($value)];
+        // return ['created_by' => 'xot'];
+        return []; // tolgo l'aggiornamento di questo campo
     }
 }
