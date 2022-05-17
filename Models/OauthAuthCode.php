@@ -7,7 +7,7 @@ namespace Modules\LU\Models;
 use Laravel\Passport\AuthCode as PassportAuthCode;
 
 /**
- * old class OauthAuthCode extends BaseModel
+ * old class OauthAuthCode extends BaseModel.
  *
  * @mixin IdeHelperOauthAuthCode
  */

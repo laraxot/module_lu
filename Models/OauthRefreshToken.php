@@ -7,7 +7,7 @@ namespace Modules\LU\Models;
 use Laravel\Passport\RefreshToken as PassportRefreshToken;
 
 /**
- * old class OauthRefreshToken extends BaseModel
+ * old class OauthRefreshToken extends BaseModel.
  *
  * @mixin IdeHelperOauthRefreshToken
  */

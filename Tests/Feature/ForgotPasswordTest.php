@@ -17,7 +17,7 @@ use Modules\LU\Notifications\ResetPassword;
 use Tests\TestCase;
 
 /**
- * Undocumented class
+ * Undocumented class.
  */
 class ForgotPasswordTest extends TestCase {
     // use RefreshDatabase;

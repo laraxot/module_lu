@@ -13,12 +13,12 @@ use Livewire\Component;
  * Class Edit.
  */
 class Edit extends Component {
-    //public Model $profile;
+    // public Model $profile;
     public array $form_data = [];
 
     public function mount(Model $profile): void {
         $this->form_data = $profile->toArray();
-        //dddx($this->form_data);
+        // dddx($this->form_data);
     }
 
     public function render(): Renderable {
@@ -31,7 +31,7 @@ class Edit extends Component {
     }
 
     public function save(): void {
-        //dddx([$this->form_data, Auth::user()->profile]);
+        // dddx([$this->form_data, Auth::user()->profile]);
         $profile = Auth::user()->profile;
         $profile->update($this->form_data);
 

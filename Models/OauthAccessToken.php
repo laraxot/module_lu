@@ -8,7 +8,7 @@ namespace Modules\LU\Models;
 use Laravel\Passport\Token as PassportToken;
 
 /**
- * old class OauthAccessToken extends BaseModel
+ * old class OauthAccessToken extends BaseModel.
  *
  * @mixin IdeHelperOauthAccessToken
  */
