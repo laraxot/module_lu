@@ -143,7 +143,6 @@ use Staudenmeir\EloquentHasManyDeep\HasRelationships;
  * @method static \Illuminate\Database\Eloquent\Builder|User whereRepar($value)
  * @method static \Illuminate\Database\Eloquent\Builder|User whereSegno($value)
  * @method static \Illuminate\Database\Eloquent\Builder|User whereStabi($value)
- * @mixin IdeHelperUser
  * @property-read \Illuminate\Database\Eloquent\Collection|\Modules\LU\Models\OauthClient[] $clients
  * @property-read int|null $clients_count
  * @property-write mixed $tags
@@ -156,6 +155,7 @@ use Staudenmeir\EloquentHasManyDeep\HasRelationships;
  * @property string|null $api_token
  * @property-read int|null $tags_count
  * @method static \Illuminate\Database\Eloquent\Builder|User whereApiToken($value)
+ * @mixin IdeHelperUser
  */
 class User extends Authenticatable implements UserContract {
     use HasApiTokens;

@@ -10,7 +10,6 @@ use Laravel\Passport\Token as PassportToken;
 /**
  * old class OauthAccessToken extends BaseModel.
  *
- * @mixin IdeHelperOauthAccessToken
  * @property string $id
  * @property int|null $user_id
  * @property int $client_id
@@ -34,6 +33,7 @@ use Laravel\Passport\Token as PassportToken;
  * @method static \Illuminate\Database\Eloquent\Builder|OauthAccessToken whereScopes($value)
  * @method static \Illuminate\Database\Eloquent\Builder|OauthAccessToken whereUpdatedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|OauthAccessToken whereUserId($value)
+ * @mixin IdeHelperOauthAccessToken
  */
 class OauthAccessToken extends PassportToken {
     /**

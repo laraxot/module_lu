@@ -9,7 +9,6 @@ use Laravel\Passport\Client as PassportClient;
 /**
  * Modules\LU\Models\OauthClient
  *
- * @mixin IdeHelperOauthClient
  * @property int $id
  * @property int|null $user_id
  * @property string $name
@@ -42,6 +41,7 @@ use Laravel\Passport\Client as PassportClient;
  * @method static \Illuminate\Database\Eloquent\Builder|OauthClient whereSecret($value)
  * @method static \Illuminate\Database\Eloquent\Builder|OauthClient whereUpdatedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|OauthClient whereUserId($value)
+ * @mixin IdeHelperOauthClient
  */
 class OauthClient extends PassportClient {
     /**

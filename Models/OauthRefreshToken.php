@@ -9,7 +9,6 @@ use Laravel\Passport\RefreshToken as PassportRefreshToken;
 /**
  * old class OauthRefreshToken extends BaseModel.
  *
- * @mixin IdeHelperOauthRefreshToken
  * @property string $id
  * @property string $access_token_id
  * @property bool $revoked
@@ -22,6 +21,7 @@ use Laravel\Passport\RefreshToken as PassportRefreshToken;
  * @method static \Illuminate\Database\Eloquent\Builder|OauthRefreshToken whereExpiresAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|OauthRefreshToken whereId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|OauthRefreshToken whereRevoked($value)
+ * @mixin IdeHelperOauthRefreshToken
  */
 class OauthRefreshToken extends PassportRefreshToken {
     /**
