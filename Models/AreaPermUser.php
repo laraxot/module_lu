@@ -40,6 +40,16 @@ use Modules\Theme\Services\ThemeService;
  * @property string|null $guid
  * @method static \Illuminate\Database\Eloquent\Builder|AreaPermUser whereGuid($value)
  * @mixin IdeHelperAreaPermUser
+ * @property string|null $deleted_at
+ * @property string|null $deleted_by
+ * @property string|null $deleted_ip
+ * @property string|null $created_ip
+ * @property string|null $updated_ip
+ * @method static \Illuminate\Database\Eloquent\Builder|AreaPermUser whereCreatedIp($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|AreaPermUser whereDeletedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|AreaPermUser whereDeletedBy($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|AreaPermUser whereDeletedIp($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|AreaPermUser whereUpdatedIp($value)
  */
 class AreaPermUser extends BasePivot {
     /**

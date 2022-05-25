@@ -153,6 +153,9 @@ use Staudenmeir\EloquentHasManyDeep\HasRelationships;
  * @method static \Illuminate\Database\Eloquent\Builder|User withAllTagsOfAnyType($tags)
  * @method static \Illuminate\Database\Eloquent\Builder|User withAnyTags($tags, ?string $type = null)
  * @method static \Illuminate\Database\Eloquent\Builder|User withAnyTagsOfAnyType($tags)
+ * @property string|null $api_token
+ * @property-read int|null $tags_count
+ * @method static \Illuminate\Database\Eloquent\Builder|User whereApiToken($value)
  */
 class User extends Authenticatable implements UserContract {
     use HasApiTokens;
