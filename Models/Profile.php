@@ -51,7 +51,6 @@ use Modules\Xot\Models\Traits\WidgetTrait;
  * @property \Modules\LU\Models\User|null                                          $user
  * @property \Illuminate\Database\Eloquent\Collection|\Modules\Xot\Models\Widget[] $widgets
  * @property int|null                                                              $widgets_count
- *
  * @method static \Illuminate\Database\Eloquent\Builder|Profile newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|Profile newQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|BaseModelLang ofItem(string $guid)
@@ -75,7 +74,6 @@ use Modules\Xot\Models\Traits\WidgetTrait;
  * @method static \Illuminate\Database\Eloquent\Builder|Profile whereZibibbo($value)
  * @method static \Illuminate\Database\Eloquent\Builder|BaseModelLang withPost(string $guid)
  * @mixin \Eloquent
- *
  * @method static \Illuminate\Database\Eloquent\Builder|Profile whereFirstName($value)
  * @mixin IdeHelperProfile
  */

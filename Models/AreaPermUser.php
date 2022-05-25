@@ -25,7 +25,6 @@ use Modules\Theme\Services\ThemeService;
  * @property string|null                      $title
  * @property string|null                      $url
  * @property \Modules\LU\Models\PermUser|null $permUser
- *
  * @method static \Modules\LU\Database\Factories\AreaPermUserFactory factory(...$parameters)
  * @method static \Illuminate\Database\Eloquent\Builder|AreaPermUser newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|AreaPermUser newQuery()
@@ -38,9 +37,7 @@ use Modules\Theme\Services\ThemeService;
  * @method static \Illuminate\Database\Eloquent\Builder|AreaPermUser whereUpdatedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|AreaPermUser whereUpdatedBy($value)
  * @mixin \Eloquent
- *
  * @property string|null $guid
- *
  * @method static \Illuminate\Database\Eloquent\Builder|AreaPermUser whereGuid($value)
  * @mixin IdeHelperAreaPermUser
  */

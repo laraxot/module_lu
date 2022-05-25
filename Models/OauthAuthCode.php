@@ -10,6 +10,22 @@ use Laravel\Passport\AuthCode as PassportAuthCode;
  * old class OauthAuthCode extends BaseModel.
  *
  * @mixin IdeHelperOauthAuthCode
+ * @property string $id
+ * @property int $user_id
+ * @property int $client_id
+ * @property string|null $scopes
+ * @property bool $revoked
+ * @property \Illuminate\Support\Carbon|null $expires_at
+ * @property-read \Modules\LU\Models\OauthClient|null $client
+ * @method static \Illuminate\Database\Eloquent\Builder|OauthAuthCode newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|OauthAuthCode newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|OauthAuthCode query()
+ * @method static \Illuminate\Database\Eloquent\Builder|OauthAuthCode whereClientId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|OauthAuthCode whereExpiresAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|OauthAuthCode whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|OauthAuthCode whereRevoked($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|OauthAuthCode whereScopes($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|OauthAuthCode whereUserId($value)
  */
 class OauthAuthCode extends PassportAuthCode {
     /**

@@ -15,15 +15,21 @@ use Modules\Xot\Traits\Updater;
 abstract class BaseMorphPivot extends MorphPivot {
     use HasFactory;
     use Updater;
-    /**
+    /*
      * Indicates whether attributes are snake cased on arrays.
      *
      * @see  https://laravel-news.com/6-eloquent-secrets
      *
      * @var bool
-     */
-    // public static $snakeAttributes = true;
 
+     public static $snakeAttributes = true;
+    */
+
+    /**
+     * Undocumented variable.
+     *
+     * @var int
+     */
     protected $perPage = 30;
 
     /**

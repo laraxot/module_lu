@@ -20,7 +20,6 @@ use Illuminate\Notifications\DatabaseNotificationCollection;
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
  * @property Model|\Eloquent                 $notifiable
- *
  * @method static DatabaseNotificationCollection|static[] all($columns = ['*'])
  * @method static \Modules\LU\Database\Factories\NotificationFactory factory(...$parameters)
  * @method static DatabaseNotificationCollection|static[] get($columns = ['*'])

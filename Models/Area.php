@@ -32,7 +32,6 @@ use Staudenmeir\EloquentHasManyDeep\HasRelationships;
  * @property int|null                                                                                       $perm_users_count
  * @property \Illuminate\Database\Eloquent\Collection|\Modules\LU\Models\PermUser[]                         $perms
  * @property int|null                                                                                       $perms_count
- *
  * @method static \Modules\LU\Database\Factories\AreaFactory factory(...$parameters)
  * @method static \Illuminate\Database\Eloquent\Builder|Area newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|Area newQuery()
@@ -50,14 +49,12 @@ use Staudenmeir\EloquentHasManyDeep\HasRelationships;
  * @method static \Illuminate\Database\Eloquent\Builder|Area whereUpdatedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Area whereUpdatedBy($value)
  * @mixin \Eloquent
- *
  * @property string|null $icon_path
  * @property string|null $deleted_at
  * @property string|null $deleted_by
  * @property string|null $deleted_ip
  * @property string|null $created_ip
  * @property string|null $updated_ip
- *
  * @method static \Illuminate\Database\Eloquent\Builder|Area whereCreatedIp($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Area whereDeletedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Area whereDeletedBy($value)

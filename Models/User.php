@@ -67,7 +67,6 @@ use Staudenmeir\EloquentHasManyDeep\HasRelationships;
  * @property \Modules\Xot\Models\Profile|null                                                                          $profileOrCreate
  * @property \Illuminate\Database\Eloquent\Collection|\Modules\LU\Models\SocialProvider[]                              $socialProviders
  * @property int|null                                                                                                  $social_providers_count
- *
  * @method static \Modules\LU\Database\Factories\UserFactory factory(...$parameters)
  * @method static \Illuminate\Database\Eloquent\Builder|User newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|User newQuery()
@@ -102,7 +101,6 @@ use Staudenmeir\EloquentHasManyDeep\HasRelationships;
  * @method static \Illuminate\Database\Eloquent\Builder|User whereUpdatedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|User whereUpdatedBy($value)
  * @mixin \Eloquent
- *
  * @property \Illuminate\Database\Eloquent\Collection|\Modules\LU\Models\GroupPermUser[] $groupPermUsers
  * @property int|null                                                                    $group_perm_users_count
  * @property \Illuminate\Database\Eloquent\Collection|\Modules\LU\Models\GroupPermUser[] $groups
@@ -128,7 +126,6 @@ use Staudenmeir\EloquentHasManyDeep\HasRelationships;
  * @property int|null                                                                    $bounce
  * @property string|null                                                                 $dataIscrizione
  * @property int|null                                                                    $dataCancellazione
- *
  * @method static \Illuminate\Database\Eloquent\Builder|User whereBannedId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|User whereBounce($value)
  * @method static \Illuminate\Database\Eloquent\Builder|User whereCitta($value)
@@ -147,6 +144,15 @@ use Staudenmeir\EloquentHasManyDeep\HasRelationships;
  * @method static \Illuminate\Database\Eloquent\Builder|User whereSegno($value)
  * @method static \Illuminate\Database\Eloquent\Builder|User whereStabi($value)
  * @mixin IdeHelperUser
+ * @property-read \Illuminate\Database\Eloquent\Collection|\Modules\LU\Models\OauthClient[] $clients
+ * @property-read int|null $clients_count
+ * @property-write mixed $tags
+ * @property-read \Illuminate\Database\Eloquent\Collection|\Modules\LU\Models\OauthAccessToken[] $tokens
+ * @property-read int|null $tokens_count
+ * @method static \Illuminate\Database\Eloquent\Builder|User withAllTags($tags, ?string $type = null)
+ * @method static \Illuminate\Database\Eloquent\Builder|User withAllTagsOfAnyType($tags)
+ * @method static \Illuminate\Database\Eloquent\Builder|User withAnyTags($tags, ?string $type = null)
+ * @method static \Illuminate\Database\Eloquent\Builder|User withAnyTagsOfAnyType($tags)
  */
 class User extends Authenticatable implements UserContract {
     use HasApiTokens;
@@ -165,7 +171,7 @@ class User extends Authenticatable implements UserContract {
      *
      * @var bool
      */
-    // public static $snakeAttributes = true;
+     public static $snakeAttributes = true;
 
     protected $perPage = 30;
 
