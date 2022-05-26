@@ -4,12 +4,13 @@ declare(strict_types=1);
 
 namespace Modules\LU\Models\Panels;
 
-use Illuminate\Http\Request;
-// --- Services --
 use Modules\LU\Models\Area;
+// --- Services --
+use Illuminate\Http\Request;
 use Modules\LU\Models\Group;
-use Modules\LU\Models\PermUser;
 use Modules\LU\Models\Right;
+use Modules\LU\Models\PermUser;
+use Nwidart\Modules\Facades\Module;
 use Modules\Xot\Models\Panels\XotBasePanel;
 
 /**
@@ -230,6 +231,13 @@ class UserPanel extends XotBasePanel {
         $row = $this->row;
         $areas = $row->getRelationValue('areas');
 
+        $modules = Module::getByStatus(1);
+        // dddx(['areas' => $areas, 'modules' => $modules]);
+        $areas = $areas->filter(
+            function ($item) use ($modules) {
+                return \in_array($item->area_define_name, array_keys($modules), true);
+            }
+        );
         return $areas;
     }
 
