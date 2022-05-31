@@ -207,7 +207,7 @@ class User extends Authenticatable implements UserContract {
     protected $dates = ['last_login_at', 'created_at', 'updated_at', 'deleted_at'];
 
     /**
-     * @var string[]
+     * @var array<string, string>
      */
     protected $casts = ['email_verified_at' => 'datetime'];
 
