@@ -7,15 +7,16 @@ namespace Modules\LU\Models;
 // use Modules\Xot\Models\XotBaseModel;
 
 /**
- * Modules\LU\Models\RightImplied.
+ * Modules\LU\Models\RightImplied
  *
- * @property int                             $id
- * @property int                             $right_id
- * @property int                             $implied_right_id
+ * @property int $id
+ * @property int $right_id
+ * @property int $implied_right_id
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
- * @property string|null                     $created_by
- * @property string|null                     $updated_by
+ * @property string|null $created_by
+ * @property string|null $updated_by
+ * @method static \Modules\LU\Database\Factories\RightImpliedFactory factory(...$parameters)
  * @method static \Illuminate\Database\Eloquent\Builder|RightImplied newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|RightImplied newQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|RightImplied query()
@@ -27,8 +28,6 @@ namespace Modules\LU\Models;
  * @method static \Illuminate\Database\Eloquent\Builder|RightImplied whereUpdatedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|RightImplied whereUpdatedBy($value)
  * @mixin \Eloquent
- * @method static \Modules\LU\Database\Factories\RightImpliedFactory factory(...$parameters)
- * @mixin IdeHelperRightImplied
  */
 class RightImplied extends BaseModel {
     // protected $connection = 'liveuser_general'; // this will use the specified database conneciton

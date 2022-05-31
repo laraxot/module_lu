@@ -7,7 +7,7 @@ namespace Modules\LU\Models;
 use Laravel\Passport\PersonalAccessClient as PassportPersonalAccessClient;
 
 /**
- * old class OauthPersonalAccessClient extends BaseModel.
+ * Modules\LU\Models\OauthPersonalAccessClient
  *
  * @property int $id
  * @property int $client_id
@@ -21,7 +21,7 @@ use Laravel\Passport\PersonalAccessClient as PassportPersonalAccessClient;
  * @method static \Illuminate\Database\Eloquent\Builder|OauthPersonalAccessClient whereCreatedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|OauthPersonalAccessClient whereId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|OauthPersonalAccessClient whereUpdatedAt($value)
- * @mixin IdeHelperOauthPersonalAccessClient
+ * @mixin \Eloquent
  */
 class OauthPersonalAccessClient extends PassportPersonalAccessClient {
     /**

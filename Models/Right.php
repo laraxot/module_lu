@@ -5,17 +5,17 @@ declare(strict_types=1);
 namespace Modules\LU\Models;
 
 /**
- * Modules\LU\Models\Right.
+ * Modules\LU\Models\Right
  *
- * @property int                             $id
- * @property int                             $area_id
- * @property string                          $right_define_name
- * @property string                          $has_implied
- * @property string                          $has_level
+ * @property int $id
+ * @property int $area_id
+ * @property string $right_define_name
+ * @property string $has_implied
+ * @property string $has_level
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
- * @property string|null                     $created_by
- * @property string|null                     $updated_by
+ * @property string|null $created_by
+ * @property string|null $updated_by
  * @method static \Modules\LU\Database\Factories\RightFactory factory(...$parameters)
  * @method static \Illuminate\Database\Eloquent\Builder|Right newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|Right newQuery()
@@ -30,7 +30,6 @@ namespace Modules\LU\Models;
  * @method static \Illuminate\Database\Eloquent\Builder|Right whereUpdatedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Right whereUpdatedBy($value)
  * @mixin \Eloquent
- * @mixin IdeHelperRight
  */
 class Right extends BaseModel {
     /**

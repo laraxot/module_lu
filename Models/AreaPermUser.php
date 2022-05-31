@@ -10,21 +10,20 @@ use Illuminate\View\View;
 use Modules\Theme\Services\ThemeService;
 
 /**
- * Modules\LU\Models\AreaPermUser.
+ * Modules\LU\Models\AreaPermUser
  *
- * @property int                              $id
- * @property int|null                         $area_id
- * @property int|null                         $perm_user_id
- * @property \Illuminate\Support\Carbon|null  $created_at
- * @property \Illuminate\Support\Carbon|null  $updated_at
- * @property string|null                      $created_by
- * @property string|null                      $updated_by
- * @property \Modules\LU\Models\Area|null     $area
- * @property string|null                      $area_define_name
- * @property string|null                      $icon_src
- * @property string|null                      $title
- * @property string|null                      $url
- * @property \Modules\LU\Models\PermUser|null $permUser
+ * @property int $id
+ * @property int|null $area_id
+ * @property int|null $perm_user_id
+ * @property \Illuminate\Support\Carbon|null $created_at
+ * @property \Illuminate\Support\Carbon|null $updated_at
+ * @property string|null $created_by
+ * @property string|null $updated_by
+ * @property-read \Modules\LU\Models\Area|null $area
+ * @property-read string|null $area_define_name
+ * @property-read string|null $icon_src
+ * @property-read string|null $title
+ * @property-read \Modules\LU\Models\PermUser|null $permUser
  * @method static \Modules\LU\Database\Factories\AreaPermUserFactory factory(...$parameters)
  * @method static \Illuminate\Database\Eloquent\Builder|AreaPermUser newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|AreaPermUser newQuery()
@@ -37,19 +36,6 @@ use Modules\Theme\Services\ThemeService;
  * @method static \Illuminate\Database\Eloquent\Builder|AreaPermUser whereUpdatedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|AreaPermUser whereUpdatedBy($value)
  * @mixin \Eloquent
- * @property string|null $guid
- * @method static \Illuminate\Database\Eloquent\Builder|AreaPermUser whereGuid($value)
- * @property string|null $deleted_at
- * @property string|null $deleted_by
- * @property string|null $deleted_ip
- * @property string|null $created_ip
- * @property string|null $updated_ip
- * @method static \Illuminate\Database\Eloquent\Builder|AreaPermUser whereCreatedIp($value)
- * @method static \Illuminate\Database\Eloquent\Builder|AreaPermUser whereDeletedAt($value)
- * @method static \Illuminate\Database\Eloquent\Builder|AreaPermUser whereDeletedBy($value)
- * @method static \Illuminate\Database\Eloquent\Builder|AreaPermUser whereDeletedIp($value)
- * @method static \Illuminate\Database\Eloquent\Builder|AreaPermUser whereUpdatedIp($value)
- * @mixin IdeHelperAreaPermUser
  */
 class AreaPermUser extends BasePivot {
     /**

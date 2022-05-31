@@ -20,53 +20,67 @@ use Spatie\Tags\HasTags;  // Spatie Tags
 use Staudenmeir\EloquentHasManyDeep\HasRelationships;
 
 /**
- * Modules\LU\Models\User.
+ * Modules\LU\Models\User
  *
- * @property int                                                                                                       $id
- * @property string                                                                                                    $handle
- * @property string|null                                                                                               $passwd
- * @property string|null                                                                                               $lastlogin
- * @property int|null                                                                                                  $owner_user_id
- * @property int|null                                                                                                  $owner_group_id
- * @property string|null                                                                                               $is_active
- * @property int|null                                                                                                  $enable
- * @property string|null                                                                                               $email
- * @property string|null                                                                                               $first_name
- * @property string|null                                                                                               $last_name
- * @property int|null                                                                                                  $ente
- * @property int|null                                                                                                  $matr
- * @property string|null                                                                                               $password
- * @property string|null                                                                                               $two_factor_secret
- * @property string|null                                                                                               $two_factor_recovery_codes
- * @property string|null                                                                                               $hash
- * @property string|null                                                                                               $activation_code
- * @property string|null                                                                                               $forgotten_password_code
- * @property \Illuminate\Support\Carbon|null                                                                           $last_login_at
- * @property string|null                                                                                               $last_login_ip
- * @property string|null                                                                                               $token_check
- * @property int|null                                                                                                  $is_verified
- * @property string|null                                                                                               $remember_token
- * @property \Illuminate\Support\Carbon|null                                                                           $email_verified_at
- * @property \Illuminate\Support\Carbon|null                                                                           $created_at
- * @property \Illuminate\Support\Carbon|null                                                                           $updated_at
- * @property string|null                                                                                               $created_by
- * @property string|null                                                                                               $updated_by
- * @property \Illuminate\Database\Eloquent\Collection|\Modules\LU\Models\AreaPermUser[]                                $areaPermUsers
- * @property int|null                                                                                                  $area_perm_users_count
- * @property string                                                                                                    $full_name
- * @property string                                                                                                    $guid
- * @property \Illuminate\Notifications\DatabaseNotificationCollection|\Illuminate\Notifications\DatabaseNotification[] $notifications
- * @property int|null                                                                                                  $notifications_count
- * @property \Modules\LU\Models\PermUser|null                                                                          $perm
- * @property \Modules\LU\Models\PermUser|null                                                                          $permUser
- * @property \Illuminate\Database\Eloquent\Collection|\Modules\LU\Models\PermUser[]                                    $permUsers
- * @property int|null                                                                                                  $perm_users_count
- * @property \Illuminate\Database\Eloquent\Collection|\Modules\LU\Models\PermUser[]                                    $perms
- * @property int|null                                                                                                  $perms_count
- * @property \Modules\Xot\Models\Profile|null                                                                          $profile
- * @property \Modules\Xot\Models\Profile|null                                                                          $profileOrCreate
- * @property \Illuminate\Database\Eloquent\Collection|\Modules\LU\Models\SocialProvider[]                              $socialProviders
- * @property int|null                                                                                                  $social_providers_count
+ * @property int $id
+ * @property string $handle
+ * @property string|null $passwd
+ * @property string|null $lastlogin
+ * @property int|null $owner_user_id
+ * @property int|null $owner_group_id
+ * @property string|null $is_active
+ * @property int|null $enable
+ * @property string|null $email
+ * @property string|null $first_name
+ * @property string|null $last_name
+ * @property int|null $ente
+ * @property int|null $matr
+ * @property string|null $password
+ * @property string|null $two_factor_secret
+ * @property string|null $two_factor_recovery_codes
+ * @property string|null $hash
+ * @property string|null $activation_code
+ * @property string|null $forgotten_password_code
+ * @property \Illuminate\Support\Carbon|null $last_login_at
+ * @property string|null $last_login_ip
+ * @property string|null $token_check
+ * @property int|null $is_verified
+ * @property string|null $remember_token
+ * @property \Illuminate\Support\Carbon|null $email_verified_at
+ * @property \Illuminate\Support\Carbon|null $created_at
+ * @property \Illuminate\Support\Carbon|null $updated_at
+ * @property string|null $created_by
+ * @property string|null $updated_by
+ * @property-read \Illuminate\Database\Eloquent\Collection|\Modules\LU\Models\AreaPermUser[] $areaPermUsers
+ * @property-read int|null $area_perm_users_count
+ * @property-read \Illuminate\Database\Eloquent\Collection|\Modules\LU\Models\OauthClient[] $clients
+ * @property-read int|null $clients_count
+ * @property-read string $full_name
+ * @property-read string $guid
+ * @property-read \Illuminate\Database\Eloquent\Collection|\Modules\LU\Models\GroupPermUser[] $groupPermUsers
+ * @property-read int|null $group_perm_users_count
+ * @property-read \Illuminate\Database\Eloquent\Collection|\Modules\LU\Models\GroupPermUser[] $groups
+ * @property-read int|null $groups_count
+ * @property-read \Illuminate\Notifications\DatabaseNotificationCollection|\Illuminate\Notifications\DatabaseNotification[] $notifications
+ * @property-read int|null $notifications_count
+ * @property-read \Modules\LU\Models\PermUser|null $perm
+ * @property-read \Modules\LU\Models\PermUser|null $permUser
+ * @property-read \Illuminate\Database\Eloquent\Collection|\Modules\LU\Models\PermUserRight[] $permUserRights
+ * @property-read int|null $perm_user_rights_count
+ * @property-read \Illuminate\Database\Eloquent\Collection|\Modules\LU\Models\PermUser[] $permUsers
+ * @property-read int|null $perm_users_count
+ * @property-read \Illuminate\Database\Eloquent\Collection|\Modules\LU\Models\PermUser[] $perms
+ * @property-read int|null $perms_count
+ * @property-read \Modules\Xot\Models\Profile|null $profile
+ * @property-read \Modules\Xot\Models\Profile|null $profileOrCreate
+ * @property-read \Illuminate\Database\Eloquent\Collection|\Modules\LU\Models\PermUserRight[] $rights
+ * @property-read int|null $rights_count
+ * @property \Illuminate\Database\Eloquent\Collection|\Modules\Tag\Models\Tag[] $tags
+ * @property-read \Illuminate\Database\Eloquent\Collection|\Modules\LU\Models\SocialProvider[] $socialProviders
+ * @property-read int|null $social_providers_count
+ * @property-read int|null $tags_count
+ * @property-read \Illuminate\Database\Eloquent\Collection|\Modules\LU\Models\OauthAccessToken[] $tokens
+ * @property-read int|null $tokens_count
  * @method static \Modules\LU\Database\Factories\UserFactory factory(...$parameters)
  * @method static \Illuminate\Database\Eloquent\Builder|User newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|User newQuery()
@@ -100,62 +114,11 @@ use Staudenmeir\EloquentHasManyDeep\HasRelationships;
  * @method static \Illuminate\Database\Eloquent\Builder|User whereTwoFactorSecret($value)
  * @method static \Illuminate\Database\Eloquent\Builder|User whereUpdatedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|User whereUpdatedBy($value)
- * @mixin \Eloquent
- * @property \Illuminate\Database\Eloquent\Collection|\Modules\LU\Models\GroupPermUser[] $groupPermUsers
- * @property int|null                                                                    $group_perm_users_count
- * @property \Illuminate\Database\Eloquent\Collection|\Modules\LU\Models\GroupPermUser[] $groups
- * @property int|null                                                                    $groups_count
- * @property \Illuminate\Database\Eloquent\Collection|\Modules\LU\Models\PermUserRight[] $permUserRights
- * @property int|null                                                                    $perm_user_rights_count
- * @property \Illuminate\Database\Eloquent\Collection|\Modules\LU\Models\PermUserRight[] $rights
- * @property int|null                                                                    $rights_count
- * @property int|null                                                                    $group_id
- * @property int|null                                                                    $banned_id
- * @property int|null                                                                    $country_id
- * @property int|null                                                                    $question_id
- * @property string|null                                                                 $nome
- * @property string|null                                                                 $cognome
- * @property int|null                                                                    $stabi
- * @property int|null                                                                    $repar
- * @property string|null                                                                 $provincia
- * @property string|null                                                                 $conosciuto
- * @property string|null                                                                 $news
- * @property string|null                                                                 $citta
- * @property int|null                                                                    $segno
- * @property int|null                                                                    $hmail
- * @property int|null                                                                    $bounce
- * @property string|null                                                                 $dataIscrizione
- * @property int|null                                                                    $dataCancellazione
- * @method static \Illuminate\Database\Eloquent\Builder|User whereBannedId($value)
- * @method static \Illuminate\Database\Eloquent\Builder|User whereBounce($value)
- * @method static \Illuminate\Database\Eloquent\Builder|User whereCitta($value)
- * @method static \Illuminate\Database\Eloquent\Builder|User whereCognome($value)
- * @method static \Illuminate\Database\Eloquent\Builder|User whereConosciuto($value)
- * @method static \Illuminate\Database\Eloquent\Builder|User whereCountryId($value)
- * @method static \Illuminate\Database\Eloquent\Builder|User whereDataCancellazione($value)
- * @method static \Illuminate\Database\Eloquent\Builder|User whereDataIscrizione($value)
- * @method static \Illuminate\Database\Eloquent\Builder|User whereGroupId($value)
- * @method static \Illuminate\Database\Eloquent\Builder|User whereHmail($value)
- * @method static \Illuminate\Database\Eloquent\Builder|User whereNews($value)
- * @method static \Illuminate\Database\Eloquent\Builder|User whereNome($value)
- * @method static \Illuminate\Database\Eloquent\Builder|User whereProvincia($value)
- * @method static \Illuminate\Database\Eloquent\Builder|User whereQuestionId($value)
- * @method static \Illuminate\Database\Eloquent\Builder|User whereRepar($value)
- * @method static \Illuminate\Database\Eloquent\Builder|User whereSegno($value)
- * @method static \Illuminate\Database\Eloquent\Builder|User whereStabi($value)
- * @property-read \Illuminate\Database\Eloquent\Collection|\Modules\LU\Models\OauthClient[] $clients
- * @property-read int|null $clients_count
- * @property-write mixed $tags
- * @property-read \Illuminate\Database\Eloquent\Collection|\Modules\LU\Models\OauthAccessToken[] $tokens
- * @property-read int|null $tokens_count
- * @method static \Illuminate\Database\Eloquent\Builder|User withAllTags($tags, ?string $type = null)
+ * @method static \Illuminate\Database\Eloquent\Builder|User withAllTags(\ArrayAccess|\Spatie\Tags\Tag|array $tags, ?string $type = null)
  * @method static \Illuminate\Database\Eloquent\Builder|User withAllTagsOfAnyType($tags)
- * @method static \Illuminate\Database\Eloquent\Builder|User withAnyTags($tags, ?string $type = null)
+ * @method static \Illuminate\Database\Eloquent\Builder|User withAnyTags(\ArrayAccess|\Spatie\Tags\Tag|array $tags, ?string $type = null)
  * @method static \Illuminate\Database\Eloquent\Builder|User withAnyTagsOfAnyType($tags)
- * @property string|null $api_token
- * @property-read int|null $tags_count
- * @method static \Illuminate\Database\Eloquent\Builder|User whereApiToken($value)
- * @mixin IdeHelperUser
+ * @mixin \Eloquent
  */
 class User extends Authenticatable implements UserContract {
     use HasApiTokens;

@@ -9,17 +9,17 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Notifications\DatabaseNotificationCollection;
 
 /**
- * Modules\LU\Models\Notification.
+ * Modules\LU\Models\Notification
  *
- * @property string                          $id
- * @property string                          $type
- * @property string                          $notifiable_type
- * @property int                             $notifiable_id
- * @property array                           $data
+ * @property string $id
+ * @property string $type
+ * @property string $notifiable_type
+ * @property int $notifiable_id
+ * @property array $data
  * @property \Illuminate\Support\Carbon|null $read_at
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
- * @property Model|\Eloquent                 $notifiable
+ * @property-read Model|\Eloquent $notifiable
  * @method static DatabaseNotificationCollection|static[] all($columns = ['*'])
  * @method static \Modules\LU\Database\Factories\NotificationFactory factory(...$parameters)
  * @method static DatabaseNotificationCollection|static[] get($columns = ['*'])
@@ -37,7 +37,6 @@ use Illuminate\Notifications\DatabaseNotificationCollection;
  * @method static Builder|Notification whereType($value)
  * @method static Builder|Notification whereUpdatedAt($value)
  * @mixin \Eloquent
- * @mixin IdeHelperNotification
  */
 class Notification extends BaseModel {
     protected $fillable = ['id', 'type', 'notifiable_type', 'notifiable_id', 'data', 'read_at', 'created_at', 'updated_at'];

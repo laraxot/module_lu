@@ -41,7 +41,7 @@ use Laravel\Passport\Client as PassportClient;
  * @method static \Illuminate\Database\Eloquent\Builder|OauthClient whereSecret($value)
  * @method static \Illuminate\Database\Eloquent\Builder|OauthClient whereUpdatedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|OauthClient whereUserId($value)
- * @mixin IdeHelperOauthClient
+ * @mixin \Eloquent
  */
 class OauthClient extends PassportClient {
     /**
