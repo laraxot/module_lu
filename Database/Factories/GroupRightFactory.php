@@ -10,7 +10,7 @@ class GroupRightFactory extends Factory {
     /**
      * The name of the factory's corresponding model.
      *
-     * @var string
+     * @var class-string<\Illuminate\Database\Eloquent\Model>
      */
     protected $model = Modules\LU\Models\GroupRight::class;
 

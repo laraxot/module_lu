@@ -40,7 +40,7 @@ abstract class BaseModel extends Model {
     protected $appends = [];
 
     /**
-     * @var array
+     * @var array<string, string>
      */
     protected $casts = [];
 

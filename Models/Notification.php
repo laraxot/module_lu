@@ -73,7 +73,7 @@ class Notification extends BaseModel {
     /**
      * The attributes that should be cast to native types.
      *
-     * @var array
+     * @var array<string, string>
      */
     protected $casts = [
         'data' => 'array',
