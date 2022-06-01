@@ -6,24 +6,25 @@ namespace Modules\LU\Models;
 
 use Illuminate\Contracts\View\View as ViewContract;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
-use Illuminate\View\View;
+use Illuminate\Support\Facades\View;
 use Modules\Theme\Services\ThemeService;
 
 /**
- * Modules\LU\Models\AreaPermUser
+ * Modules\LU\Models\AreaPermUser.
  *
- * @property int $id
- * @property int|null $area_id
- * @property int|null $perm_user_id
- * @property \Illuminate\Support\Carbon|null $created_at
- * @property \Illuminate\Support\Carbon|null $updated_at
- * @property string|null $created_by
- * @property string|null $updated_by
- * @property-read \Modules\LU\Models\Area|null $area
- * @property-read string|null $area_define_name
- * @property-read string|null $icon_src
- * @property-read string|null $title
- * @property-read \Modules\LU\Models\PermUser|null $permUser
+ * @property int                              $id
+ * @property int|null                         $area_id
+ * @property int|null                         $perm_user_id
+ * @property \Illuminate\Support\Carbon|null  $created_at
+ * @property \Illuminate\Support\Carbon|null  $updated_at
+ * @property string|null                      $created_by
+ * @property string|null                      $updated_by
+ * @property \Modules\LU\Models\Area|null     $area
+ * @property string|null                      $area_define_name
+ * @property string|null                      $icon_src
+ * @property string|null                      $title
+ * @property \Modules\LU\Models\PermUser|null $permUser
+ *
  * @method static \Modules\LU\Database\Factories\AreaPermUserFactory factory(...$parameters)
  * @method static \Illuminate\Database\Eloquent\Builder|AreaPermUser newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|AreaPermUser newQuery()
@@ -35,7 +36,6 @@ use Modules\Theme\Services\ThemeService;
  * @method static \Illuminate\Database\Eloquent\Builder|AreaPermUser wherePermUserId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|AreaPermUser whereUpdatedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|AreaPermUser whereUpdatedBy($value)
- * @mixin \Eloquent
  */
 class AreaPermUser extends BasePivot {
     /**
@@ -99,7 +99,12 @@ class AreaPermUser extends BasePivot {
             return $value;
         }
 
-        return $area->icon_src;
+        $icon_src = $area->icon_src;
+        if (! is_string($icon_src)) {
+            return null;
+        }
+
+        return $icon_src;
     }
 
     public function dashboard_widget(): ViewContract {
@@ -111,12 +116,15 @@ class AreaPermUser extends BasePivot {
 
         $view = mb_strtolower($area_define_name_scope).'::admin.dashboard_widget';
         $view_params = ['row' => $this];
-        if (view()->exists($view)) {
-            // return view($view)->with('row', $this);
-            return view()->make($view)->with('row', $this);
+        // if (view()->exists($view)) {
+        if (View::exists($view)) {
+            // return view()->make($view)->with('row', $this);
+            // Call to an undefined method Illuminate\Contracts\View\Factory|Illuminate\Contracts\View\View::make()
+            return View::make($view, $view_params);
         } else {
-            // return view('lu::admin.dashboard_widget_default')->with('row', $this);
-            return view()->make('lu::admin.dashboard_widget_default', $view_params);
+            // Call to an undefined method Illuminate\Contracts\View\Factory|Illuminate\Contracts\View\View::make()
+            // return view()->make('lu::admin.dashboard_widget_default', $view_params);
+            return View::make('lu::admin.dashboard_widget_default', $view_params);
         }
     }
 
@@ -124,7 +132,7 @@ class AreaPermUser extends BasePivot {
      * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\Routing\UrlGenerator|string
      */
     public function a_href() {
-        return url('admin/'.mb_strtolower($this->area_define_name));
+        return url('admin/'.mb_strtolower((string) $this->area_define_name));
     }
 
     // -----------------------------------------------------------------------------

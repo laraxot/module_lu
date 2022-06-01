@@ -1,12 +1,29 @@
 includes:
+    # -  ./../../vendor/nunomaduro/larastan/extension.neon
     - phpstan-baseline.neon
 
 parameters:
-    level: 4
+    
     paths:
         - .
 
+    # The level 9 is the highest level
+    level: 4
+
+    ignoreErrors:
+    #    - '#Unsafe usage of new static#'
+
+    excludePaths:
+        - ./*/*/FileToBeExcluded.php
+        - ./*/vendor/*
     
 
-    checkModelProperties: true
+    #checkModelProperties: true
     checkMissingIterableValueType: false
+
+    bootstrapFiles:
+    #    - ./Modules/Xot/Services/vendor/autoload.php
+        - ./../../vendor/autoload.php
+
+    scanFiles:
+    #    - ./Modules/Xot/Helpers/Helper.php
