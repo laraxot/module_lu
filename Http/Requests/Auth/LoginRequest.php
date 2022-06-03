@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Modules\LU\Http\Requests\Auth;
 
+use Exception;
 use Illuminate\Auth\Events\Lockout;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Support\Facades\Auth;
@@ -77,6 +78,10 @@ class LoginRequest extends FormRequest {
      * @return string
      */
     public function throttleKey() {
+        if (! is_string($this->input('email'))) {
+            throw new Exception('['.__LINE__.']['.class_basename(__CLASS__).']');
+        }
+
         return Str::lower($this->input('email')).'|'.$this->ip();
     }
 }

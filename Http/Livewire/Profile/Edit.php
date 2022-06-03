@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Modules\LU\Http\Livewire\Profile;
 
+use Exception;
 use Illuminate\Contracts\Support\Renderable;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Auth;
@@ -32,7 +33,13 @@ class Edit extends Component {
 
     public function save(): void {
         // dddx([$this->form_data, Auth::user()->profile]);
+        if (is_null(Auth::user())) {
+            throw new Exception('['.__LINE__.']['.class_basename(__CLASS__).']');
+        }
         $profile = Auth::user()->profile;
+        if (is_null($profile)) {
+            throw new Exception('['.__LINE__.']['.class_basename(__CLASS__).']');
+        }
         $profile->update($this->form_data);
 
         $this->form_data['user']['email'] = $this->form_data['email'];
