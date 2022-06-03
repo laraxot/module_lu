@@ -6,12 +6,14 @@ namespace Modules\LU\Http\Controllers\Api;
 
 // modules
 use App\Http\Controllers\Controller;
+use Exception;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Modules\LU\Models\User;
 
 class UserController extends Controller {
-    public function login(Request $request) {
+    public function login(Request $request): JsonResponse {
         // validate the login request
         $login = $request->validate([
             'email' => 'required|email',
@@ -32,6 +34,9 @@ class UserController extends Controller {
             ]);
         }
         // if login succeed issue an access token for our user
+        if (is_null(Auth::user())) {
+            throw new Exception('['.__LINE__.']['.class_basename(__CLASS__).']');
+        }
         $token = Auth::user()->createToken('Token Name')->accessToken;
 
         return response()->json([
@@ -41,7 +46,7 @@ class UserController extends Controller {
         ]);
     }
 
-    public function loginTest(Request $request) {
+    public function loginTest(Request $request): JsonResponse {
         $login = [
             'email' => 'marco.sottana@gmail.com',
             'password' => 'prova123',
@@ -62,6 +67,9 @@ class UserController extends Controller {
         }
 
         // if login succeed issue an access token for our user
+        if (is_null(Auth::user())) {
+            throw new Exception('['.__LINE__.']['.class_basename(__CLASS__).']');
+        }
         $token = Auth::user()->createToken('Token Name')->accessToken;
 
         return response()->json([
@@ -71,19 +79,24 @@ class UserController extends Controller {
         ]);
     }
 
-    public function logout(Request $request) {
+    public function logout(Request $request): string {
         exit('LOGOUT');
     }
 
     /**
      * handle user registration request.
      */
-    public function registerUserExample(Request $request) {
+    public function registerUserExample(Request $request): JsonResponse {
         $this->validate($request, [
             'name' => 'required',
             'email' => 'required|email|unique:users',
             'password' => 'required|min:8',
         ]);
+
+        if (! is_string($request->password)) {
+            throw new Exception('['.__LINE__.']['.class_basename(__CLASS__).']');
+        }
+
         $user = User::create([
             'name' => $request->name,
             'email' => $request->email,
@@ -95,7 +108,7 @@ class UserController extends Controller {
         return response()->json(['token' => $access_token_example], 200);
     }
 
-    public function getCurrentUser() {
+    public function getCurrentUser(): JsonResponse {
         return response()->json(['user' => Auth::user()]);
     }
 }
