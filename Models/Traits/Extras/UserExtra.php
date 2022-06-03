@@ -46,7 +46,7 @@ trait UserExtra {
     //    return $this->id;
     // }
 
-    public function bio() {
+    public function bio(): string {
         return 'WIP';
     }
 
@@ -72,7 +72,7 @@ trait UserExtra {
         }
     }
 
-    public function isModerator() {
+    public function isModerator(): bool {
         return true;
     }
 
