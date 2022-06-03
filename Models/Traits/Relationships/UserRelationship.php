@@ -181,6 +181,9 @@ trait UserRelationship {
         // return $res;
     }
 
+    /**
+     * @return \Illuminate\Database\Eloquent\Builder|\Illuminate\Database\Eloquent\Relations\BelongsToMany|\Illuminate\Database\Eloquent\Relations\HasManyThrough
+     */
     public function areasUsed() {
         // lista moduli utilizzati in questa base
         return $this->areas()->whereIn('area_define_name', Module::getByStatus(1));

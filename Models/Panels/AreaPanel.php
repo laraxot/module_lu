@@ -48,7 +48,7 @@ class AreaPanel extends XotBasePanel {
      * quando aggiungi un campo select, è il numero della chiave
      * che viene messo come valore su value="id"
      *
-     * @return int
+     * @return int|mixed
      */
     public function optionId(Model $row) {
         return $row->getKey();

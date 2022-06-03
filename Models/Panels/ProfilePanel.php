@@ -4,12 +4,13 @@ declare(strict_types=1);
 
 namespace Modules\LU\Models\Panels;
 
+use Exception;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Http\Request;
 // --- Services --
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Session;
 // use Modules\Blog\Events\StoreProfileEvent;
+use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Str;
 use Modules\LU\Models\Profile;
 use Modules\LU\Models\User;
@@ -248,7 +249,9 @@ class ProfilePanel extends XotBasePanel {
         // 89     Access to an undefined property object::$perm_type
         $user_id = $this->row->getAttributeValue('user_id');
         $user = User::where('id', $user_id)->first();
-
+        if (null == $user) {
+            throw new Exception('['.__LINE__.']['.__FILE__.']');
+        }
         try {
             if (\is_object($user->perm) && $user->perm->perm_type >= 4) {  // superadmin
                 return true;

@@ -43,7 +43,7 @@ class ProfileService {
 
         if (\is_object($user)) {
             $profile_model = TenantService::model('profile');
-            if (null === $profile_model) {
+            if (null == $profile_model) {
                 throw new Exception('Aggiungi profile a morph_map.php ['.__LINE__.']['.class_basename(__CLASS__).']');
             }
             $self->user = $user;
@@ -83,7 +83,7 @@ class ProfileService {
     }
 
     public function fullName(): ?string {
-        if (null === $this->user) {
+        if (null == $this->user) {
             return null;
         }
         $user = $this->user;
@@ -98,7 +98,7 @@ class ProfileService {
     }
 
     public function handle(): string {
-        if (null === $this->user) {
+        if (null == $this->user) {
             return 'unknown';
         }
 
@@ -142,7 +142,7 @@ class ProfileService {
      * @return string|null
      */
     public function avatar($size = 100) {
-        if (null === $this->user) {
+        if (null == $this->user) {
             return null;
         }
 
@@ -182,7 +182,7 @@ class ProfileService {
      * @return bool
      */
     public function hasRole($role_name) {
-        if (null === $this->profile) {
+        if (null == $this->profile) {
             return false;
         }
         $role = $this->role($role_name);
@@ -196,7 +196,7 @@ class ProfileService {
      * @return mixed|null
      */
     public function role($role_name) {
-        if (null === $this->profile) {
+        if (null == $this->profile) {
             return null;
         }
         $role_method = Str::camel($role_name); // bell_boy => bellBoy
@@ -209,7 +209,7 @@ class ProfileService {
     }
 
     public function getPanel(): PanelContract {
-        if (null === $this->profile) {
+        if (null == $this->profile) {
             dddx(['message' => 'to fix', 'user' => $this->user, 'profile' => $this->profile]);
         }
 
@@ -219,7 +219,7 @@ class ProfileService {
     }
 
     public function getProfilePanel(): PanelContract {
-        if (null === $this->profile) {
+        if (null == $this->profile) {
             dddx(['message' => 'to fix', 'user' => $this->user, 'profile' => $this->profile]);
         }
 
@@ -265,6 +265,10 @@ class ProfileService {
     public function panelAreas(): Collection {
         return $this->areas()->map(
             function ($area) {
+                if (! $area instanceof Model) {
+                    throw new Exception('['.__LINE__.']['.__FILE__.']');
+                }
+
                 return PanelService::make()->get($area);
             }
         );
