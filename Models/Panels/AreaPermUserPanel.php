@@ -48,7 +48,7 @@ class AreaPermUserPanel extends XotBasePanel {
      * quando aggiungi un campo select, è il numero della chiave
      * che viene messo come valore su value="id"
      *
-     * @return int|string|null
+     * @return mixed
      */
     public function optionId(Model $row) {
         return $row->getKey();
@@ -60,7 +60,7 @@ class AreaPermUserPanel extends XotBasePanel {
      * @param AreaPermUser $row
      */
     public function optionLabel(Model $row): string {
-        return $row->area_define_name;
+        return (string) $row->area_define_name;
     }
 
     /**
