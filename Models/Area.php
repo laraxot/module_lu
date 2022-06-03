@@ -4,38 +4,40 @@ declare(strict_types=1);
 
 namespace Modules\LU\Models;
 
+use Exception;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Support\Str;
 use Modules\Theme\Services\ThemeService;
 use Staudenmeir\EloquentHasManyDeep\HasRelationships;
 
 /**
- * Modules\LU\Models\Area
+ * Modules\LU\Models\Area.
  *
- * @property int $id
- * @property int|null $application_id
- * @property string|null $area_define_name
- * @property string|null $db
- * @property string|null $img
- * @property string|null $controller_path
- * @property string|null $icon_path
- * @property string $guid
- * @property \Illuminate\Support\Carbon|null $created_at
- * @property \Illuminate\Support\Carbon|null $updated_at
- * @property string|null $created_by
- * @property string|null $updated_by
- * @property string|null $deleted_at
- * @property string|null $deleted_by
- * @property string|null $deleted_ip
- * @property string|null $created_ip
- * @property string|null $updated_ip
+ * @property int                                                                                            $id
+ * @property int|null                                                                                       $application_id
+ * @property string|null                                                                                    $area_define_name
+ * @property string|null                                                                                    $db
+ * @property string|null                                                                                    $img
+ * @property string|null                                                                                    $controller_path
+ * @property string|null                                                                                    $icon_path
+ * @property string                                                                                         $guid
+ * @property \Illuminate\Support\Carbon|null                                                                $created_at
+ * @property \Illuminate\Support\Carbon|null                                                                $updated_at
+ * @property string|null                                                                                    $created_by
+ * @property string|null                                                                                    $updated_by
+ * @property string|null                                                                                    $deleted_at
+ * @property string|null                                                                                    $deleted_by
+ * @property string|null                                                                                    $deleted_ip
+ * @property string|null                                                                                    $created_ip
+ * @property string|null                                                                                    $updated_ip
  * @property \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\Routing\UrlGenerator|string $url
- * @property-read bool|mixed|string $icon_src
- * @property-read string|string[] $title
- * @property-read \Illuminate\Database\Eloquent\Collection|\Modules\LU\Models\PermUser[] $permUsers
- * @property-read int|null $perm_users_count
- * @property-read \Illuminate\Database\Eloquent\Collection|\Modules\LU\Models\PermUser[] $perms
- * @property-read int|null $perms_count
+ * @property bool|mixed|string                                                                              $icon_src
+ * @property string|string[]                                                                                $title
+ * @property \Illuminate\Database\Eloquent\Collection|\Modules\LU\Models\PermUser[]                         $permUsers
+ * @property int|null                                                                                       $perm_users_count
+ * @property \Illuminate\Database\Eloquent\Collection|\Modules\LU\Models\PermUser[]                         $perms
+ * @property int|null                                                                                       $perms_count
+ *
  * @method static \Modules\LU\Database\Factories\AreaFactory factory(...$parameters)
  * @method static \Illuminate\Database\Eloquent\Builder|Area newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|Area newQuery()
@@ -148,6 +150,10 @@ class Area extends BaseModel {
         $height = 200;
         extract($params);
 
+        if (! is_string($this->icon_src)) {
+            throw new Exception('['.__LINE__.']['.class_basename(__CLASS__).']');
+        }
+
         return '<img src="'.asset($this->icon_src).'" width="'.$width.'" height="'.$height.'" />';
     }
 
@@ -157,6 +163,10 @@ class Area extends BaseModel {
      * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\Routing\UrlGenerator|string
      */
     public function getUrlAttribute($value) {
+        if (! is_string($this->area_define_name)) {
+            throw new Exception('['.__LINE__.']['.class_basename(__CLASS__).']');
+        }
+
         return url('admin/'.mb_strtolower($this->area_define_name));
     }
 
@@ -167,6 +177,9 @@ class Area extends BaseModel {
      */
     public function getTitleAttribute($value) {
         $title = $this->area_define_name;
+        if (is_null($title)) {
+            throw new Exception('['.__LINE__.']['.class_basename(__CLASS__).']');
+        }
         $title = str_replace('_', ' ', $title);
 
         return $title;
@@ -178,6 +191,10 @@ class Area extends BaseModel {
      * @return string
      */
     public function getGuidAttribute($value) {
+        if (is_null($this->area_define_name)) {
+            throw new Exception('['.__LINE__.']['.class_basename(__CLASS__).']');
+        }
+
         return Str::slug($this->area_define_name);
     }
 

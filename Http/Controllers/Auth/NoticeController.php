@@ -7,6 +7,7 @@ namespace Modules\LU\Http\Controllers\Auth;
 use App\Http\Controllers\Controller;
 // --- MODELS ----
 // --- SERVICES ---
+use Exception;
 use Modules\Theme\Services\ThemeService;
 
 /**
@@ -22,6 +23,9 @@ class NoticeController extends Controller {
     public function __invoke() {
         if (\Auth::check()) {
             $referrer = request()->input('referrer', '/');
+            if (! is_null($referrer)) {
+                throw new Exception('['.__LINE__.']['.class_basename(__CLASS__).']');
+            }
 
             return redirect($referrer);
             // return redirect('/');
