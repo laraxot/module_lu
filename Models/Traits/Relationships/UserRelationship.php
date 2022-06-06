@@ -4,16 +4,17 @@ declare(strict_types=1);
 
 namespace Modules\LU\Models\Traits\Relationships;
 
-use Illuminate\Database\Eloquent\Relations\HasMany;
-use Illuminate\Database\Eloquent\Relations\HasOne;
 use Modules\LU\Models\Area;
-use Modules\LU\Models\AreaPermUser;
-use Modules\LU\Models\GroupPermUser;
 use Modules\LU\Models\PermUser;
+use Modules\LU\Models\AreaPermUser;
+use Nwidart\Modules\Facades\Module;
+use Modules\LU\Models\GroupPermUser;
 use Modules\LU\Models\PermUserRight;
 use Modules\LU\Models\SocialProvider;
 use Modules\Tenant\Services\TenantService;
-use Nwidart\Modules\Facades\Module;
+use Illuminate\Database\Eloquent\Relations\HasOne;
+use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\HasManyThrough;
 
 /*
  * Undocumented trait.
@@ -111,9 +112,9 @@ trait UserRelationship {
     }
 
     /**
-     * @return \Illuminate\Database\Eloquent\Builder|\Illuminate\Database\Eloquent\Relations\HasManyThrough
+     * return \Illuminate\Database\Eloquent\Builder|\Illuminate\Database\Eloquent\Relations\HasManyThrough
      */
-    public function groupPermUsers() {
+    public function groupPermUsers():HasManyThrough {
         $modules = Module::getOrdered();
         $modules = array_keys($modules);
 
@@ -131,9 +132,9 @@ trait UserRelationship {
     }
 
     /**
-     * @return \Illuminate\Database\Eloquent\Builder|\Illuminate\Database\Eloquent\Relations\HasManyThrough
+     * return \Illuminate\Database\Eloquent\Builder|\Illuminate\Database\Eloquent\Relations\HasManyThrough
      */
-    public function permUserRights() {
+    public function permUserRights():HasManyThrough {
         $modules = Module::getOrdered();
         $modules = array_keys($modules);
 
@@ -214,6 +215,8 @@ trait UserRelationship {
         }
 
         if (null === $perm) {
+            //Illuminate\Database\Eloquent\Relations\BelongsToMany|Illuminate\Database\Eloquent\Relations\HasManyThrough but returns  
+            //Illuminate\Database\Eloquent\Builder|Illuminate\Database\Eloquent\Relations\HasManyThrough.                       
             return $this->groupPermUsers();
         }
 
