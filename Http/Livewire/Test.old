@@ -33,9 +33,15 @@ class Test extends Component {
      * @return \Illuminate\View\View
      */
     public function render():\Illuminate\Contracts\Support\Renderable {
+        /** 
+        * @phpstan-var view-string
+        */
         $view = 'lu::livewire.test';
         if ($this->in_admin) {
-            $view = 'lu::admin.livewire.test';
+            /** 
+        * @phpstan-var view-string
+        */
+        $view = 'lu::admin.livewire.test';
         }
         $rows = $this->panel->getRows()->paginate(20);
 

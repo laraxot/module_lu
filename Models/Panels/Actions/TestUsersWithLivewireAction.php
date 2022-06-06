@@ -25,8 +25,7 @@ class TestUsersWithLivewireAction extends XotBasePanelAction {
      * @return mixed
      */
     public function handle() {
-        // dddx([request()['panel'], request()->input('panel')]);
-        // /$view = 'lu::users.'.$this->getName();
+       
 
         // return $view;
         return $this->panel->view();

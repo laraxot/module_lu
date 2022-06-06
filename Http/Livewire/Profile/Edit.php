@@ -23,6 +23,9 @@ class Edit extends Component {
     }
 
     public function render(): Renderable {
+        /** 
+        * @phpstan-var view-string
+        */
         $view = 'lu::livewire.profile.edit';
         $view_params = [
             'view' => $view,

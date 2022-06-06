@@ -46,6 +46,9 @@ class VerificationController extends Controller {
      * @return \Illuminate\Http\RedirectResponse|\Illuminate\Http\Response
      */
     public function show(Request $request) {
+        /** 
+        * @phpstan-var view-string
+        */
         $view = 'lu::auth.verify';
         $view_params = [
             'view' => $view,

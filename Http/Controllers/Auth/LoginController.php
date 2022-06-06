@@ -90,6 +90,9 @@ class LoginController extends Controller {
         $piece = 'auth.login';
         FileService::viewCopy('lu::'.$piece, 'pub_theme::'.$piece);
 
+        /** 
+        * @phpstan-var view-string
+        */
         $view = 'pub_theme::'.$piece;
 
         $view_params = [

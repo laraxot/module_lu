@@ -97,6 +97,9 @@ class ResetPasswordController extends Controller {
         */
         $piece = 'auth.passwords.reset';
         FileService::viewCopy('lu::'.$piece, 'pub_theme::'.$piece);
+        /** 
+        * @phpstan-var view-string
+        */
         $view = 'pub_theme::'.$piece;
         $view_params = [
             'token' => $token,

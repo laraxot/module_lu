@@ -78,6 +78,9 @@ class ForgotPasswordController extends Controller {
 
         $piece = 'auth.passwords.email';
         FileService::viewCopy('lu::'.$piece, 'pub_theme::'.$piece);
+        /** 
+        * @phpstan-var view-string
+        */
         $view = 'pub_theme::auth.passwords.email';
         $view_params = [
             'lang' => $lang,

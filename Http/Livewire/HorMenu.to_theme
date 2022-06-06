@@ -42,6 +42,9 @@ class HorMenu extends Component {
      * @return \Illuminate\Contracts\Support\Renderable
      */
     public function render():\Illuminate\Contracts\Support\Renderable {
+        /** 
+        * @phpstan-var view-string
+        */
         $view = 'lu::livewire.hor_menu';
         $view_params = [
             'view' => $view,
