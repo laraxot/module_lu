@@ -4,13 +4,14 @@ declare(strict_types=1);
 
 namespace Modules\LU\Http\Controllers\Auth;
 
-use App\Http\Controllers\Controller;
+use Exception;
 use Carbon\Carbon;
-use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Str;
-use Laravel\Socialite\Facades\Socialite;
-use Modules\LU\Models\SocialProvider;
 use Modules\LU\Models\User;
+use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
+use Modules\LU\Models\SocialProvider;
+use Laravel\Socialite\Facades\Socialite;
 
 /**
  * Class SocialiteController.
@@ -131,6 +132,9 @@ class SocialiteController extends Controller {
         }
 
         // $user=User::firstOrCreate(['email',$socialUser->getEmail()])
+        if($user==null){
+            throw new Exception('['.__LINE__.']['.__FILE__.']');
+        }
         $user->update(
             [
                 'last_login_at' => Carbon::now()->toDateTimeString(),

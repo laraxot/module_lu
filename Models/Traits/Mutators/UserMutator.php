@@ -37,7 +37,7 @@ trait UserMutator {
             return $value;
         }
 
-        return 'user-'.$this->user_id;
+        return 'user-'.$this->id;
     }
 
     /**

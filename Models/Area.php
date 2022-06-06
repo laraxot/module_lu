@@ -11,33 +11,28 @@ use Modules\Theme\Services\ThemeService;
 use Staudenmeir\EloquentHasManyDeep\HasRelationships;
 
 /**
- * Modules\LU\Models\Area.
+ * Modules\LU\Models\Area
  *
- * @property int                                                                                            $id
- * @property int|null                                                                                       $application_id
- * @property string|null                                                                                    $area_define_name
- * @property string|null                                                                                    $db
- * @property string|null                                                                                    $img
- * @property string|null                                                                                    $controller_path
- * @property string|null                                                                                    $icon_path
- * @property string                                                                                         $guid
- * @property \Illuminate\Support\Carbon|null                                                                $created_at
- * @property \Illuminate\Support\Carbon|null                                                                $updated_at
- * @property string|null                                                                                    $created_by
- * @property string|null                                                                                    $updated_by
- * @property string|null                                                                                    $deleted_at
- * @property string|null                                                                                    $deleted_by
- * @property string|null                                                                                    $deleted_ip
- * @property string|null                                                                                    $created_ip
- * @property string|null                                                                                    $updated_ip
- * @property \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\Routing\UrlGenerator|string $url
- * @property bool|mixed|string                                                                              $icon_src
- * @property string|string[]                                                                                $title
- * @property \Illuminate\Database\Eloquent\Collection|\Modules\LU\Models\PermUser[]                         $permUsers
- * @property int|null                                                                                       $perm_users_count
- * @property \Illuminate\Database\Eloquent\Collection|\Modules\LU\Models\PermUser[]                         $perms
- * @property int|null                                                                                       $perms_count
- *
+ * @property int $id
+ * @property int $application_id
+ * @property string $area_define_name
+ * @property string $db
+ * @property string $img
+ * @property string $icons
+ * @property int $ordine
+ * @property string $controller_path
+ * @property \Illuminate\Support\Carbon|null $created_at
+ * @property \Illuminate\Support\Carbon|null $updated_at
+ * @property string|null $created_by
+ * @property string|null $updated_by
+ * @property-read string $guid
+ * @property-read bool|mixed|string $icon_src
+ * @property-read string|string[] $title
+ * @property-read \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\Routing\UrlGenerator|string $url
+ * @property-read \Illuminate\Database\Eloquent\Collection|\Modules\LU\Models\PermUser[] $permUsers
+ * @property-read int|null $perm_users_count
+ * @property-read \Illuminate\Database\Eloquent\Collection|\Modules\LU\Models\PermUser[] $perms
+ * @property-read int|null $perms_count
  * @method static \Modules\LU\Database\Factories\AreaFactory factory(...$parameters)
  * @method static \Illuminate\Database\Eloquent\Builder|Area newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|Area newQuery()
@@ -47,19 +42,13 @@ use Staudenmeir\EloquentHasManyDeep\HasRelationships;
  * @method static \Illuminate\Database\Eloquent\Builder|Area whereControllerPath($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Area whereCreatedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Area whereCreatedBy($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Area whereCreatedIp($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Area whereDb($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Area whereDeletedAt($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Area whereDeletedBy($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Area whereDeletedIp($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Area whereGuid($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Area whereIconPath($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Area whereIcons($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Area whereId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Area whereImg($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Area whereOrdine($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Area whereUpdatedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Area whereUpdatedBy($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Area whereUpdatedIp($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Area whereUrl($value)
  * @mixin \Eloquent
  */
 class Area extends BaseModel {
@@ -171,15 +160,15 @@ class Area extends BaseModel {
     }
 
     /**
-     * @param mixed $value
+     
      *
-     * @return string|string[]
+     
      */
-    public function getTitleAttribute($value) {
+    public function getTitleAttribute(?string $value):?string {
         $title = $this->area_define_name;
-        if (is_null($title)) {
-            throw new Exception('['.__LINE__.']['.class_basename(__CLASS__).']');
-        }
+        //if (is_null($title)) {
+        //    throw new Exception('['.__LINE__.']['.class_basename(__CLASS__).']');
+        //}
         $title = str_replace('_', ' ', $title);
 
         return $title;
@@ -191,7 +180,7 @@ class Area extends BaseModel {
      * @return string
      */
     public function getGuidAttribute($value) {
-        if (is_null($this->area_define_name)) {
+        if (null == ($this->area_define_name)) {
             throw new Exception('['.__LINE__.']['.class_basename(__CLASS__).']');
         }
 

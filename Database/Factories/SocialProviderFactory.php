@@ -12,7 +12,7 @@ class SocialProviderFactory extends Factory {
      *
      * @var class-string<\Illuminate\Database\Eloquent\Model>
      */
-    protected $model = Modules\LU\Models\SocialProvider::class;
+    protected $model = \Modules\LU\Models\SocialProvider::class;
 
     /**
      * Define the model's default state.
@@ -21,9 +21,9 @@ class SocialProviderFactory extends Factory {
      */
     public function definition() {
         return [
-            'id' => $this->faker->randomNumber,
-            'user_id' => $this->faker->integer,
-            'provider_id' => $this->faker->integer,
+            'id' => $this->faker->randomNumber(5, false),
+            //'user_id' => $this->faker->randomNumber(5, false),
+            //'provider_id' => $this->faker->randomNumber(5, false),
             'provider' => $this->faker->word,
             'token' => $this->faker->word,
             'name' => $this->faker->name,

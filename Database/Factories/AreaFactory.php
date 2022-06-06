@@ -12,7 +12,7 @@ class AreaFactory extends Factory {
      *
      * @var class-string<\Illuminate\Database\Eloquent\Model>
      */
-    protected $model = Modules\LU\Models\Area::class;
+    protected $model = \Modules\LU\Models\Area::class;
 
     /**
      * Define the model's default state.
@@ -21,7 +21,7 @@ class AreaFactory extends Factory {
      */
     public function definition() {
         return [
-            'id' => $this->faker->randomNumber,
+            'id' => $this->faker->randomNumber(5, false),
             'area_define_name' => $this->faker->word,
         ];
     }

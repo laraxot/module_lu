@@ -74,13 +74,17 @@ class VerifyEmail extends Notification {
         if (static::$toMailCallback) {
             return \call_user_func(static::$toMailCallback, $notifiable);
         }
+        $subj=Lang::getFromJson('Verify Email Address');
+        if(is_array($subj)){
+            $subj=implode('-',$subj);
+        }
 
         return (new MailMessage())
-            ->subject((string) (Lang::getFromJson('Verify Email Address')))
+            ->subject($subj)
             ->markdown('lu::notifications.email', ['subcopy' => 'subcopy']) // , ['user' => $this->user]
             ->line(Lang::getFromJson('Please click the button below to verify your email address.'))
             ->action(
-                (string) (Lang::getFromJson('Verify Email Address')),
+                $subj,
                 $this->verificationUrl($notifiable)
             )
             ->line(Lang::getFromJson('If you did not create an account, no further action is required.'));

@@ -114,7 +114,9 @@ class CreateUserCommand extends Command {
             return 1;
         }
 
-        $user = with(new $model())->create(
+        //$model=with(new $model());
+        $model=app($model);
+        $user = $model->create(
             [
                 'handle' => $handle,
                 'email' => $email,

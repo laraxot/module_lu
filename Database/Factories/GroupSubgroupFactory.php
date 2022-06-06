@@ -12,7 +12,7 @@ class GroupSubgroupFactory extends Factory {
      *
      * @var class-string<\Illuminate\Database\Eloquent\Model>
      */
-    protected $model = Modules\LU\Models\GroupSubgroup::class;
+    protected $model = \Modules\LU\Models\GroupSubgroup::class;
 
     /**
      * Define the model's default state.
@@ -21,8 +21,8 @@ class GroupSubgroupFactory extends Factory {
      */
     public function definition() {
         return [
-            'group_id' => $this->faker->integer,
-            'subgroup_id' => $this->faker->integer,
+            'group_id' => $this->faker->randomNumber(5, false),
+            'subgroup_id' => $this->faker->randomNumber(5, false),
         ];
     }
 }

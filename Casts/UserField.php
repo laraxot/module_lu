@@ -15,11 +15,11 @@ class UserField implements CastsAttributes {
      * @param mixed                               $value
      * @param array                               $attributes
      *
-     * @return \App\Models\Address
+     * @return mixed
      */
     public function get($model, $key, $value, $attributes) {
         // dddx(['model' => $model, 'key' => $key, 'value' => $value, 'attributes' => $attributes, 'data' => request()->all()]);
-
+        //Access to an undefined property Illuminate\Database\Eloquent\Model::$user.
         return $model->user->{$key};
     }
 
@@ -28,12 +28,14 @@ class UserField implements CastsAttributes {
      *
      * @param \Illuminate\Database\Eloquent\Model $model
      * @param string                              $key
-     * @param \App\Models\Address                 $value
+     * @param mixed                 $value
      * @param array                               $attributes
      */
     public function set($model, $key, $value, $attributes) {
+        //Access to an undefined property Illuminate\Database\Eloquent\Model::$user. 
         $user = $model->user;
         $user->{$key} = $value;
+        //Call to an undefined method Illuminate\Support\HigherOrderTapProxy<mixed>::save().  
         $res = tap($user)->save();
         // parent::__construct([]);
         // return [$key => encrypt($value)];

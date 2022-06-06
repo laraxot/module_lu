@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Modules\LU\Database\Factories;
 
+use Modules\LU\Models\PermUser;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 class PermUserFactory extends Factory {
@@ -12,7 +13,7 @@ class PermUserFactory extends Factory {
      *
      * @var class-string<\Illuminate\Database\Eloquent\Model>
      */
-    protected $model = Modules\LU\Models\PermUser::class;
+    protected $model = PermUser::class;
 
     /**
      * Define the model's default state.
@@ -21,9 +22,9 @@ class PermUserFactory extends Factory {
      */
     public function definition() {
         return [
-            'id' => $this->faker->randomNumber,
-            'user_id' => $this->faker->integer,
-            'perm_type' => $this->faker->randomNumber,
+            'id' => $this->faker->randomNumber(5, false),
+            'user_id' => $this->faker->randomNumber(5, false),
+            'perm_type' => $this->faker->randomNumber(5, false),
         ];
     }
 }

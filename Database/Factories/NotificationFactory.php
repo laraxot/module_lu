@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Modules\LU\Database\Factories;
 
+use Modules\LU\Models\Notification;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -15,7 +16,7 @@ class NotificationFactory extends Factory {
      *
      * @var class-string<\Illuminate\Database\Eloquent\Model>
      */
-    protected $model = Modules\LU\Models\Notification::class;
+    protected $model = Notification::class;
 
     /**
      * Define the model's default state.
@@ -27,7 +28,7 @@ class NotificationFactory extends Factory {
             'id' => $this->faker->word,
             'type' => $this->faker->word,
             'notifiable_type' => $this->faker->word,
-            'notifiable_id' => $this->faker->integer,
+            //'notifiable_id' => $this->faker->randomNumber(5, false),
             'data' => $this->faker->text,
             'read_at' => $this->faker->dateTime,
             'created_at' => $this->faker->dateTime,

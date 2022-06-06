@@ -12,7 +12,7 @@ class GroupFactory extends Factory {
      *
      * @var class-string<\Illuminate\Database\Eloquent\Model>
      */
-    protected $model = Modules\LU\Models\Group::class;
+    protected $model = \Modules\LU\Models\Group::class;
 
     /**
      * Define the model's default state.
@@ -21,11 +21,11 @@ class GroupFactory extends Factory {
      */
     public function definition() {
         return [
-            'id' => $this->faker->randomNumber,
-            'group_type' => $this->faker->randomNumber,
+            'id' => $this->faker->randomNumber(5, false),
+            'group_type' => $this->faker->randomNumber(5, false),
             'group_define_name' => $this->faker->word,
-            'owner_user_id' => $this->faker->integer,
-            'owner_group_id' => $this->faker->integer,
+            'owner_user_id' => $this->faker->randomNumber(5, false),
+            'owner_group_id' => $this->faker->randomNumber(5, false),
             'is_active' => $this->faker->word,
         ];
     }

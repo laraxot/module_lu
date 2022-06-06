@@ -157,12 +157,12 @@ trait UserRelationship {
         // return $this->hasManyDeep(Area::class, [PermUser::class, AreaPermUser::class]);
         // return $this->hasManyDeepFromRelations($this->permUsers(), (new PermUser())->areas());
         // return $this->areaPermUsers();
-
-        if (null === $this->perm && null !== $this->getKey()) {
-            $this->perm = PermUser::query()->firstOrCreate(['user_id' => $this->getKey()]);
+        $perm=$this->perm;
+        if (null ===  $perm && null !== $this->getKey()) {
+            $perm = PermUser::query()->firstOrCreate(['user_id' => $this->getKey()]);
         }
 
-        if (null === $this->perm /* && ! null !== ($this->getKey()) */) {
+        if (null === $perm /* && ! null !== ($this->getKey()) */) {
             return $this->areaPermUsers();
         }
         /*
@@ -174,7 +174,7 @@ trait UserRelationship {
         // ci dovremmo mettere un controllo(?),
         // se sono superAdmin vorrei vedere tutti i moduli (solo attivi?)
 
-        return $this->perm->areas();
+        return $perm->areas();
 
         // dddx($res->toSql());
 
@@ -208,15 +208,16 @@ trait UserRelationship {
         // if (null == $this->perm) {
         //    throw new \Exception('perm is null');
         // }
-        if (null === $this->perm && null !== $this->getKey()) {
-            $this->perm = PermUser::query()->firstOrCreate(['user_id' => $this->getKey()]);
+        $perm=$this->perm;
+        if (null === $perm && null !== $this->getKey()) {
+            $perm = PermUser::query()->firstOrCreate(['user_id' => $this->getKey()]);
         }
 
-        if (null === $this->perm) {
+        if (null === $perm) {
             return $this->groupPermUsers();
         }
 
-        return $this->perm->groups();
+        return $perm->groups();
     }
 
     /**
@@ -239,14 +240,15 @@ trait UserRelationship {
         // if (null == $this->perm) {
         //    throw new \Exception('perm is null');
         // }
-        if (null === $this->perm && null !== $this->getKey()) {
-            $this->perm = PermUser::query()->firstOrCreate(['user_id' => $this->getKey()]);
+        $perm=$this->perm;
+        if (null === $perm && null !== $this->getKey()) {
+            $perm = PermUser::query()->firstOrCreate(['user_id' => $this->getKey()]);
         }
 
-        if (null === $this->perm) {
+        if (null === $perm) {
             return $this->permUserRights();
         }
 
-        return $this->perm->rights();
+        return $perm->rights();
     }
 }

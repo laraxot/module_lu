@@ -12,7 +12,7 @@ class GroupRightFactory extends Factory {
      *
      * @var class-string<\Illuminate\Database\Eloquent\Model>
      */
-    protected $model = Modules\LU\Models\GroupRight::class;
+    protected $model = \Modules\LU\Models\GroupRight::class;
 
     /**
      * Define the model's default state.
@@ -21,8 +21,8 @@ class GroupRightFactory extends Factory {
      */
     public function definition() {
         return [
-            'group_id' => $this->faker->integer,
-            'right_id' => $this->faker->integer,
+            'group_id' => $this->faker->randomNumber(5, false),
+            'right_id' => $this->faker->randomNumber(5, false),
             'right_level' => $this->faker->boolean,
         ];
     }

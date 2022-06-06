@@ -12,7 +12,7 @@ class AreaPermUserFactory extends Factory {
      *
      * @var class-string<\Illuminate\Database\Eloquent\Model>
      */
-    protected $model = Modules\LU\Models\AreaPermUser::class;
+    protected $model = \Modules\LU\Models\AreaPermUser::class;
 
     /**
      * Define the model's default state.
@@ -21,9 +21,9 @@ class AreaPermUserFactory extends Factory {
      */
     public function definition() {
         return [
-            'id' => $this->faker->randomNumber,
-            'area_id' => $this->faker->integer,
-            'perm_user_id' => $this->faker->integer,
+            'id' => $this->faker->randomNumber(5, false),
+            'area_id' => $this->faker->randomNumber(5, false),
+            'perm_user_id' => $this->faker->randomNumber(5, false),
         ];
     }
 }

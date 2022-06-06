@@ -22,8 +22,8 @@ class PermUserRightFactory extends Factory {
      */
     public function definition() {
         return [
-            'perm_user_id' => $this->faker->integer,
-            'right_id' => $this->faker->integer,
+            //'perm_user_id' => $this->faker->randomNumber(5, false),
+            //'right_id' => $this->faker->randomNumber(5, false),
             'right_level' => $this->faker->boolean,
         ];
     }

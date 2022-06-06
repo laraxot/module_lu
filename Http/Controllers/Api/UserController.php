@@ -83,9 +83,9 @@ class UserController extends Controller {
         exit('LOGOUT');
     }
 
-    /**
+    /*
      * handle user registration request.
-     */
+     
     public function registerUserExample(Request $request): JsonResponse {
         $this->validate($request, [
             'name' => 'required',
@@ -103,11 +103,12 @@ class UserController extends Controller {
             'password' => bcrypt($request->password),
         ]);
 
+        //Access to an undefined property Laravel\Passport\PersonalAccessTokenResult::$access_token
         $access_token_example = $user->createToken('PassportExample@Section.io')->access_token;
         // return the access token we generated in the above step
         return response()->json(['token' => $access_token_example], 200);
     }
-
+    */ 
     public function getCurrentUser(): JsonResponse {
         return response()->json(['user' => Auth::user()]);
     }

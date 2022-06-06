@@ -12,7 +12,7 @@ class GroupPermUserFactory extends Factory {
      *
      * @var class-string<\Illuminate\Database\Eloquent\Model>
      */
-    protected $model = Modules\LU\Models\GroupPermUser::class;
+    protected $model = \Modules\LU\Models\GroupPermUser::class;
 
     /**
      * Define the model's default state.
@@ -21,8 +21,8 @@ class GroupPermUserFactory extends Factory {
      */
     public function definition() {
         return [
-            'perm_user_id' => $this->faker->integer,
-            'group_id' => $this->faker->integer,
+            'perm_user_id' => $this->faker->randomNumber(5, false),
+            'group_id' => $this->faker->randomNumber(5, false),
         ];
     }
 }

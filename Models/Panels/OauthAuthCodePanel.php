@@ -5,9 +5,10 @@ declare(strict_types=1);
 namespace Modules\LU\Models\Panels;
 
 use Illuminate\Http\Request;
-use Modules\Xot\Contracts\RowsContract;
+use Modules\LU\Models\OauthAuthCode;
 // --- Services --
 
+use Modules\Xot\Contracts\RowsContract;
 use Modules\Xot\Models\Panels\XotBasePanel;
 
 class OauthAuthCodePanel extends XotBasePanel {

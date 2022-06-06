@@ -29,16 +29,14 @@ class GroupPanel extends XotBasePanel {
      */
     protected static array $search = [];
 
+    
     /**
-     * @return mixed
+     * Undocumented function
+     *
+     * @param Group $row
+     * @return string
      */
-    /*
-    public function optionId(object $row) {
-        return $row->group_id;
-    }
-    */
-
-    public function optionLabel(Model $row): string {
+    public function optionLabel($row): string {
         // dddx($row instanceof Group);//true !!!
 
         return $row->getKey().'] '.$row->getAttributeValue('group_define_name');

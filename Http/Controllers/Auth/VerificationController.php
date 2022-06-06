@@ -4,9 +4,10 @@ declare(strict_types=1);
 
 namespace Modules\LU\Http\Controllers\Auth;
 
+use Exception;
+use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\VerifiesEmails;
-use Illuminate\Http\Request;
 
 /**
  * Class VerificationController.
@@ -49,8 +50,11 @@ class VerificationController extends Controller {
         $view_params = [
             'view' => $view,
         ];
-
-        return $request->user()->hasVerifiedEmail()
+        $user=$request->user();
+        if($user==null){
+            throw new Exception('['.__LINE__.']['.__FILE__.']');
+        }
+        return $user->hasVerifiedEmail()
             ? redirect($this->redirectPath())
             : response()->view($view, $view_params);
     }

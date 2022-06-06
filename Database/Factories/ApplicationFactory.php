@@ -12,7 +12,7 @@ class ApplicationFactory extends Factory {
      *
      * @var class-string<\Illuminate\Database\Eloquent\Model>
      */
-    protected $model = Modules\LU\Models\Application::class;
+    protected $model = \Modules\LU\Models\Application::class;
 
     /**
      * Define the model's default state.
@@ -21,7 +21,7 @@ class ApplicationFactory extends Factory {
      */
     public function definition() {
         return [
-            'id' => $this->faker->randomNumber,
+            'id' => $this->faker->randomNumber(5, false),
             'application_define_name' => $this->faker->word,
         ];
     }
