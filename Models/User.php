@@ -61,6 +61,7 @@ use Staudenmeir\EloquentHasManyDeep\HasRelationships;
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
  * @property string|null $remember_token
+ * @property string|null $api_token
  * @property string|null $updated_by
  * @property string|null $created_by
  * @property-read \Illuminate\Database\Eloquent\Collection|\Modules\LU\Models\AreaPermUser[] $areaPermUsers
@@ -83,8 +84,8 @@ use Staudenmeir\EloquentHasManyDeep\HasRelationships;
  * @property-read int|null $perm_users_count
  * @property-read \Illuminate\Database\Eloquent\Collection|\Modules\LU\Models\PermUser[] $perms
  * @property-read int|null $perms_count
- * @property-read \Modules\Xot\Models\Profile|null $profile
- * @property-read \Modules\Xot\Models\Profile|null $profileOrCreate
+ * @property-read \Modules\LU\Models\Profile|null $profile
+ * @property-read \Modules\LU\Models\Profile|null $profileOrCreate
  * @property-read \Illuminate\Database\Eloquent\Collection|\Modules\LU\Models\PermUserRight[] $rights
  * @property-read int|null $rights_count
  * @property \Illuminate\Database\Eloquent\Collection|\Modules\Tag\Models\Tag[] $tags
@@ -98,6 +99,7 @@ use Staudenmeir\EloquentHasManyDeep\HasRelationships;
  * @method static \Illuminate\Database\Eloquent\Builder|User newQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|User query()
  * @method static \Illuminate\Database\Eloquent\Builder|User whereActivationCode($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|User whereApiToken($value)
  * @method static \Illuminate\Database\Eloquent\Builder|User whereBannedId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|User whereBounce($value)
  * @method static \Illuminate\Database\Eloquent\Builder|User whereCitta($value)
