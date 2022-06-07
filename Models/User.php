@@ -16,7 +16,7 @@ use Laravel\Passport\HasApiTokens;
 use Modules\LU\Database\Factories\UserFactory;
 use Modules\Xot\Contracts\UserContract;
 use Modules\Xot\Traits\Updater;
-use Spatie\Tags\HasTags;  // Spatie Tags
+//use Spatie\Tags\HasTags;  // Spatie Tags
 use Staudenmeir\EloquentHasManyDeep\HasRelationships;
 
 /**
@@ -124,7 +124,7 @@ class User extends Authenticatable implements UserContract {
     use HasApiTokens;
     use HasFactory;
     use HasRelationships;
-    use HasTags; // PASSPORT
+    //use HasTags;
     use Notifiable;
     use Traits\Extras\UserExtra; // spatie tags
     use Traits\Mutators\UserMutator;
