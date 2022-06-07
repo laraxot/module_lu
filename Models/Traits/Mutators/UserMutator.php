@@ -28,11 +28,8 @@ trait UserMutator {
     }
 
     /**
-     * @param string $value
-     *
-     * @return string
      */
-    public function getHandleAttribute($value) {
+    public function getHandleAttribute(?string $value):string {
         if (null !== $value) {
             return $value;
         }
@@ -40,21 +37,13 @@ trait UserMutator {
         return 'user-'.$this->id;
     }
 
-    /**
-     * @param string $value
-     *
-     * @return string
-     */
-    public function getGuidAttribute($value) {
+    public function getGuidAttribute(?string $value):string {
         return Str::slug($this->handle);
     }
 
     /**
-     * @param string $value
-     *
-     * @return string
      */
-    public function getFullNameAttribute($value) {
+    public function getFullNameAttribute(?string $value):string {
         return Str::upper($this->first_name.' '.$this->last_name);
     }
 }

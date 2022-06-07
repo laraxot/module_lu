@@ -12,13 +12,18 @@ use Modules\Theme\Services\ThemeService;
 /**
  * Modules\LU\Models\AreaPermUser
  *
- * @property int $id
- * @property int|null $area_id
- * @property int|null $perm_user_id
+ * @property int $area_id
+ * @property int $perm_user_id
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
  * @property string|null $created_by
  * @property string|null $updated_by
+ * @property string|null $deleted_at
+ * @property string|null $deleted_by
+ * @property string|null $deleted_ip
+ * @property string|null $created_ip
+ * @property string|null $updated_ip
+ * @property string|null $guid
  * @property-read \Modules\LU\Models\Area|null $area
  * @property-read string|null $area_define_name
  * @property-read string|null $icon_src
@@ -31,10 +36,15 @@ use Modules\Theme\Services\ThemeService;
  * @method static \Illuminate\Database\Eloquent\Builder|AreaPermUser whereAreaId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|AreaPermUser whereCreatedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|AreaPermUser whereCreatedBy($value)
- * @method static \Illuminate\Database\Eloquent\Builder|AreaPermUser whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|AreaPermUser whereCreatedIp($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|AreaPermUser whereDeletedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|AreaPermUser whereDeletedBy($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|AreaPermUser whereDeletedIp($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|AreaPermUser whereGuid($value)
  * @method static \Illuminate\Database\Eloquent\Builder|AreaPermUser wherePermUserId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|AreaPermUser whereUpdatedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|AreaPermUser whereUpdatedBy($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|AreaPermUser whereUpdatedIp($value)
  * @mixin \Eloquent
  */
 class AreaPermUser extends BasePivot {

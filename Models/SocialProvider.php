@@ -10,14 +10,13 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
  * Modules\LU\Models\SocialProvider
  *
  * @property int $id
- * @property int|null $user_id
- * @property string|null $provider_id
- * @property string|null $provider
- * @property string|null $token
- * @property \Illuminate\Support\Carbon|null $created_at
- * @property \Illuminate\Support\Carbon|null $updated_at
+ * @property int $perm_user_id
+ * @property int $group_id
  * @property string|null $created_by
  * @property string|null $updated_by
+ * @property \Illuminate\Support\Carbon|null $created_at
+ * @property \Illuminate\Support\Carbon|null $updated_at
+ * @property string|null $token
  * @property string|null $name
  * @property string|null $email
  * @property string|null $avatar
@@ -30,14 +29,13 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
  * @method static \Illuminate\Database\Eloquent\Builder|SocialProvider whereCreatedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|SocialProvider whereCreatedBy($value)
  * @method static \Illuminate\Database\Eloquent\Builder|SocialProvider whereEmail($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|SocialProvider whereGroupId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|SocialProvider whereId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|SocialProvider whereName($value)
- * @method static \Illuminate\Database\Eloquent\Builder|SocialProvider whereProvider($value)
- * @method static \Illuminate\Database\Eloquent\Builder|SocialProvider whereProviderId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|SocialProvider wherePermUserId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|SocialProvider whereToken($value)
  * @method static \Illuminate\Database\Eloquent\Builder|SocialProvider whereUpdatedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|SocialProvider whereUpdatedBy($value)
- * @method static \Illuminate\Database\Eloquent\Builder|SocialProvider whereUserId($value)
  * @mixin \Eloquent
  */
 class SocialProvider extends BaseModel {
