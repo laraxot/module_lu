@@ -499,7 +499,6 @@ $Status = Post::doHttpPost( $parameters );
         <?= InternationalizationBOSH::titleWarnTitle ?>
     </div>
 <? } else {
-    /* added by Davide Cavallini to handle future errors */
     ?>
     <div id="warning" style="display:none;"> <i class="material-icons md-18">&#xE002;</i>
     </div><?php } ?>
@@ -641,7 +640,6 @@ $Status = Post::doHttpPost( $parameters );
 
                 autoUpload: false,
                 
-                /* event handles added by Davide Cavallini */
                 add: function(e, data) {
                     var uploadErrors = [];
                     var acceptFileTypes = /(\.|\/)(aac|ac3|aiff|alac|alaw|amr|asf|avi|caf|flac|flic|flv|g722|g723|g729|gsm|matroska|webm|mov|mp4|m4a|m4v|3gp|3g2|mp1|mp2|mp3|mpeg|mpegts|mulaw|ogg|opus|vorbis|wav|wmalossless|wmapro|wmav1|wmav2|wmavoice|xwma|wma|wmv|mpg)$/i;
