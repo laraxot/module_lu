@@ -14,6 +14,8 @@ use Modules\Tenant\Services\TenantService;
 
 /**
  * Trait HasProfileTrait. DA RIPRENDERE.
+ * 
+  * @property string|null $last_name
  */
 trait HasProfileTrait {
     // --- RELATIONS
