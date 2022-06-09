@@ -71,14 +71,12 @@ use Staudenmeir\EloquentHasManyDeep\HasRelationships;
  * @property-read int|null $perm_users_count
  * @property-read \Illuminate\Database\Eloquent\Collection|\Modules\LU\Models\PermUser[] $perms
  * @property-read int|null $perms_count
- * @property-read \Modules\Xot\Models\Profile|null $profile
- * @property-read \Modules\Xot\Models\Profile|null $profileOrCreate
+ * @property-read \Modules\Mediamonitor\Models\Profile|null $profile
+ * @property-read \Modules\Mediamonitor\Models\Profile|null $profileOrCreate
  * @property-read \Illuminate\Database\Eloquent\Collection|\Modules\LU\Models\PermUserRight[] $rights
  * @property-read int|null $rights_count
- * @property \Illuminate\Database\Eloquent\Collection|\Modules\Tag\Models\Tag[] $tags
  * @property-read \Illuminate\Database\Eloquent\Collection|\Modules\LU\Models\SocialProvider[] $socialProviders
  * @property-read int|null $social_providers_count
- * @property-read int|null $tags_count
  * @property-read \Illuminate\Database\Eloquent\Collection|\Modules\LU\Models\OauthAccessToken[] $tokens
  * @property-read int|null $tokens_count
  * @method static \Modules\LU\Database\Factories\UserFactory factory(...$parameters)
@@ -114,10 +112,6 @@ use Staudenmeir\EloquentHasManyDeep\HasRelationships;
  * @method static \Illuminate\Database\Eloquent\Builder|User whereTwoFactorSecret($value)
  * @method static \Illuminate\Database\Eloquent\Builder|User whereUpdatedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|User whereUpdatedBy($value)
- * @method static \Illuminate\Database\Eloquent\Builder|User withAllTags(\ArrayAccess|\Spatie\Tags\Tag|array $tags, ?string $type = null)
- * @method static \Illuminate\Database\Eloquent\Builder|User withAllTagsOfAnyType($tags)
- * @method static \Illuminate\Database\Eloquent\Builder|User withAnyTags(\ArrayAccess|\Spatie\Tags\Tag|array $tags, ?string $type = null)
- * @method static \Illuminate\Database\Eloquent\Builder|User withAnyTagsOfAnyType($tags)
  * @mixin \Eloquent
  */
 class User extends Authenticatable implements UserContract {
