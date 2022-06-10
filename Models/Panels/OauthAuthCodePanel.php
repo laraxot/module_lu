@@ -15,7 +15,8 @@ class OauthAuthCodePanel extends XotBasePanel {
     /**
      * The model the resource corresponds to.
      */
-    public static string $model = 'OauthAuthCode';
+    public static string $model = OauthAuthCode::class;
+    public OauthAuthCode $row;
 
     /**
      * The single value that should be used to represent the resource when being displayed.

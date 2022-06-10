@@ -10,6 +10,7 @@ use Illuminate\Http\Request;
 use Modules\LU\Models\Group;
 use Modules\LU\Models\Right;
 use Modules\LU\Models\PermUser;
+use Modules\LU\Models\User;
 use Nwidart\Modules\Facades\Module;
 use Modules\Xot\Models\Panels\XotBasePanel;
 
@@ -20,7 +21,8 @@ class UserPanel extends XotBasePanel {
     /**
      * The model the resource corresponds to.
      */
-    protected static string $model = 'Modules\LU\Models\User';
+    protected static string $model = User::class;
+    public User $row;
 
     /**
      * The single value that should be used to represent the resource when being displayed.

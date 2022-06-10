@@ -75,9 +75,14 @@ class CreateUserCommand extends Command {
             */
         // $list=$this->option('list');
         // dd($list);
-
+        /**
+         * @var string
+         */
         $guard = config('auth.defaults.guard');
         // $this->info($guard);//web
+        /**
+         * @var string
+         */
         $provider = config("auth.guards.{$guard}.provider");
         // $this->info($provider);//users
         $model = config("auth.providers.{$provider}.model");

@@ -100,7 +100,7 @@ class RegisterController extends Controller {
      * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View|\Illuminate\Http\JsonResponse|string
      */
     public function showRegistrationForm(Request $request) {
-        $params = optional(\Route::current())->parameters();
+        $params = getRouteParameters();
         $row = new User();
         $locz = ['pub_theme', 'adm_theme', 'lu'];
         $tpl = 'auth.register';

@@ -70,7 +70,8 @@ class CreateAreasCommand extends Command {
                 // , int  given.
                 // $u->areas()->syncWithoutDetaching($area->area_id);
                 $u->areas()->syncWithoutDetaching([$area->id]);
-                $this->info(optional($u->user)->handle.' '.$area->area_define_name);
+                $user=$u->user;
+                $this->info($user->handle.' '.$area->area_define_name);
             }
             // echo $v->name;
         }

@@ -4,14 +4,15 @@ declare(strict_types=1);
 
 namespace Modules\LU\Notifications;
 
-use Illuminate\Bus\Queueable;
-use Illuminate\Notifications\Messages\MailMessage;
-use Illuminate\Notifications\Notification;
-use Illuminate\Support\Carbon;
-use Illuminate\Support\Facades\Config;
-use Illuminate\Support\Facades\Lang;
-use Illuminate\Support\Facades\URL;
+use Exception;
 use Modules\LU\Models\User;
+use Illuminate\Bus\Queueable;
+use Illuminate\Support\Carbon;
+use Illuminate\Support\Facades\URL;
+use Illuminate\Support\Facades\Lang;
+use Illuminate\Support\Facades\Config;
+use Illuminate\Notifications\Notification;
+use Illuminate\Notifications\Messages\MailMessage;
 
 /**
  * Class VerifyEmail.
@@ -79,13 +80,17 @@ class VerifyEmail extends Notification {
             $subj=implode('-',$subj);
         }
 
+        $action_url=$this->verificationUrl($notifiable);
+        if(!is_string($action_url)){
+            throw new Exception('['.__LINE__.']['.__FILE__.']');
+        }
         return (new MailMessage())
             ->subject($subj)
             ->markdown('lu::notifications.email', ['subcopy' => 'subcopy']) // , ['user' => $this->user]
             ->line(Lang::getFromJson('Please click the button below to verify your email address.'))
             ->action(
                 $subj,
-                $this->verificationUrl($notifiable)
+                $action_url
             )
             ->line(Lang::getFromJson('If you did not create an account, no further action is required.'));
     }
