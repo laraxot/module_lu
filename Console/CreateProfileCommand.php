@@ -122,8 +122,8 @@ class CreateProfileCommand extends Command {
 
             return 1;
         }
-        //$model=with(new $model());
-        $model=app($model);
+        // $model=with(new $model());
+        $model = app($model);
         $user = $model->create($data);
         $perm = $user->perm()->create($data);
         $profile = $user->profile()->create($data);

@@ -14,7 +14,11 @@ class HomePanel extends XotBasePanel {
     public static string $model = 'Modules\Xot\Models\Home';
 
     public function actions(): array {
-        $cmd = (string) request()->input('cmd');
+        // $cmd = (string) request()->input('cmd');
+        /**
+         * @var string
+         */
+        $cmd = request('cmd', '');
 
         return [
             // new Actions\FullcalendarAction(),

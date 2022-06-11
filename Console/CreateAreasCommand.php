@@ -10,6 +10,7 @@ use Modules\LU\Models\PermUser;
 // ----------------------------------------------------
 
 // ---- MODELS ----
+use Modules\LU\Models\User;
 use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputOption;
 
@@ -70,7 +71,10 @@ class CreateAreasCommand extends Command {
                 // , int  given.
                 // $u->areas()->syncWithoutDetaching($area->area_id);
                 $u->areas()->syncWithoutDetaching([$area->id]);
-                $user=$u->user;
+                /**
+                 * @var User;
+                 */
+                $user = $u->user;
                 $this->info($user->handle.' '.$area->area_define_name);
             }
             // echo $v->name;

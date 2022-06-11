@@ -4,15 +4,16 @@ declare(strict_types=1);
 
 namespace Modules\LU\Models\Panels;
 
-use Modules\LU\Models\Area;
-// --- Services --
 use Illuminate\Http\Request;
+// --- Services --
+use Illuminate\Support\Collection;
+use Modules\LU\Models\Area;
 use Modules\LU\Models\Group;
-use Modules\LU\Models\Right;
 use Modules\LU\Models\PermUser;
+use Modules\LU\Models\Right;
 use Modules\LU\Models\User;
-use Nwidart\Modules\Facades\Module;
 use Modules\Xot\Models\Panels\XotBasePanel;
+use Nwidart\Modules\Facades\Module;
 
 /**
  * Class UserPanel.
@@ -231,7 +232,11 @@ class UserPanel extends XotBasePanel {
      */
     public function areas() {
         $row = $this->row;
+        /**
+         * @var Collection
+         */
         $areas = $row->getRelationValue('areas');
+        // dddx($areas);
 
         $modules = Module::getByStatus(1);
         // dddx(['areas' => $areas, 'modules' => $modules]);
@@ -240,6 +245,7 @@ class UserPanel extends XotBasePanel {
                 return \in_array($item->area_define_name, array_keys($modules), true);
             }
         );
+
         return $areas;
     }
 
