@@ -85,6 +85,9 @@ class CreateUserCommand extends Command {
          */
         $provider = config("auth.guards.{$guard}.provider");
         // $this->info($provider);//users
+        /**
+         * @var string|null
+         */
         $model = config("auth.providers.{$provider}.model");
         // $this->info($model);//Modules/LU/Models/User
         // return 1;
@@ -119,8 +122,8 @@ class CreateUserCommand extends Command {
             return 1;
         }
 
-        //$model=with(new $model());
-        $model=app($model);
+        // $model=with(new $model());
+        $model = app($model);
         $user = $model->create(
             [
                 'handle' => $handle,
