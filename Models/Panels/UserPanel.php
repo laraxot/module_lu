@@ -242,6 +242,7 @@ class UserPanel extends XotBasePanel {
         // dddx(['areas' => $areas, 'modules' => $modules]);
         $areas = $areas->filter(
             function ($item) use ($modules) {
+                // Cannot access property $area_define_name on mixed
                 return \in_array($item->area_define_name, array_keys($modules), true);
             }
         );

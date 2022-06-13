@@ -45,10 +45,11 @@ class SocialiteController extends Controller {
             exit('TRY WITH OTHER LOGIN !['.$provider.'] IS NOT SET');
         }
 
+        $driver=Socialite::driver($provider);
         if ('facebook' !== $provider) {
-            return Socialite::driver($provider)->redirect();
+            return $driver->redirect();
         } else {
-            return Socialite::driver($provider)
+            return $driver
                 ->stateless()
                 ->scopes(
                     ['public_profile', 'pages_messaging', 'manage_pages', 'pages_messaging_subscriptions',
