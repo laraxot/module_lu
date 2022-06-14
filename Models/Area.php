@@ -14,21 +14,25 @@ use Staudenmeir\EloquentHasManyDeep\HasRelationships;
  * Modules\LU\Models\Area
  *
  * @property int $id
- * @property int $application_id
- * @property string $area_define_name
- * @property string $db
- * @property string $img
- * @property string $icons
- * @property int $ordine
- * @property string $controller_path
+ * @property int|null $application_id
+ * @property string|null $area_define_name
+ * @property string|null $db
+ * @property string|null $img
+ * @property string|null $controller_path
+ * @property string|null $icon_path
+ * @property string $guid
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
  * @property string|null $created_by
  * @property string|null $updated_by
- * @property-read string $guid
+ * @property string|null $deleted_at
+ * @property string|null $deleted_by
+ * @property string|null $deleted_ip
+ * @property string|null $created_ip
+ * @property string|null $updated_ip
+ * @property \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\Routing\UrlGenerator|string $url
  * @property-read bool|mixed|string $icon_src
  * @property-read string|null $title
- * @property-read \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\Routing\UrlGenerator|string $url
  * @property-read \Illuminate\Database\Eloquent\Collection|\Modules\LU\Models\PermUser[] $permUsers
  * @property-read int|null $perm_users_count
  * @property-read \Illuminate\Database\Eloquent\Collection|\Modules\LU\Models\PermUser[] $perms
@@ -42,13 +46,19 @@ use Staudenmeir\EloquentHasManyDeep\HasRelationships;
  * @method static \Illuminate\Database\Eloquent\Builder|Area whereControllerPath($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Area whereCreatedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Area whereCreatedBy($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Area whereCreatedIp($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Area whereDb($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Area whereIcons($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Area whereDeletedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Area whereDeletedBy($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Area whereDeletedIp($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Area whereGuid($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Area whereIconPath($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Area whereId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Area whereImg($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Area whereOrdine($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Area whereUpdatedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Area whereUpdatedBy($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Area whereUpdatedIp($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Area whereUrl($value)
  * @mixin \Eloquent
  */
 class Area extends BaseModel {
