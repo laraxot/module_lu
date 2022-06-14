@@ -20,6 +20,9 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
  * @property string|null $name
  * @property string|null $email
  * @property string|null $avatar
+ * @property int|null $user_id
+ * @property string|null $provider_id
+ * @property string|null $provider
  * @property-read \Modules\LU\Models\User|null $user
  * @method static \Modules\LU\Database\Factories\SocialProviderFactory factory(...$parameters)
  * @method static \Illuminate\Database\Eloquent\Builder|SocialProvider newModelQuery()
@@ -33,9 +36,12 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
  * @method static \Illuminate\Database\Eloquent\Builder|SocialProvider whereId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|SocialProvider whereName($value)
  * @method static \Illuminate\Database\Eloquent\Builder|SocialProvider wherePermUserId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|SocialProvider whereProvider($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|SocialProvider whereProviderId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|SocialProvider whereToken($value)
  * @method static \Illuminate\Database\Eloquent\Builder|SocialProvider whereUpdatedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|SocialProvider whereUpdatedBy($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|SocialProvider whereUserId($value)
  * @mixin \Eloquent
  */
 class SocialProvider extends BaseModel {
