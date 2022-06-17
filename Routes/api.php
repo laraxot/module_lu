@@ -11,10 +11,10 @@ Route::prefix('/user')->group(
 
         Route::post('/login', [UserController::class, 'login'])
             ->name('api.login');
-
+        /*
         Route::get('/login', [UserController::class, 'loginTest'])
             ->name('api.loginTest');
-
+        */
         Route::get('/logout', [UserController::class, 'logout'])
             ->name('api.logout');
 
