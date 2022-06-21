@@ -43,6 +43,9 @@ class CreateAreasTable extends XotBaseMigration {
                 if ($this->hasColumn('area_id') && ! $this->hasColumn('id')) {
                     $table->renameColumn('area_id', 'id');
                 }
+                if (! $this->hasColumn('order_column')) {
+                    $table->unsignedInteger('order_column')->nullable()->index();
+                }
             }
         );
     }

@@ -8,59 +8,31 @@ use Exception;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Support\Str;
 use Modules\Theme\Services\ThemeService;
+use Spatie\EloquentSortable\Sortable;
+use Spatie\EloquentSortable\SortableTrait;
 use Staudenmeir\EloquentHasManyDeep\HasRelationships;
 
-/**
- * Modules\LU\Models\Area
- *
- * @property int $id
- * @property int $application_id
- * @property string $area_define_name
- * @property string $db
- * @property string $img
- * @property string $icons
- * @property int $ordine
- * @property string $controller_path
- * @property \Illuminate\Support\Carbon|null $created_at
- * @property \Illuminate\Support\Carbon|null $updated_at
- * @property string|null $created_by
- * @property string|null $updated_by
- * @property-read string $guid
- * @property-read bool|mixed|string $icon_src
- * @property-read string|null $title
- * @property-read \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\Routing\UrlGenerator|string $url
- * @property-read \Illuminate\Database\Eloquent\Collection|\Modules\LU\Models\PermUser[] $permUsers
- * @property-read int|null $perm_users_count
- * @property-read \Illuminate\Database\Eloquent\Collection|\Modules\LU\Models\PermUser[] $perms
- * @property-read int|null $perms_count
- * @method static \Modules\LU\Database\Factories\AreaFactory factory(...$parameters)
- * @method static \Illuminate\Database\Eloquent\Builder|Area newModelQuery()
- * @method static \Illuminate\Database\Eloquent\Builder|Area newQuery()
- * @method static \Illuminate\Database\Eloquent\Builder|Area query()
- * @method static \Illuminate\Database\Eloquent\Builder|Area whereApplicationId($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Area whereAreaDefineName($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Area whereControllerPath($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Area whereCreatedAt($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Area whereCreatedBy($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Area whereDb($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Area whereIcons($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Area whereId($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Area whereImg($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Area whereOrdine($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Area whereUpdatedAt($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Area whereUpdatedBy($value)
- * @mixin \Eloquent
- */
-class Area extends BaseModel {
+class Area extends BaseModel implements Sortable {
+    use SortableTrait;
     use HasRelationships;
     /**
      * @var string[]
      */
-    protected $fillable = ['id', 'area_define_name'];
+    protected $fillable = ['id', 'area_define_name', 'order_column'];
     /**
      * @var string[]
      */
     protected $appends = ['title', 'url'];
+
+    /**
+     * Undocumented variable.
+     *
+     * @var array<string, string>
+     */
+    public $sortable = [
+        'order_column_name' => 'order_column',
+        'sort_when_creating' => true,
+    ];
 
     /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
@@ -159,16 +131,11 @@ class Area extends BaseModel {
         return url('admin/'.mb_strtolower($this->area_define_name));
     }
 
-    /**
-     
-     *
-     
-     */
-    public function getTitleAttribute(?string $value):?string {
+    public function getTitleAttribute(?string $value): ?string {
         $title = $this->area_define_name;
-        //if (is_null($title)) {
+        // if (is_null($title)) {
         //    throw new Exception('['.__LINE__.']['.class_basename(__CLASS__).']');
-        //}
+        // }
         $title = str_replace('_', ' ', $title);
 
         return $title;
