@@ -1,0 +1,2 @@
+https://medium.com/@dobron/automatically-generate-plain-text-mails-without-view-in-laravel-5-fd64ee184e8b
+
