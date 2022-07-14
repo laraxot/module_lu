@@ -41,9 +41,12 @@ trait UserRelationship {
     }
 
     public function profile(): HasOne {
+        /*
         $profile = TenantService::model('profile');
         $profile_class = \get_class($profile);
-
+        */
+        $main_module=config('xra.main_module');
+        $profile_class='Modules\\'.$main_module.'\Models\Profile';
         return $this->hasOne($profile_class);
     }
 
