@@ -17,6 +17,7 @@ use ReflectionException;
 
 /**
  * Class ProfileService.
+ * in futuro utilizzare quello di Xot.
  */
 class ProfileService {
     private UserContract $user;
