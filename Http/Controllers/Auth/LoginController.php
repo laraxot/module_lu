@@ -128,11 +128,9 @@ class LoginController extends Controller {
             $data['username'] = $data['ente'].'-'.$data['matr'];
         }
         $user = null;
+       
         if (isset($data['username'])) {
-            $rows = User::query()->where($username_field, $data['username']);
-            // $sql = Str::replaceArray('?', $rows->getBindings(), $rows->toSql());
-            // dddx($sql);
-            $user = $rows->first();
+            $user = User::query()->where($username_field, $data['username'])->first();
         }
         if (isset($data['email'])) {
             $user = User::query()->where('email', $data['email'])->first();
@@ -140,46 +138,20 @@ class LoginController extends Controller {
         if (isset($data['user_email'])) {
             $user = User::query()->where('email', $data['user_email'])->first();
         }
-
-        // $rows=$user;
-        // $sql = Str::replaceArray('?', $rows->getBindings(), $rows->toSql());
-
-        /*
-        if(!$user->hasVerifiedEmail()){
-        return redirect()->route('verification.notice');
-        }
-        //*/
-        /*
-        if (isset($user) && $user->superAdmin() && 1 == User::count()) {
-        if (null == $user->perm) {
-        $user->perm()->create(['perm_type' => 5]);
-        Area::syncPacks();
-        $areas = Area::all();
-        foreach ($areas as $area) {
-        $user->addArea($area);
-        }
-        }
-        $user->perm->perm_type = 5;
-        $user->perm->save();
-        }
-         */
-        // }
-        // dddx(['user' => $user, 'data' => $data]);
+        
         if (isset($user) && isset($data['password']) && $user->passwd === md5($data['password'])) {
             $this->clearLoginAttempts($request);
             // dd($user);
             Auth::login($user, $request->has('remember'));
             $auth = Auth::loginUsingId($user->getKey(), $request->has('remember'));
-            // return redirect()->intended('/admin');
             $out = redirect()->intended($this->redirectPath());
             if ($request->ajax()) {
-                // return response()->json(['status' => 1, 'msg' => 'attendere..']);
                 return response()->json(['redirect' => '.', 'msg' => 'attendere']);
             }
 
-            return $out;
+            //return $out;
         // 179    Unreachable statement - code above always terminates.
-            // return $this->sendLoginResponse($request);
+             return $this->sendLoginResponse($request); //use authenticated
         } else {
             $this->incrementLoginAttempts($request);
             if ($request->ajax()) {

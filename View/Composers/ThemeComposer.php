@@ -13,9 +13,9 @@ class ThemeComposer {
     /**
      * Undocumented function.
      */
-    public function lastLoggedUsers(array $params): Collection {
-        $limit=$params[0];
-        $latest = User::latest()
+    public function lastLoggedUsers(int $limit): Collection {
+
+        $latest = User::orderByDesc('last_login_at')
             ->limit($limit)
             ->get();
 
