@@ -45,12 +45,14 @@ class CreateAreaPermUserTable extends XotBaseMigration {
                     $table->string('updated_by')->nullable();
                 }
                 // -------- Index -----------------
+                /*
                 if(!$this->hasIndex('area_id')  ){
                     $table->index('area_id');
                 }
                 if(!$this->hasIndex('perm_user_id')  ){
                     $table->index('perm_user_id');
                 }
+                */
             }
         );
     }
