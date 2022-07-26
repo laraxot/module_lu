@@ -116,6 +116,7 @@ use Staudenmeir\EloquentHasManyDeep\HasRelationships;
  * @property-read int|null $perms_count
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
  * @property-read \Modules\Quaeris\Models\Profile|null $profile
  * @property-read \Modules\Quaeris\Models\Profile|null $profileOrCreate
 =======
@@ -138,6 +139,9 @@ use Staudenmeir\EloquentHasManyDeep\HasRelationships;
 =======
  * @property-read \Modules\LU\Models\Profile|null $profileOrCreate
 >>>>>>> df33cdc (up)
+=======
+ * @property-read \Modules\Xot\Models\Profile|null $profileOrCreate
+>>>>>>> a554564 (up)
  * @property-read \Illuminate\Database\Eloquent\Collection|\Modules\LU\Models\PermUserRight[] $rights
  * @property-read int|null $rights_count
  * @property-read \Illuminate\Database\Eloquent\Collection|\Modules\LU\Models\SocialProvider[] $socialProviders

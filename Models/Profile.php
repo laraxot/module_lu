@@ -75,6 +75,7 @@ use Modules\Xot\Models\Traits\WidgetTrait;
  * @property-read int|null $posts_count
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
  * @property-read \Modules\Quaeris\Models\Profile|null $profile
 =======
 <<<<<<< HEAD
@@ -94,6 +95,9 @@ use Modules\Xot\Models\Traits\WidgetTrait;
 =======
  * @property-read Profile|null $profile
 >>>>>>> df33cdc (up)
+=======
+ * @property-read \Modules\Xot\Models\Profile|null $profile
+>>>>>>> a554564 (up)
  * @property-write mixed $url
  * @property-read \Modules\LU\Models\User|null $user
  * @property-read \Illuminate\Database\Eloquent\Collection|\Modules\Xot\Models\Widget[] $widgets
