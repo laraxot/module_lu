@@ -9,12 +9,22 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 /**
  * Modules\LU\Models\GroupSubgroup
  *
+<<<<<<< HEAD
+=======
+ * @property int $group_id
+ * @property int $subgroup_id
+>>>>>>> 86b6983 (up)
  * @property-read \Illuminate\Database\Eloquent\Collection|\Modules\LU\Models\GroupPermUser[] $groupPermUsers
  * @property-read int|null $group_perm_users_count
  * @method static \Modules\LU\Database\Factories\GroupSubgroupFactory factory(...$parameters)
  * @method static \Illuminate\Database\Eloquent\Builder|GroupSubgroup newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|GroupSubgroup newQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|GroupSubgroup query()
+<<<<<<< HEAD
+=======
+ * @method static \Illuminate\Database\Eloquent\Builder|GroupSubgroup whereGroupId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|GroupSubgroup whereSubgroupId($value)
+>>>>>>> 86b6983 (up)
  * @mixin \Eloquent
  */
 class GroupSubgroup extends BaseModel {
