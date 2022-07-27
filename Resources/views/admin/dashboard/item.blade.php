@@ -16,6 +16,7 @@
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
                 @foreach ($_theme->lastLoggedUsers(10) as $user)
 =======
                 @foreach ($_theme->lastLoggedUsers([10]) as $user)
@@ -32,6 +33,9 @@
 =======
                 @foreach ($_theme->lastLoggedUsers(10) as $user)
 >>>>>>> 86b6983 (up)
+=======
+                @foreach ($_theme->lastLoggedUsers([10]) as $user)
+>>>>>>> 7a064f0 (.)
                     <tr>
                         <td>{{ $user->id }}<br />{{ $user->handle }}</td>
                         <td>{{ $user->first_name }}<br />{{ $user->last_name }}</td>
