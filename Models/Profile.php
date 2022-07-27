@@ -14,6 +14,7 @@ use Modules\Xot\Models\Traits\WidgetTrait;
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 /**
  * Modules\LU\Models\Profile
  *
@@ -178,6 +179,8 @@ use Modules\Xot\Models\Traits\WidgetTrait;
 =======
 >>>>>>> ee42ee9 (up)
 >>>>>>> 443b423 (rebase)
+=======
+>>>>>>> 451a890 (.)
 class Profile extends BaseModelLang {
     // use PrivacyTrait;
     use HasFactory;
