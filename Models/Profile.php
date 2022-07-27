@@ -11,6 +11,7 @@ use Modules\LU\Models\Traits\HasProfileTrait;
 // --- TRAITS ---
 use Modules\Xot\Models\Traits\WidgetTrait;
 
+<<<<<<< HEAD
 /**
  * Modules\LU\Models\Profile
  *
@@ -72,6 +73,8 @@ use Modules\Xot\Models\Traits\WidgetTrait;
  * @method static \Illuminate\Database\Eloquent\Builder|BaseModelLang withPost(string $guid)
  * @mixin \Eloquent
  */
+=======
+>>>>>>> 451a89075c5a61e0f8458570e5fda450d2cb7125
 class Profile extends BaseModelLang {
     // use PrivacyTrait;
     use HasFactory;

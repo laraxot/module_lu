@@ -16,9 +16,10 @@ use Laravel\Passport\HasApiTokens;
 use Modules\LU\Database\Factories\UserFactory;
 use Modules\Xot\Contracts\UserContract;
 use Modules\Xot\Traits\Updater;
-//use Spatie\Tags\HasTags;  // Spatie Tags
+// use Spatie\Tags\HasTags;  // Spatie Tags
 use Staudenmeir\EloquentHasManyDeep\HasRelationships;
 
+<<<<<<< HEAD
 /**
  * Modules\LU\Models\User
  *
@@ -114,11 +115,13 @@ use Staudenmeir\EloquentHasManyDeep\HasRelationships;
  * @method static \Illuminate\Database\Eloquent\Builder|User whereUpdatedBy($value)
  * @mixin \Eloquent
  */
+=======
+>>>>>>> 451a89075c5a61e0f8458570e5fda450d2cb7125
 class User extends Authenticatable implements UserContract {
     use HasApiTokens;
     use HasFactory;
     use HasRelationships;
-    //use HasTags;
+    // use HasTags;
     use Notifiable;
     use Traits\Extras\UserExtra; // spatie tags
     use Traits\Mutators\UserMutator;
@@ -131,7 +134,7 @@ class User extends Authenticatable implements UserContract {
      *
      * @var bool
      */
-     public static $snakeAttributes = true;
+    public static $snakeAttributes = true;
 
     protected $perPage = 30;
 
