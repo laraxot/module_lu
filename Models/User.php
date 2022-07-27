@@ -19,6 +19,7 @@ use Modules\Xot\Traits\Updater;
 // use Spatie\Tags\HasTags;  // Spatie Tags
 use Staudenmeir\EloquentHasManyDeep\HasRelationships;
 
+<<<<<<< HEAD
 /**
  * Modules\LU\Models\User
  *
@@ -132,6 +133,8 @@ use Staudenmeir\EloquentHasManyDeep\HasRelationships;
  * @method static \Illuminate\Database\Eloquent\Builder|User whereUpdatedBy($value)
  * @mixin \Eloquent
  */
+=======
+>>>>>>> ee42ee9 (up)
 class User extends Authenticatable implements UserContract {
     use HasApiTokens;
     use HasFactory;
