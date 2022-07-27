@@ -16,6 +16,7 @@ namespace Modules\LU\Models;
  * @property string $has_level
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 >>>>>>> 86b6983 (up)
 =======
 =======
@@ -28,6 +29,8 @@ namespace Modules\LU\Models;
 >>>>>>> 23a412e (.)
 =======
 >>>>>>> a49c283 (rebase)
+=======
+>>>>>>> df33cdc (up)
  * @method static \Modules\LU\Database\Factories\RightFactory factory(...$parameters)
  * @method static \Illuminate\Database\Eloquent\Builder|Right newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|Right newQuery()
@@ -35,12 +38,11 @@ namespace Modules\LU\Models;
 <<<<<<< HEAD
 =======
  * @method static \Illuminate\Database\Eloquent\Builder|Right whereAreaId($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Right whereCreatedAt($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Right whereCreatedBy($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Right whereHasImplied($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Right whereHasLevel($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Right whereId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Right whereRightDefineName($value)
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 >>>>>>> 86b6983 (up)
@@ -52,6 +54,8 @@ namespace Modules\LU\Models;
  * @method static \Illuminate\Database\Eloquent\Builder|Right whereUpdatedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Right whereUpdatedBy($value)
 >>>>>>> a49c283 (rebase)
+=======
+>>>>>>> df33cdc (up)
  * @mixin \Eloquent
  */
 class Right extends BaseModel {

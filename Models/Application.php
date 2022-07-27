@@ -13,6 +13,7 @@ namespace Modules\LU\Models;
  * @property string $application_define_name
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 >>>>>>> 86b6983 (up)
 =======
 =======
@@ -25,6 +26,8 @@ namespace Modules\LU\Models;
 >>>>>>> 23a412e (.)
 =======
 >>>>>>> a49c283 (rebase)
+=======
+>>>>>>> df33cdc (up)
  * @method static \Modules\LU\Database\Factories\ApplicationFactory factory(...$parameters)
  * @method static \Illuminate\Database\Eloquent\Builder|Application newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|Application newQuery()
@@ -32,9 +35,8 @@ namespace Modules\LU\Models;
 <<<<<<< HEAD
 =======
  * @method static \Illuminate\Database\Eloquent\Builder|Application whereApplicationDefineName($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Application whereCreatedAt($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Application whereCreatedBy($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Application whereId($value)
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 >>>>>>> 86b6983 (up)
@@ -46,6 +48,8 @@ namespace Modules\LU\Models;
  * @method static \Illuminate\Database\Eloquent\Builder|Application whereUpdatedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Application whereUpdatedBy($value)
 >>>>>>> a49c283 (rebase)
+=======
+>>>>>>> df33cdc (up)
  * @mixin \Eloquent
  */
 class Application extends BaseModel {

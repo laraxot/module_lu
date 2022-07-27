@@ -12,6 +12,7 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
  * @property int $group_id
  * @property int $subgroup_id
@@ -33,12 +34,17 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 >>>>>>> 23a412e (.)
 =======
 >>>>>>> a49c283 (rebase)
+=======
+ * @property int $group_id
+ * @property int $subgroup_id
+>>>>>>> df33cdc (up)
  * @property-read \Illuminate\Database\Eloquent\Collection|\Modules\LU\Models\GroupPermUser[] $groupPermUsers
  * @property-read int|null $group_perm_users_count
  * @method static \Modules\LU\Database\Factories\GroupSubgroupFactory factory(...$parameters)
  * @method static \Illuminate\Database\Eloquent\Builder|GroupSubgroup newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|GroupSubgroup newQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|GroupSubgroup query()
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -59,12 +65,16 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 =======
  * @method static \Illuminate\Database\Eloquent\Builder|GroupSubgroup whereCreatedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|GroupSubgroup whereCreatedBy($value)
+=======
+>>>>>>> df33cdc (up)
  * @method static \Illuminate\Database\Eloquent\Builder|GroupSubgroup whereGroupId($value)
- * @method static \Illuminate\Database\Eloquent\Builder|GroupSubgroup whereId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|GroupSubgroup whereSubgroupId($value)
+<<<<<<< HEAD
  * @method static \Illuminate\Database\Eloquent\Builder|GroupSubgroup whereUpdatedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|GroupSubgroup whereUpdatedBy($value)
 >>>>>>> a49c283 (rebase)
+=======
+>>>>>>> df33cdc (up)
  * @mixin \Eloquent
  */
 class GroupSubgroup extends BaseModel {

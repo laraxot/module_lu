@@ -12,6 +12,7 @@ use Modules\LU\Models\Traits\HasProfileTrait;
 use Modules\Xot\Models\Traits\WidgetTrait;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 /**
  * Modules\LU\Models\Profile
  *
@@ -24,12 +25,25 @@ use Modules\Xot\Models\Traits\WidgetTrait;
  * @property \Illuminate\Support\Carbon|null $updated_at
  * @property string|null $created_by
  * @property string|null $updated_by
+=======
+=======
+/**
+ * Modules\LU\Models\Profile
+ *
+ * @property int $id
+ * @property int|null $user_id
+ * @property string|null $created_by
+ * @property string|null $updated_by
+ * @property \Illuminate\Support\Carbon|null $updated_at
+ * @property \Illuminate\Support\Carbon|null $created_at
+>>>>>>> df33cdc (up)
  * @property string|null $deleted_by
  * @property string|null $first_name
  * @property string|null $last_name
  * @property string|null $email
  * @property string|null $phone
  * @property string|null $address
+<<<<<<< HEAD
  * @property int|null $user_id
  * @property string|null $zibibbo
 >>>>>>> 86b6983 (up)
@@ -37,10 +51,19 @@ use Modules\Xot\Models\Traits\WidgetTrait;
  * @property-read int|null $container_widgets_count
  * @property-read string|null $email
  * @property-read string|null $first_name
+=======
+ * @property string|null $zibibbo
+ * @property-read \Illuminate\Database\Eloquent\Collection|\Modules\Xot\Models\Widget[] $containerWidgets
+ * @property-read int|null $container_widgets_count
+>>>>>>> df33cdc (up)
  * @property-read string|null $full_name
  * @property string|null $guid
  * @property string|null $image_src
  * @property-read string|null $lang
+<<<<<<< HEAD
+=======
+ * @property-read string|null $post_type
+>>>>>>> df33cdc (up)
  * @property string|null $subtitle
  * @property string|null $title
  * @property string|null $txt
@@ -50,6 +73,7 @@ use Modules\Xot\Models\Traits\WidgetTrait;
  * @property-read \Modules\Lang\Models\Post|null $post
  * @property-read \Illuminate\Database\Eloquent\Collection|\Modules\Lang\Models\Post[] $posts
  * @property-read int|null $posts_count
+<<<<<<< HEAD
 <<<<<<< HEAD
  * @property-read \Modules\Quaeris\Models\Profile|null $profile
 =======
@@ -67,6 +91,9 @@ use Modules\Xot\Models\Traits\WidgetTrait;
  * @property-read \Modules\Quaeris\Models\Profile|null $profile
 >>>>>>> 23a412e (.)
 >>>>>>> a49c283 (rebase)
+=======
+ * @property-read Profile|null $profile
+>>>>>>> df33cdc (up)
  * @property-write mixed $url
  * @property-read \Modules\LU\Models\User|null $user
  * @property-read \Illuminate\Database\Eloquent\Collection|\Modules\Xot\Models\Widget[] $widgets
@@ -77,9 +104,13 @@ use Modules\Xot\Models\Traits\WidgetTrait;
  * @method static \Illuminate\Database\Eloquent\Builder|Profile ofLayoutPosition($layout_position)
  * @method static \Illuminate\Database\Eloquent\Builder|Profile query()
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
  * @method static \Illuminate\Database\Eloquent\Builder|Profile whereAddress($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Profile whereBio($value)
+=======
+ * @method static \Illuminate\Database\Eloquent\Builder|Profile whereAddress($value)
+>>>>>>> df33cdc (up)
  * @method static \Illuminate\Database\Eloquent\Builder|Profile whereCreatedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Profile whereCreatedBy($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Profile whereDeletedBy($value)
@@ -88,17 +119,27 @@ use Modules\Xot\Models\Traits\WidgetTrait;
  * @method static \Illuminate\Database\Eloquent\Builder|Profile whereId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Profile whereLastName($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Profile wherePhone($value)
+<<<<<<< HEAD
  * @method static \Illuminate\Database\Eloquent\Builder|Profile wherePostType($value)
+=======
+>>>>>>> df33cdc (up)
  * @method static \Illuminate\Database\Eloquent\Builder|Profile whereUpdatedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Profile whereUpdatedBy($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Profile whereUserId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Profile whereZibibbo($value)
+<<<<<<< HEAD
 >>>>>>> 86b6983 (up)
  * @method static \Illuminate\Database\Eloquent\Builder|BaseModelLang withPost(string $guid)
  * @mixin \Eloquent
  */
 =======
 >>>>>>> ee42ee9 (up)
+=======
+ * @method static \Illuminate\Database\Eloquent\Builder|BaseModelLang withPost(string $guid)
+ * @mixin \Eloquent
+ */
+>>>>>>> 86b6983 (up)
+>>>>>>> df33cdc (up)
 class Profile extends BaseModelLang {
     // use PrivacyTrait;
     use HasFactory;
