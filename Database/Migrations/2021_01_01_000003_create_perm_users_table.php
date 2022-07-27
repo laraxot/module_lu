@@ -41,10 +41,12 @@ class CreatePermUsersTable extends XotBaseMigration {
                 if ($this->hasColumn('perm_user_id') && ! $this->hasColumn('id')) {
                     $table->renameColumn('perm_user_id', 'id');
                 }
+                /*
                 // -------- Index -----------------
                 if(!$this->hasIndex('user_id') && $this->hasColumn('user_id') ){
                     $table->index('user_id');
                 }
+                */
             }
         );
     }
