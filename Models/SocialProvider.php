@@ -13,6 +13,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 =======
  * @property int $id
 <<<<<<< HEAD
+<<<<<<< HEAD
  * @property int|null $user_id
  * @property string|null $provider_id
  * @property string|null $provider
@@ -47,6 +48,19 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
  * @property string|null $provider_id
  * @property string|null $provider
 >>>>>>> df33cdc (up)
+=======
+ * @property int|null $user_id
+ * @property string|null $provider_id
+ * @property string|null $provider
+ * @property string|null $token
+ * @property \Illuminate\Support\Carbon|null $created_at
+ * @property \Illuminate\Support\Carbon|null $updated_at
+ * @property string|null $created_by
+ * @property string|null $updated_by
+ * @property string|null $name
+ * @property string|null $email
+ * @property string|null $avatar
+>>>>>>> b0e660e (rebase)
  * @property-read \Modules\LU\Models\User|null $user
  * @method static \Modules\LU\Database\Factories\SocialProviderFactory factory(...$parameters)
  * @method static \Illuminate\Database\Eloquent\Builder|SocialProvider newModelQuery()
@@ -58,10 +72,8 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
  * @method static \Illuminate\Database\Eloquent\Builder|SocialProvider whereCreatedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|SocialProvider whereCreatedBy($value)
  * @method static \Illuminate\Database\Eloquent\Builder|SocialProvider whereEmail($value)
- * @method static \Illuminate\Database\Eloquent\Builder|SocialProvider whereGroupId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|SocialProvider whereId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|SocialProvider whereName($value)
- * @method static \Illuminate\Database\Eloquent\Builder|SocialProvider wherePermUserId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|SocialProvider whereProvider($value)
  * @method static \Illuminate\Database\Eloquent\Builder|SocialProvider whereProviderId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|SocialProvider whereToken($value)

@@ -11,6 +11,7 @@ namespace Modules\LU\Models;
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 =======
  * @property int $id
@@ -35,14 +36,20 @@ namespace Modules\LU\Models;
  * @property string|null $updated_by
 >>>>>>> a49c283 (rebase)
 =======
+=======
+ * @property int $id
+>>>>>>> b0e660e (rebase)
  * @property int $perm_user_id
  * @property int $right_id
  * @property int|null $right_level
- * @property string|null $created_by
- * @property string|null $updated_by
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
+<<<<<<< HEAD
 >>>>>>> df33cdc (up)
+=======
+ * @property string|null $created_by
+ * @property string|null $updated_by
+>>>>>>> b0e660e (rebase)
  * @method static \Modules\LU\Database\Factories\PermUserRightFactory factory(...$parameters)
  * @method static \Illuminate\Database\Eloquent\Builder|PermUserRight newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|PermUserRight newQuery()
@@ -51,6 +58,7 @@ namespace Modules\LU\Models;
 =======
  * @method static \Illuminate\Database\Eloquent\Builder|PermUserRight whereCreatedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|PermUserRight whereCreatedBy($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|PermUserRight whereId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|PermUserRight wherePermUserId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|PermUserRight whereRightId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|PermUserRight whereRightLevel($value)
