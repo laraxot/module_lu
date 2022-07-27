@@ -37,6 +37,7 @@ use Modules\Xot\Models\Traits\WidgetTrait;
 /**
  * Modules\LU\Models\Profile.
  *
+<<<<<<< HEAD
  * @property int                                                                   $id
  * @property string|null                                                           $post_type
  * @property string|null                                                           $bio
@@ -74,6 +75,8 @@ use Modules\Xot\Models\Traits\WidgetTrait;
  * @property int|null                                                              $widgets_count
  *
 <<<<<<< HEAD
+=======
+>>>>>>> 26a9945 (.)
  * @property int $id
  * @property string|null $post_type
  * @property string|null $bio
@@ -82,17 +85,21 @@ use Modules\Xot\Models\Traits\WidgetTrait;
  * @property string|null $created_by
  * @property string|null $updated_by
 <<<<<<< HEAD
+<<<<<<< HEAD
  * @property \Illuminate\Support\Carbon|null $updated_at
  * @property \Illuminate\Support\Carbon|null $created_at
 >>>>>>> df33cdc (up)
 =======
 >>>>>>> b0e660e (rebase)
+=======
+>>>>>>> 26a9945 (.)
  * @property string|null $deleted_by
  * @property string|null $first_name
  * @property string|null $last_name
  * @property string|null $email
  * @property string|null $phone
  * @property string|null $address
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
  * @property int|null $user_id
@@ -110,10 +117,17 @@ use Modules\Xot\Models\Traits\WidgetTrait;
  * @property-read \Illuminate\Database\Eloquent\Collection|\Modules\Xot\Models\Widget[] $containerWidgets
  * @property-read int|null $container_widgets_count
 >>>>>>> df33cdc (up)
+=======
+ * @property int|null $user_id
+ * @property string|null $zibibbo
+ * @property-read \Illuminate\Database\Eloquent\Collection|\Modules\Xot\Models\Widget[] $containerWidgets
+ * @property-read int|null $container_widgets_count
+>>>>>>> 26a9945 (.)
  * @property-read string|null $full_name
  * @property string|null $guid
  * @property string|null $image_src
  * @property-read string|null $lang
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 =======
@@ -121,6 +135,8 @@ use Modules\Xot\Models\Traits\WidgetTrait;
 >>>>>>> df33cdc (up)
 =======
 >>>>>>> b0e660e (rebase)
+=======
+>>>>>>> 26a9945 (.)
  * @property string|null $subtitle
  * @property string|null $title
  * @property string|null $txt
@@ -130,6 +146,7 @@ use Modules\Xot\Models\Traits\WidgetTrait;
  * @property-read \Modules\Lang\Models\Post|null $post
  * @property-read \Illuminate\Database\Eloquent\Collection|\Modules\Lang\Models\Post[] $posts
  * @property-read int|null $posts_count
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -161,12 +178,18 @@ use Modules\Xot\Models\Traits\WidgetTrait;
 >>>>>>> a554564 (up)
 =======
 >>>>>>> b0e660e (rebase)
+=======
+ * @property-read \Modules\Quaeris\Models\Profile|null $profile
+>>>>>>> 26a9945 (.)
  * @property-write mixed $url
  * @property-read \Modules\LU\Models\User|null $user
  * @property-read \Illuminate\Database\Eloquent\Collection|\Modules\Xot\Models\Widget[] $widgets
  * @property-read int|null $widgets_count
+<<<<<<< HEAD
 =======
 >>>>>>> f5f48b9 (.)
+=======
+>>>>>>> 26a9945 (.)
  * @method static \Illuminate\Database\Eloquent\Builder|Profile newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|Profile newQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|BaseModelLang ofItem(string $guid)

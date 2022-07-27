@@ -31,6 +31,7 @@ use Staudenmeir\EloquentHasManyDeep\HasRelationships;
 /**
  * Modules\LU\Models\User.
  *
+<<<<<<< HEAD
  * @property int                                                                                                       $id
  * @property string                                                                                                    $handle
  * @property string|null                                                                                               $passwd
@@ -95,6 +96,11 @@ use Staudenmeir\EloquentHasManyDeep\HasRelationships;
  * @property string|null $passwd
 <<<<<<< HEAD
 <<<<<<< HEAD
+=======
+ * @property int $id
+ * @property string $handle
+ * @property string|null $passwd
+>>>>>>> 26a9945 (.)
  * @property string|null $lastlogin
  * @property int|null $owner_user_id
  * @property int|null $owner_group_id
@@ -105,6 +111,7 @@ use Staudenmeir\EloquentHasManyDeep\HasRelationships;
  * @property string|null $last_name
  * @property int|null $ente
  * @property int|null $matr
+<<<<<<< HEAD
 =======
  * @property \Illuminate\Support\Carbon|null $last_login_at
  * @property string|null $last_login_ip
@@ -126,6 +133,8 @@ use Staudenmeir\EloquentHasManyDeep\HasRelationships;
 >>>>>>> df33cdc (up)
 =======
 >>>>>>> b0e660e (rebase)
+=======
+>>>>>>> 26a9945 (.)
  * @property string|null $password
  * @property string|null $two_factor_secret
  * @property string|null $two_factor_recovery_codes
@@ -134,8 +143,11 @@ use Staudenmeir\EloquentHasManyDeep\HasRelationships;
  * @property string|null $forgotten_password_code
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 >>>>>>> b0e660e (rebase)
+=======
+>>>>>>> 26a9945 (.)
  * @property \Illuminate\Support\Carbon|null $last_login_at
  * @property string|null $last_login_ip
  * @property string|null $token_check
@@ -143,10 +155,14 @@ use Staudenmeir\EloquentHasManyDeep\HasRelationships;
  * @property string|null $remember_token
  * @property \Illuminate\Support\Carbon|null $email_verified_at
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 26a9945 (.)
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
  * @property string|null $created_by
  * @property string|null $updated_by
+<<<<<<< HEAD
 =======
  * @property string|null $provincia
  * @property string|null $conosciuto
@@ -167,6 +183,8 @@ use Staudenmeir\EloquentHasManyDeep\HasRelationships;
 =======
  * @property string|null $updated_by
 >>>>>>> b0e660e (rebase)
+=======
+>>>>>>> 26a9945 (.)
  * @property-read \Illuminate\Database\Eloquent\Collection|\Modules\LU\Models\AreaPermUser[] $areaPermUsers
  * @property-read int|null $area_perm_users_count
  * @property-read \Illuminate\Database\Eloquent\Collection|\Modules\LU\Models\OauthClient[] $clients
@@ -187,6 +205,7 @@ use Staudenmeir\EloquentHasManyDeep\HasRelationships;
  * @property-read int|null $perm_users_count
  * @property-read \Illuminate\Database\Eloquent\Collection|\Modules\LU\Models\PermUser[] $perms
  * @property-read int|null $perms_count
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -221,14 +240,21 @@ use Staudenmeir\EloquentHasManyDeep\HasRelationships;
 >>>>>>> a554564 (up)
 =======
 >>>>>>> b0e660e (rebase)
+=======
+ * @property-read \Modules\Quaeris\Models\Profile|null $profile
+ * @property-read \Modules\Quaeris\Models\Profile|null $profileOrCreate
+>>>>>>> 26a9945 (.)
  * @property-read \Illuminate\Database\Eloquent\Collection|\Modules\LU\Models\PermUserRight[] $rights
  * @property-read int|null $rights_count
  * @property-read \Illuminate\Database\Eloquent\Collection|\Modules\LU\Models\SocialProvider[] $socialProviders
  * @property-read int|null $social_providers_count
  * @property-read \Illuminate\Database\Eloquent\Collection|\Modules\LU\Models\OauthAccessToken[] $tokens
  * @property-read int|null $tokens_count
+<<<<<<< HEAD
 =======
 >>>>>>> f5f48b9 (.)
+=======
+>>>>>>> 26a9945 (.)
  * @method static \Modules\LU\Database\Factories\UserFactory factory(...$parameters)
  * @method static \Illuminate\Database\Eloquent\Builder|User newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|User newQuery()
