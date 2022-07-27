@@ -12,6 +12,7 @@ use Modules\LU\Models\Traits\HasProfileTrait;
 use Modules\Xot\Models\Traits\WidgetTrait;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 /**
  * Modules\LU\Models\Profile
@@ -87,6 +88,8 @@ use Modules\Xot\Models\Traits\WidgetTrait;
  * @mixin \Eloquent
  */
 >>>>>>> 86b6983 (up)
+=======
+>>>>>>> ee42ee9 (up)
 class Profile extends BaseModelLang {
     // use PrivacyTrait;
     use HasFactory;

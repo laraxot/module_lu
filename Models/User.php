@@ -20,6 +20,7 @@ use Modules\Xot\Traits\Updater;
 use Staudenmeir\EloquentHasManyDeep\HasRelationships;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 /**
  * Modules\LU\Models\User
@@ -130,6 +131,8 @@ use Staudenmeir\EloquentHasManyDeep\HasRelationships;
  * @mixin \Eloquent
  */
 >>>>>>> 86b6983 (up)
+=======
+>>>>>>> ee42ee9 (up)
 class User extends Authenticatable implements UserContract {
     use HasApiTokens;
     use HasFactory;
