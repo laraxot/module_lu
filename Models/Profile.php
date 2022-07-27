@@ -77,6 +77,7 @@ use Modules\Xot\Models\Traits\WidgetTrait;
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
  * @property-read \Modules\Xot\Models\Profile|null $profile
 =======
  * @property-read \Modules\Quaeris\Models\Profile|null $profile
@@ -102,6 +103,9 @@ use Modules\Xot\Models\Traits\WidgetTrait;
 =======
  * @property-read Profile|null $profile
 >>>>>>> 86b6983 (up)
+=======
+ * @property-read \Modules\Xot\Models\Profile|null $profile
+>>>>>>> 8a90865 (up)
  * @property-write mixed $url
  * @property-read \Modules\LU\Models\User|null $user
  * @property-read \Illuminate\Database\Eloquent\Collection|\Modules\Xot\Models\Widget[] $widgets
