@@ -71,10 +71,14 @@ use Modules\Xot\Models\Traits\WidgetTrait;
  * @property-read \Illuminate\Database\Eloquent\Collection|\Modules\Lang\Models\Post[] $posts
  * @property-read int|null $posts_count
 <<<<<<< HEAD
+<<<<<<< HEAD
  * @property-read \Modules\Xot\Models\Profile|null $profile
 =======
  * @property-read \Modules\Quaeris\Models\Profile|null $profile
 >>>>>>> 1f4a4e6 (.)
+=======
+ * @property-read \Modules\Xot\Models\Profile|null $profile
+>>>>>>> 2dbbdf7 (up)
  * @property-write mixed $url
  * @property-read \Modules\LU\Models\User|null $user
  * @property-read \Illuminate\Database\Eloquent\Collection|\Modules\Xot\Models\Widget[] $widgets
