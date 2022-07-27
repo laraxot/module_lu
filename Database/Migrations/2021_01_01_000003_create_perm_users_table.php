@@ -43,25 +43,33 @@ class CreatePermUsersTable extends XotBaseMigration {
                 }
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
                 /*
 =======
 >>>>>>> a07a1ff (.)
 =======
                 /*
 >>>>>>> 23a412e (.)
+=======
+                /*
+>>>>>>> a49c283 (rebase)
                 // -------- Index -----------------
                 if(!$this->hasIndex('user_id') && $this->hasColumn('user_id') ){
                     $table->index('user_id');
                 }
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 >>>>>>> 23a412e (.)
+=======
+>>>>>>> a49c283 (rebase)
                 */
             }
         );
     }
 }
+<<<<<<< HEAD
 <<<<<<< HEAD
 =======
             }
@@ -71,3 +79,5 @@ class CreatePermUsersTable extends XotBaseMigration {
 >>>>>>> a07a1ff (.)
 =======
 >>>>>>> 23a412e (.)
+=======
+>>>>>>> a49c283 (rebase)

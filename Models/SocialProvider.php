@@ -16,8 +16,11 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
  * @property string|null $provider_id
  * @property string|null $provider
 <<<<<<< HEAD
+<<<<<<< HEAD
 >>>>>>> 86b6983 (up)
 =======
+=======
+>>>>>>> a49c283 (rebase)
  * @property string|null $token
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
@@ -26,7 +29,10 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
  * @property string|null $name
  * @property string|null $email
  * @property string|null $avatar
+<<<<<<< HEAD
 >>>>>>> 23a412e (.)
+=======
+>>>>>>> a49c283 (rebase)
  * @property-read \Modules\LU\Models\User|null $user
  * @method static \Modules\LU\Database\Factories\SocialProviderFactory factory(...$parameters)
  * @method static \Illuminate\Database\Eloquent\Builder|SocialProvider newModelQuery()

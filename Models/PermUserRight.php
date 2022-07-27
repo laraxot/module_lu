@@ -9,21 +9,30 @@ namespace Modules\LU\Models;
  *
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 =======
  * @property int $id
 >>>>>>> 23a412e (.)
+=======
+ * @property int $id
+>>>>>>> a49c283 (rebase)
  * @property int $perm_user_id
  * @property int $right_id
  * @property int|null $right_level
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
 <<<<<<< HEAD
+<<<<<<< HEAD
 >>>>>>> 86b6983 (up)
 =======
  * @property string|null $created_by
  * @property string|null $updated_by
 >>>>>>> 23a412e (.)
+=======
+ * @property string|null $created_by
+ * @property string|null $updated_by
+>>>>>>> a49c283 (rebase)
  * @method static \Modules\LU\Database\Factories\PermUserRightFactory factory(...$parameters)
  * @method static \Illuminate\Database\Eloquent\Builder|PermUserRight newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|PermUserRight newQuery()
