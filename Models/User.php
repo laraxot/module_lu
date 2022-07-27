@@ -253,7 +253,12 @@ use Staudenmeir\EloquentHasManyDeep\HasRelationships;
 >>>>>>> ee42ee9 (up)
 =======
 >>>>>>> 86b6983 (up)
+<<<<<<< HEAD
 >>>>>>> df33cdc (up)
+=======
+=======
+>>>>>>> ee42ee9 (up)
+>>>>>>> 443b423 (rebase)
 class User extends Authenticatable implements UserContract {
     use HasApiTokens;
     use HasFactory;

@@ -13,6 +13,7 @@ use Modules\Xot\Models\Traits\WidgetTrait;
 
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 /**
  * Modules\LU\Models\Profile
  *
@@ -26,6 +27,8 @@ use Modules\Xot\Models\Traits\WidgetTrait;
  * @property string|null $created_by
  * @property string|null $updated_by
 =======
+=======
+>>>>>>> 443b423 (rebase)
 =======
 /**
  * Modules\LU\Models\Profile
@@ -169,7 +172,12 @@ use Modules\Xot\Models\Traits\WidgetTrait;
  * @mixin \Eloquent
  */
 >>>>>>> 86b6983 (up)
+<<<<<<< HEAD
 >>>>>>> df33cdc (up)
+=======
+=======
+>>>>>>> ee42ee9 (up)
+>>>>>>> 443b423 (rebase)
 class Profile extends BaseModelLang {
     // use PrivacyTrait;
     use HasFactory;
