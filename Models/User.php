@@ -22,12 +22,74 @@ use Staudenmeir\EloquentHasManyDeep\HasRelationships;
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 =======
 >>>>>>> df33cdc (up)
+=======
+>>>>>>> f5f48b9 (.)
 /**
- * Modules\LU\Models\User
+ * Modules\LU\Models\User.
  *
+ * @property int                                                                                                       $id
+ * @property string                                                                                                    $handle
+ * @property string|null                                                                                               $passwd
+ * @property string|null                                                                                               $lastlogin
+ * @property int|null                                                                                                  $owner_user_id
+ * @property int|null                                                                                                  $owner_group_id
+ * @property string|null                                                                                               $is_active
+ * @property int|null                                                                                                  $enable
+ * @property string|null                                                                                               $email
+ * @property string|null                                                                                               $first_name
+ * @property string|null                                                                                               $last_name
+ * @property int|null                                                                                                  $ente
+ * @property int|null                                                                                                  $matr
+ * @property string|null                                                                                               $password
+ * @property string|null                                                                                               $two_factor_secret
+ * @property string|null                                                                                               $two_factor_recovery_codes
+ * @property string|null                                                                                               $hash
+ * @property string|null                                                                                               $activation_code
+ * @property string|null                                                                                               $forgotten_password_code
+ * @property \Illuminate\Support\Carbon|null                                                                           $last_login_at
+ * @property string|null                                                                                               $last_login_ip
+ * @property string|null                                                                                               $token_check
+ * @property int|null                                                                                                  $is_verified
+ * @property string|null                                                                                               $remember_token
+ * @property \Illuminate\Support\Carbon|null                                                                           $email_verified_at
+ * @property \Illuminate\Support\Carbon|null                                                                           $created_at
+ * @property \Illuminate\Support\Carbon|null                                                                           $updated_at
+ * @property string|null                                                                                               $created_by
+ * @property string|null                                                                                               $updated_by
+ * @property \Illuminate\Database\Eloquent\Collection|\Modules\LU\Models\AreaPermUser[]                                $areaPermUsers
+ * @property int|null                                                                                                  $area_perm_users_count
+ * @property \Illuminate\Database\Eloquent\Collection|\Modules\LU\Models\OauthClient[]                                 $clients
+ * @property int|null                                                                                                  $clients_count
+ * @property string                                                                                                    $full_name
+ * @property string                                                                                                    $guid
+ * @property \Illuminate\Database\Eloquent\Collection|\Modules\LU\Models\GroupPermUser[]                               $groupPermUsers
+ * @property int|null                                                                                                  $group_perm_users_count
+ * @property \Illuminate\Database\Eloquent\Collection|\Modules\LU\Models\GroupPermUser[]                               $groups
+ * @property int|null                                                                                                  $groups_count
+ * @property \Illuminate\Notifications\DatabaseNotificationCollection|\Illuminate\Notifications\DatabaseNotification[] $notifications
+ * @property int|null                                                                                                  $notifications_count
+ * @property \Modules\LU\Models\PermUser|null                                                                          $perm
+ * @property \Modules\LU\Models\PermUser|null                                                                          $permUser
+ * @property \Illuminate\Database\Eloquent\Collection|\Modules\LU\Models\PermUserRight[]                               $permUserRights
+ * @property int|null                                                                                                  $perm_user_rights_count
+ * @property \Illuminate\Database\Eloquent\Collection|\Modules\LU\Models\PermUser[]                                    $permUsers
+ * @property int|null                                                                                                  $perm_users_count
+ * @property \Illuminate\Database\Eloquent\Collection|\Modules\LU\Models\PermUser[]                                    $perms
+ * @property int|null                                                                                                  $perms_count
+ * @property \Modules\Quaeris\Models\Profile|null                                                                      $profile
+ * @property \Modules\Quaeris\Models\Profile|null                                                                      $profileOrCreate
+ * @property \Illuminate\Database\Eloquent\Collection|\Modules\LU\Models\PermUserRight[]                               $rights
+ * @property int|null                                                                                                  $rights_count
+ * @property \Illuminate\Database\Eloquent\Collection|\Modules\LU\Models\SocialProvider[]                              $socialProviders
+ * @property int|null                                                                                                  $social_providers_count
+ * @property \Illuminate\Database\Eloquent\Collection|\Modules\LU\Models\OauthAccessToken[]                            $tokens
+ * @property int|null                                                                                                  $tokens_count
+ *
+<<<<<<< HEAD
  * @property int $id
  * @property string $handle
  * @property string|null $passwd
@@ -165,6 +227,8 @@ use Staudenmeir\EloquentHasManyDeep\HasRelationships;
  * @property-read int|null $social_providers_count
  * @property-read \Illuminate\Database\Eloquent\Collection|\Modules\LU\Models\OauthAccessToken[] $tokens
  * @property-read int|null $tokens_count
+=======
+>>>>>>> f5f48b9 (.)
  * @method static \Modules\LU\Database\Factories\UserFactory factory(...$parameters)
  * @method static \Illuminate\Database\Eloquent\Builder|User newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|User newQuery()
@@ -250,6 +314,7 @@ use Staudenmeir\EloquentHasManyDeep\HasRelationships;
  * @mixin \Eloquent
  */
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 >>>>>>> ee42ee9 (up)
 =======
@@ -262,6 +327,8 @@ use Staudenmeir\EloquentHasManyDeep\HasRelationships;
 >>>>>>> 443b423 (rebase)
 =======
 >>>>>>> 451a890 (.)
+=======
+>>>>>>> f5f48b9 (.)
 class User extends Authenticatable implements UserContract {
     use HasApiTokens;
     use HasFactory;

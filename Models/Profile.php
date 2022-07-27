@@ -15,6 +15,7 @@ use Modules\Xot\Models\Traits\WidgetTrait;
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 /**
  * Modules\LU\Models\Profile
  *
@@ -31,9 +32,48 @@ use Modules\Xot\Models\Traits\WidgetTrait;
 =======
 >>>>>>> 443b423 (rebase)
 =======
+=======
+>>>>>>> f5f48b9 (.)
 /**
- * Modules\LU\Models\Profile
+ * Modules\LU\Models\Profile.
  *
+ * @property int                                                                   $id
+ * @property string|null                                                           $post_type
+ * @property string|null                                                           $bio
+ * @property \Illuminate\Support\Carbon|null                                       $created_at
+ * @property \Illuminate\Support\Carbon|null                                       $updated_at
+ * @property string|null                                                           $created_by
+ * @property string|null                                                           $updated_by
+ * @property string|null                                                           $deleted_by
+ * @property string|null                                                           $first_name
+ * @property string|null                                                           $last_name
+ * @property string|null                                                           $email
+ * @property string|null                                                           $phone
+ * @property string|null                                                           $address
+ * @property int|null                                                              $user_id
+ * @property string|null                                                           $zibibbo
+ * @property \Illuminate\Database\Eloquent\Collection|\Modules\Xot\Models\Widget[] $containerWidgets
+ * @property int|null                                                              $container_widgets_count
+ * @property string|null                                                           $full_name
+ * @property string|null                                                           $guid
+ * @property string|null                                                           $image_src
+ * @property string|null                                                           $lang
+ * @property string|null                                                           $subtitle
+ * @property string|null                                                           $title
+ * @property string|null                                                           $txt
+ * @property string|null                                                           $user_handle
+ * @property \Illuminate\Database\Eloquent\Collection|\Modules\Xot\Models\Image[]  $images
+ * @property int|null                                                              $images_count
+ * @property \Modules\Lang\Models\Post|null                                        $post
+ * @property \Illuminate\Database\Eloquent\Collection|\Modules\Lang\Models\Post[]  $posts
+ * @property int|null                                                              $posts_count
+ * @property \Modules\Quaeris\Models\Profile|null                                  $profile
+ * @property mixed                                                                 $url
+ * @property \Modules\LU\Models\User|null                                          $user
+ * @property \Illuminate\Database\Eloquent\Collection|\Modules\Xot\Models\Widget[] $widgets
+ * @property int|null                                                              $widgets_count
+ *
+<<<<<<< HEAD
  * @property int $id
  * @property string|null $post_type
  * @property string|null $bio
@@ -125,6 +165,8 @@ use Modules\Xot\Models\Traits\WidgetTrait;
  * @property-read \Modules\LU\Models\User|null $user
  * @property-read \Illuminate\Database\Eloquent\Collection|\Modules\Xot\Models\Widget[] $widgets
  * @property-read int|null $widgets_count
+=======
+>>>>>>> f5f48b9 (.)
  * @method static \Illuminate\Database\Eloquent\Builder|Profile newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|Profile newQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|BaseModelLang ofItem(string $guid)
@@ -166,6 +208,7 @@ use Modules\Xot\Models\Traits\WidgetTrait;
  * @method static \Illuminate\Database\Eloquent\Builder|BaseModelLang withPost(string $guid)
  * @mixin \Eloquent
  */
+<<<<<<< HEAD
 =======
 >>>>>>> ee42ee9 (up)
 =======
@@ -181,6 +224,8 @@ use Modules\Xot\Models\Traits\WidgetTrait;
 >>>>>>> 443b423 (rebase)
 =======
 >>>>>>> 451a890 (.)
+=======
+>>>>>>> f5f48b9 (.)
 class Profile extends BaseModelLang {
     // use PrivacyTrait;
     use HasFactory;
