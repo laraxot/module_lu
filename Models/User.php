@@ -210,6 +210,7 @@ use Staudenmeir\EloquentHasManyDeep\HasRelationships;
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
  * @property-read \Modules\Quaeris\Models\Profile|null $profile
  * @property-read \Modules\Quaeris\Models\Profile|null $profileOrCreate
 =======
@@ -244,6 +245,10 @@ use Staudenmeir\EloquentHasManyDeep\HasRelationships;
  * @property-read \Modules\Quaeris\Models\Profile|null $profile
  * @property-read \Modules\Quaeris\Models\Profile|null $profileOrCreate
 >>>>>>> 26a9945 (.)
+=======
+ * @property-read \Modules\Mediamonitor\Models\Profile|null $profile
+ * @property-read \Modules\Mediamonitor\Models\Profile|null $profileOrCreate
+>>>>>>> 877ddd1 (up)
  * @property-read \Illuminate\Database\Eloquent\Collection|\Modules\LU\Models\PermUserRight[] $rights
  * @property-read int|null $rights_count
  * @property-read \Illuminate\Database\Eloquent\Collection|\Modules\LU\Models\SocialProvider[] $socialProviders

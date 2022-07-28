@@ -151,6 +151,7 @@ use Modules\Xot\Models\Traits\WidgetTrait;
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
  * @property-read \Modules\Quaeris\Models\Profile|null $profile
 =======
 <<<<<<< HEAD
@@ -181,6 +182,9 @@ use Modules\Xot\Models\Traits\WidgetTrait;
 =======
  * @property-read \Modules\Quaeris\Models\Profile|null $profile
 >>>>>>> 26a9945 (.)
+=======
+ * @property-read \Modules\Mediamonitor\Models\Profile|null $profile
+>>>>>>> 877ddd1 (up)
  * @property-write mixed $url
  * @property-read \Modules\LU\Models\User|null $user
  * @property-read \Illuminate\Database\Eloquent\Collection|\Modules\Xot\Models\Widget[] $widgets
