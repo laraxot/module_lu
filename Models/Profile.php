@@ -12,7 +12,7 @@ use Modules\LU\Models\Traits\HasProfileTrait;
 use Modules\Xot\Models\Traits\WidgetTrait;
 
 /**
- * Modules\LU\Models\Profile.
+ * Modules\LU\Models\Profile
  *
  * @property int $id
  * @property string|null $post_type

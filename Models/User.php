@@ -20,7 +20,7 @@ use Modules\Xot\Traits\Updater;
 use Staudenmeir\EloquentHasManyDeep\HasRelationships;
 
 /**
- * Modules\LU\Models\User.
+ * Modules\LU\Models\User
  *
  * @property int $id
  * @property string $handle
