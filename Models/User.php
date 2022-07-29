@@ -29,7 +29,7 @@ use Staudenmeir\EloquentHasManyDeep\HasRelationships;
 =======
 >>>>>>> f5f48b9 (.)
 /**
- * Modules\LU\Models\User.
+ * Modules\LU\Models\User
  *
 <<<<<<< HEAD
  * @property int                                                                                                       $id
