@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace Modules\LU\Models\Traits\Relationships;
 
-use Exception;
 use Modules\LU\Models\Area;
 use Modules\LU\Models\PermUser;
 use Modules\LU\Models\AreaPermUser;
@@ -40,13 +39,13 @@ trait UserRelationship {
     public function permUsers(): HasMany {
         return $this->hasMany(PermUser::class);
     }
-
+ 
     public function profile(): HasOne {
+        /*
+        $profile = TenantService::model('profile');
+        $profile_class = \get_class($profile);
+        */
         $main_module=config('xra.main_module');
-        if(!is_string($main_module)){
-            $msg='xra.main_module is not a string';
-            throw new Exception($msg.'['.__LINE__.']['.class_basename(__CLASS__).']');
-        }
         $profile_class='Modules\\'.$main_module.'\Models\Profile';
         return $this->hasOne($profile_class);
     }
