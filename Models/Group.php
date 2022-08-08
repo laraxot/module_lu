@@ -7,45 +7,21 @@ namespace Modules\LU\Models;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 
 /**
- * Modules\LU\Models\Group
+ * Modules\LU\Models\Group.
  *
-<<<<<<< HEAD
-=======
- * @property int $id
- * @property int|null $group_type
- * @property string|null $group_define_name
- * @property int|null $owner_user_id
- * @property int|null $owner_group_id
- * @property string $is_active
-<<<<<<< HEAD
-<<<<<<< HEAD
- * @property \Illuminate\Support\Carbon|null $created_at
- * @property \Illuminate\Support\Carbon|null $updated_at
-<<<<<<< HEAD
-<<<<<<< HEAD
->>>>>>> 86b6983 (up)
-=======
- * @property string|null $created_by
- * @property string|null $updated_by
->>>>>>> 23a412e (.)
-=======
- * @property string|null $created_by
- * @property string|null $updated_by
->>>>>>> a49c283 (rebase)
-=======
- * @property string|null $created_by
- * @property string|null $updated_by
- * @property \Illuminate\Support\Carbon|null $created_at
- * @property \Illuminate\Support\Carbon|null $updated_at
->>>>>>> df33cdc (up)
-=======
- * @property \Illuminate\Support\Carbon|null $created_at
- * @property \Illuminate\Support\Carbon|null $updated_at
- * @property string|null $created_by
- * @property string|null $updated_by
->>>>>>> b0e660e (rebase)
- * @property-read \Illuminate\Database\Eloquent\Collection|\Modules\LU\Models\GroupPermUser[] $groupPermUsers
- * @property-read int|null $group_perm_users_count
+ * @property int                                                                         $id
+ * @property int|null                                                                    $group_type
+ * @property string|null                                                                 $group_define_name
+ * @property int|null                                                                    $owner_user_id
+ * @property int|null                                                                    $owner_group_id
+ * @property string                                                                      $is_active
+ * @property \Illuminate\Support\Carbon|null                                             $created_at
+ * @property \Illuminate\Support\Carbon|null                                             $updated_at
+ * @property string|null                                                                 $created_by
+ * @property string|null                                                                 $updated_by
+ * @property \Illuminate\Database\Eloquent\Collection|\Modules\LU\Models\GroupPermUser[] $groupPermUsers
+ * @property int|null                                                                    $group_perm_users_count
+ *
  * @method static \Modules\LU\Database\Factories\GroupFactory factory(...$parameters)
  * @method static \Illuminate\Database\Eloquent\Builder|Group newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|Group newQuery()
