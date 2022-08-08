@@ -5,10 +5,11 @@ declare(strict_types=1);
 use Illuminate\Database\Schema\Blueprint;
 use Modules\Xot\Database\Migrations\XotBaseMigration;
 
+/**
+ * Undocumented class
+ */
 class CreateOauthAuthCodesTable extends XotBaseMigration {
     /**
-     * Run the migrations.
-     *
      * @return void
      */
     public function up() {
