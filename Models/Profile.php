@@ -38,6 +38,48 @@ use Modules\Xot\Models\Traits\WidgetTrait;
  * @property \Illuminate\Database\Eloquent\Collection|\Modules\Xot\Models\Widget[] $widgets
  * @property int|null                                                              $widgets_count
  *
+<<<<<<< HEAD
+=======
+ * @property int $id
+ * @property string|null $post_type
+ * @property string|null $bio
+ * @property \Illuminate\Support\Carbon|null $created_at
+ * @property \Illuminate\Support\Carbon|null $updated_at
+ * @property string|null $created_by
+ * @property string|null $updated_by
+ * @property string|null $deleted_by
+ * @property string|null $first_name
+ * @property string|null $last_name
+ * @property string|null $email
+ * @property string|null $phone
+ * @property string|null $address
+ * @property int|null $user_id
+ * @property string|null $zibibbo
+ * @property-read \Illuminate\Database\Eloquent\Collection|\Modules\Xot\Models\Widget[] $containerWidgets
+ * @property-read int|null $container_widgets_count
+ * @property-read string|null $full_name
+ * @property string|null $guid
+ * @property string|null $image_src
+ * @property-read string|null $lang
+ * @property string|null $subtitle
+ * @property string|null $title
+ * @property string|null $txt
+ * @property-read string|null $user_handle
+ * @property-read \Illuminate\Database\Eloquent\Collection|\Modules\Xot\Models\Image[] $images
+ * @property-read int|null $images_count
+ * @property-read \Modules\Lang\Models\Post|null $post
+ * @property-read \Illuminate\Database\Eloquent\Collection|\Modules\Lang\Models\Post[] $posts
+ * @property-read int|null $posts_count
+<<<<<<< HEAD
+ * @property-read \Modules\Xot\Models\Profile|null $profile
+=======
+ * @property-read \Modules\Quaeris\Models\Profile|null $profile
+>>>>>>> 1f4a4e6 (.)
+ * @property-write mixed $url
+ * @property-read \Modules\LU\Models\User|null $user
+ * @property-read \Illuminate\Database\Eloquent\Collection|\Modules\Xot\Models\Widget[] $widgets
+ * @property-read int|null $widgets_count
+>>>>>>> 06817bb (.)
  * @method static \Illuminate\Database\Eloquent\Builder|Profile newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|Profile newQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|BaseModelLang ofItem(string $guid)
