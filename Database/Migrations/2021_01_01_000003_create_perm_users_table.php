@@ -42,22 +42,32 @@ class CreatePermUsersTable extends XotBaseMigration {
                     $table->renameColumn('perm_user_id', 'id');
                 }
 <<<<<<< HEAD
+<<<<<<< HEAD
                 /*
 =======
 >>>>>>> 91cddea (.)
+=======
+                /*
+>>>>>>> 23a412e (.)
                 // -------- Index -----------------
                 if (! $this->hasIndex('user_id') && $this->hasColumn('user_id')) {
                     $table->index('user_id');
                 }
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 23a412e (.)
                 */
             }
         );
     }
 }
+<<<<<<< HEAD
 =======
             }
         );
     }
 }
 >>>>>>> 91cddea (.)
+=======
+>>>>>>> 23a412e (.)

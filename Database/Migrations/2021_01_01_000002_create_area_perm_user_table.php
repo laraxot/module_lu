@@ -47,13 +47,19 @@ class CreateAreaPermUserTable extends XotBaseMigration {
                 // -------- Index -----------------
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
                 if (! $this->hasIndex('area_id')) {
 =======
 =======
 >>>>>>> 06a5e28 (rebase)
+=======
+>>>>>>> 4edd08c (rebase)
                 /*
 =======
 >>>>>>> 91cddea (.)
+=======
+                /*
+>>>>>>> 23a412e (.)
                 if(!$this->hasIndex('area_id')  ){
 >>>>>>> 4dbe463 (.)
                     $table->index('area_id');
@@ -62,14 +68,20 @@ class CreateAreaPermUserTable extends XotBaseMigration {
                     $table->index('perm_user_id');
                 }
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 23a412e (.)
                 */
             }
         );
     }
 }
+<<<<<<< HEAD
 =======
             }
         );
     }
 }
 >>>>>>> 91cddea (.)
+=======
+>>>>>>> 23a412e (.)
