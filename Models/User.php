@@ -84,32 +84,44 @@ use Staudenmeir\EloquentHasManyDeep\HasRelationships;
  * @property int $id
  * @property string $handle
  * @property string|null $passwd
- * @property string|null $lastlogin
+ * @property \Illuminate\Support\Carbon|null $last_login_at
+ * @property string|null $last_login_ip
  * @property int|null $owner_user_id
  * @property int|null $owner_group_id
  * @property string|null $is_active
- * @property int|null $enable
  * @property string|null $email
- * @property string|null $first_name
+ * @property int|null $group_id
+ * @property int|null $banned_id
+ * @property int|null $country_id
+ * @property int|null $question_id
+ * @property string|null $nome
+ * @property string|null $cognome
  * @property string|null $last_name
+ * @property string|null $first_name
  * @property int|null $ente
  * @property int|null $matr
+ * @property int|null $stabi
+ * @property int|null $repar
  * @property string|null $password
  * @property string|null $two_factor_secret
  * @property string|null $two_factor_recovery_codes
  * @property string|null $hash
  * @property string|null $activation_code
  * @property string|null $forgotten_password_code
- * @property \Illuminate\Support\Carbon|null $last_login_at
- * @property string|null $last_login_ip
- * @property string|null $token_check
- * @property int|null $is_verified
- * @property string|null $remember_token
- * @property \Illuminate\Support\Carbon|null $email_verified_at
+ * @property string|null $provincia
+ * @property string|null $conosciuto
+ * @property string|null $news
+ * @property string|null $citta
+ * @property int|null $segno
+ * @property int|null $hmail
+ * @property int|null $bounce
+ * @property string|null $dataIscrizione
+ * @property int|null $dataCancellazione
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
- * @property string|null $created_by
+ * @property string|null $remember_token
  * @property string|null $updated_by
+ * @property string|null $created_by
  * @property-read \Illuminate\Database\Eloquent\Collection|\Modules\LU\Models\AreaPermUser[] $areaPermUsers
  * @property-read int|null $area_perm_users_count
  * @property-read \Illuminate\Database\Eloquent\Collection|\Modules\LU\Models\OauthClient[] $clients
@@ -132,6 +144,7 @@ use Staudenmeir\EloquentHasManyDeep\HasRelationships;
  * @property-read int|null $perms_count
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
  * @property-read \Modules\Xot\Models\Profile|null $profileOrCreate
 =======
  * @property-read \Modules\Quaeris\Models\Profile|null $profile
@@ -140,6 +153,9 @@ use Staudenmeir\EloquentHasManyDeep\HasRelationships;
 =======
  * @property-read \Modules\Xot\Models\Profile|null $profileOrCreate
 >>>>>>> 2dbbdf7 (up)
+=======
+ * @property-read \Modules\LU\Models\Profile|null $profileOrCreate
+>>>>>>> 86b6983 (up)
  * @property-read \Illuminate\Database\Eloquent\Collection|\Modules\LU\Models\PermUserRight[] $rights
  * @property-read int|null $rights_count
  * @property-read \Illuminate\Database\Eloquent\Collection|\Modules\LU\Models\SocialProvider[] $socialProviders
@@ -152,30 +168,42 @@ use Staudenmeir\EloquentHasManyDeep\HasRelationships;
  * @method static \Illuminate\Database\Eloquent\Builder|User newQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|User query()
  * @method static \Illuminate\Database\Eloquent\Builder|User whereActivationCode($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|User whereBannedId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|User whereBounce($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|User whereCitta($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|User whereCognome($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|User whereConosciuto($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|User whereCountryId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|User whereCreatedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|User whereCreatedBy($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|User whereDataCancellazione($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|User whereDataIscrizione($value)
  * @method static \Illuminate\Database\Eloquent\Builder|User whereEmail($value)
- * @method static \Illuminate\Database\Eloquent\Builder|User whereEmailVerifiedAt($value)
- * @method static \Illuminate\Database\Eloquent\Builder|User whereEnable($value)
  * @method static \Illuminate\Database\Eloquent\Builder|User whereEnte($value)
  * @method static \Illuminate\Database\Eloquent\Builder|User whereFirstName($value)
  * @method static \Illuminate\Database\Eloquent\Builder|User whereForgottenPasswordCode($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|User whereGroupId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|User whereHandle($value)
  * @method static \Illuminate\Database\Eloquent\Builder|User whereHash($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|User whereHmail($value)
  * @method static \Illuminate\Database\Eloquent\Builder|User whereId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|User whereIsActive($value)
- * @method static \Illuminate\Database\Eloquent\Builder|User whereIsVerified($value)
  * @method static \Illuminate\Database\Eloquent\Builder|User whereLastLoginAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|User whereLastLoginIp($value)
  * @method static \Illuminate\Database\Eloquent\Builder|User whereLastName($value)
- * @method static \Illuminate\Database\Eloquent\Builder|User whereLastlogin($value)
  * @method static \Illuminate\Database\Eloquent\Builder|User whereMatr($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|User whereNews($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|User whereNome($value)
  * @method static \Illuminate\Database\Eloquent\Builder|User whereOwnerGroupId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|User whereOwnerUserId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|User wherePasswd($value)
  * @method static \Illuminate\Database\Eloquent\Builder|User wherePassword($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|User whereProvincia($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|User whereQuestionId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|User whereRememberToken($value)
- * @method static \Illuminate\Database\Eloquent\Builder|User whereTokenCheck($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|User whereRepar($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|User whereSegno($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|User whereStabi($value)
  * @method static \Illuminate\Database\Eloquent\Builder|User whereTwoFactorRecoveryCodes($value)
  * @method static \Illuminate\Database\Eloquent\Builder|User whereTwoFactorSecret($value)
  * @method static \Illuminate\Database\Eloquent\Builder|User whereUpdatedAt($value)

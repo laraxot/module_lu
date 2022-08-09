@@ -9,6 +9,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 /**
  * Modules\LU\Models\SocialProvider.
  *
+<<<<<<< HEAD
  * @property int                             $id
  * @property int|null                        $user_id
  * @property string|null                     $provider_id
@@ -35,6 +36,23 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
  * @property string|null                     $avatar
  * @property \Modules\LU\Models\User|null    $user
  *
+=======
+ * @property int $id
+ * @property int $perm_user_id
+ * @property int $group_id
+ * @property string|null $created_by
+ * @property string|null $updated_by
+ * @property \Illuminate\Support\Carbon|null $created_at
+ * @property \Illuminate\Support\Carbon|null $updated_at
+ * @property string|null $token
+ * @property string|null $name
+ * @property string|null $email
+ * @property string|null $avatar
+ * @property int|null $user_id
+ * @property string|null $provider_id
+ * @property string|null $provider
+ * @property-read \Modules\LU\Models\User|null $user
+>>>>>>> c36e7a4 (.)
  * @method static \Modules\LU\Database\Factories\SocialProviderFactory factory(...$parameters)
  * @method static \Illuminate\Database\Eloquent\Builder|SocialProvider newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|SocialProvider newQuery()
@@ -43,8 +61,10 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
  * @method static \Illuminate\Database\Eloquent\Builder|SocialProvider whereCreatedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|SocialProvider whereCreatedBy($value)
  * @method static \Illuminate\Database\Eloquent\Builder|SocialProvider whereEmail($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|SocialProvider whereGroupId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|SocialProvider whereId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|SocialProvider whereName($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|SocialProvider wherePermUserId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|SocialProvider whereProvider($value)
  * @method static \Illuminate\Database\Eloquent\Builder|SocialProvider whereProviderId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|SocialProvider whereToken($value)

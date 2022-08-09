@@ -19,19 +19,26 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
  * @property \Illuminate\Database\Eloquent\Collection|\Modules\LU\Models\GroupPermUser[] $groupPermUsers
  * @property int|null                                                                    $group_perm_users_count
  *
+<<<<<<< HEAD
+=======
+ * @property int $group_id
+ * @property int $subgroup_id
+ * @property-read \Illuminate\Database\Eloquent\Collection|\Modules\LU\Models\GroupPermUser[] $groupPermUsers
+ * @property-read int|null $group_perm_users_count
+>>>>>>> c36e7a4 (.)
  * @method static \Modules\LU\Database\Factories\GroupSubgroupFactory factory(...$parameters)
  * @method static \Illuminate\Database\Eloquent\Builder|GroupSubgroup newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|GroupSubgroup newQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|GroupSubgroup query()
- * @method static \Illuminate\Database\Eloquent\Builder|GroupSubgroup whereCreatedAt($value)
- * @method static \Illuminate\Database\Eloquent\Builder|GroupSubgroup whereCreatedBy($value)
  * @method static \Illuminate\Database\Eloquent\Builder|GroupSubgroup whereGroupId($value)
- * @method static \Illuminate\Database\Eloquent\Builder|GroupSubgroup whereId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|GroupSubgroup whereSubgroupId($value)
+<<<<<<< HEAD
  * @method static \Illuminate\Database\Eloquent\Builder|GroupSubgroup whereUpdatedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|GroupSubgroup whereUpdatedBy($value)
  * @method static \Illuminate\Database\Eloquent\Builder|GroupSubgroup whereUpdatedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|GroupSubgroup whereUpdatedBy($value)
+=======
+>>>>>>> c36e7a4 (.)
  * @mixin \Eloquent
  */
 class GroupSubgroup extends BaseModel {
