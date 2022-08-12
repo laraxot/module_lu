@@ -25,7 +25,7 @@ class CreateLuProfilesTable extends XotBaseMigration {
                 $table->string('post_type', 191)->nullable()->index();
                 // $table->string('article_type',50)->nullable();
                 // $table->datetime('published_at')->nullable();
-                $table->text('bio')->nullable();
+                // $table->text('bio')->nullable();
                 $table->timestamps();
             }
         );
@@ -64,6 +64,10 @@ class CreateLuProfilesTable extends XotBaseMigration {
 
                 if (! $this->hasColumn('auth_user_id') && ! $this->hasColumn('user_id')) {
                     $table->integer('user_id')->nullable();
+                }
+
+                if (! $this->hasColumn('bio')) {
+                    $table->text('bio')->nullable();
                 }
 
                 if ($this->hasColumn('post_id')) {
