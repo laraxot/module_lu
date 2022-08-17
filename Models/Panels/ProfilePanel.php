@@ -52,6 +52,10 @@ class ProfilePanel extends XotBasePanel {
      * @param Profile $row
      */
     public function optionLabel($row): string {
+        // [2022-08-17 13:06:20] local.ERROR: [162][Profile]
+        if(is_null($this->row->user)){
+            return '';
+        }
         // return $row->area_define_name;
         return $row->handle();
     }
