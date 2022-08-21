@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Modules\LU\Models\Panels;
 
 // --- Services --
+use Illuminate\Database\Eloquent\Model;
 use Modules\Xot\Models\Panels\XotBasePanel;
 
 /**
@@ -20,6 +21,14 @@ class RightPanel extends XotBasePanel {
      * The single value that should be used to represent the resource when being displayed.
      */
     protected static string $title = 'title';
+
+    /**
+     * on select the option label.
+     */
+    public function optionLabel(Model $row): string {
+        // return $row->matr.' ['.$row->email.']['.$row->ha_diritto.'] '.$row->cognome.' '.$row->cognome.' ';
+        return $row->getAttributeValue('right_define_name').''; // matr.' ['.$row->email.']['.$row->ha_diritto.'] '.$row->cognome.' '.$row->cognome.' ';
+    }
 
     /**
      * @return object[]
