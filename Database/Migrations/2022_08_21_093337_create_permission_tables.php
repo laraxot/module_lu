@@ -48,23 +48,6 @@ class CreatePermissionTables extends XotBaseMigration {
             }
         });
 
-        Schema::create($tableNames['role_has_permissions'], function (Blueprint $table) use ($tableNames) {
-            $table->unsignedBigInteger(PermissionRegistrar::$pivotPermission);
-            $table->unsignedBigInteger(PermissionRegistrar::$pivotRole);
-
-            $table->foreign(PermissionRegistrar::$pivotPermission)
-                ->references('id') // permission id
-                ->on($tableNames['permissions'])
-                ->onDelete('cascade');
-
-            $table->foreign(PermissionRegistrar::$pivotRole)
-                ->references('id') // role id
-                ->on($tableNames['roles'])
-                ->onDelete('cascade');
-
-            $table->primary([PermissionRegistrar::$pivotPermission, PermissionRegistrar::$pivotRole], 'role_has_permissions_permission_id_role_id_primary');
-        });
-
         app('cache')
             ->store('default' != config('permission.cache.store') ? config('permission.cache.store') : null)
             ->forget(config('permission.cache.key'));

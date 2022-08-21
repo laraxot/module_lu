@@ -7,7 +7,6 @@ namespace Modules\LU\Models;
 /**
  * Modules\LU\Models\ModelHasRole.
  */
-class ModelHasRole extends BasePivot {
-    protected $fillable=['role_id','model_type','model_id'];
-
+class ModelHasRole extends BaseMorphPivot {
+    protected $fillable = ['role_id', 'model_type', 'model_id'];
 }
