@@ -17,9 +17,13 @@ class CreateModelHasRolesTable extends XotBaseMigration {
      * @return void
      */
     public function up() {
+        $tableNames = config('permission.table_names');
+        $columnNames = config('permission.column_names');
+        $teams = config('permission.teams');
+
         // -- CREATE --
         $this->tableCreate(
-            function (Blueprint $table) {
+            function (Blueprint $table) use($tableNames,$columnNames,$teams) {
                 $table->unsignedBigInteger(PermissionRegistrar::$pivotRole);
 
                 $table->string('model_type');

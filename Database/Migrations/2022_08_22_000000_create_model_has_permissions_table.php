@@ -17,9 +17,13 @@ class CreateModelHasPermissionsTable extends XotBaseMigration {
      * @return void
      */
     public function up() {
+        $tableNames = config('permission.table_names');
+        $columnNames = config('permission.column_names');
+        $teams = config('permission.teams');
+
         // -- CREATE --
         $this->tableCreate(
-            function (Blueprint $table) {
+            function (Blueprint $table) use($tableNames,$columnNames,$teams) {
                 $table->unsignedBigInteger(PermissionRegistrar::$pivotPermission);
 
                 $table->string('model_type');
@@ -27,9 +31,10 @@ class CreateModelHasPermissionsTable extends XotBaseMigration {
                 $table->index([$columnNames['model_morph_key'], 'model_type'], 'model_has_permissions_model_id_model_type_index');
 
                 $table->foreign(PermissionRegistrar::$pivotPermission)
-                ->references('id') // permission id
-                ->on($tableNames['permissions'])
-                ->onDelete('cascade');
+                    ->references('id') // permission id
+                    ->on($tableNames['permissions'])
+                    ->onDelete('cascade');
+
                 if ($teams) {
                     $table->unsignedBigInteger($columnNames['team_foreign_key']);
                     $table->index($columnNames['team_foreign_key'], 'model_has_permissions_team_foreign_key_index');
