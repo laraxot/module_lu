@@ -1,0 +1,8 @@
+https://qcode.in/easy-roles-and-permissions-in-laravel-5-4/
+
+https://github.com/brendt/aggregate.stitcher.io/blob/master/app/Http/Controllers/Posts/CreatePostController.php
+
+https://github.com/adamwathan/laracon2017
+
+https://github.com/reinink/laracon2018
+
