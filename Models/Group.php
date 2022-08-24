@@ -15,10 +15,10 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
  * @property int|null $owner_user_id
  * @property int|null $owner_group_id
  * @property string $is_active
- * @property \Illuminate\Support\Carbon|null $created_at
- * @property \Illuminate\Support\Carbon|null $updated_at
  * @property string|null $created_by
  * @property string|null $updated_by
+ * @property \Illuminate\Support\Carbon|null $created_at
+ * @property \Illuminate\Support\Carbon|null $updated_at
  * @property-read \Illuminate\Database\Eloquent\Collection|\Modules\LU\Models\GroupPermUser[] $groupPermUsers
  * @property-read int|null $group_perm_users_count
  * @method static \Modules\LU\Database\Factories\GroupFactory factory(...$parameters)
