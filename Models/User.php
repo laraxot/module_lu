@@ -19,6 +19,7 @@ use Modules\Xot\Traits\Updater;
 // use Spatie\Tags\HasTags;  // Spatie Tags
 use Staudenmeir\EloquentHasManyDeep\HasRelationships;
 
+<<<<<<< HEAD
 /**
  * Modules\LU\Models\User
  *
@@ -280,6 +281,10 @@ use Staudenmeir\EloquentHasManyDeep\HasRelationships;
  * @mixin \Eloquent
  */
 class User extends Authenticatable implements UserContract {
+=======
+class User extends Authenticatable implements UserContract
+{
+>>>>>>> 51717d2 (up)
     use HasApiTokens;
     use HasFactory;
     use HasRelationships;
@@ -340,7 +345,8 @@ class User extends Authenticatable implements UserContract {
      *
      * @return \Illuminate\Database\Eloquent\Factories\Factory
      */
-    protected static function newFactory() {
+    protected static function newFactory()
+    {
         return UserFactory::new();
     }
 }

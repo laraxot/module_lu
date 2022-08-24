@@ -11,6 +11,7 @@ use Modules\LU\Models\Traits\HasProfileTrait;
 // --- TRAITS ---
 use Modules\Xot\Models\Traits\WidgetTrait;
 
+<<<<<<< HEAD
 /**
  * Modules\LU\Models\Profile
  *
@@ -208,6 +209,10 @@ use Modules\Xot\Models\Traits\WidgetTrait;
  * @mixin \Eloquent
  */
 class Profile extends BaseModelLang {
+=======
+class Profile extends BaseModelLang
+{
+>>>>>>> 51717d2 (up)
     // use PrivacyTrait;
     use HasFactory;
     // use GeoTrait;
