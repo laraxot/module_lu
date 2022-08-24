@@ -50,14 +50,16 @@ class RolePermission extends Component {
     }
 
     public function updateDataFromModal(string $modal_id,array $data):void{
+        
+
         if($modal_id=='addRole'){
             $role = Role::create([
                 'name' => $data['role_name'],
             ]);
             session()->flash('message', 'ok');
         }
-        if($modal_id='addPermission'){
-            dddx([$modal_id,$data]);
+        if($modal_id=='addPermission'){
+            //dddx([$modal_id, $data]);
             $permission =  Permission::create([
                 'name' => $data['permission_name'],
             ]);
