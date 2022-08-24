@@ -21,14 +21,17 @@
     @foreach ($roles as $role)
         @php
             $panel_id = Str::slug('role-' . $role->name);
-
+            $role_first=$loop->first;
         @endphp
         <div class="panel panel-default">
             <div class="panel-heading" role="tab" id="{{ $panel_id }}">
                 <h4 class="panel-title">
                     <a role="button" data-toggle="collapse" data-parent="#accordion" href="#dd-{{ $panel_id }}"
                         aria-controls="dd-{{ $panel_id }}">
-                        {{ $role->name }}
+                        {{ $role->name }} 
+                        <button class="btn btn-danger" wire:click="$emit('swalConfirm','deleteRole',{{ $role->id }})">
+                            <i class="fas fa-trash-alt"></i>
+                        </button>
                     </a>
                 </h4>
             </div>
@@ -52,6 +55,11 @@
                                             for="{{ $role->id }}-{{ $perm->id }}">
                                             {{ $perm->name }}
                                         </label>
+                                        @if($role_first)
+                                             <button class="btn btn-danger" wire:click="$emit('swalConfirm','deletePermission',{{ $perm->id }})">
+                                                <x-svg icon="trash2" />
+                                            </button>
+                                        @endif
                                     </div>
                                 </div>
 
@@ -64,7 +72,33 @@
         </div>
     @endforeach
 
-
+@push('scripts')
+   <script type="text/javascript">
+    document.addEventListener('DOMContentLoaded', function () {
+        @this.on('swalConfirm', (funcname,par) => {
+            Swal.fire({
+                title: 'Are you sure?',
+                text: "You won't be able to revert this!",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Yes, delete it!'
+            }).then((result) => {
+                /* Read more about isConfirmed, isDenied below */
+                if (result.isConfirmed) {
+                    @this.call(funcname,par);
+                    Swal.fire(
+                        'Deleted!',
+                        'Your file has been deleted.',
+                        'success'
+                    );
+                } 
+            });
+        })
+    });
+    </script>
+@endpush
 
 
 

@@ -44,9 +44,26 @@ class RolePermission extends Component {
         $this->emit('showModal','addRole',$data);
     }
 
+    public function deleteRole(int $role_id):void {
+        $role=Role::find($role_id);
+        if($role!=null){
+            $role->delete();
+        }
+        session()->flash('message', 'delete role ['.$role_id.']');
+
+    }
+
     public function addPermission():void{
         $data=[];
         $this->emit('showModal','addPermission',$data);
+    }
+
+    public function deletePermission(int $permission_id):void {
+        $perm=Permission::find($permission_id);
+        if($perm!=null){
+            $perm->delete();
+        }
+        session()->flash('message', 'delete permission ['.$permission_id.']');
     }
 
     public function updateDataFromModal(string $modal_id,array $data):void{
