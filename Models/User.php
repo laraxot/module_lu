@@ -91,10 +91,13 @@ use Staudenmeir\EloquentHasManyDeep\HasRelationships;
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 >>>>>>> 56a14ae (.)
 =======
 >>>>>>> c36e7a4 (.)
+=======
+>>>>>>> d84d2e0 (.)
  * @property-read \Modules\Xot\Models\Profile|null $profileOrCreate
 =======
  * @property-read \Modules\Quaeris\Models\Profile|null $profile
@@ -117,6 +120,7 @@ use Staudenmeir\EloquentHasManyDeep\HasRelationships;
 =======
  * @property-read \Modules\Xot\Models\Profile|null $profileOrCreate
 >>>>>>> 8a90865 (up)
+<<<<<<< HEAD
 =======
  * @property-read \Modules\Quaeris\Models\Profile|null $profile
  * @property-read \Modules\Quaeris\Models\Profile|null $profileOrCreate
@@ -134,7 +138,12 @@ use Staudenmeir\EloquentHasManyDeep\HasRelationships;
  * @property-read \Modules\LU\Models\Profile|null $profileOrCreate
 >>>>>>> 86b6983 (up)
 >>>>>>> c36e7a4 (.)
+<<<<<<< HEAD
 >>>>>>> 4bbae29 (.)
+=======
+=======
+>>>>>>> d84d2e0 (.)
+>>>>>>> cacd8c7 (.)
  * @property-read \Illuminate\Database\Eloquent\Collection|\Modules\LU\Models\PermUserRight[] $rights
  * @property-read int|null $rights_count
  * @property-read \Illuminate\Database\Eloquent\Collection|\Modules\LU\Models\SocialProvider[] $socialProviders

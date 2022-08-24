@@ -51,10 +51,13 @@ use Modules\Xot\Models\Traits\WidgetTrait;
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 >>>>>>> 56a14ae (.)
 =======
 >>>>>>> c36e7a4 (.)
+=======
+>>>>>>> d84d2e0 (.)
  * @property-read \Modules\Xot\Models\Profile|null $profile
 =======
  * @property-read \Modules\Quaeris\Models\Profile|null $profile
@@ -76,6 +79,7 @@ use Modules\Xot\Models\Traits\WidgetTrait;
 =======
  * @property-read \Modules\Xot\Models\Profile|null $profile
 >>>>>>> 8a90865 (up)
+<<<<<<< HEAD
 =======
  * @property-read \Modules\Quaeris\Models\Profile|null $profile
 >>>>>>> 23a412e (.)
@@ -92,7 +96,12 @@ use Modules\Xot\Models\Traits\WidgetTrait;
  * @property-read Profile|null $profile
 >>>>>>> 86b6983 (up)
 >>>>>>> c36e7a4 (.)
+<<<<<<< HEAD
 >>>>>>> 4bbae29 (.)
+=======
+=======
+>>>>>>> d84d2e0 (.)
+>>>>>>> cacd8c7 (.)
  * @property-write mixed $url
  * @property-read \Modules\LU\Models\User|null $user
  * @property-read \Illuminate\Database\Eloquent\Collection|\Modules\Xot\Models\Widget[] $widgets
