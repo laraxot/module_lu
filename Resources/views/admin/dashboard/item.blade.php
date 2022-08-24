@@ -26,6 +26,7 @@
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
                 @foreach ($_theme->lastLoggedUsers(10) as $user)
 =======
                 @foreach ($_theme->lastLoggedUsers([10]) as $user)
@@ -44,6 +45,8 @@
 >>>>>>> 4253173 (rebase)
 =======
 >>>>>>> ac44d56 (rebase)
+=======
+>>>>>>> 19dde75 (rebase)
                 @foreach ($_theme->lastLoggedUsers(10) as $user)
 =======
                 @foreach ($_theme->lastLoggedUsers([10]) as $user)
@@ -70,6 +73,7 @@
 =======
                 @foreach ($_theme->lastLoggedUsers([10]) as $user)
 >>>>>>> ab9f265 (.)
+<<<<<<< HEAD
 <<<<<<< HEAD
 >>>>>>> 8d9ef9a (rebase)
 <<<<<<< HEAD
@@ -115,7 +119,15 @@
                 @foreach ($_theme->lastLoggedUsers([10]) as $user)
 >>>>>>> ab9f265 (.)
 >>>>>>> ac44d56 (rebase)
+<<<<<<< HEAD
 >>>>>>> 7d965ae (rebase)
+=======
+=======
+=======
+                @foreach ($_theme->lastLoggedUsers(10) as $user)
+>>>>>>> d2787cb (up)
+>>>>>>> 19dde75 (rebase)
+>>>>>>> 0794e53 (rebase)
                     <tr>
                         <td>{{ $user->id }}<br />{{ $user->handle }}</td>
                         <td>{{ $user->first_name }}<br />{{ $user->last_name }}</td>
