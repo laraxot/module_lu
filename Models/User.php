@@ -71,7 +71,16 @@ use Staudenmeir\EloquentHasManyDeep\HasRelationships;
  * @property-read int|null $perm_users_count
  * @property-read \Illuminate\Database\Eloquent\Collection|\Modules\LU\Models\PermUser[] $perms
  * @property-read int|null $perms_count
+<<<<<<< HEAD
  * @property-read \Modules\Mediamonitor\Models\Profile|null $profileOrCreate
+=======
+<<<<<<< HEAD
+ * @property-read \Modules\Xot\Models\Profile|null $profileOrCreate
+=======
+ * @property-read \Modules\Quaeris\Models\Profile|null $profile
+ * @property-read \Modules\Quaeris\Models\Profile|null $profileOrCreate
+>>>>>>> 1f4a4e6 (.)
+>>>>>>> 06817bb (.)
  * @property-read \Illuminate\Database\Eloquent\Collection|\Modules\LU\Models\PermUserRight[] $rights
  * @property-read int|null $rights_count
  * @property-read \Illuminate\Database\Eloquent\Collection|\Modules\LU\Models\SocialProvider[] $socialProviders
