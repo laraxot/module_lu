@@ -15,19 +15,17 @@ use Modules\Xot\Models\Traits\WidgetTrait;
  * Modules\LU\Models\Profile
  *
  * @property int $id
- * @property string|null $post_type
- * @property string|null $bio
- * @property \Illuminate\Support\Carbon|null $created_at
- * @property \Illuminate\Support\Carbon|null $updated_at
+ * @property int|null $user_id
  * @property string|null $created_by
  * @property string|null $updated_by
+ * @property \Illuminate\Support\Carbon|null $updated_at
+ * @property \Illuminate\Support\Carbon|null $created_at
  * @property string|null $deleted_by
  * @property string|null $first_name
  * @property string|null $last_name
  * @property string|null $email
  * @property string|null $phone
  * @property string|null $address
- * @property int|null $user_id
  * @property string|null $zibibbo
  * @property-read \Illuminate\Database\Eloquent\Collection|\Modules\Xot\Models\Widget[] $containerWidgets
  * @property-read int|null $container_widgets_count
@@ -35,6 +33,7 @@ use Modules\Xot\Models\Traits\WidgetTrait;
  * @property string|null $guid
  * @property string|null $image_src
  * @property-read string|null $lang
+ * @property-read string|null $post_type
  * @property string|null $subtitle
  * @property string|null $title
  * @property string|null $txt
@@ -48,11 +47,21 @@ use Modules\Xot\Models\Traits\WidgetTrait;
  * @property-read \Modules\Mediamonitor\Models\Profile|null $profile
 =======
 <<<<<<< HEAD
+<<<<<<< HEAD
  * @property-read \Modules\Xot\Models\Profile|null $profile
 =======
  * @property-read \Modules\Quaeris\Models\Profile|null $profile
 >>>>>>> 1f4a4e6 (.)
+<<<<<<< HEAD
 >>>>>>> 06817bb (.)
+=======
+=======
+ * @property-read \Modules\Xot\Models\Profile|null $profile
+>>>>>>> 2dbbdf7 (up)
+=======
+ * @property-read Profile|null $profile
+>>>>>>> 86b6983 (up)
+>>>>>>> c36e7a4 (.)
  * @property-write mixed $url
  * @property-read \Modules\LU\Models\User|null $user
  * @property-read \Illuminate\Database\Eloquent\Collection|\Modules\Xot\Models\Widget[] $widgets
@@ -63,7 +72,6 @@ use Modules\Xot\Models\Traits\WidgetTrait;
  * @method static \Illuminate\Database\Eloquent\Builder|Profile ofLayoutPosition($layout_position)
  * @method static \Illuminate\Database\Eloquent\Builder|Profile query()
  * @method static \Illuminate\Database\Eloquent\Builder|Profile whereAddress($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Profile whereBio($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Profile whereCreatedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Profile whereCreatedBy($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Profile whereDeletedBy($value)
@@ -72,7 +80,6 @@ use Modules\Xot\Models\Traits\WidgetTrait;
  * @method static \Illuminate\Database\Eloquent\Builder|Profile whereId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Profile whereLastName($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Profile wherePhone($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Profile wherePostType($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Profile whereUpdatedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Profile whereUpdatedBy($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Profile whereUserId($value)
