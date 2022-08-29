@@ -1,8 +1,10 @@
 <?php
+
 /**
  * ---.A.
  * ---.B.
  */
+
 declare(strict_types=1);
 
 namespace Modules\LU\Models;
@@ -71,8 +73,6 @@ use Staudenmeir\EloquentHasManyDeep\HasRelationships;
  * @property-read int|null $perm_users_count
  * @property-read \Illuminate\Database\Eloquent\Collection|\Modules\LU\Models\PermUser[] $perms
  * @property-read int|null $perms_count
- * @property-read \Modules\Mediamonitor\Models\Profile|null $profile
- * @property-read \Modules\Mediamonitor\Models\Profile|null $profileOrCreate
  * @property-read \Illuminate\Database\Eloquent\Collection|\Modules\LU\Models\PermUserRight[] $rights
  * @property-read int|null $rights_count
  * @property-read \Illuminate\Database\Eloquent\Collection|\Modules\LU\Models\SocialProvider[] $socialProviders
@@ -114,7 +114,8 @@ use Staudenmeir\EloquentHasManyDeep\HasRelationships;
  * @method static \Illuminate\Database\Eloquent\Builder|User whereUpdatedBy($value)
  * @mixin \Eloquent
  */
-class User extends Authenticatable implements UserContract {
+class User extends Authenticatable implements UserContract
+{
     use HasApiTokens;
     use HasFactory;
     use HasRelationships;
@@ -175,7 +176,8 @@ class User extends Authenticatable implements UserContract {
      *
      * @return \Illuminate\Database\Eloquent\Factories\Factory
      */
-    protected static function newFactory() {
+    protected static function newFactory()
+    {
         return UserFactory::new();
     }
 }

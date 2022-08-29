@@ -16,49 +16,49 @@ use Illuminate\Support\Facades\URL;
 use Modules\LU\Models\User;
 use Tests\TestCase;
 
-class RegisterTest extends TestCase {
+class RegisterTest extends TestCase
+{
     // use RefreshDatabase;
 
-    protected function setUp(): void {
+    protected function setUp(): void
+    {
         parent::setUp();
         URL::defaults(['lang' => 'it']);
     }
 
-    protected function successfulRegistrationRoute() {
+    protected function successfulRegistrationRoute()
+    {
         return route('home');
     }
 
-    protected function registerGetRoute() {
+    protected function registerGetRoute()
+    {
         return route('register');
     }
 
-    protected function registerPostRoute() {
+    protected function registerPostRoute()
+    {
         return route('register');
     }
 
-    protected function guestMiddlewareRoute() {
+    protected function guestMiddlewareRoute()
+    {
         return route('home');
     }
 
-    public function testUserCanViewARegistrationForm() {
+    public function testUserCanViewARegistrationForm()
+    {
         $response = $this->get($this->registerGetRoute());
 
         $response->assertSuccessful();
         $response->assertViewIs('pub_theme::auth.register');
     }
 
-    public function testUserCannotViewARegistrationFormWhenAuthenticated() {
+    public function testUserCannotViewARegistrationFormWhenAuthenticated()
+    {
         $user = User::factory()->make();
 
         $response = $this->actingAs($user)->get($this->registerGetRoute());
-
-        /*
-        --- Expected
-        +++ Actual
-        @@ @@
-        -'http://mediamonitor.local'
-        +'http://mediamonitor.local/home'
-         */
         static::assertTrue(true);
         // $response->assertRedirect($this->guestMiddlewareRoute());
     }
@@ -93,9 +93,11 @@ class RegisterTest extends TestCase {
         });
     }
     */
-    public function testUserCannotRegisterWithoutName() {
+    public function testUserCannotRegisterWithoutName()
+    {
         $response = $this->from($this->registerGetRoute())->post(
-            $this->registerPostRoute(), [
+            $this->registerPostRoute(),
+            [
                 'name' => '',
                 'email' => 'john@example.com',
                 'password' => 'i-love-laravel',
@@ -113,9 +115,11 @@ class RegisterTest extends TestCase {
         $this->assertGuest();
     }
 
-    public function testUserCannotRegisterWithoutEmail() {
+    public function testUserCannotRegisterWithoutEmail()
+    {
         $response = $this->from($this->registerGetRoute())->post(
-            $this->registerPostRoute(), [
+            $this->registerPostRoute(),
+            [
                 'name' => 'John Doe',
                 'email' => '',
                 'password' => 'i-love-laravel',
@@ -133,9 +137,11 @@ class RegisterTest extends TestCase {
         $this->assertGuest();
     }
 
-    public function testUserCannotRegisterWithInvalidEmail() {
+    public function testUserCannotRegisterWithInvalidEmail()
+    {
         $response = $this->from($this->registerGetRoute())->post(
-            $this->registerPostRoute(), [
+            $this->registerPostRoute(),
+            [
                 'name' => 'John Doe',
                 'email' => 'invalid-email',
                 'password' => 'i-love-laravel',
@@ -154,9 +160,11 @@ class RegisterTest extends TestCase {
         $this->assertGuest();
     }
 
-    public function testUserCannotRegisterWithoutPassword() {
+    public function testUserCannotRegisterWithoutPassword()
+    {
         $response = $this->from($this->registerGetRoute())->post(
-            $this->registerPostRoute(), [
+            $this->registerPostRoute(),
+            [
                 'name' => 'John Doe',
                 'email' => 'john@example.com',
                 'password' => '',
@@ -175,9 +183,11 @@ class RegisterTest extends TestCase {
         $this->assertGuest();
     }
 
-    public function testUserCannotRegisterWithoutPasswordConfirmation() {
+    public function testUserCannotRegisterWithoutPasswordConfirmation()
+    {
         $response = $this->from($this->registerGetRoute())->post(
-            $this->registerPostRoute(), [
+            $this->registerPostRoute(),
+            [
                 'name' => 'John Doe',
                 'email' => 'john@example.com',
                 'password' => 'i-love-laravel',
@@ -196,9 +206,11 @@ class RegisterTest extends TestCase {
         $this->assertGuest();
     }
 
-    public function testUserCannotRegisterWithPasswordsNotMatching() {
+    public function testUserCannotRegisterWithPasswordsNotMatching()
+    {
         $response = $this->from($this->registerGetRoute())->post(
-            $this->registerPostRoute(), [
+            $this->registerPostRoute(),
+            [
                 'name' => 'John Doe',
                 'email' => 'john@example.com',
                 'password' => 'i-love-laravel',

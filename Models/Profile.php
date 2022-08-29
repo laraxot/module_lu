@@ -44,7 +44,6 @@ use Modules\Xot\Models\Traits\WidgetTrait;
  * @property-read \Modules\Lang\Models\Post|null $post
  * @property-read \Illuminate\Database\Eloquent\Collection|\Modules\Lang\Models\Post[] $posts
  * @property-read int|null $posts_count
- * @property-read \Modules\Mediamonitor\Models\Profile|null $profile
  * @property-write mixed $url
  * @property-read \Modules\LU\Models\User|null $user
  * @property-read \Illuminate\Database\Eloquent\Collection|\Modules\Xot\Models\Widget[] $widgets
@@ -72,7 +71,8 @@ use Modules\Xot\Models\Traits\WidgetTrait;
  * @method static \Illuminate\Database\Eloquent\Builder|BaseModelLang withPost(string $guid)
  * @mixin \Eloquent
  */
-class Profile extends BaseModelLang {
+class Profile extends BaseModelLang
+{
     // use PrivacyTrait;
     use HasFactory;
     // use GeoTrait;
