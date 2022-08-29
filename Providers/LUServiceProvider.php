@@ -18,14 +18,16 @@ use Modules\Xot\Providers\XotBaseServiceProvider;
 /**
  * Class LUServiceProvider.
  */
-class LUServiceProvider extends XotBaseServiceProvider {
+class LUServiceProvider extends XotBaseServiceProvider
+{
     protected string $module_dir = __DIR__;
 
     protected string $module_ns = __NAMESPACE__;
 
     public string $module_name = 'lu';
 
-    public function bootCallback(): void {
+    public function bootCallback(): void
+    {
         $this->commands(
             [
                 \Modules\LU\Console\CreateUserCommand::class,
@@ -38,16 +40,20 @@ class LUServiceProvider extends XotBaseServiceProvider {
         $this->registerPassport();
     }
 
-    public function registerPassport(): void {
+    public function registerPassport(): void
+    {
         Passport::usePersonalAccessClientModel(OauthPersonalAccessClient::class);
         Passport::useTokenModel(OauthAccessToken::class);
         Passport::useRefreshTokenModel(OauthRefreshToken::class);
         Passport::useAuthCodeModel(OauthAuthCode::class);
         Passport::useClientModel(OauthClient::class);
+        //comment the line bottom, then make php artisan publish:vendor and type 0, change laravel/config/tags.php with our Tags
+        //(Modules\Tag\Models\Tag::class)
         Passport::routes();
     }
 
-    public function registerCallback(): void {
+    public function registerCallback(): void
+    {
         $loader = AliasLoader::getInstance();
         $loader->alias('Profile', 'Modules\LU\Services\ProfileService');
     }
