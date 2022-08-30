@@ -50,10 +50,14 @@ class LUServiceProvider extends XotBaseServiceProvider
         //comment the line bottom, then make php artisan publish:vendor and type 0, change laravel/config/tags.php with our Tags
         //(Modules\Tag\Models\Tag::class)
 <<<<<<< HEAD
+<<<<<<< HEAD
         //Passport::routes();
 =======
         Passport::routes();
 >>>>>>> d6ce383 (.)
+=======
+        //Passport::routes();
+>>>>>>> baefcff (.)
     }
 
     public function registerCallback(): void
