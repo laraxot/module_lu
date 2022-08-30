@@ -23,10 +23,13 @@ use Staudenmeir\EloquentHasManyDeep\HasRelationships;
 
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 <<<<<<< HEAD
 <<<<<<< HEAD
 >>>>>>> 2bcccf2 (rebase)
+=======
+>>>>>>> 3970ad5 (up)
 /**
  * Modules\LU\Models\User
  *
@@ -79,6 +82,11 @@ use Staudenmeir\EloquentHasManyDeep\HasRelationships;
  * @property-read int|null $perm_users_count
  * @property-read \Illuminate\Database\Eloquent\Collection|\Modules\LU\Models\PermUser[] $perms
  * @property-read int|null $perms_count
+<<<<<<< HEAD
+=======
+ * @property-read \Modules\Mediamonitor\Models\Profile|null $profile
+ * @property-read \Modules\Mediamonitor\Models\Profile|null $profileOrCreate
+>>>>>>> 3970ad5 (up)
  * @property-read \Illuminate\Database\Eloquent\Collection|\Modules\LU\Models\PermUserRight[] $rights
  * @property-read int|null $rights_count
  * @property-read \Illuminate\Database\Eloquent\Collection|\Modules\LU\Models\SocialProvider[] $socialProviders
@@ -121,6 +129,7 @@ use Staudenmeir\EloquentHasManyDeep\HasRelationships;
  * @mixin \Eloquent
  */
 <<<<<<< HEAD
+<<<<<<< HEAD
 class User extends Authenticatable implements UserContract
 {
 =======
@@ -128,6 +137,8 @@ class User extends Authenticatable implements UserContract
 >>>>>>> bdccc5c (.)
 =======
 >>>>>>> df263aa (up)
+=======
+>>>>>>> 3970ad5 (up)
 class User extends Authenticatable implements UserContract {
 >>>>>>> 2bcccf2 (rebase)
     use HasApiTokens;

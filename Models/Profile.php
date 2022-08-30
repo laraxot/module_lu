@@ -13,10 +13,13 @@ use Modules\Xot\Models\Traits\WidgetTrait;
 
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 <<<<<<< HEAD
 <<<<<<< HEAD
 >>>>>>> 2bcccf2 (rebase)
+=======
+>>>>>>> 3970ad5 (up)
 /**
  * Modules\LU\Models\Profile
  *
@@ -50,6 +53,10 @@ use Modules\Xot\Models\Traits\WidgetTrait;
  * @property-read \Modules\Lang\Models\Post|null $post
  * @property-read \Illuminate\Database\Eloquent\Collection|\Modules\Lang\Models\Post[] $posts
  * @property-read int|null $posts_count
+<<<<<<< HEAD
+=======
+ * @property-read \Modules\Mediamonitor\Models\Profile|null $profile
+>>>>>>> 3970ad5 (up)
  * @property-write mixed $url
  * @property-read \Modules\LU\Models\User|null $user
  * @property-read \Illuminate\Database\Eloquent\Collection|\Modules\Xot\Models\Widget[] $widgets
@@ -78,6 +85,7 @@ use Modules\Xot\Models\Traits\WidgetTrait;
  * @mixin \Eloquent
  */
 <<<<<<< HEAD
+<<<<<<< HEAD
 class Profile extends BaseModelLang
 {
 =======
@@ -85,6 +93,8 @@ class Profile extends BaseModelLang
 >>>>>>> bdccc5c (.)
 =======
 >>>>>>> df263aa (up)
+=======
+>>>>>>> 3970ad5 (up)
 class Profile extends BaseModelLang {
 >>>>>>> 2bcccf2 (rebase)
     // use PrivacyTrait;
