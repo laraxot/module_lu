@@ -75,8 +75,13 @@ class RolePermission extends Component {
             ]);
             session()->flash('message', 'ok');
         }
+<<<<<<< HEAD
         if($modal_id=='addPermission'){
             //dddx([$modal_id, $data]);
+=======
+        if($modal_id='addPermission'){
+            dddx([$modal_id,$data]);
+>>>>>>> 0f6eb77 (up)
             $permission =  Permission::create([
                 'name' => $data['permission_name'],
             ]);
