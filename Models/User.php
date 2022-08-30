@@ -21,6 +21,11 @@ use Modules\Xot\Traits\Updater;
 // use Spatie\Tags\HasTags;  // Spatie Tags
 use Staudenmeir\EloquentHasManyDeep\HasRelationships;
 
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+<<<<<<< HEAD
+>>>>>>> 2bcccf2 (rebase)
 /**
  * Modules\LU\Models\User
  *
@@ -114,8 +119,14 @@ use Staudenmeir\EloquentHasManyDeep\HasRelationships;
  * @method static \Illuminate\Database\Eloquent\Builder|User whereUpdatedBy($value)
  * @mixin \Eloquent
  */
+<<<<<<< HEAD
 class User extends Authenticatable implements UserContract
 {
+=======
+=======
+>>>>>>> bdccc5c (.)
+class User extends Authenticatable implements UserContract {
+>>>>>>> 2bcccf2 (rebase)
     use HasApiTokens;
     use HasFactory;
     use HasRelationships;
@@ -176,8 +187,7 @@ class User extends Authenticatable implements UserContract
      *
      * @return \Illuminate\Database\Eloquent\Factories\Factory
      */
-    protected static function newFactory()
-    {
+    protected static function newFactory() {
         return UserFactory::new();
     }
 }

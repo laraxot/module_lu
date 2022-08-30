@@ -11,6 +11,11 @@ use Modules\LU\Models\Traits\HasProfileTrait;
 // --- TRAITS ---
 use Modules\Xot\Models\Traits\WidgetTrait;
 
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+<<<<<<< HEAD
+>>>>>>> 2bcccf2 (rebase)
 /**
  * Modules\LU\Models\Profile
  *
@@ -71,8 +76,14 @@ use Modules\Xot\Models\Traits\WidgetTrait;
  * @method static \Illuminate\Database\Eloquent\Builder|BaseModelLang withPost(string $guid)
  * @mixin \Eloquent
  */
+<<<<<<< HEAD
 class Profile extends BaseModelLang
 {
+=======
+=======
+>>>>>>> bdccc5c (.)
+class Profile extends BaseModelLang {
+>>>>>>> 2bcccf2 (rebase)
     // use PrivacyTrait;
     use HasFactory;
     // use GeoTrait;
