@@ -54,9 +54,12 @@ use Modules\Xot\Models\Traits\WidgetTrait;
  * @property-read \Illuminate\Database\Eloquent\Collection|\Modules\Lang\Models\Post[] $posts
  * @property-read int|null $posts_count
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
  * @property-read \Modules\Mediamonitor\Models\Profile|null $profile
 >>>>>>> 3970ad5 (up)
+=======
+>>>>>>> 1f01c6c (.)
  * @property-write mixed $url
  * @property-read \Modules\LU\Models\User|null $user
  * @property-read \Illuminate\Database\Eloquent\Collection|\Modules\Xot\Models\Widget[] $widgets
@@ -86,6 +89,7 @@ use Modules\Xot\Models\Traits\WidgetTrait;
  */
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 class Profile extends BaseModelLang
 {
 =======
@@ -97,6 +101,10 @@ class Profile extends BaseModelLang
 >>>>>>> 3970ad5 (up)
 class Profile extends BaseModelLang {
 >>>>>>> 2bcccf2 (rebase)
+=======
+class Profile extends BaseModelLang
+{
+>>>>>>> 1f01c6c (.)
     // use PrivacyTrait;
     use HasFactory;
     // use GeoTrait;

@@ -83,10 +83,13 @@ use Staudenmeir\EloquentHasManyDeep\HasRelationships;
  * @property-read \Illuminate\Database\Eloquent\Collection|\Modules\LU\Models\PermUser[] $perms
  * @property-read int|null $perms_count
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
  * @property-read \Modules\Mediamonitor\Models\Profile|null $profile
  * @property-read \Modules\Mediamonitor\Models\Profile|null $profileOrCreate
 >>>>>>> 3970ad5 (up)
+=======
+>>>>>>> 1f01c6c (.)
  * @property-read \Illuminate\Database\Eloquent\Collection|\Modules\LU\Models\PermUserRight[] $rights
  * @property-read int|null $rights_count
  * @property-read \Illuminate\Database\Eloquent\Collection|\Modules\LU\Models\SocialProvider[] $socialProviders
@@ -130,6 +133,7 @@ use Staudenmeir\EloquentHasManyDeep\HasRelationships;
  */
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 class User extends Authenticatable implements UserContract
 {
 =======
@@ -141,6 +145,10 @@ class User extends Authenticatable implements UserContract
 >>>>>>> 3970ad5 (up)
 class User extends Authenticatable implements UserContract {
 >>>>>>> 2bcccf2 (rebase)
+=======
+class User extends Authenticatable implements UserContract
+{
+>>>>>>> 1f01c6c (.)
     use HasApiTokens;
     use HasFactory;
     use HasRelationships;
@@ -201,7 +209,8 @@ class User extends Authenticatable implements UserContract {
      *
      * @return \Illuminate\Database\Eloquent\Factories\Factory
      */
-    protected static function newFactory() {
+    protected static function newFactory()
+    {
         return UserFactory::new();
     }
 }
