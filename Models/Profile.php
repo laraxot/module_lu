@@ -12,6 +12,7 @@ use Modules\LU\Models\Traits\HasProfileTrait;
 use Modules\Xot\Models\Traits\WidgetTrait;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -82,6 +83,8 @@ class Profile extends BaseModelLang
 =======
 =======
 >>>>>>> bdccc5c (.)
+=======
+>>>>>>> df263aa (up)
 class Profile extends BaseModelLang {
 >>>>>>> 2bcccf2 (rebase)
     // use PrivacyTrait;

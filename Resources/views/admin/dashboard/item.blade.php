@@ -13,6 +13,7 @@
             </thead>
             <tbody>
 <<<<<<< HEAD
+<<<<<<< HEAD
 
                 @foreach ($_theme->lastLoggedUsers(10) as $user)
 =======
@@ -171,6 +172,10 @@
                 @foreach ($_theme->lastLoggedUsers(10) as $user)
 >>>>>>> bdccc5c (.)
 >>>>>>> 2bcccf2 (rebase)
+=======
+
+                @foreach ($_theme->lastLoggedUsers(10) as $user)
+>>>>>>> df263aa (up)
                     <tr>
                         <td>{{ $user->id }}<br />{{ $user->handle }}</td>
                         <td>{{ $user->first_name }}<br />{{ $user->last_name }}</td>

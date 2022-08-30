@@ -22,6 +22,7 @@ use Modules\Xot\Traits\Updater;
 use Staudenmeir\EloquentHasManyDeep\HasRelationships;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -125,6 +126,8 @@ class User extends Authenticatable implements UserContract
 =======
 =======
 >>>>>>> bdccc5c (.)
+=======
+>>>>>>> df263aa (up)
 class User extends Authenticatable implements UserContract {
 >>>>>>> 2bcccf2 (rebase)
     use HasApiTokens;
