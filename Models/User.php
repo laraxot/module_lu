@@ -114,6 +114,7 @@ use Staudenmeir\EloquentHasManyDeep\HasRelationships;
  * @method static \Illuminate\Database\Eloquent\Builder|User whereUpdatedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|User whereUpdatedBy($value)
  * @mixin \Eloquent
+ * @property-read \Modules\Quaeris\Models\Profile|null $profile
  */
 class User extends Authenticatable implements UserContract {
     use HasApiTokens;
