@@ -73,7 +73,8 @@ use Staudenmeir\EloquentHasManyDeep\HasRelationships;
  * @property-read int|null $perm_users_count
  * @property-read \Illuminate\Database\Eloquent\Collection|\Modules\LU\Models\PermUser[] $perms
  * @property-read int|null $perms_count
- * @property-read \Modules\Xot\Models\Profile|null $profileOrCreate
+ * @property-read \Modules\Mediamonitor\Models\Profile|null $profile
+ * @property-read \Modules\Mediamonitor\Models\Profile|null $profileOrCreate
  * @property-read \Illuminate\Database\Eloquent\Collection|\Modules\LU\Models\PermUserRight[] $rights
  * @property-read int|null $rights_count
  * @property-read \Illuminate\Database\Eloquent\Collection|\Modules\LU\Models\SocialProvider[] $socialProviders
@@ -114,7 +115,6 @@ use Staudenmeir\EloquentHasManyDeep\HasRelationships;
  * @method static \Illuminate\Database\Eloquent\Builder|User whereUpdatedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|User whereUpdatedBy($value)
  * @mixin \Eloquent
- * @property-read \Modules\Quaeris\Models\Profile|null $profile
  */
 class User extends Authenticatable implements UserContract {
     use HasApiTokens;
