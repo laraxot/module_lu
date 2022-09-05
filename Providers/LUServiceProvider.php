@@ -44,7 +44,9 @@ class LUServiceProvider extends XotBaseServiceProvider {
         Passport::useRefreshTokenModel(OauthRefreshToken::class);
         Passport::useAuthCodeModel(OauthAuthCode::class);
         Passport::useClientModel(OauthClient::class);
-        Passport::routes();
+        if(method_exists(Passport::class,'routes')){
+            Passport::routes();
+        }
     }
 
     public function registerCallback(): void {
