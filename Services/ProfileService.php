@@ -28,12 +28,27 @@ class ProfileService {
 
     private static ?ProfileService $instance = null;
 
+    private array $xot;
+
+    public function __construct() {
+        // ---
+        $xot = config('xra');
+        if (! is_array($xot)) {
+            $xot = [];
+        }
+        $this->xot = $xot;
+    }
+
     public static function getInstance(): self {
         if (null === self::$instance) {
             self::$instance = new self();
         }
 
         return self::$instance;
+    }
+
+    public static function make(): self {
+        return static::getInstance();
     }
 
     /**
@@ -126,7 +141,7 @@ class ProfileService {
             return -1;
         }
 
-        return (int) ($this->user->perm->perm_type);
+        return (int) $this->user->perm->perm_type;
     }
 
     public function name(): string {
