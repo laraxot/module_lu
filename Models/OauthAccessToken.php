@@ -16,8 +16,8 @@ use Laravel\Passport\Token as PassportToken;
  * @property string|null $name
  * @property array|null $scopes
  * @property bool $revoked
- * @property string|null $created_at
- * @property string|null $updated_at
+ * @property \Illuminate\Support\Carbon|null $created_at
+ * @property \Illuminate\Support\Carbon|null $updated_at
  * @property \Illuminate\Support\Carbon|null $expires_at
  * @property-read \Modules\LU\Models\OauthClient|null $client
  * @property-read \Modules\LU\Models\User|null $user
