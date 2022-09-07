@@ -7,8 +7,8 @@ namespace Modules\LU\Services;
 use Exception;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Collection;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Str;
-use Modules\Tenant\Services\TenantService;
 use Modules\Xot\Contracts\PanelContract;
 use Modules\Xot\Contracts\UserContract;
 use Modules\Xot\Services\PanelService;
@@ -21,11 +21,11 @@ use ReflectionException;
 class ProfileService {
     private UserContract $user;
 
-    private Model $profile;
+    private ?Model $profile = null;
 
     private PanelContract $profile_panel;
 
-    private static ?ProfileService $instance = null;
+    private static ?self $instance = null;
 
     private array $xot;
 
@@ -36,6 +36,7 @@ class ProfileService {
             $xot = [];
         }
         $this->xot = $xot;
+        $this->get(Auth::user());
     }
 
     public static function getInstance(): self {
@@ -101,17 +102,13 @@ class ProfileService {
     /**
      * returns this ProfileService instance.
      *
+     * @param object|Model|\Modules\Xot\Contracts\UserContract $user
+     *
      * @throws ReflectionException
      */
-    public static function get(UserContract $user): self {
-        $self = self::getInstance();
-
+    public function get($user): self {
         if (\is_object($user)) {
-            $profile_model = TenantService::model('profile');
-            if (null == $profile_model) {
-                throw new Exception('Aggiungi profile a morph_map.php ['.__LINE__.']['.class_basename(__CLASS__).']');
-            }
-            $self->user = $user;
+            $this->user = $user;
             $profile = $user->profile;
 
             if (null === $profile) {
@@ -119,7 +116,12 @@ class ProfileService {
                 // dddx($user->getKey());
                 // $profile_model->user_id = $user->getKey();
                 // $profile = $profile_model->create();
-                $profile = $user->profile()->create();
+                $profile = $user->profile()->firstOrCreate();
+                $data = ['user_id' => $user->id];
+                if (method_exists($profile, 'post')) {
+                    $profile->post()->firstOrCreate(['guid' => 'profile-'.$user->id, 'lang' => app()->getLocale()]);
+                }
+                $profile->save($data);
                 // dddx($profile);
                 /*
                 dddx([
@@ -140,11 +142,11 @@ class ProfileService {
                 $profile->save();
             }
             */
-            $self->profile = $profile;
-            $self->profile_panel = PanelService::make()->get($profile);
+            $this->profile = $profile;
+            $this->profile_panel = PanelService::make()->get($profile);
         }
 
-        return $self;
+        return $this;
     }
 
     // returns User's full name (fist and last name)
@@ -186,6 +188,9 @@ class ProfileService {
             throw new \Exception('property perm in $this->user not exist');
         }
         */
+        if (! method_exists($this->user, 'perm')) {
+            throw new \Exception('method perm in $this->user not exist');
+        }
 
         // return (int) optional($this->user->perm)->perm_type;
         if (null === $this->user->perm) {
@@ -324,20 +329,25 @@ class ProfileService {
         return \is_object($area);
     }
 
-     // get all areas from this profile's USER
-     public function areas(): Collection {
-         $areas = $this->getUser()->areas;
+    /**
+     * Undocumented function.
+     *
+     * @return Collection<Area>
+     */
+    public function areas(): Collection {
+        $areas = $this->getUser()->areas
+            ->sortBy('order_column');
 
-         $modules = Module::all();
-         // dddx(['areas' => $areas, 'modules' => $modules]);
-         $areas = $areas->filter(
-             function ($item) use ($modules) {
-                 return \in_array($item->area_define_name, array_keys($modules), true);
-             }
-         );
+        $modules = Module::getByStatus(1);
+        // dddx(['areas' => $areas, 'modules' => $modules]);
+        $areas = $areas->filter(
+            function ($item) use ($modules) {
+                return \in_array($item->area_define_name, array_keys($modules), true);
+            }
+        );
 
-         return $areas;
-     }
+        return $areas;
+    }
 
     // get all areas of this PROFILE
     public function panelAreas(): Collection {
