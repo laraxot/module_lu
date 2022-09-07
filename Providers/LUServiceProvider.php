@@ -9,7 +9,6 @@ use Illuminate\Foundation\AliasLoader;
 // use Modules\LU\Models\User;
 use Illuminate\Support\Facades\View;
 use Laravel\Passport\Passport;
-use Modules\LU\Http\View\Composers\LUComposer;
 use Modules\LU\Models\OauthAccessToken;
 use Modules\LU\Models\OauthAuthCode;
 use Modules\LU\Models\OauthClient;
@@ -39,10 +38,7 @@ class LUServiceProvider extends XotBaseServiceProvider {
         // $this->registerLivewireComponents();
 
         $this->registerPassport();
-<<<<<<< HEAD
 
-=======
->>>>>>> 48fff7c (up)
         $this->registerViewComposers();
     }
 
