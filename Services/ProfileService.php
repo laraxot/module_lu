@@ -17,7 +17,6 @@ use ReflectionException;
 
 /**
  * Class ProfileService.
- * in futuro utilizzare quello di Xot.
  */
 class ProfileService {
     private UserContract $user;
@@ -52,6 +51,56 @@ class ProfileService {
     }
 
     /**
+     * If the method doesn't exists in this class
+     * then the "php magic method" __call will be called
+     * see PHP Magic Methods doc: https://www.php.net/manual/en/language.oop5.overloading.php#object.call.
+     *
+     * In this case the method checks if the called method exists inside the ProfilePanel or ProfileModel
+     * and returns if exists
+     *
+     * The first parameter is the method name, the second is the method arguments
+     *
+     * @see https://www.php.net/manual/en/language.oop5.overloading.php
+     *
+     * @param string $name
+     * @param array  $arguments
+     *
+     * @return mixed
+     */
+    public function __call($name, $arguments) {
+        $profile_panel = $this->getProfilePanel();
+
+        if (method_exists($profile_panel, $name)) {
+            /*
+             * @var callable
+             */
+
+            $callback = [$profile_panel, $name];
+
+            return call_user_func_array($callback, $arguments);
+        }
+
+        $profile = $this->getProfile();
+
+        if (null == $profile) {
+            return 'profile is null ['.__LINE__.']['.class_basename(__CLASS__).']';
+            dddx('qui1');
+        }
+        if (method_exists($profile, $name)) {
+            /**
+             * @var callable
+             */
+            $callback = [$profile, $name];
+
+            return call_user_func_array($callback, $arguments);
+        }
+
+        throw new Exception('['.get_class($profile).']method:['.$name.']['.__LINE__.']['.class_basename(__CLASS__).']');
+    }
+
+    /**
+     * returns this ProfileService instance.
+     *
      * @throws ReflectionException
      */
     public static function get(UserContract $user): self {
@@ -98,6 +147,7 @@ class ProfileService {
         return $self;
     }
 
+    // returns User's full name (fist and last name)
     public function fullName(): ?string {
         if (null == $this->user) {
             return null;
@@ -113,6 +163,7 @@ class ProfileService {
         return $user->first_name.' '.$user->last_name;
     }
 
+    // returns username
     public function handle(): string {
         if (null == $this->user) {
             return 'unknown';
@@ -144,15 +195,19 @@ class ProfileService {
         return (int) $this->user->perm->perm_type;
     }
 
+    // returns User's fist name
     public function name(): string {
         return (string) $this->user->first_name;
     }
 
+    // returns the Profile's action url (example: http://domain.xx/admin/it/lu/profiles/1/?_act=show)
     public function url(string $act = 'show'): string {
         return $this->profile_panel->url($act);
     }
 
     /**
+     * returns the User's avatar.
+     *
      * @param int $size
      *
      * @return string|null
@@ -168,31 +223,9 @@ class ProfileService {
         return "https://www.gravatar.com/avatar/$email?d=$default&s=$size";
     }
 
-    /*
-    public function profile() {
-        $profile = TenantService::model('profile');
-
-        $res = $this->hasOne($profile, 'user_id', 'user_id');
-        if ($res->exists()) {
-            return $res;
-        }
-        $res = $profile->firstOrCreate(['user_id' => $this->user_id]);
-        $res->post()->firstOrCreate(
-            [
-                //    'user_id' => $this->user_id,
-                'guid' => $this->guid,
-                'lang' => app()->getLocale(),
-            ], [
-                'title' => $this->guid,
-            ]
-        );
-
-        return $this->profile();
-    }
-    */
-    // *
-
     /**
+     * checks if profile has the role in $role_name.
+     *
      * @param string $role_name
      *
      * @return bool
@@ -207,6 +240,8 @@ class ProfileService {
     }
 
     /**
+     * returns Profile's role (example: final_custumer, pony_express, restaurant_owner, franchising_owner, etc).
+     *
      * @param string $role_name
      *
      * @return mixed|null
@@ -220,10 +255,12 @@ class ProfileService {
         return $this->profile->{$role_method};
     }
 
+    // returns User email
     public function email(): ?string {
         return $this->user->email;
     }
 
+    // returns the
     public function getPanel(): PanelContract {
         if (null == $this->profile) {
             dddx(['message' => 'to fix', 'user' => $this->user, 'profile' => $this->profile]);
@@ -234,6 +271,11 @@ class ProfileService {
         return $profile_panel;
     }
 
+    public function getProfile(): ?Model {
+        return $this->profile;
+    }
+
+    // returns the Profile panel with its methods
     public function getProfilePanel(): PanelContract {
         if (null == $this->profile) {
             dddx(['message' => 'to fix', 'user' => $this->user, 'profile' => $this->profile]);
@@ -244,12 +286,14 @@ class ProfileService {
         return $profile_panel;
     }
 
+    // returns the User panel with its methods
     public function getUserPanel(): PanelContract {
         $user_panel = PanelService::make()->getByUser($this->user);
 
         return $user_panel;
     }
 
+    // checks if this profile belongs to a SuperAdmin (level 1)
     public function isSuperAdmin(array $params = []): bool {
         $panel = $this->getPanel();
         // dddx($panel);//Modules\Food\Models\Panels\ProfilePanel
@@ -260,24 +304,42 @@ class ProfileService {
         return $panel->isSuperAdmin($params);
     }
 
+    // get the User that belongs to this profile
     public function getUser(): UserContract {
         return $this->user;
     }
 
-    public function areas(): Collection {
-        $areas = $this->getUser()->areas;
+    // get the right STRING name of this profile class (based on XRA main_module)
+    public function getProfileClass(): string {
+        $main_module = $this->xot['main_module'];
+        $class = 'Modules\\'.$main_module.'\Models\Profile';
 
-        $modules = Module::all();
-        // dddx(['areas' => $areas, 'modules' => $modules]);
-        $areas = $areas->filter(
-            function ($item) use ($modules) {
-                return \in_array($item->area_define_name, array_keys($modules), true);
-            }
-        );
-
-        return $areas;
+        return $class;
     }
 
+    // check if this profile has that area (true or false)
+    public function hasArea(string $name): bool {
+        $area = $this->areas()->firstWhere('area_define_name', $name);
+
+        return \is_object($area);
+    }
+
+     // get all areas from this profile's USER
+     public function areas(): Collection {
+         $areas = $this->getUser()->areas;
+
+         $modules = Module::all();
+         // dddx(['areas' => $areas, 'modules' => $modules]);
+         $areas = $areas->filter(
+             function ($item) use ($modules) {
+                 return \in_array($item->area_define_name, array_keys($modules), true);
+             }
+         );
+
+         return $areas;
+     }
+
+    // get all areas of this PROFILE
     public function panelAreas(): Collection {
         return $this->areas()->map(
             function ($area) {
