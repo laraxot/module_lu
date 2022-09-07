@@ -7,7 +7,9 @@ namespace Modules\LU\Providers;
 // ---- bases ----
 use Illuminate\Foundation\AliasLoader;
 // use Modules\LU\Models\User;
+use Illuminate\Support\Facades\View;
 use Laravel\Passport\Passport;
+use Modules\LU\Http\View\Composers\LUComposer;
 use Modules\LU\Models\OauthAccessToken;
 use Modules\LU\Models\OauthAuthCode;
 use Modules\LU\Models\OauthClient;
@@ -36,6 +38,8 @@ class LUServiceProvider extends XotBaseServiceProvider {
         // $this->registerLivewireComponents();
 
         $this->registerPassport();
+
+        $this->registerViewComposers();
     }
 
     public function registerPassport(): void {
@@ -44,7 +48,7 @@ class LUServiceProvider extends XotBaseServiceProvider {
         Passport::useRefreshTokenModel(OauthRefreshToken::class);
         Passport::useAuthCodeModel(OauthAuthCode::class);
         Passport::useClientModel(OauthClient::class);
-        if(method_exists(Passport::class,'routes')){
+        if (method_exists(Passport::class, 'routes')) {
             Passport::routes();
         }
     }
@@ -52,6 +56,10 @@ class LUServiceProvider extends XotBaseServiceProvider {
     public function registerCallback(): void {
         $loader = AliasLoader::getInstance();
         $loader->alias('Profile', 'Modules\LU\Services\ProfileService');
+    }
+
+    private function registerViewComposers(): void {
+        View::composer('*', LUComposer::class);
     }
 }
 
