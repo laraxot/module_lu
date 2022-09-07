@@ -9,12 +9,12 @@ use Illuminate\Foundation\AliasLoader;
 // use Modules\LU\Models\User;
 use Illuminate\Support\Facades\View;
 use Laravel\Passport\Passport;
-use Modules\LU\Http\View\Composers\LUComposer;
 use Modules\LU\Models\OauthAccessToken;
 use Modules\LU\Models\OauthAuthCode;
 use Modules\LU\Models\OauthClient;
 use Modules\LU\Models\OauthPersonalAccessClient;
 use Modules\LU\Models\OauthRefreshToken;
+use Modules\LU\View\Composers\LUComposer;
 use Modules\Xot\Providers\XotBaseServiceProvider;
 
 /**

@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Modules\LU\Http\View\Composers;
+namespace Modules\LU\View\Composers;
 
 // use App\Repositories\UserRepository;
 use Illuminate\Support\Facades\Auth;
@@ -19,11 +19,9 @@ class LUComposer {
      * @return void
      */
     public function compose(View $view) {
-        $user = Auth::user();
-        if (null === $user) {
-            return;
-        }
-        $profile = ProfileService::make()->get($user);
+        // $user = Auth::user();
+
+        $profile = ProfileService::make(); // ->get($user);
 
         $view->with('profile', $profile);
     }
