@@ -117,7 +117,8 @@ class CreateProfileCommand extends Command {
         $data['lang'] = app()->getLocale();
 
         $validator = Validator::make(
-            $data, [
+            $data,
+            [
                 'handle' => ['required'],
                 'email' => ['required', 'email'/* , 'unique:staff,email' */],
                 'password' => ['required', 'min:6'],

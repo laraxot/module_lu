@@ -45,7 +45,7 @@ class SocialiteController extends Controller {
             exit('TRY WITH OTHER LOGIN !['.$provider.'] IS NOT SET');
         }
 
-        $driver=Socialite::driver($provider);
+        $driver = Socialite::driver($provider);
         if ('facebook' !== $provider) {
             return $driver->redirect();
         } else {

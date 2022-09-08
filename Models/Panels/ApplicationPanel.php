@@ -26,17 +26,17 @@ class ApplicationPanel extends XotBasePanel {
      */
     public function fields(): array {
         return [
-            (object) ([
+            (object) [
                 'type' => 'Id',
                 'name' => 'id',
                 'comment' => null,
-            ]),
-            (object) ([
+            ],
+            (object) [
                 'type' => 'String',
                 'name' => 'application_define_name',
                 'rules' => 'required',
                 'comment' => null,
-            ]),
+            ],
         ];
     }
 }

@@ -48,7 +48,8 @@ class RegisterController extends Controller {
      */
     protected function validator(array $data) {
         return Validator::make(
-            $data, [
+            $data,
+            [
                 // 'name' => 'required|max:255',
                 'handle' => 'required|max:255',
                 'email' => 'required|email|max:255', // |unique:users
@@ -113,7 +114,8 @@ class RegisterController extends Controller {
 
             if (\View::exists($view)) {
                 \View::composer(
-                    '*', function ($view1) use ($view) {
+                    '*',
+                    function ($view1) use ($view) {
                         \View::share('view', $view);
                     }
                 );

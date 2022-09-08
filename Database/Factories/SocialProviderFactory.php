@@ -22,8 +22,8 @@ class SocialProviderFactory extends Factory {
     public function definition() {
         return [
             'id' => $this->faker->randomNumber(5, false),
-            //'user_id' => $this->faker->randomNumber(5, false),
-            //'provider_id' => $this->faker->randomNumber(5, false),
+            // 'user_id' => $this->faker->randomNumber(5, false),
+            // 'provider_id' => $this->faker->randomNumber(5, false),
             'provider' => $this->faker->word,
             'token' => $this->faker->word,
             'name' => $this->faker->name,

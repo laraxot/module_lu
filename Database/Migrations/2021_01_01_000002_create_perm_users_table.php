@@ -3,25 +3,23 @@
 declare(strict_types=1);
 
 use Illuminate\Database\Schema\Blueprint;
-//---- models ---
+// ---- models ---
 use Modules\Xot\Database\Migrations\XotBaseMigration;
 
 /**
  * Class CreateLiveuserPermUsersTable.
  */
-class CreatePermUsersTable extends XotBaseMigration
-{
+class CreatePermUsersTable extends XotBaseMigration {
     /**
      * Run the migrations.
      *
      * @return void
      */
-    public function up()
-    {
-        //-- CREATE --
+    public function up() {
+        // -- CREATE --
         $this->tableCreate(
             function (Blueprint $table) {
-                //$table->increments('perm_user_id');
+                // $table->increments('perm_user_id');
                 $table->increments('id');
                 $table->integer('user_id')->default(0);
                 $table->integer('perm_type')->unsigned()->nullable();
@@ -32,7 +30,7 @@ class CreatePermUsersTable extends XotBaseMigration
                 $table->string('updated_by')->nullable();
             }
         );
-        //-- UPDATE --
+        // -- UPDATE --
         $this->tableUpdate(
             function (Blueprint $table) {
                 if ($this->hasColumn('auth_user_id') && ! $this->hasColumn('user_id')) {

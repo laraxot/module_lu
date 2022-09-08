@@ -27,9 +27,7 @@ trait UserMutator {
         $this->attributes['handle'] = ucfirst($value);
     }
 
-    /**
-     */
-    public function getHandleAttribute(?string $value):string {
+    public function getHandleAttribute(?string $value): string {
         if (null !== $value) {
             return $value;
         }
@@ -37,13 +35,11 @@ trait UserMutator {
         return 'user-'.$this->id;
     }
 
-    public function getGuidAttribute(?string $value):string {
+    public function getGuidAttribute(?string $value): string {
         return Str::slug($this->handle);
     }
 
-    /**
-     */
-    public function getFullNameAttribute(?string $value):string {
+    public function getFullNameAttribute(?string $value): string {
         return Str::upper($this->first_name.' '.$this->last_name);
     }
 }

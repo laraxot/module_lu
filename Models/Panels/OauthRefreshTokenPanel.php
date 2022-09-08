@@ -5,10 +5,8 @@ declare(strict_types=1);
 namespace Modules\LU\Models\Panels;
 
 use Illuminate\Http\Request;
-use Modules\Xot\Contracts\RowsContract;
 // --- Services --
 
-use Modules\LU\Models\OauthRefreshToken;
 use Modules\Xot\Models\Panels\XotBasePanel;
 
 class OauthRefreshTokenPanel extends XotBasePanel {

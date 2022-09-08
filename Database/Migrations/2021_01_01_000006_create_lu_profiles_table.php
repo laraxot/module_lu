@@ -3,14 +3,13 @@
 declare(strict_types=1);
 
 use Illuminate\Database\Schema\Blueprint;
-//----- models-------
-use Modules\Xot\Database\Migrations\XotBaseMigration;  //blog o food ?
+// ----- models-------
+use Modules\Xot\Database\Migrations\XotBaseMigration;  // blog o food ?
 
 /**
  * Class CreateProfilesTable.
  */
-class CreateLuProfilesTable extends XotBaseMigration
-{
+class CreateLuProfilesTable extends XotBaseMigration {
     protected ?string $model_class = \Modules\LU\Models\Profile::class;
 
     /**
@@ -18,23 +17,22 @@ class CreateLuProfilesTable extends XotBaseMigration
      *
      * @return void
      */
-    public function up()
-    {
-        //-- CREATE --
+    public function up() {
+        // -- CREATE --
         $this->tableCreate(
             function (Blueprint $table) {
-                $table->increments('id'); //->primary();//->primary();
+                $table->increments('id'); // ->primary();//->primary();
                 $table->string('post_type', 191)->nullable()->index();
-                //$table->string('article_type',50)->nullable();
-                //$table->datetime('published_at')->nullable();
+                // $table->string('article_type',50)->nullable();
+                // $table->datetime('published_at')->nullable();
                 $table->text('bio')->nullable();
                 $table->timestamps();
             }
         );
-        //-- UPDATE --
+        // -- UPDATE --
         $this->tableUpdate(
             function (Blueprint $table) {
-                //------- add
+                // ------- add
                 if (! $this->hasColumn('created_by')) {
                     $table->string('created_by')->nullable();
                 }
@@ -69,9 +67,9 @@ class CreateLuProfilesTable extends XotBaseMigration
                 }
 
                 if ($this->hasColumn('post_id')) {
-                    //$table->dropPrimary('post_id');
+                    // $table->dropPrimary('post_id');
                     $table->renameColumn('post_id', 'id');
-                    //$table->primary('id');
+                    // $table->primary('id');
                 }
                 if (! $this->hasColumn('zibibbo')) {
                     $table->string('zibibbo')->nullable();

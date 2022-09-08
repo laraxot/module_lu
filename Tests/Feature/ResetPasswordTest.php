@@ -80,7 +80,8 @@ class ResetPasswordTest extends TestCase {
         $url = $this->passwordResetPostRoute();
 
         $response = $this->post(
-            $url, [
+            $url,
+            [
                 'token' => $this->getValidToken($user),
                 'email' => $user->email,
                 'password' => 'new-awesome-password',
@@ -110,7 +111,8 @@ class ResetPasswordTest extends TestCase {
 
         $response = $this->from($url)
             ->post(
-                $this->passwordResetPostRoute(), [
+                $this->passwordResetPostRoute(),
+                [
                     'token' => $this->getInvalidToken(),
                     'email' => $user->email,
                     'password' => 'new-awesome-password',
@@ -132,7 +134,8 @@ class ResetPasswordTest extends TestCase {
         );
 
         $response = $this->from($this->passwordResetGetRoute($token = $this->getValidToken($user)))->post(
-            $this->passwordResetPostRoute(), [
+            $this->passwordResetPostRoute(),
+            [
                 'token' => $token,
                 'email' => $user->email,
                 'password' => '',
@@ -157,7 +160,8 @@ class ResetPasswordTest extends TestCase {
         );
 
         $response = $this->from($this->passwordResetGetRoute($token = $this->getValidToken($user)))->post(
-            $this->passwordResetPostRoute(), [
+            $this->passwordResetPostRoute(),
+            [
                 'token' => $token,
                 'email' => '',
                 'password' => 'new-awesome-password',

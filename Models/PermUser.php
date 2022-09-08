@@ -9,27 +9,28 @@ use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 
 /**
- * Modules\LU\Models\PermUser
+ * Modules\LU\Models\PermUser.
  *
- * @property int $id
- * @property int $user_id
- * @property int|null $perm_type
- * @property string $auth_container_name
- * @property \Illuminate\Support\Carbon|null $created_at
- * @property \Illuminate\Support\Carbon|null $updated_at
- * @property string|null $created_by
- * @property string|null $updated_by
- * @property-read \Illuminate\Database\Eloquent\Collection|\Modules\LU\Models\AreaPermUser[] $areaPermUsers
- * @property-read int|null $area_perm_users_count
- * @property-read \Illuminate\Database\Eloquent\Collection|\Modules\LU\Models\Area[] $areas
- * @property-read int|null $areas_count
- * @property-read \Illuminate\Database\Eloquent\Collection|\Modules\LU\Models\GroupPermUser[] $groupPermUsers
- * @property-read int|null $group_perm_users_count
- * @property-read \Illuminate\Database\Eloquent\Collection|\Modules\LU\Models\Group[] $groups
- * @property-read int|null $groups_count
- * @property-read \Illuminate\Database\Eloquent\Collection|\Modules\LU\Models\Right[] $rights
- * @property-read int|null $rights_count
- * @property-read \Modules\LU\Models\User|null $user
+ * @property int                                                                         $id
+ * @property int                                                                         $user_id
+ * @property int|null                                                                    $perm_type
+ * @property string                                                                      $auth_container_name
+ * @property \Illuminate\Support\Carbon|null                                             $created_at
+ * @property \Illuminate\Support\Carbon|null                                             $updated_at
+ * @property string|null                                                                 $created_by
+ * @property string|null                                                                 $updated_by
+ * @property \Illuminate\Database\Eloquent\Collection|\Modules\LU\Models\AreaPermUser[]  $areaPermUsers
+ * @property int|null                                                                    $area_perm_users_count
+ * @property \Illuminate\Database\Eloquent\Collection|\Modules\LU\Models\Area[]          $areas
+ * @property int|null                                                                    $areas_count
+ * @property \Illuminate\Database\Eloquent\Collection|\Modules\LU\Models\GroupPermUser[] $groupPermUsers
+ * @property int|null                                                                    $group_perm_users_count
+ * @property \Illuminate\Database\Eloquent\Collection|\Modules\LU\Models\Group[]         $groups
+ * @property int|null                                                                    $groups_count
+ * @property \Illuminate\Database\Eloquent\Collection|\Modules\LU\Models\Right[]         $rights
+ * @property int|null                                                                    $rights_count
+ * @property \Modules\LU\Models\User|null                                                $user
+ *
  * @method static \Modules\LU\Database\Factories\PermUserFactory factory(...$parameters)
  * @method static \Illuminate\Database\Eloquent\Builder|PermUser newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|PermUser newQuery()
@@ -42,6 +43,7 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
  * @method static \Illuminate\Database\Eloquent\Builder|PermUser whereUpdatedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|PermUser whereUpdatedBy($value)
  * @method static \Illuminate\Database\Eloquent\Builder|PermUser whereUserId($value)
+ *
  * @mixin \Eloquent
  */
 class PermUser extends BaseModel {

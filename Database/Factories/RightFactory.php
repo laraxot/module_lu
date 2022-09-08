@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace Modules\LU\Database\Factories;
 
-use Modules\LU\Models\Right;
 use Illuminate\Database\Eloquent\Factories\Factory;
+use Modules\LU\Models\Right;
 
 class RightFactory extends Factory {
     /**
@@ -23,7 +23,7 @@ class RightFactory extends Factory {
     public function definition() {
         return [
             'id' => $this->faker->randomNumber(5, false),
-            //'area_id' => $this->faker->randomNumber(5, false),
+            // 'area_id' => $this->faker->randomNumber(5, false),
             'right_define_name' => $this->faker->word,
             'has_implied' => $this->faker->word,
             'has_level' => $this->faker->word,

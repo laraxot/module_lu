@@ -5,7 +5,6 @@ declare(strict_types=1);
 namespace Modules\LU\Models\Panels;
 
 use Illuminate\Http\Request;
-use Modules\Xot\Contracts\RowsContract;
 // --- Services --
 
 use Modules\Xot\Models\Panels\XotBasePanel;
@@ -20,7 +19,6 @@ class OauthClientPanel extends XotBasePanel {
      * The single value that should be used to represent the resource when being displayed.
      */
     public static string $title = 'title';
-
 
     /**
      * Get the fields displayed by the resource.

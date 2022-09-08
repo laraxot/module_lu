@@ -53,7 +53,7 @@ class ProfilePanel extends XotBasePanel {
      */
     public function optionLabel($row): string {
         // [2022-08-17 13:06:20] local.ERROR: [162][Profile]
-        if(is_null($this->row->user)){
+        if (is_null($this->row->user)) {
             return '';
         }
         // return $row->area_define_name;
@@ -215,7 +215,8 @@ class ProfilePanel extends XotBasePanel {
         Auth::guard()->login($user, true);
         // $this->guard()->login($user); ???
         Session::flash(
-            'swal', [
+            'swal',
+            [
                 'type' => 'success',
                 'title' => trans('food::profile.store_success.title'),
                 'text' => trans('food::profile.store_success.text'),

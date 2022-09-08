@@ -5,14 +5,14 @@ declare(strict_types=1);
 namespace Modules\LU\Notifications;
 
 use Exception;
-use Modules\LU\Models\User;
 use Illuminate\Bus\Queueable;
-use Illuminate\Support\Carbon;
-use Illuminate\Support\Facades\URL;
-use Illuminate\Support\Facades\Lang;
-use Illuminate\Support\Facades\Config;
-use Illuminate\Notifications\Notification;
 use Illuminate\Notifications\Messages\MailMessage;
+use Illuminate\Notifications\Notification;
+use Illuminate\Support\Carbon;
+use Illuminate\Support\Facades\Config;
+use Illuminate\Support\Facades\Lang;
+use Illuminate\Support\Facades\URL;
+use Modules\LU\Models\User;
 
 /**
  * Class VerifyEmail.
@@ -75,15 +75,16 @@ class VerifyEmail extends Notification {
         if (static::$toMailCallback) {
             return \call_user_func(static::$toMailCallback, $notifiable);
         }
-        $subj=Lang::getFromJson('Verify Email Address');
-        if(is_array($subj)){
-            $subj=implode('-',$subj);
+        $subj = Lang::getFromJson('Verify Email Address');
+        if (is_array($subj)) {
+            $subj = implode('-', $subj);
         }
 
-        $action_url=$this->verificationUrl($notifiable);
-        if(!is_string($action_url)){
+        $action_url = $this->verificationUrl($notifiable);
+        if (! is_string($action_url)) {
             throw new Exception('['.__LINE__.']['.__FILE__.']');
         }
+
         return (new MailMessage())
             ->subject($subj)
             ->markdown('lu::notifications.email', ['subcopy' => 'subcopy']) // , ['user' => $this->user]

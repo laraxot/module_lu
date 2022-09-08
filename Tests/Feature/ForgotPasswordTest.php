@@ -65,7 +65,8 @@ class ForgotPasswordTest extends TestCase {
         $user = User::inRandomOrder()->first();
 
         $response = $this->post(
-            $this->passwordEmailPostRoute(), [
+            $this->passwordEmailPostRoute(),
+            [
                 'email' => $user->email,
             ]
         );
@@ -127,7 +128,8 @@ class ForgotPasswordTest extends TestCase {
 
     public function testEmailIsAValidEmail() {
         $response = $this->from($this->passwordEmailGetRoute())->post(
-            $this->passwordEmailPostRoute(), [
+            $this->passwordEmailPostRoute(),
+            [
                 'email' => 'invalid-email',
             ]
         );

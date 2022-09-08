@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace Modules\LU\Database\Factories;
 
-use Modules\LU\Models\Notification;
 use Illuminate\Database\Eloquent\Factories\Factory;
+use Modules\LU\Models\Notification;
 
 /**
  * Undocumented class.
@@ -28,7 +28,7 @@ class NotificationFactory extends Factory {
             'id' => $this->faker->word,
             'type' => $this->faker->word,
             'notifiable_type' => $this->faker->word,
-            //'notifiable_id' => $this->faker->randomNumber(5, false),
+            // 'notifiable_id' => $this->faker->randomNumber(5, false),
             'data' => $this->faker->text,
             'read_at' => $this->faker->dateTime,
             'created_at' => $this->faker->dateTime,

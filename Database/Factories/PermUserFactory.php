@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace Modules\LU\Database\Factories;
 
-use Modules\LU\Models\PermUser;
 use Illuminate\Database\Eloquent\Factories\Factory;
+use Modules\LU\Models\PermUser;
 
 class PermUserFactory extends Factory {
     /**

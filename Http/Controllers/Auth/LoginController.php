@@ -90,9 +90,9 @@ class LoginController extends Controller {
         $piece = 'auth.login';
         FileService::viewCopy('lu::'.$piece, 'pub_theme::'.$piece);
 
-        /** 
-        * @phpstan-var view-string
-        */
+        /**
+         * @phpstan-var view-string
+         */
         $view = 'pub_theme::'.$piece;
 
         $view_params = [
@@ -128,7 +128,7 @@ class LoginController extends Controller {
             $data['username'] = $data['ente'].'-'.$data['matr'];
         }
         $user = null;
-       
+
         if (isset($data['username'])) {
             $user = User::query()->where($username_field, $data['username'])->first();
         }
@@ -138,7 +138,7 @@ class LoginController extends Controller {
         if (isset($data['user_email'])) {
             $user = User::query()->where('email', $data['user_email'])->first();
         }
-        
+
         if (isset($user) && isset($data['password']) && $user->passwd === md5($data['password'])) {
             $this->clearLoginAttempts($request);
             // dd($user);
@@ -149,9 +149,9 @@ class LoginController extends Controller {
                 return response()->json(['redirect' => '.', 'msg' => 'attendere']);
             }
 
-            //return $out;
+            // return $out;
         // 179    Unreachable statement - code above always terminates.
-             return $this->sendLoginResponse($request); //use authenticated
+            return $this->sendLoginResponse($request); // use authenticated
         } else {
             $this->incrementLoginAttempts($request);
             if ($request->ajax()) {
@@ -212,7 +212,8 @@ class LoginController extends Controller {
             return response()->json(
                 [
                     'error' => 'auth.failed',
-                ], 401
+                ],
+                401
             );
         }
 

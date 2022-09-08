@@ -5,26 +5,24 @@ declare(strict_types=1);
 use Illuminate\Database\Schema\Blueprint;
 use Modules\Xot\Database\Migrations\XotBaseMigration;
 
-//--- models --
+// --- models --
 
 /**
  * Class CreateAreaPermUserTable.
  */
-class CreateAreaPermUserTable extends XotBaseMigration
-{
+class CreateAreaPermUserTable extends XotBaseMigration {
     /**
      * Run the migrations.
      *
      * @return void
      */
-    public function up()
-    {
-        //-- senza il prefix !
+    public function up() {
+        // -- senza il prefix !
         $old_table = 'area_admin_areas';
         if ($this->getConn()->hasTable($old_table)) {
             $this->getConn()->rename($old_table, $this->getTable());
         }
-        //-- CREATE --
+        // -- CREATE --
         $this->tableCreate(
             function (Blueprint $table) {
                 $table->increments('id');
@@ -37,7 +35,7 @@ class CreateAreaPermUserTable extends XotBaseMigration
             }
         );
 
-        //-- UPDATE --
+        // -- UPDATE --
         $this->tableUpdate(
             function (Blueprint $table) {
                 if (! $this->hasColumn('created_by')) {

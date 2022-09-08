@@ -22,8 +22,8 @@ class RightImpliedFactory extends Factory {
      */
     public function definition() {
         return [
-            //'right_id' => $this->faker->randomNumber(5, false),
-            //'implied_right_id' => $this->faker->randomNumber(5, false),
+            // 'right_id' => $this->faker->randomNumber(5, false),
+            // 'implied_right_id' => $this->faker->randomNumber(5, false),
         ];
     }
 }

@@ -13,29 +13,30 @@ use Spatie\EloquentSortable\SortableTrait;
 use Staudenmeir\EloquentHasManyDeep\HasRelationships;
 
 /**
- * Modules\LU\Models\Area
+ * Modules\LU\Models\Area.
  *
- * @property int $id
- * @property int $application_id
- * @property string $area_define_name
- * @property string $db
- * @property string $img
- * @property string $icons
- * @property int $ordine
- * @property string $controller_path
- * @property \Illuminate\Support\Carbon|null $created_at
- * @property \Illuminate\Support\Carbon|null $updated_at
- * @property string|null $created_by
- * @property string|null $updated_by
- * @property int|null $order_column
- * @property-read string $guid
- * @property-read bool|mixed|string $icon_src
- * @property-read string|null $title
- * @property-read \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\Routing\UrlGenerator|string $url
- * @property-read \Illuminate\Database\Eloquent\Collection|\Modules\LU\Models\PermUser[] $permUsers
- * @property-read int|null $perm_users_count
- * @property-read \Illuminate\Database\Eloquent\Collection|\Modules\LU\Models\PermUser[] $perms
- * @property-read int|null $perms_count
+ * @property int                                                                                            $id
+ * @property int                                                                                            $application_id
+ * @property string                                                                                         $area_define_name
+ * @property string                                                                                         $db
+ * @property string                                                                                         $img
+ * @property string                                                                                         $icons
+ * @property int                                                                                            $ordine
+ * @property string                                                                                         $controller_path
+ * @property \Illuminate\Support\Carbon|null                                                                $created_at
+ * @property \Illuminate\Support\Carbon|null                                                                $updated_at
+ * @property string|null                                                                                    $created_by
+ * @property string|null                                                                                    $updated_by
+ * @property int|null                                                                                       $order_column
+ * @property string                                                                                         $guid
+ * @property bool|mixed|string                                                                              $icon_src
+ * @property string|null                                                                                    $title
+ * @property \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\Routing\UrlGenerator|string $url
+ * @property \Illuminate\Database\Eloquent\Collection|\Modules\LU\Models\PermUser[]                         $permUsers
+ * @property int|null                                                                                       $perm_users_count
+ * @property \Illuminate\Database\Eloquent\Collection|\Modules\LU\Models\PermUser[]                         $perms
+ * @property int|null                                                                                       $perms_count
+ *
  * @method static \Modules\LU\Database\Factories\AreaFactory factory(...$parameters)
  * @method static \Illuminate\Database\Eloquent\Builder|Area newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|Area newQuery()
@@ -54,6 +55,7 @@ use Staudenmeir\EloquentHasManyDeep\HasRelationships;
  * @method static \Illuminate\Database\Eloquent\Builder|Area whereOrdine($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Area whereUpdatedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Area whereUpdatedBy($value)
+ *
  * @mixin \Eloquent
  */
 class Area extends BaseModel implements Sortable {
@@ -191,7 +193,7 @@ class Area extends BaseModel implements Sortable {
      * @return string
      */
     public function getGuidAttribute($value) {
-        if (null == ($this->area_define_name)) {
+        if (null == $this->area_define_name) {
             throw new Exception('['.__LINE__.']['.class_basename(__CLASS__).']');
         }
 

@@ -35,35 +35,35 @@ class RightPanel extends XotBasePanel {
      */
     public function fields(): array {
         return [
-            (object) ([
+            (object) [
                 'type' => 'Id',
                 'name' => 'id',
                 'comment' => null,
-            ]),
-            (object) ([
+            ],
+            (object) [
                 'type' => 'Integer',
                 'name' => 'area_id',
 
                 'comment' => null,
-            ]),
-            (object) ([
+            ],
+            (object) [
                 'type' => 'String',
                 'name' => 'right_define_name',
 
                 'comment' => null,
-            ]),
-            (object) ([
+            ],
+            (object) [
                 'type' => 'String',
                 'name' => 'has_implied',
 
                 'comment' => null,
-            ]),
-            (object) ([
+            ],
+            (object) [
                 'type' => 'String',
                 'name' => 'has_level',
 
                 'comment' => null,
-            ]),
+            ],
         ];
     }
 }

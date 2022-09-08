@@ -35,7 +35,8 @@ class EmailVerificationTest extends TestCase {
 
     protected function validVerificationVerifyRoute($user) {
         return URL::signedRoute(
-            $this->verificationVerifyRouteName, [
+            $this->verificationVerifyRouteName,
+            [
                 'id' => $user->getKey(),
                 'hash' => sha1($user->getEmailForVerification()),
             ]
@@ -44,7 +45,8 @@ class EmailVerificationTest extends TestCase {
 
     protected function invalidVerificationVerifyRoute($user) {
         return route(
-            $this->verificationVerifyRouteName, [
+            $this->verificationVerifyRouteName,
+            [
                 'id' => $user->getKey(),
                 'hash' => 'invalid-hash',
             ]

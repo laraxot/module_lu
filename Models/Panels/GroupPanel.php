@@ -29,12 +29,10 @@ class GroupPanel extends XotBasePanel {
      */
     protected static array $search = [];
 
-    
     /**
-     * Undocumented function
+     * Undocumented function.
      *
      * @param Group $row
-     * @return string
      */
     public function optionLabel($row): string {
         // dddx($row instanceof Group);//true !!!

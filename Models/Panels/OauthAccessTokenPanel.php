@@ -8,7 +8,6 @@ use Illuminate\Http\Request;
 use Modules\LU\Models\OauthAccessToken;
 // --- Services --
 
-use Modules\Xot\Contracts\RowsContract;
 use Modules\Xot\Models\Panels\XotBasePanel;
 
 class OauthAccessTokenPanel extends XotBasePanel {
@@ -22,44 +21,43 @@ class OauthAccessTokenPanel extends XotBasePanel {
      */
     public static string $title = 'title';
 
-
     /**
      * Get the fields displayed by the resource.
         'value'=>'..',
      */
     public function fields(): array {
         return [
-             (object) [
+            (object) [
                 'type' => 'Text',
                 'name' => 'id',
                 'comment' => 'not in Doctrine',
             ],
-             (object) [
+            (object) [
                 'type' => 'Text',
                 'name' => 'user_id',
                 'comment' => 'not in Doctrine',
             ],
-             (object) [
+            (object) [
                 'type' => 'Text',
                 'name' => 'client_id',
                 'comment' => 'not in Doctrine',
             ],
-             (object) [
+            (object) [
                 'type' => 'Text',
                 'name' => 'name',
                 'comment' => 'not in Doctrine',
             ],
-             (object) [
+            (object) [
                 'type' => 'Text',
                 'name' => 'scopes',
                 'comment' => 'not in Doctrine',
             ],
-             (object) [
+            (object) [
                 'type' => 'Text',
                 'name' => 'revoked',
                 'comment' => 'not in Doctrine',
             ],
-             (object) [
+            (object) [
                 'type' => 'Text',
                 'name' => 'expires_at',
                 'comment' => 'not in Doctrine',

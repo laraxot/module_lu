@@ -107,7 +107,8 @@ class CreateUserCommand extends Command {
                 'handle' => $handle,
                 'email' => $email,
                 'password' => $password,
-            ], [
+            ],
+            [
                 'handle' => ['required'],
                 'email' => ['required', 'email'/* , 'unique:staff,email' */],
                 'password' => ['required', 'min:6'],

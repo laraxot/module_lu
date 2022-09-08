@@ -25,8 +25,6 @@ class TestUsersWithLivewireAction extends XotBasePanelAction {
      * @return mixed
      */
     public function handle() {
-       
-
         // return $view;
         return $this->panel->view();
 

@@ -3,25 +3,23 @@
 declare(strict_types=1);
 
 use Illuminate\Database\Schema\Blueprint;
-//---- models ---
+// ---- models ---
 use Modules\Xot\Database\Migrations\XotBaseMigration;
 
 /**
  * Class CreateLiveuserUsersTable.
  */
-class CreateUsersTable extends XotBaseMigration
-{
+class CreateUsersTable extends XotBaseMigration {
     /**
      * Run the migrations.
      *
      * @return void
      */
-    public function up()
-    {
-        //-- CREATE --
+    public function up() {
+        // -- CREATE --
         $this->tableCreate(
             function (Blueprint $table) {
-                //$table->increments('user_id');
+                // $table->increments('user_id');
                 $table->increments('id');
                 $table->string('handle', 32)->nullable()->default('')->index('handle');
                 $table->string('passwd', 32)->nullable()->default('');
@@ -52,7 +50,7 @@ class CreateUsersTable extends XotBaseMigration
             }
         );
 
-        //-- UPDATE --
+        // -- UPDATE --
         $this->tableUpdate(
             function (Blueprint $table) {
                 if (! $this->hasColumn('first_name')) {
@@ -78,7 +76,7 @@ class CreateUsersTable extends XotBaseMigration
         );
     }
 
-    //end up
+    // end up
 
-    //end down
+    // end down
 }

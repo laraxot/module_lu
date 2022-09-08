@@ -26,23 +26,23 @@ class GroupRightPanel extends XotBasePanel {
      */
     public function fields(): array {
         return [
-            (object) ([
+            (object) [
                 'type' => 'Integer',
                 'name' => 'group_id',
                 'rules' => 'required',
                 'comment' => null,
-            ]),
-            (object) ([
+            ],
+            (object) [
                 'type' => 'Integer',
                 'name' => 'right_id',
                 'rules' => 'required',
                 'comment' => null,
-            ]),
-            (object) ([
+            ],
+            (object) [
                 'type' => 'Boolean',
                 'name' => 'right_level',
                 'comment' => null,
-            ]),
+            ],
         ];
     }
 }

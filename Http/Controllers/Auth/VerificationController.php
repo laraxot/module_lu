@@ -4,10 +4,10 @@ declare(strict_types=1);
 
 namespace Modules\LU\Http\Controllers\Auth;
 
-use Exception;
-use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Exception;
 use Illuminate\Foundation\Auth\VerifiesEmails;
+use Illuminate\Http\Request;
 use Modules\Xot\Contracts\UserContract;
 
 /**
@@ -48,8 +48,8 @@ class VerificationController extends Controller {
      */
     public function show(Request $request) {
         /**
-        * @phpstan-var view-string
-        */
+         * @phpstan-var view-string
+         */
         $view = 'lu::auth.verify';
         $view_params = [
             'view' => $view,
@@ -57,10 +57,11 @@ class VerificationController extends Controller {
         /**
          * @var UserContract
          */
-        $user=$request->user();
-        if($user==null){
+        $user = $request->user();
+        if (null == $user) {
             throw new Exception('['.__LINE__.']['.__FILE__.']');
         }
+
         return $user->hasVerifiedEmail()
             ? redirect($this->redirectPath())
             : response()->view($view, $view_params);

@@ -85,7 +85,7 @@ class UserController extends Controller {
 
     /*
      * handle user registration request.
-     
+
     public function registerUserExample(Request $request): JsonResponse {
         $this->validate($request, [
             'name' => 'required',
@@ -108,7 +108,7 @@ class UserController extends Controller {
         // return the access token we generated in the above step
         return response()->json(['token' => $access_token_example], 200);
     }
-    */ 
+    */
     public function getCurrentUser(): JsonResponse {
         return response()->json(['user' => Auth::user()]);
     }

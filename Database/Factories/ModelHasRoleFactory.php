@@ -5,9 +5,6 @@ declare(strict_types=1);
 namespace Modules\LU\Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
-use Illuminate\Support\Str;
-
-use Modules\LU\Models\ModelHasRole;
 
 class ModelHasRoleFactory extends Factory {
     /**
@@ -23,10 +20,7 @@ class ModelHasRoleFactory extends Factory {
      * @return array
      */
     public function definition() {
-       
-
         return [
-            
         ];
     }
 }

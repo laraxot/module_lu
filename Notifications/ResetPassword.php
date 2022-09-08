@@ -77,7 +77,7 @@ class ResetPassword extends Notification {
 
         return $mail;
         // ->greeting(trans('lu::notifications.reset_password.greeting', ['username' => $this->username]))
-            // ->markdown($markdown, ['subcopy' => 'subcopy'])
+        // ->markdown($markdown, ['subcopy' => 'subcopy'])
 
         /*
         return (new MailMessage())
@@ -107,12 +107,12 @@ class ResetPassword extends Notification {
              ->line(Lang::getFromJson('If you did not request a password reset, no further action is required.'));*/
 
         // */
-            /*
+        /*
         $reset_password_url=url(route('password.reset', $this->token, false));
         return (new MailMessage())
-            ->subject(Lang::getFromJson('Verify Email Address'))
-            ->greeting('Hello!')
-            ->view('lu::mail.reset_password',['reset_password_url'=>$reset_password_url])
+        ->subject(Lang::getFromJson('Verify Email Address'))
+        ->greeting('Hello!')
+        ->view('lu::mail.reset_password',['reset_password_url'=>$reset_password_url])
         */
     }
 }

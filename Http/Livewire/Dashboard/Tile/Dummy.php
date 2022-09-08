@@ -4,10 +4,7 @@ declare(strict_types=1);
 
 namespace Modules\LU\Http\Livewire\Dashboard\Tile;
 
-use Exception;
 use Illuminate\Contracts\Support\Renderable;
-use Illuminate\Database\Eloquent\Model;
-use Illuminate\Support\Facades\Auth;
 use Livewire\Component;
 
 /**
@@ -18,25 +15,23 @@ class Dummy extends Component {
     public $position;
 
     /**
-     * Undocumented function
+     * Undocumented function.
      *
-     * @param string $position
      * @return void
      */
-    public function mount(string $position){
+    public function mount(string $position) {
         $this->position = $position;
     }
 
     /**
-     * Undocumented function
-     *
-     * @return Renderable
+     * Undocumented function.
      */
-    public function render():Renderable{
+    public function render(): Renderable {
         /**
          * @phpstan-var view-string
          */
-        $view='lu::livewire.dashboard.tile.dummy';
+        $view = 'lu::livewire.dashboard.tile.dummy';
+
         return view($view);
     }
 }
