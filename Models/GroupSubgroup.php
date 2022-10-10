@@ -9,16 +9,15 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 /**
  * Modules\LU\Models\GroupSubgroup.
  *
- * @property int                                                                         $id
- * @property int                                                                         $group_id
- * @property int                                                                         $subgroup_id
- * @property \Illuminate\Support\Carbon|null                                             $created_at
- * @property \Illuminate\Support\Carbon|null                                             $updated_at
- * @property string|null                                                                 $created_by
- * @property string|null                                                                 $updated_by
- * @property \Illuminate\Database\Eloquent\Collection|\Modules\LU\Models\GroupPermUser[] $groupPermUsers
- * @property int|null                                                                    $group_perm_users_count
- *
+ * @property int $id
+ * @property int $group_id
+ * @property int $subgroup_id
+ * @property \Illuminate\Support\Carbon|null $created_at
+ * @property \Illuminate\Support\Carbon|null $updated_at
+ * @property string|null $created_by
+ * @property string|null $updated_by
+ * @property-read \Illuminate\Database\Eloquent\Collection|\Modules\LU\Models\GroupPermUser[] $groupPermUsers
+ * @property-read int|null $group_perm_users_count
  * @method static \Modules\LU\Database\Factories\GroupSubgroupFactory factory(...$parameters)
  * @method static \Illuminate\Database\Eloquent\Builder|GroupSubgroup newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|GroupSubgroup newQuery()
@@ -30,7 +29,6 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
  * @method static \Illuminate\Database\Eloquent\Builder|GroupSubgroup whereSubgroupId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|GroupSubgroup whereUpdatedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|GroupSubgroup whereUpdatedBy($value)
- *
  * @mixin \Eloquent
  */
 class GroupSubgroup extends BaseModel {
