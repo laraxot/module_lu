@@ -4,17 +4,18 @@ declare(strict_types=1);
 
 namespace Modules\LU\Models\Traits\Relationships;
 
-use Illuminate\Database\Eloquent\Relations\HasMany;
-use Illuminate\Database\Eloquent\Relations\HasManyThrough;
-use Illuminate\Database\Eloquent\Relations\HasOne;
+use Exception;
 use Modules\LU\Models\Area;
-use Modules\LU\Models\AreaPermUser;
-use Modules\LU\Models\GroupPermUser;
 use Modules\LU\Models\PermUser;
+use Modules\LU\Models\AreaPermUser;
+use Nwidart\Modules\Facades\Module;
+use Modules\LU\Models\GroupPermUser;
 use Modules\LU\Models\PermUserRight;
 use Modules\LU\Models\SocialProvider;
 use Modules\Tenant\Services\TenantService;
-use Nwidart\Modules\Facades\Module;
+use Illuminate\Database\Eloquent\Relations\HasOne;
+use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\HasManyThrough;
 
 /*
  * Undocumented trait.
@@ -46,6 +47,9 @@ trait UserRelationship {
         $profile_class = \get_class($profile);
         */
         $main_module = config('xra.main_module');
+        if($main_module==''){
+            throw new Exception('set [xra.main_module]');
+        }
         $profile_class = 'Modules\\'.$main_module.'\Models\Profile';
 
         return $this->hasOne($profile_class);
