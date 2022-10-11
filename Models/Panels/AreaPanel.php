@@ -70,6 +70,7 @@ class AreaPanel extends XotBasePanel {
             (object) [
                 'type' => 'String',
                 'name' => 'area_define_name',
+                'rules' => 'required',
             ],
         ];
     }
