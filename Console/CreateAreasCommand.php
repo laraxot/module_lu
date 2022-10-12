@@ -71,6 +71,9 @@ class CreateAreasCommand extends Command {
                 // , int  given.
                 // $u->areas()->syncWithoutDetaching($area->area_id);
                 $u->areas()->syncWithoutDetaching([$area->id]);
+                
+                // a volte crea PermUser e User e li associa male. Tipo PermUser associato ad user_id 19 che non esiste
+                // dd($u->user);
                 /**
                  * @var User;
                  */
