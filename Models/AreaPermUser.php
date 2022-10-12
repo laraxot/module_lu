@@ -78,7 +78,7 @@ class AreaPermUser extends BasePivot {
         return $title;
     }
 
-    /*
+    //era commentata e dava errore su admin/lu/users che questo metodo era undefined
     public function getUrlAttribute(?string $value): ?string
     {
         $area = $this->area;
@@ -91,7 +91,7 @@ class AreaPermUser extends BasePivot {
 
         return $area->url;
     }
-    */
+    
 
     public function getIconSrcAttribute(?string $value): ?string {
         $area = $this->area;
