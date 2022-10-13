@@ -109,8 +109,10 @@ class ProfileService {
     public function get($user): self {
         if (\is_object($user)) {
             $this->user = $user;
-            $profile = $user->profile;
 
+          
+            $profile = $user->profile;
+          
             if (null === $profile) {
                 // $profile_model = $user->profile()->getRelated();
                 // dddx($user->getKey());
@@ -318,7 +320,6 @@ class ProfileService {
     public function getProfileClass(): string {
         $main_module = $this->xot['main_module'];
         $class = 'Modules\\'.$main_module.'\Models\Profile';
-
         return $class;
     }
 
