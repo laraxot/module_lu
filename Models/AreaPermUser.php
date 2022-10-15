@@ -23,6 +23,7 @@ use Modules\Theme\Services\ThemeService;
  * @property-read string|null $area_define_name
  * @property-read string|null $icon_src
  * @property-read string|null $title
+ * @property-read string|null $url
  * @property-read \Modules\LU\Models\PermUser|null $permUser
  * @method static \Modules\LU\Database\Factories\AreaPermUserFactory factory(...$parameters)
  * @method static \Illuminate\Database\Eloquent\Builder|AreaPermUser newModelQuery()
