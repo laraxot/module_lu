@@ -39,7 +39,7 @@ class GroupRightPanel extends XotBasePanel {
                 'comment' => null,
             ],
             (object) [
-                'type' => 'Boolean',
+                'type' => 'CheckboxBoolean',
                 'name' => 'right_level',
                 'comment' => null,
             ],
