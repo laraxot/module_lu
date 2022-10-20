@@ -58,17 +58,17 @@ class NotificationPanel extends XotBasePanel {
                 'comment' => null,
             ],
             (object) [
-                'type' => 'Datetime',
+                'type' => 'DateDateTime',
                 'name' => 'read_at',
                 'comment' => null,
             ],
             (object) [
-                'type' => 'Datetime',
+                'type' => 'DateDateTime',
                 'name' => 'created_at',
                 'comment' => null,
             ],
             (object) [
-                'type' => 'Datetime',
+                'type' => 'DateDateTime',
                 'name' => 'updated_at',
                 'comment' => null,
             ],

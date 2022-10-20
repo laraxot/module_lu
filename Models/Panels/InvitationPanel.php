@@ -38,7 +38,7 @@ class InvitationPanel extends XotBasePanel {
                 'comment' => null,
             ],
             (object) [
-                'type' => 'DateTime',
+                'type' => 'DateDateTime',
                 'name' => 'registered_at',
                 'comment' => null,
             ],

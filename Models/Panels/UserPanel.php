@@ -64,7 +64,7 @@ class UserPanel extends XotBasePanel {
     public function lastLoginFields(): array {
         return [
             (object) [
-                'type' => 'DateTime',
+                'type' => 'DateDateTime',
                 'name' => 'last_login_at',
                 'col_size' => 6,
                 'except' => ['edit', 'create'],
@@ -136,7 +136,7 @@ class UserPanel extends XotBasePanel {
             ],
             /*
             (object) [
-                'type' => 'DateTime',
+                'type' => 'DateDateTime',
                 'name' => 'last_login_at',
                 'col_size' => 6,
                 'except' => ['edit', 'create'],
