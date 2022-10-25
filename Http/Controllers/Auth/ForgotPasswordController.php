@@ -42,7 +42,14 @@ class ForgotPasswordController extends Controller {
      */
     public function showLinkRequestForm(Request $request) {
         // return ThemeService::getView(); //lu::auth.forgot_password.show_link_request_form
-        // return view('lu::auth.passwords.email');
+        // /**
+* @phpstan-var view-string
+*/
+$view='lu::auth.passwords.email';
+$view_params=[
+   'view'=>$view,
+];
+return view($view,$view_params);
         /*
         $lang = app()->getLocale();
         $locz = ['pub_theme', 'adm_theme', 'lu'];
