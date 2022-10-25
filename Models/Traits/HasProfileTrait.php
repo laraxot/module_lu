@@ -30,9 +30,9 @@ trait HasProfileTrait {
     */
 
     /**
-     * @return \Illuminate\Database\Eloquent\Relations\HasOne
-     *
      * @throws \ReflectionException
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasOne
      */
     public function profile() {
         $user_id = $this->getAttributeValue('user_id');

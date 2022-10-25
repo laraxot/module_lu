@@ -8,7 +8,6 @@ use Exception;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Str;
 use Modules\Xot\Contracts\PanelContract;
 use Modules\Xot\Contracts\UserContract;
 use Modules\Xot\Services\PanelService;
@@ -227,8 +226,6 @@ class ProfileService {
 
         return "https://www.gravatar.com/avatar/$email?d=$default&s=$size";
     }
-
-   
 
     // returns User email
     public function email(): ?string {

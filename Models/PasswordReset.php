@@ -7,12 +7,13 @@ namespace Modules\LU\Models;
 /**
  * Modules\LU\Models\PasswordReset.
  *
- * @property string $email
- * @property string $token
+ * @property string                          $email
+ * @property string                          $token
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
- * @property string|null $created_by
- * @property string|null $updated_by
+ * @property string|null                     $created_by
+ * @property string|null                     $updated_by
+ *
  * @method static \Modules\LU\Database\Factories\PasswordResetFactory factory(...$parameters)
  * @method static \Illuminate\Database\Eloquent\Builder|PasswordReset newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|PasswordReset newQuery()
@@ -23,6 +24,7 @@ namespace Modules\LU\Models;
  * @method static \Illuminate\Database\Eloquent\Builder|PasswordReset whereToken($value)
  * @method static \Illuminate\Database\Eloquent\Builder|PasswordReset whereUpdatedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|PasswordReset whereUpdatedBy($value)
+ *
  * @mixin \Eloquent
  */
 class PasswordReset extends BaseModel {
