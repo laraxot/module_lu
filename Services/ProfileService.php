@@ -228,37 +228,7 @@ class ProfileService {
         return "https://www.gravatar.com/avatar/$email?d=$default&s=$size";
     }
 
-    /**
-     * checks if profile has the role in $role_name.
-     *
-     * @param string $role_name
-     *
-     * @return bool
-     */
-    public function hasRole($role_name) {
-        if (null === $this->profile) {
-            return false;
-        }
-        $role = $this->role($role_name);
-
-        return \is_object($role);
-    }
-
-    /**
-     * returns Profile's role (example: final_custumer, pony_express, restaurant_owner, franchising_owner, etc).
-     *
-     * @param string $role_name
-     *
-     * @return mixed|null
-     */
-    public function role($role_name) {
-        if (null === $this->profile) {
-            return null;
-        }
-        $role_method = Str::camel($role_name); // bell_boy => bellBoy
-
-        return $this->profile->{$role_method};
-    }
+   
 
     // returns User email
     public function email(): ?string {
