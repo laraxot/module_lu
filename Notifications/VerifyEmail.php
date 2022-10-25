@@ -76,12 +76,12 @@ class VerifyEmail extends Notification {
             return \call_user_func(static::$toMailCallback, $notifiable);
         }
         $subj = Lang::getFromJson('Verify Email Address');
-        if (is_array($subj)) {
+        if (\is_array($subj)) {
             $subj = implode('-', $subj);
         }
 
         $action_url = $this->verificationUrl($notifiable);
-        if (! is_string($action_url)) {
+        if (! \is_string($action_url)) {
             throw new Exception('['.__LINE__.']['.__FILE__.']');
         }
 

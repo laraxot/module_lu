@@ -30,9 +30,9 @@ trait HasProfileTrait {
     */
 
     /**
-     * @throws \ReflectionException
-     *
      * @return \Illuminate\Database\Eloquent\Relations\HasOne
+     *
+     * @throws \ReflectionException
      */
     public function profile() {
         $user_id = $this->getAttributeValue('user_id');
@@ -45,7 +45,7 @@ trait HasProfileTrait {
             $user_id = 1; // lo associo all'admin
         }
         $profile_class = TenantService::model('profile');
-        if ('' == $profile_class) {
+        if ('' === $profile_class) {
             dddx('modifica config xra.php  aggiungi in model il profile');
         }
         $res = $this->hasOne(\get_class($profile_class), 'user_id', 'user_id');

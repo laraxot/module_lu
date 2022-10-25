@@ -24,7 +24,7 @@ class UserField implements CastsAttributes {
     public function get($model, $key, $value, $attributes) {
         // dddx(['model' => $model, 'key' => $key, 'value' => $value, 'attributes' => $attributes, 'data' => request()->all()]);
         // Access to an undefined property Illuminate\Database\Eloquent\Model::$user.
-        if (is_null($model->user)) {
+        if (null === $model->user) {
             return null;
         }
 
@@ -44,7 +44,7 @@ class UserField implements CastsAttributes {
     public function set($model, $key, $value, $attributes) {
         // Access to an undefined property Illuminate\Database\Eloquent\Model::$user.
         $user = $model->user;
-        if (null == $user) {
+        if (null === $user) {
             return [];
             /*
             dddx([

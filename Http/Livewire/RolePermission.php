@@ -41,7 +41,7 @@ class RolePermission extends Component {
 
     public function deleteRole(int $role_id): void {
         $role = Role::find($role_id);
-        if (null != $role) {
+        if (null !== $role) {
             $role->delete();
         }
         session()->flash('message', 'delete role ['.$role_id.']');
@@ -54,20 +54,20 @@ class RolePermission extends Component {
 
     public function deletePermission(int $permission_id): void {
         $perm = Permission::find($permission_id);
-        if (null != $perm) {
+        if (null !== $perm) {
             $perm->delete();
         }
         session()->flash('message', 'delete permission ['.$permission_id.']');
     }
 
     public function updateDataFromModal(string $modal_id, array $data): void {
-        if ('addRole' == $modal_id) {
+        if ('addRole' === $modal_id) {
             $role = Role::create([
                 'name' => $data['role_name'],
             ]);
             session()->flash('message', 'ok');
         }
-        if ('addPermission' == $modal_id) {
+        if ('addPermission' === $modal_id) {
             $permission = Permission::create([
                 'name' => $data['permission_name'],
             ]);

@@ -34,7 +34,7 @@ class UserController extends Controller {
             ]);
         }
         // if login succeed issue an access token for our user
-        if (is_null(Auth::user())) {
+        if (null === Auth::user()) {
             throw new Exception('['.__LINE__.']['.class_basename(__CLASS__).']');
         }
         $token = Auth::user()->createToken('Token Name')->accessToken;
@@ -67,7 +67,7 @@ class UserController extends Controller {
         }
 
         // if login succeed issue an access token for our user
-        if (is_null(Auth::user())) {
+        if (null === Auth::user()) {
             throw new Exception('['.__LINE__.']['.class_basename(__CLASS__).']');
         }
         $token = Auth::user()->createToken('Token Name')->accessToken;

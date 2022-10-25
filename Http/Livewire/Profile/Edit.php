@@ -36,11 +36,11 @@ class Edit extends Component {
 
     public function save(): void {
         // dddx([$this->form_data, Auth::user()->profile]);
-        if (is_null(Auth::user())) {
+        if (null === Auth::user()) {
             throw new Exception('['.__LINE__.']['.class_basename(__CLASS__).']');
         }
         $profile = Auth::user()->profile;
-        if (is_null($profile)) {
+        if (null === $profile) {
             throw new Exception('['.__LINE__.']['.class_basename(__CLASS__).']');
         }
         $profile->update($this->form_data);

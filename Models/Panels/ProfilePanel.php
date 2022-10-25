@@ -53,7 +53,7 @@ class ProfilePanel extends XotBasePanel {
      */
     public function optionLabel($row): string {
         // [2022-08-17 13:06:20] local.ERROR: [162][Profile]
-        if (is_null($this->row->user)) {
+        if (null === $this->row->user) {
             return '';
         }
         // return $row->area_define_name;
@@ -254,7 +254,7 @@ class ProfilePanel extends XotBasePanel {
         // 89     Access to an undefined property object::$perm_type
         $user_id = $this->row->getAttributeValue('user_id');
         $user = User::where('id', $user_id)->first();
-        if (null == $user) {
+        if (null === $user) {
             throw new Exception('['.__LINE__.']['.__FILE__.']');
         }
         try {

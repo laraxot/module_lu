@@ -9,10 +9,12 @@ use Laravel\Passport\RefreshToken as PassportRefreshToken;
 /**
  * Modules\LU\Models\OauthRefreshToken.
  *
- * @property-read \Modules\LU\Models\OauthAccessToken|null $accessToken
+ * @property \Modules\LU\Models\OauthAccessToken|null $accessToken
+ *
  * @method static \Illuminate\Database\Eloquent\Builder|OauthRefreshToken newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|OauthRefreshToken newQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|OauthRefreshToken query()
+ *
  * @mixin \Eloquent
  */
 class OauthRefreshToken extends PassportRefreshToken {

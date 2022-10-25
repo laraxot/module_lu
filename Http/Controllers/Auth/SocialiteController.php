@@ -133,7 +133,7 @@ class SocialiteController extends Controller {
         }
 
         // $user=User::firstOrCreate(['email',$socialUser->getEmail()])
-        if (null == $user) {
+        if (null === $user) {
             throw new Exception('['.__LINE__.']['.__FILE__.']');
         }
         $user->update(
@@ -145,7 +145,7 @@ class SocialiteController extends Controller {
         Auth::login($user, true);
         // auth()->login($user);
         // echo '<h3> redirect to ['.$this->redirectTo().']</h3>';
-        if (! is_string($this->redirectTo())) {
+        if (! \is_string($this->redirectTo())) {
             throw new Exception('['.__LINE__.']['.class_basename(__CLASS__).']');
         }
 

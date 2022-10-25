@@ -9,19 +9,20 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 /**
  * Modules\LU\Models\SocialProvider.
  *
- * @property int $id
- * @property int|null $user_id
- * @property string|null $provider_id
- * @property string|null $provider
- * @property string|null $token
+ * @property int                             $id
+ * @property int|null                        $user_id
+ * @property string|null                     $provider_id
+ * @property string|null                     $provider
+ * @property string|null                     $token
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
- * @property string|null $created_by
- * @property string|null $updated_by
- * @property string|null $name
- * @property string|null $email
- * @property string|null $avatar
- * @property-read \Modules\LU\Models\User|null $user
+ * @property string|null                     $created_by
+ * @property string|null                     $updated_by
+ * @property string|null                     $name
+ * @property string|null                     $email
+ * @property string|null                     $avatar
+ * @property \Modules\LU\Models\User|null    $user
+ *
  * @method static \Modules\LU\Database\Factories\SocialProviderFactory factory(...$parameters)
  * @method static \Illuminate\Database\Eloquent\Builder|SocialProvider newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|SocialProvider newQuery()
@@ -38,6 +39,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
  * @method static \Illuminate\Database\Eloquent\Builder|SocialProvider whereUpdatedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|SocialProvider whereUpdatedBy($value)
  * @method static \Illuminate\Database\Eloquent\Builder|SocialProvider whereUserId($value)
+ *
  * @mixin \Eloquent
  */
 class SocialProvider extends BaseModel {

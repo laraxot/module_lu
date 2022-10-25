@@ -28,7 +28,7 @@
                 <h4 class="panel-title">
                     <a role="button" data-toggle="collapse" data-parent="#accordion" href="#dd-{{ $panel_id }}"
                         aria-controls="dd-{{ $panel_id }}">
-                        {{ $role->name }} 
+                        {{ $role->name }}
                         <button class="btn btn-danger" wire:click="$emit('swalConfirm','deleteRole',{{ $role->id }})">
                             <i class="fas fa-trash-alt"></i>
                         </button>
@@ -93,7 +93,7 @@
                         'Your file has been deleted.',
                         'success'
                     );
-                } 
+                }
             });
         })
     });

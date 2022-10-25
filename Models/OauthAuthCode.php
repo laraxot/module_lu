@@ -9,10 +9,12 @@ use Laravel\Passport\AuthCode as PassportAuthCode;
 /**
  * Modules\LU\Models\OauthAuthCode.
  *
- * @property-read \Modules\LU\Models\OauthClient|null $client
+ * @property \Modules\LU\Models\OauthClient|null $client
+ *
  * @method static \Illuminate\Database\Eloquent\Builder|OauthAuthCode newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|OauthAuthCode newQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|OauthAuthCode query()
+ *
  * @mixin \Eloquent
  */
 class OauthAuthCode extends PassportAuthCode {

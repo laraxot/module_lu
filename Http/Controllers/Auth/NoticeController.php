@@ -23,7 +23,7 @@ class NoticeController extends Controller {
     public function __invoke() {
         if (\Auth::check()) {
             $referrer = request()->input('referrer', '/');
-            if (! is_null($referrer)) {
+            if (null !== $referrer) {
                 throw new Exception('['.__LINE__.']['.class_basename(__CLASS__).']');
             }
 

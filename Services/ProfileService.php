@@ -32,7 +32,7 @@ class ProfileService {
     public function __construct() {
         // ---
         $xot = config('xra');
-        if (! is_array($xot)) {
+        if (! \is_array($xot)) {
             $xot = [];
         }
         $this->xot = $xot;
@@ -72,18 +72,17 @@ class ProfileService {
         $profile_panel = $this->getProfilePanel();
 
         if (method_exists($profile_panel, $name)) {
-            /*
+            /**
              * @var callable
              */
-
             $callback = [$profile_panel, $name];
 
-            return call_user_func_array($callback, $arguments);
+            return \call_user_func_array($callback, $arguments);
         }
 
         $profile = $this->getProfile();
 
-        if (null == $profile) {
+        if (null === $profile) {
             return 'profile is null ['.__LINE__.']['.class_basename(__CLASS__).']';
             dddx('qui1');
         }
@@ -93,10 +92,10 @@ class ProfileService {
              */
             $callback = [$profile, $name];
 
-            return call_user_func_array($callback, $arguments);
+            return \call_user_func_array($callback, $arguments);
         }
 
-        throw new Exception('['.get_class($profile).']method:['.$name.']['.__LINE__.']['.class_basename(__CLASS__).']');
+        throw new Exception('['.\get_class($profile).']method:['.$name.']['.__LINE__.']['.class_basename(__CLASS__).']');
     }
 
     /**
@@ -110,9 +109,8 @@ class ProfileService {
         if (\is_object($user)) {
             $this->user = $user;
 
-          
             $profile = $user->profile;
-          
+
             if (null === $profile) {
                 // $profile_model = $user->profile()->getRelated();
                 // dddx($user->getKey());
@@ -153,7 +151,7 @@ class ProfileService {
 
     // returns User's full name (fist and last name)
     public function fullName(): ?string {
-        if (null == $this->user) {
+        if (null === $this->user) {
             return null;
         }
         $user = $this->user;
@@ -169,7 +167,7 @@ class ProfileService {
 
     // returns username
     public function handle(): string {
-        if (null == $this->user) {
+        if (null === $this->user) {
             return 'unknown';
         }
 
@@ -220,7 +218,7 @@ class ProfileService {
      * @return string|null
      */
     public function avatar($size = 100) {
-        if (null == $this->user) {
+        if (null === $this->user) {
             return null;
         }
 
@@ -238,7 +236,7 @@ class ProfileService {
      * @return bool
      */
     public function hasRole($role_name) {
-        if (null == $this->profile) {
+        if (null === $this->profile) {
             return false;
         }
         $role = $this->role($role_name);
@@ -254,7 +252,7 @@ class ProfileService {
      * @return mixed|null
      */
     public function role($role_name) {
-        if (null == $this->profile) {
+        if (null === $this->profile) {
             return null;
         }
         $role_method = Str::camel($role_name); // bell_boy => bellBoy
@@ -269,7 +267,7 @@ class ProfileService {
 
     // returns the
     public function getPanel(): PanelContract {
-        if (null == $this->profile) {
+        if (null === $this->profile) {
             dddx(['message' => 'to fix', 'user' => $this->user, 'profile' => $this->profile]);
         }
 
@@ -284,7 +282,7 @@ class ProfileService {
 
     // returns the Profile panel with its methods
     public function getProfilePanel(): PanelContract {
-        if (null == $this->profile) {
+        if (null === $this->profile) {
             dddx(['message' => 'to fix', 'user' => $this->user, 'profile' => $this->profile]);
         }
 
@@ -320,6 +318,7 @@ class ProfileService {
     public function getProfileClass(): string {
         $main_module = $this->xot['main_module'];
         $class = 'Modules\\'.$main_module.'\Models\Profile';
+
         return $class;
     }
 

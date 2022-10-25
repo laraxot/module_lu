@@ -37,9 +37,9 @@ class LoginRequest extends FormRequest {
     /**
      * Attempt to authenticate the request's credentials.
      *
-     * @throws \Illuminate\Validation\ValidationException
-     *
      * @return void
+     *
+     * @throws \Illuminate\Validation\ValidationException
      */
     public function authenticate() {
         $this->ensureIsNotRateLimited();
@@ -56,9 +56,9 @@ class LoginRequest extends FormRequest {
     /**
      * Ensure the login request is not rate limited.
      *
-     * @throws \Illuminate\Validation\ValidationException
-     *
      * @return void
+     *
+     * @throws \Illuminate\Validation\ValidationException
      */
     public function ensureIsNotRateLimited() {
         if (! RateLimiter::tooManyAttempts($this->throttleKey(), 5)) {
@@ -78,7 +78,7 @@ class LoginRequest extends FormRequest {
      * @return string
      */
     public function throttleKey() {
-        if (! is_string($this->input('email'))) {
+        if (! \is_string($this->input('email'))) {
             throw new Exception('['.__LINE__.']['.class_basename(__CLASS__).']');
         }
 
