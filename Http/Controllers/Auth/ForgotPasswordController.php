@@ -44,7 +44,7 @@ class ForgotPasswordController extends Controller
     public function showLinkRequestForm(Request $request)
     {
         /**
-         * return ThemeService::getView(); //lu::auth.forgot_password.show_link_request_form
+         * return ThemeService::getView(); //lu::auth.forgot_password.show_link_request_form.
          *
          * @phpstan-var view-string
          *
