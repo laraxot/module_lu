@@ -1,0 +1,16 @@
+https://mattiatoselli.github.io/codingsamurai//Oauth-Laravel-Api/
+https://www.freewebsolution.it/angular-e-laravel-realizzare-un-sistema-di-autenticazione/7/
+https://www.html.it/pag/61995/full-text-search-in-laravel-5-3/
+https://laravel-italia.it/page/7/
+https://code.tutsplus.com/it/tutorials/setup-oauth2-server-using-passport-in-laravel--cms-30576
+https://mattiatoselli.github.io/codingsamurai//Oauth-Laravel-Api/
+
+
+
+ Laravel può utilizzare la libreria Passport , 
+ che è costruita sopra il server League OAuth2 , per generare un token, 
+ genera una coppia di chiavi pubblica e privata che verranno utilizzati  per la crittografia, 
+ perfetto per quelle applicazioni sviluppate come API che richiedono un motore di autenticazione efficiente, 
+granulare e soprattutto standard.
+
+
