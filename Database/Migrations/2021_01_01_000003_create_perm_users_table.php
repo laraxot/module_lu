@@ -9,15 +9,13 @@ use Modules\Xot\Database\Migrations\XotBaseMigration;
 /**
  * Class CreateLiveuserPermUsersTable.
  */
-class CreatePermUsersTable extends XotBaseMigration
-{
+class CreatePermUsersTable extends XotBaseMigration {
     /**
      * Run the migrations.
      *
      * @return void
      */
-    public function up()
-    {
+    public function up() {
         // -- CREATE --
         $this->tableCreate(
             function (Blueprint $table) {

@@ -39,15 +39,13 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
  *
  * @mixin \Eloquent
  */
-class Group extends BaseModel
-{
+class Group extends BaseModel {
     protected $fillable = ['id', 'group_type', 'group_define_name', 'owner_user_id', 'owner_group_id', 'is_active'];
 
     /**
      * Undocumented function.
      */
-    public function groupPermUsers(): HasMany
-    {
+    public function groupPermUsers(): HasMany {
         return $this->hasMany(GroupPermUser::class);
     }
 

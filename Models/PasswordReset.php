@@ -27,8 +27,7 @@ namespace Modules\LU\Models;
  *
  * @mixin \Eloquent
  */
-class PasswordReset extends BaseModel
-{
+class PasswordReset extends BaseModel {
     protected $fillable = ['email', 'token', 'created_at', 'updated_at', 'created_by', 'updated_by'];
 
     /**

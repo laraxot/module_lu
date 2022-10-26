@@ -11,8 +11,7 @@ use Modules\Xot\Models\Panels\XotBasePanel;
 /**
  * Class GroupSubgroupPanel.
  */
-class GroupSubgroupPanel extends XotBasePanel
-{
+class GroupSubgroupPanel extends XotBasePanel {
     /**
      * The model the resource corresponds to.
      */
@@ -26,8 +25,7 @@ class GroupSubgroupPanel extends XotBasePanel
     /**
      * @return object[]
      */
-    public function fields(): array
-    {
+    public function fields(): array {
         return [
             (object) [
                 'type' => 'Integer',

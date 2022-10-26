@@ -10,8 +10,7 @@ use Modules\LU\Models\OauthAccessToken;
 
 use Modules\Xot\Models\Panels\XotBasePanel;
 
-class OauthAccessTokenPanel extends XotBasePanel
-{
+class OauthAccessTokenPanel extends XotBasePanel {
     /**
      * The model the resource corresponds to.
      */
@@ -26,8 +25,7 @@ class OauthAccessTokenPanel extends XotBasePanel
      * Get the fields displayed by the resource.
         'value'=>'..',
      */
-    public function fields(): array
-    {
+    public function fields(): array {
         return [
             (object) [
                 'type' => 'Text',
@@ -70,8 +68,7 @@ class OauthAccessTokenPanel extends XotBasePanel
     /**
      * Get the tabs available.
      */
-    public function tabs(): array
-    {
+    public function tabs(): array {
         $tabs_name = [];
 
         return $tabs_name;
@@ -80,8 +77,7 @@ class OauthAccessTokenPanel extends XotBasePanel
     /**
      * Get the cards available for the request.
      */
-    public function cards(Request $request): array
-    {
+    public function cards(Request $request): array {
         return [];
     }
 
@@ -90,24 +86,21 @@ class OauthAccessTokenPanel extends XotBasePanel
      *
      * @param \Illuminate\Http\Request $request
      */
-    public function filters(Request $request = null): array
-    {
+    public function filters(Request $request = null): array {
         return [];
     }
 
     /**
      * Get the lenses available for the resource.
      */
-    public function lenses(Request $request): array
-    {
+    public function lenses(Request $request): array {
         return [];
     }
 
     /**
      * Get the actions available for the resource.
      */
-    public function actions(): array
-    {
+    public function actions(): array {
         return [];
     }
 }

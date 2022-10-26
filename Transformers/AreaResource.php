@@ -12,8 +12,7 @@ use JsonSerializable;
 /**
  * Class AreaResource.
  */
-class AreaResource extends JsonResource
-{
+class AreaResource extends JsonResource {
     /**
      * Transform the resource into an array.
      *
@@ -21,8 +20,7 @@ class AreaResource extends JsonResource
      *
      * @return array|\Illuminate\Contracts\Support\Arrayable|JsonSerializable
      */
-    public function toArray($request)
-    {
+    public function toArray($request) {
         return parent::toArray($request);
         /*
         return [

@@ -10,15 +10,13 @@ use Modules\LU\Rules\CurrentPasswordCheckRule;
 /**
  * Class PasswordRequest.
  */
-class PasswordRequest extends FormRequest
-{
+class PasswordRequest extends FormRequest {
     /**
      * Determine if the user is authorized to make this request.
      *
      * @return bool
      */
-    public function authorize()
-    {
+    public function authorize() {
         return auth()->check();
     }
 
@@ -27,8 +25,7 @@ class PasswordRequest extends FormRequest
      *
      * @return array
      */
-    public function rules()
-    {
+    public function rules() {
         return [
             'old_password' => ['required', 'min:6', new CurrentPasswordCheckRule()],
             'password' => ['required', 'min:6', 'confirmed', 'different:old_password'],
@@ -41,8 +38,7 @@ class PasswordRequest extends FormRequest
      *
      * @return array
      */
-    public function attributes()
-    {
+    public function attributes() {
         return [
             'old_password' => __('current password'),
         ];

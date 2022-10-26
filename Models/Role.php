@@ -31,8 +31,7 @@ use Spatie\Permission\Models\Role as SpatieRole;
  *
  * @mixin \Eloquent
  */
-class Role extends SpatieRole
-{
+class Role extends SpatieRole {
     /**
      * @var string
      */

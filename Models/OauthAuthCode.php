@@ -29,8 +29,7 @@ use Laravel\Passport\AuthCode as PassportAuthCode;
  *
  * @mixin \Eloquent
  */
-class OauthAuthCode extends PassportAuthCode
-{
+class OauthAuthCode extends PassportAuthCode {
     /**
      * @var string
      */

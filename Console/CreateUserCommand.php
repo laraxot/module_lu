@@ -32,8 +32,7 @@ https://medium.com/@josepostiga/how-i-managed-to-control-chaos-with-laravel-d47b
  *
  * @property string $name
  */
-class CreateUserCommand extends Command
-{
+class CreateUserCommand extends Command {
     /**
      * The console command name.
      *
@@ -49,8 +48,7 @@ class CreateUserCommand extends Command
     /**
      * Create a new command instance.
      */
-    public function __construct()
-    {
+    public function __construct() {
         parent::__construct();
     }
 
@@ -59,8 +57,7 @@ class CreateUserCommand extends Command
      *
      * @return mixed
      */
-    public function handle()
-    {
+    public function handle() {
         /*
           $headers = ['Name', 'Email'];
 
@@ -145,8 +142,7 @@ class CreateUserCommand extends Command
      *
      * @return array
      */
-    protected function getArguments()
-    {
+    protected function getArguments() {
         return [
             //  ['name', InputArgument::REQUIRED, 'nickname of user'],
             //  ['level', InputArgument::REQUIRED, 'level of user'],
@@ -158,8 +154,7 @@ class CreateUserCommand extends Command
      *
      * @return array
      */
-    protected function getOptions()
-    {
+    protected function getOptions() {
         return [
             ['list', null, InputOption::VALUE_OPTIONAL, 'list all users.', null],
         ];

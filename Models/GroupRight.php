@@ -31,8 +31,7 @@ namespace Modules\LU\Models;
  *
  * @mixin \Eloquent
  */
-class GroupRight extends BasePivot
-{
+class GroupRight extends BasePivot {
     /**
      * @var string[]
      */

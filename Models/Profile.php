@@ -73,8 +73,7 @@ use Modules\Xot\Models\Traits\WidgetTrait;
  *
  * @mixin \Eloquent
  */
-class Profile extends BaseModelLang
-{
+class Profile extends BaseModelLang {
     // use PrivacyTrait;
     use HasFactory;
     // use GeoTrait;

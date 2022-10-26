@@ -12,13 +12,11 @@ use Illuminate\Http\Request;
 /**
  * Undocumented class.
  */
-class DailyUsersChart extends Chart
-{
+class DailyUsersChart extends Chart {
     /**
      * Undocumented function.
      */
-    public function handler(Request $request): Chartisan
-    {
+    public function handler(Request $request): Chartisan {
         $date = Carbon::now()->subMonth()->startOfDay();
 
         $data = collect(range(0, 12))->map(function ($days) use ($date) {
@@ -36,13 +34,11 @@ class DailyUsersChart extends Chart
             ->dataset('Example Data', $dataset);
     }
 
-    public function type(): string
-    {
+    public function type(): string {
         return 'bar';
     }
 
-    public function options(): array
-    {
+    public function options(): array {
         return [
             'responsive' => true,
             'maintainAspectRatio' => false,

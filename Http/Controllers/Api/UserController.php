@@ -12,10 +12,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Modules\LU\Models\User;
 
-class UserController extends Controller
-{
-    public function login(Request $request): JsonResponse
-    {
+class UserController extends Controller {
+    public function login(Request $request): JsonResponse {
         // validate the login request
         $login = $request->validate([
             'email' => 'required|email',
@@ -48,8 +46,7 @@ class UserController extends Controller
         ]);
     }
 
-    public function loginTest(Request $request): JsonResponse
-    {
+    public function loginTest(Request $request): JsonResponse {
         $login = [
             'email' => 'marco.sottana@gmail.com',
             'password' => 'prova123',
@@ -82,8 +79,7 @@ class UserController extends Controller
         ]);
     }
 
-    public function logout(Request $request): string
-    {
+    public function logout(Request $request): string {
         exit('LOGOUT');
     }
 
@@ -113,8 +109,7 @@ class UserController extends Controller
         return response()->json(['token' => $access_token_example], 200);
     }
     */
-    public function getCurrentUser(): JsonResponse
-    {
+    public function getCurrentUser(): JsonResponse {
         return response()->json(['user' => Auth::user()]);
     }
 }

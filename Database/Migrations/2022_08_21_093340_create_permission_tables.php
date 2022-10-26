@@ -4,15 +4,13 @@ declare(strict_types=1);
 
 use Modules\Xot\Database\Migrations\XotBaseMigration;
 
-class CreatePermissionTables extends XotBaseMigration
-{
+class CreatePermissionTables extends XotBaseMigration {
     /**
      * Run the migrations.
      *
      * @return void
      */
-    public function up()
-    {
+    public function up() {
         $tableNames = config('permission.table_names');
         $columnNames = config('permission.column_names');
         $teams = config('permission.teams');
@@ -34,8 +32,7 @@ class CreatePermissionTables extends XotBaseMigration
      *
      * @return void
      */
-    public function down()
-    {
+    public function down() {
         $tableNames = config('permission.table_names');
 
         if (empty($tableNames)) {

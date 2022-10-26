@@ -17,42 +17,34 @@ use Modules\LU\Events\PasswordReset;
 use Modules\LU\Models\User;
 use Tests\TestCase;
 
-class ResetPasswordTest extends TestCase
-{
+class ResetPasswordTest extends TestCase {
     // use RefreshDatabase;
-    protected function setUp(): void
-    {
+    protected function setUp(): void {
         parent::setUp();
         URL::defaults(['lang' => 'it']);
     }
 
-    protected function getValidToken($user)
-    {
+    protected function getValidToken($user) {
         return Password::broker()->createToken($user);
     }
 
-    protected function getInvalidToken()
-    {
+    protected function getInvalidToken() {
         return 'invalid-token';
     }
 
-    protected function passwordResetGetRoute($token)
-    {
+    protected function passwordResetGetRoute($token) {
         return route('password.reset', $token);
     }
 
-    protected function passwordResetPostRoute()
-    {
+    protected function passwordResetPostRoute() {
         return route('password.update');
     }
 
-    protected function successfulPasswordResetRoute()
-    {
+    protected function successfulPasswordResetRoute() {
         return route('home');
     }
 
-    public function testUserCanViewAPasswordResetForm()
-    {
+    public function testUserCanViewAPasswordResetForm() {
         // $user = User::factory()->create();
         $user = User::inRandomOrder()->first();
         $token = $this->getValidToken($user);
@@ -65,8 +57,7 @@ class ResetPasswordTest extends TestCase
         // $response->assertViewHas('token', $token); ??
     }
 
-    public function testUserCanViewAPasswordResetFormWhenAuthenticated()
-    {
+    public function testUserCanViewAPasswordResetFormWhenAuthenticated() {
         // $user = User::factory()->create();
         $user = User::inRandomOrder()->first();
         $token = $this->getValidToken($user);
@@ -81,8 +72,7 @@ class ResetPasswordTest extends TestCase
         $response->assertStatus(302);
     }
 
-    public function testUserCanResetPasswordWithValidToken()
-    {
+    public function testUserCanResetPasswordWithValidToken() {
         Event::fake();
 
         // $user = User::factory()->create();
@@ -110,8 +100,7 @@ class ResetPasswordTest extends TestCase
         // });
     }
 
-    public function testUserCannotResetPasswordWithInvalidToken()
-    {
+    public function testUserCannotResetPasswordWithInvalidToken() {
         $user = User::factory()->create(
             [
                 'password' => Hash::make('old-password'),
@@ -137,8 +126,7 @@ class ResetPasswordTest extends TestCase
         $this->assertGuest();
     }
 
-    public function testUserCannotResetPasswordWithoutProvidingANewPassword()
-    {
+    public function testUserCannotResetPasswordWithoutProvidingANewPassword() {
         $user = User::factory()->create(
             [
                 'password' => Hash::make('old-password'),
@@ -164,8 +152,7 @@ class ResetPasswordTest extends TestCase
         $this->assertGuest();
     }
 
-    public function testUserCannotResetPasswordWithoutProvidingAnEmail()
-    {
+    public function testUserCannotResetPasswordWithoutProvidingAnEmail() {
         $user = User::factory()->create(
             [
                 'password' => Hash::make('old-password'),

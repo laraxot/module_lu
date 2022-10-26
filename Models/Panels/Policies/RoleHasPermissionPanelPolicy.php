@@ -6,6 +6,5 @@ namespace Modules\LU\Models\Panels\Policies;
 
 use Modules\Xot\Models\Panels\Policies\XotBasePanelPolicy;
 
-class RoleHasPermissionPanelPolicy extends XotBasePanelPolicy
-{
+class RoleHasPermissionPanelPolicy extends XotBasePanelPolicy {
 }

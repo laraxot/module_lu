@@ -21,7 +21,6 @@ namespace Modules\LU\Models;
  *
  * @mixin \Eloquent
  */
-class ModelHasPermission extends BaseMorphPivot
-{
+class ModelHasPermission extends BaseMorphPivot {
     protected $fillable = ['permission_id', 'model_type', 'model_id'];
 }
