@@ -46,7 +46,8 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
  *
  * @mixin \Eloquent
  */
-class SocialProvider extends BaseModel {
+class SocialProvider extends BaseModel
+{
     /**
      * @var string[]
      */
@@ -57,7 +58,8 @@ class SocialProvider extends BaseModel {
 
     // ----------------RELATIONSHIP------------------------
 
-    public function user(): BelongsTo {
+    public function user(): BelongsTo
+    {
         return $this->belongsTo(User::class);
     }
 }

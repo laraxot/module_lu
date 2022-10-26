@@ -8,7 +8,8 @@ use Exception;
 use Illuminate\Contracts\Database\Eloquent\CastsAttributes;
 use Modules\Xot\Contracts\ModelWithUserContract;
 
-class UserField implements CastsAttributes {
+class UserField implements CastsAttributes
+{
     /**
      * Cast the given value.
      *
@@ -21,7 +22,8 @@ class UserField implements CastsAttributes {
      *
      * @return mixed
      */
-    public function get($model, $key, $value, $attributes) {
+    public function get($model, $key, $value, $attributes)
+    {
         // dddx(['model' => $model, 'key' => $key, 'value' => $value, 'attributes' => $attributes, 'data' => request()->all()]);
         // Access to an undefined property Illuminate\Database\Eloquent\Model::$user.
         if (null === $model->user) {
@@ -41,7 +43,8 @@ class UserField implements CastsAttributes {
      * @param mixed                 $value
      * @param array                 $attributes
      */
-    public function set($model, $key, $value, $attributes) {
+    public function set($model, $key, $value, $attributes)
+    {
         // Access to an undefined property Illuminate\Database\Eloquent\Model::$user.
         $user = $model->user;
         if (null === $user) {

@@ -11,13 +11,15 @@ use Modules\LU\Models\User;
 /**
  * Class UserRequest.
  */
-class UserRequest extends FormRequest {
+class UserRequest extends FormRequest
+{
     /**
      * Determine if the user is authorized to make this request.
      *
      * @return bool
      */
-    public function authorize() {
+    public function authorize()
+    {
         return auth()->check();
     }
 
@@ -26,7 +28,8 @@ class UserRequest extends FormRequest {
      *
      * @return array
      */
-    public function rules() {
+    public function rules()
+    {
         return [
             'name' => [
                 'required', 'min:3',

@@ -19,27 +19,33 @@ use Tests\TestCase;
 /**
  * Undocumented class.
  */
-class ForgotPasswordTest extends TestCase {
+class ForgotPasswordTest extends TestCase
+{
     // use RefreshDatabase;
 
-    protected function setUp(): void {
+    protected function setUp(): void
+    {
         parent::setUp();
         URL::defaults(['lang' => 'it']);
     }
 
-    protected function passwordRequestRoute() {
+    protected function passwordRequestRoute()
+    {
         return route('password.request');
     }
 
-    protected function passwordEmailGetRoute() {
+    protected function passwordEmailGetRoute()
+    {
         return route('password.email');
     }
 
-    protected function passwordEmailPostRoute() {
+    protected function passwordEmailPostRoute()
+    {
         return route('password.email');
     }
 
-    public function testUserCanViewAnEmailPasswordForm() {
+    public function testUserCanViewAnEmailPasswordForm()
+    {
         $url = $this->passwordRequestRoute();
 
         $response = $this->get($url);
@@ -60,7 +66,8 @@ class ForgotPasswordTest extends TestCase {
     }
     */
     // /* email da settare in .env
-    public function testUserReceivesAnEmailWithAPasswordResetLink() {
+    public function testUserReceivesAnEmailWithAPasswordResetLink()
+    {
         Notification::fake();
         $user = User::inRandomOrder()->first();
 
@@ -100,7 +107,8 @@ class ForgotPasswordTest extends TestCase {
 
     // */
 
-    public function testUserDoesNotReceiveEmailWhenNotRegistered() {
+    public function testUserDoesNotReceiveEmailWhenNotRegistered()
+    {
         Notification::fake();
 
         $response = $this->from($this->passwordEmailGetRoute())
@@ -119,14 +127,16 @@ class ForgotPasswordTest extends TestCase {
         Notification::assertNotSentTo(User::factory()->make(['email' => 'nobody@example.com']), ResetPassword::class);
     }
 
-    public function testEmailIsRequired() {
+    public function testEmailIsRequired()
+    {
         $response = $this->from($this->passwordEmailGetRoute())->post($this->passwordEmailPostRoute(), []);
 
         $response->assertRedirect($this->passwordEmailGetRoute());
         $response->assertSessionHasErrors('email');
     }
 
-    public function testEmailIsAValidEmail() {
+    public function testEmailIsAValidEmail()
+    {
         $response = $this->from($this->passwordEmailGetRoute())->post(
             $this->passwordEmailPostRoute(),
             [

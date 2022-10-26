@@ -10,13 +10,15 @@ use Illuminate\Support\Facades\Hash;
 /**
  * Class CurrentPasswordCheckRule.
  */
-class CurrentPasswordCheckRule implements Rule {
+class CurrentPasswordCheckRule implements Rule
+{
     /**
      * Create a new rule instance.
      *
      * @return void
      */
-    public function __construct() {
+    public function __construct()
+    {
     }
 
     /**
@@ -27,7 +29,8 @@ class CurrentPasswordCheckRule implements Rule {
      *
      * @return bool
      */
-    public function passes($attribute, $value) {
+    public function passes($attribute, $value)
+    {
         $user = auth()->user();
         if (null === $user) {
             return false;
@@ -44,7 +47,8 @@ class CurrentPasswordCheckRule implements Rule {
      *
      * @return array|string|null
      */
-    public function message() {
+    public function message()
+    {
         return __('The current password field does not match your password');
     }
 }

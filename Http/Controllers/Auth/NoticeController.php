@@ -13,14 +13,16 @@ use Modules\Theme\Services\ThemeService;
 /**
  * Class NoticeController.
  */
-class NoticeController extends Controller {
+class NoticeController extends Controller
+{
     /**
      * Specie di middleware ?
      *
      * @return mixed
      * @return mixed
      */
-    public function __invoke() {
+    public function __invoke()
+    {
         if (\Auth::check()) {
             $referrer = request()->input('referrer', '/');
             if (null !== $referrer) {

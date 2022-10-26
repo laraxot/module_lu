@@ -13,7 +13,8 @@ use Modules\Xot\Models\Panels\XotBasePanel;
 /**
  * Class AreaPanel.
  */
-class AreaPanel extends XotBasePanel {
+class AreaPanel extends XotBasePanel
+{
     /**
      * The model the resource corresponds to.
      */
@@ -29,7 +30,8 @@ class AreaPanel extends XotBasePanel {
      */
     protected static array $search = [];
 
-    public function search(): array {
+    public function search(): array
+    {
         return []; // ['area_id','area_define_name'];
     }
 
@@ -38,7 +40,8 @@ class AreaPanel extends XotBasePanel {
      *
      * @param Area $row
      */
-    public function optionLabel($row): string {
+    public function optionLabel($row): string
+    {
         return (string) $row->area_define_name;
     }
 
@@ -50,18 +53,21 @@ class AreaPanel extends XotBasePanel {
      *
      * @return int|mixed
      */
-    public function optionId(Model $row) {
+    public function optionId(Model $row)
+    {
         return $row->getKey();
     }
 
-    public function with(): array {
+    public function with(): array
+    {
         return [];
     }
 
     /**
      * Get the fields displayed by the resource.
      */
-    public function fields(): array {
+    public function fields(): array
+    {
         return [
             (object) [
                 'type' => 'Id',
@@ -78,7 +84,8 @@ class AreaPanel extends XotBasePanel {
     /**
      * Get the tabs available.
      */
-    public function tabs(): array {
+    public function tabs(): array
+    {
         $tabs_name = ['users' /* , 'perm' */];
 
         return $tabs_name;
@@ -87,28 +94,32 @@ class AreaPanel extends XotBasePanel {
     /**
      * Get the cards available for the request.
      */
-    public function cards(Request $request): array {
+    public function cards(Request $request): array
+    {
         return [];
     }
 
     /**
      * Get the filters available for the resource.
      */
-    public function filters(Request $request = null): array {
+    public function filters(Request $request = null): array
+    {
         return [];
     }
 
     /**
      * Get the lenses available for the resource.
      */
-    public function lenses(Request $request): array {
+    public function lenses(Request $request): array
+    {
         return [];
     }
 
     /**
      * Get the actions available for the resource.
      */
-    public function actions(): array {
+    public function actions(): array
+    {
         return [
             new Actions\SyncAreas(),
             new Actions\TestUsersWithLivewireAction(),

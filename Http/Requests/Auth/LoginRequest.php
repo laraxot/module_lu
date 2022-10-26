@@ -12,13 +12,15 @@ use Illuminate\Support\Facades\RateLimiter;
 use Illuminate\Support\Str;
 use Illuminate\Validation\ValidationException;
 
-class LoginRequest extends FormRequest {
+class LoginRequest extends FormRequest
+{
     /**
      * Determine if the user is authorized to make this request.
      *
      * @return bool
      */
-    public function authorize() {
+    public function authorize()
+    {
         return true;
     }
 
@@ -27,7 +29,8 @@ class LoginRequest extends FormRequest {
      *
      * @return array
      */
-    public function rules() {
+    public function rules()
+    {
         return [
             'email' => 'required|string|email',
             'password' => 'required|string',
@@ -41,7 +44,8 @@ class LoginRequest extends FormRequest {
      *
      * @return void
      */
-    public function authenticate() {
+    public function authenticate()
+    {
         $this->ensureIsNotRateLimited();
 
         if (! Auth::attempt($this->only('email', 'password'), $this->filled('remember'))) {
@@ -60,7 +64,8 @@ class LoginRequest extends FormRequest {
      *
      * @return void
      */
-    public function ensureIsNotRateLimited() {
+    public function ensureIsNotRateLimited()
+    {
         if (! RateLimiter::tooManyAttempts($this->throttleKey(), 5)) {
             return;
         }
@@ -77,7 +82,8 @@ class LoginRequest extends FormRequest {
      *
      * @return string
      */
-    public function throttleKey() {
+    public function throttleKey()
+    {
         if (! \is_string($this->input('email'))) {
             throw new Exception('['.__LINE__.']['.class_basename(__CLASS__).']');
         }

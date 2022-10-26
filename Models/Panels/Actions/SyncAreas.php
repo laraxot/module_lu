@@ -16,7 +16,8 @@ use Nwidart\Modules\Facades\Module;
 /**
  * Class SyncAreas.
  */
-class SyncAreas extends XotBasePanelAction {
+class SyncAreas extends XotBasePanelAction
+{
     public bool $onContainer = true;
 
     public string $icon = '<i class="fas fa-sync"></i>';
@@ -26,7 +27,8 @@ class SyncAreas extends XotBasePanelAction {
      *
      * @return mixed
      */
-    public function handle() {
+    public function handle()
+    {
         // to do
         $modules = Module::all(); // li da tutti o solo quelli attivi ?
 

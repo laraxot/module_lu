@@ -11,7 +11,8 @@ use Modules\Xot\Models\Panels\XotBasePanel;
 /**
  * Class RightPanel.
  */
-class RightPanel extends XotBasePanel {
+class RightPanel extends XotBasePanel
+{
     /**
      * The model the resource corresponds to.
      */
@@ -25,7 +26,8 @@ class RightPanel extends XotBasePanel {
     /**
      * on select the option label.
      */
-    public function optionLabel(Model $row): string {
+    public function optionLabel(Model $row): string
+    {
         // return $row->matr.' ['.$row->email.']['.$row->ha_diritto.'] '.$row->cognome.' '.$row->cognome.' ';
         return $row->getAttributeValue('right_define_name').''; // matr.' ['.$row->email.']['.$row->ha_diritto.'] '.$row->cognome.' '.$row->cognome.' ';
     }
@@ -33,7 +35,8 @@ class RightPanel extends XotBasePanel {
     /**
      * @return object[]
      */
-    public function fields(): array {
+    public function fields(): array
+    {
         return [
             (object) [
                 'type' => 'Id',

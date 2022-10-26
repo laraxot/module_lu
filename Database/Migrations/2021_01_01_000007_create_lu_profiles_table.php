@@ -9,7 +9,8 @@ use Modules\Xot\Database\Migrations\XotBaseMigration;  // blog o food ?
 /**
  * Class CreateProfilesTable.
  */
-class CreateLuProfilesTable extends XotBaseMigration {
+class CreateLuProfilesTable extends XotBaseMigration
+{
     protected ?string $model_class = \Modules\LU\Models\Profile::class;
 
     /**
@@ -17,7 +18,8 @@ class CreateLuProfilesTable extends XotBaseMigration {
      *
      * @return void
      */
-    public function up() {
+    public function up()
+    {
         // -- CREATE --
         $this->tableCreate(
             function (Blueprint $table) {

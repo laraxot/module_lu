@@ -10,10 +10,12 @@ use Modules\Xot\Models\Panels\XotBasePanel;
 /**
  * Class HomePanel.
  */
-class HomePanel extends XotBasePanel {
+class HomePanel extends XotBasePanel
+{
     public static string $model = 'Modules\Xot\Models\Home';
 
-    public function actions(): array {
+    public function actions(): array
+    {
         // $cmd = (string) request()->input('cmd');
         /**
          * @var string

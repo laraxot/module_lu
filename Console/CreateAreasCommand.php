@@ -34,7 +34,8 @@ https://medium.com/@josepostiga/how-i-managed-to-control-chaos-with-laravel-d47b
 /**
  * Class CreateAreasCommand.
  */
-class CreateAreasCommand extends Command {
+class CreateAreasCommand extends Command
+{
     /**
      * The console command name.
      *
@@ -52,7 +53,8 @@ class CreateAreasCommand extends Command {
     /**
      * Create a new command instance.
      */
-    public function __construct() {
+    public function __construct()
+    {
         parent::__construct();
     }
 
@@ -61,7 +63,8 @@ class CreateAreasCommand extends Command {
      *
      * @return mixed
      */
-    public function handle() {
+    public function handle()
+    {
         $modules = \Module::all();
         $superUsers = PermUser::query()->where('perm_type', 5)->get();
         foreach ($modules as $k => $v) {
@@ -90,7 +93,8 @@ class CreateAreasCommand extends Command {
      *
      * @return array
      */
-    protected function getArguments() {
+    protected function getArguments()
+    {
         return [
             //  ['name', InputArgument::REQUIRED, 'nickname of user'],
             //  ['level', InputArgument::REQUIRED, 'level of user'],
@@ -102,7 +106,8 @@ class CreateAreasCommand extends Command {
      *
      * @return array
      */
-    protected function getOptions() {
+    protected function getOptions()
+    {
         return [
             ['list', null, InputOption::VALUE_OPTIONAL, 'list all users.', null],
         ];

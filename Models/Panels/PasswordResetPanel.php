@@ -11,7 +11,8 @@ use Modules\Xot\Models\Panels\XotBasePanel;
 /**
  * Class PasswordResetPanel.
  */
-class PasswordResetPanel extends XotBasePanel {
+class PasswordResetPanel extends XotBasePanel
+{
     /**
      * The model the resource corresponds to.
      */
@@ -31,18 +32,21 @@ class PasswordResetPanel extends XotBasePanel {
     /**
      * Get the fields displayed by the resource.
      */
-    public function fields(): array {
+    public function fields(): array
+    {
         return [];
     }
 
-    public function with(): array {
+    public function with(): array
+    {
         return [];
     }
 
     /**
      * Get the tabs available.
      */
-    public function tabs(): array {
+    public function tabs(): array
+    {
         $tabs_name = [];
 
         return [];
@@ -51,28 +55,32 @@ class PasswordResetPanel extends XotBasePanel {
     /**
      * Get the cards available for the request.
      */
-    public function cards(Request $request): array {
+    public function cards(Request $request): array
+    {
         return [];
     }
 
     /**
      * Get the filters available for the resource.
      */
-    public function filters(Request $request = null): array {
+    public function filters(Request $request = null): array
+    {
         return [];
     }
 
     /**
      * Get the lenses available for the resource.
      */
-    public function lenses(Request $request): array {
+    public function lenses(Request $request): array
+    {
         return [];
     }
 
     /**
      * Get the actions available for the resource.
      */
-    public function actions(): array {
+    public function actions(): array
+    {
         return [];
     }
 }

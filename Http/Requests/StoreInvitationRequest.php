@@ -11,7 +11,8 @@ use Modules\Xot\Traits\FormRequestTrait;
 /**
  * Class StoreInvitationRequest.
  */
-class StoreInvitationRequest extends FormRequest {
+class StoreInvitationRequest extends FormRequest
+{
     use FormRequestTrait;
 
     /**
@@ -19,7 +20,8 @@ class StoreInvitationRequest extends FormRequest {
      *
      * @return array
      */
-    public function rules() {
+    public function rules()
+    {
         return [
             'email' => 'required|email|unique:invitations',
         ];
@@ -30,7 +32,8 @@ class StoreInvitationRequest extends FormRequest {
      *
      * @return array
      */
-    public function messages() {
+    public function messages()
+    {
         return [
             'email.unique' => 'Invitation with this email address already requested.',
         ];

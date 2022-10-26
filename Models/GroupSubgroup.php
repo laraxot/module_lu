@@ -23,7 +23,8 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
  *
  * @mixin \Eloquent
  */
-class GroupSubgroup extends BaseModel {
+class GroupSubgroup extends BaseModel
+{
     /**
      * @var string[]
      */
@@ -32,7 +33,8 @@ class GroupSubgroup extends BaseModel {
     /**
      * Undocumented function.
      */
-    public function groupPermUsers(): HasMany {
+    public function groupPermUsers(): HasMany
+    {
         return $this->hasMany(GroupPermUser::class);
     }
 

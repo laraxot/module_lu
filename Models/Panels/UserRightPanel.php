@@ -12,7 +12,8 @@ use Modules\Xot\Models\Panels\XotBasePanel;
 /**
  * Class UserRightPanel.
  */
-class UserRightPanel extends XotBasePanel {
+class UserRightPanel extends XotBasePanel
+{
     /**
      * The model the resource corresponds to.
      */
@@ -42,7 +43,8 @@ class UserRightPanel extends XotBasePanel {
     /**
      * @return object[]
      */
-    public function fields(): array {
+    public function fields(): array
+    {
         return [
             (object) [
                 'type' => 'Integer',

@@ -25,7 +25,8 @@ use Laravel\Passport\PersonalAccessClient as PassportPersonalAccessClient;
  *
  * @mixin \Eloquent
  */
-class OauthPersonalAccessClient extends PassportPersonalAccessClient {
+class OauthPersonalAccessClient extends PassportPersonalAccessClient
+{
     /**
      * @var string
      */

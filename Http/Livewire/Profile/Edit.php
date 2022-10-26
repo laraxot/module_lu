@@ -13,16 +13,19 @@ use Livewire\Component;
 /**
  * Class Edit.
  */
-class Edit extends Component {
+class Edit extends Component
+{
     // public Model $profile;
     public array $form_data = [];
 
-    public function mount(Model $profile): void {
+    public function mount(Model $profile): void
+    {
         $this->form_data = $profile->toArray();
         // dddx($this->form_data);
     }
 
-    public function render(): Renderable {
+    public function render(): Renderable
+    {
         /**
          * @phpstan-var view-string
          */
@@ -34,7 +37,8 @@ class Edit extends Component {
         return view()->make($view, $view_params);
     }
 
-    public function save(): void {
+    public function save(): void
+    {
         // dddx([$this->form_data, Auth::user()->profile]);
         if (null === Auth::user()) {
             throw new Exception('['.__LINE__.']['.class_basename(__CLASS__).']');

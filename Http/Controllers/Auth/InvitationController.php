@@ -17,11 +17,13 @@ use Modules\Theme\Services\ThemeService;
 /**
  * Class InvitationController.
  */
-class InvitationController extends Controller {
+class InvitationController extends Controller
+{
     /**
      * @return mixed
      */
-    public function create() {
+    public function create()
+    {
         // return ThemeService::view()->with('title', 'invitation');
         $view = ThemeService::view()->render();
 
@@ -36,7 +38,8 @@ class InvitationController extends Controller {
     /**
      * @return \Illuminate\Http\RedirectResponse
      */
-    public function store(StoreInvitationRequest $request) {
+    public function store(StoreInvitationRequest $request)
+    {
         $invitation = new Invitation($request->all());
         $invitation->generateInvitationToken();
         $invitation->save();

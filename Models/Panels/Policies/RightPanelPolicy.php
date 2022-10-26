@@ -9,5 +9,6 @@ use Modules\Xot\Models\Panels\Policies\XotBasePanelPolicy;
 /**
  * Class RightPanelPolicy.
  */
-class RightPanelPolicy extends XotBasePanelPolicy {
+class RightPanelPolicy extends XotBasePanelPolicy
+{
 }

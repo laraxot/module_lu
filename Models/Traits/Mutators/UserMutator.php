@@ -9,10 +9,12 @@ use Illuminate\Support\Str;
 /*
  * Undocumented trait.
  */
-trait UserMutator {
+trait UserMutator
+{
     // -------------- mutators ---------------------
 
-    public function setPasswdAttribute(?string $value): void {
+    public function setPasswdAttribute(?string $value): void
+    {
         // backtrace(true);
         unset($this->attributes['passwd']);
         if (null !== $value && '' !== $value && mb_strlen($value) < 30) {
@@ -23,11 +25,13 @@ trait UserMutator {
     /**
      * @param string $value
      */
-    public function setHandleAttribute($value): void {
+    public function setHandleAttribute($value): void
+    {
         $this->attributes['handle'] = ucfirst($value);
     }
 
-    public function getHandleAttribute(?string $value): string {
+    public function getHandleAttribute(?string $value): string
+    {
         if (null !== $value) {
             return $value;
         }
@@ -35,11 +39,13 @@ trait UserMutator {
         return 'user-'.$this->id;
     }
 
-    public function getGuidAttribute(?string $value): string {
+    public function getGuidAttribute(?string $value): string
+    {
         return Str::slug($this->handle);
     }
 
-    public function getFullNameAttribute(?string $value): string {
+    public function getFullNameAttribute(?string $value): string
+    {
         return Str::upper($this->first_name.' '.$this->last_name);
     }
 }

@@ -19,6 +19,7 @@ namespace Modules\LU\Models;
  *
  * @mixin \Eloquent
  */
-class RoleHasPermission extends BasePivot {
+class RoleHasPermission extends BasePivot
+{
     protected $fillable = ['permission_id', 'role_id'];
 }

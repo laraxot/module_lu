@@ -9,5 +9,6 @@ use Modules\Xot\Models\Panels\Policies\XotBasePanelPolicy;
 /**
  * Class ApplicationPanelPolicy.
  */
-class ApplicationPanelPolicy extends XotBasePanelPolicy {
+class ApplicationPanelPolicy extends XotBasePanelPolicy
+{
 }
