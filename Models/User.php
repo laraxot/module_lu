@@ -11,15 +11,16 @@ namespace Modules\LU\Models;
 
 // use Illuminate\Contracts\Auth\UserProvider as UserContract;
 
+use Illuminate\Support\Str;
+use Modules\Xot\Traits\Updater;
+use Laravel\Passport\HasApiTokens;
+use Modules\Xot\Contracts\UserContract;
+use Illuminate\Notifications\Notifiable;
+use Modules\LU\Database\Factories\UserFactory;
+use Staudenmeir\EloquentHasManyDeep\HasRelationships;
+// use Spatie\Tags\HasTags;  // Spatie Tags
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
-use Illuminate\Notifications\Notifiable;
-use Laravel\Passport\HasApiTokens;
-use Modules\LU\Database\Factories\UserFactory;
-use Modules\Xot\Contracts\UserContract;
-use Modules\Xot\Traits\Updater;
-// use Spatie\Tags\HasTags;  // Spatie Tags
-use Staudenmeir\EloquentHasManyDeep\HasRelationships;
 
 /**
  * Modules\LU\Models\User.
@@ -205,5 +206,16 @@ class User extends Authenticatable implements UserContract {
      */
     protected static function newFactory() {
         return UserFactory::new();
+    }
+    
+    public function getApiTokenAttribute(?string $value){
+        if($value!==null){
+            return $value;
+        }
+        $value=hash('sha256', Str::random(60));
+        $this->api_token = $value;
+        $this->save();
+
+        return $value;
     }
 }
