@@ -36,6 +36,7 @@ class ProfileService {
         }
         $this->xot = $xot;
         $this->get(Auth::user());
+        //dddx(Auth::user());
     }
 
     public static function getInstance(): self {
