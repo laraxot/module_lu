@@ -45,16 +45,16 @@ class UserField implements CastsAttributes {
         // Access to an undefined property Illuminate\Database\Eloquent\Model::$user.
         $user = $model->user;
         if (null === $user) {
-            return [];
             /*
             dddx([
-                'model'=>$model,
-                'key'=>$key,
-                'value'=>$value,
-                'attributes'=>$attributes,
+                'model' => $model,
+                'key' => $key,
+                'value' => $value,
+                'attributes' => $attributes,
             ]);
             throw new Exception('['.__LINE__.']['.__FILE__.']');
-            */
+            // */
+            return [];
         }
         $up = [
             $key => $value,

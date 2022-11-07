@@ -36,7 +36,7 @@ class ProfileService {
         }
         $this->xot = $xot;
         $this->get(Auth::user());
-        //dddx(Auth::user());
+        // dddx(Auth::user());
     }
 
     public static function getInstance(): self {
@@ -110,6 +110,11 @@ class ProfileService {
             $this->user = $user;
 
             $profile = $user->profile;
+            /*
+            if ($profile->user_id != $profile->id) {
+                dddx('preso');
+            }
+            */
 
             if (null === $profile) {
                 // $profile_model = $user->profile()->getRelated();
