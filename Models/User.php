@@ -11,16 +11,17 @@ namespace Modules\LU\Models;
 
 // use Illuminate\Contracts\Auth\UserProvider as UserContract;
 
-use Illuminate\Support\Str;
-use Modules\Xot\Traits\Updater;
-use Laravel\Passport\HasApiTokens;
-use Modules\Xot\Contracts\UserContract;
-use Illuminate\Notifications\Notifiable;
-use Modules\LU\Database\Factories\UserFactory;
-use Staudenmeir\EloquentHasManyDeep\HasRelationships;
-// use Spatie\Tags\HasTags;  // Spatie Tags
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Notifications\Notifiable;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Str;
+use Laravel\Passport\HasApiTokens;
+use Modules\LU\Database\Factories\UserFactory;
+// use Spatie\Tags\HasTags;  // Spatie Tags
+use Modules\Xot\Contracts\UserContract;
+use Modules\Xot\Traits\Updater;
+use Staudenmeir\EloquentHasManyDeep\HasRelationships;
 
 /**
  * Modules\LU\Models\User.
@@ -207,12 +208,26 @@ class User extends Authenticatable implements UserContract {
     protected static function newFactory() {
         return UserFactory::new();
     }
-    
-    public function getApiTokenAttribute(?string $value){
-        if($value!==null){
+
+    // /*
+    // public function __construct() {
+        // $this->table = DB::connection($this->connection)->getDatabaseName().'.'.$this->getTable();
+        // DB::connection($this->connection)->setTablePrefix('aa');
+    // }
+    // */
+
+    // public function getTable() {
+        // dddx([DB::connection($this->connection)->getDatabaseName(), parent::getTable()]);
+        // We ask the database name on the connection and prepare that for the table name with a . in between.
+        // Unknown database 'liveuser_liveuser_geek_lu'
+        // return DB::connection($this->connection)->getDatabaseName().'.'.parent::getTable();
+    // }
+
+    public function getApiTokenAttribute(?string $value) {
+        if (null !== $value) {
             return $value;
         }
-        $value=hash('sha256', Str::random(60));
+        $value = hash('sha256', Str::random(60));
         $this->api_token = $value;
         $this->save();
 
