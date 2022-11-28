@@ -14,4 +14,5 @@ class UserPolicy extends XotBasePolicy {
     public function TestUsersWithLivewire(UserContract $user, \Illuminate\Database\Eloquent\Model $post): bool {
         return false;
     }
+
 }
