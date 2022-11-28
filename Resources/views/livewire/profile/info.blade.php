@@ -14,7 +14,7 @@
         <x-input.group type="text" name="phone" />
         <x-input.group type="text" name="address" />
         <x-flash-message />
-        <button type="button" class="btn btn-primary" wire:click="update()">Aggiorna</button>
+        <button type="button" class="btn btn-primary col-12 my-3" wire:click="update()">Aggiorna</button>
     @endif
 
 </div>
