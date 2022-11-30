@@ -10,6 +10,6 @@
     @if($show)
         <x-input.group type="password.confirmed" name="passwd" />
         <x-flash-message />
-        <button type="button" class="btn btn-primary" wire:click="update()">update</button>
+        <button type="button" class="btn btn-primary col-12 my-2" wire:click="update()">Aggiorna</button>
     @endif
 </div>
