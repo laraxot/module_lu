@@ -44,7 +44,7 @@ class ResetPasswordTest extends TestCase {
         return route('home');
     }
 
-    public function testUserCanViewAPasswordResetForm() {
+    /*public function testUserCanViewAPasswordResetForm() {
         // $user = User::factory()->create();
         $user = User::inRandomOrder()->first();
         $token = $this->getValidToken($user);
@@ -55,8 +55,9 @@ class ResetPasswordTest extends TestCase {
         $response->assertSuccessful();
         $response->assertViewIs('pub_theme::auth.passwords.reset');
         // $response->assertViewHas('token', $token); ??
-    }
+    }*/
 
+/*
     public function testUserCanViewAPasswordResetFormWhenAuthenticated() {
         // $user = User::factory()->create();
         $user = User::inRandomOrder()->first();
@@ -64,15 +65,15 @@ class ResetPasswordTest extends TestCase {
         $url = $this->passwordResetGetRoute($token);
 
         $response = $this->actingAs($user)->get($url);
-        /*
+
         $response->assertSuccessful();
         $response->assertViewIs('auth.passwords.reset');
         $response->assertViewHas('token', $token);
-        */
+
         $response->assertStatus(302);
     }
-
-    public function testUserCanResetPasswordWithValidToken() {
+*/
+    /*public function testUserCanResetPasswordWithValidToken() {
         Event::fake();
 
         // $user = User::factory()->create();
@@ -98,7 +99,7 @@ class ResetPasswordTest extends TestCase {
         // Event::assertDispatched(PasswordReset::class, function ($e) use ($user) {
         //    return $e->user->getKey() === $user->getKey();
         // });
-    }
+    }*/
 
     public function testUserCannotResetPasswordWithInvalidToken() {
         $user = User::factory()->create(
