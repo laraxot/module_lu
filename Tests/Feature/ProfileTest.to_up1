@@ -92,8 +92,8 @@ class ProfileTest extends TestCase {
         //inserisco gli stessi dati che ci sono nella blade
         $data = [
             'handle' => 'Jona hern',
-            'firstname' => 'Jonathan',
-            'surname' => 'zarate hernandez',
+            'first_name' => 'Jonathan',
+            'last_name' => 'zarate hernandez',
             'email' => 'jona@mail.com',
             'phone' => '123456789',
             'bio' => 'causal text',

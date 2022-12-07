@@ -101,8 +101,8 @@ trait HasProfileTrait {
         $value = Str::ucfirst((string) $user->first_name).' '.Str::ucfirst((string) $user->last_name);
         $user->profile()->update(
             [
-                'firstname' => $user->first_name,
-                'surname' => $user->last_name,
+                'first_name' => $user->first_name,
+                'last_name' => $user->last_name,
             ]
         );
 
@@ -147,7 +147,7 @@ trait HasProfileTrait {
         }
         $value = $user->first_name;
 
-        $this->firstname = $user->first_name;
+        $this->first_name = $user->first_name;
         $this->save();
 
         return $value;
@@ -175,9 +175,9 @@ trait HasProfileTrait {
         if (! is_object($user)) {
             return $value;
         }
-        $value = $user->surname;
+        $value = $user->last_name;
 
-        $this->surname = $user->last_name;
+        $this->last_name = $user->last_name;
         $this->save();
 
         return $value;

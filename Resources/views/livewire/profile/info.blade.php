@@ -8,8 +8,8 @@
         </div>
     </div>
     @if($show)
-        <x-input.group type="text" name="firstname" />
-        <x-input.group type="text" name="surname" />
+        <x-input.group type="text" name="first_name" />
+        <x-input.group type="text" name="last_name" />
         <x-input.group type="text" name="email" />
         <x-input.group type="text" name="phone" />
         <x-input.group type="text" name="address" />
