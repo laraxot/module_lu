@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Modules\LU\Models\Traits;
 
 use Exception;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Support\Str;
@@ -97,6 +98,14 @@ trait HasProfileTrait {
         if (! \is_object($user)) {
             return $value;
         }
+        if ('' == trim($user->first_name ?? '')) {
+            $faker = \Faker\Factory::create();
+            $user->update(['first_name' => $faker->firstName()]);
+        }
+        if ('' == trim($user->last_name ?? '')) {
+            $faker = \Faker\Factory::create();
+            $user->update(['last_name' => $faker->lastName()]);
+        }
 
         $value = Str::ucfirst((string) $user->first_name).' '.Str::ucfirst((string) $user->last_name);
         $user->profile()->update(
@@ -183,4 +192,89 @@ trait HasProfileTrait {
         return $value;
     }
     */
+
+    public function getMyOrgChartArrayTest(): array {
+        $data = [
+            'data' => [
+                'label' => 'CEO',
+                'children' => [
+                    [
+                        'label' => 'Director',
+                        'children' => [
+                            [
+                                'label' => 'Manager [5]',
+                                'children' => [
+                                    [
+                                        'label' => 'Employee',
+                                    ],
+                                ],
+                            ],
+                            [
+                                'label' => 'Manager',
+                                'children' => [
+                                    [
+                                        'label' => 'Employee',
+                                    ],
+                                    [
+                                        'label' => 'Employee',
+                                    ],
+                                ],
+                            ],
+                        ],
+                    ],
+
+                    [
+                        'label' => 'Director',
+                        'children' => [
+                            [
+                                'label' => 'Manager',
+                                'children' => [
+                                    [
+                                        'label' => 'Employee',
+                                    ],
+                                    [
+                                        'label' => 'Employee',
+                                    ],
+                                ],
+                            ],
+                            [
+                                'label' => 'Manager',
+                                'children' => [
+                                    [
+                                        'label' => 'Employee',
+                                    ],
+                                ],
+                            ],
+                        ],
+                    ],
+                ],
+            ],
+        ];
+
+        return $data;
+    }
+
+    public function getMyOrgChartArray(?Model $curr = null): array {
+        if (null == $curr) {
+            $curr = $this->getBoss();
+        } else {
+            // dddx($curr);
+        }
+        $data['label'] = $curr->full_name.' '.$curr->org_info;
+
+        foreach ($curr->children as $son) {
+            $data['children'][] = $this->getMyOrgChartArray($son);
+        }
+
+        return $data;
+    }
+
+    public function getBoss() {
+        $ancestors = $this->ancestors;
+        if (0 == count($ancestors)) {
+            return $this;
+        }
+
+        return $ancestors->first();
+    }
 }
