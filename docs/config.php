@@ -10,6 +10,20 @@ return [
     'siteName' => 'Modulo LU',
     'siteDescription' => 'Modulo LU',
 
+    'path' => '{language}/{type}/{-title}',
+
+    'collections' => [
+        'posts-it' => [
+            'type' => 'blog',
+            'language' => 'it',
+        ],
+
+        'posts-en' => [
+            'type' => 'blog',
+            'language' => 'en',
+        ],
+    ],
+
     // Algolia DocSearch credentials
     'docsearchApiKey' => env('DOCSEARCH_KEY'),
     'docsearchIndexName' => env('DOCSEARCH_INDEX'),

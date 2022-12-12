@@ -17,13 +17,13 @@ It's based on which is your main module in xra.php of your domain configuration.
 
 For example:
 
-### base_restaurant/config/localhost/xra.php
+### base_example/config/localhost/xra.php
 
 ```php
 
 return [
     'primary_lang' => 'it',
-    'main_module' => 'Restaurant',
+    'main_module' => 'Example',
     'pub_theme' => 'PublicThemeName',
     'adm_theme' => 'AdminThemeName',
 ];
@@ -33,5 +33,5 @@ return [
 ## Then the user's profile will be:
 
 ```php
-Modules\\Restaurant\Models\Profile
+Modules\\Example\Models\Profile
 ```
