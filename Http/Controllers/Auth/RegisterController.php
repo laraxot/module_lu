@@ -65,6 +65,9 @@ class RegisterController extends Controller {
      */
     protected function create(array $data) {
         if (! isset($data['handle'])) {
+            if(!isset($data['username'])){
+                throw new \Exception('Many pre-made templates have a username.. if they don\'t even have this better to have this error');
+            }
             $data['handle'] = $data['username']; // molti template precotti hanno username.. se non hanno neppure questo meglio avere errore
         }
         $user = User::query()->create(
