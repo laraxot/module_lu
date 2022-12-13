@@ -32,4 +32,16 @@ return [
     'ProfileService' => [
         'url' => 'docs/profile_service',
     ],
+    'Users' => [
+        'url' => 'docs/users',
+    ],
+    'Areas' => [
+        'url' => 'docs/areas',
+    ],
+    'Roles' => [
+        'url' => 'docs/roles',
+    ],
+    'Profiles' => [
+        'url' => 'docs/profiles',
+    ],
 ];
