@@ -1,4 +1,7 @@
 {
+    "name": "laraxot/module_lu",
+    "description": "live user management",
+    "license": "MIT",
     "require": {
         "tightenco/jigsaw": "^1.6",
         "tightenco/jigsaw-docs-template": "^1.1",
