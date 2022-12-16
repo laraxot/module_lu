@@ -11,6 +11,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 // use App\Http\Requests;
 use Illuminate\Support\Str;
+use Modules\LU\Http\Controllers\BaseController;
 use Modules\LU\Models\User;
 use Modules\Xot\Contracts\UserContract;
 use Modules\Xot\Services\FileService;
@@ -18,7 +19,7 @@ use Modules\Xot\Services\FileService;
 /**
  * Class LoginController.
  */
-class LoginController extends Controller {
+class LoginController extends BaseController {
     /*
     |--------------------------------------------------------------------------
     | Login Controller

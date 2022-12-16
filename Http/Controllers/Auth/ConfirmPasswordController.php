@@ -7,8 +7,9 @@ namespace Modules\LU\Http\Controllers\Auth;
 use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Auth\ConfirmsPasswords;
+use Modules\LU\Http\Controllers\BaseController;
 
-class ConfirmPasswordController extends Controller {
+class ConfirmPasswordController extends BaseController {
     /*
     |--------------------------------------------------------------------------
     | Confirm Password Controller
