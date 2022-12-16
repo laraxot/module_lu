@@ -5,14 +5,14 @@ declare(strict_types=1);
 namespace Modules\LU\Http\Controllers\Api;
 
 // modules
-use App\Http\Controllers\Controller;
 use Exception;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Modules\LU\Http\Controllers\BaseController;
 use Modules\LU\Models\User;
 
-class UserController extends Controller {
+class UserController extends BaseController {
     public function login(Request $request): JsonResponse {
         // validate the login request
         $login = $request->validate([
