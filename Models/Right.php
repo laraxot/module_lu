@@ -12,7 +12,6 @@ namespace Modules\LU\Models;
  * @property string $right_define_name
  * @property string $has_implied
  * @property string $has_level
- *
  * @method static \Modules\LU\Database\Factories\RightFactory factory(...$parameters)
  * @method static \Illuminate\Database\Eloquent\Builder|Right newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|Right newQuery()
@@ -22,8 +21,15 @@ namespace Modules\LU\Models;
  * @method static \Illuminate\Database\Eloquent\Builder|Right whereHasLevel($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Right whereId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Right whereRightDefineName($value)
- *
  * @mixin \Eloquent
+ * @property \Illuminate\Support\Carbon|null $created_at
+ * @property \Illuminate\Support\Carbon|null $updated_at
+ * @property string|null $created_by
+ * @property string|null $updated_by
+ * @method static \Illuminate\Database\Eloquent\Builder|Right whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Right whereCreatedBy($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Right whereUpdatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Right whereUpdatedBy($value)
  */
 class Right extends BaseModel {
     /**

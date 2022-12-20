@@ -6,7 +6,7 @@ namespace Modules\LU\Models\Panels;
 
 // --- Services --
 use Illuminate\Database\Eloquent\Model;
-use Modules\Xot\Models\Panels\XotBasePanel;
+use Modules\Cms\Models\Panels\XotBasePanel;
 
 /**
  * Class RightPanel.

@@ -10,7 +10,7 @@ use Illuminate\Http\Request;
 
 use Modules\LU\Models\AreaPermUser;
 use Modules\Xot\Contracts\RowsContract;
-use Modules\Xot\Models\Panels\XotBasePanel;
+use Modules\Cms\Models\Panels\XotBasePanel;
 
 class AreaPermUserPanel extends XotBasePanel {
     /**

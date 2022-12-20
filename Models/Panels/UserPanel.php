@@ -12,7 +12,7 @@ use Modules\LU\Models\Group;
 use Modules\LU\Models\PermUser;
 use Modules\LU\Models\Right;
 use Modules\LU\Models\User;
-use Modules\Xot\Models\Panels\XotBasePanel;
+use Modules\Cms\Models\Panels\XotBasePanel;
 use Nwidart\Modules\Facades\Module;
 
 /**

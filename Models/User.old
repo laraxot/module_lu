@@ -259,7 +259,7 @@ protected $perPage = 30;
         if (! is_object($profile)) {
             $profile = $this->profile()->create();
         }
-        $url = \Modules\Xot\Services\PanelService::make()->get($profile)->url('show');
+        $url = \Modules\Cms\Services\PanelService::make()->get($profile)->url('show');
 
         return $url;
     }

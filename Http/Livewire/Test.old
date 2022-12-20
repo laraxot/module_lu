@@ -7,7 +7,7 @@ use Illuminate\Session\SessionManager;
 use Livewire\Component;
 use Livewire\WithPagination;
 use Modules\LU\Models\User;
-use Modules\Xot\Services\PanelService;
+use Modules\Cms\Services\PanelService;
 
 class Test extends Component {
     use WithPagination;

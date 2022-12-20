@@ -36,7 +36,6 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
  * @property \Illuminate\Database\Eloquent\Collection|\Modules\LU\Models\Right[]         $rights
  * @property int|null                                                                    $rights_count
  * @property \Modules\LU\Models\User|null                                                $user
- *
  * @method static \Modules\LU\Database\Factories\PermUserFactory factory(...$parameters)
  * @method static \Illuminate\Database\Eloquent\Builder|PermUser newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|PermUser newQuery()
@@ -55,7 +54,6 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
  * @method static \Illuminate\Database\Eloquent\Builder|PermUser whereUpdatedBy($value)
  * @method static \Illuminate\Database\Eloquent\Builder|PermUser whereUpdatedIp($value)
  * @method static \Illuminate\Database\Eloquent\Builder|PermUser whereUserId($value)
- *
  * @mixin \Eloquent
  */
 class PermUser extends BaseModel {

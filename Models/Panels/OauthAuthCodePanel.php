@@ -8,7 +8,7 @@ use Illuminate\Http\Request;
 use Modules\LU\Models\OauthAuthCode;
 // --- Services --
 
-use Modules\Xot\Models\Panels\XotBasePanel;
+use Modules\Cms\Models\Panels\XotBasePanel;
 
 class OauthAuthCodePanel extends XotBasePanel {
     /**

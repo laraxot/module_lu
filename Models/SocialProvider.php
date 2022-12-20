@@ -24,7 +24,6 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
  * @property string|null                     $provider_id
  * @property string|null                     $provider
  * @property \Modules\LU\Models\User|null    $user
- *
  * @method static \Modules\LU\Database\Factories\SocialProviderFactory factory(...$parameters)
  * @method static \Illuminate\Database\Eloquent\Builder|SocialProvider newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|SocialProvider newQuery()
@@ -43,7 +42,6 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
  * @method static \Illuminate\Database\Eloquent\Builder|SocialProvider whereUpdatedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|SocialProvider whereUpdatedBy($value)
  * @method static \Illuminate\Database\Eloquent\Builder|SocialProvider whereUserId($value)
- *
  * @mixin \Eloquent
  */
 class SocialProvider extends BaseModel {

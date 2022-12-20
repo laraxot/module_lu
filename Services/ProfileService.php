@@ -8,9 +8,9 @@ use Exception;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Auth;
-use Modules\Xot\Contracts\PanelContract;
+use Modules\Cms\Contracts\PanelContract;
 use Modules\Xot\Contracts\UserContract;
-use Modules\Xot\Services\PanelService;
+use Modules\Cms\Services\PanelService;
 use Nwidart\Modules\Facades\Module;
 use ReflectionException;
 

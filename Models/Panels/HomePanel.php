@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace Modules\LU\Models\Panels;
 
 use Modules\Xot\Models\Panels\Actions\ArtisanAction;
-use Modules\Xot\Models\Panels\XotBasePanel;
+use Modules\Cms\Models\Panels\XotBasePanel;
 
 /**
  * Class HomePanel.
