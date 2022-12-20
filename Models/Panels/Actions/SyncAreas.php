@@ -10,7 +10,7 @@ use Modules\LU\Models\Area;
 use Modules\LU\Models\PermUser;
 // -------- services --------
 // -------- bases -----------
-use Modules\Xot\Models\Panels\Actions\XotBasePanelAction;
+use Modules\Cms\Models\Panels\Actions\XotBasePanelAction;
 use Nwidart\Modules\Facades\Module;
 
 /**
