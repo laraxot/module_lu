@@ -12,7 +12,7 @@ class ModelHasPermissionFactory extends Factory {
      *
      * @var class-string<\Illuminate\Database\Eloquent\Model>
      */
-    protected $model = Modules\LU\Models\ModelHasPermission::class;
+    protected $model = \Modules\LU\Models\ModelHasPermission::class;
 
     /**
      * Define the model's default state.

@@ -193,67 +193,8 @@ trait HasProfileTrait {
     }
     */
 
-    public function getMyOrgChartArrayTest(): array {
-        $data = [
-            'data' => [
-                'label' => 'CEO',
-                'children' => [
-                    [
-                        'label' => 'Director',
-                        'children' => [
-                            [
-                                'label' => 'Manager [5]',
-                                'children' => [
-                                    [
-                                        'label' => 'Employee',
-                                    ],
-                                ],
-                            ],
-                            [
-                                'label' => 'Manager',
-                                'children' => [
-                                    [
-                                        'label' => 'Employee',
-                                    ],
-                                    [
-                                        'label' => 'Employee',
-                                    ],
-                                ],
-                            ],
-                        ],
-                    ],
-
-                    [
-                        'label' => 'Director',
-                        'children' => [
-                            [
-                                'label' => 'Manager',
-                                'children' => [
-                                    [
-                                        'label' => 'Employee',
-                                    ],
-                                    [
-                                        'label' => 'Employee',
-                                    ],
-                                ],
-                            ],
-                            [
-                                'label' => 'Manager',
-                                'children' => [
-                                    [
-                                        'label' => 'Employee',
-                                    ],
-                                ],
-                            ],
-                        ],
-                    ],
-                ],
-            ],
-        ];
-
-        return $data;
-    }
-
+    
+    /* -- fare trait a parte ed aggiungere solo a quelli con parent_id 
     public function getMyOrgChartArray(?Model $curr = null): array {
         if (null == $curr) {
             $curr = $this->getBoss();
@@ -277,4 +218,7 @@ trait HasProfileTrait {
 
         return $ancestors->first();
     }
+    */
+    
+    
 }
