@@ -16,6 +16,7 @@ namespace Modules\LU\Models;
  * @property \Illuminate\Support\Carbon|null $updated_at
  * @property string|null                     $created_by
  * @property string|null                     $updated_by
+ *
  * @method static \Modules\LU\Database\Factories\RightImpliedFactory factory(...$parameters)
  * @method static \Illuminate\Database\Eloquent\Builder|RightImplied newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|RightImplied newQuery()
@@ -27,6 +28,7 @@ namespace Modules\LU\Models;
  * @method static \Illuminate\Database\Eloquent\Builder|RightImplied whereRightId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|RightImplied whereUpdatedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|RightImplied whereUpdatedBy($value)
+ *
  * @mixin \Eloquent
  */
 class RightImplied extends BaseModel {

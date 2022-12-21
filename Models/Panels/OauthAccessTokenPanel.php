@@ -5,10 +5,10 @@ declare(strict_types=1);
 namespace Modules\LU\Models\Panels;
 
 use Illuminate\Http\Request;
-use Modules\LU\Models\OauthAccessToken;
+use Modules\Cms\Models\Panels\XotBasePanel;
 // --- Services --
 
-use Modules\Cms\Models\Panels\XotBasePanel;
+use Modules\LU\Models\OauthAccessToken;
 
 class OauthAccessTokenPanel extends XotBasePanel {
     /**

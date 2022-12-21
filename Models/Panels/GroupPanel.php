@@ -7,8 +7,8 @@ namespace Modules\LU\Models\Panels;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\Request;
 // --- Services --
-use Modules\LU\Models\Group;
 use Modules\Cms\Models\Panels\XotBasePanel;
+use Modules\LU\Models\Group;
 
 /**
  * Class GroupPanel.

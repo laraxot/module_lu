@@ -15,6 +15,7 @@ namespace Modules\LU\Models;
  * @property \Illuminate\Support\Carbon|null $updated_at
  * @property string|null                     $created_by
  * @property string|null                     $updated_by
+ *
  * @method static \Modules\LU\Database\Factories\GroupRightFactory factory(...$parameters)
  * @method static \Illuminate\Database\Eloquent\Builder|GroupRight newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|GroupRight newQuery()
@@ -27,6 +28,7 @@ namespace Modules\LU\Models;
  * @method static \Illuminate\Database\Eloquent\Builder|GroupRight whereRightLevel($value)
  * @method static \Illuminate\Database\Eloquent\Builder|GroupRight whereUpdatedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|GroupRight whereUpdatedBy($value)
+ *
  * @mixin \Eloquent
  */
 class GroupRight extends BasePivot {

@@ -9,8 +9,8 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Auth;
 use Modules\Cms\Contracts\PanelContract;
-use Modules\Xot\Contracts\UserContract;
 use Modules\Cms\Services\PanelService;
+use Modules\Xot\Contracts\UserContract;
 use Nwidart\Modules\Facades\Module;
 use ReflectionException;
 

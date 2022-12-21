@@ -95,6 +95,7 @@ use Staudenmeir\EloquentHasManyDeep\HasRelationships;
  * @property int|null                                                                                                  $social_providers_count
  * @property \Illuminate\Database\Eloquent\Collection|\Modules\LU\Models\OauthAccessToken[]                            $tokens
  * @property int|null                                                                                                  $tokens_count
+ *
  * @method static \Modules\LU\Database\Factories\UserFactory factory(...$parameters)
  * @method static \Illuminate\Database\Eloquent\Builder|User newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|User newQuery()
@@ -140,13 +141,16 @@ use Staudenmeir\EloquentHasManyDeep\HasRelationships;
  * @method static \Illuminate\Database\Eloquent\Builder|User whereTwoFactorSecret($value)
  * @method static \Illuminate\Database\Eloquent\Builder|User whereUpdatedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|User whereUpdatedBy($value)
+ *
  * @mixin \Eloquent
- * @property string|null $lastlogin
- * @property int|null $enable
- * @property string|null $token_check
- * @property int|null $is_verified
+ *
+ * @property string|null                     $lastlogin
+ * @property int|null                        $enable
+ * @property string|null                     $token_check
+ * @property int|null                        $is_verified
  * @property \Illuminate\Support\Carbon|null $email_verified_at
- * @property string|null $api_token
+ * @property string|null                     $api_token
+ *
  * @method static \Illuminate\Database\Eloquent\Builder|User whereApiToken($value)
  * @method static \Illuminate\Database\Eloquent\Builder|User whereEmailVerifiedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|User whereEnable($value)

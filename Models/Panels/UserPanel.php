@@ -7,12 +7,12 @@ namespace Modules\LU\Models\Panels;
 use Illuminate\Http\Request;
 // --- Services --
 use Illuminate\Support\Collection;
+use Modules\Cms\Models\Panels\XotBasePanel;
 use Modules\LU\Models\Area;
 use Modules\LU\Models\Group;
 use Modules\LU\Models\PermUser;
 use Modules\LU\Models\Right;
 use Modules\LU\Models\User;
-use Modules\Cms\Models\Panels\XotBasePanel;
 use Nwidart\Modules\Facades\Module;
 
 /**

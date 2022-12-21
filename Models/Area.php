@@ -40,6 +40,7 @@ use Staudenmeir\EloquentHasManyDeep\HasRelationships;
  * @property int|null                                                                                       $perm_users_count
  * @property \Illuminate\Database\Eloquent\Collection|\Modules\LU\Models\PermUser[]                         $perms
  * @property int|null                                                                                       $perms_count
+ *
  * @method static \Modules\LU\Database\Factories\AreaFactory factory(...$parameters)
  * @method static \Illuminate\Database\Eloquent\Builder|Area newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|Area newQuery()
@@ -64,9 +65,12 @@ use Staudenmeir\EloquentHasManyDeep\HasRelationships;
  * @method static \Illuminate\Database\Eloquent\Builder|Area whereUpdatedBy($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Area whereUpdatedIp($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Area whereUrl($value)
+ *
  * @mixin \Eloquent
+ *
  * @property string $icons
- * @property int $ordine
+ * @property int    $ordine
+ *
  * @method static \Illuminate\Database\Eloquent\Builder|Area whereIcons($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Area whereOrdine($value)
  */

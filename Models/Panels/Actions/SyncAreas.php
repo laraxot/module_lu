@@ -6,11 +6,11 @@ namespace Modules\LU\Models\Panels\Actions;
 
 // -------- models -----------
 
+use Modules\Cms\Models\Panels\Actions\XotBasePanelAction;
 use Modules\LU\Models\Area;
-use Modules\LU\Models\PermUser;
 // -------- services --------
 // -------- bases -----------
-use Modules\Cms\Models\Panels\Actions\XotBasePanelAction;
+use Modules\LU\Models\PermUser;
 use Nwidart\Modules\Facades\Module;
 
 /**

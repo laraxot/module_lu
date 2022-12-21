@@ -18,6 +18,7 @@ use Spatie\Permission\Models\Role as SpatieRole;
  * @property int|null                                                                 $permissions_count
  * @property \Illuminate\Database\Eloquent\Collection|\Modules\LU\Models\User[]       $users
  * @property int|null                                                                 $users_count
+ *
  * @method static \Illuminate\Database\Eloquent\Builder|Role newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|Role newQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|Role permission($permissions)
@@ -27,6 +28,7 @@ use Spatie\Permission\Models\Role as SpatieRole;
  * @method static \Illuminate\Database\Eloquent\Builder|Role whereId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Role whereName($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Role whereUpdatedAt($value)
+ *
  * @mixin \Eloquent
  */
 class Role extends SpatieRole {

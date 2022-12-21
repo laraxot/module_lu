@@ -8,9 +8,9 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\Request;
 // --- Services --
 
+use Modules\Cms\Models\Panels\XotBasePanel;
 use Modules\LU\Models\AreaPermUser;
 use Modules\Xot\Contracts\RowsContract;
-use Modules\Cms\Models\Panels\XotBasePanel;
 
 class AreaPermUserPanel extends XotBasePanel {
     /**

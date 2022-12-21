@@ -6,8 +6,8 @@ namespace Modules\LU\Models\Panels;
 
 // --- Services --
 
-use Modules\LU\Models\Right;
 use Modules\Cms\Models\Panels\XotBasePanel;
+use Modules\LU\Models\Right;
 
 /**
  * Class UserRightPanel.

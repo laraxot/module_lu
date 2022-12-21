@@ -17,6 +17,7 @@ use Illuminate\Database\Eloquent\Relations\HasOne;
  * @property string|null                     $created_by
  * @property string|null                     $updated_by
  * @property \Modules\LU\Models\Group|null   $group
+ *
  * @method static \Modules\LU\Database\Factories\GroupPermUserFactory factory(...$parameters)
  * @method static \Illuminate\Database\Eloquent\Builder|GroupPermUser newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|GroupPermUser newQuery()
@@ -28,6 +29,7 @@ use Illuminate\Database\Eloquent\Relations\HasOne;
  * @method static \Illuminate\Database\Eloquent\Builder|GroupPermUser wherePermUserId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|GroupPermUser whereUpdatedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|GroupPermUser whereUpdatedBy($value)
+ *
  * @mixin \Eloquent
  */
 class GroupPermUser extends BasePivot {

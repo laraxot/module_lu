@@ -9,8 +9,8 @@ use Illuminate\Session\SessionManager;
 use Illuminate\Support\Collection;
 use Livewire\Component;
 use Livewire\WithPagination;
-use Modules\LU\Models\User;
 use Modules\Cms\Contracts\PanelContract;
+use Modules\LU\Models\User;
 
 /**
  * Class Users.

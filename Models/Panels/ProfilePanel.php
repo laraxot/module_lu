@@ -12,9 +12,9 @@ use Illuminate\Support\Facades\Auth;
 // use Modules\Blog\Events\StoreProfileEvent;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Str;
+use Modules\Cms\Models\Panels\XotBasePanel;
 use Modules\LU\Models\Profile;
 use Modules\LU\Models\User;
-use Modules\Cms\Models\Panels\XotBasePanel;
 
 /**
  * Class ProfilePanel.

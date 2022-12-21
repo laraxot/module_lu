@@ -62,11 +62,11 @@ class CreateUsersTable extends XotBaseMigration {
                 if ($this->hasColumn('auth_user_id')) {
                     $table->renameColumn('auth_user_id', 'id');
                 }
-                
+
                 if (! $this->hasColumn('api_token')) {
                     $table->text('api_token')->nullable();
                 }
-                
+
                 if (! $this->hasColumn('two_factor_secret')) {
                     $table->text('two_factor_secret')
                         ->after('password')
