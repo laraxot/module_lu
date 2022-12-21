@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Modules\LU\Models\Panels;
 
-use Modules\Xot\Models\Panels\Actions\ArtisanAction;
+use Modules\Cms\Models\Panels\Actions\ArtisanAction;
 use Modules\Cms\Models\Panels\XotBasePanel;
 
 /**

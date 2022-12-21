@@ -14,7 +14,7 @@ class _ModulePanel extends XotBasePanel {
         return [
             new Actions\TestAction(),
             new Actions\UpdateMailTemplateAction(),
-           // new \Modules\Xot\Models\Panels\Actions\DbAction(),
+           // new \Modules\Cms\Models\Panels\Actions\DbAction(),
         ];
     }
 }
