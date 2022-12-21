@@ -40,19 +40,7 @@ class ModelHasPermissionPanel extends XotBasePanel {
         return [];
     }
 
-    /**
-     * on select the option id.
-     *
-     * quando aggiungi un campo select, è il numero della chiave
-     * che viene messo come valore su value="id"
-     *
-     * @param ModelHasPermission $row
-     *
-     * @return int|string|null
-     */
-    public function optionId($row) {
-        return $row->getKey();
-    }
+
 
     /**
      * on select the option label.

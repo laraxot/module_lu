@@ -5,10 +5,11 @@ declare(strict_types=1);
 namespace Modules\LU\Models\Panels;
 
 use Illuminate\Http\Request;
-use Modules\Cms\Models\Panels\XotBasePanel;
+use Modules\LU\Models\ModelHasRole;
 // --- Services --
 
 use Modules\Xot\Contracts\RowsContract;
+use Modules\Cms\Models\Panels\XotBasePanel;
 
 class ModelHasRolePanel extends XotBasePanel {
     /**
@@ -40,24 +41,12 @@ class ModelHasRolePanel extends XotBasePanel {
         return [];
     }
 
-    /**
-     * on select the option id.
-     *
-     * quando aggiungi un campo select, è il numero della chiave
-     * che viene messo come valore su value="id"
-     *
-     * @param ModelHasRole $row
-     *
-     * @return int|string|null
-     */
-    public function optionId($row) {
-        return $row->getKey();
-    }
+
 
     /**
      * on select the option label.
      *
-     * @param mixed $row
+     * @param ModelHasRole $row
      */
     public function optionLabel($row): string {
         return (string) $row->title;

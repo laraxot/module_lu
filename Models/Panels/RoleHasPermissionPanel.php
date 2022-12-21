@@ -5,59 +5,28 @@ declare(strict_types=1);
 namespace Modules\LU\Models\Panels;
 
 use Illuminate\Http\Request;
-use Modules\Cms\Models\Panels\XotBasePanel;
+use Modules\Xot\Contracts\RowsContract;
 // --- Services --
 
-use Modules\Xot\Contracts\RowsContract;
+use Modules\LU\Models\RoleHasPermission;
+use Modules\Cms\Models\Panels\XotBasePanel;
 
 class RoleHasPermissionPanel extends XotBasePanel {
     /**
      * The model the resource corresponds to.
      */
-    public static string $model = 'RoleHasPermission';
+    public static string $model = RoleHasPermission::class;
 
     /**
      * The single value that should be used to represent the resource when being displayed.
      */
     public static string $title = 'title';
 
-    /**
-     * The columns that should be searched.
-     *
-     * @var array
-     */
-    public static $search = [
-    ];
-
-    /**
-     * The relationships that should be eager loaded on index queries.
-     */
-    public function with(): array {
-        return [];
-    }
-
-    public function search(): array {
-        return [];
-    }
-
-    /**
-     * on select the option id.
-     *
-     * quando aggiungi un campo select, è il numero della chiave
-     * che viene messo come valore su value="id"
-     *
-     * @param RoleHasPermission $row
-     *
-     * @return int|string|null
-     */
-    public function optionId($row) {
-        return $row->getKey();
-    }
 
     /**
      * on select the option label.
      *
-     * @param mixed $row
+     * @param RoleHasPermission $row
      */
     public function optionLabel($row): string {
         return (string) $row->title;
