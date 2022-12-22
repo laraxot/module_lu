@@ -95,7 +95,7 @@ class ProfileService {
             return \call_user_func_array($callback, $arguments);
         }
 
-        throw new Exception('['.\get_class($profile).']method:['.$name.']['.__LINE__.']['.class_basename(__CLASS__).']');
+        throw new Exception('['.\get_class($profile).'] method: ['.$name.']['.__LINE__.']['.class_basename(__CLASS__).']');
     }
 
     /**

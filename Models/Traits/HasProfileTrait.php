@@ -193,7 +193,7 @@ trait HasProfileTrait {
     }
     */
 
-    /* -- fare trait a parte ed aggiungere solo a quelli con parent_id
+    // -- fare trait a parte ed aggiungere solo a quelli con parent_id
     public function getMyOrgChartArray(?Model $curr = null): array {
         if (null == $curr) {
             $curr = $this->getBoss();
@@ -217,5 +217,5 @@ trait HasProfileTrait {
 
         return $ancestors->first();
     }
-    */
+    
 }
