@@ -7,12 +7,13 @@ declare(strict_types=1);
 
 namespace Modules\LU\Notifications;
 
-use Illuminate\Notifications\Messages\MailMessage;
-use Illuminate\Notifications\Notification;
-// use Illuminate\Auth\Notifications\ResetPassword as ResetPasswordNotification;
+use Exception;
 use Illuminate\Support\Arr;
-use Illuminate\Support\Facades\Lang;
+// use Illuminate\Auth\Notifications\ResetPassword as ResetPasswordNotification;
 use Illuminate\Support\Facades\URL;
+use Illuminate\Support\Facades\Lang;
+use Illuminate\Notifications\Notification;
+use Illuminate\Notifications\Messages\MailMessage;
 
 /**
  * Class ResetPassword.
@@ -64,10 +65,13 @@ class ResetPassword extends Notification {
         );
 
         $url = url(route('password.reset', $this->token, false));
-
+        $subject=trans('lu::notifications.reset_password.subject');
+        if(!is_string($subject)){
+            throw new Exception('['.__LINE__.']['.__FILE__.']');
+        }
         $mail = (new MailMessage())
             // ->from('admin@app.com', 'AppName')
-            ->subject(trans('lu::notifications.reset_password.subject'));
+            ->subject($subject);
         if (null !== $markdown && \is_string($markdown)) {
             $mail = $mail->markdown($markdown, ['subcopy' => 'subcopy']);
         }

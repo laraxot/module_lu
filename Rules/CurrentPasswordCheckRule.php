@@ -42,7 +42,7 @@ class CurrentPasswordCheckRule implements Rule {
     /**
      * Get the validation error message.
      *
-     * @return array|string|null
+     * @return mixed
      */
     public function message() {
         return __('The current password field does not match your password');
