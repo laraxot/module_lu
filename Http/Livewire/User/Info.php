@@ -17,7 +17,8 @@ class Info extends Component {
     public string $model_class;
     public int $model_id;
 
-    protected $rules = [
+    
+    protected array $rules = [
         'form_data.passwd' => 'required|min:6|confirmed',
         // 'email' => 'required|email',
     ];

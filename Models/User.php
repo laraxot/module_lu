@@ -237,7 +237,7 @@ class User extends Authenticatable implements UserContract {
         // return DB::connection($this->connection)->getDatabaseName().'.'.parent::getTable();
     // }
 
-    public function getApiTokenAttribute(?string $value) {
+    public function getApiTokenAttribute(?string $value):string {
         if (null !== $value) {
             return $value;
         }
