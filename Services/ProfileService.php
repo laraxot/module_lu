@@ -84,7 +84,7 @@ class ProfileService {
 
         if (null === $profile) {
             return 'profile is null ['.__LINE__.']['.class_basename(__CLASS__).']';
-            dddx('qui1');
+            //dddx('qui1');
         }
         if (method_exists($profile, $name)) {
             /**

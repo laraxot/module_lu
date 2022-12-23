@@ -29,7 +29,7 @@ class RoleHasPermissionPanel extends XotBasePanel {
      * @param RoleHasPermission $row
      */
     public function optionLabel($row): string {
-        return (string) $row->title;
+        return (string) $row->permission_id.' - '. $row->role_id;
     }
 
     /**
