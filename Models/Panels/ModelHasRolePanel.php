@@ -49,7 +49,7 @@ class ModelHasRolePanel extends XotBasePanel {
      * @param ModelHasRole $row
      */
     public function optionLabel($row): string {
-        return (string) $row->title;
+        return (string) $row->role_id.' - '.$row->model_type.' - '.$row->model_id;
     }
 
     /**

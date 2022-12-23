@@ -58,7 +58,7 @@ class VerificationController extends Controller {
          * @var UserContract
          */
         $user = $request->user();
-        if (null === $user) {
+        if (null == $user) {
             throw new Exception('['.__LINE__.']['.__FILE__.']');
         }
 

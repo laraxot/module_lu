@@ -5,14 +5,15 @@ declare(strict_types=1);
 namespace Modules\LU\Services;
 
 use Exception;
-use Illuminate\Database\Eloquent\Model;
-use Illuminate\Support\Collection;
-use Illuminate\Support\Facades\Auth;
-use Modules\Cms\Contracts\PanelContract;
-use Modules\Cms\Services\PanelService;
-use Modules\Xot\Contracts\UserContract;
-use Nwidart\Modules\Facades\Module;
 use ReflectionException;
+use Modules\LU\Models\Area;
+use Illuminate\Support\Collection;
+use Nwidart\Modules\Facades\Module;
+use Illuminate\Support\Facades\Auth;
+use Modules\Cms\Services\PanelService;
+use Illuminate\Database\Eloquent\Model;
+use Modules\Xot\Contracts\UserContract;
+use Modules\Cms\Contracts\PanelContract;
 
 /**
  * Class ProfileService.
@@ -156,7 +157,7 @@ class ProfileService {
 
     // returns User's full name (fist and last name)
     public function fullName(): ?string {
-        if (null === $this->user) {
+        if (null == $this->user) {
             return null;
         }
         $user = $this->user;
@@ -172,7 +173,7 @@ class ProfileService {
 
     // returns username
     public function handle(): string {
-        if (null === $this->user) {
+        if (null == $this->user) {
             return 'unknown';
         }
 
@@ -223,7 +224,7 @@ class ProfileService {
      * @return string|null
      */
     public function avatar($size = 100) {
-        if (null === $this->user) {
+        if (null == $this->user) {
             return null;
         }
 
