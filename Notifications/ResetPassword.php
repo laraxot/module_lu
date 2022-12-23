@@ -75,9 +75,9 @@ class ResetPassword extends Notification {
         if (null !== $markdown && \is_string($markdown)) {
             $mail = $mail->markdown($markdown, ['subcopy' => 'subcopy']);
         }
-        $mail = $mail->line(trans('lu::notifications.reset_password.line1'))
-            ->action(trans('lu::notifications.reset_password.action'), $url)
-            ->line(trans('lu::notifications.reset_password.line2'));
+        $mail = $mail->line((string)trans('lu::notifications.reset_password.line1'))
+            ->action((string)trans('lu::notifications.reset_password.action'), $url)
+            ->line((string)trans('lu::notifications.reset_password.line2'));
 
         return $mail;
         // ->greeting(trans('lu::notifications.reset_password.greeting', ['username' => $this->username]))

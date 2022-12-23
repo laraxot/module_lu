@@ -89,7 +89,7 @@ class Area extends BaseModel implements Sortable {
     /**
      * Undocumented variable.
      *
-     * @var array<string, string>
+     * @var array<string, string|true>
      */
     public $sortable = [
         'order_column_name' => 'order_column',

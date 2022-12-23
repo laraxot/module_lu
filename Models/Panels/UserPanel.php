@@ -233,7 +233,7 @@ class UserPanel extends XotBasePanel {
     public function areas() {
         $row = $this->row;
         /**
-         * @var Collection
+         * @var Collection<Area>
          */
         $areas = $row->getRelationValue('areas');
         // dddx($areas);

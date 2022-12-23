@@ -5,10 +5,11 @@ declare(strict_types=1);
 namespace Modules\LU\Models\Panels;
 
 use Illuminate\Http\Request;
-use Modules\Cms\Models\Panels\XotBasePanel;
+use Modules\Xot\Contracts\RowsContract;
 // --- Services --
 
-use Modules\Xot\Contracts\RowsContract;
+use Modules\LU\Models\ModelHasPermission;
+use Modules\Cms\Models\Panels\XotBasePanel;
 
 class ModelHasPermissionPanel extends XotBasePanel {
     /**
@@ -45,10 +46,10 @@ class ModelHasPermissionPanel extends XotBasePanel {
     /**
      * on select the option label.
      *
-     * @param mixed $row
+     * @param ModelHasPermission $row
      */
     public function optionLabel($row): string {
-        return (string) $row->title;
+        return (string) $row->permission_id.'  '.$row->model_type.' - '.$row->model_id;
     }
 
     /**

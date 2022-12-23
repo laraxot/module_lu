@@ -4,11 +4,12 @@ declare(strict_types=1);
 
 namespace Modules\LU\Models\Panels;
 
+use Modules\LU\Models\Role;
 use Illuminate\Http\Request;
-use Modules\Cms\Models\Panels\XotBasePanel;
 // --- Services --
 
 use Modules\Xot\Contracts\RowsContract;
+use Modules\Cms\Models\Panels\XotBasePanel;
 
 class RolePanel extends XotBasePanel {
     /**
@@ -24,7 +25,7 @@ class RolePanel extends XotBasePanel {
     /**
      * on select the option label.
      *
-     * @param mixed $row
+     * @param Role $row
      */
     public function optionLabel($row): string {
         return (string) $row->name;
