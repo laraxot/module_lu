@@ -5,11 +5,11 @@ declare(strict_types=1);
 namespace Modules\LU\Models\Panels;
 
 use Illuminate\Http\Request;
-use Modules\LU\Models\ModelHasRole;
+use Modules\Cms\Models\Panels\XotBasePanel;
 // --- Services --
 
+use Modules\LU\Models\ModelHasRole;
 use Modules\Xot\Contracts\RowsContract;
-use Modules\Cms\Models\Panels\XotBasePanel;
 
 class ModelHasRolePanel extends XotBasePanel {
     /**
@@ -41,15 +41,14 @@ class ModelHasRolePanel extends XotBasePanel {
         return [];
     }
 
-
-
     /**
      * on select the option label.
      *
      * @param ModelHasRole $row
      */
     public function optionLabel($row): string {
-        return (string) $row->title;
+        // return (string) $row->title;
+        return $row->getAttributeValue('title').'';
     }
 
     /**

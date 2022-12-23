@@ -5,11 +5,11 @@ declare(strict_types=1);
 namespace Modules\LU\Models\Panels;
 
 use Illuminate\Http\Request;
-use Modules\Xot\Contracts\RowsContract;
+use Modules\Cms\Models\Panels\XotBasePanel;
 // --- Services --
 
 use Modules\LU\Models\RoleHasPermission;
-use Modules\Cms\Models\Panels\XotBasePanel;
+use Modules\Xot\Contracts\RowsContract;
 
 class RoleHasPermissionPanel extends XotBasePanel {
     /**
@@ -22,14 +22,14 @@ class RoleHasPermissionPanel extends XotBasePanel {
      */
     public static string $title = 'title';
 
-
     /**
      * on select the option label.
      *
      * @param RoleHasPermission $row
      */
     public function optionLabel($row): string {
-        return (string) $row->title;
+        // return (string) $row->title;
+        return $row->getAttributeValue('title').'';
     }
 
     /**
