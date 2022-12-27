@@ -26,7 +26,11 @@ class Info extends Component {
     public function mount(): void {
         $model = ProfileService::make()->getUser();
         $this->model_class = get_class($model);
-        $this->model_id = $model->getKey();
+        $model_id=$model->getKey();
+        if(!is_int($model_id)){
+            throw new Exception('['.__LINE__.']['.__FILE__.']');
+        }
+        $this->model_id = $model_id;
         // $this->form_data = $model->toArray();
     }
 

@@ -36,7 +36,11 @@ class ProfileService {
             $xot = [];
         }
         $this->xot = $xot;
-        $this->get(Auth::user());
+        $user=Auth::user();
+        if($user==null){
+            return ;
+        }
+        $this->get($user);
         // dddx(Auth::user());
     }
 
@@ -102,11 +106,10 @@ class ProfileService {
     /**
      * returns this ProfileService instance.
      *
-     * @param object|Model|\Modules\Xot\Contracts\UserContract $user
      *
      * @throws ReflectionException
      */
-    public function get($user): self {
+    public function get(UserContract $user): self {
         if (\is_object($user)) {
             $this->user = $user;
 
@@ -241,7 +244,7 @@ class ProfileService {
 
     // returns the
     public function getPanel(): PanelContract {
-        if (null === $this->profile) {
+        if (null == $this->profile) {
             dddx(['message' => 'to fix', 'user' => $this->user, 'profile' => $this->profile]);
         }
 

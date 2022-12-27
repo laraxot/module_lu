@@ -23,6 +23,9 @@ class Info extends Component {
 
     public function mount(): void {
         $profile = ProfileService::make()->getProfile();
+        if($profile==null){
+            throw new Exception('['.__LINE__.']['.__FILE__.']');
+        }
         $this->model_class = get_class($profile);
         $this->model_id = $profile->getKey();
         $this->form_data = $profile->toArray();

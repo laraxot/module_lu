@@ -12,6 +12,7 @@ use Illuminate\Support\Arr;
 // use Illuminate\Auth\Notifications\ResetPassword as ResetPasswordNotification;
 use Illuminate\Support\Facades\URL;
 use Illuminate\Support\Facades\Lang;
+use Modules\LU\Datas\ResetPasswordData;
 use Illuminate\Notifications\Notification;
 use Illuminate\Notifications\Messages\MailMessage;
 
@@ -75,9 +76,15 @@ class ResetPassword extends Notification {
         if (null !== $markdown && \is_string($markdown)) {
             $mail = $mail->markdown($markdown, ['subcopy' => 'subcopy']);
         }
-        $mail = $mail->line((string)trans('lu::notifications.reset_password.line1'))
-            ->action((string)trans('lu::notifications.reset_password.action'), $url)
-            ->line((string)trans('lu::notifications.reset_password.line2'));
+        /*
+        $line1=trans('lu::notifications.reset_password.line1');
+        $action=trans('lu::notifications.reset_password.action');
+        $line2=trans('lu::notifications.reset_password.line2');
+        */
+        $txt=ResetPasswordData::from(trans('lu::notifications.reset_password'));
+        $mail = $mail->line($txt->line1)
+            ->action($txt->action, $url)
+            ->line($txt->line2);
 
         return $mail;
         // ->greeting(trans('lu::notifications.reset_password.greeting', ['username' => $this->username]))
