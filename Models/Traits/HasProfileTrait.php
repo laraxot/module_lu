@@ -209,13 +209,6 @@ trait HasProfileTrait {
         return $data;
     }
  */
-    public function getBoss() {
-        $ancestors = $this->ancestors;
-        if (0 == count($ancestors)) {
-            return $this;
-        }
-
-        return $ancestors->first();
-    }
+    
    
 }
