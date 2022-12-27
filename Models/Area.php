@@ -181,11 +181,11 @@ class Area extends BaseModel implements Sortable {
     }
 
     /**
-     * @param mixed $value
+     
      *
-     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\Routing\UrlGenerator|string
+     
      */
-    public function getUrlAttribute($value) {
+    public function getUrlAttribute(?string $value):?string {
         if (! \is_string($this->area_define_name)) {
             throw new Exception('['.__LINE__.']['.class_basename(__CLASS__).']');
         }
@@ -204,11 +204,11 @@ class Area extends BaseModel implements Sortable {
     }
 
     /**
-     * @param mixed $value
+     
      *
-     * @return string
+     
      */
-    public function getGuidAttribute($value) {
+    public function getGuidAttribute(?string $value):?string {
         if (null === $this->area_define_name) {
             throw new Exception('['.__LINE__.']['.class_basename(__CLASS__).']');
         }
@@ -217,11 +217,11 @@ class Area extends BaseModel implements Sortable {
     }
 
     /**
-     * @param mixed $value
+     
      *
-     * @return bool|mixed|string
+     
      */
-    public function getIconSrcAttribute($value) {
+    public function getIconSrcAttribute(?string $value):?string {
         $src = mb_strtolower($this->area_define_name.'::img/icon.png');
         $src = ThemeService::asset($src);
 
