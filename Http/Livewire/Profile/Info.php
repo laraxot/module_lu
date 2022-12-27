@@ -27,7 +27,11 @@ class Info extends Component {
             throw new Exception('['.__LINE__.']['.__FILE__.']');
         }
         $this->model_class = get_class($profile);
-        $this->model_id = $profile->getKey();
+        $model_id=$profile->getKey();
+        if(!is_int($model_id)){
+            throw new Exception('['.__LINE__.']['.__FILE__.']');
+        }
+        $this->model_id = $model_id;
         $this->form_data = $profile->toArray();
     }
 

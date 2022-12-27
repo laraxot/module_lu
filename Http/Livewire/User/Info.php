@@ -4,9 +4,10 @@ declare(strict_types=1);
 
 namespace Modules\LU\Http\Livewire\User;
 
-use Illuminate\Contracts\Support\Renderable;
+use Exception;
 use Livewire\Component;
 use Modules\LU\Services\ProfileService;
+use Illuminate\Contracts\Support\Renderable;
 
 /**
  * Class Edit.

@@ -97,14 +97,7 @@ class AreaPermUser extends BasePivot {
 
     // era commentata e dava errore su admin/lu/users che questo metodo era undefined
     public function getUrlAttribute(?string $value): ?string {
-        $area = $this->area;
-        if (! \is_object($area)) {
-            return $value;
-        }
-        // 94     Method Modules\LU\Models\AreaPermUser::getUrlAttribute() should return string|null
-        // cbut returns Illuminate\Contracts\Foundation\Application|Illuminate\Contracts\Routing\UrlGenerator|string.
-
-        return $area->url;
+        return $this->area?->url;
     }
 
     public function getIconSrcAttribute(?string $value): ?string {

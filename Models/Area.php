@@ -198,7 +198,7 @@ class Area extends BaseModel implements Sortable {
         // if (is_null($title)) {
         //    throw new Exception('['.__LINE__.']['.class_basename(__CLASS__).']');
         // }
-        $title = str_replace('_', ' ', $title);
+        $title = str_replace('_', ' ', (string)$title);
 
         return $title;
     }

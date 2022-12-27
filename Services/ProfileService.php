@@ -246,6 +246,7 @@ class ProfileService {
     public function getPanel(): PanelContract {
         if (null == $this->profile) {
             dddx(['message' => 'to fix', 'user' => $this->user, 'profile' => $this->profile]);
+            throw new Exception('['.__LINE__.']['.__FILE__.']');
         }
 
         $profile_panel = PanelService::make()->get($this->profile);
@@ -261,6 +262,7 @@ class ProfileService {
     public function getProfilePanel(): PanelContract {
         if (null === $this->profile) {
             dddx(['message' => 'to fix', 'user' => $this->user, 'profile' => $this->profile]);
+            throw new Exception('['.__LINE__.']['.__FILE__.']');
         }
 
         $profile_panel = PanelService::make()->get($this->profile);

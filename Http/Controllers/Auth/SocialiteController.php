@@ -34,7 +34,7 @@ class SocialiteController extends Controller {
     /**
      * Redirect the user to the GitHub authentication page.
      *
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\Response|\Illuminate\Http\RedirectResponse
      */
     public function redirectToProvider(string $lang, string $provider) {
         if (! \in_array($provider, ['google', 'facebook'], true)) {
@@ -44,7 +44,9 @@ class SocialiteController extends Controller {
         if (null === config('services.'.$provider.'.client_id')) {
             exit('TRY WITH OTHER LOGIN !['.$provider.'] IS NOT SET');
         }
-
+        /**
+         * @var \Laravel\Socialite\Two\AbstractProvider
+         */
         $driver = Socialite::driver($provider);
         if ('facebook' !== $provider) {
             return $driver->redirect();
@@ -74,8 +76,12 @@ class SocialiteController extends Controller {
         if (null === config('services.'.$provider.'.client_id')) {
             exit('TRY WITH OTHER LOGIN !['.$provider.'] IS NOT SET');
         }
+         /**
+         * @var \Laravel\Socialite\Two\AbstractProvider
+         */
+        $driver = Socialite::driver($provider);
         try {
-            $socialUser = Socialite::driver($provider)->stateless()->user();
+            $socialUser = $driver->stateless()->user();
         } catch (\Exception $e) {
             // dddx($e);
             return response()->redirectTo('/');
