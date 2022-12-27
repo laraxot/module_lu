@@ -194,20 +194,7 @@ trait HasProfileTrait {
     */
     /*
     // -- fare trait a parte ed aggiungere solo a quelli con parent_id  !!! esempio nel profile di MM
-    public function getMyOrgChartArray(?Model $curr = null): array {
-        if (null == $curr) {
-            $curr = $this->getBoss();
-        } else {
-            // dddx($curr);
-        }
-        $data['label'] = $curr->full_name.' '.$curr->org_info;
-
-        foreach ($curr->children as $son) {
-            $data['children'][] = $this->getMyOrgChartArray($son);
-        }
-
-        return $data;
-    }
+   
  */
     
    
