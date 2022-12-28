@@ -19,7 +19,7 @@
             @foreach($users as $row)
             <tr>
                 @foreach($fields as $field)
-                <td>{!! Theme::inputFreeze(['row'=>$row,'field'=>$field]) !!} </td>
+                <td>{!! Theme::inputFreeze($field,$row) !!} </td>
                 @endforeach
 
                 <td>

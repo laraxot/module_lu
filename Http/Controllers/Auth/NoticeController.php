@@ -8,7 +8,7 @@ use App\Http\Controllers\Controller;
 // --- MODELS ----
 // --- SERVICES ---
 use Exception;
-use Modules\Theme\Services\ThemeService;
+use Modules\UI\Services\ThemeService;
 
 /**
  * Class NoticeController.

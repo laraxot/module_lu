@@ -7,7 +7,7 @@ namespace Modules\LU\Models;
 use Illuminate\Contracts\View\View as ViewContract;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Support\Facades\View;
-use Modules\Theme\Services\ThemeService;
+use Modules\UI\Services\ThemeService;
 
 /**
  * Modules\LU\Models\AreaPermUser.

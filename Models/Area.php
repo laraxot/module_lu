@@ -7,7 +7,7 @@ namespace Modules\LU\Models;
 use Exception;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Support\Str;
-use Modules\Theme\Services\ThemeService;
+use Modules\UI\Services\ThemeService;
 use Spatie\EloquentSortable\Sortable;
 use Spatie\EloquentSortable\SortableTrait;
 use Staudenmeir\EloquentHasManyDeep\HasRelationships;

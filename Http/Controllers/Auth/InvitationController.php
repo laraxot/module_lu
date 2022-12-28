@@ -12,7 +12,7 @@ use Modules\LU\Http\Requests\StoreInvitationRequest;
 // --- models --
 use Modules\LU\Models\Invitation;
 // --- services --
-use Modules\Theme\Services\ThemeService;
+use Modules\UI\Services\ThemeService;
 
 /**
  * Class InvitationController.

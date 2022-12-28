@@ -119,7 +119,8 @@ class SocialiteController extends Controller {
                     'avatar' => $socialUser->getAvatar(),
                     'provider_id' => $socialUser->getId(),
                     'provider' => $provider,
-                    'token' => $socialUser->token,
+                    //Access to an undefined property Laravel\Socialite\Contracts\User::$token
+                    //'token' => $socialUser->token,
                 ]
             );
         } else {
@@ -133,7 +134,8 @@ class SocialiteController extends Controller {
                     'avatar' => $socialUser->getAvatar(),
                     'provider_id' => $socialUser->getId(),
                     'provider' => $provider,
-                    'token' => $socialUser->token,
+                    //Access to an undefined property Laravel\Socialite\Contracts\User::$token
+                    //'token' => $socialUser->token,
                 ]
             );
         }
