@@ -1,7 +1,7 @@
 @section('page_heading','lista diritti')
 
 @section('content')
-    @include('theme::includes.flash')
+    <x-flash-message />
 
 
 {!! Form::bsOpen($row, 'store') !!}

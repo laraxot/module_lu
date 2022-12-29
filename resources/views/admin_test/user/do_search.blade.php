@@ -1,7 +1,7 @@
 @extends('adm_theme::layouts.app')
 @section('page_heading','cerca')
 @section('content')
-@include('theme::includes.flash')
+<x-flash-message />
 
 
 <table class="table table-striped table-bordered">

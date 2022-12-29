@@ -2,7 +2,7 @@
 @section('page_heading','Sincronizza Aree/Packages')
 
 @section('content')
-@include('theme::includes.flash')
+<x-flash-message />
 
 {{-- per update ci vuole id_area .. --}}
 

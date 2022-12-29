@@ -2,7 +2,7 @@
 @section('page_heading','Test Email')
 
 @section('content')
-    @include('theme::includes.flash')
+    <x-flash-message />
 
 
 {!! Form::bsOpen($row, 'store') !!}

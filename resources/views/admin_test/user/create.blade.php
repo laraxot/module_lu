@@ -2,7 +2,7 @@
 @section('page_heading','Crea Utente')
 
 @section('content')
-@include('theme::includes.flash')
+<x-flash-message />
 
 
 {{--
