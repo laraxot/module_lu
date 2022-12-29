@@ -125,6 +125,12 @@ class ProfileService {
                 }
                 $profile->save($data);
             }
+            //Property Modules\LU\Services\ProfileService::$profile 
+            //(Modules\Xot\Contracts\ModelProfileContract|null) does not accept 
+            //Illuminate\Database\Eloquent\Model|Modules\Xot\Contracts\ModelProfileContract.  
+            if(!$profile instanceof ModelProfileContract){
+                throw new Exception('['.__LINE__.']['.__FILE__.']');
+            }
             $this->profile = $profile;
             $this->profile_panel = $this->getProfilePanel();
         }
