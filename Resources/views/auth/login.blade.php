@@ -1,12 +1,12 @@
-<x-theme::layouts.guest>
-    <x-theme::authentication.card>
+<x-layouts.guest>
+    <x-authentication.card>
         <x-slot name="logo">
-            <x-theme::authentication.card-logo />
+            <x-authentication.card-logo />
         </x-slot>
 
         <div class="card-body">
 
-            <x-theme::validation.errors class="mb-3 rounded-0" />
+            <x-validation.errors class="mb-3 rounded-0" />
 
             @if (session('status'))
                 <div class="alert alert-success mb-3 rounded-0" role="alert">
@@ -17,24 +17,24 @@
             <form method="POST" action="{{ route('login') }}">
                 @csrf
                 <div class="form-group">
-                    <x-theme::label value="{{ __('Email') }}" />
+                    <x-label value="{{ __('Email') }}" />
 
-                    <x-theme::input class="{{ $errors->has('email') ? 'is-invalid' : '' }}" type="email"
+                    <x-input class="{{ $errors->has('email') ? 'is-invalid' : '' }}" type="email"
                                  name="email" :value="old('email')" required />
-                    <x-theme::input.error for="email"></x-theme::input.error>
+                    <x-input.error for="email"></x-input.error>
                 </div>
 
                 <div class="form-group">
-                    <x-theme::label value="{{ __('Password') }}" />
+                    <x-label value="{{ __('Password') }}" />
 
-                    <x-theme::input class="form-control{{ $errors->has('password') ? ' is-invalid' : '' }}" type="password"
+                    <x-input class="form-control{{ $errors->has('password') ? ' is-invalid' : '' }}" type="password"
                                  name="password" required autocomplete="current-password" />
-                    <x-theme::input.error for="password"></x-theme::input.error>
+                    <x-input.error for="password"></x-input.error>
                 </div>
 
                 <div class="form-group">
                     <div class="form-check">
-                        <x-theme::checkbox id="remember_me" name="remember" />
+                        <x-checkbox id="remember_me" name="remember" />
 
                         <label class="form-check-label" for="remember">
                             {{ __('Remember Me') }}
@@ -50,12 +50,12 @@
                             </a>
                         @endif
 
-                        <x-theme::button>
+                        <x-button>
                             {{ __('Login') }}
-                        </x-theme::button>
+                        </x-button>
                     </div>
                 </div>
             </form>
         </div>
-    </x-theme::authentication.card>
-</x-theme::layouts.guest>
+    </x-authentication.card>
+</x-layouts.guest>
