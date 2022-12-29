@@ -114,6 +114,7 @@ class ProfileService {
         if (\is_object($user)) {
             $this->user = $user;
 
+            /** @var \Modules\Xot\Contracts\ModelProfileContract|null $profile */
             $profile = $user->profile;
 
             if (null === $profile) {
@@ -125,7 +126,7 @@ class ProfileService {
                 $profile->save($data);
             }
             $this->profile = $profile;
-            $this->profile_panel = PanelService::make()->get($profile);
+            $this->profile_panel = $this->getProfilePanel();
         }
 
         return $this;
@@ -222,7 +223,7 @@ class ProfileService {
             throw new Exception('['.__LINE__.']['.__FILE__.']');
         }
 
-        $profile_panel = PanelService::make()->get($this->profile);
+        $profile_panel = $this->getProfilePanel();
 
         return $profile_panel;
     }
@@ -238,7 +239,7 @@ class ProfileService {
             throw new Exception('['.__LINE__.']['.__FILE__.']');
         }
 
-        $profile_panel = PanelService::make()->get($this->profile);
+        $profile_panel = $this->getProfilePanel();
 
         return $profile_panel;
     }
