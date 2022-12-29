@@ -1,9 +1,11 @@
 <div>
+    {{--
     <livewire:modal.body-view id="addRole" title="add Role" subtitle="add Role" bodyView="lu::modal.roles.create">
     </livewire:modal.body-view>
     <livewire:modal.body-view id="addPermission" title="add Permission" subtitle="add Permission" bodyView="lu::modal.permissions.create">
     </livewire:modal.body-view>
-
+    --}}
+    
     <button class="btn btn-primary" wire:click="addRole()">
         <x-svg icon="plus" />Add Role
     </button>
