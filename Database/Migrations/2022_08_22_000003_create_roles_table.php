@@ -26,13 +26,14 @@ class CreateRolesTable extends XotBaseMigration {
             throw new Exception('['.__LINE__.']['.__FILE__.']');
         }
         if(!is_array($teams)){
-            throw new Exception('['.__LINE__.']['.__FILE__.']');
+            //throw new Exception('['.__LINE__.']['.__FILE__.']');
+            $teams=[];
         }
 
         // -- CREATE --
         $this->tableCreate(
             function (Blueprint $table) use ($columnNames, $teams) {
-                $teams = config('permission.teams');
+                //$teams = config('permission.teams');
 
                 $table->bigIncrements('id'); // role id
                 if ($teams || config('permission.testing')) { // permission.testing is a fix for sqlite testing
