@@ -7,6 +7,7 @@ namespace Modules\LU\Services;
 use Exception;
 use ReflectionException;
 use Modules\LU\Models\Area;
+use Modules\Xot\Datas\XotData;
 use Illuminate\Support\Collection;
 use Nwidart\Modules\Facades\Module;
 use Illuminate\Support\Facades\Auth;
@@ -29,21 +30,15 @@ class ProfileService {
 
     private static ?self $instance = null;
 
-    private array $xot;
+    private XotData $xot;
 
     public function __construct() {
-        // ---
-        $xot = config('xra');
-        if (! \is_array($xot)) {
-            $xot = [];
-        }
-        $this->xot = $xot;
+        $this->xot = XotData::from(config('xra'));
         $user=Auth::user();
         if($user==null){
             return ;
         }
         $this->get($user);
-        // dddx(Auth::user());
     }
 
     public static function getInstance(): self {
@@ -58,24 +53,9 @@ class ProfileService {
         return static::getInstance();
     }
 
-    /**
-     * If the method doesn't exists in this class
-     * then the "php magic method" __call will be called
-     * see PHP Magic Methods doc: https://www.php.net/manual/en/language.oop5.overloading.php#object.call.
-     *
-     * In this case the method checks if the called method exists inside the ProfilePanel or ProfileModel
-     * and returns if exists
-     *
-     * The first parameter is the method name, the second is the method arguments
-     *
-     * @see https://www.php.net/manual/en/language.oop5.overloading.php
-     *
-     * @param string $name
-     * @param array  $arguments
-     *
-     * @return mixed
-     */
+   
     public function __call($name, $arguments) {
+        
         $profile_panel = $this->getProfilePanel();
 
         if (method_exists($profile_panel, $name)) {
@@ -111,10 +91,10 @@ class ProfileService {
      * @throws ReflectionException
      */
     public function get(UserContract $user): self {
-        if (\is_object($user)) {
+       
             $this->user = $user;
-
-            /** @var \Modules\Xot\Contracts\ModelProfileContract|null $profile */
+            
+            /*
             $profile = $user->profile;
 
             if (null === $profile) {
@@ -133,7 +113,7 @@ class ProfileService {
             }
             $this->profile = $profile;
             $this->profile_panel = $this->getProfilePanel();
-        }
+            */
 
         return $this;
     }
@@ -224,13 +204,7 @@ class ProfileService {
 
     // returns the
     public function getPanel(): PanelContract {
-        if (null == $this->profile) {
-            dddx(['message' => 'to fix', 'user' => $this->user, 'profile' => $this->profile]);
-            throw new Exception('['.__LINE__.']['.__FILE__.']');
-        }
-
         $profile_panel = $this->getProfilePanel();
-
         return $profile_panel;
     }
 
@@ -240,14 +214,13 @@ class ProfileService {
 
     // returns the Profile panel with its methods
     public function getProfilePanel(): PanelContract {
-        if (null === $this->profile) {
-            dddx(['message' => 'to fix', 'user' => $this->user, 'profile' => $this->profile]);
-            throw new Exception('['.__LINE__.']['.__FILE__.']');
+        if (null == $this->profile && null!= $this->user) {
+            $this->profile = $this->user->profile;
         }
+        $this->profile_panel = PanelService::make()->get($this->profile);
+        
 
-        $profile_panel = $this->getProfilePanel();
-
-        return $profile_panel;
+        return $this->profile_panel;
     }
 
     // returns the User panel with its methods
