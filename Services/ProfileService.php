@@ -23,7 +23,7 @@ use Modules\Xot\Contracts\ModelProfileContract;
 class ProfileService {
     private UserContract $user;
 
-    private ?Model $profile = null;
+    private ?ModelProfileContract $profile = null;
 
     private PanelContract $profile_panel;
 
@@ -91,7 +91,6 @@ class ProfileService {
 
         if (null === $profile) {
             return 'profile is null ['.__LINE__.']['.class_basename(__CLASS__).']';
-            //dddx('qui1');
         }
         if (method_exists($profile, $name)) {
             /**
@@ -116,43 +115,15 @@ class ProfileService {
             $this->user = $user;
 
             $profile = $user->profile;
-            /*
-            if ($profile->user_id != $profile->id) {
-                dddx('preso');
-            }
-            */
 
             if (null === $profile) {
-                // $profile_model = $user->profile()->getRelated();
-                // dddx($user->getKey());
-                // $profile_model->user_id = $user->getKey();
-                // $profile = $profile_model->create();
                 $profile = $user->profile()->firstOrCreate();
                 $data = ['user_id' => $user->id];
                 if (method_exists($profile, 'post')) {
                     $profile->post()->firstOrCreate(['guid' => 'profile-'.$user->id, 'lang' => app()->getLocale()]);
                 }
                 $profile->save($data);
-                // dddx($profile);
-                /*
-                dddx([
-                    'message' => 'profile is null',
-                    'profile' => $profile_model,
-                    'profile fillable' => $profile_model->getFillable(),
-                    '$user->user_id' => $user->getKey(),
-                    //    'profile_test' => $profile_model->where('user_id', $user->getKey())->firstOrCreate(),
-                ]);
-                //*/
-                // $profile = $profile_model::firstOrCreate(
-                //    ['user_id' => $user->getKey()], $user->toArray()
-                // );
             }
-            /*
-            if (null == $profile->updated_by) {
-                $profile->updated_by = $user->handle;
-                $profile->save();
-            }
-            */
             $this->profile = $profile;
             $this->profile_panel = PanelService::make()->get($profile);
         }

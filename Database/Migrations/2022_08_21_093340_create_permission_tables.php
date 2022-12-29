@@ -4,15 +4,20 @@ declare(strict_types=1);
 
 use Modules\Xot\Database\Migrations\XotBaseMigration;
 
-class CreatePermissionTables extends XotBaseMigration {
+class CreatePermissionTables extends XotBaseMigration
+{
     /**
      * Run the migrations.
      *
      * @return void
      */
-    public function up() {
+    public function up()
+    {
+        /** @var array $tableNames */
         $tableNames = config('permission.table_names');
+        /** @var array $columnNames */
         $columnNames = config('permission.column_names');
+        /** @var array $teams */
         $teams = config('permission.teams');
 
         if (empty($tableNames)) {
@@ -22,9 +27,15 @@ class CreatePermissionTables extends XotBaseMigration {
             throw new \Exception('Error: team_foreign_key on config/permission.php not loaded. Run [php artisan config:clear] and try again.');
         }
 
+        /** @var string|null $cache_store */
+        $cache_store = config('permission.cache.store');
+
+        /** @var string $cache_key */
+        $cache_key = config('permission.cache.key');
+
         app('cache')
-            ->store('default' !== config('permission.cache.store') ? config('permission.cache.store') : null)
-            ->forget(config('permission.cache.key'));
+            ->store('default' !== $cache_store ? $cache_store : null)
+            ->forget($cache_key);
     }
 
     /**
@@ -32,7 +43,9 @@ class CreatePermissionTables extends XotBaseMigration {
      *
      * @return void
      */
-    public function down() {
+    public function down()
+    {
+        /** @var array $tableNames */
         $tableNames = config('permission.table_names');
 
         if (empty($tableNames)) {
