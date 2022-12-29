@@ -5,13 +5,14 @@ declare(strict_types=1);
 namespace Modules\LU\Models\Traits;
 
 use Exception;
-use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Relations\BelongsTo;
-use Illuminate\Database\Eloquent\Relations\HasOne;
+use ReflectionException;
 use Illuminate\Support\Str;
-use Modules\LU\Models\PermUser;
 use Modules\LU\Models\User;
+use Modules\LU\Models\PermUser;
+use Illuminate\Database\Eloquent\Model;
 use Modules\Tenant\Services\TenantService;
+use Illuminate\Database\Eloquent\Relations\HasOne;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 /**
  * Trait HasProfileTrait. DA RIPRENDERE.
@@ -31,9 +32,9 @@ trait HasProfileTrait {
     */
 
     /**
-     * @throws \ReflectionException
+     * @throws ReflectionException
      *
-     * @return \Illuminate\Database\Eloquent\Relations\HasOne
+     * @return HasOne
      */
     public function profile() {
         $user_id = $this->getAttributeValue('user_id');
