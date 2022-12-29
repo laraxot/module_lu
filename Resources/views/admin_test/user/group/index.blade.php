@@ -2,7 +2,7 @@
 @section('page_heading','Modifica Gruppi Utente')
 
 @section('content')
-@include('theme::includes.flash')
+<x-flash-message />
 
 
 @include('lu::admin.user.edit.nav')

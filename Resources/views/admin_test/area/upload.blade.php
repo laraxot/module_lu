@@ -2,7 +2,7 @@
 @section('page_heading','Carica un nuovo modulo')
 
 @section('content')
-    @include('theme::includes.flash')
+    <x-flash-message />
 
 
     @if (count($errors) > 0)

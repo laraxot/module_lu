@@ -2,7 +2,7 @@
 @section('page_heading','lista aree')
 
 @section('content')
-@include('theme::includes.flash')
+<x-flash-message />
 
 
 <div style="text-align:center"><a href="{{route('lu.area.index',array_merge($params,['refresh'=>'1'])) }}" class="btn btn-small btn-info"  data-toggle="tooltip" title="Sincronizza Aree con Packages" >

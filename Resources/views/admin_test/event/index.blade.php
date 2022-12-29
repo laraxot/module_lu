@@ -2,7 +2,7 @@
 @section('page_heading','events list')
 
 @section('content')
-@include('theme::includes.flash')
+<x-flash-message />
 
 
 <table class="table">
