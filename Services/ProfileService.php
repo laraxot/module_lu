@@ -15,6 +15,7 @@ use Illuminate\Database\Eloquent\Model;
 use Modules\Xot\Contracts\UserContract;
 use Modules\Cms\Contracts\PanelContract;
 use Modules\Xot\Contracts\ModelContract;
+use Modules\Xot\Contracts\ModelProfileContract;
 
 /**
  * Class ProfileService.
@@ -255,7 +256,7 @@ class ProfileService {
         return $profile_panel;
     }
 
-    public function getProfile(): ?ModelContract {
+    public function getProfile(): ?ModelProfileContract {
         return $this->profile;
     }
 
