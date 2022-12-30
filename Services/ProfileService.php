@@ -53,7 +53,13 @@ class ProfileService {
         return static::getInstance();
     }
 
-   
+   /**
+    * Undocumented function
+    *
+    * @param string $name
+    * @param array<int|string, mixed> $arguments
+    * @return mixed
+    */
     public function __call($name, $arguments) {
         
         $profile_panel = $this->getProfilePanel();
@@ -215,7 +221,15 @@ class ProfileService {
     // returns the Profile panel with its methods
     public function getProfilePanel(): PanelContract {
         if (null == $this->profile && null!= $this->user) {
+            if($this->user->profile==null){
+                throw new Exception('['.__LINE__.']['.__FILE__.']');
+            }
+            // Property Modules\LU\Services\ProfileService::$profile (Modules\Xot\Contracts\ModelProfileContract|null) does not accept Illuminate\Database\Eloquent\Model.
+
             $this->profile = $this->user->profile;
+        }
+        if (null == $this->profile){
+            throw new Exception('['.__LINE__.']['.__FILE__.']');
         }
         $this->profile_panel = PanelService::make()->get($this->profile);
         
@@ -248,7 +262,7 @@ class ProfileService {
 
     // get the right STRING name of this profile class (based on XRA main_module)
     public function getProfileClass(): string {
-        $main_module = $this->xot['main_module'];
+        $main_module = $this->xot->main_module;
         $class = 'Modules\\'.$main_module.'\Models\Profile';
 
         return $class;
