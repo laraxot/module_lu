@@ -82,7 +82,7 @@ class ForgotPasswordController extends Controller {
             'layouts.partials.scripts',
         ];
         foreach ($pieces as $piece) {
-            FileService::viewCopy('theme::'.$piece, 'pub_theme::'.$piece);
+            FileService::viewCopy('ui::'.$piece, 'pub_theme::'.$piece);
         }
 
         $piece = 'auth.passwords.email';
