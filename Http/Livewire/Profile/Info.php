@@ -23,12 +23,12 @@ class Info extends Component {
 
     public function mount(): void {
         $profile = ProfileService::make()->getProfile();
-        if($profile==null){
+        if (null == $profile) {
             throw new Exception('['.__LINE__.']['.__FILE__.']');
         }
         $this->model_class = get_class($profile);
-        $model_id=$profile->getKey();
-        if(!is_int($model_id)){
+        $model_id = $profile->getKey();
+        if (! is_int($model_id)) {
             throw new Exception('['.__LINE__.']['.__FILE__.']');
         }
         $this->model_id = $model_id;

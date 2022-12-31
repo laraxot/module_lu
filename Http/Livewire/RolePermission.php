@@ -77,14 +77,14 @@ class RolePermission extends Component {
         // $this->emit('closeModal','addRole');
     }
 
-    public function togglePerm(int $role_id, int $permission_id):void {
+    public function togglePerm(int $role_id, int $permission_id): void {
         $role = Role::find($role_id);
-        if($role==null){
-            return ;
+        if (null == $role) {
+            return;
         }
         $permission = Permission::find($permission_id);
-        if($permission==null){
-            return ;
+        if (null == $permission) {
+            return;
         }
         if ($role->hasPermissionTo($permission->name)) {
             $role->revokePermissionTo($permission);

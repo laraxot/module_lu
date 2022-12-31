@@ -54,9 +54,9 @@ class ProfilePanel extends XotBasePanel {
     public function optionLabel($row): string {
         // [2022-08-17 13:06:20] local.ERROR: [162][Profile]
         // Access to an undefined property Illuminate\Database\Eloquent\Model::$user
-        //if (null === $this->row->user) {
+        // if (null === $this->row->user) {
         //    return '';
-        //}
+        // }
         // return $row->area_define_name;
         return $row->handle();
     }

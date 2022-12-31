@@ -76,7 +76,7 @@ class SocialiteController extends Controller {
         if (null === config('services.'.$provider.'.client_id')) {
             exit('TRY WITH OTHER LOGIN !['.$provider.'] IS NOT SET');
         }
-         /**
+        /**
          * @var \Laravel\Socialite\Two\AbstractProvider
          */
         $driver = Socialite::driver($provider);
@@ -119,8 +119,8 @@ class SocialiteController extends Controller {
                     'avatar' => $socialUser->getAvatar(),
                     'provider_id' => $socialUser->getId(),
                     'provider' => $provider,
-                    //Access to an undefined property Laravel\Socialite\Contracts\User::$token
-                    //'token' => $socialUser->token,
+                    // Access to an undefined property Laravel\Socialite\Contracts\User::$token
+                    // 'token' => $socialUser->token,
                 ]
             );
         } else {
@@ -134,8 +134,8 @@ class SocialiteController extends Controller {
                     'avatar' => $socialUser->getAvatar(),
                     'provider_id' => $socialUser->getId(),
                     'provider' => $provider,
-                    //Access to an undefined property Laravel\Socialite\Contracts\User::$token
-                    //'token' => $socialUser->token,
+                    // Access to an undefined property Laravel\Socialite\Contracts\User::$token
+                    // 'token' => $socialUser->token,
                 ]
             );
         }

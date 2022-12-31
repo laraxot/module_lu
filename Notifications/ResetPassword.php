@@ -8,13 +8,13 @@ declare(strict_types=1);
 namespace Modules\LU\Notifications;
 
 use Exception;
-use Illuminate\Support\Arr;
-// use Illuminate\Auth\Notifications\ResetPassword as ResetPasswordNotification;
-use Illuminate\Support\Facades\URL;
-use Illuminate\Support\Facades\Lang;
-use Modules\LU\Datas\ResetPasswordData;
-use Illuminate\Notifications\Notification;
 use Illuminate\Notifications\Messages\MailMessage;
+// use Illuminate\Auth\Notifications\ResetPassword as ResetPasswordNotification;
+use Illuminate\Notifications\Notification;
+use Illuminate\Support\Arr;
+use Illuminate\Support\Facades\Lang;
+use Illuminate\Support\Facades\URL;
+use Modules\LU\Datas\ResetPasswordData;
 
 /**
  * Class ResetPassword.
@@ -66,8 +66,8 @@ class ResetPassword extends Notification {
         );
 
         $url = url(route('password.reset', $this->token, false));
-        $subject=trans('lu::notifications.reset_password.subject');
-        if(!is_string($subject)){
+        $subject = trans('lu::notifications.reset_password.subject');
+        if (! is_string($subject)) {
             throw new Exception('['.__LINE__.']['.__FILE__.']');
         }
         $mail = (new MailMessage())
@@ -81,7 +81,7 @@ class ResetPassword extends Notification {
         $action=trans('lu::notifications.reset_password.action');
         $line2=trans('lu::notifications.reset_password.line2');
         */
-        $txt=ResetPasswordData::from(trans('lu::notifications.reset_password'));
+        $txt = ResetPasswordData::from(trans('lu::notifications.reset_password'));
         $mail = $mail->line($txt->line1)
             ->action($txt->action, $url)
             ->line($txt->line2);

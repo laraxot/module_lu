@@ -5,9 +5,9 @@ declare(strict_types=1);
 namespace Modules\LU\Http\Livewire\User;
 
 use Exception;
+use Illuminate\Contracts\Support\Renderable;
 use Livewire\Component;
 use Modules\LU\Services\ProfileService;
-use Illuminate\Contracts\Support\Renderable;
 
 /**
  * Class Edit.
@@ -18,7 +18,6 @@ class Info extends Component {
     public string $model_class;
     public int $model_id;
 
-    
     protected array $rules = [
         'form_data.passwd' => 'required|min:6|confirmed',
         // 'email' => 'required|email',
@@ -27,8 +26,8 @@ class Info extends Component {
     public function mount(): void {
         $model = ProfileService::make()->getUser();
         $this->model_class = get_class($model);
-        $model_id=$model->getKey();
-        if(!is_int($model_id)){
+        $model_id = $model->getKey();
+        if (! is_int($model_id)) {
             throw new Exception('['.__LINE__.']['.__FILE__.']');
         }
         $this->model_id = $model_id;

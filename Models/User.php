@@ -87,7 +87,7 @@ use Staudenmeir\EloquentHasManyDeep\HasRelationships;
  * @property int|null                                                                                                  $perm_users_count
  * @property \Illuminate\Database\Eloquent\Collection|\Modules\LU\Models\PermUser[]                                    $perms
  * @property int|null                                                                                                  $perms_count
- * @property \Modules\Xot\Contracts\ModelProfileContract|null                                                                          $profile
+ * @property \Modules\Xot\Contracts\ModelProfileContract|null                                                          $profile
  * @property \Modules\LU\Models\Profile|null                                                                           $profileOrCreate
  * @property \Illuminate\Database\Eloquent\Collection|\Modules\LU\Models\PermUserRight[]                               $rights
  * @property int|null                                                                                                  $rights_count
@@ -237,7 +237,7 @@ class User extends Authenticatable implements UserContract {
         // return DB::connection($this->connection)->getDatabaseName().'.'.parent::getTable();
     // }
 
-    public function getApiTokenAttribute(?string $value):string {
+    public function getApiTokenAttribute(?string $value): string {
         if (null !== $value) {
             return $value;
         }

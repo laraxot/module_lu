@@ -6,15 +6,15 @@ namespace Modules\LU\Models\Panels;
 
 use Exception;
 // --- Services --
-use Modules\LU\Models\Area;
-use Modules\LU\Models\User;
 use Illuminate\Http\Request;
-use Modules\LU\Models\Group;
-use Modules\LU\Models\Right;
-use Modules\LU\Models\PermUser;
 use Illuminate\Support\Collection;
-use Nwidart\Modules\Facades\Module;
 use Modules\Cms\Models\Panels\XotBasePanel;
+use Modules\LU\Models\Area;
+use Modules\LU\Models\Group;
+use Modules\LU\Models\PermUser;
+use Modules\LU\Models\Right;
+use Modules\LU\Models\User;
+use Nwidart\Modules\Facades\Module;
 
 /**
  * Class UserPanel.
@@ -244,9 +244,10 @@ class UserPanel extends XotBasePanel {
         $areas = $areas->filter(
             function ($item) use ($modules) {
                 // Cannot access property $area_define_name on mixed
-                if(!$item instanceof Area){
+                if (! $item instanceof Area) {
                     throw new Exception('['.__LINE__.']['.__FILE__.']');
                 }
+
                 return in_array($item->area_define_name, array_keys($modules), true);
             }
         );

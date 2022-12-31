@@ -5,14 +5,13 @@ declare(strict_types=1);
 namespace Modules\LU\Models\Traits;
 
 use Exception;
-use ReflectionException;
-use Illuminate\Support\Str;
-use Modules\LU\Models\User;
-use Modules\LU\Models\PermUser;
-use Illuminate\Database\Eloquent\Model;
-use Modules\Tenant\Services\TenantService;
-use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasOne;
+use Illuminate\Support\Str;
+use Modules\LU\Models\PermUser;
+use Modules\LU\Models\User;
+use Modules\Tenant\Services\TenantService;
+use ReflectionException;
 
 /**
  * Trait HasProfileTrait. DA RIPRENDERE.
@@ -195,8 +194,6 @@ trait HasProfileTrait {
     */
     /*
     // -- fare trait a parte ed aggiungere solo a quelli con parent_id  !!! esempio nel profile di MM
-   
+
  */
-    
-   
 }

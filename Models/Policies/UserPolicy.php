@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace Modules\LU\Models\Policies;
 
-use Modules\Xot\Contracts\UserContract;
 use Modules\Cms\Models\Panels\Policies\XotBasePanelPolicy;
+use Modules\Xot\Contracts\UserContract;
 
 /**
  * Class UserPolicy.

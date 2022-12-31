@@ -5,11 +5,11 @@ declare(strict_types=1);
 namespace Modules\LU\Models\Panels;
 
 use Illuminate\Http\Request;
-use Modules\Xot\Contracts\RowsContract;
+use Modules\Cms\Models\Panels\XotBasePanel;
 // --- Services --
 
 use Modules\LU\Models\ModelHasPermission;
-use Modules\Cms\Models\Panels\XotBasePanel;
+use Modules\Xot\Contracts\RowsContract;
 
 class ModelHasPermissionPanel extends XotBasePanel {
     /**
@@ -40,8 +40,6 @@ class ModelHasPermissionPanel extends XotBasePanel {
     public function search(): array {
         return [];
     }
-
-
 
     /**
      * on select the option label.

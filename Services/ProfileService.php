@@ -5,18 +5,17 @@ declare(strict_types=1);
 namespace Modules\LU\Services;
 
 use Exception;
-use ReflectionException;
-use Modules\LU\Models\Area;
-use Modules\Xot\Datas\XotData;
-use Illuminate\Support\Collection;
-use Nwidart\Modules\Facades\Module;
-use Illuminate\Support\Facades\Auth;
-use Modules\Cms\Services\PanelService;
 use Illuminate\Database\Eloquent\Model;
-use Modules\Xot\Contracts\UserContract;
+use Illuminate\Support\Collection;
+use Illuminate\Support\Facades\Auth;
 use Modules\Cms\Contracts\PanelContract;
-use Modules\Xot\Contracts\ModelContract;
+use Modules\Cms\Services\PanelService;
+use Modules\LU\Models\Area;
 use Modules\Xot\Contracts\ModelProfileContract;
+use Modules\Xot\Contracts\UserContract;
+use Modules\Xot\Datas\XotData;
+use Nwidart\Modules\Facades\Module;
+use ReflectionException;
 
 /**
  * Class ProfileService.
@@ -34,9 +33,9 @@ class ProfileService {
 
     public function __construct() {
         $this->xot = XotData::from(config('xra'));
-        $user=Auth::user();
-        if($user==null){
-            return ;
+        $user = Auth::user();
+        if (null == $user) {
+            return;
         }
         $this->get($user);
     }
@@ -53,15 +52,15 @@ class ProfileService {
         return static::getInstance();
     }
 
-   /**
-    * Undocumented function
-    *
-    * @param string $name
-    * @param array<int|string, mixed> $arguments
-    * @return mixed
-    */
+    /**
+     * Undocumented function.
+     *
+     * @param string                   $name
+     * @param array<int|string, mixed> $arguments
+     *
+     * @return mixed
+     */
     public function __call($name, $arguments) {
-        
         $profile_panel = $this->getProfilePanel();
 
         if (method_exists($profile_panel, $name)) {
@@ -93,33 +92,31 @@ class ProfileService {
     /**
      * returns this ProfileService instance.
      *
-     *
      * @throws ReflectionException
      */
     public function get(UserContract $user): self {
-       
-            $this->user = $user;
-            
-            /*
-            $profile = $user->profile;
+        $this->user = $user;
 
-            if (null === $profile) {
-                $profile = $user->profile()->firstOrCreate();
-                $data = ['user_id' => $user->id];
-                if (method_exists($profile, 'post')) {
-                    $profile->post()->firstOrCreate(['guid' => 'profile-'.$user->id, 'lang' => app()->getLocale()]);
-                }
-                $profile->save($data);
+        /*
+        $profile = $user->profile;
+
+        if (null === $profile) {
+            $profile = $user->profile()->firstOrCreate();
+            $data = ['user_id' => $user->id];
+            if (method_exists($profile, 'post')) {
+                $profile->post()->firstOrCreate(['guid' => 'profile-'.$user->id, 'lang' => app()->getLocale()]);
             }
-            //Property Modules\LU\Services\ProfileService::$profile 
-            //(Modules\Xot\Contracts\ModelProfileContract|null) does not accept 
-            //Illuminate\Database\Eloquent\Model|Modules\Xot\Contracts\ModelProfileContract.  
-            if(!$profile instanceof ModelProfileContract){
-                throw new Exception('['.__LINE__.']['.__FILE__.']');
-            }
-            $this->profile = $profile;
-            $this->profile_panel = $this->getProfilePanel();
-            */
+            $profile->save($data);
+        }
+        //Property Modules\LU\Services\ProfileService::$profile
+        //(Modules\Xot\Contracts\ModelProfileContract|null) does not accept
+        //Illuminate\Database\Eloquent\Model|Modules\Xot\Contracts\ModelProfileContract.
+        if(!$profile instanceof ModelProfileContract){
+            throw new Exception('['.__LINE__.']['.__FILE__.']');
+        }
+        $this->profile = $profile;
+        $this->profile_panel = $this->getProfilePanel();
+        */
 
         return $this;
     }
@@ -211,6 +208,7 @@ class ProfileService {
     // returns the
     public function getPanel(): PanelContract {
         $profile_panel = $this->getProfilePanel();
+
         return $profile_panel;
     }
 
@@ -220,19 +218,18 @@ class ProfileService {
 
     // returns the Profile panel with its methods
     public function getProfilePanel(): PanelContract {
-        if (null == $this->profile && null!= $this->user) {
-            if($this->user->profile==null){
+        if (null == $this->profile && null != $this->user) {
+            if (null == $this->user->profile) {
                 throw new Exception('['.__LINE__.']['.__FILE__.']');
             }
             // Property Modules\LU\Services\ProfileService::$profile (Modules\Xot\Contracts\ModelProfileContract|null) does not accept Illuminate\Database\Eloquent\Model.
 
             $this->profile = $this->user->profile;
         }
-        if (null == $this->profile){
+        if (null == $this->profile) {
             throw new Exception('['.__LINE__.']['.__FILE__.']');
         }
         $this->profile_panel = PanelService::make()->get($this->profile);
-        
 
         return $this->profile_panel;
     }

@@ -4,15 +4,14 @@ declare(strict_types=1);
 
 namespace Modules\LU\Http\Livewire;
 
-use Livewire\Component;
-// use Illuminate\Support\Carbon;
-use Modules\LU\Models\User;
-use Livewire\WithPagination;
-use Modules\UI\Datas\FieldData;
-use Illuminate\Support\Collection;
 use Illuminate\Session\SessionManager;
-use Spatie\LaravelData\DataCollection;
+// use Illuminate\Support\Carbon;
+use Livewire\Component;
+use Livewire\WithPagination;
 use Modules\Cms\Contracts\PanelContract;
+use Modules\LU\Models\User;
+use Modules\UI\Datas\FieldData;
+use Spatie\LaravelData\DataCollection;
 
 /**
  * Class Users.
@@ -53,7 +52,6 @@ class Users extends Component {
             throw new \Exception('in ['.\get_class($_panel).'] method [indexFields] is missing');
         }
 
-        
         $this->fields = $_panel->getFields(['act' => 'index']);
     }
 
