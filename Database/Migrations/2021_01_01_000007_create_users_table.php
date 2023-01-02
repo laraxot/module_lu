@@ -64,7 +64,10 @@ class CreateUsersTable extends XotBaseMigration {
                 }
 
                 if (! $this->hasColumn('api_token')) {
-                    $table->text('api_token')->nullable();
+                    $table->string('api_token', 80)->after('password')
+                        ->unique()
+                        ->nullable()
+                        ->default(null);
                 }
 
                 if (! $this->hasColumn('two_factor_secret')) {
