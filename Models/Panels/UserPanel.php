@@ -228,7 +228,7 @@ class UserPanel extends XotBasePanel {
         ];
     }
 
-    public function areas():Collection {
+    public function areas(): Collection {
         $row = $this->row;
         /**
          * @var Collection<Area>

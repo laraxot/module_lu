@@ -5,13 +5,13 @@ declare(strict_types=1);
 namespace Modules\LU\Datas;
 
 use Spatie\LaravelData\Data;
-use Modules\LU\Datas\PermissionData;
 use Spatie\LaravelData\DataCollection;
 
 class RoleData extends Data {
     public string $name;
     /**
-     * Summary of permissions
+     * Summary of permissions.
+     *
      * @var DataCollection<PermissionData>
      */
     public DataCollection $permissions;
