@@ -35,8 +35,9 @@ class RolePermission extends Component {
     }
 
     public function addRole(): void {
-        $data = [];
-        $this->emit('showModal', 'addRole', $data);
+        $data = ['modal_id'=>'addRole'];
+        //$this->emit('showModal', 'addRole', $data);
+        $this->emit('modal.open','modal.add-role', $data);
     }
 
     public function deleteRole(int $role_id): void {
@@ -49,7 +50,8 @@ class RolePermission extends Component {
 
     public function addPermission(): void {
         $data = [];
-        $this->emit('showModal', 'addPermission', $data);
+        //$this->emit('showModal', 'addPermission', $data);
+        $this->emit('modal.open','modal.add-permission', $data);
     }
 
     public function deletePermission(int $permission_id): void {
@@ -58,23 +60,6 @@ class RolePermission extends Component {
             $perm->delete();
         }
         session()->flash('message', 'delete permission ['.$permission_id.']');
-    }
-
-    public function updateDataFromModal(string $modal_id, array $data): void {
-        if ('addRole' === $modal_id) {
-            $role = Role::create([
-                'name' => $data['role_name'],
-            ]);
-            session()->flash('message', 'ok');
-        }
-        if ('addPermission' === $modal_id) {
-            $permission = Permission::create([
-                'name' => $data['permission_name'],
-            ]);
-            session()->flash('message', 'ok');
-        }
-
-        // $this->emit('closeModal','addRole');
     }
 
     public function togglePerm(int $role_id, int $permission_id): void {
