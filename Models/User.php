@@ -1,8 +1,7 @@
 <?php
 
 /**
- * ---.A.
- * ---.B.
+ * @see http://laraveldaily.com/save-users-last-login-time-ip-address/
  */
 
 declare(strict_types=1);
