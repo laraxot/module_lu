@@ -75,7 +75,7 @@ class CreateLuProfilesTable extends XotBaseMigration {
                     $table->renameColumn('post_id', 'id');
                     // $table->primary('id');
                 }
-                if ($this->hasColumn('firstname')) {
+                if ($this->hasColumn('firstname') && ! $this->hasColumn('first_name')) {
                     $table->renameColumn('firstname', 'first_name');
                 }
                 if ($this->hasColumn('lastname')) {
