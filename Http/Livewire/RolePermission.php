@@ -35,9 +35,9 @@ class RolePermission extends Component {
     }
 
     public function addRole(): void {
-        $data = ['modal_id'=>'addRole'];
-        //$this->emit('showModal', 'addRole', $data);
-        $this->emit('modal.open','modal.add-role', $data);
+        $data = ['modal_id' => 'addRole'];
+        // $this->emit('showModal', 'addRole', $data);
+        $this->emit('modal.open', 'modal.add-role', $data);
     }
 
     public function deleteRole(int $role_id): void {
@@ -50,8 +50,8 @@ class RolePermission extends Component {
 
     public function addPermission(): void {
         $data = [];
-        //$this->emit('showModal', 'addPermission', $data);
-        $this->emit('modal.open','modal.add-permission', $data);
+        // $this->emit('showModal', 'addPermission', $data);
+        $this->emit('modal.open', 'modal.add-permission', $data);
     }
 
     public function deletePermission(int $permission_id): void {
