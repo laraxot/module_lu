@@ -174,7 +174,7 @@ class Area extends BaseModel implements Sortable {
         extract($params);
 
         if (! \is_string($this->icon_src)) {
-            throw new Exception('['.__LINE__.']['.class_basename(__CLASS__).']');
+            throw new \Exception('['.__LINE__.']['.class_basename(__CLASS__).']');
         }
 
         return '<img src="'.asset($this->icon_src).'" width="'.$width.'" height="'.$height.'" />';
@@ -182,7 +182,7 @@ class Area extends BaseModel implements Sortable {
 
     public function getUrlAttribute(?string $value): ?string {
         if (! \is_string($this->area_define_name)) {
-            throw new Exception('['.__LINE__.']['.class_basename(__CLASS__).']');
+            throw new \Exception('['.__LINE__.']['.class_basename(__CLASS__).']');
         }
 
         return url('admin/'.mb_strtolower($this->area_define_name));
@@ -200,17 +200,18 @@ class Area extends BaseModel implements Sortable {
 
     public function getGuidAttribute(?string $value): ?string {
         if (null === $this->area_define_name) {
-            throw new Exception('['.__LINE__.']['.class_basename(__CLASS__).']');
+            throw new \Exception('['.__LINE__.']['.class_basename(__CLASS__).']');
         }
 
         return Str::slug($this->area_define_name);
     }
 
     public function getIconSrcAttribute(?string $value): ?string {
+        /*
         $src = mb_strtolower($this->area_define_name.'::img/icon.png');
-        $src = ThemeService::asset($src);
-
-        return $src;
+        $value = ThemeService::asset($src);
+        */
+        return $value;
     }
 
     // ---------------------------------------------------------------------------
