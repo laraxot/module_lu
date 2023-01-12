@@ -45,7 +45,7 @@ class Test extends Component {
         }
         $rows = $this->panel->getRows()->paginate(20);
 
-        //$fields = $this->panel->getFields(['act'=>'index']);
+        //$fields = $this->panel->getFields('index');
         $view_params = [
             'view' => $view,
             //'panel' => $this->panel,

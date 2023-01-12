@@ -52,7 +52,7 @@ class Users extends Component {
             throw new \Exception('in ['.\get_class($_panel).'] method [indexFields] is missing');
         }
 
-        $this->fields = $_panel->getFields(['act' => 'index']);
+        $this->fields = $_panel->getFields('index');
     }
 
     /**
@@ -64,7 +64,7 @@ class Users extends Component {
     public function render(): \Illuminate\Contracts\Support\Renderable {
         $rows = User::query()->paginate(10);
 
-        // $fields = $this->panel->getFields(['act'=>'index']);
+        // $fields = $this->panel->getFields('index');
         $view_params = [
             // 'panel' => $this->panel,
             'rows' => $rows,
