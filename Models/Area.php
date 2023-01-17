@@ -15,32 +15,31 @@ use Staudenmeir\EloquentHasManyDeep\HasRelationships;
 /**
  * Modules\LU\Models\Area.
  *
- * @property int                                                                                            $id
- * @property int|null                                                                                       $application_id
- * @property string|null                                                                                    $area_define_name
- * @property int|null                                                                                       $order_column
- * @property string|null                                                                                    $db
- * @property string|null                                                                                    $img
- * @property string|null                                                                                    $controller_path
- * @property string|null                                                                                    $icon_path
- * @property string                                                                                         $guid
- * @property \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\Routing\UrlGenerator|string $url
- * @property \Illuminate\Support\Carbon|null                                                                $created_at
- * @property \Illuminate\Support\Carbon|null                                                                $updated_at
- * @property string|null                                                                                    $created_by
- * @property string|null                                                                                    $updated_by
- * @property string|null                                                                                    $deleted_at
- * @property string|null                                                                                    $deleted_by
- * @property string|null                                                                                    $deleted_ip
- * @property string|null                                                                                    $created_ip
- * @property string|null                                                                                    $updated_ip
- * @property bool|mixed|string                                                                              $icon_src
- * @property string|null                                                                                    $title
- * @property \Illuminate\Database\Eloquent\Collection|\Modules\LU\Models\PermUser[]                         $permUsers
- * @property int|null                                                                                       $perm_users_count
- * @property \Illuminate\Database\Eloquent\Collection|\Modules\LU\Models\PermUser[]                         $perms
- * @property int|null                                                                                       $perms_count
- *
+ * @property int $id
+ * @property int|null $application_id
+ * @property string|null $area_define_name
+ * @property int|null $order_column
+ * @property string|null $db
+ * @property string|null $img
+ * @property string|null $controller_path
+ * @property string|null $icon_path
+ * @property string|null $guid
+ * @property string|null $url
+ * @property \Illuminate\Support\Carbon|null $created_at
+ * @property \Illuminate\Support\Carbon|null $updated_at
+ * @property string|null $created_by
+ * @property string|null $updated_by
+ * @property string|null $deleted_at
+ * @property string|null $deleted_by
+ * @property string|null $deleted_ip
+ * @property string|null $created_ip
+ * @property string|null $updated_ip
+ * @property-read string|null $icon_src
+ * @property-read string|null $title
+ * @property-read \Illuminate\Database\Eloquent\Collection|\Modules\LU\Models\PermUser[] $permUsers
+ * @property-read int|null $perm_users_count
+ * @property-read \Illuminate\Database\Eloquent\Collection|\Modules\LU\Models\PermUser[] $perms
+ * @property-read int|null $perms_count
  * @method static \Modules\LU\Database\Factories\AreaFactory factory(...$parameters)
  * @method static \Illuminate\Database\Eloquent\Builder|Area newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|Area newQuery()
@@ -65,14 +64,7 @@ use Staudenmeir\EloquentHasManyDeep\HasRelationships;
  * @method static \Illuminate\Database\Eloquent\Builder|Area whereUpdatedBy($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Area whereUpdatedIp($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Area whereUrl($value)
- *
  * @mixin \Eloquent
- *
- * @property string $icons
- * @property int    $ordine
- *
- * @method static \Illuminate\Database\Eloquent\Builder|Area whereIcons($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Area whereOrdine($value)
  */
 class Area extends BaseModel implements Sortable {
     use HasRelationships;

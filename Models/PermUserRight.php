@@ -7,14 +7,13 @@ namespace Modules\LU\Models;
 /**
  * Modules\LU\Models\PermUserRight.
  *
- * @property int                             $perm_user_id
- * @property int                             $right_id
- * @property int|null                        $right_level
- * @property string|null                     $created_by
- * @property string|null                     $updated_by
+ * @property int $perm_user_id
+ * @property int $right_id
+ * @property int|null $right_level
+ * @property string|null $created_by
+ * @property string|null $updated_by
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
- *
  * @method static \Modules\LU\Database\Factories\PermUserRightFactory factory(...$parameters)
  * @method static \Illuminate\Database\Eloquent\Builder|PermUserRight newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|PermUserRight newQuery()
@@ -26,12 +25,7 @@ namespace Modules\LU\Models;
  * @method static \Illuminate\Database\Eloquent\Builder|PermUserRight whereRightLevel($value)
  * @method static \Illuminate\Database\Eloquent\Builder|PermUserRight whereUpdatedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|PermUserRight whereUpdatedBy($value)
- *
  * @mixin \Eloquent
- *
- * @property int $id
- *
- * @method static \Illuminate\Database\Eloquent\Builder|PermUserRight whereId($value)
  */
 class PermUserRight extends BasePivot {
     /**
