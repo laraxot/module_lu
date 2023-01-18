@@ -6,5 +6,6 @@ namespace Modules\LU\Models\Panels\Policies;
 
 use Modules\Cms\Models\Panels\Policies\XotBasePanelPolicy;
 
-class NotificationPanelPolicy extends XotBasePanelPolicy {
+class NotificationPanelPolicy extends XotBasePanelPolicy
+{
 }

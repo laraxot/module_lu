@@ -9,13 +9,15 @@ use Modules\Xot\Database\Migrations\XotBaseMigration;
 /**
  * Class CreateLiveuserRightImpliedTable.
  */
-class CreateRightImpliedTable extends XotBaseMigration {
+class CreateRightImpliedTable extends XotBaseMigration
+{
     /**
      * Run the migrations.
      *
      * @return void
      */
-    public function up() {
+    public function up()
+    {
         // -- senza il prefix !
         // $old_table = 'area_admin_areas';
         // if ($this->getConn()->hasTable($old_table)) {

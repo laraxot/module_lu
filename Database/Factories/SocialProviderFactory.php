@@ -6,7 +6,8 @@ namespace Modules\LU\Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
 
-class SocialProviderFactory extends Factory {
+class SocialProviderFactory extends Factory
+{
     /**
      * The name of the factory's corresponding model.
      *
@@ -19,7 +20,8 @@ class SocialProviderFactory extends Factory {
      *
      * @return array
      */
-    public function definition() {
+    public function definition()
+    {
         return [
             'id' => $this->faker->randomNumber(5, false),
             // 'user_id' => $this->faker->randomNumber(5, false),

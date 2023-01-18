@@ -12,7 +12,8 @@ use Modules\Xot\Providers\XotBaseRouteServiceProvider;
 /**
  * Class RouteServiceProvider.
  */
-class RouteServiceProvider extends XotBaseRouteServiceProvider {
+class RouteServiceProvider extends XotBaseRouteServiceProvider
+{
     protected string $moduleNamespace = 'Modules\LU\Http\Controllers';
 
     protected string $module_name = 'lu';

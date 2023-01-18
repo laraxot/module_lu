@@ -145,7 +145,8 @@ use Staudenmeir\EloquentHasManyDeep\HasRelationships;
  *
  * @mixin \Eloquent
  */
-class User extends Authenticatable implements UserContract {
+class User extends Authenticatable implements UserContract
+{
     use HasApiTokens;
     use HasFactory;
     use HasRelationships;
@@ -206,7 +207,8 @@ class User extends Authenticatable implements UserContract {
      *
      * @return \Illuminate\Database\Eloquent\Factories\Factory
      */
-    protected static function newFactory() {
+    protected static function newFactory()
+    {
         return UserFactory::new();
     }
 
@@ -224,7 +226,8 @@ class User extends Authenticatable implements UserContract {
         // return DB::connection($this->connection)->getDatabaseName().'.'.parent::getTable();
     // }
 
-    public function getApiTokenAttribute(?string $value): string {
+    public function getApiTokenAttribute(?string $value): string
+    {
         if (null !== $value) {
             return $value;
         }

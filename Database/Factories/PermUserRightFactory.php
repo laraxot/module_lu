@@ -7,7 +7,8 @@ namespace Modules\LU\Database\Factories;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Modules\LU\Models\PermUserRight;
 
-class PermUserRightFactory extends Factory {
+class PermUserRightFactory extends Factory
+{
     /**
      * The name of the factory's corresponding model.
      *
@@ -20,7 +21,8 @@ class PermUserRightFactory extends Factory {
      *
      * @return array
      */
-    public function definition() {
+    public function definition()
+    {
         return [
             // 'perm_user_id' => $this->faker->randomNumber(5, false),
             // 'right_id' => $this->faker->randomNumber(5, false),

@@ -8,11 +8,13 @@ use Modules\Xot\Database\Migrations\XotBaseMigration;
 /**
  * Undocumented class.
  */
-class CreateOauthAuthCodesTable extends XotBaseMigration {
+class CreateOauthAuthCodesTable extends XotBaseMigration
+{
     /**
      * @return void
      */
-    public function up() {
+    public function up()
+    {
         // -- CREATE --
         $this->tableCreate(
             function (Blueprint $table) {

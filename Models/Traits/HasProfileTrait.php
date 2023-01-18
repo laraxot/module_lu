@@ -18,9 +18,11 @@ use ReflectionException;
  *
  * @property string|null $last_name
  */
-trait HasProfileTrait {
+trait HasProfileTrait
+{
     // --- RELATIONS
-    public function user(): BelongsTo {
+    public function user(): BelongsTo
+    {
         return $this->belongsTo(User::class);
     }
 
@@ -35,7 +37,8 @@ trait HasProfileTrait {
      *
      * @return HasOne
      */
-    public function profile() {
+    public function profile()
+    {
         $user_id = $this->getAttributeValue('user_id');
         if (null === $user_id) {
             // throw new \Exception('$user_id is null');
@@ -71,7 +74,8 @@ trait HasProfileTrait {
     // uguale a quello di ProfilePanel, forse è meglio qui?
     // ne sta un altro utilizzato in UserPanel
 
-    public function avatar(?int $size = 100): ?string {
+    public function avatar(?int $size = 100): ?string
+    {
         $user = $this->user;
         if (! \is_object($user)) {
             if (isset($this->user_id)) {
@@ -89,7 +93,8 @@ trait HasProfileTrait {
         return "https://www.gravatar.com/avatar/$email?d=$default&s=$size";
     }
 
-    public function getFullNameAttribute(?string $value): ?string {
+    public function getFullNameAttribute(?string $value): ?string
+    {
         if (null !== $value) {
             return $value;
         }
@@ -124,7 +129,8 @@ trait HasProfileTrait {
         return $value;
     }
 
-    public function getEmailAttribute(?string $value): ?string {
+    public function getEmailAttribute(?string $value): ?string
+    {
         if (null !== $value) {
             return $value;
         }
@@ -145,7 +151,8 @@ trait HasProfileTrait {
     /**
      * Undocumented getFirstNameAttribute.
      */
-    public function getFirstNameAttribute(?string $value): ?string {
+    public function getFirstNameAttribute(?string $value): ?string
+    {
         if (null !== $value) {
             return $value;
         }
@@ -162,11 +169,13 @@ trait HasProfileTrait {
         return $value;
     }
 
-    public function fullName(): ?string {
+    public function fullName(): ?string
+    {
         return $this->first_name.' '.$this->last_name;
     }
 
-    public function handle(): string {
+    public function handle(): string
+    {
         if (null === $this->user) {
             throw new Exception('['.__LINE__.']['.class_basename(__CLASS__).']');
         }

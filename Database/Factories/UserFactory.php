@@ -23,7 +23,8 @@ use Modules\LU\Models\User as Model;
 /**
  * Class UserFactory.
  */
-class UserFactory extends Factory {
+class UserFactory extends Factory
+{
     /**
      * The name of the factory's corresponding model.
      *
@@ -36,7 +37,8 @@ class UserFactory extends Factory {
      *
      * @return array
      */
-    public function definition() {
+    public function definition()
+    {
         $faker = $this->faker;
         // 43     Access to an undefined property Faker\UniqueGenerator::$userName.
         // 46     Access to an undefined property Faker\UniqueGenerator::$safeEmail.

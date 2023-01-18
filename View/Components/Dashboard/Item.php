@@ -11,8 +11,10 @@ use Illuminate\View\Component;
 /**
  * @return \Illuminate\Contracts\Support\Renderable|string
  */
-class Item extends Component {
-    public function render() {
+class Item extends Component
+{
+    public function render()
+    {
         return '';
     }
 }

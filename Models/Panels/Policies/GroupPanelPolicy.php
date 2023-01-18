@@ -11,8 +11,10 @@ use Modules\Xot\Contracts\UserContract;
 /**
  * Class GroupPanelPolicy.
  */
-class GroupPanelPolicy extends XotBasePanelPolicy {
-    public function attach(UserContract $user, PanelContract $panel): bool {
+class GroupPanelPolicy extends XotBasePanelPolicy
+{
+    public function attach(UserContract $user, PanelContract $panel): bool
+    {
         return true;
     }
 }

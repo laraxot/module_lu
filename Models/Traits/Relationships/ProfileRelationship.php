@@ -7,5 +7,6 @@ namespace Modules\LU\Models\Traits\Relationships;
 /*
  * Undocumented trait.
  */
-trait ProfileRelationship {
+trait ProfileRelationship
+{
 }

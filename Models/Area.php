@@ -68,7 +68,8 @@ use Staudenmeir\EloquentHasManyDeep\HasRelationships;
  *
  * @mixin \Eloquent
  */
-class Area extends BaseModel implements Sortable {
+class Area extends BaseModel implements Sortable
+{
     use HasRelationships;
     use SortableTrait;
     /**
@@ -93,7 +94,8 @@ class Area extends BaseModel implements Sortable {
     /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
      */
-    public function perms() {
+    public function perms()
+    {
         $pivot_class = AreaPermUser::class;
         $pivot = app($pivot_class);
         $pivot_table = $pivot->getTable();
@@ -118,7 +120,8 @@ class Area extends BaseModel implements Sortable {
     /**
      * @return \Staudenmeir\EloquentHasManyDeep\HasManyDeep
      */
-    public function users() {
+    public function users()
+    {
         $foreignKeys = ['area_id', 'perm_user_id', 'user_id'];
         $localKeys = ['area_id', 'perm_user_id', 'user_id'];
 
@@ -157,11 +160,13 @@ class Area extends BaseModel implements Sortable {
         // dddx(\Auth::user()->perm->user);
     }
 
-    public function permUsers(): BelongsToMany {
+    public function permUsers(): BelongsToMany
+    {
         return $this->belongsToMany(PermUser::class);
     }
 
-    public function imageHtml(array $params = []): string {
+    public function imageHtml(array $params = []): string
+    {
         // -- default vars
         $width = 200;
         $height = 200;
@@ -174,7 +179,8 @@ class Area extends BaseModel implements Sortable {
         return '<img src="'.asset($this->icon_src).'" width="'.$width.'" height="'.$height.'" />';
     }
 
-    public function getUrlAttribute(?string $value): ?string {
+    public function getUrlAttribute(?string $value): ?string
+    {
         if (! \is_string($this->area_define_name)) {
             throw new \Exception('['.__LINE__.']['.class_basename(__CLASS__).']');
         }
@@ -182,7 +188,8 @@ class Area extends BaseModel implements Sortable {
         return url('admin/'.mb_strtolower($this->area_define_name));
     }
 
-    public function getTitleAttribute(?string $value): ?string {
+    public function getTitleAttribute(?string $value): ?string
+    {
         $title = $this->area_define_name;
         // if (is_null($title)) {
         //    throw new Exception('['.__LINE__.']['.class_basename(__CLASS__).']');
@@ -192,7 +199,8 @@ class Area extends BaseModel implements Sortable {
         return $title;
     }
 
-    public function getGuidAttribute(?string $value): ?string {
+    public function getGuidAttribute(?string $value): ?string
+    {
         if (null === $this->area_define_name) {
             throw new \Exception('['.__LINE__.']['.class_basename(__CLASS__).']');
         }
@@ -200,7 +208,8 @@ class Area extends BaseModel implements Sortable {
         return Str::slug($this->area_define_name);
     }
 
-    public function getIconSrcAttribute(?string $value): ?string {
+    public function getIconSrcAttribute(?string $value): ?string
+    {
         /*
         $src = mb_strtolower($this->area_define_name.'::img/icon.png');
         $value = ThemeService::asset($src);

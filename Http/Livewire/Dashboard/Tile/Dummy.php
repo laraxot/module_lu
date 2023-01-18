@@ -10,7 +10,8 @@ use Livewire\Component;
 /**
  * Class Dummy.
  */
-class Dummy extends Component {
+class Dummy extends Component
+{
     /** @var string */
     public $position;
 
@@ -19,14 +20,16 @@ class Dummy extends Component {
      *
      * @return void
      */
-    public function mount(string $position) {
+    public function mount(string $position)
+    {
         $this->position = $position;
     }
 
     /**
      * Undocumented function.
      */
-    public function render(): Renderable {
+    public function render(): Renderable
+    {
         /**
          * @phpstan-var view-string
          */

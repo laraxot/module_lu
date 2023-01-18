@@ -24,7 +24,8 @@ use Laravel\Passport\Client as PassportClient;
  *
  * @mixin \Eloquent
  */
-class OauthClient extends PassportClient {
+class OauthClient extends PassportClient
+{
     /**
      * @var string
      */
