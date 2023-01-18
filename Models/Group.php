@@ -9,18 +9,19 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 /**
  * Modules\LU\Models\Group.
  *
- * @property int $id
- * @property int|null $group_type
- * @property string|null $group_define_name
- * @property int|null $owner_user_id
- * @property int|null $owner_group_id
- * @property string $is_active
- * @property string|null $created_by
- * @property string|null $updated_by
- * @property \Illuminate\Support\Carbon|null $created_at
- * @property \Illuminate\Support\Carbon|null $updated_at
- * @property-read \Illuminate\Database\Eloquent\Collection|\Modules\LU\Models\GroupPermUser[] $groupPermUsers
- * @property-read int|null $group_perm_users_count
+ * @property int                                                                         $id
+ * @property int|null                                                                    $group_type
+ * @property string|null                                                                 $group_define_name
+ * @property int|null                                                                    $owner_user_id
+ * @property int|null                                                                    $owner_group_id
+ * @property string                                                                      $is_active
+ * @property string|null                                                                 $created_by
+ * @property string|null                                                                 $updated_by
+ * @property \Illuminate\Support\Carbon|null                                             $created_at
+ * @property \Illuminate\Support\Carbon|null                                             $updated_at
+ * @property \Illuminate\Database\Eloquent\Collection|\Modules\LU\Models\GroupPermUser[] $groupPermUsers
+ * @property int|null                                                                    $group_perm_users_count
+ *
  * @method static \Modules\LU\Database\Factories\GroupFactory factory(...$parameters)
  * @method static \Illuminate\Database\Eloquent\Builder|Group newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|Group newQuery()
@@ -35,6 +36,7 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
  * @method static \Illuminate\Database\Eloquent\Builder|Group whereOwnerUserId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Group whereUpdatedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Group whereUpdatedBy($value)
+ *
  * @mixin \Eloquent
  */
 class Group extends BaseModel {

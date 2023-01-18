@@ -9,10 +9,12 @@ use Laravel\Passport\PersonalAccessClient as PassportPersonalAccessClient;
 /**
  * Modules\LU\Models\OauthPersonalAccessClient.
  *
- * @property-read \Modules\LU\Models\OauthClient|null $client
+ * @property \Modules\LU\Models\OauthClient|null $client
+ *
  * @method static \Illuminate\Database\Eloquent\Builder|OauthPersonalAccessClient newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|OauthPersonalAccessClient newQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|OauthPersonalAccessClient query()
+ *
  * @mixin \Eloquent
  */
 class OauthPersonalAccessClient extends PassportPersonalAccessClient {

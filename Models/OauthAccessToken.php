@@ -10,11 +10,13 @@ use Laravel\Passport\Token as PassportToken;
 /**
  * Modules\LU\Models\OauthAccessToken.
  *
- * @property-read \Modules\LU\Models\OauthClient|null $client
- * @property-read \Modules\LU\Models\User|null $user
+ * @property \Modules\LU\Models\OauthClient|null $client
+ * @property \Modules\LU\Models\User|null        $user
+ *
  * @method static \Illuminate\Database\Eloquent\Builder|OauthAccessToken newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|OauthAccessToken newQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|OauthAccessToken query()
+ *
  * @mixin \Eloquent
  */
 class OauthAccessToken extends PassportToken {
