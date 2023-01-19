@@ -10,8 +10,7 @@ use Modules\Cms\Models\Panels\XotBasePanel;
 /**
  * Class SocialProviderPanel.
  */
-class SocialProviderPanel extends XotBasePanel
-{
+class SocialProviderPanel extends XotBasePanel {
     /**
      * The model the resource corresponds to.
      */
@@ -25,8 +24,7 @@ class SocialProviderPanel extends XotBasePanel
     /**
      * @return object[]
      */
-    public function fields(): array
-    {
+    public function fields(): array {
         return [
             (object) [
                 'type' => 'String',

@@ -11,15 +11,12 @@ use Modules\Xot\Contracts\UserContract;
 /**
  * Class AreaPanelPolicy.
  */
-class AreaPanelPolicy extends XotBasePanelPolicy
-{
-    public function TestUsersWithLivewire(UserContract $user, PanelContract $panel): bool
-    {
+class AreaPanelPolicy extends XotBasePanelPolicy {
+    public function TestUsersWithLivewire(UserContract $user, PanelContract $panel): bool {
         return false;
     }
 
-    public function syncAreas(UserContract $user, PanelContract $panel): bool
-    {
+    public function syncAreas(UserContract $user, PanelContract $panel): bool {
         return true;
     }
 }

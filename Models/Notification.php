@@ -40,8 +40,7 @@ use Illuminate\Notifications\DatabaseNotificationCollection;
  *
  * @mixin \Eloquent
  */
-class Notification extends BaseModel
-{
+class Notification extends BaseModel {
     protected $fillable = ['id', 'type', 'notifiable_type', 'notifiable_id', 'data', 'read_at', 'created_at', 'updated_at'];
 
     /**
@@ -87,8 +86,7 @@ class Notification extends BaseModel
      *
      * @return \Illuminate\Database\Eloquent\Relations\MorphTo
      */
-    public function notifiable()
-    {
+    public function notifiable() {
         return $this->morphTo();
     }
 
@@ -97,8 +95,7 @@ class Notification extends BaseModel
      *
      * @return void
      */
-    public function markAsRead()
-    {
+    public function markAsRead() {
         if (null === $this->read_at) {
             $this->forceFill(['read_at' => $this->freshTimestamp()])->save();
         }
@@ -109,8 +106,7 @@ class Notification extends BaseModel
      *
      * @return void
      */
-    public function markAsUnread()
-    {
+    public function markAsUnread() {
         if (null !== $this->read_at) {
             $this->forceFill(['read_at' => null])->save();
         }
@@ -121,8 +117,7 @@ class Notification extends BaseModel
      *
      * @return bool
      */
-    public function read()
-    {
+    public function read() {
         return null !== $this->read_at;
     }
 
@@ -131,8 +126,7 @@ class Notification extends BaseModel
      *
      * @return bool
      */
-    public function unread()
-    {
+    public function unread() {
         return null === $this->read_at;
     }
 
@@ -141,8 +135,7 @@ class Notification extends BaseModel
      *
      * @return \Illuminate\Database\Eloquent\Builder
      */
-    public function scopeRead(Builder $query)
-    {
+    public function scopeRead(Builder $query) {
         return $query->whereNotNull('read_at');
     }
 
@@ -151,8 +144,7 @@ class Notification extends BaseModel
      *
      * @return \Illuminate\Database\Eloquent\Builder
      */
-    public function scopeUnread(Builder $query)
-    {
+    public function scopeUnread(Builder $query) {
         return $query->whereNull('read_at');
     }
 
@@ -161,8 +153,7 @@ class Notification extends BaseModel
      *
      * @return \Illuminate\Notifications\DatabaseNotificationCollection
      */
-    public function newCollection(array $models = [])
-    {
+    public function newCollection(array $models = []) {
         return new DatabaseNotificationCollection($models);
     }
 }

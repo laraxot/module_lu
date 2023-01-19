@@ -31,8 +31,7 @@ namespace Modules\LU\Models;
  *
  * @mixin \Eloquent
  */
-class RightImplied extends BaseModel
-{
+class RightImplied extends BaseModel {
     // protected $connection = 'liveuser_general'; // this will use the specified database conneciton
     /**
      * @var string

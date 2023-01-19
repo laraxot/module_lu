@@ -19,8 +19,7 @@ use Modules\Xot\Services\FileService;
 /**
  * Class LoginController.
  */
-class LoginController extends BaseController
-{
+class LoginController extends BaseController {
     /*
     |--------------------------------------------------------------------------
     | Login Controller
@@ -45,8 +44,7 @@ class LoginController extends BaseController
     /**
      * @return mixed|string
      */
-    public function redirectTo()
-    {
+    public function redirectTo() {
         if (\Request::has('referrer')) {
             return request()->input('referrer');
         }
@@ -63,16 +61,14 @@ class LoginController extends BaseController
     /**
      * Create a new controller instance.
      */
-    public function __construct()
-    {
+    public function __construct() {
         $this->middleware('guest', ['except' => 'logout']);
     }
 
     /**
      * @return string
      */
-    public function username()
-    {
+    public function username() {
         return 'handle';
     }
 
@@ -81,16 +77,14 @@ class LoginController extends BaseController
     /**
      * @return string
      */
-    public function password()
-    {
+    public function password() {
         return 'passwd';
     }
 
     /**
      * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View|\Illuminate\Http\JsonResponse|string
      */
-    public function showLoginForm(Request $request)
-    {
+    public function showLoginForm(Request $request) {
         $referrer = str_replace(url('/'), '', url()->previous());
         $params = getRouteParameters();
 
@@ -118,8 +112,7 @@ class LoginController extends BaseController
      *
      * @return mixed|void
      */
-    public function login(Request $request)
-    {
+    public function login(Request $request) {
         if ($this->hasTooManyLoginAttempts($request)) {
             $this->fireLockoutEvent($request);
             // 149    Result of method Modules\LU\Http\Controllers\Auth\LoginController::sendLockoutResponse() (void) is used.
@@ -188,8 +181,7 @@ class LoginController extends BaseController
      * @param \Illuminate\Http\Request $request
      * @param UserContract             $user
      */
-    protected function authenticated($request, $user): void
-    {
+    protected function authenticated($request, $user): void {
         $user->update(
             [
                 'last_login_at' => Carbon::now()->toDateTimeString(),
@@ -216,8 +208,7 @@ class LoginController extends BaseController
     /**
      * @return \Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse
      */
-    protected function sendFailedLoginResponse(Request $request)
-    {
+    protected function sendFailedLoginResponse(Request $request) {
         if ($request->ajax()) {
             return response()->json(
                 [
@@ -238,8 +229,7 @@ class LoginController extends BaseController
 
     // ------------------
 
-    public function authorization(Request $request): void
-    {
+    public function authorization(Request $request): void {
         $domain_url = (isset($_SERVER['HTTPS']) ? 'https' : 'http')."://$_SERVER[HTTP_HOST]";
         header('Content-type: application/json');
         header('Access-Control-Allow-Credentials: true');

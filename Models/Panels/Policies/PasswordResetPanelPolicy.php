@@ -9,6 +9,5 @@ use Modules\Cms\Models\Panels\Policies\XotBasePanelPolicy;
 /**
  * Class PasswordResetPanelPolicy.
  */
-class PasswordResetPanelPolicy extends XotBasePanelPolicy
-{
+class PasswordResetPanelPolicy extends XotBasePanelPolicy {
 }

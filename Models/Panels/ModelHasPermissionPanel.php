@@ -11,8 +11,7 @@ use Modules\Cms\Models\Panels\XotBasePanel;
 use Modules\LU\Models\ModelHasPermission;
 use Modules\Xot\Contracts\RowsContract;
 
-class ModelHasPermissionPanel extends XotBasePanel
-{
+class ModelHasPermissionPanel extends XotBasePanel {
     /**
      * The model the resource corresponds to.
      */
@@ -34,13 +33,11 @@ class ModelHasPermissionPanel extends XotBasePanel
     /**
      * The relationships that should be eager loaded on index queries.
      */
-    public function with(): array
-    {
+    public function with(): array {
         return [];
     }
 
-    public function search(): array
-    {
+    public function search(): array {
         return [];
     }
 
@@ -49,16 +46,14 @@ class ModelHasPermissionPanel extends XotBasePanel
      *
      * @param ModelHasPermission $row
      */
-    public function optionLabel($row): string
-    {
+    public function optionLabel($row): string {
         return (string) $row->permission_id.'  '.$row->model_type.' - '.$row->model_id;
     }
 
     /**
      * index navigation.
      */
-    public function indexNav(): ?\Illuminate\Contracts\Support\Renderable
-    {
+    public function indexNav(): ?\Illuminate\Contracts\Support\Renderable {
         return null;
     }
 
@@ -69,8 +64,7 @@ class ModelHasPermissionPanel extends XotBasePanel
      *
      * @return RowsContract
      */
-    public static function indexQuery(array $data, $query)
-    {
+    public static function indexQuery(array $data, $query) {
         // return $query->where('user_id', $request->user()->id);
         return $query;
     }
@@ -79,8 +73,7 @@ class ModelHasPermissionPanel extends XotBasePanel
      * Get the fields displayed by the resource.
         'value'=>'..',
      */
-    public function fields(): array
-    {
+    public function fields(): array {
         return [
             (object) [
                 'type' => 'Text',
@@ -105,8 +98,7 @@ class ModelHasPermissionPanel extends XotBasePanel
     /**
      * Get the tabs available.
      */
-    public function tabs(): array
-    {
+    public function tabs(): array {
         $tabs_name = [];
 
         return $tabs_name;
@@ -115,8 +107,7 @@ class ModelHasPermissionPanel extends XotBasePanel
     /**
      * Get the cards available for the request.
      */
-    public function cards(Request $request): array
-    {
+    public function cards(Request $request): array {
         return [];
     }
 
@@ -125,24 +116,21 @@ class ModelHasPermissionPanel extends XotBasePanel
      *
      * @param \Illuminate\Http\Request $request
      */
-    public function filters(Request $request = null): array
-    {
+    public function filters(Request $request = null): array {
         return [];
     }
 
     /**
      * Get the lenses available for the resource.
      */
-    public function lenses(Request $request): array
-    {
+    public function lenses(Request $request): array {
         return [];
     }
 
     /**
      * Get the actions available for the resource.
      */
-    public function actions(): array
-    {
+    public function actions(): array {
         return [];
     }
 }

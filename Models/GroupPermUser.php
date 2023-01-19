@@ -32,8 +32,7 @@ use Illuminate\Database\Eloquent\Relations\HasOne;
  *
  * @mixin \Eloquent
  */
-class GroupPermUser extends BasePivot
-{
+class GroupPermUser extends BasePivot {
     /**
      * @var string[]
      */
@@ -44,8 +43,7 @@ class GroupPermUser extends BasePivot
     /**
      * Undocumented function.
      */
-    public function group(): HasOne
-    {
+    public function group(): HasOne {
         return $this->hasOne(Group::class);
     }
 

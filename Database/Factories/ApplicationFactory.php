@@ -6,8 +6,7 @@ namespace Modules\LU\Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
 
-class ApplicationFactory extends Factory
-{
+class ApplicationFactory extends Factory {
     /**
      * The name of the factory's corresponding model.
      *
@@ -20,8 +19,7 @@ class ApplicationFactory extends Factory
      *
      * @return array
      */
-    public function definition()
-    {
+    public function definition() {
         return [
             'id' => $this->faker->randomNumber(5, false),
             'application_define_name' => $this->faker->word,

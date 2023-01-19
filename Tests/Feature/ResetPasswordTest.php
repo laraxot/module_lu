@@ -17,37 +17,30 @@ use Modules\LU\Events\PasswordReset;
 use Modules\LU\Models\User;
 use Tests\TestCase;
 
-class ResetPasswordTest extends TestCase
-{
+class ResetPasswordTest extends TestCase {
     // use RefreshDatabase;
-    protected function setUp(): void
-    {
+    protected function setUp(): void {
         parent::setUp();
         URL::defaults(['lang' => 'it']);
     }
 
-    protected function getValidToken($user)
-    {
+    protected function getValidToken($user) {
         return Password::broker()->createToken($user);
     }
 
-    protected function getInvalidToken()
-    {
+    protected function getInvalidToken() {
         return 'invalid-token';
     }
 
-    protected function passwordResetGetRoute($token)
-    {
+    protected function passwordResetGetRoute($token) {
         return route('password.reset', $token);
     }
 
-    protected function passwordResetPostRoute()
-    {
+    protected function passwordResetPostRoute() {
         return route('password.update');
     }
 
-    protected function successfulPasswordResetRoute()
-    {
+    protected function successfulPasswordResetRoute() {
         return route('home');
     }
 
@@ -108,8 +101,7 @@ class ResetPasswordTest extends TestCase
         // });
     }*/
 
-    public function testUserCannotResetPasswordWithInvalidToken()
-    {
+    public function testUserCannotResetPasswordWithInvalidToken() {
         $user = User::factory()->create(
             [
                 'password' => Hash::make('old-password'),
@@ -135,8 +127,7 @@ class ResetPasswordTest extends TestCase
         $this->assertGuest();
     }
 
-    public function testUserCannotResetPasswordWithoutProvidingANewPassword()
-    {
+    public function testUserCannotResetPasswordWithoutProvidingANewPassword() {
         $user = User::factory()->create(
             [
                 'password' => Hash::make('old-password'),
@@ -162,8 +153,7 @@ class ResetPasswordTest extends TestCase
         $this->assertGuest();
     }
 
-    public function testUserCannotResetPasswordWithoutProvidingAnEmail()
-    {
+    public function testUserCannotResetPasswordWithoutProvidingAnEmail() {
         $user = User::factory()->create(
             [
                 'password' => Hash::make('old-password'),

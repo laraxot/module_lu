@@ -19,8 +19,7 @@ use Modules\LU\Datas\ResetPasswordData;
 /**
  * Class ResetPassword.
  */
-class ResetPassword extends Notification
-{
+class ResetPassword extends Notification {
     /**
      * The password reset token.
      */
@@ -29,8 +28,7 @@ class ResetPassword extends Notification
     /**
      * Create a notification instance.
      */
-    public function __construct(string $token)
-    {
+    public function __construct(string $token) {
         $this->token = $token;
     }
 
@@ -41,8 +39,7 @@ class ResetPassword extends Notification
      *
      * @return array|string
      */
-    public function via($notifiable)
-    {
+    public function via($notifiable) {
         return ['mail'];
     }
 
@@ -53,8 +50,7 @@ class ResetPassword extends Notification
      *
      * @return \Illuminate\Notifications\Messages\MailMessage
      */
-    public function toMail($notifiable)
-    {
+    public function toMail($notifiable) {
         // /*
 
         $views = [

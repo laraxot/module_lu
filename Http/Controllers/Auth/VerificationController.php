@@ -13,8 +13,7 @@ use Modules\Xot\Contracts\UserContract;
 /**
  * Class VerificationController.
  */
-class VerificationController extends Controller
-{
+class VerificationController extends Controller {
     /*
     |--------------------------------------------------------------------------
     | Email Verification Controller
@@ -36,8 +35,7 @@ class VerificationController extends Controller
     /**
      * Create a new controller instance.
      */
-    public function __construct()
-    {
+    public function __construct() {
         $this->middleware('auth');
         $this->middleware('signed')->only('verify');
         $this->middleware('throttle:6,1')->only('verify', 'resend');
@@ -48,8 +46,7 @@ class VerificationController extends Controller
      *
      * @return \Illuminate\Http\RedirectResponse|\Illuminate\Http\Response
      */
-    public function show(Request $request)
-    {
+    public function show(Request $request) {
         /**
          * @phpstan-var view-string
          */

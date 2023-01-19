@@ -13,8 +13,7 @@ use Modules\LU\Services\ProfileService;
 /**
  * Class Edit.
  */
-class Info extends Component
-{
+class Info extends Component {
     public array $form_data = [];
 
     public bool $show = false;
@@ -22,8 +21,7 @@ class Info extends Component
     public string $model_class;
     public int $model_id;
 
-    public function mount(): void
-    {
+    public function mount(): void {
         $profile = ProfileService::make()->getProfile();
         if (null == $profile) {
             throw new Exception('['.__LINE__.']['.__FILE__.']');
@@ -37,8 +35,7 @@ class Info extends Component
         $this->form_data = $profile->toArray();
     }
 
-    public function render(): Renderable
-    {
+    public function render(): Renderable {
         /**
          * @phpstan-var view-string
          */
@@ -50,13 +47,11 @@ class Info extends Component
         return view()->make($view, $view_params);
     }
 
-    public function toggle(): void
-    {
+    public function toggle(): void {
         $this->show = ! $this->show;
     }
 
-    public function update(): void
-    {
+    public function update(): void {
         $model = app($this->model_class)->find($this->model_id);
         $model->update($this->form_data);
         session()->flash('message', 'successfully updated.');

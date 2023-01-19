@@ -12,15 +12,13 @@ use Modules\LU\Services\ProfileService;
 /**
  * Class LUComposer.
  */
-class LUComposer
-{
+class LUComposer {
     /**
      * Bind data to the view.
      *
      * @return void
      */
-    public function compose(View $view)
-    {
+    public function compose(View $view) {
         // $user = Auth::user();
 
         $profile = ProfileService::make(); // ->get($user);

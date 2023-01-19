@@ -29,8 +29,7 @@ namespace Modules\LU\Models;
  *
  * @mixin \Eloquent
  */
-class PermUserRight extends BasePivot
-{
+class PermUserRight extends BasePivot {
     /**
      * @var string[]
      */

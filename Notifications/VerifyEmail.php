@@ -17,8 +17,7 @@ use Modules\LU\Models\User;
 /**
  * Class VerifyEmail.
  */
-class VerifyEmail extends Notification
-{
+class VerifyEmail extends Notification {
     use Queueable;
     /**
      * The callback that should be used to create the verify email URL.
@@ -53,8 +52,7 @@ class VerifyEmail extends Notification
      *
      * @return array
      */
-    public function via($notifiable)
-    {
+    public function via($notifiable) {
         return ['mail'];
     }
 
@@ -73,8 +71,7 @@ class VerifyEmail extends Notification
      *
      * @return \Illuminate\Notifications\Messages\MailMessage|mixed
      */
-    public function toMail($notifiable)
-    {
+    public function toMail($notifiable) {
         if (static::$toMailCallback) {
             return \call_user_func(static::$toMailCallback, $notifiable);
         }
@@ -106,8 +103,7 @@ class VerifyEmail extends Notification
      *
      * @return string|mixed
      */
-    protected function verificationUrl($notifiable)
-    {
+    protected function verificationUrl($notifiable) {
         if (static::$createUrlCallback) {
             return \call_user_func(static::$createUrlCallback, $notifiable);
         }
@@ -129,8 +125,7 @@ class VerifyEmail extends Notification
     /**
      * Set a callback that should be used when building the notification mail message.
      */
-    public static function toMailUsing(\Closure $callback): void
-    {
+    public static function toMailUsing(\Closure $callback): void {
         static::$toMailCallback = $callback;
     }
 
@@ -141,8 +136,7 @@ class VerifyEmail extends Notification
      *
      * @return array
      */
-    public function toArray($notifiable)
-    {
+    public function toArray($notifiable) {
         return [
         ];
     }

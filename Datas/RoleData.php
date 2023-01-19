@@ -7,8 +7,7 @@ namespace Modules\LU\Datas;
 use Spatie\LaravelData\Data;
 use Spatie\LaravelData\DataCollection;
 
-class RoleData extends Data
-{
+class RoleData extends Data {
     public string $name;
     /**
      * Summary of permissions.

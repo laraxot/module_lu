@@ -25,60 +25,49 @@ use Tests\TestCase;
 /**
  * Undocumented class.
  */
-class LoginTest extends TestCase
-{
-    protected function setUp(): void
-    {
+class LoginTest extends TestCase {
+    protected function setUp(): void {
         parent::setUp();
         URL::defaults(['lang' => 'it']);
     }
 
-    protected function successfulLoginRoute()
-    {
+    protected function successfulLoginRoute() {
         return route('home');
     }
 
-    protected function loginGetRoute()
-    {
+    protected function loginGetRoute() {
         return route('login');
     }
 
-    protected function loginPostRoute()
-    {
+    protected function loginPostRoute() {
         return route('login');
     }
 
-    protected function logoutRoute()
-    {
+    protected function logoutRoute() {
         return route('logout');
     }
 
-    protected function successfulLogoutRoute()
-    {
+    protected function successfulLogoutRoute() {
         return '/';
     }
 
-    protected function guestMiddlewareRoute()
-    {
+    protected function guestMiddlewareRoute() {
         // return route('home');
         return '/';
     }
 
-    protected function getTooManyLoginAttemptsMessage()
-    {
+    protected function getTooManyLoginAttemptsMessage() {
         return sprintf('/^%s$/', str_replace('\:seconds', '\d+', preg_quote(__('auth.throttle'), '/')));
     }
 
-    public function testUserCanViewALoginForm()
-    {
+    public function testUserCanViewALoginForm() {
         $response = $this->get($this->loginGetRoute());
 
         $response->assertSuccessful();
         $response->assertViewIs('pub_theme::auth.login');
     }
 
-    public function testUserCannotViewALoginFormWhenAuthenticated()
-    {
+    public function testUserCannotViewALoginFormWhenAuthenticated() {
         $user = User::factory()->make();
 
         $response = $this->actingAs($user)->get($this->loginGetRoute());
@@ -86,8 +75,7 @@ class LoginTest extends TestCase
         // $response->assertRedirect($this->guestMiddlewareRoute());
     }
 
-    public function testUserCanLoginWithCorrectCredentials()
-    {
+    public function testUserCanLoginWithCorrectCredentials() {
         $password = 'i-love-laravel';
         $user = User::factory()->create(
             [
@@ -109,8 +97,7 @@ class LoginTest extends TestCase
         $this->assertAuthenticatedAs($user);
     }
 
-    public function testRememberMeFunctionality()
-    {
+    public function testRememberMeFunctionality() {
         $password = 'i-love-laravel';
         $user = User::factory()->create(
             [
@@ -144,8 +131,7 @@ class LoginTest extends TestCase
         $this->assertAuthenticatedAs($user);
     }
 
-    public function testUserCannotLoginWithIncorrectPassword()
-    {
+    public function testUserCannotLoginWithIncorrectPassword() {
         $password = 'i-love-laravel';
 
         $user = User::factory()->create(
@@ -170,8 +156,7 @@ class LoginTest extends TestCase
         $this->assertGuest();
     }
 
-    public function testUserCannotLoginWithEmailThatDoesNotExist()
-    {
+    public function testUserCannotLoginWithEmailThatDoesNotExist() {
         $response = $this->from($this->loginGetRoute())->post(
             $this->loginPostRoute(),
             [
@@ -187,8 +172,7 @@ class LoginTest extends TestCase
         $this->assertGuest();
     }
 
-    public function testUserCanLogout()
-    {
+    public function testUserCanLogout() {
         $this->be(User::factory()->create());
 
         $response = $this->post($this->logoutRoute());
@@ -197,16 +181,14 @@ class LoginTest extends TestCase
         $this->assertGuest();
     }
 
-    public function testUserCannotLogoutWhenNotAuthenticated()
-    {
+    public function testUserCannotLogoutWhenNotAuthenticated() {
         $response = $this->post($this->logoutRoute());
 
         $response->assertRedirect($this->successfulLogoutRoute());
         $this->assertGuest();
     }
 
-    public function testUserCannotMakeMoreThanFiveAttemptsInOneMinute()
-    {
+    public function testUserCannotMakeMoreThanFiveAttemptsInOneMinute() {
         $password = 'i-love-laravel';
 
         $user = User::factory()->create(

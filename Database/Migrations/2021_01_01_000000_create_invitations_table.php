@@ -9,15 +9,13 @@ use Modules\Xot\Database\Migrations\XotBaseMigration;
 /**
  * Class CreateInvitationsTable.
  */
-class CreateInvitationsTable extends XotBaseMigration
-{
+class CreateInvitationsTable extends XotBaseMigration {
     /**
      * Run the migrations.
      *
      * @return void
      */
-    public function up()
-    {
+    public function up() {
         // $old_table = 'groupusers';
         // if ($this->getConn()->hasTable($old_table)) {
         //    $this->getConn()->rename($old_table, $this->getTable());

@@ -7,8 +7,7 @@ namespace Modules\LU\Database\Factories;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Modules\LU\Models\Right;
 
-class RightFactory extends Factory
-{
+class RightFactory extends Factory {
     /**
      * The name of the factory's corresponding model.
      *
@@ -21,8 +20,7 @@ class RightFactory extends Factory
      *
      * @return array
      */
-    public function definition()
-    {
+    public function definition() {
         return [
             'id' => $this->faker->randomNumber(5, false),
             // 'area_id' => $this->faker->randomNumber(5, false),

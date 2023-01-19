@@ -19,8 +19,7 @@ use Laravel\Passport\Token as PassportToken;
  *
  * @mixin \Eloquent
  */
-class OauthAccessToken extends PassportToken
-{
+class OauthAccessToken extends PassportToken {
     /**
      * @var string
      */

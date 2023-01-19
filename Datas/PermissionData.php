@@ -6,7 +6,6 @@ namespace Modules\LU\Datas;
 
 use Spatie\LaravelData\Data;
 
-class PermissionData extends Data
-{
+class PermissionData extends Data {
     public string $name;
 }

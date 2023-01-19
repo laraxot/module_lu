@@ -50,8 +50,7 @@ use Modules\UI\Services\ThemeService;
  *
  * @mixin \Eloquent
  */
-class AreaPermUser extends BasePivot
-{
+class AreaPermUser extends BasePivot {
     /**
      * @var string[]
      */
@@ -61,20 +60,17 @@ class AreaPermUser extends BasePivot
      */
     protected $appends = ['title', 'url', 'icon_src'];
 
-    public function area(): BelongsTo
-    {
+    public function area(): BelongsTo {
         return $this->belongsTo(Area::class);
     }
 
-    public function permUser(): BelongsTo
-    {
+    public function permUser(): BelongsTo {
         return $this->belongsTo(PermUser::class);
     }
 
     // ------------MUTATORS -------------
 
-    public function getAreaDefineNameAttribute(?string $value): ?string
-    {
+    public function getAreaDefineNameAttribute(?string $value): ?string {
         $area = $this->area;
         if (! \is_object($area)) {
             return $value;
@@ -83,8 +79,7 @@ class AreaPermUser extends BasePivot
         return $area->area_define_name;
     }
 
-    public function getTitleAttribute(?string $value): ?string
-    {
+    public function getTitleAttribute(?string $value): ?string {
         $area_define_name_scope = '';
 
         if (! empty($this->area_define_name)) {
@@ -97,13 +92,11 @@ class AreaPermUser extends BasePivot
     }
 
     // era commentata e dava errore su admin/lu/users che questo metodo era undefined
-    public function getUrlAttribute(?string $value): ?string
-    {
+    public function getUrlAttribute(?string $value): ?string {
         return $this->area?->url;
     }
 
-    public function getIconSrcAttribute(?string $value): ?string
-    {
+    public function getIconSrcAttribute(?string $value): ?string {
         $area = $this->area;
         if (! \is_object($area)) {
             return $value;
@@ -117,8 +110,7 @@ class AreaPermUser extends BasePivot
         return $icon_src;
     }
 
-    public function dashboard_widget(): ViewContract
-    {
+    public function dashboard_widget(): ViewContract {
         $area_define_name_scope = '';
 
         if (! empty($this->area_define_name)) {
@@ -142,15 +134,13 @@ class AreaPermUser extends BasePivot
     /**
      * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\Routing\UrlGenerator|string
      */
-    public function a_href()
-    {
+    public function a_href() {
         return url('admin/'.mb_strtolower((string) $this->area_define_name));
     }
 
     // -----------------------------------------------------------------------------
 
-    public function icon_src(): string
-    {
+    public function icon_src(): string {
         $src = mb_strtolower($this->area_define_name.'::img/icon.png');
 
         return ThemeService::asset($src);

@@ -34,8 +34,7 @@ use Spatie\Permission\Models\Permission as SpatiePermission;
  *
  * @mixin \Eloquent
  */
-class Permission extends SpatiePermission
-{
+class Permission extends SpatiePermission {
     /**
      * @var string
      */

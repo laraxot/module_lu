@@ -10,15 +10,13 @@ use Modules\Xot\Database\Migrations\XotBaseMigration;
 /**
  * Class CreateAreaPermUserTable.
  */
-class CreateAreaPermUserTable extends XotBaseMigration
-{
+class CreateAreaPermUserTable extends XotBaseMigration {
     /**
      * Run the migrations.
      *
      * @return void
      */
-    public function up()
-    {
+    public function up() {
         // -- senza il prefix !
         $old_table = 'area_admin_areas';
         if ($this->getConn()->hasTable($old_table)) {

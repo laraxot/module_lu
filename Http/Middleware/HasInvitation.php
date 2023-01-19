@@ -14,15 +14,13 @@ use Modules\LU\Models\Invitation;
 /**
  * Class HasInvitation.
  */
-class HasInvitation
-{
+class HasInvitation {
     /**
      * @param \Illuminate\Http\Request $request
      *
      * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector|mixed
      */
-    public function handle($request, Closure $next)
-    {
+    public function handle($request, Closure $next) {
         /*
          * Only for GET requests. Otherwise, this middleware will block our registration.
          */

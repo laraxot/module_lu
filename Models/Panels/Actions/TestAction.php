@@ -12,8 +12,7 @@ use Modules\Cms\Models\Panels\Actions\XotBasePanelAction;
 /**
  * Class TestAction.
  */
-class TestAction extends XotBasePanelAction
-{
+class TestAction extends XotBasePanelAction {
     public bool $onContainer = true;
 
     // public bool $onItem = true;//?_act=test#[143][C:\var\www\base_gamma\laravel\Modules\Cms\Services\PanelRouteService.php][Route [admin.show] not defined.]
@@ -23,8 +22,7 @@ class TestAction extends XotBasePanelAction
     /**
      * @return mixed
      */
-    public function handle()
-    {
+    public function handle() {
         return 'preso';
         // return $this->panel->view();
     }

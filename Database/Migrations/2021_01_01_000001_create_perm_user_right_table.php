@@ -9,15 +9,13 @@ use Modules\Xot\Database\Migrations\XotBaseMigration;
 /**
  * Class CreateLiveuserUserrightsTable.
  */
-class CreatePermUserRightTable extends XotBaseMigration
-{
+class CreatePermUserRightTable extends XotBaseMigration {
     /**
      * Run the migrations.
      *
      * @return void
      */
-    public function up()
-    {
+    public function up() {
         // -- senza il prefix !
         $old_table = 'userrights';
         if ($this->getConn()->hasTable($old_table)) {

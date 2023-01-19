@@ -7,6 +7,5 @@ namespace Modules\LU\Models\Traits\Mutators;
 /*
  * Undocumented trait.
  */
-trait ProfileMutator
-{
+trait ProfileMutator {
 }

@@ -58,8 +58,7 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
  *
  * @mixin \Eloquent
  */
-class PermUser extends BaseModel
-{
+class PermUser extends BaseModel {
     /**
      * @var string[]
      */
@@ -70,23 +69,19 @@ class PermUser extends BaseModel
     /**
      * Undocumented function.
      */
-    public function user(): BelongsTo
-    {
+    public function user(): BelongsTo {
         return $this->belongsTo(User::class);
     }
 
-    public function areaPermUsers(): HasMany
-    {
+    public function areaPermUsers(): HasMany {
         return $this->hasMany(AreaPermUser::class);
     }
 
-    public function groupPermUsers(): HasMany
-    {
+    public function groupPermUsers(): HasMany {
         return $this->hasMany(GroupPermUser::class);
     }
 
-    public function areas(): BelongsToMany
-    {
+    public function areas(): BelongsToMany {
         $pivot_class = AreaPermUser::class; // nome deciso da laravel !
         $pivot = app($pivot_class);
         $rows = $this->belongsToMany(
@@ -102,8 +97,7 @@ class PermUser extends BaseModel
         return $rows;
     }
 
-    public function groups(): BelongsToMany
-    {
+    public function groups(): BelongsToMany {
         $pivot_class = GroupPermUser::class; // nome deciso da laravel !
         $pivot = app($pivot_class);
         $rows = $this->belongsToMany(
@@ -117,8 +111,7 @@ class PermUser extends BaseModel
         return $rows;
     }
 
-    public function rights(): BelongsToMany
-    {
+    public function rights(): BelongsToMany {
         $pivot_class = PermUserRight::class; // nome deciso da laravel !
         $pivot = app($pivot_class);
         $rows = $this->belongsToMany(

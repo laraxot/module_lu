@@ -9,6 +9,5 @@ use Modules\Cms\Models\Panels\Policies\XotBasePanelPolicy;
 /**
  * Class GroupRightPanelPolicy.
  */
-class GroupRightPanelPolicy extends XotBasePanelPolicy
-{
+class GroupRightPanelPolicy extends XotBasePanelPolicy {
 }

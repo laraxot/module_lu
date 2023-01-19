@@ -10,15 +10,13 @@ use Illuminate\Database\Seeder;
 /**
  * Class LUDatabaseSeeder.
  */
-class LUDatabaseSeeder extends Seeder
-{
+class LUDatabaseSeeder extends Seeder {
     /**
      * Run the database seeds.
      *
      * @return void
      */
-    public function run()
-    {
+    public function run() {
         Model::unguard();
 
         // $this->call("OthersTableSeeder");
