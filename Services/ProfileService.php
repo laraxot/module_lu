@@ -15,7 +15,6 @@ use Modules\Xot\Contracts\ModelProfileContract;
 use Modules\Xot\Contracts\UserContract;
 use Modules\Xot\Datas\XotData;
 use Nwidart\Modules\Facades\Module;
-use ReflectionException;
 
 /**
  * Class ProfileService.
@@ -34,6 +33,7 @@ class ProfileService {
     public function __construct() {
         $this->xot = XotData::from(config('xra'));
         $user = Auth::user();
+
         if (null == $user) {
             return;
         }
@@ -86,13 +86,13 @@ class ProfileService {
             return \call_user_func_array($callback, $arguments);
         }
 
-        throw new Exception('['.\get_class($profile).'] method: ['.$name.']['.__LINE__.']['.class_basename(__CLASS__).']');
+        throw new \Exception('['.\get_class($profile).'] method: ['.$name.']['.__LINE__.']['.class_basename(__CLASS__).']');
     }
 
     /**
      * returns this ProfileService instance.
      *
-     * @throws ReflectionException
+     * @throws \ReflectionException
      */
     public function get(UserContract $user): self {
         $this->user = $user;
@@ -221,14 +221,14 @@ class ProfileService {
         if (null == $this->profile && null != $this->user) {
             if (null == $this->user->profile) {
                 $this->user->profile()->firstOrCreate();
-                throw new Exception('['.$this->getProfileClass().']['.__LINE__.']['.__FILE__.']');
+                throw new \Exception('['.$this->getProfileClass().']['.__LINE__.']['.__FILE__.']');
             }
             // Property Modules\LU\Services\ProfileService::$profile (Modules\Xot\Contracts\ModelProfileContract|null) does not accept Illuminate\Database\Eloquent\Model.
 
             $this->profile = $this->user->profile;
         }
         if (null == $this->profile) {
-            throw new Exception('['.__LINE__.']['.__FILE__.']');
+            throw new \Exception('['.__LINE__.']['.__FILE__.']');
         }
         $this->profile_panel = PanelService::make()->get($this->profile);
 
@@ -298,7 +298,7 @@ class ProfileService {
         return $this->areas()->map(
             function ($area) {
                 if (! $area instanceof Model) {
-                    throw new Exception('['.__LINE__.']['.__FILE__.']');
+                    throw new \Exception('['.__LINE__.']['.__FILE__.']');
                 }
 
                 return PanelService::make()->get($area);
