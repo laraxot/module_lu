@@ -221,7 +221,7 @@ class ProfileService {
         if (null == $this->profile && null != $this->user) {
             if (null == $this->user->profile) {
                 $this->user->profile()->firstOrCreate();
-                throw new \Exception('['.$this->getProfileClass().']['.__LINE__.']['.__FILE__.']');
+                // throw new \Exception('['.$this->getProfileClass().']['.__LINE__.']['.__FILE__.']');
             }
             // Property Modules\LU\Services\ProfileService::$profile (Modules\Xot\Contracts\ModelProfileContract|null) does not accept Illuminate\Database\Eloquent\Model.
 

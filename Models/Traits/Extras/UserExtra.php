@@ -79,10 +79,12 @@ trait UserExtra {
     // ------------- notification ------------------
 
     public function sendPasswordResetNotification($token): void {
-        $this->notify(new ResetPasswordNotification($token));
+        // mettere controllo che sia impostata la mail
+        // $this->notify(new ResetPasswordNotification($token));
     }
 
     public function sendEmailVerificationNotification(): void {
-        $this->notify(new VerifyEmailNotification());
+        // mettere controllo che sia impostata la mail
+        // $this->notify(new VerifyEmailNotification());
     }
 }
