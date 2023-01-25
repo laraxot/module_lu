@@ -6,7 +6,8 @@ namespace Modules\LU\Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
 
-class ModelHasPermissionFactory extends Factory {
+class ModelHasPermissionFactory extends Factory
+{
     /**
      * The name of the factory's corresponding model.
      *
@@ -19,7 +20,8 @@ class ModelHasPermissionFactory extends Factory {
      *
      * @return array
      */
-    public function definition() {
+    public function definition()
+    {
         return [
         ];
     }

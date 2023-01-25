@@ -10,7 +10,8 @@ use Modules\Cms\Models\Panels\XotBasePanel;
 /**
  * Class GroupRightPanel.
  */
-class GroupRightPanel extends XotBasePanel {
+class GroupRightPanel extends XotBasePanel
+{
     /**
      * The model the resource corresponds to.
      */
@@ -24,7 +25,8 @@ class GroupRightPanel extends XotBasePanel {
     /**
      * @return object[]
      */
-    public function fields(): array {
+    public function fields(): array
+    {
         return [
             (object) [
                 'type' => 'Integer',

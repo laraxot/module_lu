@@ -25,7 +25,8 @@ namespace Modules\LU\Models;
  *
  * @mixin \Eloquent
  */
-class Right extends BaseModel {
+class Right extends BaseModel
+{
     /**
      * @var string[]
      */

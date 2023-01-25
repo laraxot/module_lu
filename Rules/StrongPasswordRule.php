@@ -13,7 +13,8 @@ use Illuminate\Contracts\Validation\Rule;
  * collezione di rules
  * https://github.com/spatie/laravel-validation-rules/blob/master/src/Rules/ModelsExist.php.
  */
-class StrongPasswordRule implements Rule {
+class StrongPasswordRule implements Rule
+{
     protected int $minLength = 8;
 
     protected bool $needsNumber = true;
@@ -25,7 +26,8 @@ class StrongPasswordRule implements Rule {
     /**
      * @return $this
      */
-    public function minLength(int $minLength) {
+    public function minLength(int $minLength)
+    {
         $this->minLength = $minLength;
 
         return $this;
@@ -34,7 +36,8 @@ class StrongPasswordRule implements Rule {
     /**
      * @return $this
      */
-    public function needsNumber(bool $requires = true) {
+    public function needsNumber(bool $requires = true)
+    {
         $this->needsNumber = $requires;
 
         return $this;
@@ -43,7 +46,8 @@ class StrongPasswordRule implements Rule {
     /**
      * @return $this
      */
-    public function needsUppercaseLetter(bool $requires = true) {
+    public function needsUppercaseLetter(bool $requires = true)
+    {
         $this->needsUppercaseLetter = $requires;
 
         return $this;
@@ -52,7 +56,8 @@ class StrongPasswordRule implements Rule {
     /**
      * @return $this
      */
-    public function needsSpecialCharacter(bool $requires = true) {
+    public function needsSpecialCharacter(bool $requires = true)
+    {
         $this->needsSpecialCharacter = $requires;
 
         return $this;
@@ -66,7 +71,8 @@ class StrongPasswordRule implements Rule {
      *
      * @return bool
      */
-    public function passes($attribute, $value) {
+    public function passes($attribute, $value)
+    {
         if (! \is_string($value)) {
             return false;
         }
@@ -96,7 +102,8 @@ class StrongPasswordRule implements Rule {
      *
      * @return string
      */
-    public function message() {
+    public function message()
+    {
         return 'The password entered in the :attribute field isn\'t strong enough';
     }
 }

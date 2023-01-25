@@ -20,28 +20,35 @@ use Nwidart\Modules\Facades\Module;
 /*
  * Undocumented trait.
  */
-trait UserRelationship {
-    public function socialProviders(): HasMany {
+trait UserRelationship
+{
+    public function socialProviders(): HasMany
+    {
         return $this->hasMany(SocialProvider::class);
     }
 
-    public function perm(): HasOne {
+    public function perm(): HasOne
+    {
         return $this->hasOne(PermUser::class);
     }
 
-    public function permUser(): HasOne {
+    public function permUser(): HasOne
+    {
         return $this->hasOne(PermUser::class);
     }
 
-    public function perms(): HasMany {
+    public function perms(): HasMany
+    {
         return $this->hasMany(PermUser::class);
     }
 
-    public function permUsers(): HasMany {
+    public function permUsers(): HasMany
+    {
         return $this->hasMany(PermUser::class);
     }
 
-    public function profile(): HasOne {
+    public function profile(): HasOne
+    {
         /*
         $profile = TenantService::model('profile');
         $profile_class = \get_class($profile);
@@ -58,7 +65,8 @@ trait UserRelationship {
     /**
      * @return \Illuminate\Database\Eloquent\Relations\HasOne
      */
-    public function profileOrCreate() {
+    public function profileOrCreate()
+    {
         $profile = TenantService::model('profile');
         $profile_class = \get_class($profile);
 
@@ -102,7 +110,8 @@ trait UserRelationship {
     /**
      * @return \Illuminate\Database\Eloquent\Builder|\Illuminate\Database\Eloquent\Relations\HasManyThrough
      */
-    public function areaPermUsers() {
+    public function areaPermUsers()
+    {
         $modules = Module::getOrdered();
         $modules = array_keys($modules);
 
@@ -122,7 +131,8 @@ trait UserRelationship {
     /**
      * return \Illuminate\Database\Eloquent\Builder|\Illuminate\Database\Eloquent\Relations\HasManyThrough.
      */
-    public function groupPermUsers(): HasManyThrough {
+    public function groupPermUsers(): HasManyThrough
+    {
         $modules = Module::getOrdered();
         $modules = array_keys($modules);
 
@@ -142,7 +152,8 @@ trait UserRelationship {
     /**
      * return \Illuminate\Database\Eloquent\Builder|\Illuminate\Database\Eloquent\Relations\HasManyThrough.
      */
-    public function permUserRights(): HasManyThrough {
+    public function permUserRights(): HasManyThrough
+    {
         $modules = Module::getOrdered();
         $modules = array_keys($modules);
 
@@ -162,7 +173,8 @@ trait UserRelationship {
     /**
      * @return \Illuminate\Database\Eloquent\Builder|\Illuminate\Database\Eloquent\Relations\BelongsToMany|\Illuminate\Database\Eloquent\Relations\HasManyThrough
      */
-    public function areas() {
+    public function areas()
+    {
         // return $this->hasManyDeep(Area::class, [PermUser::class, AreaPermUser::class]);
         // return $this->hasManyDeepFromRelations($this->permUsers(), (new PermUser())->areas());
         // return $this->areaPermUsers();
@@ -193,7 +205,8 @@ trait UserRelationship {
     /**
      * @return \Illuminate\Database\Eloquent\Builder|\Illuminate\Database\Eloquent\Relations\BelongsToMany|\Illuminate\Database\Eloquent\Relations\HasManyThrough
      */
-    public function areasUsed() {
+    public function areasUsed()
+    {
         // lista moduli utilizzati in questa base
         return $this->areas()->whereIn('area_define_name', Module::getByStatus(1));
     }
@@ -201,7 +214,8 @@ trait UserRelationship {
     /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany|\Illuminate\Database\Eloquent\Relations\HasManyThrough
      */
-    public function groups() {
+    public function groups()
+    {
         // if (null == $this->perm && ! isset($this->user_id)) {
         /*
         return $this->hasManyThrough(
@@ -234,7 +248,8 @@ trait UserRelationship {
     /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany|\Illuminate\Database\Eloquent\Relations\HasManyThrough
      */
-    public function rights() {
+    public function rights()
+    {
         // /if (null == $this->perm && ! isset($this->user_id)) {
         /*
         return $this->hasManyThrough(

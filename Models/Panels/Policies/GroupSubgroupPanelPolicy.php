@@ -6,5 +6,6 @@ namespace Modules\LU\Models\Panels\Policies;
 
 use Modules\Cms\Models\Panels\Policies\XotBasePanelPolicy;
 
-class GroupSubgroupPanelPolicy extends XotBasePanelPolicy {
+class GroupSubgroupPanelPolicy extends XotBasePanelPolicy
+{
 }

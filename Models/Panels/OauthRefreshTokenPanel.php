@@ -9,7 +9,8 @@ use Illuminate\Http\Request;
 
 use Modules\Cms\Models\Panels\XotBasePanel;
 
-class OauthRefreshTokenPanel extends XotBasePanel {
+class OauthRefreshTokenPanel extends XotBasePanel
+{
     /**
      * The model the resource corresponds to.
      */
@@ -24,7 +25,8 @@ class OauthRefreshTokenPanel extends XotBasePanel {
      * Get the fields displayed by the resource.
         'value'=>'..',
      */
-    public function fields(): array {
+    public function fields(): array
+    {
         return [
             0 => (object) [
                 'type' => 'Text',
@@ -52,7 +54,8 @@ class OauthRefreshTokenPanel extends XotBasePanel {
     /**
      * Get the tabs available.
      */
-    public function tabs(): array {
+    public function tabs(): array
+    {
         $tabs_name = [];
 
         return $tabs_name;
@@ -61,7 +64,8 @@ class OauthRefreshTokenPanel extends XotBasePanel {
     /**
      * Get the cards available for the request.
      */
-    public function cards(Request $request): array {
+    public function cards(Request $request): array
+    {
         return [];
     }
 
@@ -70,21 +74,24 @@ class OauthRefreshTokenPanel extends XotBasePanel {
      *
      * @param \Illuminate\Http\Request $request
      */
-    public function filters(Request $request = null): array {
+    public function filters(Request $request = null): array
+    {
         return [];
     }
 
     /**
      * Get the lenses available for the resource.
      */
-    public function lenses(Request $request): array {
+    public function lenses(Request $request): array
+    {
         return [];
     }
 
     /**
      * Get the actions available for the resource.
      */
-    public function actions(): array {
+    public function actions(): array
+    {
         return [];
     }
 }

@@ -9,5 +9,6 @@ use Modules\Cms\Models\Panels\Policies\XotBasePanelPolicy;
 /**
  * Class LUPanelPolicy.
  */
-class LUPanelPolicy extends XotBasePanelPolicy {
+class LUPanelPolicy extends XotBasePanelPolicy
+{
 }

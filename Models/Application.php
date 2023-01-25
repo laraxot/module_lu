@@ -19,7 +19,8 @@ namespace Modules\LU\Models;
  *
  * @mixin \Eloquent
  */
-class Application extends BaseModel {
+class Application extends BaseModel
+{
     /**
      * @var string[]
      */

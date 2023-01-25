@@ -7,11 +7,13 @@ namespace Modules\LU\View\Composers;
 use Illuminate\Database\Eloquent\Collection;
 use Modules\LU\Models\User;
 
-class ThemeComposer {
+class ThemeComposer
+{
     /**
      * Undocumented function.
      */
-    public function lastLoggedUsers(int $limit): Collection {
+    public function lastLoggedUsers(int $limit): Collection
+    {
         $latest = User::orderByDesc('last_login_at')
             ->limit($limit)
             ->get();

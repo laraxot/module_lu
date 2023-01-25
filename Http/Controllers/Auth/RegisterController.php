@@ -15,7 +15,8 @@ use Modules\LU\Models\User;
 /**
  * Class RegisterController.
  */
-class RegisterController extends Controller {
+class RegisterController extends Controller
+{
     /*
     |--------------------------------------------------------------------------
     | Register Controller
@@ -37,7 +38,8 @@ class RegisterController extends Controller {
     /**
      * Create a new controller instance.
      */
-    public function __construct() {
+    public function __construct()
+    {
         $this->middleware('guest');
     }
 
@@ -46,7 +48,8 @@ class RegisterController extends Controller {
      *
      * @return \Illuminate\Contracts\Validation\Validator
      */
-    protected function validator(array $data) {
+    protected function validator(array $data)
+    {
         return Validator::make(
             $data,
             [
@@ -63,7 +66,8 @@ class RegisterController extends Controller {
      *
      * @return User
      */
-    protected function create(array $data) {
+    protected function create(array $data)
+    {
         if (! isset($data['handle'])) {
             if (! isset($data['username'])) {
                 throw new \Exception('Many pre-made templates have a username.. if they don\'t even have this better to have this error');
@@ -103,7 +107,8 @@ class RegisterController extends Controller {
     /**
      * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View|\Illuminate\Http\JsonResponse|string
      */
-    public function showRegistrationForm(Request $request) {
+    public function showRegistrationForm(Request $request)
+    {
         $params = getRouteParameters();
         $row = new User();
         $locz = ['pub_theme', 'adm_theme', 'lu'];
@@ -156,7 +161,8 @@ class RegisterController extends Controller {
      *
      * @return mixed
      */
-    public function register(Request $request) {
+    public function register(Request $request)
+    {
         /*
         $this->validator($request->all())->validate();
 

@@ -9,7 +9,8 @@ use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Auth\ConfirmsPasswords;
 use Modules\LU\Http\Controllers\BaseController;
 
-class ConfirmPasswordController extends BaseController {
+class ConfirmPasswordController extends BaseController
+{
     /*
     |--------------------------------------------------------------------------
     | Confirm Password Controller
@@ -35,7 +36,8 @@ class ConfirmPasswordController extends BaseController {
      *
      * @return void
      */
-    public function __construct() {
+    public function __construct()
+    {
         $this->middleware('auth');
     }
 }

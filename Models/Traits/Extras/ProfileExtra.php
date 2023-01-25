@@ -7,5 +7,6 @@ namespace Modules\LU\Models\Traits\Extras;
 /*
  * Undocumented trait.
  */
-trait ProfileExtra {
+trait ProfileExtra
+{
 }

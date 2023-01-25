@@ -10,8 +10,10 @@ use Modules\Xot\Contracts\UserContract;
 /**
  * Class UserPolicy.
  */
-class UserPolicy extends XotBasePanelPolicy {
-    public function TestUsersWithLivewire(UserContract $user, \Illuminate\Database\Eloquent\Model $post): bool {
+class UserPolicy extends XotBasePanelPolicy
+{
+    public function TestUsersWithLivewire(UserContract $user, \Illuminate\Database\Eloquent\Model $post): bool
+    {
         return false;
     }
 }

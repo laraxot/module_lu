@@ -9,13 +9,15 @@ use Modules\Xot\Database\Migrations\XotBaseMigration;
 /**
  * Class CreateLiveuserGroupsTable.
  */
-class CreateGroupsTable extends XotBaseMigration {
+class CreateGroupsTable extends XotBaseMigration
+{
     /**
      * Run the migrations.
      *
      * @return void
      */
-    public function up() {
+    public function up()
+    {
         // -- CREATE --
         $this->tableCreate(
             function (Blueprint $table) {

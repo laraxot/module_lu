@@ -13,13 +13,15 @@ use Tests\TestCase;
 /**
  * Undocumented class.
  */
-class RouteTest extends TestCase {
+class RouteTest extends TestCase
+{
     /**
      * A basic test example.
      *
      * @return void
      */
-    public function testRoutes() {
+    public function testRoutes()
+    {
         $appURL = env('APP_URL');
 
         $urls = [

@@ -10,7 +10,8 @@ use Illuminate\Http\Resources\Json\ResourceCollection;
 /**
  * Class AreaCollection.
  */
-class AreaCollection extends ResourceCollection {
+class AreaCollection extends ResourceCollection
+{
     /**
      * The resource that this resource collects.
      *
@@ -25,7 +26,8 @@ class AreaCollection extends ResourceCollection {
      *
      * @return array
      */
-    public function toArray($request) {
+    public function toArray($request)
+    {
         // return parent::toArray($request);
         return [
             'data' => $this->collection,

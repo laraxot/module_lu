@@ -6,7 +6,8 @@ namespace Modules\LU\Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
 
-class GroupPermUserFactory extends Factory {
+class GroupPermUserFactory extends Factory
+{
     /**
      * The name of the factory's corresponding model.
      *
@@ -19,7 +20,8 @@ class GroupPermUserFactory extends Factory {
      *
      * @return array
      */
-    public function definition() {
+    public function definition()
+    {
         return [
             'perm_user_id' => $this->faker->randomNumber(5, false),
             'group_id' => $this->faker->randomNumber(5, false),
