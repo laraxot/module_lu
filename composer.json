@@ -1,18 +1,19 @@
 {
     "name": "laraxot/module_lu",
     "description": "",
-    "authors": [{
-        "name": "Marco Sottana",
-        "email": "marco.sottana@gmail.com"
-    }],
+    "authors": [
+        {
+            "name": "Marco Sottana",
+            "email": "marco.sottana@gmail.com"
+        }
+    ],
     "extra": {
+        "enable-patching": "true",
         "laravel": {
             "providers": [
                 "Modules\\LU\\Providers\\LUServiceProvider"
             ],
-            "aliases": {
-
-            }
+            "aliases": {}
         }
     },
     "autoload": {
@@ -73,6 +74,6 @@
             "pestphp/pest-plugin": true
         }
     },
-    "minimum-stability": "dev",
+    "minimum-stability": "beta",
     "prefer-stable": true
 }
