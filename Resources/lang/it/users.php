@@ -7,5 +7,9 @@ return [
         'index' => 'Lista',
         'create' => 'Aggiungi',
         'edit' => 'Modifica',
+        'areas' => [
+            'icon' => 'bi bi-pin-map',
+            'label' => 'Campi aggiuntivi',
+        ],
     ],
 ];
