@@ -19,7 +19,8 @@ use Nwidart\Modules\Facades\Module;
 /**
  * Class ProfileService.
  */
-class ProfileService {
+class ProfileService
+{
     private UserContract $user;
 
     private ?ModelProfileContract $profile = null;
@@ -30,7 +31,8 @@ class ProfileService {
 
     private XotData $xot;
 
-    public function __construct() {
+    public function __construct()
+    {
         $this->xot = XotData::from(config('xra'));
         $user = Auth::user();
 
@@ -40,7 +42,8 @@ class ProfileService {
         $this->get($user);
     }
 
-    public static function getInstance(): self {
+    public static function getInstance(): self
+    {
         if (null === self::$instance) {
             self::$instance = new self();
         }
@@ -48,7 +51,8 @@ class ProfileService {
         return self::$instance;
     }
 
-    public static function make(): self {
+    public static function make(): self
+    {
         return static::getInstance();
     }
 
@@ -60,7 +64,8 @@ class ProfileService {
      *
      * @return mixed
      */
-    public function __call($name, $arguments) {
+    public function __call($name, $arguments)
+    {
         $profile_panel = $this->getProfilePanel();
 
         if (method_exists($profile_panel, $name)) {
@@ -94,7 +99,8 @@ class ProfileService {
      *
      * @throws \ReflectionException
      */
-    public function get(UserContract $user): self {
+    public function get(UserContract $user): self
+    {
         $this->user = $user;
 
         /*
@@ -122,7 +128,8 @@ class ProfileService {
     }
 
     // returns User's full name (fist and last name)
-    public function fullName(): ?string {
+    public function fullName(): ?string
+    {
         if (null == $this->user) {
             return null;
         }
@@ -138,7 +145,8 @@ class ProfileService {
     }
 
     // returns username
-    public function handle(): string {
+    public function handle(): string
+    {
         if (null == $this->user) {
             return 'unknown';
         }
@@ -146,7 +154,8 @@ class ProfileService {
         return $this->user->handle;
     }
 
-    public function permType(): int {
+    public function permType(): int
+    {
         // 89     Access to an undefined property Illuminate\Database\Eloquent\Model::$perm.
         // perchè lo prende come property quando è una relazione?
         // se metto property_exists non visualizzo il sito
@@ -173,12 +182,14 @@ class ProfileService {
     }
 
     // returns User's fist name
-    public function name(): string {
+    public function name(): string
+    {
         return (string) $this->user->first_name;
     }
 
     // returns the Profile's action url (example: http://domain.xx/admin/it/lu/profiles/1/?_act=show)
-    public function url(string $act = 'show'): string {
+    public function url(string $act = 'show'): string
+    {
         return $this->profile_panel->url($act);
     }
 
@@ -189,7 +200,8 @@ class ProfileService {
      *
      * @return string|null
      */
-    public function avatar($size = 100) {
+    public function avatar($size = 100)
+    {
         if (null == $this->user) {
             return null;
         }
@@ -201,23 +213,27 @@ class ProfileService {
     }
 
     // returns User email
-    public function email(): ?string {
+    public function email(): ?string
+    {
         return $this->user->email;
     }
 
     // returns the
-    public function getPanel(): PanelContract {
+    public function getPanel(): PanelContract
+    {
         $profile_panel = $this->getProfilePanel();
 
         return $profile_panel;
     }
 
-    public function getProfile(): ?ModelProfileContract {
+    public function getProfile(): ?ModelProfileContract
+    {
         return $this->profile;
     }
 
     // returns the Profile panel with its methods
-    public function getProfilePanel(): PanelContract {
+    public function getProfilePanel(): PanelContract
+    {
         if (null == $this->profile && null != $this->user) {
             if (null == $this->user->profile) {
                 $this->profile = $this->user->profile()->firstOrCreate();
@@ -246,14 +262,16 @@ class ProfileService {
     }
 
     // returns the User panel with its methods
-    public function getUserPanel(): PanelContract {
+    public function getUserPanel(): PanelContract
+    {
         $user_panel = PanelService::make()->getByUser($this->user);
 
         return $user_panel;
     }
 
     // checks if this profile belongs to a SuperAdmin (level 1)
-    public function isSuperAdmin(array $params = []): bool {
+    public function isSuperAdmin(array $params = []): bool
+    {
         $panel = $this->getPanel();
         // dddx($panel);//Modules\Food\Models\Panels\ProfilePanel
         if (! method_exists($panel, 'isSuperAdmin')) {
@@ -264,12 +282,14 @@ class ProfileService {
     }
 
     // get the User that belongs to this profile
-    public function getUser(): UserContract {
+    public function getUser(): UserContract
+    {
         return $this->user;
     }
 
     // get the right STRING name of this profile class (based on XRA main_module)
-    public function getProfileClass(): string {
+    public function getProfileClass(): string
+    {
         $main_module = $this->xot->main_module;
         $class = 'Modules\\'.$main_module.'\Models\Profile';
 
@@ -277,7 +297,8 @@ class ProfileService {
     }
 
     // check if this profile has that area (true or false)
-    public function hasArea(string $name): bool {
+    public function hasArea(string $name): bool
+    {
         $area = $this->areas()->firstWhere('area_define_name', $name);
 
         return \is_object($area);
@@ -288,7 +309,8 @@ class ProfileService {
      *
      * @return Collection<Area>
      */
-    public function areas(): Collection {
+    public function areas(): Collection
+    {
         $areas = $this->getUser()->areas
             ->sortBy('order_column');
 
@@ -304,7 +326,8 @@ class ProfileService {
     }
 
     // get all areas of this PROFILE
-    public function panelAreas(): Collection {
+    public function panelAreas(): Collection
+    {
         return $this->areas()->map(
             function ($area) {
                 if (! $area instanceof Model) {
