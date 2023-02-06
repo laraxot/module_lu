@@ -213,11 +213,22 @@ class ProfileService {
     }
 
     public function getProfile(): ?ModelProfileContract {
+        if($this->profile!=null){
+            return $this->profile;
+        }
+        if($this->user != null){
+            $this->profile = $this->user->profile()->firstOrCreate();
+            return $this->profile;
+        }
+
         return $this->profile;
+
+        
     }
 
     // returns the Profile panel with its methods
     public function getProfilePanel(): PanelContract {
+        /*
         if (null == $this->profile && null != $this->user) {
             if (null == $this->user->profile) {
                 $this->profile = $this->user->profile()->firstOrCreate();
@@ -237,10 +248,12 @@ class ProfileService {
 
             // $this->profile = $this->user->profile;
         }
-        if (null == $this->profile) {
+        */
+        $profile=$this->getProfile();
+        if (null == $profile) {
             throw new \Exception('['.__LINE__.']['.__FILE__.']');
         }
-        $this->profile_panel = PanelService::make()->get($this->profile);
+        $this->profile_panel = PanelService::make()->get($profile);
 
         return $this->profile_panel;
     }
