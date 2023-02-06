@@ -223,7 +223,15 @@ class ProfileService {
                 $this->profile = $this->user->profile()->firstOrCreate();
             // throw new \Exception('['.$this->getProfileClass().']['.__LINE__.']['.__FILE__.']');
             } else {
-                $this->profile = $this->user->profile;
+                $user = $this->user;
+
+                $main_module = config('xra.main_module');
+                if ('' === $main_module) {
+                    throw new \Exception('set [xra.main_module]');
+                }
+                $profile_class = 'Modules\\'.$main_module.'\Models\Profile';
+
+                $this->profile = $profile_class::firstWhere('user_id', $user->id);
             }
             // Property Modules\LU\Services\ProfileService::$profile (Modules\Xot\Contracts\ModelProfileContract|null) does not accept Illuminate\Database\Eloquent\Model.
 
