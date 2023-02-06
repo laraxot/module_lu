@@ -11,6 +11,7 @@ use Illuminate\Support\Facades\Auth;
 use Modules\Cms\Contracts\PanelContract;
 use Modules\Cms\Services\PanelService;
 use Modules\LU\Models\Area;
+use Modules\LU\Models\Role;
 use Modules\Xot\Contracts\ModelProfileContract;
 use Modules\Xot\Contracts\UserContract;
 use Modules\Xot\Datas\XotData;
@@ -213,17 +214,16 @@ class ProfileService {
     }
 
     public function getProfile(): ?ModelProfileContract {
-        if($this->profile!=null){
+        if (null != $this->profile) {
             return $this->profile;
         }
-        if($this->user != null){
+        if (null != $this->user) {
             $this->profile = $this->user->profile()->firstOrCreate();
+
             return $this->profile;
         }
 
         return $this->profile;
-
-        
     }
 
     // returns the Profile panel with its methods
@@ -249,7 +249,7 @@ class ProfileService {
             // $this->profile = $this->user->profile;
         }
         */
-        $profile=$this->getProfile();
+        $profile = $this->getProfile();
         if (null == $profile) {
             throw new \Exception('['.__LINE__.']['.__FILE__.']');
         }
@@ -329,31 +329,43 @@ class ProfileService {
         );
     }
 
-    //-------------- SPATIE PERMISSION -------------------------
-    public function givePermissionTo(string $name) : self{
+    // -------------- SPATIE PERMISSION -------------------------
+    public function givePermissionTo(string $name): self {
         $this->getProfile()?->givePermissionTo($name);
-        return $this;
-    }
-    
-    public function assignRole(string $name) : self{
-        $this->getProfile()?->assignRole($name);
+
         return $this;
     }
 
-    public function hasRole(string $name) : bool{
-        $profile=$this->getProfile();
-        if($profile==null){
+    public function assignRole(string $name): self {
+        try {
+            $this->getProfile()?->assignRole($name);
+        } catch (\Spatie\Permission\Exceptions\RoleDoesNotExist) {
+            Role::create(['name' => $name]);
+        }
+
+        return $this;
+    }
+
+    public function hasRole(string $name): bool {
+        $profile = $this->getProfile();
+        if (null == $profile) {
             return false;
         }
+        // try {
         return $profile->hasRole($name);
+        // } catch (\Spatie\Permission\Exceptions\RoleDoesNotExist) {
+        //    Role::create(['name' => $name]);
+        // }
+
+        return false;
     }
 
-    public function hasAnyRole(array $roles):bool {
-        $profile=$this->getProfile();
-        if($profile==null){
+    public function hasAnyRole(array $roles): bool {
+        $profile = $this->getProfile();
+        if (null == $profile) {
             return false;
         }
+
         return $profile->hasAnyRole($roles);
     }
-    
 }
