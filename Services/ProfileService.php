@@ -328,4 +328,24 @@ class ProfileService {
             }
         );
     }
+
+    //-------------- SPATIE PERMISSION -------------------------
+    public function givePermissionTo(string $name) : self{
+        $this->getProfile()?->givePermissionTo($name);
+        return $this;
+    }
+    
+    public function assignRole(string $name) : self{
+        $this->getProfile()?->assignRole($name);
+        return $this;
+    }
+
+    public function hasRole(string $name) : bool{
+        $profile=$this->getProfile();
+        if($profile==null){
+            return false;
+        }
+        return $profile->hasRole($name);
+    }
+    
 }
