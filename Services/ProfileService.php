@@ -347,5 +347,13 @@ class ProfileService {
         }
         return $profile->hasRole($name);
     }
+
+    public function hasAnyRole(array $roles):bool {
+        $profile=$this->getProfile();
+        if($profile==null){
+            return false;
+        }
+        return $profile->hasAnyRole($roles);
+    }
     
 }
