@@ -11,6 +11,7 @@ use Illuminate\Support\Facades\Auth;
 use Modules\Cms\Contracts\PanelContract;
 use Modules\Cms\Services\PanelService;
 use Modules\LU\Models\Area;
+use Modules\LU\Models\Permission;
 use Modules\LU\Models\Role;
 use Modules\Xot\Contracts\ModelProfileContract;
 use Modules\Xot\Contracts\UserContract;
@@ -367,5 +368,19 @@ class ProfileService {
         }
 
         return $profile->hasAnyRole($roles);
+    }
+
+    public function hasPermissionTo(string $name): bool {
+        $profile = $this->getProfile();
+        if (null == $profile) {
+            return false;
+        }
+        try {
+            return $profile->hasPermissionTo($name);
+        } catch (\Spatie\Permission\Exceptions\PermissionDoesNotExist $th) {
+            Permission::create(['name' => $name]);
+        }
+
+        return false;
     }
 }
