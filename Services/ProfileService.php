@@ -22,7 +22,7 @@ use Nwidart\Modules\Facades\Module;
  * Class ProfileService.
  */
 class ProfileService {
-    private UserContract $user;
+    private ?UserContract $user = null;
 
     private ?ModelProfileContract $profile = null;
 
