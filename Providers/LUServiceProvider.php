@@ -41,7 +41,7 @@ class LUServiceProvider extends XotBaseServiceProvider {
         $this->registerPassport();
 
         $this->registerViewComposers();
-        BladeService::registerComponents($this->module_dir.'/../View/Components', 'Modules\\UI');
+        BladeService::registerComponents($this->module_dir.'/../View/Components', 'Modules\\LU');
     }
 
     public function registerPassport(): void {
