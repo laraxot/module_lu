@@ -13,8 +13,7 @@ use Modules\UI\Services\ThemeService;
 /**
  * Class TestUsersWithLivewireAction.
  */
-class TestUsersWithLivewireAction extends XotBasePanelAction
-{
+class TestUsersWithLivewireAction extends XotBasePanelAction {
     public bool $onContainer = true;
 
     public bool $onItem = false;
@@ -25,18 +24,16 @@ class TestUsersWithLivewireAction extends XotBasePanelAction
     /**
      * @return mixed
      */
-    public function handle()
-    {
+    public function handle() {
         // return $view;
         return $this->panel->view();
 
-        // return ThemeService::view($view)
+        // return ThemeService::v1iew($view)
         //    ->with('row', $this->row);
         // dddx($this->row);
     }
 
-    public function postHandle(): void
-    {
+    public function postHandle(): void {
         dddx('postHandle');
         // dddx(get_defined_vars());
         /*
