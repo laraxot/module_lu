@@ -81,6 +81,10 @@ class CreateUsersTable extends XotBaseMigration
                         ->after('two_factor_secret')
                         ->nullable();
                 }
+
+                if (!$this->hasColumn('mobile')) {
+                    $table->string('mobile', 20)->nullable();
+                }
             }
         );
     }
