@@ -82,9 +82,9 @@ class CreateUsersTable extends XotBaseMigration
                         ->nullable();
                 }
 
-                if (!$this->hasColumn('mobile')) {
+                /*if (!$this->hasColumn('mobile')) {
                     $table->string('mobile', 20)->nullable();
-                }
+                }*/
             }
         );
     }

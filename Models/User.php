@@ -186,7 +186,7 @@ class User extends Authenticatable implements UserContract
         'handle', 'passwd', 'email',
         'last_name', 'first_name',
         'last_login_at', 'last_login_ip',
-        'mobile'
+        //'mobile'
         // 'api_token', //using passport
     ];
 
