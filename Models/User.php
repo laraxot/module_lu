@@ -15,10 +15,8 @@ use Modules\Xot\Traits\Updater;
 use Illuminate\Support\Facades\DB;
 use Laravel\Passport\HasApiTokens;
 use Modules\Xot\Contracts\UserContract;
-use Fouladgar\OTP\Concerns\HasOTPNotify;
 use Illuminate\Notifications\Notifiable;
-// use Spatie\Tags\HasTags;  // Spatie Tags
-use Fouladgar\OTP\Contracts\OTPNotifiable;
+// use Spatie\Tags\HasTags;  // Spatie Tags;
 use Modules\LU\Database\Factories\UserFactory;
 use Staudenmeir\EloquentHasManyDeep\HasRelationships;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -159,7 +157,6 @@ class User extends Authenticatable implements UserContract
     use Traits\Mutators\UserMutator;
     use Traits\Relationships\UserRelationship;
     use Updater;
-    //use HasOTPNotify;
     /**
      * Indicates whether attributes are snake cased on arrays.
      *
@@ -186,7 +183,6 @@ class User extends Authenticatable implements UserContract
         'handle', 'passwd', 'email',
         'last_name', 'first_name',
         'last_login_at', 'last_login_ip',
-        //'mobile'
         // 'api_token', //using passport
     ];
 
