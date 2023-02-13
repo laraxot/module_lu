@@ -70,7 +70,6 @@ class RegisterController extends Controller {
             }
             $data['handle'] = $data['username']; // molti template precotti hanno username.. se non hanno neppure questo meglio avere errore
         }
-        dddx($data);
         $user = User::query()->create(
             [
                 // 'name' => $data['name'],
