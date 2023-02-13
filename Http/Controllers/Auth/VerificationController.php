@@ -5,7 +5,6 @@ declare(strict_types=1);
 namespace Modules\LU\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
-use Exception;
 use Illuminate\Foundation\Auth\VerifiesEmails;
 use Illuminate\Http\Request;
 use Modules\Xot\Contracts\UserContract;
@@ -13,8 +12,7 @@ use Modules\Xot\Contracts\UserContract;
 /**
  * Class VerificationController.
  */
-class VerificationController extends Controller
-{
+class VerificationController extends Controller {
     /*
     |--------------------------------------------------------------------------
     | Email Verification Controller
@@ -36,8 +34,7 @@ class VerificationController extends Controller
     /**
      * Create a new controller instance.
      */
-    public function __construct()
-    {
+    public function __construct() {
         $this->middleware('auth');
         $this->middleware('signed')->only('verify');
         $this->middleware('throttle:6,1')->only('verify', 'resend');
@@ -48,8 +45,7 @@ class VerificationController extends Controller
      *
      * @return \Illuminate\Http\RedirectResponse|\Illuminate\Http\Response
      */
-    public function show(Request $request)
-    {
+    public function show(Request $request) {
         /**
          * @phpstan-var view-string
          */
@@ -62,11 +58,17 @@ class VerificationController extends Controller
          */
         $user = $request->user();
         if (null == $user) {
-            throw new Exception('['.__LINE__.']['.__FILE__.']');
+            throw new \Exception('['.__LINE__.']['.__FILE__.']');
         }
 
         return $user->hasVerifiedEmail()
             ? redirect($this->redirectPath())
             : response()->view($view, $view_params);
     }
+
+    /*
+    public function resend() {
+        dddx('aaa');
+    }
+    */
 }
