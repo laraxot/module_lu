@@ -8,4 +8,7 @@ use Spatie\QueueableAction\QueueableAction;
 
 class SendEmailVerificationNotificationAction {
     use QueueableAction;
+
+    public function execute() {
+    }
 }
