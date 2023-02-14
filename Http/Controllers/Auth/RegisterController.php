@@ -10,6 +10,7 @@ use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 // --------- Models ------------
+use Illuminate\Support\Str;
 use Modules\LU\Models\User;
 
 /**
@@ -112,6 +113,20 @@ class RegisterController extends Controller {
             $tpl = 'auth.ajax_register';
         }
 
+        $register_type = config('auth.register_type', '0');
+
+        switch ($register_type) {
+            case '3':
+                $tpl .= '_only_email';
+                break;
+            case '2':
+                $tpl .= '_forgot';
+                break;
+            case '1':
+                $tpl .= '_ente_matricola_pwd';
+                break;
+        }
+
         foreach ($locz as $loc) {
             $view = $loc.'::'.$tpl;
 
@@ -168,6 +183,20 @@ class RegisterController extends Controller {
                         ?: redirect($this->redirectPath());
         */
         $data = $request->all();
+
+        $register_type = config('auth.register_type', '0');
+
+        switch ($register_type) {
+            case '3':
+                $data['password'] = Str::random(10);
+                $data['password_confirmation'] = $data['password'];
+                break;
+            case '2':
+                break;
+            case '1':
+                break;
+            default:
+        }
 
         $rules = [
             //    'username' => 'required|alpha_num|min:3|max:32',
