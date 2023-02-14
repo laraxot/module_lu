@@ -1,4 +1,4 @@
-@extends('pub_theme::layouts.app', ['title' => 'Verify'])
+@extends('pub_theme::layouts.guest', ['title' => 'Verify'])
 
 @section('content')
     <div class="container">
