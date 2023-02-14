@@ -7,10 +7,9 @@ namespace Modules\LU\Models;
 /**
  * Modules\LU\Models\ModelHasRole.
  *
- * @property int    $role_id
+ * @property int $role_id
  * @property string $model_type
- * @property int    $model_id
- *
+ * @property int $model_id
  * @method static \Modules\LU\Database\Factories\ModelHasRoleFactory factory(...$parameters)
  * @method static \Illuminate\Database\Eloquent\Builder|ModelHasRole newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|ModelHasRole newQuery()
@@ -18,7 +17,6 @@ namespace Modules\LU\Models;
  * @method static \Illuminate\Database\Eloquent\Builder|ModelHasRole whereModelId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|ModelHasRole whereModelType($value)
  * @method static \Illuminate\Database\Eloquent\Builder|ModelHasRole whereRoleId($value)
- *
  * @mixin \Eloquent
  */
 class ModelHasRole extends BaseMorphPivot

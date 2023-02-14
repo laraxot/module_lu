@@ -7,15 +7,14 @@ namespace Modules\LU\Models;
 /**
  * Modules\LU\Models\Invitation.
  *
- * @property int                             $id
- * @property string                          $email
- * @property string|null                     $invitation_token
- * @property string|null                     $registered_at
+ * @property int $id
+ * @property string $email
+ * @property string|null $invitation_token
+ * @property string|null $registered_at
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
- * @property string|null                     $created_by
- * @property string|null                     $updated_by
- *
+ * @property string|null $created_by
+ * @property string|null $updated_by
  * @method static \Modules\LU\Database\Factories\InvitationFactory factory(...$parameters)
  * @method static \Illuminate\Database\Eloquent\Builder|Invitation newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|Invitation newQuery()
@@ -28,7 +27,6 @@ namespace Modules\LU\Models;
  * @method static \Illuminate\Database\Eloquent\Builder|Invitation whereRegisteredAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Invitation whereUpdatedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Invitation whereUpdatedBy($value)
- *
  * @mixin \Eloquent
  */
 class Invitation extends BaseModel

@@ -9,15 +9,13 @@ use Modules\Xot\Database\Migrations\XotBaseMigration;
 /**
  * Class CreateLiveuserUsersTable.
  */
-class CreateUsersTable extends XotBaseMigration
-{
+class CreateUsersTable extends XotBaseMigration {
     /**
      * Run the migrations.
      *
      * @return void
      */
-    public function up()
-    {
+    public function up() {
         // -- CREATE --
         $this->tableCreate(
             function (Blueprint $table) {
@@ -81,7 +79,9 @@ class CreateUsersTable extends XotBaseMigration
                         ->after('two_factor_secret')
                         ->nullable();
                 }
-
+                if (! $this->hasColumn('email_verified_at')) {
+                    $table->timestamp('email_verified_at')->nullable();
+                }
             }
         );
     }

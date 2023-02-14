@@ -7,12 +7,11 @@ namespace Modules\LU\Models;
 /**
  * Modules\LU\Models\Right.
  *
- * @property int    $id
- * @property int    $area_id
+ * @property int $id
+ * @property int $area_id
  * @property string $right_define_name
  * @property string $has_implied
  * @property string $has_level
- *
  * @method static \Modules\LU\Database\Factories\RightFactory factory(...$parameters)
  * @method static \Illuminate\Database\Eloquent\Builder|Right newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|Right newQuery()
@@ -22,7 +21,6 @@ namespace Modules\LU\Models;
  * @method static \Illuminate\Database\Eloquent\Builder|Right whereHasLevel($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Right whereId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Right whereRightDefineName($value)
- *
  * @mixin \Eloquent
  */
 class Right extends BaseModel
