@@ -47,7 +47,6 @@ use Staudenmeir\EloquentHasManyDeep\HasRelationships;
  * @property int|null $stabi
  * @property int|null $repar
  * @property string|null $password
- * @property string $api_token
  * @property string|null $two_factor_secret
  * @property string|null $two_factor_recovery_codes
  * @property string|null $hash
@@ -65,6 +64,7 @@ use Staudenmeir\EloquentHasManyDeep\HasRelationships;
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
  * @property string|null $remember_token
+ * @property string $api_token
  * @property string|null $updated_by
  * @property string|null $created_by
  * @property \Illuminate\Support\Carbon|null $email_verified_at
@@ -88,7 +88,8 @@ use Staudenmeir\EloquentHasManyDeep\HasRelationships;
  * @property-read int|null $perm_users_count
  * @property-read \Illuminate\Database\Eloquent\Collection|\Modules\LU\Models\PermUser[] $perms
  * @property-read int|null $perms_count
- * @property-read \Modules\Blog\Models\Profile|null $profileOrCreate
+ * @property-read \Modules\Ptv\Models\Profile|null $profile
+ * @property-read \Modules\LU\Models\Profile|null $profileOrCreate
  * @property-read \Illuminate\Database\Eloquent\Collection|\Modules\LU\Models\PermUserRight[] $rights
  * @property-read int|null $rights_count
  * @property-read \Illuminate\Database\Eloquent\Collection|\Modules\LU\Models\SocialProvider[] $socialProviders

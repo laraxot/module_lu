@@ -18,13 +18,11 @@ use Staudenmeir\EloquentHasManyDeep\HasRelationships;
  * @property int $id
  * @property int|null $application_id
  * @property string|null $area_define_name
- * @property int|null $order_column
  * @property string|null $db
  * @property string|null $img
  * @property string|null $controller_path
  * @property string|null $icon_path
  * @property string|null $guid
- * @property string|null $url
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
  * @property string|null $created_by
@@ -34,6 +32,8 @@ use Staudenmeir\EloquentHasManyDeep\HasRelationships;
  * @property string|null $deleted_ip
  * @property string|null $created_ip
  * @property string|null $updated_ip
+ * @property string|null $url
+ * @property int|null $order_column
  * @property-read string|null $icon_src
  * @property-read string|null $title
  * @property-read \Illuminate\Database\Eloquent\Collection|\Modules\LU\Models\PermUser[] $permUsers
