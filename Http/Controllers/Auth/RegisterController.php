@@ -189,14 +189,20 @@ class RegisterController extends Controller {
                 break;
             case '1':
                 break;
+            case '0':
+                break;
             default:
         }
 
-        $rules = [
+        $rules['0'] = [
             //    'username' => 'required|alpha_num|min:3|max:32',
             'email' => 'required|email|unique:liveuser_general.users', // |unique:users',
             'password' => 'required|min:3|confirmed',
             'password_confirmation' => 'required|min:3',
+        ];
+
+        $rules['3'] = [
+            'email' => 'required|email|unique:liveuser_general.users', // |unique:users',
         ];
 
         // Create a new validator instance.
