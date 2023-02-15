@@ -12,6 +12,7 @@ use Illuminate\Support\Facades\Validator;
 // --------- Models ------------
 use Illuminate\Support\Str;
 use Modules\LU\Models\User;
+use Modules\Xot\Datas\XotData;
 
 /**
  * Class RegisterController.
@@ -30,6 +31,8 @@ class RegisterController extends Controller {
 
     use RegistersUsers;
 
+    public XotData $xot;
+
     /**
      * Where to redirect users after registration.
      */
@@ -40,6 +43,7 @@ class RegisterController extends Controller {
      */
     public function __construct() {
         $this->middleware('guest');
+        $this->xot = XotData::from(config('xra'));
     }
 
     /**
@@ -113,19 +117,9 @@ class RegisterController extends Controller {
             $tpl = 'auth.ajax_register';
         }
 
-        $register_type = config('auth.register_type', '0');
+        $register_type = $this->xot->register_type;
 
-        switch ($register_type) {
-            case '3':
-                $tpl .= '_only_email';
-                break;
-            case '2':
-                $tpl .= '_forgot';
-                break;
-            case '1':
-                $tpl .= '_ente_matricola_pwd';
-                break;
-        }
+        $tpl = $tpl.'.'.$register_type;
 
         foreach ($locz as $loc) {
             $view = $loc.'::'.$tpl;
@@ -184,7 +178,7 @@ class RegisterController extends Controller {
         */
         $data = $request->all();
 
-        $register_type = config('auth.register_type', '0');
+        $register_type = config('xra.register_type', '0');
 
         switch ($register_type) {
             case '3':
