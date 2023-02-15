@@ -7,11 +7,12 @@ namespace Modules\LU\Http\Controllers\Auth;
 use App\Http\Controllers\Controller;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Foundation\Auth\RegistersUsers;
+// --------- Models ------------
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
-// --------- Models ------------
-use Illuminate\Support\Str;
+use Modules\LU\Events\Registered0;
 use Modules\LU\Models\User;
+use Modules\LU\Notifications\VerifyEmailRegister3;
 use Modules\Xot\Datas\XotData;
 
 /**
@@ -158,6 +159,87 @@ class RegisterController extends Controller {
         throw new \Exception('<h3>Non esiste la view ['.$view.']</h3>['.__LINE__.']['.__FILE__.']');
     }
 
+    public function registerType0(Request $request) {
+        $data = $request->all();
+        $rules = [
+            'email' => 'required|email|unique:liveuser_general.users', // |unique:users',
+            'password' => 'required|min:3|confirmed',
+            'password_confirmation' => 'required|min:3',
+        ];
+
+        $validator = Validator::make($data, $rules);
+        $errors = $validator->errors();
+        $msg = '';
+        foreach ($errors->all() as $message) {
+            $msg .= '<br/>'.$message;
+        }
+        if ($validator->fails()) {
+            if ($request->ajax()) {
+                return response()->json(['error' => $msg], 500);
+            }
+
+            return back()
+                ->withError('Qualcosa di errato !')
+                ->withInput($request->all())
+                ->withErrors($validator->messages());
+        }
+        $user = $this->create($request->all());
+        event(new Registered0($user));
+        $this->guard()->login($user);
+        if ($request->ajax()) {
+            return response()->json(['redirect' => $this->redirectPath(), 'msg' => 'registrato con successo']);
+        }
+
+        return redirect($this->redirectPath());
+    }
+
+    public function registerType1(Request $request) {
+        dddx('wip');
+    }
+
+    public function registerType2(Request $request) {
+        dddx('wip');
+    }
+
+    public function registerType3(Request $request) {
+        $data = $request->all();
+        $faker = \Faker\Factory::create();
+        $data['handle'] = $data['email'];
+        $data['username'] = $data['email'];
+        $data['password'] = $faker->password();
+
+        $rules = [
+            'email' => 'required|email|unique:liveuser_general.users', // |unique:users',
+        ];
+
+        $validator = Validator::make($data, $rules);
+        $errors = $validator->errors();
+        $msg = '';
+        foreach ($errors->all() as $message) {
+            $msg .= '<br/>'.$message;
+        }
+        if ($validator->fails()) {
+            if ($request->ajax()) {
+                return response()->json(['error' => $msg], 500);
+            }
+
+            return back()
+                ->withError('Qualcosa di errato !')
+                ->withInput($request->all())
+                ->withErrors($validator->messages());
+        }
+        $user = $this->create($data);
+        // event(new Registered3($user, $data['password']));
+
+        $user->notify(new VerifyEmailRegister3($data['password']));
+
+        $this->guard()->login($user);
+        if ($request->ajax()) {
+            return response()->json(['redirect' => $this->redirectPath(), 'msg' => 'registrato con successo']);
+        }
+
+        return redirect($this->redirectPath());
+    }
     // --------------------------------------------------------------------------------
 
     /**
@@ -166,6 +248,11 @@ class RegisterController extends Controller {
      * @return mixed
      */
     public function register(Request $request) {
+        $register_type = $this->xot->register_type;
+
+        $func = 'registerType'.$register_type;
+
+        return $this->{$func}($request);
         /*
         $this->validator($request->all())->validate();
 
@@ -178,11 +265,10 @@ class RegisterController extends Controller {
         */
         $data = $request->all();
 
-        $register_type = config('xra.register_type', '0');
-
         switch ($register_type) {
             case '3':
-                $data['password'] = Str::random(10);
+                $this->faker = \Faker\Factory::create();
+                $data['password'] = $this->faker->password();
                 $data['password_confirmation'] = $data['password'];
                 break;
             case '2':

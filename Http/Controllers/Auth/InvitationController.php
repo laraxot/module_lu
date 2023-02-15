@@ -8,16 +8,19 @@ use App\Http\Controllers\Controller;
 // use Illuminate\Foundation\Auth\SendsPasswordResetEmails;
 
 // --- requests
-use Modules\LU\Http\Requests\StoreInvitationRequest;
+use Modules\Cms\Contracts\PanelContract;
 // --- models --
-use Modules\LU\Models\Invitation;
+use Modules\LU\Http\Requests\StoreInvitationRequest;
 // --- services --
+use Modules\LU\Models\Invitation;
 use Modules\UI\Services\ThemeService;
 
 /**
  * Class InvitationController.
  */
 class InvitationController extends Controller {
+    public PanelContract $panel;
+
     /**
      * @return mixed
      */

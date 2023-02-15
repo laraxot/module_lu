@@ -7,12 +7,15 @@ namespace Modules\LU\Http\Controllers\Auth;
 use App\Http\Controllers\Controller;
 // --- MODELS ----
 // --- SERVICES ---
+use Modules\Cms\Contracts\PanelContract;
 use Modules\UI\Services\ThemeService;
 
 /**
  * Class NoticeController.
  */
 class NoticeController extends Controller {
+    public PanelContract $panel;
+
     /**
      * Specie di middleware ?
      *
