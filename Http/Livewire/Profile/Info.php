@@ -5,10 +5,11 @@ declare(strict_types=1);
 namespace Modules\LU\Http\Livewire\Profile;
 
 use Exception;
-use Illuminate\Contracts\Support\Renderable;
-use Illuminate\Support\Facades\Auth;
 use Livewire\Component;
+use Illuminate\Support\Facades\Auth;
+use Modules\Cms\Actions\GetViewAction;
 use Modules\LU\Services\ProfileService;
+use Illuminate\Contracts\Support\Renderable;
 
 /**
  * Class Edit.
@@ -43,8 +44,8 @@ class Info extends Component
          * @phpstan-var view-string
          */
         
-declare(strict_types=1);
-$view = app(GetViewAction::class)->execute();
+
+        $view = app(GetViewAction::class)->execute();
 
         $view_params = [
             'view' => $view,

@@ -4,10 +4,11 @@ declare(strict_types=1);
 
 namespace Modules\LU\Http\Livewire\Profile;
 
-use Illuminate\Contracts\Support\Renderable;
-use Illuminate\Database\Eloquent\Model;
-use Illuminate\Support\Facades\Auth;
 use Livewire\Component;
+use Illuminate\Support\Facades\Auth;
+use Modules\Cms\Actions\GetViewAction;
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Contracts\Support\Renderable;
 
 /**
  * Class Edit.

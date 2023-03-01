@@ -4,11 +4,12 @@ declare(strict_types=1);
 
 namespace Modules\LU\Http\Livewire;
 
-use Illuminate\Contracts\Support\Renderable;
 use Livewire\Component;
+use Modules\LU\Models\Role;
 // use Illuminate\Support\Carbon;
 use Modules\LU\Models\Permission;
-use Modules\LU\Models\Role;
+use Modules\Cms\Actions\GetViewAction;
+use Illuminate\Contracts\Support\Renderable;
 
 /**
  * Class RolePermission.

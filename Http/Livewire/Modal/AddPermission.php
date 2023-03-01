@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Modules\LU\Http\Livewire\Modal;
 
 use Modules\LU\Models\Permission;
+use Modules\Cms\Actions\GetViewAction;
 use WireElements\Pro\Components\Modal\Modal;
 
 class AddPermission extends Modal {

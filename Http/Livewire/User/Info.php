@@ -4,9 +4,10 @@ declare(strict_types=1);
 
 namespace Modules\LU\Http\Livewire\User;
 
-use Illuminate\Contracts\Support\Renderable;
 use Livewire\Component;
+use Modules\Cms\Actions\GetViewAction;
 use Modules\LU\Services\ProfileService;
+use Illuminate\Contracts\Support\Renderable;
 
 /**
  * Class Edit.
