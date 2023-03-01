@@ -141,7 +141,7 @@ class RegisterController extends Controller {
                     'row' => $row,
                 ];
 
-                $out = view()->make($view, $view_params);
+                $out = view($view, $view_params);
 
                 if ($request->ajax()) {
                     return response()->json(

@@ -33,7 +33,7 @@ class RolePermission extends Component
             'permissions' => Permission::get(),
         ];
 
-        return view()->make($view, $view_params);
+        return view($view, $view_params);
     }
 
     public function addRole(): void
