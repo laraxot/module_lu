@@ -6,12 +6,12 @@ namespace Modules\LU\Http\Livewire\Dashboard\Tile;
 
 use Illuminate\Contracts\Support\Renderable;
 use Livewire\Component;
+use Modules\Cms\Actions\GetViewAction;
 
 /**
  * Class Dummy.
  */
-class Dummy extends Component
-{
+class Dummy extends Component {
     /** @var string */
     public $position;
 
@@ -20,20 +20,18 @@ class Dummy extends Component
      *
      * @return void
      */
-    public function mount(string $position)
-    {
+    public function mount(string $position) {
         $this->position = $position;
     }
 
     /**
      * Undocumented function.
      */
-    public function render(): Renderable
-    {
+    public function render(): Renderable {
         /**
          * @phpstan-var view-string
          */
-        $view = 'lu::livewire.dashboard.tile.dummy';
+        $view = app(GetViewAction::class)->execute();
 
         return view($view);
     }

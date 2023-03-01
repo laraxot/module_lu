@@ -42,7 +42,10 @@ class Info extends Component
         /**
          * @phpstan-var view-string
          */
-        $view = 'lu::livewire.profile.info';
+        
+declare(strict_types=1);
+$view = app(GetViewAction::class)->execute();
+
         $view_params = [
             'view' => $view,
         ];

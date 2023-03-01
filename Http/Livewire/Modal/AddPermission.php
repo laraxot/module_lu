@@ -7,17 +7,16 @@ namespace Modules\LU\Http\Livewire\Modal;
 use Modules\LU\Models\Permission;
 use WireElements\Pro\Components\Modal\Modal;
 
-class AddPermission extends Modal
-{
+class AddPermission extends Modal {
     public array $form_data = [];
 
-    public function render()
-    {
-        return view('lu::livewire.modal.permissions.create');
+    public function render() {
+        $view = app(GetViewAction::class)->execute();
+
+        return view($view);
     }
 
-    public static function behavior(): array
-    {
+    public static function behavior(): array {
         return [
             // Close the modal if the escape key is pressed
             'close-on-escape' => true,
@@ -30,8 +29,7 @@ class AddPermission extends Modal
         ];
     }
 
-    public static function attributes(): array
-    {
+    public static function attributes(): array {
         return [
             // Set the modal size to 2xl, you can choose between:
             // xs, sm, md, lg, xl, 2xl, 3xl, 4xl, 5xl, 6xl, 7xl
@@ -39,8 +37,7 @@ class AddPermission extends Modal
         ];
     }
 
-    public function save(): void
-    {
+    public function save(): void {
         Permission::create([
             'name' => $this->form_data['permission_name'],
         ]);

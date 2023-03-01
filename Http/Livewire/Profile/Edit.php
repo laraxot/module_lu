@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace Modules\LU\Http\Livewire\Profile;
 
-use Exception;
 use Illuminate\Contracts\Support\Renderable;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Auth;
@@ -13,23 +12,20 @@ use Livewire\Component;
 /**
  * Class Edit.
  */
-class Edit extends Component
-{
+class Edit extends Component {
     // public Model $profile;
     public array $form_data = [];
 
-    public function mount(Model $profile): void
-    {
+    public function mount(Model $profile): void {
         $this->form_data = $profile->toArray();
         // dddx($this->form_data);
     }
 
-    public function render(): Renderable
-    {
+    public function render(): Renderable {
         /**
          * @phpstan-var view-string
          */
-        $view = 'lu::livewire.profile.edit';
+        $view = app(GetViewAction::class)->execute();
         $view_params = [
             'view' => $view,
         ];
@@ -37,15 +33,14 @@ class Edit extends Component
         return view($view, $view_params);
     }
 
-    public function save(): void
-    {
+    public function save(): void {
         // dddx([$this->form_data, Auth::user()->profile]);
         if (null === Auth::user()) {
-            throw new Exception('['.__LINE__.']['.class_basename(__CLASS__).']');
+            throw new \Exception('['.__LINE__.']['.class_basename(__CLASS__).']');
         }
         $profile = Auth::user()->profile;
         if (null === $profile) {
-            throw new Exception('['.__LINE__.']['.class_basename(__CLASS__).']');
+            throw new \Exception('['.__LINE__.']['.class_basename(__CLASS__).']');
         }
         $profile->update($this->form_data);
 

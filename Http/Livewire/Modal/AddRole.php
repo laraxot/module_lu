@@ -4,20 +4,20 @@ declare(strict_types=1);
 
 namespace Modules\LU\Http\Livewire\Modal;
 
+use Modules\Cms\Actions\GetViewAction;
 use Modules\LU\Models\Role;
 use WireElements\Pro\Components\Modal\Modal;
 
-class AddRole extends Modal
-{
+class AddRole extends Modal {
     public array $form_data = [];
 
-    public function render()
-    {
-        return view('lu::livewire.modal.roles.create');
+    public function render() {
+        $view = app(GetViewAction::class)->execute();
+
+        return view($view);
     }
 
-    public static function behavior(): array
-    {
+    public static function behavior(): array {
         return [
             // Close the modal if the escape key is pressed
             'close-on-escape' => true,
@@ -30,8 +30,7 @@ class AddRole extends Modal
         ];
     }
 
-    public static function attributes(): array
-    {
+    public static function attributes(): array {
         return [
             // Set the modal size to 2xl, you can choose between:
             // xs, sm, md, lg, xl, 2xl, 3xl, 4xl, 5xl, 6xl, 7xl
@@ -39,8 +38,7 @@ class AddRole extends Modal
         ];
     }
 
-    public function save(): void
-    {
+    public function save(): void {
         Role::create([
             'name' => $this->form_data['role_name'],
         ]);
