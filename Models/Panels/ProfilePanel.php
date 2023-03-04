@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace Modules\LU\Models\Panels;
 
-use Exception;
 use Illuminate\Database\Eloquent\Model;
 // --- Services --
 use Illuminate\Http\Request;
@@ -19,8 +18,7 @@ use Modules\LU\Models\User;
 /**
  * Class ProfilePanel.
  */
-class ProfilePanel extends XotBasePanel
-{
+class ProfilePanel extends XotBasePanel {
     /**
      * The model the resource corresponds to.
      */
@@ -39,13 +37,11 @@ class ProfilePanel extends XotBasePanel
     /**
      * The relationships that should be eager loaded on index queries.
      */
-    public function with(): array
-    {
+    public function with(): array {
         return [];
     }
 
-    public function search(): array
-    {
+    public function search(): array {
         return [];
     }
 
@@ -54,8 +50,7 @@ class ProfilePanel extends XotBasePanel
      *
      * @param Profile $row
      */
-    public function optionLabel($row): string
-    {
+    public function optionLabel($row): string {
         // [2022-08-17 13:06:20] local.ERROR: [162][Profile]
         // Access to an undefined property Illuminate\Database\Eloquent\Model::$user
         // if (null === $this->row->user) {
@@ -68,8 +63,7 @@ class ProfilePanel extends XotBasePanel
     /**
      * @return object[]
      */
-    public function fields(): array
-    {
+    public function fields(): array {
         return [
             (object) [
                 'type' => 'Id',
@@ -125,8 +119,7 @@ class ProfilePanel extends XotBasePanel
     /**
      * Get the tabs available.
      */
-    public function tabs(): array
-    {
+    public function tabs(): array {
         $tabs_name = [];
 
         return [];
@@ -135,32 +128,28 @@ class ProfilePanel extends XotBasePanel
     /**
      * Get the cards available for the request.
      */
-    public function cards(Request $request): array
-    {
+    public function cards(Request $request): array {
         return [];
     }
 
     /**
      * Get the filters available for the resource.
      */
-    public function filters(Request $request = null): array
-    {
+    public function filters(Request $request = null): array {
         return [];
     }
 
     /**
      * Get the lenses available for the resource.
      */
-    public function lenses(Request $request): array
-    {
+    public function lenses(Request $request): array {
         return [];
     }
 
     /**
      * Get the actions available for the resource.
      */
-    public function actions(Request $request = null): array
-    {
+    public function actions(Request $request = null): array {
         return [
             // new \Modules\Blog\Models\Panels\Actions\PersonalInfoAction(),
             // new \Modules\Blog\Models\Panels\Actions\UserSecurityAction(),
@@ -172,8 +161,7 @@ class ProfilePanel extends XotBasePanel
     /**
      * @param int $size
      */
-    public function avatar($size = 100): ?string
-    {
+    public function avatar($size = 100): ?string {
         if (null === $this->row) {
             throw new \Exception('row is null');
         }
@@ -196,8 +184,7 @@ class ProfilePanel extends XotBasePanel
         return "https://www.gravatar.com/avatar/$email?d=$default&s=$size";
     }
 
-    public function storeCallback(array $params): object
-    {
+    public function storeCallback(array $params): object {
         extract($params);
         /*
         * metto apposto il titolo della pagina del profilo
@@ -260,8 +247,7 @@ class ProfilePanel extends XotBasePanel
     }
     */
 
-    public function isSuperAdmin(): bool
-    {
+    public function isSuperAdmin(): bool {
         // 232 Access to an undefined property Illuminate\Database\Eloquent\Model::$user.
         // $user = $this->row->user;
         // $user = $this->row->getRelationValue('user');
@@ -269,7 +255,7 @@ class ProfilePanel extends XotBasePanel
         $user_id = $this->row->getAttributeValue('user_id');
         $user = User::where('id', $user_id)->first();
         if (null === $user) {
-            throw new Exception('['.__LINE__.']['.__FILE__.']');
+            throw new \Exception('['.__LINE__.']['.__FILE__.']');
         }
         try {
             if (\is_object($user->perm) && $user->perm->perm_type >= 4) {  // superadmin
