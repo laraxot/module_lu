@@ -5,8 +5,8 @@ declare(strict_types=1);
 namespace Modules\LU\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
-use Illuminate\Foundation\Auth\VerifiesEmails;
 use Illuminate\Http\Request;
+use Modules\LU\Traits\VerifiesEmails;
 use Modules\Xot\Contracts\UserContract;
 
 /**
