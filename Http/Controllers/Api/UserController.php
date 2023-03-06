@@ -12,10 +12,8 @@ use Illuminate\Support\Facades\Auth;
 use Modules\LU\Http\Controllers\BaseController;
 use Modules\LU\Models\User;
 
-class UserController extends BaseController
-{
-    public function login(Request $request): JsonResponse
-    {
+class UserController extends BaseController {
+    public function login(Request $request): JsonResponse {
         // validate the login request
         $login = $request->validate([
             'email' => 'required|email',
@@ -37,7 +35,7 @@ class UserController extends BaseController
         }
         // if login succeed issue an access token for our user
         if (null === Auth::user()) {
-            throw new Exception('['.__LINE__.']['.class_basename(__CLASS__).']');
+            throw new \Exception('['.__LINE__.']['.class_basename(__CLASS__).']');
         }
         $token = Auth::user()->createToken('Token Name')->accessToken;
 
@@ -48,8 +46,7 @@ class UserController extends BaseController
         ]);
     }
 
-    public function loginTest(Request $request): JsonResponse
-    {
+    public function loginTest(Request $request): JsonResponse {
         $login = [
             'email' => 'marco.sottana@gmail.com',
             'password' => 'prova123',
@@ -71,7 +68,7 @@ class UserController extends BaseController
 
         // if login succeed issue an access token for our user
         if (null === Auth::user()) {
-            throw new Exception('['.__LINE__.']['.class_basename(__CLASS__).']');
+            throw new \Exception('['.__LINE__.']['.class_basename(__CLASS__).']');
         }
         $token = Auth::user()->createToken('Token Name')->accessToken;
 
@@ -82,8 +79,18 @@ class UserController extends BaseController
         ]);
     }
 
-    public function logout(Request $request): string
-    {
+    public function checkCurrentPassword(Request $request) {
+        $old_password = md5($request->input('old_password'));
+        $new_password = Auth::user()->passwd;
+
+        if ($old_password === $new_password) {
+            return response()->json(true);
+        }
+
+        return response()->json(false);
+    }
+
+    public function logout(Request $request): string {
         exit('LOGOUT');
     }
 
@@ -113,8 +120,7 @@ class UserController extends BaseController
         return response()->json(['token' => $access_token_example], 200);
     }
     */
-    public function getCurrentUser(): JsonResponse
-    {
+    public function getCurrentUser(): JsonResponse {
         return response()->json(['user' => Auth::user()]);
     }
 }
