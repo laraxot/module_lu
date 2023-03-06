@@ -10,15 +10,13 @@ use Illuminate\Support\Facades\Hash;
 /**
  * Class CurrentPasswordCheckRule.
  */
-class CurrentPasswordCheckRule implements Rule
-{
+class CurrentPasswordCheckRule implements Rule {
     /**
      * Create a new rule instance.
      *
      * @return void
      */
-    public function __construct()
-    {
+    public function __construct() {
     }
 
     /**
@@ -29,17 +27,21 @@ class CurrentPasswordCheckRule implements Rule
      *
      * @return bool
      */
-    public function passes($attribute, $value)
-    {
+    public function passes($attribute, $value) {
         $user = auth()->user();
+
+        // dddx([$user, $value, $user->passwd]);
+
         if (null === $user) {
             return false;
         }
-        if (null === $user->password) {
+
+        if (empty($user->passwd)) {
             throw new \Exception('property password in $user is null');
         }
 
-        return Hash::check($value, $user->password);
+        return md5($value) === $user->passwd;
+        // return Hash::check($value, $user->passwd);
     }
 
     /**
@@ -47,8 +49,7 @@ class CurrentPasswordCheckRule implements Rule
      *
      * @return mixed
      */
-    public function message()
-    {
+    public function message() {
         return __('The current password field does not match your password');
     }
 }

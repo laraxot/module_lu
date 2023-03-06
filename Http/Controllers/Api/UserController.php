@@ -79,17 +79,6 @@ class UserController extends BaseController {
         ]);
     }
 
-    public function checkCurrentPassword(Request $request) {
-        $old_password = md5($request->input('old_password'));
-        $new_password = Auth::user()->passwd;
-
-        if ($old_password === $new_password) {
-            return response()->json(true);
-        }
-
-        return response()->json(false);
-    }
-
     public function logout(Request $request): string {
         exit('LOGOUT');
     }

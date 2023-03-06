@@ -3,7 +3,6 @@
 declare(strict_types=1);
 
 use Illuminate\Support\Facades\Route;
-use Modules\LU\Http\Controllers\Api\UserController;
 
 // use Illuminate\Support\Facades\App;
 
@@ -20,10 +19,6 @@ Route::group(
     ],
     function () {
         Auth::routes(['verify' => true]);
-        Route::get(
-            'check_current_password',
-            [UserController::class, 'checkCurrentPassword']
-        );
     }
 );
 
