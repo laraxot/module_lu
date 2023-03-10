@@ -15,36 +15,44 @@ use Modules\LU\Rules\CurrentPasswordCheckRule;
 /**
  * Class Edit.
  */
-class ChangePassword extends Component {
+class ChangePassword extends Component
+{
     public array $form_data = [];
     public string $user_id = '';
 
-    public function mount(): void {
+    public function mount(): void
+    {
         $this->user_id = (string) Auth::id();
         $this->form_data['old_password'] = '';
         $this->form_data['passwd'] = '';
         $this->form_data['confirm_password'] = '';
     }
 
-    public function rules() {
+    public function rules()
+    {
         return [
             'form_data.old_password' => ['required', 'min:6', new CurrentPasswordCheckRule()],
-            'form_data.passwd' => ['required',
+            'form_data.passwd' => [
+                'required',
                 Password::min(8)
-                ->mixedCase()
-                ->numbers()
-                ->symbols()
-                ->uncompromised(), ],
-            'form_data.confirm_password' => ['required',
+                    ->mixedCase()
+                    ->numbers()
+                    ->symbols()
+                    ->uncompromised(),
+            ],
+            'form_data.confirm_password' => [
+                'required',
                 Password::min(8)
-                ->mixedCase()
-                ->numbers()
-                ->symbols()
-                ->uncompromised()],
+                    ->mixedCase()
+                    ->numbers()
+                    ->symbols()
+                    ->uncompromised()
+            ],
         ];
     }
 
-    public function render(): Renderable {
+    public function render(): Renderable
+    {
         /**
          * @phpstan-var view-string
          */
@@ -56,7 +64,8 @@ class ChangePassword extends Component {
         return view($view, $view_params);
     }
 
-    public function save(): void {
+    public function save(): void
+    {
         // $this->validate();
 
         if ($this->form_data['passwd'] !== $this->form_data['confirm_password']) {
