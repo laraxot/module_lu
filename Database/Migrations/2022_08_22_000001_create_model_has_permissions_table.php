@@ -39,7 +39,7 @@ class CreateModelHasPermissionsTable extends XotBaseMigration
                     ->references('id') // permission id
                     ->on($tableNames['permissions'])
                     ->onDelete('cascade');
-
+                /*
                 if ($teams) {
                     $table->unsignedBigInteger($columnNames['team_foreign_key']);
                     $table->index($columnNames['team_foreign_key'], 'model_has_permissions_team_foreign_key_index');
@@ -54,6 +54,7 @@ class CreateModelHasPermissionsTable extends XotBaseMigration
                         'model_has_permissions_permission_model_type_primary'
                     );
                 }
+                */
             }
         );
         // -- UPDATE --
