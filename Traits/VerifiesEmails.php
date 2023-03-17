@@ -6,16 +6,18 @@ declare(strict_types=1);
 
 namespace Modules\LU\Traits;
 
-use Illuminate\Auth\Access\AuthorizationException;
-use Illuminate\Auth\Events\Verified;
-use Illuminate\Foundation\Auth\RedirectsUsers;
-use Illuminate\Http\JsonResponse;
-use Illuminate\Http\Request;
 use Illuminate\Support\Str;
-use Modules\LU\Services\ProfileService;
+use Illuminate\Http\Request;
+use Modules\Xot\Datas\XotData;
+use Illuminate\Http\JsonResponse;
 use Modules\Notify\Models\Contact;
+use Illuminate\Auth\Events\Verified;
+use Modules\LU\Services\ProfileService;
+use Illuminate\Foundation\Auth\RedirectsUsers;
+use Illuminate\Auth\Access\AuthorizationException;
 
-trait VerifiesEmails {
+trait VerifiesEmails
+{
     use RedirectsUsers;
 
     /**
@@ -23,10 +25,11 @@ trait VerifiesEmails {
      *
      * @return \Illuminate\Http\RedirectResponse|\Illuminate\View\View
      */
-    public function show(Request $request) {
+    public function show(Request $request)
+    {
         return $request->user()->hasVerifiedEmail()
-                        ? redirect($this->redirectPath())
-                        : view('auth.verify');
+            ? redirect($this->redirectPath())
+            : view('auth.verify');
     }
 
     /**
@@ -36,19 +39,28 @@ trait VerifiesEmails {
      *
      * @return \Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse
      */
-    public function verify(Request $request) {
-        if (! hash_equals((string) $request->route('id'), (string) $request->user()->getKey())) {
+    public function verify(Request $request)
+    {
+
+        $redirect = redirect($this->redirectPath())->with('verified', true);
+        $xot = XotData::from(config('xra'));
+        if ($xot->verification_type == 'pfed') {
+            $view = 'pfed::auth.verification_successful';
+            $redirect = response()->view($view, ['view' => $view]);
+        }
+
+        if (!hash_equals((string) $request->route('id'), (string) $request->user()->getKey())) {
             throw new AuthorizationException();
         }
 
-        if (! hash_equals((string) $request->route('hash'), sha1($request->user()->getEmailForVerification()))) {
+        if (!hash_equals((string) $request->route('hash'), sha1($request->user()->getEmailForVerification()))) {
             throw new AuthorizationException();
         }
 
         if ($request->user()->hasVerifiedEmail()) {
             return $request->wantsJson()
-                        ? new JsonResponse([], 204)
-                        : redirect($this->redirectPath());
+                ? new JsonResponse([], 204)
+                : $redirect;
         }
 
         if ($request->user()->markEmailAsVerified()) {
@@ -60,8 +72,8 @@ trait VerifiesEmails {
         }
 
         return $request->wantsJson()
-                    ? new JsonResponse([], 204)
-                    : redirect($this->redirectPath())->with('verified', true);
+            ? new JsonResponse([], 204)
+            : $redirect;
     }
 
     /**
@@ -69,7 +81,8 @@ trait VerifiesEmails {
      *
      * @return mixed
      */
-    protected function verified(Request $request) {
+    protected function verified(Request $request)
+    {
         // dddx($request->user());
         $contact = new Contact();
         $contact->value = $request->user()->email;
@@ -87,17 +100,18 @@ trait VerifiesEmails {
      *
      * @return \Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse
      */
-    public function resend(Request $request) {
+    public function resend(Request $request)
+    {
         if ($request->user()->hasVerifiedEmail()) {
             return $request->wantsJson()
-                        ? new JsonResponse([], 204)
-                        : redirect($this->redirectPath());
+                ? new JsonResponse([], 204)
+                : redirect($this->redirectPath());
         }
 
         $request->user()->sendEmailVerificationNotification();
 
         return $request->wantsJson()
-                    ? new JsonResponse([], 202)
-                    : back()->with('resent', true);
+            ? new JsonResponse([], 202)
+            : back()->with('resent', true);
     }
 }

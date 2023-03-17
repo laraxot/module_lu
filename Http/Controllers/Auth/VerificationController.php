@@ -4,15 +4,21 @@ declare(strict_types=1);
 
 namespace Modules\LU\Http\Controllers\Auth;
 
-use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Modules\Xot\Datas\XotData;
+use Illuminate\Http\JsonResponse;
+use App\Http\Controllers\Controller;
 use Modules\LU\Traits\VerifiesEmails;
+use Modules\Xot\Services\FileService;
 use Modules\Xot\Contracts\UserContract;
+use Illuminate\Auth\Access\AuthorizationException;
 
 /**
  * Class VerificationController.
  */
-class VerificationController extends Controller {
+class VerificationController extends Controller
+{
+
     /*
     |--------------------------------------------------------------------------
     | Email Verification Controller
@@ -26,6 +32,7 @@ class VerificationController extends Controller {
 
     use VerifiesEmails;
 
+
     /**
      * Where to redirect users after verification.
      */
@@ -34,7 +41,9 @@ class VerificationController extends Controller {
     /**
      * Create a new controller instance.
      */
-    public function __construct() {
+    public function __construct()
+    {
+
         $this->middleware('auth');
         $this->middleware('signed')->only('verify');
         $this->middleware('throttle:6,1')->only('verify', 'resend');
@@ -45,30 +54,47 @@ class VerificationController extends Controller {
      *
      * @return \Illuminate\Http\RedirectResponse|\Illuminate\Http\Response
      */
-    public function show(Request $request) {
+    public function show(Request $request)
+    {
+
+        $piece = 'auth.verify';
         /**
          * @phpstan-var view-string
          */
-        $view = 'lu::auth.verify';
+        FileService::viewCopy('lu::' . $piece, 'pub_theme::' . $piece);
+
+        /**
+         * @phpstan-var view-string
+         */
+        $view = 'pub_theme::' . $piece;
+
         $view_params = [
             'view' => $view,
         ];
+
+        $piece_successful = 'auth.verify_successful';
+
+        /**
+         * @phpstan-var view-string
+         */
+        $view_successful = 'pfed::' . $piece_successful;
+
+        $view_params_successful = [
+            'view' => $view_successful,
+        ];
+
         /**
          * @var UserContract
          */
         $user = $request->user();
         if (null == $user) {
-            throw new \Exception('['.__LINE__.']['.__FILE__.']');
+            throw new \Exception('[' . __LINE__ . '][' . __FILE__ . ']');
         }
+
+
 
         return $user->hasVerifiedEmail()
             ? redirect($this->redirectPath())
             : response()->view($view, $view_params);
     }
-
-    /*
-    public function resend() {
-        dddx('aaa');
-    }
-    */
 }
