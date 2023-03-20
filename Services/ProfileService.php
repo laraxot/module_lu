@@ -90,8 +90,16 @@ class ProfileService
              * @var callable
              */
             $callback = [$profile, $name];
-
-            return \call_user_func_array($callback, $arguments);
+            try {
+                return \call_user_func_array($callback, $arguments);
+            } catch (\Exception $e) {
+                dddx([
+                    'callback' => $callback,
+                    'arguments' => $arguments,
+                    'error' => $e->getMessage(),
+                ]);
+            }
+            
         }
 
         throw new \Exception('[' . \get_class($profile) . '] method: [' . $name . '][' . __LINE__ . '][' . class_basename(__CLASS__) . ']');
