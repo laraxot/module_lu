@@ -12,7 +12,8 @@ use Modules\Xot\Services\FileService;
 /**
  * Class ForgotPasswordController.
  */
-class ForgotPasswordController extends Controller {
+class ForgotPasswordController extends Controller
+{
     /*
     |--------------------------------------------------------------------------
     | Password Reset Controller
@@ -40,7 +41,8 @@ class ForgotPasswordController extends Controller {
      *
      * @return \Illuminate\View\View|\Illuminate\Http\Response
      */
-    public function showLinkRequestForm(Request $request) {
+    public function showLinkRequestForm(Request $request)
+    {
         /**
          * return ThemeService::g1etView(); //lu::auth.forgot_password.show_link_request_form.
          *
@@ -82,11 +84,11 @@ class ForgotPasswordController extends Controller {
             'layouts.partials.scripts',
         ];
         foreach ($pieces as $piece) {
-            FileService::viewCopy('ui::'.$piece, 'pub_theme::'.$piece);
+            FileService::viewCopy('ui::' . $piece, 'pub_theme::' . $piece);
         }
 
         $piece = 'auth.passwords.email';
-        FileService::viewCopy('lu::'.$piece, 'pub_theme::'.$piece);
+        FileService::viewCopy('lu::' . $piece, 'pub_theme::' . $piece);
         /**
          * @phpstan-var view-string
          */
@@ -97,5 +99,10 @@ class ForgotPasswordController extends Controller {
         ];
 
         return response()->view($view, $view_params);
+    }
+
+    public function sendResetLinkEmail(Request $request)
+    {
+        // dddx('a');
     }
 }
