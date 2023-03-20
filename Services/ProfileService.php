@@ -90,6 +90,8 @@ class ProfileService
              * @var callable
              */
             $callback = [$profile, $name];
+            return \call_user_func_array($callback, $arguments);
+            /*
             try {
                 return \call_user_func_array($callback, $arguments);
             } catch (\Exception $e) {
@@ -99,6 +101,7 @@ class ProfileService
                     'error' => $e->getMessage(),
                 ]);
             }
+            */
             
         }
 
