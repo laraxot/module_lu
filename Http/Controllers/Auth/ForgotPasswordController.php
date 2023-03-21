@@ -100,9 +100,4 @@ class ForgotPasswordController extends Controller
 
         return response()->view($view, $view_params);
     }
-
-    public function sendResetLinkEmail(Request $request)
-    {
-        // dddx('a');
-    }
 }

@@ -5,7 +5,8 @@ declare(strict_types=1);
 namespace Modules\LU\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
-use Illuminate\Foundation\Auth\ResetsPasswords;
+// use Illuminate\Foundation\Auth\ResetsPasswords;
+use Modules\LU\Traits\ResetsPasswords;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 // --------- Models ------------
@@ -17,7 +18,8 @@ use Modules\Xot\Services\FileService;
 /**
  * Class ResetPasswordController.
  */
-class ResetPasswordController extends Controller {
+class ResetPasswordController extends Controller
+{
     /*
     |--------------------------------------------------------------------------
     | Password Reset Controller
@@ -39,7 +41,8 @@ class ResetPasswordController extends Controller {
     /**
      * Create a new controller instance.
      */
-    public function __construct() {
+    public function __construct()
+    {
         $this->middleware('guest');
     }
 
@@ -50,7 +53,8 @@ class ResetPasswordController extends Controller {
      *
      * @return void
      */
-    protected function resetPassword(/* UserContract */ $user, string $password) {
+    protected function resetPassword(/* UserContract */$user, string $password)
+    {
         $user->forceFill(
             [
                 'passwd' => $password,
@@ -75,7 +79,8 @@ class ResetPasswordController extends Controller {
      *
      * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View|\Illuminate\Http\JsonResponse|string|\Illuminate\Http\Response
      */
-    public function showResetForm(Request $request, $lang = null, $token = null) {
+    public function showResetForm(Request $request, $lang = null, $token = null)
+    {
         // qui da fare controllo se esiste pub_theme::auth.passwords.reset mostra quello
         // se no se esiste adm_theme::auth.passwords.reset mostra quello
         // altrimenti mostra 'lu::auth.passwords.reset' che esiste per forza
@@ -96,11 +101,11 @@ class ResetPasswordController extends Controller {
         return view()->first($views, $view_params);
         */
         $piece = 'auth.passwords.reset';
-        FileService::viewCopy('lu::'.$piece, 'pub_theme::'.$piece);
+        FileService::viewCopy('lu::' . $piece, 'pub_theme::' . $piece);
         /**
          * @phpstan-var view-string
          */
-        $view = 'pub_theme::'.$piece;
+        $view = 'pub_theme::' . $piece;
         $view_params = [
             'token' => $token,
             'email' => $request->email,

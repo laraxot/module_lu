@@ -42,11 +42,7 @@ class ChangePassword extends Component
             ],
             'form_data.confirm_password' => [
                 'required',
-                Password::min(8)
-                    ->mixedCase()
-                    ->numbers()
-                    ->symbols()
-                    ->uncompromised()
+                'same:form_data.passwd'
             ],
         ];
     }
@@ -66,14 +62,6 @@ class ChangePassword extends Component
 
     public function save(): void
     {
-        // $this->validate();
-
-        if ($this->form_data['passwd'] !== $this->form_data['confirm_password']) {
-            session()->flash('status_error', 'The password confirmation does not match.');
-
-            return;
-        }
-
         $this->validate($this->rules());
 
         User::find($this->user_id)->update($this->form_data);
