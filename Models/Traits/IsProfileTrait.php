@@ -128,7 +128,7 @@ trait IsProfileTrait {
 
     public function assignArea(string $name): self {
         $area = Area::where('area_define_name', $name)->first();
-        if($this->user===null){
+        if (null === $this->user) {
             return $this;
         }
         $this->user->areas()->syncWithoutDetaching($area);
