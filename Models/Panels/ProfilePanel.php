@@ -106,6 +106,7 @@ class ProfilePanel extends XotBasePanel {
                 'comment' => null,
                 'col_size' => 12,
             ],
+
             (object) [
                 'type' => 'PivotFields', // -- da aggiornare
                 'name' => 'privacies',
