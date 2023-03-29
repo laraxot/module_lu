@@ -6,33 +6,26 @@ namespace Modules\LU\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Auth\Events\Registered;
-use Illuminate\Foundation\Auth\RegistersUsers;
 // --------- Models ------------
+use Illuminate\Foundation\Auth\RegistersUsers;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
 use Modules\LU\Events\Registered0;
 use Modules\LU\Models\User;
 use Modules\LU\Notifications\VerifyEmailRegister3;
 use Modules\Xot\Datas\XotData;
+use Modules\Xot\Services\FileService;
 
 /**
  * Class RegisterController.
  */
 class RegisterController extends Controller {
-    /*
-    |--------------------------------------------------------------------------
-    | Register Controller
-    |--------------------------------------------------------------------------
-    |
-    | This controller handles the registration of new users as well as their
-    | validation and creation. By default this controller uses a trait to
-    | provide this functionality without requiring any additional code.
-    |
-    */
-
     use RegistersUsers;
 
     public XotData $xot;
+    public string $register_type;
 
     /**
      * Where to redirect users after registration.
@@ -45,6 +38,7 @@ class RegisterController extends Controller {
     public function __construct() {
         $this->middleware('guest');
         $this->xot = XotData::from(config('xra'));
+        $this->register_type = (string) $this->xot->register_type;
     }
 
     /**
@@ -53,15 +47,34 @@ class RegisterController extends Controller {
      * @return \Illuminate\Contracts\Validation\Validator
      */
     protected function validator(array $data) {
-        return Validator::make(
-            $data,
-            [
-                // 'name' => 'required|max:255',
-                'handle' => 'required|max:255',
-                'email' => 'required|email|max:255|unique:liveuser_general.users', // |unique:users
-                'password' => 'required|min:6|confirmed',
-            ]
-        );
+        if (! isset($data['handle'])) {
+            if (! isset($data['username'])) {
+                throw new \Exception('Many pre-made templates have a username.. if they don\'t even have this better to have this error');
+            }
+            $data['handle'] = $data['username'];
+        }
+        $rules = [
+        ];
+
+        switch ($this->register_type) {
+            case '0':
+                $rules = [
+                    'handle' => 'required|max:255',
+                    // 'email' => 'required|email|max:255|unique:liveuser_general.users', // |unique:users
+                    'email' => 'required|email|max:255', // 4 debug !!!
+                    'password' => 'required|min:6|confirmed',
+                ];
+                break;
+            case '3':
+                $rules = [
+                    'email' => 'required|email|unique:liveuser_general.users', // |unique:users',
+                ];
+                break;
+            default:
+                throw new \Exception('[register_type:'.$this->register_type.']['.__LINE__.']['.__FILE__.']');
+        }
+
+        return Validator::make($data, $rules);
     }
 
     /**
@@ -105,11 +118,33 @@ class RegisterController extends Controller {
     }
 
     // ---------------------------------------------------------------------------------------
+    public function showRegistrationForm(Request $request) {
+        $referrer = str_replace(url('/'), '', url()->previous());
+        $params = getRouteParameters();
+        $register_type = $this->xot->register_type;
+        $piece = 'auth.register.'.$register_type;
+        FileService::viewCopy('lu::'.$piece, 'pub_theme::'.$piece);
+
+        /**
+         * @phpstan-var view-string
+         */
+        $view = 'pub_theme::'.$piece;
+
+        $view_params = [
+            'action' => 'login',
+            'params' => $params,
+            'lang' => app()->getLocale(),
+            'view' => $view,
+            'referrer' => $referrer,
+        ];
+
+        return view($view, $view_params);
+    }
 
     /**
      * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View|\Illuminate\Http\JsonResponse|string
      */
-    public function showRegistrationForm(Request $request) {
+    public function showRegistrationFormOLD(Request $request) {
         $params = getRouteParameters();
         $row = new User();
         $locz = ['pub_theme', 'adm_theme', 'lu'];
@@ -248,11 +283,38 @@ class RegisterController extends Controller {
      * @return mixed
      */
     public function register(Request $request) {
-        $register_type = $this->xot->register_type;
+        $data = $request->all();
+        $validated = $this->validator($data)->validate();
 
-        $func = 'registerType'.$register_type;
+        $user = User::query()->create($validated);
+        event(new Registered($user));
 
-        return $this->{$func}($request);
-        
+        $this->guard()->login($user);
+        // if ($response = $this->registered($request, $user)) {
+        //    return $response;
+        // }
+
+        return $request->wantsJson()
+                    ? new JsonResponse([], 201)
+                    : redirect($this->redirectPath());
+    }
+
+    /*
+     * Get the guard to be used during registration.
+     *
+     * @return \Illuminate\Contracts\Auth\StatefulGuard
+
+    //protected function guard() {
+    //    return Auth::guard();
+    //}
+
+    /**
+     * The user has been registered.
+     *
+     * @param mixed $user
+     *
+     * @return mixed
+     */
+    protected function registered(Request $request, $user) {
     }
 }// end class
