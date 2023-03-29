@@ -253,68 +253,6 @@ class RegisterController extends Controller {
         $func = 'registerType'.$register_type;
 
         return $this->{$func}($request);
-        /*
-        $this->validator($request->all())->validate();
-
-        event(new Registered($user = $this->create($request->all())));
-
-        $this->guard()->login($user);
-
-        return $this->registered($request, $user)
-                        ?: redirect($this->redirectPath());
-        */
-        $data = $request->all();
-
-        switch ($register_type) {
-            case '3':
-                $this->faker = \Faker\Factory::create();
-                $data['password'] = $this->faker->password();
-                $data['password_confirmation'] = $data['password'];
-                break;
-            case '2':
-                break;
-            case '1':
-                break;
-            case '0':
-                break;
-            default:
-        }
-
-        $rules['0'] = [
-            //    'username' => 'required|alpha_num|min:3|max:32',
-            'email' => 'required|email|unique:liveuser_general.users', // |unique:users',
-            'password' => 'required|min:3|confirmed',
-            'password_confirmation' => 'required|min:3',
-        ];
-
-        $rules['3'] = [
-            'email' => 'required|email|unique:liveuser_general.users', // |unique:users',
-        ];
-
-        // Create a new validator instance.
-        $validator = Validator::make($data, $rules);
-        $errors = $validator->errors();
-        $msg = '';
-        foreach ($errors->all() as $message) {
-            $msg .= '<br/>'.$message;
-        }
-        if ($validator->fails()) {
-            if ($request->ajax()) {
-                return response()->json(['error' => $msg], 500);
-            }
-
-            return back()
-                ->withError('Qualcosa di errato !')
-                ->withInput($request->all())
-                ->withErrors($validator->messages());
-        }
-        $user = $this->create($request->all());
-        event(new Registered($user));
-        $this->guard()->login($user);
-        if ($request->ajax()) {
-            return response()->json(['redirect' => $this->redirectPath(), 'msg' => 'registrato con successo']);
-        }
-
-        return redirect($this->redirectPath());
+        
     }
 }// end class
