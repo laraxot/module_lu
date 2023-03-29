@@ -11,7 +11,8 @@ use Illuminate\Support\Facades\Lang;
 /**
  * Class VerifyEmail.
  */
-class VerifyEmail extends BaseVerifyEmail {
+class VerifyEmail extends BaseVerifyEmail
+{
     /**
      * Build the mail representation of the notification.
      *
@@ -19,7 +20,8 @@ class VerifyEmail extends BaseVerifyEmail {
      *
      * @return \Illuminate\Notifications\Messages\MailMessage
      */
-    public function toMail($notifiable) {
+    public function toMail($notifiable)
+    {
         $verificationUrl = $this->verificationUrl($notifiable);
 
         if (static::$toMailCallback) {
@@ -36,11 +38,26 @@ class VerifyEmail extends BaseVerifyEmail {
      *
      * @return \Illuminate\Notifications\Messages\MailMessage
      */
-    protected function buildMailMessage($url) {
+    protected function buildMailMessage($url)
+    {
+        $subject = view('pub_theme::auth.emails.verify-email.subject')->render();
+        dddx($subject);
+        $subject = strip_tags($subject);
+        $view_html = 'pub_theme::auth.emails.verify-email.html';
+        $view_plain = 'pub_theme::auth.emails.verify-email.plain';
+        $view_params = [
+            'url' => $url,
+        ];
+        return (new MailMessage())
+            ->from('barrett@example.com', 'Barrett Blair')
+            ->subject($subject)
+            ->view($view_html, $view_params);
+        /*
         return (new MailMessage())
             ->subject(Lang::get('Verify Email Address'))
             ->line(Lang::get('Please click the button below to verify your email address.'))
             ->action(Lang::get('Verify Email Address'), $url)
             ->line(Lang::get('If you did not create an account, no further action is required.'));
+        */
     }
 }

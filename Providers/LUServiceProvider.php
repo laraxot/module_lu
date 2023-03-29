@@ -25,14 +25,16 @@ use Modules\Xot\Services\BladeService;
 /**
  * Class LUServiceProvider.
  */
-class LUServiceProvider extends XotBaseServiceProvider {
+class LUServiceProvider extends XotBaseServiceProvider
+{
     protected string $module_dir = __DIR__;
 
     protected string $module_ns = __NAMESPACE__;
 
     public string $module_name = 'lu';
 
-    public function bootCallback(): void {
+    public function bootCallback(): void
+    {
         $this->commands(
             [
                 \Modules\LU\Console\CreateUserCommand::class,
@@ -50,14 +52,18 @@ class LUServiceProvider extends XotBaseServiceProvider {
         $this->registerEvents();
     }
 
-    public function registerEvents() {
+    public function registerEvents()
+    {
+        /*
         Event::listen(
             Registered::class,
             [RegisteredListener::class, 'handle']
         );
+        */
     }
 
-    public function registerPassport(): void {
+    public function registerPassport(): void
+    {
         Passport::usePersonalAccessClientModel(OauthPersonalAccessClient::class);
         Passport::useTokenModel(OauthAccessToken::class);
         Passport::useRefreshTokenModel(OauthRefreshToken::class);
@@ -68,21 +74,24 @@ class LUServiceProvider extends XotBaseServiceProvider {
         }
     }
 
-    public function registerCallback(): void {
+    public function registerCallback(): void
+    {
         $loader = AliasLoader::getInstance();
         $loader->alias('Profile', 'Modules\LU\Services\ProfileService');
     }
 
-    private function registerViewComposers(): void {
+    private function registerViewComposers(): void
+    {
         View::composer('*', LUComposer::class);
     }
 
-    public function mergeConfigs(): void {
+    public function mergeConfigs(): void
+    {
         if ($this->app->runningUnitTests()) {
             // $this->publishes([
             //    __DIR__ . '/../Config/xra.php' => config_path('xra.php'),
             // ], 'config');
-            $this->mergeConfigFrom(__DIR__.'/../Config/auth.php', 'auth');
+            $this->mergeConfigFrom(__DIR__ . '/../Config/auth.php', 'auth');
 
             return;
         }
