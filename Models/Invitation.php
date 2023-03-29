@@ -15,7 +15,7 @@ namespace Modules\LU\Models;
  * @property \Illuminate\Support\Carbon|null $updated_at
  * @property string|null $created_by
  * @property string|null $updated_by
- * @method static \Modules\LU\Database\Factories\InvitationFactory factory(...$parameters)
+ * @method static \Modules\LU\Database\Factories\InvitationFactory factory($count = null, $state = [])
  * @method static \Illuminate\Database\Eloquent\Builder|Invitation newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|Invitation newQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|Invitation query()

@@ -9,7 +9,7 @@ namespace Modules\LU\Models;
  *
  * @property int $permission_id
  * @property int $role_id
- * @method static \Modules\LU\Database\Factories\RoleHasPermissionFactory factory(...$parameters)
+ * @method static \Modules\LU\Database\Factories\RoleHasPermissionFactory factory($count = null, $state = [])
  * @method static \Illuminate\Database\Eloquent\Builder|RoleHasPermission newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|RoleHasPermission newQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|RoleHasPermission query()

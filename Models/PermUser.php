@@ -25,18 +25,18 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
  * @property string|null $created_ip
  * @property string|null $updated_ip
  * @property string|null $guid
- * @property-read \Illuminate\Database\Eloquent\Collection|\Modules\LU\Models\AreaPermUser[] $areaPermUsers
+ * @property-read \Illuminate\Database\Eloquent\Collection<int, \Modules\LU\Models\AreaPermUser> $areaPermUsers
  * @property-read int|null $area_perm_users_count
- * @property-read \Illuminate\Database\Eloquent\Collection|\Modules\LU\Models\Area[] $areas
+ * @property-read \Illuminate\Database\Eloquent\Collection<int, \Modules\LU\Models\Area> $areas
  * @property-read int|null $areas_count
- * @property-read \Illuminate\Database\Eloquent\Collection|\Modules\LU\Models\GroupPermUser[] $groupPermUsers
+ * @property-read \Illuminate\Database\Eloquent\Collection<int, \Modules\LU\Models\GroupPermUser> $groupPermUsers
  * @property-read int|null $group_perm_users_count
- * @property-read \Illuminate\Database\Eloquent\Collection|\Modules\LU\Models\Group[] $groups
+ * @property-read \Illuminate\Database\Eloquent\Collection<int, \Modules\LU\Models\Group> $groups
  * @property-read int|null $groups_count
- * @property-read \Illuminate\Database\Eloquent\Collection|\Modules\LU\Models\Right[] $rights
+ * @property-read \Illuminate\Database\Eloquent\Collection<int, \Modules\LU\Models\Right> $rights
  * @property-read int|null $rights_count
  * @property-read \Modules\LU\Models\User|null $user
- * @method static \Modules\LU\Database\Factories\PermUserFactory factory(...$parameters)
+ * @method static \Modules\LU\Database\Factories\PermUserFactory factory($count = null, $state = [])
  * @method static \Illuminate\Database\Eloquent\Builder|PermUser newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|PermUser newQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|PermUser query()

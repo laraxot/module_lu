@@ -12,7 +12,7 @@ namespace Modules\LU\Models;
  * @property string $right_define_name
  * @property string $has_implied
  * @property string $has_level
- * @method static \Modules\LU\Database\Factories\RightFactory factory(...$parameters)
+ * @method static \Modules\LU\Database\Factories\RightFactory factory($count = null, $state = [])
  * @method static \Illuminate\Database\Eloquent\Builder|Right newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|Right newQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|Right query()

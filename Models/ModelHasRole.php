@@ -10,7 +10,7 @@ namespace Modules\LU\Models;
  * @property int $role_id
  * @property string $model_type
  * @property int $model_id
- * @method static \Modules\LU\Database\Factories\ModelHasRoleFactory factory(...$parameters)
+ * @method static \Modules\LU\Database\Factories\ModelHasRoleFactory factory($count = null, $state = [])
  * @method static \Illuminate\Database\Eloquent\Builder|ModelHasRole newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|ModelHasRole newQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|ModelHasRole query()

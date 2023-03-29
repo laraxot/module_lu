@@ -11,9 +11,9 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
  *
  * @property int $group_id
  * @property int $subgroup_id
- * @property-read \Illuminate\Database\Eloquent\Collection|\Modules\LU\Models\GroupPermUser[] $groupPermUsers
+ * @property-read \Illuminate\Database\Eloquent\Collection<int, \Modules\LU\Models\GroupPermUser> $groupPermUsers
  * @property-read int|null $group_perm_users_count
- * @method static \Modules\LU\Database\Factories\GroupSubgroupFactory factory(...$parameters)
+ * @method static \Modules\LU\Database\Factories\GroupSubgroupFactory factory($count = null, $state = [])
  * @method static \Illuminate\Database\Eloquent\Builder|GroupSubgroup newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|GroupSubgroup newQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|GroupSubgroup query()

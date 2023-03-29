@@ -36,11 +36,11 @@ use Staudenmeir\EloquentHasManyDeep\HasRelationships;
  * @property int|null $order_column
  * @property-read string|null $icon_src
  * @property-read string|null $title
- * @property-read \Illuminate\Database\Eloquent\Collection|\Modules\LU\Models\PermUser[] $permUsers
+ * @property-read \Illuminate\Database\Eloquent\Collection<int, \Modules\LU\Models\PermUser> $permUsers
  * @property-read int|null $perm_users_count
- * @property-read \Illuminate\Database\Eloquent\Collection|\Modules\LU\Models\PermUser[] $perms
+ * @property-read \Illuminate\Database\Eloquent\Collection<int, \Modules\LU\Models\PermUser> $perms
  * @property-read int|null $perms_count
- * @method static \Modules\LU\Database\Factories\AreaFactory factory(...$parameters)
+ * @method static \Modules\LU\Database\Factories\AreaFactory factory($count = null, $state = [])
  * @method static \Illuminate\Database\Eloquent\Builder|Area newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|Area newQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|Area ordered(string $direction = 'asc')

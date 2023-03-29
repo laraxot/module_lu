@@ -24,7 +24,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
  * @property string|null $provider_id
  * @property string|null $provider
  * @property-read \Modules\LU\Models\User|null $user
- * @method static \Modules\LU\Database\Factories\SocialProviderFactory factory(...$parameters)
+ * @method static \Modules\LU\Database\Factories\SocialProviderFactory factory($count = null, $state = [])
  * @method static \Illuminate\Database\Eloquent\Builder|SocialProvider newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|SocialProvider newQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|SocialProvider query()

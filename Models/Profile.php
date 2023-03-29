@@ -28,7 +28,7 @@ use Modules\Xot\Models\Traits\WidgetTrait;
  * @property string|null $address
  * @property string|null $zibibbo
  * @property string|null $bio
- * @property-read \Illuminate\Database\Eloquent\Collection|\Modules\Xot\Models\Widget[] $containerWidgets
+ * @property-read \Illuminate\Database\Eloquent\Collection<int, \Modules\Xot\Models\Widget> $containerWidgets
  * @property-read int|null $container_widgets_count
  * @property-read string|null $full_name
  * @property string|null $guid
@@ -40,12 +40,12 @@ use Modules\Xot\Models\Traits\WidgetTrait;
  * @property string|null $txt
  * @property-read string|null $user_handle
  * @property-read \Modules\Lang\Models\Post|null $post
- * @property-read \Illuminate\Database\Eloquent\Collection|\Modules\Lang\Models\Post[] $posts
+ * @property-read \Illuminate\Database\Eloquent\Collection<int, \Modules\Lang\Models\Post> $posts
  * @property-read int|null $posts_count
- * @property-read Profile|null $profile
+ * @property-read \Modules\Blog\Models\Profile|null $profile
  * @property-write mixed $url
  * @property-read \Modules\LU\Models\User|null $user
- * @property-read \Illuminate\Database\Eloquent\Collection|\Modules\Xot\Models\Widget[] $widgets
+ * @property-read \Illuminate\Database\Eloquent\Collection<int, \Modules\Xot\Models\Widget> $widgets
  * @property-read int|null $widgets_count
  * @method static \Illuminate\Database\Eloquent\Builder|Profile newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|Profile newQuery()

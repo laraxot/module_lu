@@ -13,7 +13,7 @@ namespace Modules\LU\Models;
  * @property \Illuminate\Support\Carbon|null $updated_at
  * @property string|null $created_by
  * @property string|null $updated_by
- * @method static \Modules\LU\Database\Factories\PasswordResetFactory factory(...$parameters)
+ * @method static \Modules\LU\Database\Factories\PasswordResetFactory factory($count = null, $state = [])
  * @method static \Illuminate\Database\Eloquent\Builder|PasswordReset newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|PasswordReset newQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|PasswordReset query()

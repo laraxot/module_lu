@@ -9,7 +9,7 @@ namespace Modules\LU\Models;
  *
  * @property int $id
  * @property string $application_define_name
- * @method static \Modules\LU\Database\Factories\ApplicationFactory factory(...$parameters)
+ * @method static \Modules\LU\Database\Factories\ApplicationFactory factory($count = null, $state = [])
  * @method static \Illuminate\Database\Eloquent\Builder|Application newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|Application newQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|Application query()

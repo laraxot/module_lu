@@ -17,7 +17,7 @@ use Illuminate\Database\Eloquent\Relations\HasOne;
  * @property string|null $created_by
  * @property string|null $updated_by
  * @property-read \Modules\LU\Models\Group|null $group
- * @method static \Modules\LU\Database\Factories\GroupPermUserFactory factory(...$parameters)
+ * @method static \Modules\LU\Database\Factories\GroupPermUserFactory factory($count = null, $state = [])
  * @method static \Illuminate\Database\Eloquent\Builder|GroupPermUser newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|GroupPermUser newQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|GroupPermUser query()

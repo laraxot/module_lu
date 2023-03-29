@@ -14,7 +14,7 @@ namespace Modules\LU\Models;
  * @property string|null $updated_by
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
- * @method static \Modules\LU\Database\Factories\PermUserRightFactory factory(...$parameters)
+ * @method static \Modules\LU\Database\Factories\PermUserRightFactory factory($count = null, $state = [])
  * @method static \Illuminate\Database\Eloquent\Builder|PermUserRight newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|PermUserRight newQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|PermUserRight query()

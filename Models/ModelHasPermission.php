@@ -10,7 +10,7 @@ namespace Modules\LU\Models;
  * @property int $permission_id
  * @property string $model_type
  * @property int $model_id
- * @method static \Modules\LU\Database\Factories\ModelHasPermissionFactory factory(...$parameters)
+ * @method static \Modules\LU\Database\Factories\ModelHasPermissionFactory factory($count = null, $state = [])
  * @method static \Illuminate\Database\Eloquent\Builder|ModelHasPermission newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|ModelHasPermission newQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|ModelHasPermission query()

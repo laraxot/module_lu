@@ -30,7 +30,7 @@ use Modules\UI\Services\ThemeService;
  * @property-read string|null $title
  * @property-read string|null $url
  * @property-read \Modules\LU\Models\PermUser|null $permUser
- * @method static \Modules\LU\Database\Factories\AreaPermUserFactory factory(...$parameters)
+ * @method static \Modules\LU\Database\Factories\AreaPermUserFactory factory($count = null, $state = [])
  * @method static \Illuminate\Database\Eloquent\Builder|AreaPermUser newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|AreaPermUser newQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|AreaPermUser query()
