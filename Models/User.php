@@ -89,7 +89,7 @@ use Staudenmeir\EloquentHasManyDeep\HasRelationships;
  * @property-read \Illuminate\Database\Eloquent\Collection<int, \Modules\LU\Models\PermUser> $perms
  * @property-read int|null $perms_count
  * @property-read \Modules\Ptv\Models\Profile|null $profile
- * @property-read \Modules\Blog\Models\Profile|null $profileOrCreate
+ * @property-read \Modules\LU\Models\Profile|null $profileOrCreate
  * @property-read \Illuminate\Database\Eloquent\Collection<int, \Modules\LU\Models\PermUserRight> $rights
  * @property-read int|null $rights_count
  * @property-read \Illuminate\Database\Eloquent\Collection<int, \Modules\LU\Models\SocialProvider> $socialProviders
