@@ -14,14 +14,22 @@ class BuildUserMailMessageAction
 {
     use QueueableAction;
 
+<<<<<<< HEAD
     public function execute(string $name, array $view_params): MailMessage
+=======
+    public function execute(string $name, array $view_params)
+>>>>>>> master
     {
 
         $theme = NotifyTheme::firstOrCreate([
             'lang' => $view_params['lang'],
             'type' => 'email', //email,sms,whatsapp,piccione
             'post_type' => $name,
+<<<<<<< HEAD
             'post_id' => $view_params['post_id'] ?? 0,
+=======
+            'post_id' => $view_params['post_id'],
+>>>>>>> master
         ]);
         if ($theme->subject == null) {
             $subject = trans('lu::auth.' . $name . '.subject');
