@@ -3,6 +3,7 @@
 /**
  * https://tech.fleka.me/translate-laravels-reset-password-email-b0f1d6e4709a.
  */
+
 declare(strict_types=1);
 
 namespace Modules\LU\Notifications;
@@ -71,8 +72,8 @@ class ResetPassword extends Notification
 
         $url = url(route('password.reset', $this->token, false));
         $subject = trans('lu::notifications.reset_password.subject');
-        if (! is_string($subject)) {
-            throw new Exception('['.__LINE__.']['.__FILE__.']');
+        if (!is_string($subject)) {
+            throw new Exception('[' . __LINE__ . '][' . __FILE__ . ']');
         }
         $mail = (new MailMessage())
             // ->from('admin@app.com', 'AppName')
@@ -119,9 +120,10 @@ class ResetPassword extends Notification
              ->markdown('lu::notifications.email', ['subcopy' => 'subcopy'])
              ->line(Lang::getFromJson('You are receiving this email because we received a password reset request for your account.'))
              ->action('Reset Password', url(route('password.reset', $this->token, false)))
-             ->line(Lang::getFromJson('If you did not request a password reset, no further action is required.'));*/
+             ->line(Lang::getFromJson('If you did not request a password reset, no further action is required.'));
+        */
 
-        // */
+
         /*
         $reset_password_url=url(route('password.reset', $this->token, false));
         return (new MailMessage())
