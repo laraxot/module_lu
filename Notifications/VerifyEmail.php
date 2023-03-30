@@ -4,33 +4,30 @@ declare(strict_types=1);
 
 namespace Modules\LU\Notifications;
 
+use Illuminate\Auth\Notifications\VerifyEmail as BaseVerifyEmail;
+use Illuminate\Notifications\Messages\MailMessage;
+use Illuminate\Support\Facades\Lang;
 use Illuminate\Support\Str;
 use Modules\LU\Models\User;
-use Modules\Xot\Datas\XotData;
-use Illuminate\Support\Facades\Lang;
 use Modules\Notify\Models\NotifyTheme;
-use Illuminate\Notifications\Messages\MailMessage;
-use Illuminate\Auth\Notifications\VerifyEmail as BaseVerifyEmail;
+use Modules\Xot\Datas\XotData;
 
 /**
  * Class VerifyEmail.
  */
-class VerifyEmail extends BaseVerifyEmail
-{
-
+class VerifyEmail extends BaseVerifyEmail {
     public XotData $xot;
     public string $register_type;
     public array $view_params = [];
 
-
     /**
      * Create a notification instance.
      */
-    public function __construct()
-    {
+    public function __construct() {
         $this->xot = XotData::from(config('xra'));
         $this->register_type = (string) $this->xot->register_type;
     }
+
     /**
      * Build the mail representation of the notification.
      *
@@ -38,11 +35,10 @@ class VerifyEmail extends BaseVerifyEmail
      *
      * @return \Illuminate\Notifications\Messages\MailMessage
      */
-    public function toMail($notifiable)
-    {
+    public function toMail($notifiable) {
         if ($notifiable instanceof User) {
-            if ($this->register_type == 3 && $notifiable->password == null) {
-                //dddx(['notifiable' => $notifiable, fake()->password()]);
+            if (3 == $this->register_type && null == $notifiable->password) {
+                // dddx(['notifiable' => $notifiable, fake()->password()]);
                 $password = fake()->password();
                 $res = tap($notifiable)->update([
                     'handle' => Str::before($notifiable->email, '@'),
@@ -51,7 +47,6 @@ class VerifyEmail extends BaseVerifyEmail
                 $this->view_params['password'] = $password;
             }
         }
-
 
         $this->locale = app()->getLocale();
         $this->view_params = array_merge($this->view_params, $notifiable->toArray());
@@ -73,60 +68,54 @@ class VerifyEmail extends BaseVerifyEmail
      *
      * @return \Illuminate\Notifications\Messages\MailMessage
      */
-    protected function buildMailMessage($url)
-    {
-
-
+    protected function buildMailMessage($url) {
         $theme = NotifyTheme::firstOrCreate([
             'lang' => $this->locale,
-            'type' => 'email', //email,sms,whatsapp,piccione
+            'type' => 'email', // email,sms,whatsapp,piccione
             'post_type' => 'verify-email',
             'post_id' => $this->register_type,
         ]);
-        if ($theme->subject == null) {
-            //$subject = view('lu::auth.emails.verify-email.subject')->render();
-            //$subject = strip_tags($subject);
+        if (null == $theme->subject) {
+            // $subject = view('lu::auth.emails.verify-email.subject')->render();
+            // $subject = strip_tags($subject);
             $subject = trans('pub_theme::auth.verify_email_address');
             $theme->update(['subject' => $subject]);
         }
-        if ($theme->theme == null) {
+        if (null == $theme->theme) {
             $theme->update(['theme' => 'ark']);
         }
-        if ($theme->body_html == null) {
+        if (null == $theme->body_html) {
             $html = 'Please click the button below to verify your email address.<br/>
                   <a href="##url##">Verify Email Address</a>
                   If you did not create an account, no further action is required.
 
             ';
-            if ($this->register_type == 3) {
+            if (3 == $this->register_type) {
                 $html .= '<br/>When you\'ll re-login this will be your password: ##password##';
             }
 
             $theme->update(['body_html' => $html]);
         }
         $this->view_params = array_merge($this->view_params, $theme->toArray());
-        $this->view_params['url'] = (string)$url;
+        $this->view_params['url'] = (string) $url;
 
         $body_html = $theme->body_html;
         foreach ($this->view_params as $k => $v) {
             if (is_string($v)) {
-                $body_html = Str::replace('##' . $k . '##', $v, $body_html);
+                $body_html = Str::replace('##'.$k.'##', $v, $body_html);
             }
         }
 
         $this->view_params['body_html'] = $body_html;
 
-
-
-
         $view_html = 'lu::auth.emails.html';
 
-        //$out = view($view_html, $this->view_params);
-        //dddx($this->view_params);
-        //die($out->render());
+        // $out = view($view_html, $this->view_params);
+        // dddx($this->view_params);
+        // die($out->render());
 
         return (new MailMessage())
-            //->from('barrett@example.com', 'Barrett Blair')
+            // ->from('barrett@example.com', 'Barrett Blair')
             ->subject($theme->subject)
             ->view($view_html, $this->view_params);
         /*
