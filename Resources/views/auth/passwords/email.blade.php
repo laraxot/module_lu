@@ -1,12 +1,12 @@
 @php
-if (!View::exists('pub_theme::layouts.plane')) {
-    $msg =
-        '[pub_theme::layouts.plane] Not Exists -
+    if (!View::exists('pub_theme::layouts.plane')) {
+        $msg =
+            '[pub_theme::layouts.plane] Not Exists -
     pub_theme:[' .
-        config('xra.pub_theme') .
-        ']';
-    throw new \Exception($msg);
-}
+            config('xra.pub_theme') .
+            ']';
+        throw new \Exception($msg);
+    }
 @endphp
 @extends('pub_theme::layouts.plane')
 
@@ -22,7 +22,7 @@ if (!View::exists('pub_theme::layouts.plane')) {
                                 {{ session('status') }}
                             </div>
                         @endif
-
+                        <x-flash-message />
                         <form class="form-horizontal" role="form" method="POST" action="{{ route('password.email') }}">
                             {{ csrf_field() }}
 

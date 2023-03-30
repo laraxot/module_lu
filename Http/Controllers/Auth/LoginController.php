@@ -42,7 +42,7 @@ class LoginController extends BaseController
     protected string $redirectTo = '/';
 
     // /home
-    // *
+
 
     /**
      * @return mixed|string
@@ -60,7 +60,7 @@ class LoginController extends BaseController
         return '/';
     }
 
-    // */
+
 
     /**
      * Create a new controller instance.

@@ -5,23 +5,13 @@ declare(strict_types=1);
 namespace Modules\LU\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use Modules\Xot\Services\FileService;
 use App\Providers\RouteServiceProvider;
-use Illuminate\Foundation\Auth\ConfirmsPasswords;
 use Modules\LU\Http\Controllers\BaseController;
+use Illuminate\Foundation\Auth\ConfirmsPasswords;
 
 class ConfirmPasswordController extends BaseController
 {
-    /*
-    |--------------------------------------------------------------------------
-    | Confirm Password Controller
-    |--------------------------------------------------------------------------
-    |
-    | This controller is responsible for handling password confirmations and
-    | uses a simple trait to include the behavior. You're free to explore
-    | this trait and override any functions that require customization.
-    |
-    */
-
     use ConfirmsPasswords;
 
     /**
@@ -39,5 +29,29 @@ class ConfirmPasswordController extends BaseController
     public function __construct()
     {
         $this->middleware('auth');
+    }
+
+
+    /**
+     * Display the password confirmation view.
+     *
+     * @return \Illuminate\View\View
+     */
+    public function showConfirmForm()
+    {
+        $lang = app()->getLocale();
+        $piece = 'auth.passwords.confirm';
+        FileService::viewCopy('lu::' . $piece, 'pub_theme::' . $piece);
+
+        /**
+         * @phpstan-var view-string
+         */
+        $view = 'pub_theme::' . $piece;
+        $view_params = [
+            'lang' => $lang,
+            'title' => 'Confirm Password',
+        ];
+
+        return view($view, $view_params);
     }
 }

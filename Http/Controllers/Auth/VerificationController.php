@@ -8,15 +8,17 @@ use Illuminate\Http\Request;
 use Modules\Xot\Datas\XotData;
 use Illuminate\Http\JsonResponse;
 use App\Http\Controllers\Controller;
-use Modules\LU\Traits\VerifiesEmails;
+//use Modules\LU\Traits\VerifiesEmails;
+use Illuminate\Foundation\Auth\VerifiesEmails;
 use Modules\Xot\Services\FileService;
 use Modules\Xot\Contracts\UserContract;
+use Modules\LU\Http\Controllers\BaseController;
 use Illuminate\Auth\Access\AuthorizationException;
 
 /**
  * Class VerificationController.
  */
-class VerificationController extends Controller
+class VerificationController extends BaseController
 {
 
     /*
@@ -58,9 +60,6 @@ class VerificationController extends Controller
     {
 
         $piece = 'auth.verify';
-        /**
-         * @phpstan-var view-string
-         */
         FileService::viewCopy('lu::' . $piece, 'pub_theme::' . $piece);
 
         /**
@@ -72,16 +71,6 @@ class VerificationController extends Controller
             'view' => $view,
         ];
 
-        $piece_successful = 'auth.verify_successful';
-
-        /**
-         * @phpstan-var view-string
-         */
-        $view_successful = 'pfed::' . $piece_successful;
-
-        $view_params_successful = [
-            'view' => $view_successful,
-        ];
 
         /**
          * @var UserContract
@@ -95,6 +84,6 @@ class VerificationController extends Controller
 
         return $user->hasVerifiedEmail()
             ? redirect($this->redirectPath())
-            : response()->view($view, $view_params);
+            : view($view, $view_params);
     }
 }

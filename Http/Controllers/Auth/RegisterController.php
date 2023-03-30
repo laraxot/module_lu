@@ -4,24 +4,25 @@ declare(strict_types=1);
 
 namespace Modules\LU\Http\Controllers\Auth;
 
-use App\Http\Controllers\Controller;
-use Illuminate\Auth\Events\Registered;
-// --------- Models ------------
-use Illuminate\Foundation\Auth\RegistersUsers;
-use Illuminate\Http\JsonResponse;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Validator;
-use Modules\LU\Events\Registered0;
 use Modules\LU\Models\User;
-use Modules\LU\Notifications\VerifyEmailRegister3;
+use Illuminate\Http\Request;
+// --------- Models ------------
 use Modules\Xot\Datas\XotData;
+use Illuminate\Http\JsonResponse;
+use Modules\LU\Events\Registered0;
+use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
 use Modules\Xot\Services\FileService;
+use Illuminate\Auth\Events\Registered;
+use Illuminate\Support\Facades\Validator;
+use Illuminate\Foundation\Auth\RegistersUsers;
+use Modules\LU\Http\Controllers\BaseController;
+use Modules\LU\Notifications\VerifyEmailRegister3;
 
 /**
  * Class RegisterController.
  */
-class RegisterController extends Controller
+class RegisterController extends BaseController
 {
     use RegistersUsers;
 
