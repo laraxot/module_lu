@@ -7,13 +7,9 @@ namespace Modules\LU\Http\Controllers\Auth;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Modules\Xot\Services\FileService;
-<<<<<<< HEAD
 use Modules\LU\Http\Controllers\BaseController;
 use Illuminate\Foundation\Auth\SendsPasswordResetEmails;
 
-=======
-use Illuminate\Foundation\Auth\SendsPasswordResetEmails;
->>>>>>> master
 
 /**
  * Class ForgotPasswordController.
@@ -33,14 +29,8 @@ class ForgotPasswordController extends BaseController
      */
     public function showLinkRequestForm()
     {
-<<<<<<< HEAD
 
         $lang = app()->getLocale();
-=======
-        $lang = app()->getLocale();
-
-
->>>>>>> master
         $piece = 'auth.passwords.email';
         FileService::viewCopy('lu::' . $piece, 'pub_theme::' . $piece);
 
