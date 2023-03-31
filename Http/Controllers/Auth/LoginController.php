@@ -23,16 +23,7 @@ use Modules\Xot\Services\FileService;
 class LoginController extends BaseController
 {
     // use HasOTP;
-    /*
-    |--------------------------------------------------------------------------
-    | Login Controller
-    |--------------------------------------------------------------------------
-    |
-    | This controller handles authenticating users for the application and
-    | redirecting them to your home screen. The controller uses a trait
-    | to conveniently provide its functionality to your applications.
-    |
-     */
+   
 
     use AuthenticatesUsers;
 
@@ -112,7 +103,7 @@ class LoginController extends BaseController
             'referrer' => $referrer,
         ];
 
-        return view()->make($view)->with($view_params);
+        return view($view,$view_params);
     }
 
     /**
@@ -145,11 +136,14 @@ class LoginController extends BaseController
         if (isset($data['email'])) {
             $user = User::query()->where('email', $data['email'])->first();
         }
+        /*
         if (isset($data['user_email'])) {
             $user = User::query()->where('email', $data['user_email'])->first();
         }
+        */
 
         if (isset($user) && isset($data['password']) && $user->passwd === md5($data['password'])) {
+           
             $this->clearLoginAttempts($request);
             // dd($user);
             Auth::login($user, $request->has('remember'));
