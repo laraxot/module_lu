@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Modules\LU\Http\Controllers\Auth;
 
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 use Modules\Xot\Services\FileService;
 use Modules\LU\Http\Controllers\BaseController;
 use Illuminate\Foundation\Auth\SendsPasswordResetEmails;
