@@ -48,4 +48,18 @@ class ResetPasswordController extends BaseController
 
         return view($view, $view_params);
     }
+
+     /**
+     * Set the user's password.
+     *
+     * @param  \Illuminate\Contracts\Auth\CanResetPassword  $user
+     * @param  string  $password
+     * @return void
+     */
+    protected function setUserPassword($user, $password)
+    {
+        //$user->password = Hash::make($password);
+        $user->update(['passwd'=>$password]);
+    }
+
 }
