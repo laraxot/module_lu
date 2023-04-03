@@ -136,6 +136,10 @@ trait IsProfileTrait {
         return $this;
     }
 
+    public function areas() {
+        return $this->user->areas();
+    }
+
     public function hasAnyArea(array $areas): bool {
         $res = $this->user->areas->filter(function ($item) use ($areas) {
             return in_array($item->area_define_name, $areas);
