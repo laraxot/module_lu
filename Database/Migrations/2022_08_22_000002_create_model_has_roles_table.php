@@ -10,17 +10,13 @@ use Spatie\Permission\PermissionRegistrar;
 /**
  * Class CreateModelHasRolesTable.
  */
-class CreateModelHasRolesTable extends XotBaseMigration
-{
+class CreateModelHasRolesTable extends XotBaseMigration {
     /**
      * Run the migrations.
      *
      * @return void
      */
-    public function up()
-    {
-        /** @var array $tableNames */
-        $tableNames = config('permission.table_names');
+    public function up() {
         /** @var array $columnNames */
         $columnNames = config('permission.column_names');
         /** @var array $teams */
@@ -28,7 +24,7 @@ class CreateModelHasRolesTable extends XotBaseMigration
 
         // -- CREATE --
         $this->tableCreate(
-            function (Blueprint $table) use ($tableNames, $columnNames, $teams) {
+            function (Blueprint $table) use ($columnNames, $teams) {
                 $table->unsignedBigInteger(PermissionRegistrar::$pivotRole);
 
                 $table->string('model_type');
