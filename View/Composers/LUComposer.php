@@ -23,7 +23,7 @@ class LUComposer {
 
         $profile = ProfileService::make(); // ->get($user);
         $profile_model = $profile->getProfile();
-        if (method_exists($profile_model, 'init')) {
+        if (null != $profile_model && method_exists($profile_model, 'init')) {
             $profile_model->init();
         }
 

@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Modules\LU\Models\Traits;
 
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Support\Collection;
 use Illuminate\Support\Str;
 use Modules\LU\Models\Area;
 use Modules\LU\Models\User;
@@ -136,8 +137,12 @@ trait IsProfileTrait {
         return $this;
     }
 
-    public function areas() {
-        return $this->user->areas();
+    public function getAreas(): Collection {
+        if (null == $this->user) {
+            return collect([]);
+        }
+
+        return $this->user->areas;
     }
 
     public function hasAnyArea(array $areas): bool {
