@@ -12,40 +12,24 @@ use Spatie\QueueableAction\QueueableAction;
 class BuildUserMailMessageAction {
     use QueueableAction;
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-    public function execute(string $name, array $view_params): MailMessage
-=======
-    public function execute(string $name, array $view_params)
->>>>>>> cf94a76 (up)
-    {
-
-=======
     public function execute(string $name, array $view_params): MailMessage {
->>>>>>> b04bb5c (up)
         $theme = NotifyTheme::firstOrCreate([
             'lang' => $view_params['lang'],
             'type' => 'email', // email,sms,whatsapp,piccione
             'post_type' => $name,
             'post_id' => $view_params['post_id'] ?? 0,
-<<<<<<< HEAD
-=======
-            'post_id' => $view_params['post_id'],
->>>>>>> cf94a76 (up)
-=======
->>>>>>> b04bb5c (up)
         ]);
-        if (null == $theme->subject) {
+        if (null === $theme->subject) {
             $subject = trans('lu::auth.'.$name.'.subject');
             $theme->update(['subject' => $subject]);
         }
-        if (null == $theme->theme) {
+        if (null === $theme->theme) {
             $theme->update(['theme' => 'ark']);
         }
-        if (null == $theme->body_html) {
+        if (null === $theme->body_html) {
             $html = trans('lu::auth.'.$name.'.body_html');
 
-            if ('verify-email' == $name && 3 == $view_params['post_id']) {
+            if ('verify-email' === $name && 3 === $view_params['post_id']) {
                 $html .= '<br/>When you\'ll re-login this will be your password: ##password##';
             }
 
@@ -56,7 +40,7 @@ class BuildUserMailMessageAction {
 
         $body_html = $theme->body_html;
         foreach ($view_params as $k => $v) {
-            if (is_string($v)) {
+            if (\is_string($v)) {
                 $body_html = Str::replace('##'.$k.'##', $v, $body_html);
             }
         }
