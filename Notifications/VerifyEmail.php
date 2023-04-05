@@ -4,20 +4,19 @@ declare(strict_types=1);
 
 namespace Modules\LU\Notifications;
 
-use Illuminate\Support\Str;
-use Modules\LU\Models\User;
-use Modules\Xot\Datas\XotData;
-use Illuminate\Support\Facades\Lang;
-use Modules\Notify\Models\NotifyTheme;
-use Illuminate\Notifications\Messages\MailMessage;
-use Modules\LU\Actions\BuildUserMailMessageAction;
 use Illuminate\Auth\Notifications\VerifyEmail as BaseVerifyEmail;
+use Illuminate\Notifications\Messages\MailMessage;
+use Illuminate\Support\Facades\Lang;
+use Illuminate\Support\Str;
+use Modules\LU\Actions\BuildUserMailMessageAction;
+use Modules\LU\Models\User;
+use Modules\Notify\Models\NotifyTheme;
+use Modules\Xot\Datas\XotData;
 
 /**
  * Class VerifyEmail.
  */
-class VerifyEmail extends BaseVerifyEmail
-{
+class VerifyEmail extends BaseVerifyEmail {
     public XotData $xot;
     public string $register_type;
     public array $view_params = [];
@@ -25,8 +24,7 @@ class VerifyEmail extends BaseVerifyEmail
     /**
      * Create a notification instance.
      */
-    public function __construct()
-    {
+    public function __construct() {
         $this->xot = XotData::from(config('xra'));
         $this->register_type = (string) $this->xot->register_type;
     }
@@ -38,8 +36,7 @@ class VerifyEmail extends BaseVerifyEmail
      *
      * @return \Illuminate\Notifications\Messages\MailMessage
      */
-    public function toMail($notifiable)
-    {
+    public function toMail($notifiable) {
         if ($notifiable instanceof User) {
             if (3 == $this->register_type && null == $notifiable->password) {
                 // dddx(['notifiable' => $notifiable, fake()->password()]);
@@ -62,12 +59,12 @@ class VerifyEmail extends BaseVerifyEmail
             return call_user_func(static::$toMailCallback, $notifiable, $verificationUrl);
         }
 
-        $this->view_params['url'] = (string)$verificationUrl;
-        $this->view_params['post_id'] = (string)$this->register_type;
+        $this->view_params['url'] = (string) $verificationUrl;
+        $this->view_params['post_id'] = (string) $this->register_type;
 
         return app(BuildUserMailMessageAction::class)->execute('verify-email', $this->view_params);
 
-        //return $this->buildMailMessage($verificationUrl);
+        // return $this->buildMailMessage($verificationUrl);
     }
 
     /**
@@ -77,6 +74,7 @@ class VerifyEmail extends BaseVerifyEmail
      *
      * @return \Illuminate\Notifications\Messages\MailMessage
      */
+<<<<<<< HEAD
     protected function buildMailMessage($url)
     {
 <<<<<<< HEAD
@@ -86,6 +84,9 @@ class VerifyEmail extends BaseVerifyEmail
 
 
 >>>>>>> cf94a76 (up)
+=======
+    protected function buildMailMessage($url) {
+>>>>>>> b04bb5c (up)
         $theme = NotifyTheme::firstOrCreate([
             'lang' => $this->locale,
             'type' => 'email', // email,sms,whatsapp,piccione
@@ -119,7 +120,7 @@ class VerifyEmail extends BaseVerifyEmail
         $body_html = $theme->body_html;
         foreach ($this->view_params as $k => $v) {
             if (is_string($v)) {
-                $body_html = Str::replace('##' . $k . '##', $v, $body_html);
+                $body_html = Str::replace('##'.$k.'##', $v, $body_html);
             }
         }
 
