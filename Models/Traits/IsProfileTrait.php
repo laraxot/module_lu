@@ -152,4 +152,6 @@ trait IsProfileTrait {
 
         return $res->count() > 0;
     }
+
+    // mettere sendnotificationnotification
 }
