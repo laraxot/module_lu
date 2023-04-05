@@ -108,7 +108,6 @@ class VerifyEmail extends BaseVerifyEmail {
     protected function buildMailMessage($url) {
         $this->view_params['url'] = (string) $url;
         $this->view_params['post_id'] = (string) $this->register_type;
-
         $theme = NotifyTheme::firstOrCreate([
             'lang' => $this->locale,
             'type' => 'email', // email,sms,whatsapp,piccione
