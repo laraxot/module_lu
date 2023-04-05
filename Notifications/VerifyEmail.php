@@ -88,7 +88,7 @@ class VerifyEmail extends BaseVerifyEmail {
         $this->view_params['lang'] = $this->locale;
 
         if (static::$toMailCallback) {
-            return call_user_func(static::$toMailCallback, $notifiable, $verificationUrl);
+            return \call_user_func(static::$toMailCallback, $notifiable, $verificationUrl);
         }
 
         $this->view_params['post_id'] = (string) $this->register_type;
@@ -114,22 +114,22 @@ class VerifyEmail extends BaseVerifyEmail {
             'post_type' => 'verify-email',
             'post_id' => $this->register_type,
         ]);
-        if (null == $theme->subject) {
+        if (null === $theme->subject) {
             // $subject = view('lu::auth.emails.verify-email.subject')->render();
             // $subject = strip_tags($subject);
             $subject = trans('pub_theme::auth.verify_email_address');
             $theme->update(['subject' => $subject]);
         }
-        if (null == $theme->theme) {
+        if (null === $theme->theme) {
             $theme->update(['theme' => 'ark']);
         }
-        if (null == $theme->body_html) {
+        if (null === $theme->body_html) {
             $html = 'Please click the button below to verify your email address.<br/>
                   <a href="##url##">Verify Email Address</a>
                   If you did not create an account, no further action is required.
 
             ';
-            if (3 == $this->register_type) {
+            if (3 === $this->register_type) {
                 $html .= '<br/>When you\'ll re-login this will be your password: ##password##';
             }
 
@@ -140,7 +140,7 @@ class VerifyEmail extends BaseVerifyEmail {
 
         $body_html = $theme->body_html;
         foreach ($this->view_params as $k => $v) {
-            if (is_string($v)) {
+            if (\is_string($v)) {
                 $body_html = Str::replace('##'.$k.'##', $v, $body_html);
             }
         }
