@@ -12,7 +12,7 @@
 
     <ul>
         @foreach ($_panel->getActions('container') as $act)
-            <li>{!! $act->btnHtml() !!}</li>
+            <li><x-button.action :action="$act" /></li>
         @endforeach
     </ul>
 @endsection
