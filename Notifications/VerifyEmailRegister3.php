@@ -59,7 +59,9 @@ class VerifyEmailRegister3 extends BaseVerifyEmail
         $verificationUrl = $this->verificationUrl($notifiable);
 
         if (static::$toMailCallback) {
-            return call_user_func(static::$toMailCallback, $notifiable, $verificationUrl);
+            dddx(static::$toMailCallback);
+            // Method Modules\LU\Notifications\VerifyEmailRegister3::toMail() should return Illuminate\Notifications\Messages\MailMessage but returns mixed.
+            // call_user_func(static::$toMailCallback, $notifiable, $verificationUrl);
         }
 
         return $this->buildMailMessage($verificationUrl);
