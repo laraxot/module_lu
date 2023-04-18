@@ -51,7 +51,7 @@ trait UserRelationship
     /**
      * Undocumented function.
      *
-     * @return HasOne<ModelProfileContract>
+     * @return ModelProfileContract
      */
     public function profile(): HasOne
     {

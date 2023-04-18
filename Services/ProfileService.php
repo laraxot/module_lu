@@ -200,7 +200,7 @@ class ProfileService
     // returns User's fist name
     public function name(): string
     {
-        return (string) $this->user->first_name;
+        return (string) $this->user?->first_name;
     }
 
     // returns the Profile's action url (example: http://domain.xx/admin/it/lu/profiles/1/?_act=show)
@@ -260,7 +260,7 @@ class ProfileService
         return $profile;
     }
 
-    public function setUserId(string $user_id)
+    public function setUserId(string $user_id): self
     {
         $this->user = User::find($user_id);
 

@@ -110,7 +110,7 @@ class SocialiteController extends Controller
                     // 'social_login' => true //tell the database they are logging in from oauth
                 ]
             );
-            if ('' === $user->handle && '' !== $handle) {
+            if ('' == $user->handle && '' != $handle) {
                 $user->handle = $handle;
                 $user->save();
             }

@@ -11,7 +11,6 @@ use Illuminate\Contracts\Support\Renderable;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
 use Modules\LU\Http\Controllers\BaseController;
 use Modules\LU\Models\User;
@@ -118,7 +117,7 @@ class RegisterController extends BaseController
 
         $profile = $user->profileOrCreate()->first();
 
-        if (method_exists($profile, 'registered')) {
+        if (is_object($profile) && method_exists($profile, 'registered')) {
             $out = $profile->registered();
 
             if (null != $out) {
@@ -133,25 +132,5 @@ class RegisterController extends BaseController
         return $request->wantsJson()
             ? new JsonResponse([], 201)
             : redirect($this->redirectPath());
-    }
-
-    /*
-     * Get the guard to be used during registration.
-     *
-     * @return \Illuminate\Contracts\Auth\StatefulGuard
-
-    //protected function guard() {
-    //    return Auth::guard();
-    //}
-
-    /**
-     * The user has been registered.
-     *
-     * @param mixed $user
-     *
-     * @return mixed
-     */
-    protected function registered(Request $request, $user)
-    {
     }
 }// end class

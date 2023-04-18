@@ -8,7 +8,6 @@ namespace Modules\LU\View\Composers;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\View\View;
 use Modules\LU\Services\ProfileService;
-use Modules\Xot\Contracts\ModelProfileContract;
 
 /**
  * Class LUComposer.
@@ -29,7 +28,7 @@ class LUComposer
         $view->with('profile', $this->getProfile());
     }
 
-    public function getProfile(): ModelProfileContract
+    public function getProfile(): ProfileService
     {
         if (isset($this->vars['profile'])) {
             return $this->vars['profile'];

@@ -64,7 +64,7 @@ class ChangePassword extends Component
     {
         $this->validate($this->rules());
 
-        User::find($this->user_id)->update($this->form_data);
+        User::find($this->user_id)?->update($this->form_data);
         session()->flash('message', 'successfully updated.');
     }
 }
