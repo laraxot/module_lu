@@ -143,6 +143,25 @@ use Staudenmeir\EloquentHasManyDeep\HasRelationships;
  * @method static \Illuminate\Database\Eloquent\Builder|User whereTwoFactorSecret($value)
  * @method static \Illuminate\Database\Eloquent\Builder|User whereUpdatedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|User whereUpdatedBy($value)
+ * @property string|null $lastlogin
+ * @property int|null $enable
+ * @property string|null $token_check
+ * @property int|null $is_verified
+ * @property-read \Illuminate\Database\Eloquent\Collection<int, \Modules\LU\Models\AreaPermUser> $areaPermUsers
+ * @property-read \Illuminate\Database\Eloquent\Collection<int, \Modules\LU\Models\OauthClient> $clients
+ * @property-read \Illuminate\Database\Eloquent\Collection<int, \Modules\LU\Models\GroupPermUser> $groupPermUsers
+ * @property-read \Illuminate\Database\Eloquent\Collection<int, \Modules\LU\Models\GroupPermUser> $groups
+ * @property-read \Illuminate\Notifications\DatabaseNotificationCollection<int, \Illuminate\Notifications\DatabaseNotification> $notifications
+ * @property-read \Illuminate\Database\Eloquent\Collection<int, \Modules\LU\Models\PermUserRight> $permUserRights
+ * @property-read \Illuminate\Database\Eloquent\Collection<int, \Modules\LU\Models\PermUser> $permUsers
+ * @property-read \Illuminate\Database\Eloquent\Collection<int, \Modules\LU\Models\PermUser> $perms
+ * @property-read \Illuminate\Database\Eloquent\Collection<int, \Modules\LU\Models\PermUserRight> $rights
+ * @property-read \Illuminate\Database\Eloquent\Collection<int, \Modules\LU\Models\SocialProvider> $socialProviders
+ * @property-read \Illuminate\Database\Eloquent\Collection<int, \Modules\LU\Models\OauthAccessToken> $tokens
+ * @method static \Illuminate\Database\Eloquent\Builder|User whereEnable($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|User whereIsVerified($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|User whereLastlogin($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|User whereTokenCheck($value)
  * @mixin \Eloquent
  */
 class User extends Authenticatable implements UserContract {

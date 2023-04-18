@@ -64,6 +64,12 @@ use Staudenmeir\EloquentHasManyDeep\HasRelationships;
  * @method static \Illuminate\Database\Eloquent\Builder|Area whereUpdatedBy($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Area whereUpdatedIp($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Area whereUrl($value)
+ * @property string $icons
+ * @property int $ordine
+ * @property-read \Illuminate\Database\Eloquent\Collection<int, \Modules\LU\Models\PermUser> $permUsers
+ * @property-read \Illuminate\Database\Eloquent\Collection<int, \Modules\LU\Models\PermUser> $perms
+ * @method static \Illuminate\Database\Eloquent\Builder|Area whereIcons($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Area whereOrdine($value)
  * @mixin \Eloquent
  */
 class Area extends BaseModel implements Sortable

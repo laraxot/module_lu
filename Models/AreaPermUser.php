@@ -46,6 +46,8 @@ use Modules\UI\Services\ThemeService;
  * @method static \Illuminate\Database\Eloquent\Builder|AreaPermUser whereUpdatedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|AreaPermUser whereUpdatedBy($value)
  * @method static \Illuminate\Database\Eloquent\Builder|AreaPermUser whereUpdatedIp($value)
+ * @property int $id
+ * @method static \Illuminate\Database\Eloquent\Builder|AreaPermUser whereId($value)
  * @mixin \Eloquent
  */
 class AreaPermUser extends BasePivot

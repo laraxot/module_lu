@@ -67,6 +67,10 @@ use Modules\Xot\Models\Traits\WidgetTrait;
  * @method static \Illuminate\Database\Eloquent\Builder|Profile whereUserId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Profile whereZibibbo($value)
  * @method static \Illuminate\Database\Eloquent\Builder|BaseModelLang withPost(string $guid)
+ * @property-read \Illuminate\Database\Eloquent\Collection<int, \Modules\Xot\Models\Widget> $containerWidgets
+ * @property-read \Illuminate\Database\Eloquent\Collection<int, \Modules\Lang\Models\Post> $posts
+ * @property-read \Illuminate\Database\Eloquent\Collection<int, \Modules\Xot\Models\Widget> $widgets
+ * @method static \Illuminate\Database\Eloquent\Builder|Profile wherePostType($value)
  * @mixin \Eloquent
  */
 class Profile extends BaseModelLang

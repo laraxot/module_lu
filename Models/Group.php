@@ -35,6 +35,7 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
  * @method static \Illuminate\Database\Eloquent\Builder|Group whereOwnerUserId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Group whereUpdatedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Group whereUpdatedBy($value)
+ * @property-read \Illuminate\Database\Eloquent\Collection<int, \Modules\LU\Models\GroupPermUser> $groupPermUsers
  * @mixin \Eloquent
  */
 class Group extends BaseModel

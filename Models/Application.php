@@ -15,6 +15,14 @@ namespace Modules\LU\Models;
  * @method static \Illuminate\Database\Eloquent\Builder|Application query()
  * @method static \Illuminate\Database\Eloquent\Builder|Application whereApplicationDefineName($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Application whereId($value)
+ * @property \Illuminate\Support\Carbon|null $created_at
+ * @property \Illuminate\Support\Carbon|null $updated_at
+ * @property string|null $created_by
+ * @property string|null $updated_by
+ * @method static \Illuminate\Database\Eloquent\Builder|Application whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Application whereCreatedBy($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Application whereUpdatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Application whereUpdatedBy($value)
  * @mixin \Eloquent
  */
 class Application extends BaseModel

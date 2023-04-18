@@ -54,6 +54,11 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
  * @method static \Illuminate\Database\Eloquent\Builder|PermUser whereUpdatedBy($value)
  * @method static \Illuminate\Database\Eloquent\Builder|PermUser whereUpdatedIp($value)
  * @method static \Illuminate\Database\Eloquent\Builder|PermUser whereUserId($value)
+ * @property-read \Illuminate\Database\Eloquent\Collection<int, \Modules\LU\Models\AreaPermUser> $areaPermUsers
+ * @property-read \Illuminate\Database\Eloquent\Collection<int, \Modules\LU\Models\Area> $areas
+ * @property-read \Illuminate\Database\Eloquent\Collection<int, \Modules\LU\Models\GroupPermUser> $groupPermUsers
+ * @property-read \Illuminate\Database\Eloquent\Collection<int, \Modules\LU\Models\Group> $groups
+ * @property-read \Illuminate\Database\Eloquent\Collection<int, \Modules\LU\Models\Right> $rights
  * @mixin \Eloquent
  */
 class PermUser extends BaseModel

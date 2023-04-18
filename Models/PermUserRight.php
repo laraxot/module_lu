@@ -25,6 +25,8 @@ namespace Modules\LU\Models;
  * @method static \Illuminate\Database\Eloquent\Builder|PermUserRight whereRightLevel($value)
  * @method static \Illuminate\Database\Eloquent\Builder|PermUserRight whereUpdatedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|PermUserRight whereUpdatedBy($value)
+ * @property int $id
+ * @method static \Illuminate\Database\Eloquent\Builder|PermUserRight whereId($value)
  * @mixin \Eloquent
  */
 class PermUserRight extends BasePivot

@@ -36,6 +36,8 @@ use Illuminate\Notifications\DatabaseNotificationCollection;
  * @method static Builder|Notification whereReadAt($value)
  * @method static Builder|Notification whereType($value)
  * @method static Builder|Notification whereUpdatedAt($value)
+ * @method static DatabaseNotificationCollection<int, static> all($columns = ['*'])
+ * @method static DatabaseNotificationCollection<int, static> get($columns = ['*'])
  * @mixin \Eloquent
  */
 class Notification extends BaseModel
