@@ -231,7 +231,7 @@ class ProfileService
     // returns User email
     public function email(): ?string
     {
-        return $this->user->email;
+        return $this->user?->email;
     }
 
     // returns the
@@ -248,16 +248,20 @@ class ProfileService
             return $this->profile;
         }
         if (null !== $this->user) {
-            $this->profile = $this->user->profile()->firstOrCreate();
+            $profile = $this->user->profile()->firstOrCreate();
+            if (! $profile instanceof ModelProfileContract) {
+                throw new \Exception('['.__LINE__.']['.__FILE__.']');
+            }
+            $this->profile = $profile;
 
             return $this->profile;
         }
-        $profile = $this->profile;
-        if (null == $profile) {
-            throw new \Exception('['.__LINE__.']['.__FILE__.']');
-        }
+        // $profile = $this->profile;
+        // if (null == $profile) {
+        throw new \Exception('['.__LINE__.']['.__FILE__.']');
+        // }
 
-        return $profile;
+        // return $profile;
     }
 
     public function setUserId(string $user_id): self
@@ -282,6 +286,9 @@ class ProfileService
     // returns the User panel with its methods
     public function getUserPanel(): PanelContract
     {
+        if (null == $this->user) {
+            throw new \Exception('['.__LINE__.']['.__FILE__.']');
+        }
         $user_panel = PanelService::make()->getByUser($this->user);
 
         return $user_panel;
@@ -302,6 +309,10 @@ class ProfileService
     // get the User that belongs to this profile
     public function getUser(): UserContract
     {
+        if (null == $this->user) {
+            throw new \Exception('['.__LINE__.']['.__FILE__.']');
+        }
+
         return $this->user;
     }
 
@@ -379,24 +390,17 @@ class ProfileService
     public function hasRole(string $name): bool
     {
         $profile = $this->getProfile();
-        if (null === $profile) {
-            return false;
-        }
+
         // try {
         return $profile->hasRole($name);
         // } catch (\Spatie\Permission\Exceptions\RoleDoesNotExist) {
         //    Role::create(['name' => $name]);
         // }
-
-        return false;
     }
 
     public function hasAnyRole(array $roles): bool
     {
         $profile = $this->getProfile();
-        if (null === $profile) {
-            return false;
-        }
 
         return $profile->hasAnyRole($roles);
     }
@@ -404,9 +408,7 @@ class ProfileService
     public function hasPermissionTo(string $name): bool
     {
         $profile = $this->getProfile();
-        if (null === $profile) {
-            return false;
-        }
+
         try {
             return $profile->hasPermissionTo($name);
         } catch (\Spatie\Permission\Exceptions\PermissionDoesNotExist $th) {

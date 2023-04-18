@@ -14,7 +14,6 @@ use Modules\LU\Models\PermUser;
 use Modules\LU\Models\PermUserRight;
 use Modules\LU\Models\SocialProvider;
 use Modules\Tenant\Services\TenantService;
-use Modules\Xot\Contracts\ModelProfileContract;
 use Modules\Xot\Datas\XotData;
 use Nwidart\Modules\Facades\Module;
 
@@ -50,8 +49,6 @@ trait UserRelationship
 
     /**
      * Undocumented function.
-     *
-     * @return ModelProfileContract
      */
     public function profile(): HasOne
     {

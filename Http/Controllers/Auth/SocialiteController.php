@@ -111,7 +111,7 @@ class SocialiteController extends Controller
                 ]
             );
             if ('' == $user->handle && '' != $handle) {
-                $user->handle = $handle;
+                $user->handle = strval($handle);
                 $user->save();
             }
 

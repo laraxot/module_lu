@@ -118,10 +118,10 @@ trait ResetsPasswords
     /**
      * Reset the given user's password.
      *
-     * @param \Illuminate\Contracts\Auth\CanResetPassword $user
+     * old_param \Illuminate\Contracts\Auth\CanResetPassword $user
      *
-     * ----param \Illuminate\Contracts\Auth\Authenticatable $user
-     * @param string $password
+     * @param \Illuminate\Contracts\Auth\Authenticatable $user
+     * @param string                                     $password
      *
      * @return void
      */
@@ -141,8 +141,10 @@ trait ResetsPasswords
     /**
      * Set the user's password.
      *
-     * @param \Illuminate\Contracts\Auth\CanResetPassword $user
-     * @param string                                      $password
+     * old_param \Illuminate\Contracts\Auth\CanResetPassword $user
+     *
+     * @param \Illuminate\Contracts\Auth\Authenticatable $user
+     * @param string                                     $password
      *
      * @return void
      */
