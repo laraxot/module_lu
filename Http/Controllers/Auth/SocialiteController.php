@@ -6,7 +6,6 @@ namespace Modules\LU\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use Carbon\Carbon;
-use Exception;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Str;
 use Laravel\Socialite\Facades\Socialite;
@@ -97,8 +96,8 @@ class SocialiteController extends Controller
             ->first();
         if (! $socialProvider) {
             $handle = $socialUser->getNickname();
-            if ('' === $handle) {
-                $handle = Str::slug($socialUser->getName());
+            if ('' == $handle) {
+                $handle = Str::slug(strval($socialUser->getName()));
             }
             $user = User::query()->firstOrCreate(
                 [
@@ -146,7 +145,7 @@ class SocialiteController extends Controller
 
         // $user=User::firstOrCreate(['email',$socialUser->getEmail()])
         if (null === $user) {
-            throw new Exception('['.__LINE__.']['.__FILE__.']');
+            throw new \Exception('['.__LINE__.']['.__FILE__.']');
         }
         $user->update(
             [
@@ -158,7 +157,7 @@ class SocialiteController extends Controller
         // auth()->login($user);
         // echo '<h3> redirect to ['.$this->redirectTo().']</h3>';
         if (! \is_string($this->redirectTo())) {
-            throw new Exception('['.__LINE__.']['.class_basename(__CLASS__).']');
+            throw new \Exception('['.__LINE__.']['.class_basename(__CLASS__).']');
         }
 
         return redirect()->intended($this->redirectTo());

@@ -31,7 +31,8 @@ class ResetPasswordController extends BaseController
     public function showResetForm(Request $request): Renderable
     {
         $lang = app()->getLocale();
-        $token = $request->route()->parameter('token');
+        $route = $request->route();
+        $token = $route?->parameter('token');
 
         $piece = 'auth.passwords.reset';
         FileService::viewCopy('lu::'.$piece, 'pub_theme::'.$piece);
