@@ -82,9 +82,6 @@ class ProfileService
 
         $profile = $this->getProfile();
 
-        if (null === $profile) {
-            return 'profile is null ['.__LINE__.']['.class_basename(__CLASS__).']';
-        }
         if (method_exists($profile, $name)) {
             /**
              * @var callable
@@ -185,6 +182,9 @@ class ProfileService
             throw new \Exception('property perm in $this->user not exist');
         }
         */
+        if (null == $this->user) {
+            throw new \Exception('['.__LINE__.']['.__FILE__.']');
+        }
         if (! method_exists($this->user, 'perm')) {
             throw new \Exception('method perm in $this->user not exist');
         }

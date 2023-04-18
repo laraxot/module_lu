@@ -52,7 +52,7 @@ class LUServiceProvider extends XotBaseServiceProvider
         $this->registerEvents();
     }
 
-    public function registerEvents()
+    public function registerEvents(): void
     {
         /*
         Event::listen(
@@ -91,7 +91,7 @@ class LUServiceProvider extends XotBaseServiceProvider
             // $this->publishes([
             //    __DIR__ . '/../Config/xra.php' => config_path('xra.php'),
             // ], 'config');
-            $this->mergeConfigFrom(__DIR__ . '/../Config/auth.php', 'auth');
+            $this->mergeConfigFrom(__DIR__.'/../Config/auth.php', 'auth');
 
             return;
         }

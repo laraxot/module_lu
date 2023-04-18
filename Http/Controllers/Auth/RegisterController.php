@@ -6,6 +6,7 @@ namespace Modules\LU\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Auth\Events\Registered;
+use Illuminate\Contracts\Support\Renderable;
 // --------- Models ------------
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Http\JsonResponse;
@@ -20,7 +21,8 @@ use Modules\Xot\Services\FileService;
 /**
  * Class RegisterController.
  */
-class RegisterController extends BaseController {
+class RegisterController extends BaseController
+{
     use RegistersUsers;
 
     public XotData $xot;
@@ -34,7 +36,8 @@ class RegisterController extends BaseController {
     /**
      * Create a new controller instance.
      */
-    public function __construct() {
+    public function __construct()
+    {
         $this->middleware('guest');
         $this->xot = XotData::from(config('xra'));
         $this->register_type = (string) $this->xot->register_type;
@@ -45,7 +48,8 @@ class RegisterController extends BaseController {
      *
      * @return \Illuminate\Contracts\Validation\Validator
      */
-    protected function validator(array $data) {
+    protected function validator(array $data)
+    {
         if (! isset($data['handle']) && isset($data['username'])) {
             $data['handle'] = $data['username'];
         }
@@ -73,7 +77,8 @@ class RegisterController extends BaseController {
     }
 
     // ---------------------------------------------------------------------------------------
-    public function showRegistrationForm(Request $request) {
+    public function showRegistrationForm(Request $request): Renderable
+    {
         $referrer = str_replace(url('/'), '', url()->previous());
         $params = getRouteParameters();
         $register_type = $this->xot->register_type;
@@ -101,7 +106,8 @@ class RegisterController extends BaseController {
      *
      * @return mixed
      */
-    public function register(Request $request) {
+    public function register(Request $request)
+    {
         $data = $request->all();
         $validated = $this->validator($data)->validate();
 
@@ -145,6 +151,7 @@ class RegisterController extends BaseController {
      *
      * @return mixed
      */
-    protected function registered(Request $request, $user) {
+    protected function registered(Request $request, $user)
+    {
     }
 }// end class

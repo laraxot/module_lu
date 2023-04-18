@@ -28,11 +28,7 @@ class Info extends Component
     {
         $model = ProfileService::make()->getUser();
         $this->model_class = get_class($model);
-        $model_id = $model->getKey();
-        if (! is_int($model_id)) {
-            throw new \Exception('['.__LINE__.']['.__FILE__.']');
-        }
-        $this->model_id = $model_id;
+        $this->model_id = strval($model->getKey());
         // $this->form_data = $model->toArray();
     }
 

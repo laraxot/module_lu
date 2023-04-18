@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Modules\LU\Http\Controllers\Auth;
 
+use Illuminate\Contracts\Support\Renderable;
 use Illuminate\Http\Request;
 // use Illuminate\Foundation\Auth\ResetsPasswords;
 // use Modules\LU\Traits\ResetsPasswords;
@@ -21,12 +22,14 @@ use Modules\Xot\Services\FileService;
 /**
  * Class ResetPasswordController.
  */
-class ResetPasswordController extends BaseController {
+class ResetPasswordController extends BaseController
+{
     use ResetsPasswords;
 
     protected string $redirectTo = '/';
 
-    public function showResetForm(Request $request) {
+    public function showResetForm(Request $request): Renderable
+    {
         $lang = app()->getLocale();
         $token = $request->route()->parameter('token');
 
@@ -54,7 +57,8 @@ class ResetPasswordController extends BaseController {
      *
      * @return void
      */
-    protected function setUserPassword($user, $password) {
+    protected function setUserPassword($user, $password)
+    {
         // $user->password = Hash::make($password);
         $user->update(['passwd' => $password]);
     }

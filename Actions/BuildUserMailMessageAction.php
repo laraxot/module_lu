@@ -9,10 +9,12 @@ use Illuminate\Support\Str;
 use Modules\Notify\Models\NotifyTheme;
 use Spatie\QueueableAction\QueueableAction;
 
-class BuildUserMailMessageAction {
+class BuildUserMailMessageAction
+{
     use QueueableAction;
 
-    public function execute(string $name, array $view_params): MailMessage {
+    public function execute(string $name, array $view_params): MailMessage
+    {
         $theme = NotifyTheme::firstOrCreate([
             'lang' => $view_params['lang'],
             'type' => 'email', // email,sms,whatsapp,piccione
@@ -52,6 +54,9 @@ class BuildUserMailMessageAction {
         // $out = view($view_html, $this->view_params);
         // dddx($this->view_params);
         // die($out->render());
+        if (null == $theme->subject) {
+            $theme->subject = 'subject is missing';
+        }
 
         return (new MailMessage())
             // ->from('barrett@example.com', 'Barrett Blair')

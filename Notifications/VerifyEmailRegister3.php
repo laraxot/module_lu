@@ -12,7 +12,8 @@ use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Facades\Lang;
 use Illuminate\Support\Facades\URL;
 
-class VerifyEmailRegister3 extends BaseVerifyEmail {
+class VerifyEmailRegister3 extends BaseVerifyEmail
+{
     /**
      * The callback that should be used to create the verify email URL.
      *
@@ -29,7 +30,8 @@ class VerifyEmailRegister3 extends BaseVerifyEmail {
 
     public string $password;
 
-    public function __construct($password) {
+    public function __construct(string $password)
+    {
         $this->password = $password;
     }
 
@@ -40,7 +42,8 @@ class VerifyEmailRegister3 extends BaseVerifyEmail {
      *
      * @return array|string
      */
-    public function via($notifiable) {
+    public function via($notifiable)
+    {
         return ['mail'];
     }
 
@@ -51,7 +54,8 @@ class VerifyEmailRegister3 extends BaseVerifyEmail {
      *
      * @return \Illuminate\Notifications\Messages\MailMessage
      */
-    public function toMail($notifiable) {
+    public function toMail($notifiable)
+    {
         $verificationUrl = $this->verificationUrl($notifiable);
 
         if (static::$toMailCallback) {
@@ -68,7 +72,8 @@ class VerifyEmailRegister3 extends BaseVerifyEmail {
      *
      * @return \Illuminate\Notifications\Messages\MailMessage
      */
-    protected function buildMailMessage($url) {
+    protected function buildMailMessage($url)
+    {
         return (new MailMessage())
             ->subject(Lang::get('Verify Email Address'))
 
@@ -86,7 +91,8 @@ class VerifyEmailRegister3 extends BaseVerifyEmail {
      *
      * @return string
      */
-    protected function verificationUrl($notifiable) {
+    protected function verificationUrl($notifiable)
+    {
         if (static::$createUrlCallback) {
             return call_user_func(static::$createUrlCallback, $notifiable);
         }
@@ -108,7 +114,8 @@ class VerifyEmailRegister3 extends BaseVerifyEmail {
      *
      * @return void
      */
-    public static function createUrlUsing($callback) {
+    public static function createUrlUsing($callback)
+    {
         static::$createUrlCallback = $callback;
     }
 
@@ -119,7 +126,8 @@ class VerifyEmailRegister3 extends BaseVerifyEmail {
      *
      * @return void
      */
-    public static function toMailUsing($callback) {
+    public static function toMailUsing($callback)
+    {
         static::$toMailCallback = $callback;
     }
 }
