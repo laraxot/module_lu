@@ -12,8 +12,7 @@ use Modules\LU\Services\ProfileService;
 /**
  * Class LUComposer.
  */
-class LUComposer
-{
+class LUComposer {
     public array $vars = [];
 
     /**
@@ -21,20 +20,23 @@ class LUComposer
      *
      * @return void
      */
-    public function compose(View $view)
-    {
+    public function compose(View $view) {
         // $user = Auth::user();
 
         $view->with('profile', $this->getProfile());
     }
 
-    public function getProfile(): ProfileService
-    {
+    public function getProfile(): ProfileService {
         if (isset($this->vars['profile'])) {
             return $this->vars['profile'];
         }
         $profile = ProfileService::make(); // ->get($user);
-        $profile_model = $profile->getProfile();
+        try {
+            $profile_model = $profile->getProfile();
+        } catch (\Exception $e) {
+            $profile_model = null;
+        }
+
         if (null != $profile_model && method_exists($profile_model, 'init')) {
             $profile_model->init();
         }
