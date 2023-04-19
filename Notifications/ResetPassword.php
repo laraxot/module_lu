@@ -22,9 +22,14 @@ use Modules\LU\Datas\ResetPasswordData;
  * Class ResetPassword.
  */
 class ResetPassword extends BaseResetPassword // Notification
-{
-    public array $view_params = [];
-
+{public array $view_params = [];
+    /**
+     * Undocumented function.
+     *
+     * @param Model $notifiable
+     *
+     * @return void
+     */
     public function toMail($notifiable)
     {
         if (static::$toMailCallback) {
