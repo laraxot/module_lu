@@ -33,9 +33,9 @@ class VerifyEmail extends BaseVerifyEmail
     /**
      * Build the mail representation of the notification.
      *
-     * @param mixed $notifiable
+     * @param object $notifiable
      *
-     * @return \Illuminate\Notifications\Messages\MailMessage
+     * @return \Illuminate\Notifications\Messages\MailMessage|mixed
      */
     public function toMail($notifiable)
     {
@@ -44,7 +44,7 @@ class VerifyEmail extends BaseVerifyEmail
                 // dddx(['notifiable' => $notifiable, fake()->password()]);
                 $password = fake()->password();
                 $res = tap($notifiable)->update([
-                    'handle' => Str::before($notifiable->email, '@'),
+                    'handle' => Str::before(strval($notifiable->email), '@') ?? fake()->name(),
                     'passwd' => $password,
                 ]);
                 $this->view_params['password'] = $password;
@@ -52,6 +52,9 @@ class VerifyEmail extends BaseVerifyEmail
         }
 
         $this->locale = app()->getLocale();
+        if (! method_exists($notifiable, 'toArray')) {
+            throw new \Exception('['.__LINE__.']['.__FILE__.']');
+        }
         $this->view_params = array_merge($this->view_params, $notifiable->toArray());
         $this->view_params['lang'] = $this->locale;
 

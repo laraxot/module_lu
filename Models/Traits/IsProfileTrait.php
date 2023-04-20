@@ -15,16 +15,19 @@ use Modules\LU\Models\User;
  *
  * @property string|null $last_name
  */
-trait IsProfileTrait {
+trait IsProfileTrait
+{
     // --- RELATIONS
-    public function user(): BelongsTo {
+    public function user(): BelongsTo
+    {
         return $this->belongsTo(User::class);
     }
 
     // uguale a quello di ProfilePanel, forse è meglio qui?
     // ne sta un altro utilizzato in UserPanel
 
-    public function avatar(?int $size = 100): ?string {
+    public function avatar(?int $size = 100): ?string
+    {
         $user = $this->user;
         if (! \is_object($user)) {
             if (isset($this->user_id)) {
@@ -42,7 +45,8 @@ trait IsProfileTrait {
         return "https://www.gravatar.com/avatar/$email?d=$default&s=$size";
     }
 
-    public function getFullNameAttribute(?string $value): ?string {
+    public function getFullNameAttribute(?string $value): ?string
+    {
         if (null !== $value) {
             return $value;
         }
@@ -77,7 +81,8 @@ trait IsProfileTrait {
         return $value;
     }
 
-    public function getEmailAttribute(?string $value): ?string {
+    public function getEmailAttribute(?string $value): ?string
+    {
         if (null !== $value) {
             return $value;
         }
@@ -98,7 +103,8 @@ trait IsProfileTrait {
     /**
      * Undocumented getFirstNameAttribute.
      */
-    public function getFirstNameAttribute(?string $value): ?string {
+    public function getFirstNameAttribute(?string $value): ?string
+    {
         if (null !== $value) {
             return $value;
         }
@@ -115,11 +121,13 @@ trait IsProfileTrait {
         return $value;
     }
 
-    public function fullName(): ?string {
+    public function fullName(): ?string
+    {
         return $this->first_name.' '.$this->last_name;
     }
 
-    public function handle(): string {
+    public function handle(): string
+    {
         if (null === $this->user) {
             throw new \Exception('['.__LINE__.']['.class_basename(__CLASS__).']');
         }
@@ -127,17 +135,22 @@ trait IsProfileTrait {
         return $this->user->handle;
     }
 
-    public function assignArea(string $name): self {
+    public function assignArea(string $name): self
+    {
         $area = Area::where('area_define_name', $name)->first();
         if (null === $this->user) {
             return $this;
         }
-        $this->user->areas()->syncWithoutDetaching($area);
+        try {
+            $this->user->areas()->syncWithoutDetaching($area);
+        } catch (\Exception $e) {
+        }
 
         return $this;
     }
 
-    public function getAreas(): Collection {
+    public function getAreas(): Collection
+    {
         if (null == $this->user) {
             return collect([]);
         }
@@ -145,7 +158,8 @@ trait IsProfileTrait {
         return $this->user->areas;
     }
 
-    public function hasAnyArea(array $areas): bool {
+    public function hasAnyArea(array $areas): bool
+    {
         $res = $this->user->areas->filter(function ($item) use ($areas) {
             return in_array($item->area_define_name, $areas);
         });

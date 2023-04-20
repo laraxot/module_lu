@@ -10,6 +10,7 @@ namespace Modules\LU\Notifications;
 
 use Illuminate\Auth\Notifications\ResetPassword as BaseResetPassword;
 // use Illuminate\Auth\Notifications\ResetPassword as ResetPasswordNotification;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Notifications\Messages\MailMessage;
 use Illuminate\Notifications\Notification;
 use Illuminate\Support\Arr;
@@ -21,20 +22,22 @@ use Modules\LU\Datas\ResetPasswordData;
 /**
  * Class ResetPassword.
  */
-class ResetPassword extends BaseResetPassword // Notification
-{public array $view_params = [];
+class ResetPassword extends BaseResetPassword
+{
+    public array $view_params = [];
+
     /**
      * Undocumented function.
      *
      * @param Model $notifiable
      *
-     * @return void
+     * @return \Illuminate\Notifications\Messages\MailMessage|mixed
      */
     public function toMail($notifiable)
     {
         if (static::$toMailCallback) {
-            dddx(static::$toMailCallback);
-            // return call_user_func(static::$toMailCallback, $notifiable, $this->token);
+            // dddx(static::$toMailCallback);
+            return call_user_func(static::$toMailCallback, $notifiable, $this->token);
         }
         $this->locale = app()->getLocale();
         $this->view_params = array_merge($this->view_params, $notifiable->toArray());
