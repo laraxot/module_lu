@@ -5,19 +5,18 @@ declare(strict_types=1);
 namespace Modules\LU\Notifications;
 
 use Illuminate\Auth\Notifications\VerifyEmail as BaseVerifyEmail;
-use Illuminate\Notifications\Messages\MailMessage;
 use Illuminate\Support\Facades\Lang;
 use Illuminate\Support\Str;
 use Modules\LU\Actions\BuildUserMailMessageAction;
 use Modules\LU\Models\User;
-use Modules\Notify\Models\NotifyTheme;
 use Modules\Payment\View\Components\NexiPayment;
 use Modules\Xot\Datas\XotData;
 
 /**
  * Class VerifyEmail.
  */
-class VerifyEmail extends BaseVerifyEmail {
+class VerifyEmail extends BaseVerifyEmail
+{
     public XotData $xot;
     public string $register_type;
     public array $view_params = [];
@@ -25,7 +24,8 @@ class VerifyEmail extends BaseVerifyEmail {
     /**
      * Create a notification instance.
      */
-    public function __construct() {
+    public function __construct()
+    {
         $this->xot = XotData::from(config('xra'));
         $this->register_type = (string) $this->xot->register_type;
     }
@@ -37,6 +37,37 @@ class VerifyEmail extends BaseVerifyEmail {
      *
      * @return \Illuminate\Notifications\Messages\MailMessage
      */
+    public function toMail($notifiable)
+    {
+        if ($notifiable instanceof User) {
+            if (3 == $this->register_type && null == $notifiable->password) {
+                // dddx(['notifiable' => $notifiable, fake()->password()]);
+                $password = fake()->password();
+                $res = tap($notifiable)->update([
+                    'handle' => Str::before($notifiable->email, '@'),
+                    'passwd' => $password,
+                ]);
+                $this->view_params['password'] = $password;
+            }
+        }
+
+        $this->locale = app()->getLocale();
+        $this->view_params = array_merge($this->view_params, $notifiable->toArray());
+        $this->view_params['lang'] = $this->locale;
+
+        $verificationUrl = $this->verificationUrl($notifiable);
+
+        if (static::$toMailCallback) {
+            return call_user_func(static::$toMailCallback, $notifiable, $verificationUrl);
+        }
+
+        $this->view_params['url'] = (string) $verificationUrl;
+        $this->view_params['post_id'] = (string) $this->register_type;
+
+        return app(BuildUserMailMessageAction::class)->execute('verify-email', $this->view_params);
+    }
+
+    /*
     public function toMail($notifiable) {
         $verificationUrl = $this->verificationUrl($notifiable);
         $this->view_params['url'] = (string) $verificationUrl;
@@ -95,8 +126,7 @@ class VerifyEmail extends BaseVerifyEmail {
 
         return app(BuildUserMailMessageAction::class)->execute('verify-email', $this->view_params);
 
-       
-    }
 
-   
+    }
+    */
 }
