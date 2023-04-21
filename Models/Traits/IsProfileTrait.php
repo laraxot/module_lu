@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Modules\LU\Models\Traits;
 
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Str;
 use Modules\LU\Models\Area;
@@ -138,12 +139,12 @@ trait IsProfileTrait
     public function assignArea(string $name): self
     {
         $area = Area::where('area_define_name', $name)->first();
-        if (null === $this->user) {
+        if (null === $this->user || null == $area) {
             return $this;
         }
-        try {
-            $this->user->areas()->syncWithoutDetaching($area);
-        } catch (\Exception $e) {
+        $user_areas = $this->user->areas();
+        if ($user_areas instanceof BelongsToMany) {
+            $user_areas->syncWithoutDetaching($area);
         }
 
         return $this;
