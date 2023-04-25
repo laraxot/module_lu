@@ -142,6 +142,11 @@ class ProfileService
         return $this;
     }
 
+    public function can(string $permission): bool
+    {
+        return false;
+    }
+
     // returns User's full name (fist and last name)
     public function fullName(): ?string
     {
