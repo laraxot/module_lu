@@ -13,6 +13,9 @@ https://www.itsolutionstuff.com/post/laravel-10-custom-login-and-registration-ex
 Laravel 10 Custom Forgot Password Example
 https://medium.com/@laraveltuts/laravel-10-custom-forgot-password-example-75cbc35208c3
 
+Laravel authentication with sanctum
+https://medium.com/@miladev95/laravel-authentication-with-sanctum-9a04affd7962
+
 How to Add Github Login in Laravel Application
 https://larachamp.com/how-to-add-github-login-in-laravel-application/
 
