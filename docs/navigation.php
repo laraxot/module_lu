@@ -44,4 +44,10 @@ return [
     'Profiles' => [
         'url' => 'docs/profiles',
     ],
+    'Links' => [
+        'children' => [
+            'tutorial' => 'docs/links/tutorial',
+            'links' => 'docs/links/tinks',
+        ],
+    ],
 ];
