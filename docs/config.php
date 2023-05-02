@@ -4,24 +4,25 @@ declare(strict_types=1);
 
 use Illuminate\Support\Str;
 
-return [
-    'baseUrl' => 'https://laraxot.github.io/module_lu',
-    'basePath' => 'module_lu',
-    'production' => false,
-    'siteName' => 'Modulo LU',
-    'siteDescription' => 'Modulo LU',
+$moduleName = 'LU';
 
-    'path' => '{language}/{type}/{-title}',
+return [
+    'baseUrl' => '',
+    'production' => false,
+    'siteName' => 'Modulo '.$moduleName,
+    'siteDescription' => 'Modulo '.$moduleName,
+    'lang' => 'it',
 
     'collections' => [
-        'posts-it' => [
-            'type' => 'blog',
-            'language' => 'it',
+        'posts' => [
+            'path' => function ($page) {
+                return $page->lang.'/posts/'.Str::slug($page->getFilename());
+            },
         ],
-
-        'posts-en' => [
-            'type' => 'blog',
-            'language' => 'en',
+        'docs' => [
+            'path' => function ($page) {
+                return $page->lang.'/docs/'.Str::slug($page->getFilename());
+            },
         ],
     ],
 
@@ -44,6 +45,10 @@ return [
         }
     },
     'url' => function ($page, $path) {
-        return Str::startsWith($path, 'http') ? $path : '/'.trimPath($path);
+        if (Str::startsWith($path, 'http')) {
+            return $path;
+        }
+        // return Str::startsWith($path, 'http') ? $path : '/' . trimPath($path);
+        return url('/'.$page->lang.'/'.trimPath($path));
     },
 ];
