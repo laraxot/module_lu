@@ -6,6 +6,7 @@ use Illuminate\Support\Str;
 
 return [
     'baseUrl' => 'https://laraxot.github.io/module_lu',
+    'basePath' => 'module_lu',
     'production' => false,
     'siteName' => 'Modulo LU',
     'siteDescription' => 'Modulo LU',
