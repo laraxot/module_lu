@@ -45,6 +45,7 @@ return [
         'url' => 'docs/profiles',
     ],
     'Links' => [
+        'url' => '#',
         'children' => [
             'tutorial' => 'docs/links/tutorial',
             'links' => 'docs/links/tinks',
