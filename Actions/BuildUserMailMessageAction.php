@@ -40,7 +40,7 @@ class BuildUserMailMessageAction
         $view_params = array_merge($view_params, $theme->toArray());
         // $this->view_params['url'] = (string)$url;
 
-        $body_html = $theme->body_html;
+        $body_html = strval($theme->body_html);
         foreach ($view_params as $k => $v) {
             if (\is_string($v)) {
                 $body_html = Str::replace('##'.$k.'##', $v, $body_html);
