@@ -2,8 +2,6 @@
 
 declare(strict_types=1);
 
-declare(strict_types=1);
-
 namespace Modules\LU\Traits;
 
 use Illuminate\Auth\Access\AuthorizationException;
@@ -15,7 +13,8 @@ use Modules\LU\Services\ProfileService;
 use Modules\Notify\Models\Contact;
 use Modules\Xot\Datas\XotData;
 
-trait VerifiesEmails {
+trait VerifiesEmails
+{
     use RedirectsUsers;
 
     /**
@@ -23,7 +22,8 @@ trait VerifiesEmails {
      *
      * @return \Illuminate\Http\RedirectResponse|\Illuminate\View\View
      */
-    public function show(Request $request) {
+    public function show(Request $request)
+    {
         return $request->user()->hasVerifiedEmail()
             ? redirect($this->redirectPath())
             : view('auth.verify');
@@ -36,8 +36,10 @@ trait VerifiesEmails {
      *
      * @return \Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse
      */
-    public function verify(Request $request) {
+    public function verify(Request $request)
+    {
         $redirect = redirect($this->redirectPath())->with('verified', true);
+        // --- e' carnevale !
         $xot = XotData::from(config('xra'));
         if ('pfed' == $xot->verification_type) {
             $view = 'pfed::auth.verification_successful';
@@ -76,7 +78,8 @@ trait VerifiesEmails {
      *
      * @return mixed
      */
-    protected function verified(Request $request) {
+    protected function verified(Request $request)
+    {
         // dddx($request->user());
         $contact = new Contact();
         $contact->value = $request->user()->email;
@@ -95,7 +98,8 @@ trait VerifiesEmails {
      *
      * @return \Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse
      */
-    public function resend(Request $request) {
+    public function resend(Request $request)
+    {
         if ($request->user()->hasVerifiedEmail()) {
             return $request->wantsJson()
                 ? new JsonResponse([], 204)
