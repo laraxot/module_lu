@@ -7,7 +7,7 @@ namespace Modules\LU\Models;
 use Spatie\Permission\Models\Role as SpatieRole;
 
 /**
- * Modules\LU\Models\Role.
+ * Modules\LU\Models\Role
  *
  * @property int $id
  * @property string $name
@@ -27,8 +27,6 @@ use Spatie\Permission\Models\Role as SpatieRole;
  * @method static \Illuminate\Database\Eloquent\Builder|Role whereId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Role whereName($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Role whereUpdatedAt($value)
- * @property-read \Illuminate\Database\Eloquent\Collection<int, \Modules\LU\Models\Permission> $permissions
- * @property-read \Illuminate\Database\Eloquent\Collection<int, \Modules\LU\Models\User> $users
  * @mixin \Eloquent
  */
 class Role extends SpatieRole

@@ -7,7 +7,7 @@ namespace Modules\LU\Models;
 use Spatie\Permission\Models\Permission as SpatiePermission;
 
 /**
- * Modules\LU\Models\Permission.
+ * Modules\LU\Models\Permission
  *
  * @property int $id
  * @property string $name
@@ -30,9 +30,6 @@ use Spatie\Permission\Models\Permission as SpatiePermission;
  * @method static \Illuminate\Database\Eloquent\Builder|Permission whereId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Permission whereName($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Permission whereUpdatedAt($value)
- * @property-read \Illuminate\Database\Eloquent\Collection<int, Permission> $permissions
- * @property-read \Illuminate\Database\Eloquent\Collection<int, \Modules\LU\Models\Role> $roles
- * @property-read \Illuminate\Database\Eloquent\Collection<int, \Modules\LU\Models\User> $users
  * @mixin \Eloquent
  */
 class Permission extends SpatiePermission
