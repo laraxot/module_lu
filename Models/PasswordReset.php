@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace Modules\LU\Models;
 
 /**
- * Modules\LU\Models\PasswordReset.
+ * Modules\LU\Models\PasswordReset
  *
  * @property string $email
  * @property string $token

@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace Modules\LU\Models;
 
 /**
- * Modules\LU\Models\ModelHasRole.
+ * Modules\LU\Models\ModelHasRole
  *
  * @property int $role_id
  * @property string $model_type

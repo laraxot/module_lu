@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace Modules\LU\Models;
 
 /**
- * Modules\LU\Models\RoleHasPermission.
+ * Modules\LU\Models\RoleHasPermission
  *
  * @property int $permission_id
  * @property int $role_id

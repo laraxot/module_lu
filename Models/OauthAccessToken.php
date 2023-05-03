@@ -8,13 +8,8 @@ namespace Modules\LU\Models;
 use Laravel\Passport\Token as PassportToken;
 
 /**
- * Modules\LU\Models\OauthAccessToken.
+ * Modules\LU\Models\OauthAccessToken
  *
- * @property-read \Modules\LU\Models\OauthClient|null $client
- * @property-read \Modules\LU\Models\User|null $user
- * @method static \Illuminate\Database\Eloquent\Builder|OauthAccessToken newModelQuery()
- * @method static \Illuminate\Database\Eloquent\Builder|OauthAccessToken newQuery()
- * @method static \Illuminate\Database\Eloquent\Builder|OauthAccessToken query()
  * @property string $id
  * @property int|null $user_id
  * @property int $client_id
@@ -24,6 +19,11 @@ use Laravel\Passport\Token as PassportToken;
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
  * @property \Illuminate\Support\Carbon|null $expires_at
+ * @property-read \Modules\LU\Models\OauthClient|null $client
+ * @property-read \Modules\LU\Models\User|null $user
+ * @method static \Illuminate\Database\Eloquent\Builder|OauthAccessToken newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|OauthAccessToken newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|OauthAccessToken query()
  * @method static \Illuminate\Database\Eloquent\Builder|OauthAccessToken whereClientId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|OauthAccessToken whereCreatedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|OauthAccessToken whereExpiresAt($value)

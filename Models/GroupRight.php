@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace Modules\LU\Models;
 
 /**
- * Modules\LU\Models\GroupRight.
+ * Modules\LU\Models\GroupRight
  *
  * @property int $id
  * @property int $group_id

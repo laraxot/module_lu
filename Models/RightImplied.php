@@ -7,7 +7,7 @@ namespace Modules\LU\Models;
 // use Modules\Xot\Models\XotBaseModel;
 
 /**
- * Modules\LU\Models\RightImplied.
+ * Modules\LU\Models\RightImplied
  *
  * @property int $id
  * @property int $right_id
