@@ -263,12 +263,8 @@ class ProfileService
 
             return $this->profile;
         }
-        // $profile = $this->profile;
-        // if (null == $profile) {
-        throw new \Exception('['.__LINE__.']['.__FILE__.']');
-        // }
 
-        // return $profile;
+        throw new \Exception('['.__LINE__.']['.__FILE__.']');
     }
 
     public function setUserId(string $user_id): self
