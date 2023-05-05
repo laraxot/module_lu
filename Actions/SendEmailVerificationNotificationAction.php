@@ -6,9 +6,16 @@ namespace Modules\LU\Actions;
 
 use Spatie\QueueableAction\QueueableAction;
 
-class SendEmailVerificationNotificationAction {
+class SendEmailVerificationNotificationAction
+{
     use QueueableAction;
 
-    public function execute() {
+    /**
+     * Undocumented function.
+     *
+     * @return void
+     */
+    public function execute()
+    {
     }
 }

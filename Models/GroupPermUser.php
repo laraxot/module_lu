@@ -7,7 +7,7 @@ namespace Modules\LU\Models;
 use Illuminate\Database\Eloquent\Relations\HasOne;
 
 /**
- * Modules\LU\Models\GroupPermUser.
+ * Modules\LU\Models\GroupPermUser
  *
  * @property int $id
  * @property int $perm_user_id

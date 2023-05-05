@@ -14,6 +14,7 @@ use Modules\LU\Models\PermUser;
 use Modules\LU\Models\PermUserRight;
 use Modules\LU\Models\SocialProvider;
 use Modules\Tenant\Services\TenantService;
+use Modules\Xot\Datas\XotData;
 use Nwidart\Modules\Facades\Module;
 
 /*
@@ -46,17 +47,13 @@ trait UserRelationship
         return $this->hasMany(PermUser::class);
     }
 
+    /**
+     * Undocumented function.
+     */
     public function profile(): HasOne
     {
-        /*
-        $profile = TenantService::model('profile');
-        $profile_class = \get_class($profile);
-        */
-        $main_module = config('xra.main_module');
-        if ('' === $main_module) {
-            throw new \Exception('set [xra.main_module]');
-        }
-        $profile_class = 'Modules\\'.$main_module.'\Models\Profile';
+        $xot = XotData::make();
+        $profile_class = $xot->getProfileClass();
 
         return $this->hasOne($profile_class);
     }
@@ -78,6 +75,7 @@ trait UserRelationship
 
         $res = $profile->firstOrCreate(['user_id' => $this->getKey()]);
 
+        /* verificare. va in loop infinito tra guid e title
         if (method_exists($res, 'post')) {
             $res->post()->firstOrCreate(
                 [
@@ -90,17 +88,17 @@ trait UserRelationship
                 ]
             );
         } else {
-            /*
-            dddx([
-                'res_class' => get_class($res),
-                'profile_class' => $profile_class,
-                'res' => $this->hasOne($profile_class, 'user_id', 'user_id')->first(),
-                'exists' => $this->hasOne($profile_class, 'user_id', 'user_id')->exists(),
-                'auth_is' => $this->user_id,
-                'res' => $res,
-            ]);
-            */
-        }
+
+        dddx([
+            'res_class' => get_class($res),
+            'profile_class' => $profile_class,
+            'res' => $this->hasOne($profile_class, 'user_id', 'user_id')->first(),
+            'exists' => $this->hasOne($profile_class, 'user_id', 'user_id')->exists(),
+            'auth_is' => $this->user_id,
+            'res' => $res,
+        ]);
+
+        }*/
 
         // return $this->profile();
         return $this->hasOne($profile_class);

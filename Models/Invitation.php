@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace Modules\LU\Models;
 
 /**
- * Modules\LU\Models\Invitation.
+ * Modules\LU\Models\Invitation
  *
  * @property int $id
  * @property string $email

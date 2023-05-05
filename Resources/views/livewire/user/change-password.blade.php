@@ -10,5 +10,6 @@
 
     <x-flash-message />
     <h4>&nbsp;</h4>
-    <button type="button" wire:click="save()" class="btn btn-success">Change Password</button>
+    {{-- <button type="button" wire:click="save()" class="btn btn-success">Change Password</button> --}}
+    <x-button wire:click="save()">Change Password</x-button>
 </div>

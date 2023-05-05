@@ -9,7 +9,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 
 /**
- * Modules\LU\Models\PermUser.
+ * Modules\LU\Models\PermUser
  *
  * @property int $id
  * @property int $user_id
@@ -19,12 +19,6 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
  * @property \Illuminate\Support\Carbon|null $updated_at
  * @property string|null $created_by
  * @property string|null $updated_by
- * @property string|null $deleted_at
- * @property string|null $deleted_by
- * @property string|null $deleted_ip
- * @property string|null $created_ip
- * @property string|null $updated_ip
- * @property string|null $guid
  * @property-read \Illuminate\Database\Eloquent\Collection<int, \Modules\LU\Models\AreaPermUser> $areaPermUsers
  * @property-read int|null $area_perm_users_count
  * @property-read \Illuminate\Database\Eloquent\Collection<int, \Modules\LU\Models\Area> $areas
@@ -43,16 +37,10 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
  * @method static \Illuminate\Database\Eloquent\Builder|PermUser whereAuthContainerName($value)
  * @method static \Illuminate\Database\Eloquent\Builder|PermUser whereCreatedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|PermUser whereCreatedBy($value)
- * @method static \Illuminate\Database\Eloquent\Builder|PermUser whereCreatedIp($value)
- * @method static \Illuminate\Database\Eloquent\Builder|PermUser whereDeletedAt($value)
- * @method static \Illuminate\Database\Eloquent\Builder|PermUser whereDeletedBy($value)
- * @method static \Illuminate\Database\Eloquent\Builder|PermUser whereDeletedIp($value)
- * @method static \Illuminate\Database\Eloquent\Builder|PermUser whereGuid($value)
  * @method static \Illuminate\Database\Eloquent\Builder|PermUser whereId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|PermUser wherePermType($value)
  * @method static \Illuminate\Database\Eloquent\Builder|PermUser whereUpdatedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|PermUser whereUpdatedBy($value)
- * @method static \Illuminate\Database\Eloquent\Builder|PermUser whereUpdatedIp($value)
  * @method static \Illuminate\Database\Eloquent\Builder|PermUser whereUserId($value)
  * @mixin \Eloquent
  */

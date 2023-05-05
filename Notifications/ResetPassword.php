@@ -8,38 +8,45 @@ declare(strict_types=1);
 
 namespace Modules\LU\Notifications;
 
-use Exception;
-use Illuminate\Support\Arr;
-// use Illuminate\Auth\Notifications\ResetPassword as ResetPasswordNotification;
-use Illuminate\Support\Facades\URL;
-use Illuminate\Support\Facades\Lang;
-use Modules\LU\Datas\ResetPasswordData;
-use Illuminate\Notifications\Notification;
-use Illuminate\Notifications\Messages\MailMessage;
-use Modules\LU\Actions\BuildUserMailMessageAction;
 use Illuminate\Auth\Notifications\ResetPassword as BaseResetPassword;
+// use Illuminate\Auth\Notifications\ResetPassword as ResetPasswordNotification;
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Notifications\Messages\MailMessage;
+use Illuminate\Notifications\Notification;
+use Illuminate\Support\Arr;
+use Illuminate\Support\Facades\Lang;
+use Illuminate\Support\Facades\URL;
+use Modules\LU\Actions\BuildUserMailMessageAction;
+use Modules\LU\Datas\ResetPasswordData;
 
 /**
  * Class ResetPassword.
  */
-class ResetPassword extends BaseResetPassword //Notification
+class ResetPassword extends BaseResetPassword
 {
-
     public array $view_params = [];
 
-
+    /**
+     * Undocumented function.
+     *
+     * @param Model $notifiable
+     *
+     * @return \Illuminate\Notifications\Messages\MailMessage|mixed
+     */
     public function toMail($notifiable)
     {
         if (static::$toMailCallback) {
+            // dddx(static::$toMailCallback);
             return call_user_func(static::$toMailCallback, $notifiable, $this->token);
         }
         $this->locale = app()->getLocale();
         $this->view_params = array_merge($this->view_params, $notifiable->toArray());
         $this->view_params['lang'] = $this->locale;
-        //$url = url(route('password.reset', $this->token, false));
+        // $url = url(route('password.reset', $this->token, false));
         $url = $this->resetUrl($notifiable);
 
         $this->view_params['url'] = $url;
+
         return app(BuildUserMailMessageAction::class)->execute('reset-password', $this->view_params);
     }
 
@@ -68,8 +75,8 @@ class ResetPassword extends BaseResetPassword //Notification
 
         $url = url(route('password.reset', $this->token, false));
         $subject = trans('lu::notifications.reset_password.subject');
-        if (!is_string($subject)) {
-            throw new Exception('[' . __LINE__ . '][' . __FILE__ . ']');
+        if (! is_string($subject)) {
+            throw new \Exception('['.__LINE__.']['.__FILE__.']');
         }
         $mail = (new MailMessage())
             // ->from('admin@app.com', 'AppName')
@@ -118,7 +125,6 @@ class ResetPassword extends BaseResetPassword //Notification
              ->action('Reset Password', url(route('password.reset', $this->token, false)))
              ->line(Lang::getFromJson('If you did not request a password reset, no further action is required.'));
         */
-
 
         /*
         $reset_password_url=url(route('password.reset', $this->token, false));

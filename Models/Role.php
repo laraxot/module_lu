@@ -7,7 +7,7 @@ namespace Modules\LU\Models;
 use Spatie\Permission\Models\Role as SpatieRole;
 
 /**
- * Modules\LU\Models\Role.
+ * Modules\LU\Models\Role
  *
  * @property int $id
  * @property string $name

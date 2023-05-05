@@ -9,6 +9,10 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Auth;
 use Modules\Cms\Contracts\PanelContract;
+<<<<<<< HEAD
+=======
+use Modules\Cms\Datas\LinkData;
+>>>>>>> 33473522217c9f90c4ee9d2b9a944d43ddc7ab6a
 use Modules\Cms\Services\PanelService;
 use Modules\LU\Models\Area;
 use Modules\LU\Models\Permission;
@@ -18,6 +22,10 @@ use Modules\Xot\Contracts\ModelProfileContract;
 use Modules\Xot\Contracts\UserContract;
 use Modules\Xot\Datas\XotData;
 use Nwidart\Modules\Facades\Module;
+<<<<<<< HEAD
+=======
+use Spatie\LaravelData\DataCollection;
+>>>>>>> 33473522217c9f90c4ee9d2b9a944d43ddc7ab6a
 
 /**
  * Class ProfileService.
@@ -77,9 +85,12 @@ class ProfileService {
 
         $profile = $this->getProfile();
 
+<<<<<<< HEAD
         if (null === $profile) {
             return 'profile is null ['.__LINE__.']['.class_basename(__CLASS__).']';
         }
+=======
+>>>>>>> 33473522217c9f90c4ee9d2b9a944d43ddc7ab6a
         if (method_exists($profile, $name)) {
             /**
              * @var callable
@@ -137,8 +148,18 @@ class ProfileService {
         return $this;
     }
 
+    public function can(string $permission): bool
+    {
+        return false;
+    }
+
     // returns User's full name (fist and last name)
+<<<<<<< HEAD
     public function fullName(): ?string {
+=======
+    public function fullName(): ?string
+    {
+>>>>>>> 33473522217c9f90c4ee9d2b9a944d43ddc7ab6a
         if (null === $this->user) {
             return null;
         }
@@ -154,7 +175,12 @@ class ProfileService {
     }
 
     // returns username
+<<<<<<< HEAD
     public function handle(): string {
+=======
+    public function handle(): string
+    {
+>>>>>>> 33473522217c9f90c4ee9d2b9a944d43ddc7ab6a
         if (null === $this->user) {
             return 'unknown';
         }
@@ -176,6 +202,12 @@ class ProfileService {
             throw new \Exception('property perm in $this->user not exist');
         }
         */
+<<<<<<< HEAD
+=======
+        if (null == $this->user) {
+            throw new \Exception('['.__LINE__.']['.__FILE__.']');
+        }
+>>>>>>> 33473522217c9f90c4ee9d2b9a944d43ddc7ab6a
         if (! method_exists($this->user, 'perm')) {
             throw new \Exception('method perm in $this->user not exist');
         }
@@ -189,8 +221,14 @@ class ProfileService {
     }
 
     // returns User's fist name
+<<<<<<< HEAD
     public function name(): string {
         return (string) $this->user->first_name;
+=======
+    public function name(): string
+    {
+        return (string) $this->user?->first_name;
+>>>>>>> 33473522217c9f90c4ee9d2b9a944d43ddc7ab6a
     }
 
     // returns the Profile's action url (example: http://domain.xx/admin/it/lu/profiles/1/?_act=show)
@@ -205,7 +243,12 @@ class ProfileService {
      *
      * @return string|null
      */
+<<<<<<< HEAD
     public function avatar($size = 100) {
+=======
+    public function avatar($size = 100)
+    {
+>>>>>>> 33473522217c9f90c4ee9d2b9a944d43ddc7ab6a
         if (null === $this->user) {
             return null;
         }
@@ -217,8 +260,14 @@ class ProfileService {
     }
 
     // returns User email
+<<<<<<< HEAD
     public function email(): ?string {
         return $this->user->email;
+=======
+    public function email(): ?string
+    {
+        return $this->user?->email;
+>>>>>>> 33473522217c9f90c4ee9d2b9a944d43ddc7ab6a
     }
 
     // returns the
@@ -228,26 +277,45 @@ class ProfileService {
         return $profile_panel;
     }
 
+<<<<<<< HEAD
     public function getProfile(): ?ModelProfileContract {
+=======
+    public function getProfile(): ModelProfileContract
+    {
+>>>>>>> 33473522217c9f90c4ee9d2b9a944d43ddc7ab6a
         if (null !== $this->profile) {
             return $this->profile;
         }
         if (null !== $this->user) {
+<<<<<<< HEAD
             $this->profile = $this->user->profile()->firstOrCreate();
+=======
+            $profile = $this->user->profile()->firstOrCreate();
+            if (! $profile instanceof ModelProfileContract) {
+                throw new \Exception('['.__LINE__.']['.__FILE__.']');
+            }
+            $this->profile = $profile;
+>>>>>>> 33473522217c9f90c4ee9d2b9a944d43ddc7ab6a
 
             return $this->profile;
         }
 
-        return $this->profile;
+        throw new \Exception('['.__LINE__.']['.__FILE__.']');
     }
 
+<<<<<<< HEAD
     public function setUserId(string $user_id) {
+=======
+    public function setUserId(string $user_id): self
+    {
+>>>>>>> 33473522217c9f90c4ee9d2b9a944d43ddc7ab6a
         $this->user = User::find($user_id);
 
         return $this;
     }
 
     // returns the Profile panel with its methods
+<<<<<<< HEAD
     public function getProfilePanel(): PanelContract {
         /*
         if (null == $this->profile && null != $this->user) {
@@ -274,13 +342,29 @@ class ProfileService {
         if (null === $profile) {
             throw new \Exception('['.__LINE__.']['.__FILE__.']');
         }
+=======
+    public function getProfilePanel(): PanelContract
+    {
+        $profile = $this->getProfile();
+        // if (null === $profile) {
+        //    throw new \Exception('['.__LINE__.']['.__FILE__.']');
+        // }
+>>>>>>> 33473522217c9f90c4ee9d2b9a944d43ddc7ab6a
         $this->profile_panel = PanelService::make()->get($profile);
 
         return $this->profile_panel;
     }
 
     // returns the User panel with its methods
+<<<<<<< HEAD
     public function getUserPanel(): PanelContract {
+=======
+    public function getUserPanel(): PanelContract
+    {
+        if (null == $this->user) {
+            throw new \Exception('['.__LINE__.']['.__FILE__.']');
+        }
+>>>>>>> 33473522217c9f90c4ee9d2b9a944d43ddc7ab6a
         $user_panel = PanelService::make()->getByUser($this->user);
 
         return $user_panel;
@@ -298,7 +382,16 @@ class ProfileService {
     }
 
     // get the User that belongs to this profile
+<<<<<<< HEAD
     public function getUser(): UserContract {
+=======
+    public function getUser(): UserContract
+    {
+        if (null == $this->user) {
+            throw new \Exception('['.__LINE__.']['.__FILE__.']');
+        }
+
+>>>>>>> 33473522217c9f90c4ee9d2b9a944d43ddc7ab6a
         return $this->user;
     }
 
@@ -327,7 +420,6 @@ class ProfileService {
             ->sortBy('order_column');
 
         $modules = Module::getByStatus(1);
-        // dddx(['areas' => $areas, 'modules' => $modules]);
         $areas = $areas->filter(
             function ($item) use ($modules) {
                 return \in_array($item->area_define_name, array_keys($modules), true);
@@ -336,6 +428,32 @@ class ProfileService {
 
         return $areas;
     }
+
+   /**
+    * @return DataCollection<LinkData>
+    */
+   public function getAreasLinkDataColl(): DataCollection
+   {
+       $areas = $this->areas();
+       $menu = $areas->map(
+           function ($item) {
+               if (! $item instanceof \Modules\LU\Models\Area) {
+                   throw new \Exception('['.__LINE__.']['.__FILE__.']');
+               }
+
+               return [
+                   'title' => $item->area_define_name,
+                   'url' => $item->url,
+                   'active' => false,
+               ];
+           });
+       // $menu = []; // se non è superadmin dovrebbe essere vuoto
+       // if (! $profile->isSuperAdmin()) {
+       //     $menu = [];
+       // }
+
+       return LinkData::collection($menu->all());
+   }
 
     // get all areas of this PROFILE
     public function panelAreas(): Collection {
@@ -351,15 +469,21 @@ class ProfileService {
     }
 
     // -------------- SPATIE PERMISSION -------------------------
+<<<<<<< HEAD
     public function givePermissionTo(string $name): self {
         $this->getProfile()?->givePermissionTo($name);
+=======
+    public function givePermissionTo(string $name): self
+    {
+        $this->getProfile()->givePermissionTo($name);
+>>>>>>> 33473522217c9f90c4ee9d2b9a944d43ddc7ab6a
 
         return $this;
     }
 
     public function assignRole(string $name): self {
         try {
-            $this->getProfile()?->assignRole($name);
+            $this->getProfile()->assignRole($name);
         } catch (\Spatie\Permission\Exceptions\RoleDoesNotExist) {
             Role::create(['name' => $name]);
         }
@@ -369,32 +493,41 @@ class ProfileService {
 
     public function hasRole(string $name): bool {
         $profile = $this->getProfile();
+<<<<<<< HEAD
         if (null === $profile) {
             return false;
         }
+=======
+
+>>>>>>> 33473522217c9f90c4ee9d2b9a944d43ddc7ab6a
         // try {
         return $profile->hasRole($name);
         // } catch (\Spatie\Permission\Exceptions\RoleDoesNotExist) {
         //    Role::create(['name' => $name]);
         // }
-
-        return false;
     }
 
     public function hasAnyRole(array $roles): bool {
         $profile = $this->getProfile();
+<<<<<<< HEAD
         if (null === $profile) {
             return false;
         }
+=======
+>>>>>>> 33473522217c9f90c4ee9d2b9a944d43ddc7ab6a
 
         return $profile->hasAnyRole($roles);
     }
 
     public function hasPermissionTo(string $name): bool {
         $profile = $this->getProfile();
+<<<<<<< HEAD
         if (null === $profile) {
             return false;
         }
+=======
+
+>>>>>>> 33473522217c9f90c4ee9d2b9a944d43ddc7ab6a
         try {
             return $profile->hasPermissionTo($name);
         } catch (\Spatie\Permission\Exceptions\PermissionDoesNotExist $th) {

@@ -28,7 +28,7 @@ class ChangePassword extends Component
         $this->form_data['confirm_password'] = '';
     }
 
-    public function rules()
+    public function rules(): array
     {
         return [
             'form_data.old_password' => ['required', 'min:6', new CurrentPasswordCheckRule()],
@@ -42,7 +42,7 @@ class ChangePassword extends Component
             ],
             'form_data.confirm_password' => [
                 'required',
-                'same:form_data.passwd'
+                'same:form_data.passwd',
             ],
         ];
     }
@@ -64,7 +64,7 @@ class ChangePassword extends Component
     {
         $this->validate($this->rules());
 
-        User::find($this->user_id)->update($this->form_data);
+        User::find($this->user_id)?->update($this->form_data);
         session()->flash('message', 'successfully updated.');
     }
 }

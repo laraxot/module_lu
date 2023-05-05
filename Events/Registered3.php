@@ -6,7 +6,8 @@ namespace Modules\LU\Events;
 
 use Illuminate\Auth\Events\Registered;
 
-class Registered3 extends Registered {
+class Registered3 extends Registered
+{
     /**
      * The authenticated user.
      *
@@ -15,7 +16,13 @@ class Registered3 extends Registered {
     public $user;
     public string $password;
 
-    public function __construct($user, $password) {
+    /**
+     * Undocumented function.
+     *
+     * @param string $password
+     */
+    public function __construct($user, $password)
+    {
         $this->user = $user;
         $this->password = $password;
     }

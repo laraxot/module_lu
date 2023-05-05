@@ -2,19 +2,16 @@
 
 declare(strict_types=1);
 
-declare(strict_types=1);
-
 namespace Modules\LU\Traits;
 
-use Illuminate\Support\Str;
-use Illuminate\Http\Request;
-use Modules\Xot\Datas\XotData;
-use Illuminate\Http\JsonResponse;
-use Modules\Notify\Models\Contact;
-use Illuminate\Auth\Events\Verified;
-use Modules\LU\Services\ProfileService;
-use Illuminate\Foundation\Auth\RedirectsUsers;
 use Illuminate\Auth\Access\AuthorizationException;
+use Illuminate\Auth\Events\Verified;
+use Illuminate\Foundation\Auth\RedirectsUsers;
+use Illuminate\Http\JsonResponse;
+use Illuminate\Http\Request;
+use Modules\LU\Services\ProfileService;
+use Modules\Notify\Models\Contact;
+use Modules\Xot\Datas\XotData;
 
 trait VerifiesEmails
 {
@@ -41,19 +38,19 @@ trait VerifiesEmails
      */
     public function verify(Request $request)
     {
-
         $redirect = redirect($this->redirectPath())->with('verified', true);
+        // --- e' carnevale !
         $xot = XotData::from(config('xra'));
-        if ($xot->verification_type == 'pfed') {
+        if ('pfed' == $xot->verification_type) {
             $view = 'pfed::auth.verification_successful';
             $redirect = response()->view($view, ['view' => $view]);
         }
 
-        if (!hash_equals((string) $request->route('id'), (string) $request->user()->getKey())) {
+        if (! hash_equals((string) $request->route('id'), (string) $request->user()->getKey())) {
             throw new AuthorizationException();
         }
 
-        if (!hash_equals((string) $request->route('hash'), sha1($request->user()->getEmailForVerification()))) {
+        if (! hash_equals((string) $request->route('hash'), sha1($request->user()->getEmailForVerification()))) {
             throw new AuthorizationException();
         }
 
@@ -91,7 +88,8 @@ trait VerifiesEmails
         $contact->model_type = 'profile';
         $contact->model_id = ProfileService::make()->getProfile()->id;
         $contact->user_id = $request->user()->id;
-        $contact->token = Str::random(6);
+        $contact->token = rand(10000, 99999);
+
         $contact->save();
     }
 

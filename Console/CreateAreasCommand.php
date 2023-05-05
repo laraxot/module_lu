@@ -34,8 +34,7 @@ https://medium.com/@josepostiga/how-i-managed-to-control-chaos-with-laravel-d47b
 /**
  * Class CreateAreasCommand.
  */
-class CreateAreasCommand extends Command
-{
+class CreateAreasCommand extends Command {
     /**
      * The console command name.
      *
@@ -53,8 +52,7 @@ class CreateAreasCommand extends Command
     /**
      * Create a new command instance.
      */
-    public function __construct()
-    {
+    public function __construct() {
         parent::__construct();
     }
 
@@ -63,12 +61,12 @@ class CreateAreasCommand extends Command
      *
      * @return mixed
      */
-    public function handle()
-    {
+    public function handle() {
         $modules = \Module::all();
         $superUsers = PermUser::query()->where('perm_type', 5)->get();
         foreach ($modules as $k => $v) {
             $area = Area::query()->firstOrCreate(['area_define_name' => $v->getName()]);
+
             foreach ($superUsers as $u) {
                 // Parameter #1 $ids of method Illuminate\Database\Eloquent\Relations\BelongsToMany<Illuminate\Database\Eloquent\Model>::syncWithoutDetaching() expects array|Illuminate\Database\Eloquent\Model|Illuminate\Support\Collection
                 // , int  given.
@@ -81,7 +79,10 @@ class CreateAreasCommand extends Command
                  * @var User;
                  */
                 $user = $u->user;
-                $this->info($user->handle.' '.$area->area_define_name);
+
+                if (null != $user) {
+                    $this->info($user->handle.' '.$area->area_define_name);
+                }
             }
             // echo $v->name;
         }
@@ -93,8 +94,7 @@ class CreateAreasCommand extends Command
      *
      * @return array
      */
-    protected function getArguments()
-    {
+    protected function getArguments() {
         return [
             //  ['name', InputArgument::REQUIRED, 'nickname of user'],
             //  ['level', InputArgument::REQUIRED, 'level of user'],
@@ -106,8 +106,7 @@ class CreateAreasCommand extends Command
      *
      * @return array
      */
-    protected function getOptions()
-    {
+    protected function getOptions() {
         return [
             ['list', null, InputOption::VALUE_OPTIONAL, 'list all users.', null],
         ];

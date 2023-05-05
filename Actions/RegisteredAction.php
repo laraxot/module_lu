@@ -7,9 +7,16 @@ namespace Modules\LU\Actions;
 use Modules\LU\Models\User;
 use Spatie\QueueableAction\QueueableAction;
 
-class RegisteredAction {
+class RegisteredAction
+{
     use QueueableAction;
 
-    public function execute(User $user) {
+    /**
+     * Undocumented function.
+     *
+     * @return void
+     */
+    public function execute(User $user)
+    {
     }
 }
