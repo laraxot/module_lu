@@ -18,7 +18,7 @@ Route::group(
         'namespace' => $namespace.'\Http\Controllers',
     ],
     function () {
-       // Auth::routes(['verify' => true]);
+        Auth::routes(['verify' => true]);
     }
 );
 
