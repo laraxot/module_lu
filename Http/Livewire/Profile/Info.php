@@ -30,7 +30,12 @@ class Info extends Component
             throw new \Exception('['.__LINE__.']['.__FILE__.']');
         }
         $this->model_class = get_class($profile);
-        $this->model_id = strval($profile->getKey());
+
+        /**
+         * @var string $profile_key
+         */
+        $profile_key = $profile->getKey();
+        $this->model_id = strval($profile_key);
         $this->form_data = $profile->toArray();
     }
 

@@ -6,16 +6,7 @@ namespace Modules\LU\Http\Controllers\Auth;
 
 use Illuminate\Contracts\Support\Renderable;
 use Illuminate\Http\Request;
-// use Illuminate\Foundation\Auth\ResetsPasswords;
-// use Modules\LU\Traits\ResetsPasswords;
-// use App\Http\Controllers\Controller;
-// use Illuminate\Support\Str;
-// --------- Models ------------
-// use Illuminate\View\View;
-// use Modules\LU\Models\User;
-// use Modules\Xot\Contracts\UserContract;
 use Modules\LU\Http\Controllers\BaseController;
-// va usato quello di LU altrimenti non valida come dovrebbe i cambi password
 use Modules\LU\Traits\ResetsPasswords;
 use Modules\Xot\Services\FileService;
 
