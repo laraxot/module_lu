@@ -7,7 +7,7 @@ namespace Modules\LU\Http\Livewire\Modal;
 use Illuminate\Contracts\Support\Renderable;
 use Modules\Cms\Actions\GetViewAction;
 use Modules\LU\Models\Role;
-use Modules\Modal\View\Components\Modal\Modal;
+use Modules\Wire\View\Components\Modal\Modal;
 
 class AddRole extends Modal
 {
