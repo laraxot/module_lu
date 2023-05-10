@@ -28,8 +28,12 @@ class Info extends Component
     {
         $model = ProfileService::make()->getUser();
         $this->model_class = get_class($model);
-        $this->model_id = strval($model->getKey());
-        // $this->form_data = $model->toArray();
+
+        /**
+         * @var string $model_key
+         */
+        $model_key = $model->getKey();
+        $this->model_id = strval($model_key);
     }
 
     public function render(): Renderable
