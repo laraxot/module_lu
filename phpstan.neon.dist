@@ -1,10 +1,6 @@
 includes:
     - phpstan-baseline.neon
     - ./vendor/nunomaduro/larastan/extension.neon
-<<<<<<< Updated upstream
-
-=======
->>>>>>> Stashed changes
     
 parameters:
     level: max
