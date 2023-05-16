@@ -4,21 +4,21 @@ declare(strict_types=1);
 
 namespace Modules\LU\Http\Controllers\Auth;
 
-use App\Http\Controllers\Controller;
+use Modules\Cms\Contracts\PanelContract;
 // use Illuminate\Foundation\Auth\SendsPasswordResetEmails;
 
 // --- requests
-use Modules\Cms\Contracts\PanelContract;
 // --- models --
-use Modules\LU\Http\Requests\StoreInvitationRequest;
+use Modules\LU\Http\Controllers\BaseController;
 // --- services --
+use Modules\LU\Http\Requests\StoreInvitationRequest;
 use Modules\LU\Models\Invitation;
 use Modules\UI\Services\ThemeService;
 
 /**
  * Class InvitationController.
  */
-class InvitationController extends Controller {
+class InvitationController extends BaseController {
     public PanelContract $panel;
 
     /**

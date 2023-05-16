@@ -26,6 +26,7 @@ use Spatie\LaravelData\DataCollection;
  */
 class ProfileService {
     private ?UserContract $user = null;
+    // private string $user_id;
 
     private ?ModelProfileContract $profile = null;
 
@@ -36,10 +37,11 @@ class ProfileService {
     private XotData $xot;
 
     public function __construct() {
-        $this->xot = XotData::from(config('xra'));
+        $this->xot = XotData::make();
+        /** @var \Modules\Xot\Contracts\UserContract|null */
         $user = Auth::user();
-
-        if (null === $user) {
+        // $this->user_id = strval(Auth::id());
+        if (null == $user) {
             return;
         }
         $this->get($user);

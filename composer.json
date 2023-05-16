@@ -17,10 +17,15 @@
         "php": "^8.1",
         "illuminate/contracts": "^9.0|^10.0",
         "illuminate/support": "^9.12|^10.0",
-        "laravel/passport": "*",
+        "laravel/passport": "^11.8",
+        "laravel/socialite": "^5.6",
         "laravel/ui": "*",
+        "laraxot/module_cms": "dev-master",
+        "laraxot/module_notify": "dev-master",
+        "laraxot/module_wire": "dev-master",
         "laraxot/module_xot": "*",
         "livewire/livewire": "*",
+        "nwidart/laravel-modules": "9.0",
         "spatie/laravel-package-tools": "^1.14.0"
     },
     "require-dev": {

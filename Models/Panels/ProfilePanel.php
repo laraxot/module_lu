@@ -169,9 +169,10 @@ class ProfilePanel extends XotBasePanel {
         if (! property_exists($this->row, 'user')) {
             throw new \Exception('in ['.\get_class($this->row).'] property [user] not exists');
         }
+        /** @var \Modules\LU\Models\User */
         $user = $this->row->user;
 
-        if (! \is_object($user) && \is_object($this->row)) {
+        if (! \is_object($user)) {
             if (isset($this->row->user_id) && method_exists($this->row, 'user')) {
                 $this->row->user()->create();
             }
@@ -179,6 +180,7 @@ class ProfilePanel extends XotBasePanel {
             return null;
         }
 
+        // Access to an undefined property object::$email.
         $email = md5(mb_strtolower(trim((string) $user->email)));
         $default = urlencode('https://tracker.moodle.org/secure/attachment/30912/f3.png');
 
