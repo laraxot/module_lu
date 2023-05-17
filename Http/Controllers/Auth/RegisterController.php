@@ -38,7 +38,7 @@ class RegisterController extends BaseController
     public function __construct()
     {
         $this->middleware('guest');
-        $this->xot = XotData::from(config('xra'));
+        $this->xot = XotData::make();
         $this->register_type = (string) $this->xot->register_type;
     }
 
