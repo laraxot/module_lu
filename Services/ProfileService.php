@@ -144,7 +144,8 @@ use Spatie\LaravelData\DataCollection;
 /**
  * Class ProfileService.
  */
-class ProfileService {
+class ProfileService
+{
     private ?UserContract $user = null;
 
     private ?ModelProfileContract $profile = null;
@@ -155,6 +156,7 @@ class ProfileService {
 
     private XotData $xot;
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -187,6 +189,11 @@ class ProfileService {
     public function __construct() {
         $this->xot = XotData::from(config('xra'));
 >>>>>>> c71eea9 (.)
+=======
+    public function __construct()
+    {
+        $this->xot = XotData::make();
+>>>>>>> 63cfc71 (.)
         $user = Auth::user();
 
         if (null === $user) {
@@ -199,7 +206,8 @@ class ProfileService {
         $this->get($user);
     }
 
-    public static function getInstance(): self {
+    public static function getInstance(): self
+    {
         if (null === self::$instance) {
             self::$instance = new self();
         }
@@ -207,7 +215,8 @@ class ProfileService {
         return self::$instance;
     }
 
-    public static function make(): self {
+    public static function make(): self
+    {
         return static::getInstance();
     }
 
@@ -219,7 +228,8 @@ class ProfileService {
      *
      * @return mixed
      */
-    public function __call($name, $arguments) {
+    public function __call($name, $arguments)
+    {
         $profile_panel = $this->getProfilePanel();
 
         if (method_exists($profile_panel, $name)) {
@@ -307,7 +317,8 @@ class ProfileService {
      *
      * @throws \ReflectionException
      */
-    public function get(UserContract $user): self {
+    public function get(UserContract $user): self
+    {
         $this->user = $user;
 
         /*
@@ -347,6 +358,7 @@ class ProfileService {
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 >>>>>>> 62cce4b (rebase)
     public function fullName(): ?string {
@@ -413,6 +425,10 @@ class ProfileService {
 =======
     public function fullName(): ?string {
 >>>>>>> c71eea9 (.)
+=======
+    public function fullName(): ?string
+    {
+>>>>>>> 63cfc71 (.)
         if (null === $this->user) {
             return null;
         }
@@ -433,6 +449,7 @@ class ProfileService {
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 >>>>>>> 62cce4b (rebase)
     public function handle(): string {
@@ -499,6 +516,10 @@ class ProfileService {
 =======
     public function handle(): string {
 >>>>>>> c71eea9 (.)
+=======
+    public function handle(): string
+    {
+>>>>>>> 63cfc71 (.)
         if (null === $this->user) {
             return 'unknown';
         }
@@ -506,7 +527,8 @@ class ProfileService {
         return $this->user->handle;
     }
 
-    public function permType(): int {
+    public function permType(): int
+    {
         // 89     Access to an undefined property Illuminate\Database\Eloquent\Model::$perm.
         // perchè lo prende come property quando è una relazione?
         // se metto property_exists non visualizzo il sito
@@ -617,6 +639,7 @@ class ProfileService {
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -663,6 +686,10 @@ class ProfileService {
 =======
 =======
     public function name(): string {
+=======
+    public function name(): string
+    {
+>>>>>>> 63cfc71 (.)
         return (string) $this->user?->first_name;
 >>>>>>> db76e2ef (up)
 <<<<<<< HEAD
@@ -716,7 +743,8 @@ class ProfileService {
     }
 
     // returns the Profile's action url (example: http://domain.xx/admin/it/lu/profiles/1/?_act=show)
-    public function url(string $act = 'show'): string {
+    public function url(string $act = 'show'): string
+    {
         return $this->profile_panel->url($act);
     }
 
@@ -727,6 +755,7 @@ class ProfileService {
      *
      * @return string|null
      */
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -798,6 +827,10 @@ class ProfileService {
 =======
     public function avatar($size = 100) {
 >>>>>>> c71eea9 (.)
+=======
+    public function avatar($size = 100)
+    {
+>>>>>>> 63cfc71 (.)
         if (null === $this->user) {
             return null;
         }
@@ -809,6 +842,7 @@ class ProfileService {
     }
 
     // returns User email
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -860,6 +894,10 @@ class ProfileService {
 =======
 =======
     public function email(): ?string {
+=======
+    public function email(): ?string
+    {
+>>>>>>> 63cfc71 (.)
         return $this->user?->email;
 >>>>>>> db76e2ef (up)
 <<<<<<< HEAD
@@ -913,12 +951,14 @@ class ProfileService {
     }
 
     // returns the
-    public function getPanel(): PanelContract {
+    public function getPanel(): PanelContract
+    {
         $profile_panel = $this->getProfilePanel();
 
         return $profile_panel;
     }
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -990,6 +1030,10 @@ class ProfileService {
 =======
     public function getProfile(): ModelProfileContract {
 >>>>>>> c71eea9 (.)
+=======
+    public function getProfile(): ModelProfileContract
+    {
+>>>>>>> 63cfc71 (.)
         if (null !== $this->profile) {
             return $this->profile;
         }
@@ -1108,6 +1152,7 @@ class ProfileService {
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 >>>>>>> 62cce4b (rebase)
     public function setUserId(string $user_id): self {
@@ -1174,12 +1219,17 @@ class ProfileService {
 =======
     public function setUserId(string $user_id): self {
 >>>>>>> c71eea9 (.)
+=======
+    public function setUserId(string $user_id): self
+    {
+>>>>>>> 63cfc71 (.)
         $this->user = User::find($user_id);
 
         return $this;
     }
 
     // returns the Profile panel with its methods
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -1211,6 +1261,10 @@ class ProfileService {
 =======
     public function getProfilePanel(): PanelContract {
 >>>>>>> c71eea9 (.)
+=======
+    public function getProfilePanel(): PanelContract
+    {
+>>>>>>> 63cfc71 (.)
         $profile = $this->getProfile();
         // if (null === $profile) {
         //    throw new \Exception('['.__LINE__.']['.__FILE__.']');
@@ -1333,6 +1387,7 @@ class ProfileService {
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 >>>>>>> 62cce4b (rebase)
 =======
@@ -1405,6 +1460,10 @@ class ProfileService {
 =======
 >>>>>>> c71eea9 (.)
     public function getUserPanel(): PanelContract {
+=======
+    public function getUserPanel(): PanelContract
+    {
+>>>>>>> 63cfc71 (.)
         if (null == $this->user) {
             throw new \Exception('['.__LINE__.']['.__FILE__.']');
         }
@@ -1438,7 +1497,8 @@ class ProfileService {
     }
 
     // checks if this profile belongs to a SuperAdmin (level 1)
-    public function isSuperAdmin(array $params = []): bool {
+    public function isSuperAdmin(array $params = []): bool
+    {
         $panel = $this->getPanel();
         // dddx($panel);//Modules\Food\Models\Panels\ProfilePanel
         if (! method_exists($panel, 'isSuperAdmin')) {
@@ -1449,6 +1509,7 @@ class ProfileService {
     }
 
     // get the User that belongs to this profile
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -1502,6 +1563,10 @@ class ProfileService {
 =======
     public function getUser(): UserContract {
 >>>>>>> c6ccfdb (.)
+=======
+    public function getUser(): UserContract
+    {
+>>>>>>> 63cfc71 (.)
         if (null == $this->user) {
             throw new \Exception('['.__LINE__.']['.__FILE__.']');
         }
@@ -1561,7 +1626,8 @@ class ProfileService {
     }
 
     // get the right STRING name of this profile class (based on XRA main_module)
-    public function getProfileClass(): string {
+    public function getProfileClass(): string
+    {
         $main_module = $this->xot->main_module;
         $class = 'Modules\\'.$main_module.'\Models\Profile';
 
@@ -1569,7 +1635,8 @@ class ProfileService {
     }
 
     // check if this profile has that area (true or false)
-    public function hasArea(string $name): bool {
+    public function hasArea(string $name): bool
+    {
         $area = $this->areas()->firstWhere('area_define_name', $name);
 
         return \is_object($area);
@@ -1580,7 +1647,8 @@ class ProfileService {
      *
      * @return Collection<Area>
      */
-    public function areas(): Collection {
+    public function areas(): Collection
+    {
         $areas = $this->getUser()->areas
             ->sortBy('order_column');
 
@@ -1621,7 +1689,8 @@ class ProfileService {
    }
 
     // get all areas of this PROFILE
-    public function panelAreas(): Collection {
+    public function panelAreas(): Collection
+    {
         return $this->areas()->map(
             function ($area) {
                 if (! $area instanceof Model) {
@@ -1634,6 +1703,7 @@ class ProfileService {
     }
 
     // -------------- SPATIE PERMISSION -------------------------
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -1685,6 +1755,10 @@ class ProfileService {
 =======
 =======
     public function givePermissionTo(string $name): self {
+=======
+    public function givePermissionTo(string $name): self
+    {
+>>>>>>> 63cfc71 (.)
         $this->getProfile()->givePermissionTo($name);
 >>>>>>> db76e2ef (up)
 <<<<<<< HEAD
@@ -1739,7 +1813,8 @@ class ProfileService {
         return $this;
     }
 
-    public function assignRole(string $name): self {
+    public function assignRole(string $name): self
+    {
         try {
             $this->getProfile()->assignRole($name);
         } catch (\Spatie\Permission\Exceptions\RoleDoesNotExist) {
@@ -1749,7 +1824,8 @@ class ProfileService {
         return $this;
     }
 
-    public function hasRole(string $name): bool {
+    public function hasRole(string $name): bool
+    {
         $profile = $this->getProfile();
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -1819,7 +1895,8 @@ class ProfileService {
         // }
     }
 
-    public function hasAnyRole(array $roles): bool {
+    public function hasAnyRole(array $roles): bool
+    {
         $profile = $this->getProfile();
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -1879,7 +1956,8 @@ class ProfileService {
         return $profile->hasAnyRole($roles);
     }
 
-    public function hasPermissionTo(string $name): bool {
+    public function hasPermissionTo(string $name): bool
+    {
         $profile = $this->getProfile();
 <<<<<<< HEAD
 <<<<<<< HEAD
