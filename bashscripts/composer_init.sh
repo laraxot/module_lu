@@ -8,9 +8,12 @@ rm package-lock.json
 
 ##############  ####################
 php -d memory_limit=-1 composer.phar require -W illuminate/contracts
+<<<<<<< HEAD
 php -d memory_limit=-1 composer.phar require -W laraxot/module_xot
 php -d memory_limit=-1 composer.phar require -W laravel/ui
 php -d memory_limit=-1 composer.phar require -W laravel/passport
+=======
+>>>>>>> 8922e79 (.)
 
 ############################ DEV ###############################
 php -d memory_limit=-1 composer.phar require -W --dev laravel/pint
