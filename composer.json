@@ -142,8 +142,8 @@
             "aliases": {}
         }
     },
-<<<<<<< HEAD
     "minimum-stability": "dev",
+<<<<<<< HEAD
 <<<<<<< HEAD
 >>>>>>> dea40732 (.)
 =======
@@ -210,5 +210,7 @@
     "minimum-stability": "beta",
 >>>>>>> 5d28c20d (.)
 >>>>>>> e4d53244 (.)
+=======
+>>>>>>> c5ebd96f (.)
     "prefer-stable": true
 }
