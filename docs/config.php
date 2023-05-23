@@ -9,7 +9,7 @@ return [
     'production' => false,
     'siteName' => 'Modulo '.$moduleName,
     'siteDescription' => 'Modulo '.$moduleName,
-    'lang' => 'it',
+    //'lang' => 'it',
 
     'collections' => [
         'posts' => [
@@ -60,8 +60,11 @@ return [
          //return url('/'.$page->lang.'/'.trimPath($path));
         return url('/'.trimPath($path));
     },
+<<<<<<< HEAD
 
     'children' => function ($page, $docs) {
         return $docs->where('parent_id', $page->id);
     },
+=======
+>>>>>>> 5fc68ef (up)
 ];
