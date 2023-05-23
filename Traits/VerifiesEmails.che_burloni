@@ -41,10 +41,14 @@ trait VerifiesEmails
         $redirect = redirect($this->redirectPath())->with('verified', true);
         // --- e' carnevale !
 <<<<<<< HEAD
+<<<<<<< HEAD
         $xot = XotData::make();
 =======
         $xot = XotData::from(config('xra'));
 >>>>>>> 2486dc9c (up)
+=======
+        $xot = XotData::make();
+>>>>>>> 63cfc717 (.)
         if ('pfed' == $xot->verification_type) {
             $view = 'pfed::auth.verification_successful';
             $redirect = response()->view($view, ['view' => $view]);

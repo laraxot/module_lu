@@ -37,8 +37,12 @@
         "laraxot/module_cms": "dev-master",
         "laraxot/module_notify": "dev-master",
 <<<<<<< HEAD
+<<<<<<< HEAD
         "laraxot/module_wire": "dev-master",
 <<<<<<< HEAD
+=======
+        "laraxot/module_wire": "dev-master",
+>>>>>>> 63cfc717 (.)
         "laraxot/module_xot": "dev-master",
         "livewire/livewire": "^2.12",
         "nwidart/laravel-modules": "9.0",

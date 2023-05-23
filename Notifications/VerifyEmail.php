@@ -29,8 +29,12 @@ class VerifyEmail extends BaseVerifyEmail {
         $this->xot = XotData::make();
 =======
     public function __construct() {
+<<<<<<< HEAD
         $this->xot = XotData::from(config('xra'));
 >>>>>>> 5b24bc03 (.)
+=======
+        $this->xot = XotData::make();
+>>>>>>> 63cfc717 (.)
         $this->register_type = (string) $this->xot->register_type;
     }
 
