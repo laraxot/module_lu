@@ -19,5 +19,8 @@ error_log
 *.stackdump
 *.cache
 *.old
+<<<<<<< HEAD
 /build/*
+=======
+>>>>>>> e25abfc1 (.)
 /build
