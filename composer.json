@@ -8,13 +8,11 @@
     ],
     "homepage": "https://github.com/laraxot/module_lu",
     "license": "MIT",
-    "authors": [
-        {
-            "name": ":author_name",
-            "email": "author@domain.com",
-            "role": "Developer"
-        }
-    ],
+    "authors": [{
+        "name": ":author_name",
+        "email": "author@domain.com",
+        "role": "Developer"
+    }],
     "require": {
         "php": "^8.1",
         "illuminate/contracts": "^9.0|^10.0",
