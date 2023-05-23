@@ -9,7 +9,7 @@ return [
     'production' => false,
     'siteName' => 'Modulo '.$moduleName,
     'siteDescription' => 'Modulo '.$moduleName,
-    //'lang' => 'it',
+    'lang' => 'it',
 
     'collections' => [
         'posts' => [
