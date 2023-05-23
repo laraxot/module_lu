@@ -4,6 +4,7 @@ includes:
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
     
 parameters:
     level: max
@@ -12,11 +13,20 @@ parameters:
 >>>>>>> 33aa65cc (.)
 =======
 >>>>>>> c5ebd96f (.)
+=======
+<<<<<<< Updated upstream
+>>>>>>> 49cf5e31 (up)
 
+=======
+>>>>>>> Stashed changes
     
 parameters:
+<<<<<<< HEAD
     level: 1
 >>>>>>> eebb6b6a (.)
+=======
+    level: max
+>>>>>>> 49cf5e31 (up)
     paths:
         - .
 
