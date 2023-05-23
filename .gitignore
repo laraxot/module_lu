@@ -19,9 +19,5 @@ error_log
 *.stackdump
 *.cache
 *.old
-<<<<<<< HEAD
 /build/*
-=======
->>>>>>> 8fa95b5 (.)
-/build
 /build
