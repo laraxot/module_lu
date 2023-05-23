@@ -7,7 +7,11 @@ namespace Modules\LU\Http\Livewire\Modal;
 use Illuminate\Contracts\Support\Renderable;
 use Modules\Cms\Actions\GetViewAction;
 use Modules\LU\Models\Permission;
+<<<<<<< HEAD
 use Modules\Wire\View\Components\Modal\Modal;
+=======
+use Modules\Modal\View\Components\Modal\Modal;
+>>>>>>> 229bf29 (up)
 
 class AddPermission extends Modal
 {
