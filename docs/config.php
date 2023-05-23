@@ -61,10 +61,16 @@ return [
         return url('/'.trimPath($path));
     },
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 49f6364e (up)
 
     'children' => function ($page, $docs) {
         return $docs->where('parent_id', $page->id);
     },
+<<<<<<< HEAD
 =======
 >>>>>>> 6d3e904c (up)
+=======
+>>>>>>> 49f6364e (up)
 ];
