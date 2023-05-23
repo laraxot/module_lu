@@ -3,16 +3,17 @@ includes:
     - ./vendor/nunomaduro/larastan/extension.neon
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
     
 parameters:
     level: max
 =======
 =======
 >>>>>>> 6fb54d7 (.)
-
 =======
+>>>>>>> 4211c2e (.)
+
     
->>>>>>> 2c54f75a (..)
 parameters:
     level: 1
 >>>>>>> 8922e79 (.)
