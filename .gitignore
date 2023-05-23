@@ -20,7 +20,11 @@ error_log
 *.cache
 *.old
 <<<<<<< HEAD
+<<<<<<< HEAD
 /build/*
 =======
 >>>>>>> 8fa95b5 (.)
+=======
+/build/*
+>>>>>>> 19a54d4 (.)
 /build
