@@ -44,8 +44,8 @@ class ProfileService
         if (null === $user) {
             return;
         }
-        if (! $user instanceof UserContract) {
-            throw new \Exception('add on class ['.get_class($user).'] implements Modules\Xot\Contracts\UserContract');
+        if (!$user instanceof UserContract) {
+            throw new \Exception('add on class [' . get_class($user) . '] implements Modules\Xot\Contracts\UserContract');
         }
 
         $this->get($user);
@@ -108,7 +108,7 @@ class ProfileService
             */
         }
 
-        throw new \Exception('['.\get_class($profile).'] method: ['.$name.']['.__LINE__.']['.class_basename(__CLASS__).']');
+        throw new \Exception('[' . \get_class($profile) . '] method: [' . $name . '][' . __LINE__ . '][' . class_basename(__CLASS__) . ']');
     }
 
     /**
@@ -158,14 +158,14 @@ class ProfileService
             return null;
         }
         $user = $this->user;
-        if (! property_exists($user, 'first_name')) {
+        if (!property_exists($user, 'first_name')) {
             throw new \Exception('property first_name in $user not exist');
         }
-        if (! property_exists($user, 'last_name')) {
+        if (!property_exists($user, 'last_name')) {
             throw new \Exception('property last_name in $user not exist');
         }
 
-        return $user->first_name.' '.$user->last_name;
+        return $user->first_name . ' ' . $user->last_name;
     }
 
     // returns username
@@ -194,9 +194,9 @@ class ProfileService
         }
         */
         if (null == $this->user) {
-            throw new \Exception('['.__LINE__.']['.__FILE__.']');
+            throw new \Exception('[' . __LINE__ . '][' . __FILE__ . ']');
         }
-        if (! method_exists($this->user, 'perm')) {
+        if (!method_exists($this->user, 'perm')) {
             throw new \Exception('method perm in $this->user not exist');
         }
 
@@ -260,15 +260,15 @@ class ProfileService
         }
         if (null !== $this->user) {
             $profile = $this->user->profile()->firstOrCreate();
-            if (! $profile instanceof ModelProfileContract) {
-                throw new \Exception('['.__LINE__.']['.__FILE__.']');
+            if (!$profile instanceof ModelProfileContract) {
+                throw new \Exception('[' . __LINE__ . '][' . __FILE__ . ']');
             }
             $this->profile = $profile;
 
             return $this->profile;
         }
 
-        throw new \Exception('['.__LINE__.']['.__FILE__.']');
+        throw new \Exception('[' . __LINE__ . '][' . __FILE__ . ']');
     }
 
     public function setUserId(string $user_id): self
@@ -294,7 +294,7 @@ class ProfileService
     public function getUserPanel(): PanelContract
     {
         if (null == $this->user) {
-            throw new \Exception('['.__LINE__.']['.__FILE__.']');
+            throw new \Exception('[' . __LINE__ . '][' . __FILE__ . ']');
         }
         $user_panel = PanelService::make()->getByUser($this->user);
 
@@ -306,8 +306,8 @@ class ProfileService
     {
         $panel = $this->getPanel();
         // dddx($panel);//Modules\Food\Models\Panels\ProfilePanel
-        if (! method_exists($panel, 'isSuperAdmin')) {
-            throw new \Exception('method isSuperAdmin in ['.\get_class($panel).'] not exist');
+        if (!method_exists($panel, 'isSuperAdmin')) {
+            throw new \Exception('method isSuperAdmin in [' . \get_class($panel) . '] not exist');
         }
 
         return $panel->isSuperAdmin($params);
@@ -317,7 +317,7 @@ class ProfileService
     public function getUser(): UserContract
     {
         if (null == $this->user) {
-            throw new \Exception('['.__LINE__.']['.__FILE__.']');
+            throw new \Exception('[' . __LINE__ . '][' . __FILE__ . ']');
         }
 
         return $this->user;
@@ -327,7 +327,7 @@ class ProfileService
     public function getProfileClass(): string
     {
         $main_module = $this->xot->main_module;
-        $class = 'Modules\\'.$main_module.'\Models\Profile';
+        $class = 'Modules\\' . $main_module . '\Models\Profile';
 
         return $class;
     }
@@ -360,39 +360,40 @@ class ProfileService
         return $areas;
     }
 
-   /**
-    * @return DataCollection<LinkData>
-    */
-   public function getAreasLinkDataColl(): DataCollection
-   {
-       $areas = $this->areas();
-       $menu = $areas->map(
-           function ($item) {
-               if (! $item instanceof \Modules\LU\Models\Area) {
-                   throw new \Exception('['.__LINE__.']['.__FILE__.']');
-               }
+    /**
+     * @return DataCollection<LinkData>
+     */
+    public function getAreasLinkDataColl(): DataCollection
+    {
+        $areas = $this->areas();
+        $menu = $areas->map(
+            function ($item) {
+                if (!$item instanceof \Modules\LU\Models\Area) {
+                    throw new \Exception('[' . __LINE__ . '][' . __FILE__ . ']');
+                }
 
-               return [
-                   'title' => $item->area_define_name,
-                   'url' => $item->url,
-                   'active' => false,
-               ];
-           });
-       // $menu = []; // se non è superadmin dovrebbe essere vuoto
-       // if (! $profile->isSuperAdmin()) {
-       //     $menu = [];
-       // }
+                return [
+                    'title' => $item->area_define_name,
+                    'url' => $item->url,
+                    'active' => false,
+                ];
+            }
+        );
+        // $menu = []; // se non è superadmin dovrebbe essere vuoto
+        // if (! $profile->isSuperAdmin()) {
+        //     $menu = [];
+        // }
 
-       return LinkData::collection($menu->all());
-   }
+        return LinkData::collection($menu->all());
+    }
 
     // get all areas of this PROFILE
     public function panelAreas(): Collection
     {
         return $this->areas()->map(
             function ($area) {
-                if (! $area instanceof Model) {
-                    throw new \Exception('['.__LINE__.']['.__FILE__.']');
+                if (!$area instanceof Model) {
+                    throw new \Exception('[' . __LINE__ . '][' . __FILE__ . ']');
                 }
 
                 return PanelService::make()->get($area);
