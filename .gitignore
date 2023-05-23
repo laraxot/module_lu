@@ -21,3 +21,4 @@ error_log
 *.old
 /build/*
 /build
+/build
