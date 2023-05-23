@@ -35,3 +35,19 @@ return [
 ```php
 Modules\\Example\Models\Profile
 ```
+
+### How to create the first user
+
+NB: SuperAdmin Level is 5
+
+```bash
+php artisan lu:user
+```
+
+### How to enable all areas to SuperAdmin
+
+NB: SuperAdmin Level is 5
+
+```bash
+php artisan lu:create-areas
+```

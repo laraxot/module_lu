@@ -4,16 +4,16 @@ declare(strict_types=1);
 
 namespace Modules\LU\Http\Controllers\Auth;
 
-use App\Http\Controllers\Controller;
 // --- MODELS ----
 // --- SERVICES ---
 use Modules\Cms\Contracts\PanelContract;
+use Modules\LU\Http\Controllers\BaseController;
 use Modules\UI\Services\ThemeService;
 
 /**
  * Class NoticeController.
  */
-class NoticeController extends Controller {
+class NoticeController extends BaseController {
     public PanelContract $panel;
 
     /**

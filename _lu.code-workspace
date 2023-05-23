@@ -34,6 +34,8 @@
 		"files.eol": "\n",
 		"editor.wordWrap": "wordWrapColumn",
 		"editor.wordWrapColumn": 120,
-		"git.autofetch": "all"
+		"git.autofetch": "all",
+        "editor.parameterHints.enabled": false,
+        "go.useLanguageServer": true
 	}
 }

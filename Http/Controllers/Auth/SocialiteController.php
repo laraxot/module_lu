@@ -4,24 +4,22 @@ declare(strict_types=1);
 
 namespace Modules\LU\Http\Controllers\Auth;
 
-use App\Http\Controllers\Controller;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Str;
 use Laravel\Socialite\Facades\Socialite;
+use Modules\LU\Http\Controllers\BaseController;
 use Modules\LU\Models\SocialProvider;
 use Modules\LU\Models\User;
 
 /**
  * Class SocialiteController.
  */
-class SocialiteController extends Controller
-{
+class SocialiteController extends BaseController {
     /**
      * @return mixed|string
      */
-    public function redirectTo()
-    {
+    public function redirectTo() {
         if (request()->has('referrer')) {
             return request()->input('referrer');
         }
@@ -37,8 +35,7 @@ class SocialiteController extends Controller
      *
      * @return \Illuminate\Http\Response|\Illuminate\Http\RedirectResponse
      */
-    public function redirectToProvider(string $lang, string $provider)
-    {
+    public function redirectToProvider(string $lang, string $provider) {
         if (! \in_array($provider, ['google', 'facebook'], true)) {
             exit('['.$provider.'] is NOT supported');
         }
@@ -74,8 +71,7 @@ class SocialiteController extends Controller
      *
      * @return mixed
      */
-    public function handleProviderCallback(string $lang, string $provider)
-    {
+    public function handleProviderCallback(string $lang, string $provider) {
         if (null === config('services.'.$provider.'.client_id')) {
             exit('TRY WITH OTHER LOGIN !['.$provider.'] IS NOT SET');
         }

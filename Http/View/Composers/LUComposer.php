@@ -20,8 +20,9 @@ class LUComposer {
      * @return void
      */
     public function compose(View $view) {
+        /** @var \Modules\LU\Models\User */
         $user = Auth::user();
-        if (null === $user) {
+        if (null == $user) {
             return;
         }
         $profile = ProfileService::make()->get($user);
