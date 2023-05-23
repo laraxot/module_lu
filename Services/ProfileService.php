@@ -10,6 +10,7 @@ use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Auth;
 use Modules\Cms\Contracts\PanelContract;
 <<<<<<< HEAD
+<<<<<<< HEAD
 use Modules\Cms\Datas\LinkData;
 =======
 <<<<<<< HEAD
@@ -49,6 +50,9 @@ use Modules\Cms\Datas\LinkData;
 use Modules\Cms\Datas\LinkData;
 >>>>>>> 7aa5e9e8 (.)
 >>>>>>> 37b85e9 (rebase)
+=======
+use Modules\Cms\Datas\LinkData;
+>>>>>>> c6ccfdb (.)
 use Modules\Cms\Services\PanelService;
 use Modules\LU\Models\Area;
 use Modules\LU\Models\Permission;
@@ -59,6 +63,7 @@ use Modules\Xot\Contracts\UserContract;
 use Modules\Xot\Datas\XotData;
 use Nwidart\Modules\Facades\Module;
 <<<<<<< HEAD
+<<<<<<< HEAD
 use Spatie\LaravelData\DataCollection;
 =======
 <<<<<<< HEAD
@@ -98,6 +103,9 @@ use Spatie\LaravelData\DataCollection;
 use Spatie\LaravelData\DataCollection;
 >>>>>>> 7aa5e9e8 (.)
 >>>>>>> 37b85e9 (rebase)
+=======
+use Spatie\LaravelData\DataCollection;
+>>>>>>> c6ccfdb (.)
 
 /**
  * Class ProfileService.
@@ -171,6 +179,7 @@ class ProfileService {
         $profile = $this->getProfile();
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -200,6 +209,8 @@ class ProfileService {
 =======
 >>>>>>> 7aa5e9e8 (.)
 >>>>>>> 37b85e9 (rebase)
+=======
+>>>>>>> c6ccfdb (.)
         if (method_exists($profile, $name)) {
             /**
              * @var callable
@@ -265,6 +276,7 @@ class ProfileService {
     // returns User's full name (fist and last name)
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
     public function fullName(): ?string {
 =======
 <<<<<<< HEAD
@@ -313,6 +325,9 @@ class ProfileService {
     public function fullName(): ?string {
 >>>>>>> 7aa5e9e8 (.)
 >>>>>>> 37b85e9 (rebase)
+=======
+    public function fullName(): ?string {
+>>>>>>> c6ccfdb (.)
         if (null === $this->user) {
             return null;
         }
@@ -330,6 +345,7 @@ class ProfileService {
     // returns username
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
     public function handle(): string {
 =======
 <<<<<<< HEAD
@@ -378,6 +394,9 @@ class ProfileService {
     public function handle(): string {
 >>>>>>> 7aa5e9e8 (.)
 >>>>>>> 37b85e9 (rebase)
+=======
+    public function handle(): string {
+>>>>>>> c6ccfdb (.)
         if (null === $this->user) {
             return 'unknown';
         }
@@ -400,6 +419,7 @@ class ProfileService {
         }
         */
 <<<<<<< HEAD
+<<<<<<< HEAD
         if (null == $this->user) {
             throw new \Exception('['.__LINE__.']['.__FILE__.']');
         }
@@ -453,6 +473,11 @@ class ProfileService {
         }
 >>>>>>> 7aa5e9e8 (.)
 >>>>>>> 37b85e9 (rebase)
+=======
+        if (null == $this->user) {
+            throw new \Exception('['.__LINE__.']['.__FILE__.']');
+        }
+>>>>>>> c6ccfdb (.)
         if (! method_exists($this->user, 'perm')) {
             throw new \Exception('method perm in $this->user not exist');
         }
@@ -466,6 +491,7 @@ class ProfileService {
     }
 
     // returns User's fist name
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 =======
@@ -492,12 +518,15 @@ class ProfileService {
 >>>>>>> 98558fe (up)
 =======
 >>>>>>> e5d251f (up)
+=======
+>>>>>>> c6ccfdb (.)
     public function name(): string {
 =======
     public function name(): string
     {
 >>>>>>> 7e26934efd5d52824b3befd7ba9fe189bc7183ac
         return (string) $this->user?->first_name;
+<<<<<<< HEAD
 <<<<<<< HEAD
 =======
 >>>>>>> db76e2e (up)
@@ -521,6 +550,8 @@ class ProfileService {
         return (string) $this->user?->first_name;
 >>>>>>> 7aa5e9e8 (.)
 >>>>>>> 37b85e9 (rebase)
+=======
+>>>>>>> c6ccfdb (.)
     }
 
     // returns the Profile's action url (example: http://domain.xx/admin/it/lu/profiles/1/?_act=show)
@@ -535,6 +566,7 @@ class ProfileService {
      *
      * @return string|null
      */
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
     public function avatar($size = 100) {
@@ -585,6 +617,9 @@ class ProfileService {
     public function avatar($size = 100) {
 >>>>>>> 7aa5e9e8 (.)
 >>>>>>> 37b85e9 (rebase)
+=======
+    public function avatar($size = 100) {
+>>>>>>> c6ccfdb (.)
         if (null === $this->user) {
             return null;
         }
@@ -596,6 +631,7 @@ class ProfileService {
     }
 
     // returns User email
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 =======
@@ -622,12 +658,15 @@ class ProfileService {
 >>>>>>> 98558fe (up)
 =======
 >>>>>>> e5d251f (up)
+=======
+>>>>>>> c6ccfdb (.)
     public function email(): ?string {
 =======
     public function email(): ?string
     {
 >>>>>>> 7e26934efd5d52824b3befd7ba9fe189bc7183ac
         return $this->user?->email;
+<<<<<<< HEAD
 <<<<<<< HEAD
 =======
 >>>>>>> db76e2e (up)
@@ -651,6 +690,8 @@ class ProfileService {
         return $this->user?->email;
 >>>>>>> 7aa5e9e8 (.)
 >>>>>>> 37b85e9 (rebase)
+=======
+>>>>>>> c6ccfdb (.)
     }
 
     // returns the
@@ -660,6 +701,7 @@ class ProfileService {
         return $profile_panel;
     }
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
     public function getProfile(): ModelProfileContract {
@@ -710,10 +752,14 @@ class ProfileService {
     public function getProfile(): ModelProfileContract {
 >>>>>>> 7aa5e9e8 (.)
 >>>>>>> 37b85e9 (rebase)
+=======
+    public function getProfile(): ModelProfileContract {
+>>>>>>> c6ccfdb (.)
         if (null !== $this->profile) {
             return $this->profile;
         }
         if (null !== $this->user) {
+<<<<<<< HEAD
 <<<<<<< HEAD
 =======
 <<<<<<< HEAD
@@ -743,11 +789,14 @@ class ProfileService {
 =======
 >>>>>>> 7aa5e9e8 (.)
 >>>>>>> 37b85e9 (rebase)
+=======
+>>>>>>> c6ccfdb (.)
             $profile = $this->user->profile()->firstOrCreate();
             if (! $profile instanceof ModelProfileContract) {
                 throw new \Exception('['.__LINE__.']['.__FILE__.']');
             }
             $this->profile = $profile;
+<<<<<<< HEAD
 <<<<<<< HEAD
 =======
 <<<<<<< HEAD
@@ -780,6 +829,8 @@ class ProfileService {
 =======
 >>>>>>> 7aa5e9e8 (.)
 >>>>>>> 37b85e9 (rebase)
+=======
+>>>>>>> c6ccfdb (.)
 
             return $this->profile;
         }
@@ -787,6 +838,7 @@ class ProfileService {
         throw new \Exception('['.__LINE__.']['.__FILE__.']');
     }
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
     public function setUserId(string $user_id): self {
@@ -837,12 +889,16 @@ class ProfileService {
     public function setUserId(string $user_id): self {
 >>>>>>> 7aa5e9e8 (.)
 >>>>>>> 37b85e9 (rebase)
+=======
+    public function setUserId(string $user_id): self {
+>>>>>>> c6ccfdb (.)
         $this->user = User::find($user_id);
 
         return $this;
     }
 
     // returns the Profile panel with its methods
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 =======
@@ -857,10 +913,14 @@ class ProfileService {
 >>>>>>> 98558fe (up)
     public function getProfilePanel(): PanelContract
     {
+=======
+    public function getProfilePanel(): PanelContract {
+>>>>>>> c6ccfdb (.)
         $profile = $this->getProfile();
         // if (null === $profile) {
         //    throw new \Exception('['.__LINE__.']['.__FILE__.']');
         // }
+<<<<<<< HEAD
 <<<<<<< HEAD
 =======
 =======
@@ -943,12 +1003,15 @@ class ProfileService {
 =======
 >>>>>>> 7aa5e9e8 (.)
 >>>>>>> 37b85e9 (rebase)
+=======
+>>>>>>> c6ccfdb (.)
         $this->profile_panel = PanelService::make()->get($profile);
 
         return $this->profile_panel;
     }
 
     // returns the User panel with its methods
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 =======
@@ -982,6 +1045,8 @@ class ProfileService {
 =======
 >>>>>>> 7aa5e9e8 (.)
 >>>>>>> 37b85e9 (rebase)
+=======
+>>>>>>> c6ccfdb (.)
     public function getUserPanel(): PanelContract {
 =======
     public function getUserPanel(): PanelContract
@@ -990,6 +1055,7 @@ class ProfileService {
         if (null == $this->user) {
             throw new \Exception('['.__LINE__.']['.__FILE__.']');
         }
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 =======
@@ -1019,6 +1085,8 @@ class ProfileService {
 =======
 >>>>>>> 7aa5e9e8 (.)
 >>>>>>> 37b85e9 (rebase)
+=======
+>>>>>>> c6ccfdb (.)
         $user_panel = PanelService::make()->getByUser($this->user);
 
         return $user_panel;
@@ -1038,6 +1106,7 @@ class ProfileService {
     // get the User that belongs to this profile
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -1072,10 +1141,14 @@ class ProfileService {
     public function getUser(): UserContract {
 >>>>>>> 7aa5e9e8 (.)
 >>>>>>> 37b85e9 (rebase)
+=======
+    public function getUser(): UserContract {
+>>>>>>> c6ccfdb (.)
         if (null == $this->user) {
             throw new \Exception('['.__LINE__.']['.__FILE__.']');
         }
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 =======
 <<<<<<< HEAD
@@ -1109,6 +1182,8 @@ class ProfileService {
 =======
 >>>>>>> 7aa5e9e8 (.)
 >>>>>>> 37b85e9 (rebase)
+=======
+>>>>>>> c6ccfdb (.)
         return $this->user;
     }
 
@@ -1188,6 +1263,7 @@ class ProfileService {
     // -------------- SPATIE PERMISSION -------------------------
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -1212,12 +1288,15 @@ class ProfileService {
 >>>>>>> 98558fe (up)
 =======
 >>>>>>> e5d251f (up)
+=======
+>>>>>>> c6ccfdb (.)
     public function givePermissionTo(string $name): self {
 =======
     public function givePermissionTo(string $name): self
     {
 >>>>>>> 7e26934efd5d52824b3befd7ba9fe189bc7183ac
         $this->getProfile()->givePermissionTo($name);
+<<<<<<< HEAD
 <<<<<<< HEAD
 =======
 >>>>>>> db76e2e (up)
@@ -1241,6 +1320,8 @@ class ProfileService {
         $this->getProfile()->givePermissionTo($name);
 >>>>>>> 7aa5e9e8 (.)
 >>>>>>> 37b85e9 (rebase)
+=======
+>>>>>>> c6ccfdb (.)
 
         return $this;
     }
@@ -1258,6 +1339,7 @@ class ProfileService {
     public function hasRole(string $name): bool {
         $profile = $this->getProfile();
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 =======
 <<<<<<< HEAD
@@ -1298,6 +1380,9 @@ class ProfileService {
 
 >>>>>>> 7aa5e9e8 (.)
 >>>>>>> 37b85e9 (rebase)
+=======
+
+>>>>>>> c6ccfdb (.)
         // try {
         return $profile->hasRole($name);
         // } catch (\Spatie\Permission\Exceptions\RoleDoesNotExist) {
@@ -1308,6 +1393,7 @@ class ProfileService {
     public function hasAnyRole(array $roles): bool {
         $profile = $this->getProfile();
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -1343,6 +1429,8 @@ class ProfileService {
 =======
 >>>>>>> 7aa5e9e8 (.)
 >>>>>>> 37b85e9 (rebase)
+=======
+>>>>>>> c6ccfdb (.)
 
         return $profile->hasAnyRole($roles);
     }
@@ -1350,6 +1438,7 @@ class ProfileService {
     public function hasPermissionTo(string $name): bool {
         $profile = $this->getProfile();
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 =======
 <<<<<<< HEAD
@@ -1390,6 +1479,9 @@ class ProfileService {
 
 >>>>>>> 7aa5e9e8 (.)
 >>>>>>> 37b85e9 (rebase)
+=======
+
+>>>>>>> c6ccfdb (.)
         try {
             return $profile->hasPermissionTo($name);
         } catch (\Spatie\Permission\Exceptions\PermissionDoesNotExist $th) {
