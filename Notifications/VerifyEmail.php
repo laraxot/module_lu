@@ -26,7 +26,7 @@ class VerifyEmail extends BaseVerifyEmail
      */
     public function __construct()
     {
-        $this->xot = XotData::from(config('xra'));
+        $this->xot = XotData::make();
         $this->register_type = (string) $this->xot->register_type;
     }
 
@@ -43,8 +43,9 @@ class VerifyEmail extends BaseVerifyEmail
             if (3 == $this->register_type && null == $notifiable->password) {
                 // dddx(['notifiable' => $notifiable, fake()->password()]);
                 $password = fake()->password();
+                $handle = Str::before(strval($notifiable->email), '@'); // ?? fake()->name();
                 $res = tap($notifiable)->update([
-                    'handle' => Str::before(strval($notifiable->email), '@') ?? fake()->name(),
+                    'handle' => $handle,
                     'passwd' => $password,
                 ]);
                 $this->view_params['password'] = $password;

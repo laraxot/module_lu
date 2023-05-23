@@ -34,10 +34,12 @@ class UserController extends BaseController {
             ]);
         }
         // if login succeed issue an access token for our user
-        if (null === Auth::user()) {
+        // if (null === Auth::user()) {
+        if (null == $user) {
             throw new \Exception('['.__LINE__.']['.class_basename(__CLASS__).']');
         }
-        $token = Auth::user()->createToken('Token Name')->accessToken;
+        // $token = Auth::user()->createToken('Token Name')->accessToken;
+        $token = $user->createToken('Token Name')->accessToken;
 
         return response()->json([
             'status' => '200',
@@ -67,10 +69,12 @@ class UserController extends BaseController {
         }
 
         // if login succeed issue an access token for our user
-        if (null === Auth::user()) {
+        // if (null === Auth::user()) {
+        if (null === $user) {
             throw new \Exception('['.__LINE__.']['.class_basename(__CLASS__).']');
         }
-        $token = Auth::user()->createToken('Token Name')->accessToken;
+        // $token = Auth::user()->createToken('Token Name')->accessToken;
+        $token = $user->createToken('Token Name')->accessToken;
 
         return response()->json([
             'status' => '200',
