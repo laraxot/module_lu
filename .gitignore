@@ -19,12 +19,5 @@ error_log
 *.stackdump
 *.cache
 *.old
-<<<<<<< HEAD
-<<<<<<< HEAD
 /build/*
-=======
->>>>>>> e25abfc1 (.)
-=======
-/build/*
->>>>>>> dea40732 (.)
 /build
