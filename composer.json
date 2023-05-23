@@ -36,6 +36,7 @@
         "laravel/ui": "*",
         "laraxot/module_cms": "dev-master",
         "laraxot/module_notify": "dev-master",
+<<<<<<< HEAD
         "laraxot/module_wire": "dev-master",
 <<<<<<< HEAD
         "laraxot/module_xot": "dev-master",
@@ -49,6 +50,13 @@
         "nwidart/laravel-modules": "9.0",
         "spatie/laravel-package-tools": "^1.14.0"
 >>>>>>> 5b24bc03 (.)
+=======
+        "laraxot/module_xot": "dev-master",
+        "livewire/livewire": "^2.12",
+        "nwidart/laravel-modules": "9.0",
+        "spatie/laravel-package-tools": "^1.14.0",
+        "staudenmeir/eloquent-has-many-deep": "^1.18"
+>>>>>>> 896e042a (.)
     },
     "require-dev": {
         "laravel/pint": "^1.0",
