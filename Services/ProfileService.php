@@ -124,6 +124,7 @@ use Spatie\LaravelData\DataCollection;
  */
 class ProfileService {
     private ?UserContract $user = null;
+    // private string $user_id;
 
     private ?ModelProfileContract $profile = null;
 
@@ -141,12 +142,17 @@ class ProfileService {
 =======
 =======
     public function __construct() {
+<<<<<<< HEAD
 >>>>>>> 7aa5e9e8 (.)
         $this->xot = XotData::from(config('xra'));
 >>>>>>> 98558fe0 (up)
+=======
+        $this->xot = XotData::make();
+        /** @var \Modules\Xot\Contracts\UserContract|null */
+>>>>>>> 5b24bc03 (.)
         $user = Auth::user();
-
-        if (null === $user) {
+        // $this->user_id = strval(Auth::id());
+        if (null == $user) {
             return;
         }
         if (! $user instanceof UserContract) {
