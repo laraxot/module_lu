@@ -8,10 +8,14 @@ use Illuminate\Contracts\Support\Renderable;
 use Modules\Cms\Actions\GetViewAction;
 use Modules\LU\Models\Permission;
 <<<<<<< HEAD
+<<<<<<< HEAD
 use Modules\Wire\View\Components\Modal\Modal;
 =======
 use Modules\Modal\View\Components\Modal\Modal;
 >>>>>>> 229bf29 (up)
+=======
+use Modules\Wire\View\Components\Modal\Modal;
+>>>>>>> 466c8a8 (up)
 
 class AddPermission extends Modal
 {
