@@ -1,5 +1,6 @@
 {
     "name": "laraxot/module_lu",
+<<<<<<< HEAD
     "description": ":package_description",
     "keywords": [
         "laraxot",
@@ -61,6 +62,13 @@
             "pestphp/pest-plugin": true
         }
     },
+=======
+    "description": "",
+    "authors": [{
+        "name": "Marco Sottana",
+        "email": "marco.sottana@gmail.com"
+    }],
+>>>>>>> 43a27c8 (.)
     "extra": {
         "laravel": {
             "providers": [
@@ -114,9 +122,7 @@
             "@php vendor/bin/testbench package:discover --ansi"
         ],
         "post-update-cmd": [
-            "Illuminate\\Foundation\\ComposerScripts::postUpdate",
-            "@php artisan ide-helper:generate",
-            "@php artisan ide-helper:meta"
+            "Illuminate\\Foundation\\ComposerScripts::postUpdate"
         ],
         "analyse": "vendor/bin/phpstan analyse",
         "test": "./vendor/bin/pest --no-coverage",
