@@ -1,35 +1,9 @@
 includes:
     - phpstan-baseline.neon
     - ./vendor/nunomaduro/larastan/extension.neon
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
     
 parameters:
     level: max
-=======
-=======
->>>>>>> 6fb54d7 (.)
-=======
->>>>>>> 4211c2e (.)
-=======
-<<<<<<< Updated upstream
->>>>>>> 13573a5 (up)
-
-=======
->>>>>>> Stashed changes
-=======
->>>>>>> e48ead7 (.)
-    
-parameters:
-<<<<<<< HEAD
-    level: 1
->>>>>>> 8922e79 (.)
-=======
-    level: max
->>>>>>> 13573a5 (up)
     paths:
         - .
 
