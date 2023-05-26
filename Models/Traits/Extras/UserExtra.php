@@ -102,7 +102,7 @@ trait UserExtra
         $this->notify(new VerifyEmailNotification());
     }
 
-    /*public function getNotificationData(string $name): NotificationData
+    /*public function getNotificationData(string $name,array $view_params=[]): NotificationData
     {
         NotificationData::from();
 
