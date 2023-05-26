@@ -9,7 +9,6 @@ use Illuminate\Support\Facades\Lang;
 use Illuminate\Support\Str;
 use Modules\LU\Actions\BuildUserMailMessageAction;
 use Modules\LU\Models\User;
-use Modules\Payment\View\Components\NexiPayment;
 use Modules\Xot\Datas\XotData;
 
 /**
