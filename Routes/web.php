@@ -2,6 +2,7 @@
 
 declare(strict_types=1);
 
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 // use Illuminate\Support\Facades\App;
@@ -18,7 +19,7 @@ Route::group(
         'namespace' => $namespace.'\Http\Controllers',
     ],
     function () {
-       // Auth::routes(['verify' => true]);
+        Auth::routes(['verify' => true]);
     }
 );
 
