@@ -21,15 +21,23 @@
     },
     "require": {
         "calebporzio/sushi": "^2.4",
+<<<<<<< HEAD
         "illuminate/contracts": "^9.0|^10.0",
         "illuminate/support": "^9.12|^10.0",
+=======
+        "illuminate/contracts": "*",
+>>>>>>> 19a54d4 (.)
         "kalnoy/nestedset": "^6.0",
         "laravel/passport": "^11.3",
         "laravel/ui": "^4.1",
         "laraxot/module_xot": "dev-master",
         "livewire/livewire": "^2.10",
         "phpdocumentor/type-resolver": "^1.5",
+<<<<<<< HEAD
         "spatie/laravel-package-tools": "^1.11.3",
+=======
+        "spatie/laravel-package-tools": "^1.9.0",
+>>>>>>> 19a54d4 (.)
         "spatie/laravel-sluggable": "^3.4",
         "spatie/laravel-translatable": "^6.1"
     },
