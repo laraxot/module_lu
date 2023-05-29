@@ -7,19 +7,20 @@ namespace Modules\LU\Listeners;
 use Illuminate\Auth\Events\Login as LoginEvent;
 use Modules\Xot\Datas\XotData;
 
-class LoginListener
-{
+class LoginListener {
     public XotData $xot;
-    public string $register_type;
+    // public string $register_type;
 
     /**
      * Handle the given event.
      */
-    public function handle(LoginEvent $event): void
-    {
+    public function handle(LoginEvent $event): void {
         // $this->xot = XotData::make();
         // $this->register_type = (string) $this->xot->register_type;
         // ...
-        dddx($event);
+        // 'guard'
+        // 'USer'
+        // remember
+        // dddx($event);
     }
 }

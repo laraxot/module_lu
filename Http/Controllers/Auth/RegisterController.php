@@ -20,8 +20,7 @@ use Modules\Xot\Services\FileService;
 /**
  * Class RegisterController.
  */
-class RegisterController extends BaseController
-{
+class RegisterController extends BaseController {
     use RegistersUsers;
 
     public XotData $xot;
@@ -35,8 +34,7 @@ class RegisterController extends BaseController
     /**
      * Create a new controller instance.
      */
-    public function __construct()
-    {
+    public function __construct() {
         $this->middleware('guest');
         $this->xot = XotData::make();
         $this->register_type = (string) $this->xot->register_type;
@@ -47,8 +45,7 @@ class RegisterController extends BaseController
      *
      * @return \Illuminate\Contracts\Validation\Validator
      */
-    protected function validator(array $data)
-    {
+    protected function validator(array $data) {
         if (! isset($data['handle']) && isset($data['username'])) {
             $data['handle'] = $data['username'];
         }
@@ -76,8 +73,7 @@ class RegisterController extends BaseController
     }
 
     // ---------------------------------------------------------------------------------------
-    public function showRegistrationForm(Request $request): Renderable
-    {
+    public function showRegistrationForm(Request $request): Renderable {
         $referrer = str_replace(url('/'), '', url()->previous());
         $params = getRouteParameters();
         $register_type = $this->xot->register_type;
@@ -105,8 +101,7 @@ class RegisterController extends BaseController
      *
      * @return mixed
      */
-    public function register(Request $request)
-    {
+    public function register(Request $request) {
         $data = $request->all();
         $validated = $this->validator($data)->validate();
 
@@ -115,6 +110,7 @@ class RegisterController extends BaseController
 
         $this->guard()->login($user);
 
+        // *
         $profile = $user->profileOrCreate()->first();
 
         if (is_object($profile) && method_exists($profile, 'registered')) {
@@ -124,6 +120,7 @@ class RegisterController extends BaseController
                 return $out;
             }
         }
+        // */
 
         // if ($response = $this->registered($request, $user)) {
         //    return $response;
