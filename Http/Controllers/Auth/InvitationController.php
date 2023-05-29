@@ -39,7 +39,7 @@ class InvitationController extends BaseController {
             'title' => 'invitation',
         ];
 
-        return view()->make($view)->with($view_params);
+        return view($view)->with($view_params);
     }
 
     /**

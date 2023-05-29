@@ -153,7 +153,7 @@ class AreaAdminArea extends BasePivot {
         $view_params = ['row' => $this];
         if (view()->exists($view)) {
             //return view($view)->with('row', $this);
-            return view()->make($view)->with('row', $this);
+            return view($view)->with('row', $this);
         } else {
             //return view('lu::admin.dashboard_widget_default')->with('row', $this);
             return view()->make('lu::admin.dashboard_widget_default', $view_params);

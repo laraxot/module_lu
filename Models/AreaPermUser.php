@@ -10,21 +10,22 @@ use Illuminate\Support\Facades\View;
 use Modules\UI\Services\ThemeService;
 
 /**
- * Modules\LU\Models\AreaPermUser
+ * Modules\LU\Models\AreaPermUser.
  *
- * @property int $id
- * @property int|null $area_id
- * @property int|null $perm_user_id
- * @property \Illuminate\Support\Carbon|null $created_at
- * @property \Illuminate\Support\Carbon|null $updated_at
- * @property string|null $created_by
- * @property string|null $updated_by
- * @property-read \Modules\LU\Models\Area|null $area
- * @property-read string|null $area_define_name
- * @property-read string|null $icon_src
- * @property-read string|null $title
- * @property-read string|null $url
- * @property-read \Modules\LU\Models\PermUser|null $permUser
+ * @property int                              $id
+ * @property int|null                         $area_id
+ * @property int|null                         $perm_user_id
+ * @property \Illuminate\Support\Carbon|null  $created_at
+ * @property \Illuminate\Support\Carbon|null  $updated_at
+ * @property string|null                      $created_by
+ * @property string|null                      $updated_by
+ * @property \Modules\LU\Models\Area|null     $area
+ * @property string|null                      $area_define_name
+ * @property string|null                      $icon_src
+ * @property string|null                      $title
+ * @property string|null                      $url
+ * @property \Modules\LU\Models\PermUser|null $permUser
+ *
  * @method static \Modules\LU\Database\Factories\AreaPermUserFactory factory($count = null, $state = [])
  * @method static \Illuminate\Database\Eloquent\Builder|AreaPermUser newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|AreaPermUser newQuery()
@@ -36,10 +37,10 @@ use Modules\UI\Services\ThemeService;
  * @method static \Illuminate\Database\Eloquent\Builder|AreaPermUser wherePermUserId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|AreaPermUser whereUpdatedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|AreaPermUser whereUpdatedBy($value)
+ *
  * @mixin \Eloquent
  */
-class AreaPermUser extends BasePivot
-{
+class AreaPermUser extends BasePivot {
     /**
      * @var string[]
      */
@@ -49,20 +50,17 @@ class AreaPermUser extends BasePivot
      */
     protected $appends = ['title', 'url', 'icon_src'];
 
-    public function area(): BelongsTo
-    {
+    public function area(): BelongsTo {
         return $this->belongsTo(Area::class);
     }
 
-    public function permUser(): BelongsTo
-    {
+    public function permUser(): BelongsTo {
         return $this->belongsTo(PermUser::class);
     }
 
     // ------------MUTATORS -------------
 
-    public function getAreaDefineNameAttribute(?string $value): ?string
-    {
+    public function getAreaDefineNameAttribute(?string $value): ?string {
         $area = $this->area;
         if (! \is_object($area)) {
             return $value;
@@ -71,8 +69,7 @@ class AreaPermUser extends BasePivot
         return $area->area_define_name;
     }
 
-    public function getTitleAttribute(?string $value): ?string
-    {
+    public function getTitleAttribute(?string $value): ?string {
         $area_define_name_scope = '';
 
         if (! empty($this->area_define_name)) {
@@ -85,13 +82,11 @@ class AreaPermUser extends BasePivot
     }
 
     // era commentata e dava errore su admin/lu/users che questo metodo era undefined
-    public function getUrlAttribute(?string $value): ?string
-    {
+    public function getUrlAttribute(?string $value): ?string {
         return $this->area?->url;
     }
 
-    public function getIconSrcAttribute(?string $value): ?string
-    {
+    public function getIconSrcAttribute(?string $value): ?string {
         $area = $this->area;
         if (! \is_object($area)) {
             return $value;
@@ -105,8 +100,7 @@ class AreaPermUser extends BasePivot
         return $icon_src;
     }
 
-    public function dashboard_widget(): ViewContract
-    {
+    public function dashboard_widget(): ViewContract {
         $area_define_name_scope = '';
 
         if (! empty($this->area_define_name)) {
@@ -117,7 +111,7 @@ class AreaPermUser extends BasePivot
         $view_params = ['row' => $this];
         // if (view()->exists($view)) {
         if (View::exists($view)) {
-            // return view()->make($view)->with('row', $this);
+            // return view($view)->with('row', $this);
             // Call to an undefined method Illuminate\Contracts\View\Factory|Illuminate\Contracts\View\View::make()
             return View::make($view, $view_params);
         } else {
@@ -130,15 +124,13 @@ class AreaPermUser extends BasePivot
     /**
      * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\Routing\UrlGenerator|string
      */
-    public function a_href()
-    {
+    public function a_href() {
         return url('admin/'.mb_strtolower((string) $this->area_define_name));
     }
 
     // -----------------------------------------------------------------------------
 
-    public function icon_src(): string
-    {
+    public function icon_src(): string {
         $src = mb_strtolower($this->area_define_name.'::img/icon.png');
 
         return ThemeService::asset($src);
