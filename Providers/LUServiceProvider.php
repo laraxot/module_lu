@@ -60,6 +60,10 @@ class LUServiceProvider extends XotBaseServiceProvider
             [RegisteredListener::class, 'handle']
         );
         */
+        Event::listen(
+            \Illuminate\Auth\Events\Login::class,
+            \Modules\LU\Listeners\LoginListener::class
+        );
     }
 
     public function registerPassport(): void
