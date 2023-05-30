@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace Modules\LU\Models\Panels;
 
-use Exception;
 // --- Services --
 use Illuminate\Http\Request;
 use Illuminate\Support\Collection;
@@ -19,8 +18,7 @@ use Nwidart\Modules\Facades\Module;
 /**
  * Class UserPanel.
  */
-class UserPanel extends XotBasePanel
-{
+class UserPanel extends XotBasePanel {
     /**
      * The model the resource corresponds to.
      */
@@ -40,8 +38,7 @@ class UserPanel extends XotBasePanel
     /**
      * Get the fields displayed by the resource.
      */
-    public function fullnameFields(): array
-    {
+    public function fullnameFields(): array {
         return [
             (object) [
                 'type' => 'String',
@@ -64,8 +61,7 @@ class UserPanel extends XotBasePanel
     /**
      * @return object[]
      */
-    public function lastLoginFields(): array
-    {
+    public function lastLoginFields(): array {
         return [
             (object) [
                 'type' => 'DateDateTime',
@@ -79,14 +75,19 @@ class UserPanel extends XotBasePanel
                 'col_size' => 6,
                 'except' => ['edit', 'create'],
             ],
+            (object) [
+                'type' => 'String',
+                'name' => 'email_verified_at',
+                'col_size' => 6,
+                'except' => ['edit', 'create'],
+            ],
         ];
     }
 
     /**
      * @return object[]
      */
-    public function fields(): array
-    {
+    public function fields(): array {
         return [
             (object) [
                 'type' => 'Id',
@@ -186,16 +187,14 @@ class UserPanel extends XotBasePanel
         ];
     }
 
-    public function with(): array
-    {
+    public function with(): array {
         return [];
     }
 
     /**
      * Get the tabs available.
      */
-    public function tabs(): array
-    {
+    public function tabs(): array {
         /* aggiunto profile come tab in edit. penso possa servire sempre a tutti
         a prescindere dal modulo in cui può essere profile */
         $tabs_name = ['areas', 'groups', 'perms', 'rights', 'profile'];
@@ -206,40 +205,35 @@ class UserPanel extends XotBasePanel
     /**
      * Get the cards available for the request.
      */
-    public function cards(Request $request): array
-    {
+    public function cards(Request $request): array {
         return [];
     }
 
     /**
      * Get the filters available for the resource.
      */
-    public function filters(Request $request = null): array
-    {
+    public function filters(Request $request = null): array {
         return [];
     }
 
     /**
      * Get the lenses available for the resource.
      */
-    public function lenses(Request $request): array
-    {
+    public function lenses(Request $request): array {
         return [];
     }
 
     /**
      * Get the actions available for the resource.
      */
-    public function actions(): array
-    {
+    public function actions(): array {
         return [
             // new Actions\TestUsersWithLivewireAction(),
             new Actions\TestAction(),
         ];
     }
 
-    public function areas(): Collection
-    {
+    public function areas(): Collection {
         $row = $this->row;
         /**
          * @var Collection<Area>
@@ -253,7 +247,7 @@ class UserPanel extends XotBasePanel
             function ($item) use ($modules) {
                 // Cannot access property $area_define_name on mixed
                 if (! $item instanceof Area) {
-                    throw new Exception('['.__LINE__.']['.__FILE__.']');
+                    throw new \Exception('['.__LINE__.']['.__FILE__.']');
                 }
 
                 return in_array($item->area_define_name, array_keys($modules), true);
@@ -263,8 +257,7 @@ class UserPanel extends XotBasePanel
         return $areas;
     }
 
-    public function isSuperAdmin(): bool
-    {
+    public function isSuperAdmin(): bool {
         $user = $this->row;
 
         if (! method_exists($user, 'perm')) {
@@ -283,8 +276,7 @@ class UserPanel extends XotBasePanel
         return false;
     }
 
-    public function name(): string
-    {
+    public function name(): string {
         $attr = $this->row->getAttributes();
 
         if (! \in_array('handle', array_keys($attr), true)) {
@@ -294,8 +286,7 @@ class UserPanel extends XotBasePanel
         return $attr['handle'];
     }
 
-    public function avatar(int $size = 100): ?string
-    {
+    public function avatar(int $size = 100): ?string {
         if (! isset($this->row->email)) {
             return '';
         }
