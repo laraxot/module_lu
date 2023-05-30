@@ -14,8 +14,7 @@ use Modules\Xot\Datas\XotData;
 /**
  * Class VerifyEmail.
  */
-class VerifyEmail extends BaseVerifyEmail
-{
+class VerifyEmail extends BaseVerifyEmail {
     public XotData $xot;
     public string $register_type;
     public array $view_params = [];
@@ -23,8 +22,7 @@ class VerifyEmail extends BaseVerifyEmail
     /**
      * Create a notification instance.
      */
-    public function __construct()
-    {
+    public function __construct() {
         $this->xot = XotData::make();
         $this->register_type = (string) $this->xot->register_type;
     }
@@ -36,12 +34,12 @@ class VerifyEmail extends BaseVerifyEmail
      *
      * @return \Illuminate\Notifications\Messages\MailMessage|mixed
      */
-    public function toMail($notifiable)
-    {
+    public function toMail($notifiable) {
         if ($notifiable instanceof User) {
             if (3 == $this->register_type && null == $notifiable->password) {
                 // dddx(['notifiable' => $notifiable, fake()->password()]);
-                $password = fake()->password();
+                // $password = fake()->password();
+                $password = strval(rand(10000, 99999));
                 $handle = Str::before(strval($notifiable->email), '@'); // ?? fake()->name();
                 $res = tap($notifiable)->update([
                     'handle' => $handle,
