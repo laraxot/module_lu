@@ -8,7 +8,11 @@ https://laraveldaily.com/save-users-last-login-time-ip-address/
 
 -----------------------------------------------------
 
-https://github.com/jeremykenedy/laravel-auth  25 maggio 2021 
+https://github.com/jeremykenedy/laravel-auth  25 maggio 2021
 
 ----------------------------------------------------
+
+https://medium.com/geekculture/how-to-authenticate-or-login-with-email-or-username-using-laravel-breeze-inertiajs-961ee57fe9d9
+
+
 
