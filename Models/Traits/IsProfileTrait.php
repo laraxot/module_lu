@@ -34,12 +34,14 @@ trait IsProfileTrait
             if (isset($this->user_id)) {
                 $this->user()->create();
             }
-            // dddx($this->row);
+
             return null;
         }
+
         if (null === $user->email) {
             return null;
         }
+
         $email = md5(mb_strtolower(trim($user->email)));
         $default = urlencode('https://tracker.moodle.org/secure/attachment/30912/f3.png');
 
