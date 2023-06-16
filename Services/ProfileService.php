@@ -234,13 +234,14 @@ class ProfileService
             return null;
         }
 
-        if ('Pfed' == $this->xot->main_module) {
+        if ('PFed' == $this->xot->main_module) {
             /**
              * @var PfedModelProfileContract $profile
              */
             $profile = $this->getProfile();
+
             if ($profile->getMedia('avatar')->count() > 0) {
-                return $$profile->getMedia('avatar')->last()->original_url;
+                return $profile->getMedia('avatar')->last()->original_url;
             }
         }
 
