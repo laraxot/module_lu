@@ -15,6 +15,7 @@ use Modules\LU\Models\Area;
 use Modules\LU\Models\Permission;
 use Modules\LU\Models\Role;
 use Modules\LU\Models\User;
+use Modules\PFed\Contracts\ModelProfileContract as PfedModelProfileContract;
 use Modules\Xot\Contracts\ModelProfileContract;
 use Modules\Xot\Contracts\UserContract;
 use Modules\Xot\Datas\XotData;
@@ -233,8 +234,14 @@ class ProfileService
             return null;
         }
 
-        if ($this->getProfile()->getMedia('avatar')->count() > 0) {
-            return $this->getProfile()->getMedia('avatar')->last()->original_url;
+        if ('Pfed' == $this->xot->main_module) {
+            /**
+             * @var PfedModelProfileContract $profile
+             */
+            $profile = $this->getProfile();
+            if ($profile->getMedia('avatar')->count() > 0) {
+                return $$profile->getMedia('avatar')->last()->original_url;
+            }
         }
 
         $email = md5(mb_strtolower(trim((string) $this->user->email)));
