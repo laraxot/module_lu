@@ -1,57 +1,38 @@
 <?php
 
-declare(strict_types=1);
-
 namespace Modules\LU\Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Str;
-// ---- models ----
-use Modules\LU\Models\User as Model;
-
-/*
-|--------------------------------------------------------------------------
-| Model Factories
-|--------------------------------------------------------------------------
-|
-| This directory should contain each of the model factory definitions for
-| your application. Factories provide a convenient way to generate new
-| model instances for testing / seeding your application's database.
-|
-*/
 
 /**
- * Class UserFactory.
+ * @extends \Illuminate\Database\Eloquent\Factories\Factory<\Modules\LU\Models\User>
  */
 class UserFactory extends Factory
 {
     /**
-     * The name of the factory's corresponding model.
-     *
-     * @var class-string<\Illuminate\Database\Eloquent\Model>
-     */
-    protected $model = Model::class;
-
-    /**
      * Define the model's default state.
      *
-     * @return array
+     * @return array<string, mixed>
      */
-    public function definition()
+    public function definition(): array
     {
-        $faker = $this->faker;
-        // 43     Access to an undefined property Faker\UniqueGenerator::$userName.
-        // 46     Access to an undefined property Faker\UniqueGenerator::$safeEmail.
-
         return [
-            'handle' => $faker->unique()->userName(),
-            'first_name' => $faker->firstName(),
-            'last_name' => $faker->firstName(),
-            'email' => $faker->unique()->safeEmail(),
+            'name' => fake()->name(),
+            'email' => fake()->unique()->safeEmail(),
             'email_verified_at' => now(),
-            // 'passwd' => '$2y$10$TKh8H1.PfQx37YgCzwiKb.KjNyWgaHb9cbcoQgdIVFlYg7B77UdFm', // secret
-            'passwd' => '12345678', // secret
+            'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password
             'remember_token' => Str::random(10),
         ];
+    }
+
+    /**
+     * Indicate that the model's email address should be unverified.
+     */
+    public function unverified(): static
+    {
+        return $this->state(fn (array $attributes) => [
+            'email_verified_at' => null,
+        ]);
     }
 }
