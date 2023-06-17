@@ -20,10 +20,8 @@ use Modules\Xot\Services\FileService;
 /**
  * Class LoginController.
  */
-class LoginController extends BaseController
-{
+class LoginController extends BaseController {
     // use HasOTP;
-   
 
     use AuthenticatesUsers;
 
@@ -34,12 +32,10 @@ class LoginController extends BaseController
 
     // /home
 
-
     /**
      * @return mixed|string
      */
-    public function redirectTo()
-    {
+    public function redirectTo() {
         if (\Request::has('referrer')) {
             return request()->input('referrer');
         }
@@ -51,21 +47,17 @@ class LoginController extends BaseController
         return '/';
     }
 
-
-
     /**
      * Create a new controller instance.
      */
-    public function __construct()
-    {
+    public function __construct() {
         $this->middleware('guest', ['except' => 'logout']);
     }
 
     /**
      * @return string
      */
-    public function username()
-    {
+    public function username() {
         return 'handle';
     }
 
@@ -74,26 +66,24 @@ class LoginController extends BaseController
     /**
      * @return string
      */
-    public function password()
-    {
+    public function password() {
         return 'passwd';
     }
 
     /**
      * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View|\Illuminate\Http\JsonResponse|string
      */
-    public function showLoginForm(Request $request)
-    {
+    public function showLoginForm(Request $request) {
         $referrer = str_replace(url('/'), '', url()->previous());
         $params = getRouteParameters();
 
         $piece = 'auth.login';
-        FileService::viewCopy('lu::' . $piece, 'pub_theme::' . $piece);
+        FileService::viewCopy('lu::'.$piece, 'pub_theme::'.$piece);
 
         /**
          * @phpstan-var view-string
          */
-        $view = 'pub_theme::' . $piece;
+        $view = 'pub_theme::'.$piece;
 
         $view_params = [
             'action' => 'login',
@@ -103,7 +93,7 @@ class LoginController extends BaseController
             'referrer' => $referrer,
         ];
 
-        return view($view,$view_params);
+        return view($view, $view_params);
     }
 
     /**
@@ -111,8 +101,7 @@ class LoginController extends BaseController
      *
      * @return mixed|void
      */
-    public function login(Request $request)
-    {
+    public function login(Request $request) {
         if ($this->hasTooManyLoginAttempts($request)) {
             $this->fireLockoutEvent($request);
             // 149    Result of method Modules\LU\Http\Controllers\Auth\LoginController::sendLockoutResponse() (void) is used.
@@ -126,7 +115,7 @@ class LoginController extends BaseController
         $username_field = $this->username();
 
         if (isset($data['ente']) && isset($data['matr'])) {
-            $data['username'] = $data['ente'] . '-' . $data['matr'];
+            $data['username'] = $data['ente'].'-'.$data['matr'];
         }
         $user = null;
 
@@ -143,7 +132,6 @@ class LoginController extends BaseController
         */
 
         if (isset($user) && isset($data['password']) && $user->passwd === md5($data['password'])) {
-           
             $this->clearLoginAttempts($request);
             // dd($user);
             Auth::login($user, $request->has('remember'));
@@ -184,8 +172,7 @@ class LoginController extends BaseController
      * @param \Illuminate\Http\Request $request
      * @param UserContract             $user
      */
-    protected function authenticated($request, $user): void
-    {
+    protected function authenticated($request, $user): void {
         $user->update(
             [
                 'last_login_at' => Carbon::now()->toDateTimeString(),
@@ -212,8 +199,7 @@ class LoginController extends BaseController
     /**
      * @return \Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse
      */
-    protected function sendFailedLoginResponse(Request $request)
-    {
+    protected function sendFailedLoginResponse(Request $request) {
         if ($request->ajax()) {
             return response()->json(
                 [
@@ -234,14 +220,13 @@ class LoginController extends BaseController
 
     // ------------------
 
-    public function authorization(Request $request): void
-    {
-        $domain_url = (isset($_SERVER['HTTPS']) ? 'https' : 'http') . "://$_SERVER[HTTP_HOST]";
+    public function authorization(Request $request): void {
+        $domain_url = (isset($_SERVER['HTTPS']) ? 'https' : 'http')."://$_SERVER[HTTP_HOST]";
         header('Content-type: application/json');
         header('Access-Control-Allow-Credentials: true');
-        header('Access-Control-Allow-Origin: ' . str_replace('.', '-', 'https://example.com') . '.cdn.ampproject.org');
+        header('Access-Control-Allow-Origin: '.str_replace('.', '-', 'https://example.com').'.cdn.ampproject.org');
 
-        header('AMP-Access-Control-Allow-Source-Origin: ' . $domain_url);
+        header('AMP-Access-Control-Allow-Source-Origin: '.$domain_url);
         header('Access-Control-Expose-Headers: AMP-Access-Control-Allow-Source-Origin');
         // header("AMP-Redirect-To: https://example.com/thankyou.amp.html");
         header('Access-Control-Expose-Headers: AMP-Redirect-To, AMP-Access-Control-Allow-Source-Origin');
@@ -267,14 +252,14 @@ class LoginController extends BaseController
         return response()->json($ris);
         //https://searchwilderness.com/amp-forms/#gref
          */
-        $domain_url = (isset($_SERVER['HTTPS']) ? 'https' : 'http') . "://$_SERVER[HTTP_HOST]";
+        $domain_url = (isset($_SERVER['HTTPS']) ? 'https' : 'http')."://$_SERVER[HTTP_HOST]";
         header('Content-type: application/json');
         header('Access-Control-Allow-Credentials: true');
         header('Access-Control-Allow-Headers:Content-Type, Content-Length, Accept-Encoding, X-CSRF-Token');
         // https://ampbyexample.com/playground/#url=https%3A%2F%2Fampbyexample.com%2Fcomponents%2Famp-form%2Fsource%2F
         // header("Access-Control-Allow-Origin: ". str_replace('.', '-','https://example.com') .".cdn.ampproject.org");
-        header('Access-Control-Allow-Origin: ' . $_SERVER['HTTP_ORIGIN']);
-        header('AMP-Access-Control-Allow-Source-Origin: ' . $domain_url);
+        header('Access-Control-Allow-Origin: '.$_SERVER['HTTP_ORIGIN']);
+        header('AMP-Access-Control-Allow-Source-Origin: '.$domain_url);
         header('Access-Control-Expose-Headers: AMP-Access-Control-Allow-Source-Origin');
         header('AMP-Redirect-To: https://example.com/thankyou.amp.html');
         header('Access-Control-Expose-Headers: AMP-Redirect-To, AMP-Access-Control-Allow-Source-Origin');
