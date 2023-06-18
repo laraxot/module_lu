@@ -10,15 +10,14 @@ use Livewire\Component;
 use Livewire\WithPagination;
 use Modules\Cms\Actions\GetViewAction;
 use Modules\Cms\Contracts\PanelContract;
-use Modules\ExtraField\Datas\FieldData;
 use Modules\LU\Models\User;
+use Modules\UI\Datas\FieldData;
 use Spatie\LaravelData\DataCollection;
 
 /**
  * Class Users.
  */
-class Users extends Component
-{
+class Users extends Component {
     use WithPagination;
 
     public array $users;
@@ -45,8 +44,7 @@ class Users extends Component
     /**
      * @param PanelContract|null $_panel
      */
-    public function mount(SessionManager $session, $_panel = null): void
-    {
+    public function mount(SessionManager $session, $_panel = null): void {
         // $this->panel = $panel;
         if (null === $_panel) {
             throw new \Exception('in $_panel is null');
@@ -64,8 +62,7 @@ class Users extends Component
     /**
      * Render the component.
      */
-    public function render(): \Illuminate\Contracts\Support\Renderable
-    {
+    public function render(): \Illuminate\Contracts\Support\Renderable {
         $rows = User::query()->paginate(10);
 
         $view = app(GetViewAction::class)->execute();
@@ -79,8 +76,7 @@ class Users extends Component
         return view($view, $view_params);
     }
 
-    private function resetInputFields(): void
-    {
+    private function resetInputFields(): void {
         $this->handle = '';
         $this->first_name = '';
         $this->last_name = '';
@@ -88,8 +84,7 @@ class Users extends Component
         $this->user_id = null;
     }
 
-    public function store(): void
-    {
+    public function store(): void {
         $validatedDate = $this->validate(
             [
                 'first_name' => 'required',
@@ -107,8 +102,7 @@ class Users extends Component
         $this->emit('userStore'); // Close model to using to jquery
     }
 
-    public function edit(int $id): void
-    {
+    public function edit(int $id): void {
         $this->updateMode = true;
         // $user = User::where('user_id', $id)->first();
         $user = User::query()->find($id);
@@ -120,14 +114,12 @@ class Users extends Component
         $this->email = $user->email;
     }
 
-    public function cancel(): void
-    {
+    public function cancel(): void {
         $this->updateMode = false;
         $this->resetInputFields();
     }
 
-    public function update(): void
-    {
+    public function update(): void {
         $validatedDate = $this->validate(
             [
                 'first_name' => 'required',
@@ -157,8 +149,7 @@ class Users extends Component
     /**
      * @throws \Exception
      */
-    public function delete(int $id): void
-    {
+    public function delete(int $id): void {
         if ($id) {
             User::query()->where('user_id', $id)->delete();
             session()->flash('message', 'Users Deleted Successfully.');
