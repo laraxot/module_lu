@@ -1,0 +1,9 @@
+
+API
+https://www.twilio.com/blog/unit-testing-laravel-api-phpunit
+
+https://auth0.com/blog/testing-laravel-apis-with-phpunit/
+
+https://codeception.com/for/laravel
+
+

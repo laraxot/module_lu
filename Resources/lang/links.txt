@@ -1,0 +1,1 @@
+https://github.com/Laravel-Lang/lang/blob/master/locales/it/validation-attributes.php

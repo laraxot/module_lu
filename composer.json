@@ -1,0 +1,74 @@
+{
+    "name": "laraxot/module_lu",
+    "description": ":package_description",
+    "keywords": [
+        "laraxot",
+        "laravel",
+        "module_lu"
+    ],
+    "homepage": "https://github.com/laraxot/module_lu",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": ":author_name",
+            "email": "author@domain.com",
+            "role": "Developer"
+        }
+    ],
+    "require": {
+        "php": "^8.1",
+        "illuminate/contracts": "^9.0|^10.0",
+        "illuminate/support": "^9.12|^10.0",
+        "laravel/passport": "^11.8",
+        "laravel/socialite": "^5.6",
+        "laravel/ui": "*",
+        "laraxot/module_cms": "dev-master",
+        "laraxot/module_notify": "dev-master",
+        "laraxot/module_wire": "dev-master",
+        "laraxot/module_xot": "dev-master",
+        "livewire/livewire": "^2.12",
+        "nwidart/laravel-modules": "9.0",
+        "spatie/laravel-package-tools": "^1.14.0",
+        "staudenmeir/eloquent-has-many-deep": "^1.18"
+    },
+    "require-dev": {
+        "laravel/pint": "^1.0",
+        "nunomaduro/collision": "^7.9",
+        "nunomaduro/larastan": "^2.0.1",
+        "orchestra/testbench": "^8.0",
+        "pestphp/pest": "^2.0",
+        "pestphp/pest-plugin-arch": "^2.0",
+        "pestphp/pest-plugin-laravel": "^2.0",
+        "phpstan/phpstan-deprecation-rules": "^1.0",
+        "phpstan/phpstan-phpunit": "^1.0",
+        "spatie/laravel-ray": "^1.26"
+    },
+    "autoload": {
+        "psr-4": {
+            "Modules\\LU\\": ""
+        }
+    },
+    "scripts": {
+        "post-autoload-dump": "@php ./vendor/bin/testbench package:discover --ansi",
+        "analyse": "vendor/bin/phpstan analyse",
+        "test": "vendor/bin/pest",
+        "test-coverage": "vendor/bin/pest --coverage",
+        "format": "vendor/bin/pint"
+    },
+    "config": {
+        "sort-packages": true,
+        "allow-plugins": {
+            "pestphp/pest-plugin": true
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Modules\\LU\\Providers\\LUServiceProvider"
+            ],
+            "aliases": {}
+        }
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true
+}
